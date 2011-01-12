@@ -91,11 +91,10 @@
 </head>
 
 <body <?php if ( dp_categories_top_check_slug( $wp_query->query_vars['categorydp_name'] )) { echo 'class="dp-top-level"'; } else { body_class(); }  ?>>
-<div class="dp-header-stra"></div>
-<div class="dp-header-strb"></div>
 <div id="wrapper" class="hfeed">
 	<div id="header">
 		<div id="masthead">
+            
 			<div id="branding" role="banner">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 				<<?php echo $heading_tag; ?> id="site-title">
@@ -103,26 +102,28 @@
 						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					</span>
 				</<?php echo $heading_tag; ?>>
-
                 <?php $options = get_site_option('dp_options'); ?>
                 <div id="h-banner"><?php echo $options['ads']['h_ad']; ?></div>
-
-                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
+                <div id="site-description"><?php bloginfo( 'description' ); ?></div>
 			</div><!-- #branding -->
+            <div  class="clear"></div>
+            <div id="main-btns">
+            <?php if ( !is_user_logged_in()): ?>
+                <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/submit-listing/'; ?>">Submit Listing</a></div>
+            <?php else: ?>
+                <div id="add-listing"><a href="<?php echo get_bloginfo('url') . '/?redirect_admin_listings'; ?>">Add Listing</a></div>
+                <div id="go-to-profile"><a href="<?php echo get_bloginfo('url') . '/?redirect_admin_profile'; ?>">Go to Profile</a></div>
+            <?php endif; ?>
+            </div>
 
 			<div id="access" role="navigation">
 			  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
 				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'directory' ); ?>"><?php _e( 'Skip to content', 'directory' ); ?></a></div>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-                 <?php $options = get_site_option('dp_options'); ?>
-                 <?php wp_page_menu( array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu-header', 'include' => '', 'exclude'=> $options['submit_page_id'], 'echo' => true, 'show_home' => true,'link_before' => '','link_after' => '' )); ?>
+                <?php $options = get_site_option('dp_options'); ?>
+                <?php wp_page_menu( array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu-header', 'include' => '', 'exclude'=> $options['submit_page_id'], 'echo' => true, 'show_home' => true,'link_before' => '','link_after' => '' )); ?>
 			</div><!-- #access -->
-            <?php if ( !is_user_logged_in()): ?>
-                <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/submit-listing/'; ?>">Submit Listing</a></div>
-            <?php else: ?>
-                <div id="go-to-profile"><a href="<?php echo get_bloginfo('url') . '/?redirect_admin_profile'; ?>">Go to Profile</a></div>
-                <div id="add-listing"><a href="<?php echo get_bloginfo('url') . '/?redirect_admin_listings'; ?>">Add Listing</a></div>
-            <?php endif; ?>
+                
 		</div><!-- #masthead -->
 	</div><!-- #header -->
 

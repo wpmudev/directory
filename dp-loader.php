@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 1.0.3
+Version: 1.0.5
 Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -30,8 +30,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /*
  * Enable error repporting if in debug mode
  */
-  error_reporting( E_ALL ^ E_NOTICE );
-  ini_set( 'display_errors', 1 );
+//  error_reporting( E_ALL ^ E_NOTICE );
+//  ini_set( 'display_errors', 1 );
 
 /* tmp debug func */
 function dp_debug( $param ) {
@@ -41,7 +41,7 @@ function dp_debug( $param ) {
 }
 
 /* Define plugin version */ 
-define ( 'DP_VERSION', '1.0.3' );
+define ( 'DP_VERSION', '1.0.5' );
 define ( 'DP_DB_VERSION', '1.1' );
 
 /* define the plugin folder url */
@@ -113,7 +113,7 @@ register_activation_hook( __FILE__, 'dp_plugin_activate' );
 function dp_plugin_deactivate() {
 
     // set this to "true" if you want to delete all of the plugin stored data
-    $flush_dp_data = false;
+    $flush_dp_data = true;
 
     // if $flush_dp_data is true it will delete all plugin data
     if ( $flush_dp_data ) {

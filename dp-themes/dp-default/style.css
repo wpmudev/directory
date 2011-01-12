@@ -1318,7 +1318,7 @@ code {
 /* =Directory Styles
 -------------------------------------------------------------- */
 .current_page_item {
-    background: #fff;current_page_item
+    background: #fff;
 }
 .current_page_item a {
    
@@ -1454,23 +1454,20 @@ div.menu {
     background-color: #D3401A;
     width: 170px;
     height: 30px;
-    position: absolute;
-    right: 40px;
-    top: 130px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    margin: 4px 5px 0 5px;
 }
 #add-listing {
     background-color: #D3401A;
     width: 145px;
     height: 30px;
-    position: absolute;
-    right: 40px;
-    top: 130px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    float: right;
+    margin: 4px 5px 0 5px;
 }
 #submit-site a, #add-listing a, #go-to-profile a {
     text-decoration: none;
@@ -1484,12 +1481,11 @@ div.menu {
     background-color: #D3401A;
     width: 155px;
     height: 30px;
-    position: absolute;
-    right: 190px;
-    top: 130px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    float: right;
+    margin: 4px 0 0 5px;
 }
 .page-template #content {
     margin: 0;
@@ -1521,7 +1517,7 @@ div.menu {
     overflow-x: hidden;
 }
 #access {
-    margin-top: 46px;
+
 }
 #access a {
     color: #fff;
@@ -1587,4 +1583,20 @@ div.menu {
 .archive .wp-post-image {
     width: 50px !important;
     height: 50px !important;
+}
+.menu-header {
+    background: #727171;
+    height: 38px;
+    margin-left: 0 !important;
+    padding-left: 8px;
+    width: 932px !important;
+}
+#main-btns {
+    background: #4C4B4B;
+    height: 38px;
+    margin-top: 8px;
+    padding-left:8px;
+}
+body {
+    background-image: url('images/bgr.jpg');
 }
