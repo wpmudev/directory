@@ -30,13 +30,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /*
  * Enable error repporting if in debug mode
  */
-error_reporting( E_ALL ^ E_NOTICE );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL ^ E_NOTICE );
+//ini_set( 'display_errors', 1 );
+
 
 /* tmp debug func */
 function dp_debug( $param ) {
     echo '<pre>';
-    print_r ( $param );
+    print_r( (array) $param );
     echo '</pre>';
 }
 
@@ -46,8 +47,13 @@ define ( 'DP_DB_VERSION', '1.1' );
 
 /* include core file */
 include_once 'dp-core/dp-core.php';
+include_once 'dp-core/dp-load-data.php';
 
-/* include content types submodule */
+
+/* include payment PayPal Express payment gateway */
+include_once 'dp-gateways/dp-gateways-paypal-express-core.php';
+
+/* include "Content Types" submodule */
 include_once 'dp-submodules/content-types/ct-loader.php';
 
 /**
@@ -79,8 +85,10 @@ add_action( 'init', 'dp_loaded', 20 );
  * Update plugin version
  */
 function dp_plugin_activate() {
-	$options = array( 'version' => DP_VERSION, 'db_version' => DP_DB_VERSION );
-	update_site_option( 'dp_options', $options );
+    $old_options = get_site_option( 'dp_options' );
+    $new_options = array_merge( $old_options,     array( 'versions' => array( 'version' => DP_VERSION, 'db_version' => DP_DB_VERSION )));
+	update_site_option( 'dp_options', $new_options );
+    switch_theme('dp-default', 'dp-default' );
 }
 register_activation_hook( __FILE__, 'dp_plugin_activate' );
 
@@ -104,6 +112,8 @@ function dp_plugin_deactivate() {
         delete_site_option( 'ct_custom_fields' );
         delete_site_option( 'ct_flush_rewrite_rules' );
     }
+
+    switch_theme('twentyten', 'twentyten' );
 }
 register_deactivation_hook( __FILE__, 'dp_plugin_deactivate' );
 

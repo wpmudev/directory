@@ -3,27 +3,32 @@
 /**
  * dp_admin_ui_settings()
  *
- * Dispatches particular settings pages.
+ * Outputs "DirectoryPress Settings" admin page.
+ *
  */
 function dp_admin_ui_settings() { ?>
 
-    <div class="wrap dp-wrap dp-settings">
-        <div class="icon32" id="icon-edit"><br></div>
-        <h2>
-            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=ct_content_types&ct_content_type=post_type"><?php _e('DirectoryPres', 'directorypress'); ?></a>
-            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'payments' ) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=ct_content_types&ct_content_type=taxonomy"><?php _e('Payments', 'directorypress'); ?></a>
-        </h2> <?php
-        
-        if ( $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) {
-            if ( isset( $_GET['ct_add_post_type'] )) {
+    <ul class="subsubsub dp-settings">
+        <?php /* <li><h3><a class="<?php if ( isset( $_GET['dp_gen'] ) || ( !isset( $_GET['dp_ss'] ) && !isset( $_GET['dp_ads'] ) ) ) echo 'current'; ?>" href="admin.php?page=dp_main&dp_settings=main&dp_gen"><?php _e('General', 'directorypress'); ?></a> | </h3></li> */ ?>
+        <li><h3><a class="<?php if ( isset( $_GET['dp_ss'] ) || !isset( $_GET['dp_ads'] ) ) echo 'current'; ?>" href="admin.php?page=dp_main&dp_settings=main&dp_ss"><?php _e('Submit Site', 'directorypress'); ?></a> | </h3></li>
+        <li><h3><a class="<?php if ( isset( $_GET['dp_ads'] ) ) echo 'current'; ?>" href="admin.php?page=dp_main&dp_settings=main&dp_ads"><?php _e('Advertising', 'directorypress'); ?></a></h3></li>
+    </ul>
 
-            }
-        }
-        elseif ( $_GET['dp_settings'] == 'payments' ) {
-            if ( isset( $_GET['ct_add_taxonomy'] )) {
-
-            }
-        } ?>
-        
-    </div> <?php
-} ?>
+    <?php
+    if ( isset( $_GET['dp_gen'] )) {
+        //include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-payments-paypal-express.php';
+        //$options = get_site_option( 'dp_options' );
+        //dp_admin_ui_payments_paypal_express( $options );
+    }
+    elseif ( isset( $_GET['dp_ss'] ) || !isset( $_GET['dp_ads'] )) {
+        include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings-submit-site.php';
+        $options = get_site_option('dp_options');
+        dp_admin_ui_settings_submit_site( $options['submit_site_settings'] );
+    }
+    elseif ( isset( $_GET['dp_ads'] )) {
+        include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings-ads.php';
+        $options = get_site_option('dp_options');
+        dp_admin_ui_settings_ads( $options['ads'] );
+    }
+}
+?>

@@ -1,4 +1,6 @@
 <?php
+status_header( 200 );
+
 /**
  * The main template file.
  *
@@ -7,10 +9,6 @@
  * It is used to display a page when nothing more specific matches a query. 
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
  */
 
 get_header(); ?>
@@ -18,15 +16,22 @@ get_header(); ?>
 		<div id="container">
 			<div id="content" role="main">
 
+            <?php if ( is_multisite() ): ?>
+                <?php dp_categories_top( $wp_query->query_vars['category_name'] ); ?>
+            <?php else: ?>
+                <?php dp_categories_top( $wp_query->query_vars['pagename'] ); ?>
+            <?php endif; ?>
+
 			<?php
 			/* Run the loop to output the posts.
 			 * If you want to overload this in a child theme then include a file
 			 * called loop-index.php and that will be used instead.
 			 */
-			 get_template_part( 'loop', 'index' );
+			 //get_template_part( 'loop', 'index' );
 			?>
+            <br /><br />
 			</div><!-- #content -->
 		</div><!-- #container -->
 
-<?php get_sidebar(); ?>
+<?php // get_sidebar(); ?>
 <?php get_footer(); ?>

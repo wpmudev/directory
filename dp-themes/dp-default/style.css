@@ -1,12 +1,11 @@
 /*
-Theme Name: DirectoryPress Twenty Ten
+Theme Name: DirectoryPress
 Theme URI: http://wordpress.org/
-Description: The 2010 theme for WordPress is stylish, customizable, simple, and readable -- make it yours with a custom menu, header image, and background. Twenty Ten supports six widgetized areas (two in the sidebar, four in the footer) and featured images (thumbnails for gallery posts and custom header images for posts and pages). It includes stylesheets for print and the admin Visual Editor, special styles for posts in the "Asides" and "Gallery" categories, and has an optional one-column page template that removes the sidebar.
-Author: the WordPress team
-Version: 1.1
-Tags: black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+Description: DirectoryPress default theme. You can customize it by copying it to the "wp-content/themes" directory and editing it. Based on the "Twenty Ten v1.1" WordPress theme.
+Author: Ivan Shaovchev
+Version: 1.0
+Tags:
 */
-
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
@@ -64,8 +63,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 */
 
 #container {
-	float: left;
-	margin: 0 -240px 0 0;
 	width: 100%;
 }
 #content {
@@ -73,8 +70,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 #primary,
 #secondary {
-	float: right;
-	overflow: hidden;
 	width: 220px;
 }
 #secondary {
@@ -199,7 +194,7 @@ div.menu,
 
 /* Main global 'theme' and typographic styles */
 body {
-	background: #f1f1f1;
+	background: #fff;
 }
 body,
 input,
@@ -332,14 +327,15 @@ a:hover {
 -------------------------------------------------------------- */
 
 #header {
-	padding: 30px 0 0 0;
+	margin: -9px 0 0 0;
+   /* background: #000; #727171;*/
 }
 #site-title {
 	float: left;
-	font-size: 30px;
+	font-size: 28px;
 	line-height: 36px;
-	margin: 0 0 18px 0;
-	width: 700px;
+	margin: 0 0 0 0;
+	width: 208px;
 }
 #site-title a {
 	color: #000;
@@ -347,19 +343,15 @@ a:hover {
 	text-decoration: none;
 }
 #site-description {
-	clear: right;
-	float: right;
 	font-style: italic;
-	margin: 14px 0 18px 0;
+	margin: 0;
 	width: 220px;
 }
 
 /* This is the custom header image */
 #branding img {
-	border-top: 4px solid #000;
-	border-bottom: 1px solid #000;
-	clear: both;
 	display: block;
+    float: right;
 }
 
 
@@ -367,7 +359,6 @@ a:hover {
 -------------------------------------------------------------- */
 
 #access {
-	background: #000;
 	display: block;
 	float: left;
 	margin: 0 auto;
@@ -424,8 +415,7 @@ div.menu li {
 }
 #access li:hover > a,
 #access ul ul :hover > a {
-	background: #333;
-	color: #fff;
+	color: #D3401A;
 }
 #access ul li:hover > ul {
 	display: block;
@@ -434,7 +424,7 @@ div.menu li {
 #access ul li.current-menu-ancestor > a,
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
-	color: #fff;
+	color: #333;
 }
 * html #access ul li.current_page_item a,
 * html #access ul li.current-menu-ancestor a,
@@ -444,14 +434,13 @@ div.menu li {
 	color: #fff;
 }
 
-
 /* =Content
 -------------------------------------------------------------- */
 
 #main {
 	clear: both;
 	overflow: hidden;
-	padding: 40px 0 0 0;
+	padding: 20px 0 0 0;
 }
 #content {
 	margin-bottom: 36px;
@@ -1095,6 +1084,8 @@ h3#reply-title {
 }
 .widget-container {
 	margin: 0 0 18px 0;
+    float: left;
+    padding-right: 100px;
 }
 .widget-title {
 	color: #222;
@@ -1166,6 +1157,8 @@ h3#reply-title {
 	padding: 0;
 }
 #primary {
+    width: 940px;
+    clear: both;
 }
 #secondary {
 }
@@ -1182,7 +1175,7 @@ h3#reply-title {
 	margin-bottom: 20px;
 }
 #colophon {
-	border-top: 4px solid #000;
+	border-top: 30px solid #727171;
 	margin-top: -4px;
 	overflow: hidden;
 	padding: 18px 0;
@@ -1321,4 +1314,274 @@ code {
 	.home .sticky {
 		border: none;
 	}
+}
+
+/* =DirectoryPress Styles
+-------------------------------------------------------------- */
+.current_page_item {
+    background: #fff;current_page_item
+}
+.current_page_item a {
+   
+}
+.dp-header-stra {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 118px;
+    background: #4C4B4B;
+}
+.dp-header-strb {
+    position: absolute;
+    width: 100%;
+    height: 38px;
+    top: 156px;
+    background: #727171;
+}
+.dp-widgets-stra {
+    background: #727171;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.home #content, .archive #content, .dp-top-level #content {
+    margin: 0;
+}
+.home #content li {
+    float: left;
+    margin: 0 0 25px 0;
+    list-style: none;
+    width: 235px;
+    min-height: 90px;
+}
+.home #content li ul, .archive #content li ul {
+    margin: 0 !important;
+}
+.home #content li ul li, .archive #content li ul li, .dp-top-level #content ul li  {
+    margin: 0 10px 0 0;
+    width: inherit;
+    min-height: inherit;
+
+}
+.home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
+    color: #333;
+    text-decoration: none;
+    font-style: italic;
+}
+.home #content li ul li a:hover, .archive #content li ul li a:hover, .dp-top-level #content ul li a:hover {
+    color: #D3401A;
+    text-decoration: underline;
+}
+.home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
+    color: #D3401A;
+    text-decoration: none;
+}
+.home #content h2 a:hover, .dp-top-level #content h2 a:hover, .archive #content h1 a:hover {
+    text-decoration: underline;
+}
+.home #content h2 , .archive #content h2, .dp-top-level #content h2 {
+    color: #D3401A;
+    margin: 0;
+}
+.archive #content li {
+    float: left;
+    margin: 0 0 25px 0;
+    list-style: none;
+    line-height: 1.5em;
+    width: 800px;
+    min-height: 90px;
+}
+.archive #content .current-cat a {
+    color: #D3401A;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 1.5em;
+}
+.archive #content .current-cat a  {
+    color: #D3401A;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 1.5em;
+}
+.archive #content .current-cat a:hover {
+    text-decoration: underline;
+}
+.archive #content .current-cat ul li, .dp-top-level #content ul li {
+    float: left;
+}
+.archive #content .current-cat ul li a {
+    color: #333;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 16px;
+}
+.archive #content h1 a {
+    
+}
+.dp-taxonomy-name {
+    float: left;
+    color: #D3401A !important;
+    font-size: 24px;
+    text-decoration: none;
+    font-family:Georgia,"Bitstream Charter",serif;
+    font-weight: normal;
+}
+.single .directory_listing {
+    float: none;
+    width: 100%;
+    min-height: inherit;
+}
+.directory_listing {
+    width: 275px;
+    float: left;
+    margin-right: 38px;
+    min-height: 250px;
+    margin-bottom: 15px;
+}
+.clear {
+    clear: both;
+}
+.dp-top-level #content li {
+    list-style: none;
+    padding-bottom: 20px;
+}
+div.menu {
+    margin-top: 50px;
+}
+#masthead {
+    position: relative;
+}
+#submit-site {
+    background-color: #D3401A;
+    width: 155px;
+    height: 30px;
+    position: absolute;
+    right: 40px;
+    top: 130px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#add-listing {
+    background-color: #D3401A;
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    right: 40px;
+    top: 130px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#submit-site a, #add-listing a, #go-to-profile a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 0 0 0 10px;
+}
+#go-to-profile {
+        background-color: #D3401A;
+    width: 140px;
+    height: 30px;
+    position: absolute;
+    right: 190px;
+    top: 130px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.page-template #content {
+    margin: 0;
+}
+.page-template #content .dp-sys-info {
+    width: 450px;
+    float: left;
+    margin: 0 0 24px 0;
+}
+.page-template #content .dp-prs-info {
+    width: 450px;
+    float: right;
+    margin: 0 0 24px 0;
+}
+.page-template .entry-title {
+    padding-bottom: 20px;
+}
+#signup-submit {
+    display: block;
+}
+.dp-submit-txt {
+    color: 666;
+    font-size: 14px;
+    font-style: italic;
+}
+.dp-terms {
+    float: left;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+#access {
+    margin-top: 46px;
+}
+#access a {
+    color: #fff;
+}
+#access a:hover {
+    color: #fff !important;
+    text-decoration: underline;
+}
+.dp-top-level .cat-item {
+    display: inherit;
+}
+.cat-item {
+    display: none;
+}
+.current-cat {
+    display: inherit;
+}
+.current-cat .children .cat-item {
+    display: inherit;
+}
+.home .cat-item {
+    display: inherit;
+}
+.archive #content .entry-summary p:last-child  {
+    text-align: justify;
+}
+.wp-post-image {
+    padding: 5px;
+    border: 1px solid #999;
+    margin-right: 15px !important;
+    margin-bottom: 0 !important;
+}
+.dp-error {
+    background: #FFEBE8 !important;
+}
+.dp-invalid-login {
+    padding-left: 40px;
+    float: left;
+    display: block;
+}
+#branding {
+    max-height: 200px;
+}
+#access .menu-header .current_page_item a:hover {
+    color: #333 !important;
+}
+.single #content {
+    margin: 0;
+}
+.h-ads {
+    width: 728px;
+    height: 90px;
+    background: #ddd;
+    border: 1px solid #333;
+    display: block;
+    float: right;
+    text-align: center;
+    margin-top: 7px;
+}
+.h-ads span {
+    line-height: 85px;
 }

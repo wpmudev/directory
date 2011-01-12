@@ -13,7 +13,7 @@ get_header(); ?>
 			<div id="content" role="main">
 
 				<h1 class="page-title"><?php
-					printf( __( 'Tag Archives: %s', 'twentyten' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+					printf( __( 'Tag Archives: %s', 'directorypress' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 				?></h1>
 
 <?php

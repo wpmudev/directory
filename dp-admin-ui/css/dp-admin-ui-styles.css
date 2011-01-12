@@ -1,0 +1,9 @@
+
+
+.dp-settings h2 {
+    border-bottom:1px solid #CCCCCC;
+    padding-bottom:0;
+}
+.dp-payments li, .dp-settings li {
+    float: left;
+}

@@ -100,7 +100,9 @@
 
     // initiate the values for the post type capability field
     function ct_init_capability_checked_post_type() {
-        if ( $('.ct-post-type input[name="capability_type_edit"]:checked').val() === '1' ) {
+        if ( $('.ct-post-type input[name="capability_type"]').val() != 'post' ) {
+            $('.ct-post-type input[name="capability_type"]').attr( 'disabled', false );
+        } else if ( $('.ct-post-type input[name="capability_type_edit"]:checked').val() === '1' ) {
             $('.ct-post-type input[name="capability_type"]').attr( 'disabled', false );
         } else {
             $('.ct-post-type input[name="capability_type"]').attr( 'disabled', true );

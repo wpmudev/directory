@@ -185,7 +185,7 @@ function ct_admin_process_add_update_post_type_requests() {
     );
 
     // if custom capability type is set use it
-    if ( $_POST['capability_type_edit'] && !empty( $_POST['capability_type'] ))
+    if ( !empty( $_POST['capability_type'] ))
         $args['capability_type'] = $_POST['capability_type'];
 
     // if custom rewrite slug is set use it
@@ -332,7 +332,8 @@ function ct_admin_process_add_update_taxonomy_requests() {
         'show_in_nav_menus'   => (bool) $_POST['show_in_nav_menus'],
         'hierarchical'        => (bool) $_POST['hierarchical'],
         'rewrite'             => (bool) $_POST['rewrite'],
-        'query_var'           => (bool) $_POST['query_var']
+        'query_var'           => (bool) $_POST['query_var'],
+        'capabilities'        => array ( 'assign_terms' => 'edit_listings' )
     );
 
     // if custom rewrite slug is set use it
