@@ -113,7 +113,7 @@ register_activation_hook( __FILE__, 'dp_plugin_activate' );
 function dp_plugin_deactivate() {
 
     // set this to "true" if you want to delete all of the plugin stored data
-    $flush_dp_data = true;
+    $flush_dp_data = false;
 
     // if $flush_dp_data is true it will delete all plugin data
     if ( $flush_dp_data ) {
