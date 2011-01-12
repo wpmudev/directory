@@ -25,7 +25,7 @@ get_header(); ?>
 					<?php } else { ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					<?php } ?>
-
+                    <?php echo get_the_term_list( $post->ID, 'page_tax', 'Text before taxonomy: ', ', ', '' ); ?>
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>

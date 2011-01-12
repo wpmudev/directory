@@ -26,6 +26,7 @@ get_header(); ?>
 						<?php twentyten_posted_on(); ?>
 					</div><!-- .entry-meta -->
 
+                    <?php echo get_the_term_list( $post->ID, 'directory_categories', 'Text before taxonomy: ', ', ', '' ); ?>
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
