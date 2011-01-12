@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: CustomPress
-Plugin URI: http://premium.wpmudev.org/project/custompress
-Description: CustomPress - Custom Post, Taxonomy and Field Manager.
-Version: 1.0.3
+Plugin Name: DirectoryPress
+Plugin URI: http://premium.wpmudev.org/project/directorypress
+Description: DirectoryPress - Create full blown directory.
+Version: 1.0.0
 Author: Ivan Shaovchev
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -35,71 +35,71 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 /* Define plugin version */ 
-define ( 'CP_VERSION', '1.0.3' );
-define ( 'CP_DB_VERSION', '1.1' );
+define ( 'DP_VERSION', '1.0.0' );
+define ( 'DP_DB_VERSION', '1.1' );
 
-/* include CustomPress files */
-include_once 'cp-core/cp-core.php';
-include_once 'cp-admin-ui/cp-admin-ui-settings.php';
+/* include main files */
+include_once 'dp-core/dp-core.php';
+include_once 'dp-admin-ui/dp-admin-ui-settings.php';
 
 /* include content types submodule */
-include_once 'cp-submodules/content-types/ct-loader.php';
+include_once 'dp-submodules/content-types/ct-loader.php';
 
 /**
- * cp_load_plugin_textdomain()
+ * dp_load_plugin_textdomain()
  *
- * Loads "custompress-[xx_XX].mo" language file from the "cp-languages" directory
+ * Loads "custompress-[xx_XX].mo" language file from the "dp-languages" directory
  */
-function cp_load_plugin_textdomain() {
-    $plugin_dir = CP_PLUGIN_DIR . 'cp-languages';
-    load_plugin_textdomain( 'custompress', null, $plugin_dir );
+function dp_load_plugin_textdomain() {
+    $plugin_dir = DP_PLUGIN_DIR . 'dp-languages';
+    load_plugin_textdomain( 'directorypress', null, $plugin_dir );
 }
 add_action( 'init', 'cp_load_plugin_textdomain', 0 );
 
 /**
- * cp_loaded()
+ * dp_loaded()
  *
  * Allow dependent plugins and core actions to attach themselves in a safe way.
  *
  * See cm-admin-core.php for the following core actions: cp_init
  */
-function cp_loaded() {
-	do_action( 'cp_loaded' );
+function dp_loaded() {
+	do_action( 'dp_loaded' );
 }
-add_action( 'init', 'cp_loaded', 20 );
+add_action( 'init', 'dp_loaded', 20 );
 
 /**
- * cp_loader_activate()
+ * dp_loader_activate()
  * 
  * Update plugin version
  */
-function cp_plugin_activate() {
-	$options = array( 'version' => CP_VERSION, 'db_version' => CP_DB_VERSION );
-	update_site_option( 'cp_options', $options );
+function dp_plugin_activate() {
+	$options = array( 'version' => DP_VERSION, 'db_version' => DP_DB_VERSION );
+	update_site_option( 'dp_options', $options );
 }
-register_activation_hook( __FILE__, 'cp_plugin_activate' );
+register_activation_hook( __FILE__, 'dp_plugin_activate' );
 
 /**
- * cp_plugin_deactivate()
+ * dp_plugin_deactivate()
  *
- * Deactivate plugin. If $flush_cp_data is set to "true"
+ * Deactivate plugin. If $flush_dp_data is set to "true"
  * all plugin data will be deleted
  */
-function cp_plugin_deactivate() {
+function dp_plugin_deactivate() {
 
     // set this to "true" if you want to delete all of the plugin stored data
-    $flush_cp_data = false;
+    $flush_dp_data = false;
 
-    // if $flush_cp_data is true it will delete all plugin data
-    if ( $flush_cp_data ) {
-        delete_site_option( 'cp_options' );
-        delete_site_option( 'cp_main_settings' );
+    // if $flush_dp_data is true it will delete all plugin data
+    if ( $flush_dp_data ) {
+        delete_site_option( 'dp_options' );
+        delete_site_option( 'dp_main_settings' );
         delete_site_option( 'ct_custom_post_types' );
         delete_site_option( 'ct_custom_taxonomies' );
         delete_site_option( 'ct_custom_fields' );
         delete_site_option( 'ct_flush_rewrite_rules' );
     }
 }
-register_deactivation_hook( __FILE__, 'cp_plugin_deactivate' );
+register_deactivation_hook( __FILE__, 'dp_plugin_deactivate' );
 
 ?>
