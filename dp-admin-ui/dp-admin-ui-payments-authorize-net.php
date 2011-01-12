@@ -7,13 +7,16 @@
  *
  */
 function dp_admin_ui_payments_authorize_net() { ?>
-    
+
+    <div class="clear"></div>
+    Under Development!
+    <?php /** @todo Implement Authorize.net Payment Geteway 
     <form action="" method="post" class="dp-payments">
         <?php wp_nonce_field( 'dp_submit_settings_verify', 'dp_submit_settings_secret' ); ?>
         <?php /** @todo
         <div class="updated below-h2" id="message">
             <p><a href=""></a></p>
-        </div> */ ?>
+        </div> 
         <table class="form-table">
             <tr>
                 <th>
@@ -37,4 +40,5 @@ function dp_admin_ui_payments_authorize_net() { ?>
         <br />
         <input type="submit" class="button-primary" name="authorize_net_save" value="Save Changes">
     </form> <?php
+    */ 
 } ?>

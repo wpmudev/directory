@@ -1,0 +1,1425 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Directory v1.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-13 14:24+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ivan Shaovchev <ivan.shaovchev@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /directory\n"
+
+#: /directory/dp-core/dp-core-checkout.php:38
+msgid "Please fill in the required fields."
+msgstr ""
+
+#: /directory/dp-core/dp-core.php:13
+msgid "Directory"
+msgstr ""
+
+#: /directory/dp-core/dp-core.php:14
+msgid "Settings"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:51
+#: /directory/dp-themes/dp-default/loop.php:106
+#: /directory/dp-themes/dp-default/loop.php:134
+#: /directory/dp-themes/dp-default/attachment.php:96
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:52
+#: /directory/dp-themes/dp-default/loop.php:135
+#: /directory/dp-themes/dp-default/attachment.php:97
+#: /directory/dp-themes/dp-default/onecolumn-page.php:22
+msgid "Pages:"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:59
+#: /directory/dp-themes/dp-default/loop.php:142
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:68
+#: /directory/dp-themes/dp-default/loop.php:151
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:72
+#: /directory/dp-themes/dp-default/loop.php:90
+#: /directory/dp-themes/dp-default/loop.php:113
+#: /directory/dp-themes/dp-default/loop.php:155
+msgid "Leave a comment"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:72
+#: /directory/dp-themes/dp-default/loop.php:90
+#: /directory/dp-themes/dp-default/loop.php:113
+#: /directory/dp-themes/dp-default/loop.php:155
+msgid "1 Comment"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:72
+#: /directory/dp-themes/dp-default/loop.php:90
+#: /directory/dp-themes/dp-default/loop.php:113
+#: /directory/dp-themes/dp-default/loop.php:155
+msgid "% Comments"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:73
+#: /directory/dp-themes/dp-default/loop.php:91
+#: /directory/dp-themes/dp-default/loop.php:114
+#: /directory/dp-themes/dp-default/loop.php:156
+#: /directory/dp-themes/dp-default/attachment.php:56
+#: /directory/dp-themes/dp-default/attachment.php:103
+#: /directory/dp-themes/dp-default/onecolumn-page.php:23
+msgid "Edit"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:84
+#: /directory/dp-themes/dp-default/loop.php:21
+#: /directory/dp-themes/dp-default/loop.php:169
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop-directory.php:85
+#: /directory/dp-themes/dp-default/loop.php:22
+#: /directory/dp-themes/dp-default/loop.php:170
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop.php:29
+msgid "Not Found"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop.php:31
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop.php:78
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/loop.php:88
+msgid "More Galleries"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/category.php:12
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:14
+#, php-format
+msgid "Return to %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:16
+#, php-format
+msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:25
+#, php-format
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:36
+#, php-format
+msgid "<span class=\"%1$s\">Published</span> %2$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:46
+#, php-format
+msgid "Full size is %s pixels"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/attachment.php:49
+msgid "Link to full-size image"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/search.php:26
+msgid "Nothing Found"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/search.php:28
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/archive.php:29
+#, php-format
+msgid "Daily Archives: <span>%s</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/archive.php:31
+#, php-format
+msgid "Monthly Archives: <span>%s</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/archive.php:33
+#, php-format
+msgid "Yearly Archives: <span>%s</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/archive.php:35
+msgid "Blog Archives"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/footer.php:29
+msgid "http://wordpress.org/"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/footer.php:31
+#, php-format
+msgid "Proudly powered by %s."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/header.php:36
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/header.php:115
+msgid "Skip to content"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/comments.php:9
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/comments.php:32
+#: /directory/dp-themes/dp-default/comments.php:45
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/comments.php:33
+#: /directory/dp-themes/dp-default/comments.php:46
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/comments.php:57
+msgid "Comments are closed."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/sidebar.php:28
+msgid "Archives"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/sidebar.php:35
+msgid "Meta"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/single.php:22
+msgid "Website URL"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/single.php:39
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/author.php:23
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/author.php:33
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:5
+msgid "Cost of Service"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:24
+msgid "Terms of Service"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:34
+msgid "I agree with the Terms of Service"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:44
+msgid "Existing client"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:48
+msgid "Username"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cost-terms.php:52
+msgid "Password"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-success-proceed.php:1
+msgid "Thank you for your business. Transaction processed successfully!"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-success-proceed.php:2
+msgid "You can go to your profile and review/change your personal information. You can also go straight to the directory listing submission page."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-select-payment-method.php:3
+msgid "Choose Payment Method"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-select-payment-method.php:6
+msgid "PayPal"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-select-payment-method.php:13
+msgid "Credit Card"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout.php:5
+msgid "This feature is currently disabled by the system administrator."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-confirm-payment.php:5
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:5
+msgid "Confirm Payment"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-confirm-payment.php:9
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:9
+msgid "Email Adress"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-confirm-payment.php:13
+msgid "Name"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-confirm-payment.php:17
+msgid "Address"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-confirm-payment.php:21
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:41
+msgid "Total Amount"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:13
+msgid "First Name"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:17
+msgid "Last Name"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:21
+msgid "Street"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:25
+msgid "City"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:29
+msgid "State"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:33
+msgid "ZIP"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:37
+msgid "Country Code"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:51
+msgid "Credit Card Type"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:54
+msgid "Visa"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:55
+msgid "MasterCard"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:56
+msgid "Amex"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:57
+msgid "Discover"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:62
+msgid "Credit Card Number"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:66
+msgid "Expiration Date"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/checkout/checkout-cc-details.php:70
+msgid "CVV2"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:20
+msgid "Primary Navigation"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:35
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:37
+msgid "The first footer widget area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:46
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:48
+msgid "The second footer widget area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:57
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:59
+msgid "The third footer widget area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:68
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:70
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:84
+#, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:106
+#, php-format
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:108
+#, php-format
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:110
+#, php-format
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:331
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:334
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:341
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:341
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:358
+msgid "(Edit)"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-setup.php:358
+msgid "Pingback:"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:42
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:115
+msgid "Colors"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:111
+msgid "Colors Saved!"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:127
+msgid "Site Title"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:130
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:139
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:148
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:157
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:166
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:175
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:184
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:193
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:202
+msgid "Select Color"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:131
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:140
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:149
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:158
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:167
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:176
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:185
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:194
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:203
+msgid "Use Default"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:136
+msgid "Header Bar One"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:145
+msgid "Header Bar Two"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:154
+msgid "Content Wrapper"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:163
+msgid "Above And Below Listings Bars"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:172
+msgid "Main Buttons"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:181
+msgid "Main Buttons Text"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:190
+msgid "Category Headings"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:199
+msgid "Global Text"
+msgstr ""
+
+#: /directory/dp-themes/dp-default/includes/theme-colors.php:209
+msgid "Save Changes"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments.php:12
+msgid "PayPal Express"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:19
+msgid "Import"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:23
+msgid "Import Taxonomies"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:27
+msgid "If you check this option a preconfigured set of taxonomies will be imported for you ( Recomended ). You can edit and remove them afterwards."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:32
+msgid "Import Custom Fields"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:36
+msgid "If you check this option an example custom field will be imported for you ( Recomended ). You can edit and remove it afterwards."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:40
+msgid "Order"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:44
+msgid "Order Taxonomies"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-general.php:51
+msgid "This setting will order the taxonomies."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-authorize-net.php:20
+msgid "Authorize.net API Login ID"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-authorize-net.php:24
+msgid "Your Authorize.net API Login ID."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-authorize-net.php:29
+msgid "Authorize.net Transaction Key"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-authorize-net.php:33
+msgid "Your Authorize.net Transaction Key."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings.php:12
+msgid "General"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings.php:13
+msgid "Submit Site"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings.php:14
+msgid "Advertising"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-main.php:14
+msgid "Payments"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:20
+msgid "PayPal API Calls URL"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:27
+msgid "Choose between PayPal Snadbox and PayPal Live."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:32
+msgid "API Username"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:36
+msgid "Your PayPal API Username."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:41
+msgid "API Password"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:45
+msgid "Your PayPal API Password."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:50
+msgid "API Signature"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:55
+msgid "Your PayPal API Signature."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:60
+msgid "Currency Code"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-payments-paypal-express.php:65
+msgid "3 letter uppercase currency code: ex.: USD"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:22
+msgid "Annual Payment Option"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:26
+msgid "Price of \"Annual\" service."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:29
+msgid "Text of \"Annual\" service."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:34
+msgid "One Time Payment Option"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:38
+msgid "Price of \"One Time\" service."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:41
+msgid "Text of \"One Time\" service."
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:46
+msgid "Terms of Service Text"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-submit-site.php:51
+msgid "Text for \"Terms of Service\""
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-ads.php:22
+msgid "Ad Code Header Banner"
+msgstr ""
+
+#: /directory/dp-admin-ui/dp-admin-ui-settings-ads.php:27
+msgid "Place ad code here!"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-core/ct-core.php:9
+msgid "Content Types"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:14
+msgid "Delete Post Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:17
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:57
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:100
+msgid "Delete Permanently"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:22
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:35
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:19
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:23
+msgid "Post Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:24
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:37
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:25
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:37
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:204
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:208
+msgid "Description"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:25
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:38
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:234
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:238
+msgid "Menu Icon"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:26
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:39
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:34
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:38
+msgid "Supports"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:27
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:40
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:82
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:86
+msgid "Capability Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:28
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:41
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:251
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:255
+msgid "Public"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:29
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:42
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:382
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:386
+msgid "Hierarchical"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:30
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:43
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:406
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:410
+msgid "Rewrite"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:54
+msgid "Edit this post type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:74
+msgid "Advanced"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:76
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:83
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:90
+msgid "True"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:78
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:85
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:92
+msgid "False"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:23
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:35
+msgid "Custom Field"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:24
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:36
+msgid "Field Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:26
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:38
+msgid "Post Types"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:27
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:39
+msgid "Embed Code"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:56
+msgid "Edit this custom field"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:13
+msgid "Edit Post Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:27
+msgid "The new post type system name ( max. 20 characters ). Alphanumeric characters and underscores only. Min 2 letters. Once added the post type system name cannot be changed."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:41
+msgid "An alias for calling add_post_type_support() directly."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:48
+msgid "Title"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:51
+msgid "Editor"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:51
+msgid "Content"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:54
+msgid "Author"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:57
+msgid "Thumbnail"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:57
+msgid "Featured Image - current theme must also support post-thumbnails."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:60
+msgid "Excerpt"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:63
+msgid "Trackbacks"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:66
+msgid "Custom Fields"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:69
+msgid "Comments"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:69
+msgid "Also will see comment count balloon on edit screen."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:72
+msgid "Revisions"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:72
+msgid "Will store revisions."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:75
+msgid "Page Attributes"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:75
+msgid "Template and menu order - Hierarchical must be true!"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:91
+msgid "EDIT"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:91
+msgid "advanced"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:92
+msgid "The post type to use for checking read, edit, and delete capabilities. Default: \"post\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:99
+msgid "Labels"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:107
+msgid "General name for the post type, usually plural."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:112
+msgid "Singular Name"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:116
+msgid "Name for one object of this post type. Defaults to value of name."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:121
+msgid "Add New"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:125
+msgid "The add new text. The default is Add New for both hierarchical and non-hierarchical types."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:130
+msgid "Add New Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:134
+msgid "The add new item text. Default is Add New Post/Add New Page."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:139
+msgid "Edit Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:143
+msgid "The edit item text. Default is Edit Post/Edit Page."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:148
+msgid "New Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:152
+msgid "The new item text. Default is New Post/New Page."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:157
+msgid "View Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:161
+msgid "The view item text. Default is View Post/View Page."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:166
+msgid "Search Items"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:170
+msgid "The search items text. Default is Search Posts/Search Pages."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:179
+msgid "The not found text. Default is No posts found/No pages found."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:184
+msgid "Not Found In Trash"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:188
+msgid "The not found in trash text. Default is No posts found in Trash/No pages found in Trash."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:193
+msgid "Parent Item Colon"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:197
+msgid "The parent text. This string isn't used on non-hierarchical types. In hierarchical ones the default is Parent Page"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:212
+msgid "A short descriptive summary of what the post type is."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:219
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:223
+msgid "Menu Position"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:227
+msgid "5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:242
+msgid "The url to the icon to be used for this menu."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:258
+msgid "Meta argument used to define default values for publicly_queriable, show_ui, show_in_nav_menus and exclude_from_search."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:265
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:300
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:324
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:348
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:372
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:396
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:420
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:451
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:475
+msgid "TRUE"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:266
+msgid "Display a user-interface for this \"post_type\""
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:267
+msgid "Show \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:268
+msgid "\"post_type\" queries can be performed from the front-end"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:269
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:276
+msgid "Exclude posts with this post type from search results"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:272
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:303
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:327
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:351
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:375
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:399
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:423
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:454
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:478
+msgid "FALSE"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:273
+msgid "Don not display a user-interface for this \"post_type\""
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:274
+msgid "Hide \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:275
+msgid "\"post_type\" queries cannot be performed from the front-end"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:279
+msgid "ADVANCED"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:279
+msgid "You can set each component manualy."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:286
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:290
+msgid "Show UI"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:293
+msgid "Whether to generate a default UI for managing this post type. Note that built-in post types, such as post and page, are intentionally set to false."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:300
+msgid "Display a user-interface (admin panel) for this post type."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:303
+msgid "Do not display a user-interface for this post type."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:310
+msgid "Show In Nav Menus "
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:314
+msgid "Show In Nav Menus"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:317
+msgid "Whether post_type is available for selection in navigation menus."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:334
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:338
+msgid "Publicly Queryable"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:341
+msgid "Whether post_type queries can be performed from the front end."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:358
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:362
+msgid "Exclude From Search"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:365
+msgid "Whether to exclude posts with this post type from search results."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:389
+msgid "Whether the post type is hierarchical. Allows Parent to be specified."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:413
+msgid "Rewrite permalinks with this format."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:426
+msgid "CUSTOM SLUG"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:430
+msgid "Prepend posts with this slug."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:437
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:441
+msgid "Query var"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:444
+msgid "Name of the query var to use for this post type."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:461
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:465
+msgid "Can Export"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:468
+msgid "Can this post_type be exported."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-content-types.php:14
+msgid "Taxonomies"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:13
+msgid "Add Custom Field"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:19
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:23
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:21
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:25
+msgid "Field Title"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:23
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:38
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:97
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:20
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:23
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:25
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:40
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:110
+msgid "required"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:27
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:29
+msgid "The title of the custom field."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:49
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:108
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:51
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:121
+msgid "Select one or more post types to add this custom field to."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:51
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:53
+msgid "Fill in the options for this field"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:52
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:55
+msgid "Order By"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:54
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:57
+msgid "Order Entered"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:61
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:68
+msgid "Option"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:64
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:71
+msgid "Default Value"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:68
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:81
+msgid "Add another option"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:76
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:80
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:89
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:93
+msgid "Field Description"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:84
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:97
+msgid "Description for the custom field."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:15
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:21
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:25
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:23
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:34
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:26
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:37
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:19
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:23
+msgid "Taxonomy"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:29
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:27
+msgid "The system name of the taxonomy. Alphanumeric characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:50
+msgid "Select one or more post types to add this taxonomy to"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:65
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:65
+msgid "General name for the taxonomy, usually plural."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:74
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:74
+msgid "Name for one object of this taxonomy. Defaults to value of name."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:83
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:83
+msgid "The add new item text. Default is \"Add New Tag\" or \"Add New Category\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:88
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:88
+msgid "New Item Name"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:92
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:92
+msgid "The new item name text. Default is \"New Tag Name\" or \"New Category Name\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:101
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:101
+msgid "The edit item text. Default is \"Edit Tag\" or \"Edit Category\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:106
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:106
+msgid "Update Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:110
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:110
+msgid "The update item text. Default is \"Update Tag\" or \"Update Category\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:119
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:119
+msgid "The search items text. Default is \"Search Tags\" or \"Search Categories\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:124
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:124
+msgid "Popular Items"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:128
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:128
+msgid "The popular items text. Default is \"Popular Tags\" or null."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:133
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:133
+msgid "All Items"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:137
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:137
+msgid "The all items text. Default is \"All Tags\" or \"All Categories\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:142
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:142
+msgid "Parent Item"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:146
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:146
+msgid "The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or \"Parent Category\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:155
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:155
+msgid "The same as parent_item, but with colon : in the end null, \"Parent Category:\"."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:160
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:160
+msgid "Add Or Remove Items"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:164
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:164
+msgid "The add or remove items text is used in the meta box when JavaScript is disabled. This string isn't used on hierarchical taxonomies. Default is \"Add or remove tags\" or null."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:169
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:169
+msgid "Separate Items With Commas"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:173
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:173
+msgid "The separate item with commas text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Separate tags with commas\", or null."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:178
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:178
+msgid "Choose From Most Used"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:182
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:182
+msgid "The choose from most used text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Choose from the most used tags\" or null."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:198
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:198
+msgid "Should this taxonomy be exposed in the admin UI."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:225
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:225
+msgid "Whether to generate a default UI for managing this taxonomy."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:242
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:246
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:242
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:246
+msgid "Show Tagcloud"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:249
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:249
+msgid "Whether to show a tag cloud in the admin UI for this taxonomy."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:273
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:273
+msgid "Whether to make this taxonomy available for selection in navigation menus."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:352
+msgid "False to prevent queries, or string to customize query var. Default will use $taxonomy as query var."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:18
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:97
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:13
+msgid "Add Taxonomy"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:54
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:54
+msgid "Edit this taxonomy"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:57
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-post-types.php:61
+msgid "Delete"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:14
+msgid "Delete Custom Field"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:27
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:39
+msgid "Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:10
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-post-types.php:18
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-post-types.php:105
+msgid "Add Post Type"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:411
+msgid "Rewrite permalinks with this format. If TRUE, the post type system name will be used for the rewrite slug. "
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:442
+msgid "Can queries be performed on this post_type."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:14
+msgid "Delete Taxonomy"
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:50
+msgid "Select one or more post types to add this taxonomy to."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:352
+msgid "False to prevent queries. Default will use the taxonomy system name as query var."
+msgstr ""
+
+#: /directory/dp-submodules/content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:15
+msgid "Edit Custom Field"
+msgstr ""
+
