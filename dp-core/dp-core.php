@@ -44,6 +44,8 @@ add_action( 'admin_init', 'dp_core_hook' );
  * Loads admin page templates based on $_GET request values and passes variables.
  */
 function dp_core_load_admin_ui() {
+    include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings.php';
+
     // load settings ui
     if ( $_GET['page'] == 'dp_main' )
         dp_admin_ui_settings(); 

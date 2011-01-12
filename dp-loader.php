@@ -44,9 +44,8 @@ function dp_debug( $param ) {
 define ( 'DP_VERSION', '1.0.0' );
 define ( 'DP_DB_VERSION', '1.1' );
 
-/* include main files */
+/* include core file */
 include_once 'dp-core/dp-core.php';
-include_once 'dp-admin-ui/dp-admin-ui-settings.php';
 
 /* include content types submodule */
 include_once 'dp-submodules/content-types/ct-loader.php';
