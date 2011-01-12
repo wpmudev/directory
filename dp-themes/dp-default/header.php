@@ -45,10 +45,10 @@
       if ( isset( $colors['enable'] ) ): ?>
 <style type="text/css">
     <?php if ( $colors['header_bar_one_ud'] != 1 ): ?>
-    div.dp-header-stra { background:<?php if ( isset( $colors['header_bar_one'] )) echo $colors['header_bar_one']; else echo '#4C4B4B'; ?>; }
+    div#main-btns { background:<?php if ( isset( $colors['header_bar_one'] )) echo $colors['header_bar_one']; else echo '#4C4B4B'; ?>; }
     <?php endif; ?>
     <?php if ( $colors['header_bar_two_ud'] != 1 ): ?>
-    div.dp-header-strb { background:<?php if ( isset( $colors['header_bar_two'] )) echo $colors['header_bar_two']; else echo '#727171'; ?>; }
+    div.menu-header { background:<?php if ( isset( $colors['header_bar_two'] )) echo $colors['header_bar_two']; else echo '#727171'; ?>; }
     <?php endif; ?>
     <?php if ( $colors['content_wrapper_ud'] != 1 ): ?>
     div#wrapper { background:<?php if ( isset( $colors['content_wrapper'] )) echo $colors['content_wrapper']; else echo '#FFFFFF'; ?>; }
