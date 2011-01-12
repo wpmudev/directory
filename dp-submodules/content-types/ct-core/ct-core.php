@@ -183,6 +183,9 @@ function ct_admin_process_add_update_post_type_requests() {
     if ( !empty( $_POST['capability_type'] ))
         $args['capability_type'] = $_POST['capability_type'];
 
+    if ( !empty( $_POST['menu_icon'] ))
+       $args['menu_icon'] = $_POST['menu_icon'];
+
     // if custom rewrite slug is set use it
     if ( $_POST['rewrite'] == 'advanced' && !empty( $_POST['rewrite_slug'] )) {
         $args['rewrite'] = array( 'slug' => $_POST['rewrite_slug'] );

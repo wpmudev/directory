@@ -76,6 +76,7 @@ function dp_roles() {
     global $wp_roles;
 
     if ( $wp_roles ) {
+        $wp_roles->remove_role('dpmember');
         $wp_roles->add_role( 'dpmember', 'Directory Member', array(
             'read'                      => 1,
             'read_listing'              => 1,
