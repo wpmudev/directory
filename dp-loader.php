@@ -3,7 +3,7 @@
 Plugin Name: DirectoryPress
 Plugin URI: http://premium.wpmudev.org/project/directorypress
 Description: DirectoryPress - Create full blown directory.
-Version: 1.0.0
+Version: 1.0.1
 Author: Ivan Shaovchev
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
