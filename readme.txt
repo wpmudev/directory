@@ -24,6 +24,9 @@ custom post types, taxonomies and fields.
 
 == Changelog ==
 
+= 1.0.5 =
+* Buf fixes.
+
 = 1.0.3 =
 * Initial release.
 
