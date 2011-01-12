@@ -30,9 +30,15 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /*
  * Enable error repporting if in debug mode
  */
-// error_reporting( E_ALL ^ E_NOTICE );
-// ini_set( 'display_errors', 1 );
+error_reporting( E_ALL ^ E_NOTICE );
+ini_set( 'display_errors', 1 );
 
+/* tmp debug func */
+function dp_debug( $param ) {
+    echo '<pre>';
+    print_r ( $param );
+    echo '</pre>';
+}
 
 /* Define plugin version */ 
 define ( 'DP_VERSION', '1.0.0' );
@@ -54,7 +60,7 @@ function dp_load_plugin_textdomain() {
     $plugin_dir = DP_PLUGIN_DIR . 'dp-languages';
     load_plugin_textdomain( 'directorypress', null, $plugin_dir );
 }
-add_action( 'init', 'cp_load_plugin_textdomain', 0 );
+add_action( 'init', 'dp_load_plugin_textdomain', 0 );
 
 /**
  * dp_loaded()
