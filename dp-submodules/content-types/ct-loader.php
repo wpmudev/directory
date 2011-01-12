@@ -29,6 +29,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 include_once 'ct-config.php';
 include_once 'ct-core/ct-core.php';
+include_once 'ct-admin-ui/ct-admin-ui-display-custom-fields.php';
+include_once 'ct-admin-ui/ct-admin-ui-content-types.php';
 
 /**
  * cp_load_plugin_textdomain()

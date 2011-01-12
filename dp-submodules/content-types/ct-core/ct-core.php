@@ -69,9 +69,7 @@ function ct_core_enqueue_scripts() {
  * 
  * Loads admin page templates based on $_GET request values and passes variables.
  */
-function ct_core_load_admin_ui() {
-    include_once CT_SUBMODULE_DIR . 'ct-admin-ui/ct-admin-ui-content-types.php';
-
+function ct_core_load_admin_ui() {  
     // load content type dispatcher ( which loads individual content type uis )
     if ( $_GET['page'] == 'ct_content_types' )
         ct_admin_ui_content_types();
@@ -516,8 +514,6 @@ add_action( 'init', 'ct_admin_delete_custom_fields', 0 );
  * Create the custom fields
  */
 function ct_create_custom_fields() {
-    include_once CT_SUBMODULE_DIR . 'ct-admin-ui/ct-admin-ui-display-custom-fields.php';
-
     $custom_fields = get_site_option( 'ct_custom_fields' );
 
     if ( !empty( $custom_fields )) {

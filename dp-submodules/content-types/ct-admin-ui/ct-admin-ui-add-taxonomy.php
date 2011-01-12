@@ -40,9 +40,9 @@ function ct_admin_ui_add_taxonomy( $post_types ) { ?>
                         <td>
 
                             <select name="object_type[]" multiple="multiple" class="ct-object-type">
-                            <?php if ( !empty( $post_types )): ?>
+                            <?php if ( is_array( $post_types )): ?>
                                 <?php foreach( $post_types as $post_type ): ?>
-                                    <option value="<?php echo ( $post_type ); ?>" <?php foreach ( $_POST['object_type'] as $post_value ) { if ( $post_value == $post_type ) echo( 'selected="selected"' ); } ?>><?php echo( $post_type ); ?></option>
+                                    <option value="<?php echo ( $post_type ); ?>" <?php if ( is_array( $_POST['object_type'] )) { foreach ( $_POST['object_type'] as $post_value ) { if ( $post_value == $post_type ) echo( 'selected="selected"' ); }} ?>><?php echo( $post_type ); ?></option>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </select>
