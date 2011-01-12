@@ -35,7 +35,7 @@ function dp_core_checkout_paypal_express() {
             elseif ( isset( $result->errors['incorrect_password'] ))
                 $dp_global->checkout->paypal_express->error = $result->errors['incorrect_password'][0];
             elseif ( isset( $result->errors ) && empty( $result->errors ))
-                $dp_global->checkout->paypal_express->error =  __('Please fill in the required fields.', 'directorypress');
+                $dp_global->checkout->paypal_express->error =  __('Please fill in the required fields.', 'directory');
 
             $dp_global->checkout->paypal_express->current_step = 'login_error';
             add_action( 'login_invalid', 'dp_invalid_class' );

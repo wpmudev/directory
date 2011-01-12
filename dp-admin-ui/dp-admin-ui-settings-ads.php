@@ -3,7 +3,7 @@
 /**
  * dp_admin_ui_settings_ads()
  *
- * Outputs "DirectoryPress Settings" admin page.
+ * Outputs "Directory Settings" admin page.
  *
  */
 function dp_admin_ui_settings_ads( $options ) { ?>
@@ -19,12 +19,12 @@ function dp_admin_ui_settings_ads( $options ) { ?>
         <table class="form-table">
             <tr>
                 <th>
-                    <label for="h_ad_code"><?php _e('Ad Code Header Banner', 'directorypress') ?></label>
+                    <label for="h_ad_code"><?php _e('Ad Code Header Banner', 'directory') ?></label>
                 </th>
                 <td>
                     <textarea name="h_ad_code" rows="15" cols="50"><?php echo $options['h_ad']; ?></textarea>
                     <br />
-                    <span class="description"><?php _e('Place ad code here!', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Place ad code here!', 'directory'); ?></span>
                 </td>
             </tr>
         </table>

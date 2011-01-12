@@ -33,13 +33,47 @@
 
         // Add a page number if necessary:
         if ( $paged >= 2 || $page >= 2 )
-            echo ' | ' . sprintf( __( 'Page %s', 'directorypress' ), max( $paged, $page ) );
+            echo ' | ' . sprintf( __( 'Page %s', 'directory' ), max( $paged, $page ) );
     }
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+<?php $colors = get_option('dir_colors');
+      if ( isset( $colors['enable'] ) ): ?>
+<style type="text/css">
+    <?php if ( $colors['header_bar_one_ud'] != 1 ): ?>
+    div.dp-header-stra { background:<?php if ( isset( $colors['header_bar_one'] )) echo $colors['header_bar_one']; else echo '#4C4B4B'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['header_bar_two_ud'] != 1 ): ?>
+    div.dp-header-strb { background:<?php if ( isset( $colors['header_bar_two'] )) echo $colors['header_bar_two']; else echo '#727171'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['content_wrapper_ud'] != 1 ): ?>
+    div#wrapper { background:<?php if ( isset( $colors['content_wrapper'] )) echo $colors['content_wrapper']; else echo '#FFFFFF'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['listing_bars_ud'] != 1 ): ?>
+    div.dp-widgets-stra { background:<?php if ( isset( $colors['listing_bars'] )) echo $colors['listing_bars']; else echo '#727171'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['site_title_ud'] != 1 ): ?>
+    #site-title a { color:<?php if ( isset( $colors['site_title'] )) echo $colors['site_title']; else echo '#727171'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['btns_bgr_ud'] != 1 ): ?>
+    div#go-to-profile, div#add-listing, div#submit-site { background:<?php if ( isset( $colors['btns_bgr'] )) echo $colors['btns_bgr']; else echo '#D3401A'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['btns_txt_ud'] != 1 ): ?>
+    #submit-site a, #add-listing a, #go-to-profile a { color:<?php if ( isset( $colors['btns_txt'] )) echo $colors['btns_txt']; else echo '#FFFFFF'; ?>; }
+    <?php endif; ?>
+    <?php if ( $colors['cath_ud'] != 1 ): ?>
+    .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a, .archive #content .current-cat a, .dp-taxonomy-name, .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a { color:<?php if ( isset( $colors['cath'] )) echo $colors['cath']; else echo '#D3401A'; ?> !important; }
+    <?php endif; ?>
+    <?php if ( $colors['global_txt_ud'] != 1 ): ?>
+    body, #content, #content input, #content textarea, .entry-title a:link, .entry-title a:visited, .entry-meta, .entry-meta a, .entry-utility a, .entry-utility, #content .entry-title, .view-listing  { color:<?php if ( isset( $colors['global_txt'] )) echo $colors['global_txt']; else echo '#666666'; ?> !important; }
+    <?php endif; ?>
+</style>
+<?php endif; ?>
+
 <?php
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
@@ -78,7 +112,7 @@
 
 			<div id="access" role="navigation">
 			  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'directorypress' ); ?>"><?php _e( 'Skip to content', 'directorypress' ); ?></a></div>
+				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'directory' ); ?>"><?php _e( 'Skip to content', 'directory' ); ?></a></div>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
                  <?php $options = get_site_option('dp_options'); ?>
                  <?php wp_page_menu( array( 'sort_column' => 'menu_order, post_title', 'menu_class' => 'menu-header', 'include' => '', 'exclude'=> $options['submit_page_id'], 'echo' => true, 'show_home' => true,'link_before' => '','link_after' => '' )); ?>

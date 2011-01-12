@@ -2,7 +2,7 @@
 
 <form action="" method="post"  class="dp-sys-info">
 
-    <span class="dp-submit-txt"><?php _e('Cost of Service', 'directorypress'); ?></span>
+    <span class="dp-submit-txt"><?php _e('Cost of Service', 'directory'); ?></span>
 
     <table <?php do_action( 'billing_invalid' ); ?>>
         <tr>
@@ -21,7 +21,7 @@
         </tr>
     </table>
 
-    <span class="dp-submit-txt"><?php _e('Terms of Service', 'directorypress'); ?></span>
+    <span class="dp-submit-txt"><?php _e('Terms of Service', 'directory'); ?></span>
 
     <table>
         <tr>
@@ -31,7 +31,7 @@
 
     <table  <?php do_action( 'tos_agree_invalid' ); ?> >
         <tr>
-            <th><label for="tos-agree"><?php _e('I agree with the Terms of Service', 'directorypress'); ?></label></th>
+            <th><label for="tos-agree"><?php _e('I agree with the Terms of Service', 'directory'); ?></label></th>
             <td><input type="checkbox" name="tos_agree" value="1" <?php if ( $_POST['tos_agree'] ) echo 'checked="checked"'; ?> /></td>
         </tr>
     </table>
@@ -41,15 +41,15 @@
 
 <form action="" method="post" class="dp-prs-info">
 
-    <span class="dp-submit-txt"><?php _e('Existing client', 'directorypress'); ?>.</span>
+    <span class="dp-submit-txt"><?php _e('Existing client', 'directory'); ?>.</span>
 
     <table <?php do_action( 'login_invalid' ); ?> >
         <tr>
-            <th><label for="username"><?php _e('Username', 'directorypress'); ?>:</label></th>
+            <th><label for="username"><?php _e('Username', 'directory'); ?>:</label></th>
             <td><input type="text" name="username" /></td>
         </tr>
         <tr>
-            <th><label for="user_password"><?php _e('Password', 'directorypress'); ?>:</label></th>
+            <th><label for="user_password"><?php _e('Password', 'directory'); ?>:</label></th>
             <td><input type="password" name="password" /></td>
         </tr>
     </table>

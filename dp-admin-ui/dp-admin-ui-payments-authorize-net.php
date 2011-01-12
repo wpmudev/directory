@@ -3,7 +3,7 @@
 /**
  * dp_admin_ui_payments()
  *
- * Outputs "DirectoryPress Settings" admin page.
+ * Outputs "Directory Settings" admin page.
  *
  */
 function dp_admin_ui_payments_authorize_net() { ?>
@@ -17,34 +17,24 @@ function dp_admin_ui_payments_authorize_net() { ?>
         <table class="form-table">
             <tr>
                 <th>
-                    <label for="post_type"><?php _e('Under Development', 'directorypress') ?></label>
-                </th>
-                <td>
-                </td>
-            </tr>
-            <?php /*
-            <tr>
-                <th>
-                    <label for="post_type"><?php _e('Authorize.net API Password', 'directorypress') ?></label>
+                    <label for="post_type"><?php _e('Authorize.net API Login ID', 'directory') ?></label>
                 </th>
                 <td>
                     <input type="text" name="authorize_net_api_username" />
-                    <span class="description"><?php _e('Your Authorize.net API Password.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Your Authorize.net API Login ID.', 'directory'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th>
-                    <label for="post_type"><?php _e('Authorize.net API Signature', 'directorypress') ?></label>
+                    <label for="post_type"><?php _e('Authorize.net Transaction Key', 'directory') ?></label>
                 </th>
                 <td>
                     <input type="text" name="authorize_net_api_username" />
-                    <span class="description"><?php _e('Your Authorize.net API Signature.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Your Authorize.net Transaction Key.', 'directory'); ?></span>
                 </td>
             </tr>
-             *        <br />
-        <input type="submit" class="button-primary" name="dp_submit_auth_settings" value="Save Changes">
-             */ ?>
         </table>
-
+        <br />
+        <input type="submit" class="button-primary" name="authorize_net_save" value="Save Changes">
     </form> <?php
 } ?>

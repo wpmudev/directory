@@ -405,8 +405,12 @@ add_action( 'init', 'ct_admin_delete_taxonomy', 0 );
 function ct_admin_register_taxonomies() {
 
     $taxonomies = get_site_option( 'ct_custom_taxonomies' );
+    $options    = get_site_option('dp_options'); // @todo Make it part of Content Types Submodule
 
     if ( !empty( $taxonomies )) {
+        if ( $options['general_settings']['order_taxonomies'] == 'alphabetical' ) {
+            ksort( $taxonomies );
+        }
         foreach ( $taxonomies as $taxonomy => $args )
             register_taxonomy( $taxonomy, $args['object_type'], $args['args'] );
     }

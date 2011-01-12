@@ -19,10 +19,10 @@ get_header(); ?>
 					<div class="entry-content">
                         <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 						<?php the_content(); ?>
-                        <?php _e( 'Website URL', 'directorypress'); ?>:
+                        <?php _e( 'Website URL', 'directory'); ?>:
                         <a href="<?php echo get_post_meta( $post->ID, '_ct_text_4ccc5fd023950', true ); ?>"><?php echo get_post_meta( $post->ID, '_ct_text_4ccc5fd023950', true ); ?></a>
                         <br /><br />
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directorypress' ), 'after' => '</div>' ) ); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directory' ), 'after' => '</div>' ) ); ?>
 
 					</div><!-- .entry-content -->
 
@@ -32,11 +32,11 @@ get_header(); ?>
 							<?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ); ?>
 						</div><!-- #author-avatar -->
 						<div id="author-description">
-							<h2><?php printf( esc_attr__( 'About %s', 'directorypress' ), get_the_author() ); ?></h2>
+							<h2><?php printf( esc_attr__( 'About %s', 'directory' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
 							<div id="author-link">
 								<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-									<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'directorypress' ), get_the_author() ); ?>
+									<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'directory' ), get_the_author() ); ?>
 								</a>
 							</div><!-- #author-link	-->
 						</div><!-- #author-description -->
@@ -45,7 +45,7 @@ get_header(); ?>
 
 					<div class="entry-utility">
 						<?php dp_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 'directorypress' ), '<span class="edit-link">', '</span>' ); ?>
+						<?php edit_post_link( __( 'Edit', 'directory' ), '<span class="edit-link">', '</span>' ); ?>
 					</div><!-- .entry-utility -->
 				</div><!-- #post-## -->
 

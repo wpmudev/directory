@@ -1,6 +1,6 @@
 <?php
 
-/* Register DirectoryPress themes contained within the dp-themes folder */
+/* Register Directory themes contained within the dp-themes folder */
 if ( function_exists( 'register_theme_directory' ))
 	register_theme_directory( DP_PLUGIN_DIR . 'dp-themes' );
 
@@ -10,8 +10,8 @@ if ( function_exists( 'register_theme_directory' ))
  * Register all admin menues.
  */
 function dp_core_admin_menu() {
-	add_menu_page( __('DirectoryPress', 'directorypress'), __('DirectoryPress', 'directorypress'), 'edit_users', 'dp_main', 'dp_core_load_admin_ui' );
-    add_submenu_page( 'dp_main', __('Settings', 'directorypress'), __('Settings', 'directorypress'), 'edit_users', 'dp_main', 'dp_core_load_admin_ui' );
+	add_menu_page( __('Directory', 'directory'), __('Directory', 'directory'), 'edit_users', 'dp_main', 'dp_core_load_admin_ui' );
+    add_submenu_page( 'dp_main', __('Settings', 'directory'), __('Settings', 'directory'), 'edit_users', 'dp_main', 'dp_core_load_admin_ui' );
 }
 add_action( 'admin_menu', 'dp_core_admin_menu' );
 
@@ -24,7 +24,7 @@ function dp_core_hook() {
 	if ( function_exists( 'get_plugin_page_hook' ))
 		$hook = get_plugin_page_hook( $_GET['page'], 'dp_main' );
 	else
-		$hook = 'directorypress' . '_page_' . $_GET['page'];
+		$hook = 'directory' . '_page_' . $_GET['page'];
 
     add_action( 'admin_print_styles-' .  $hook, 'dp_core_enqueue_styles' );
     add_action( 'admin_print_scripts-' . $hook, 'dp_core_enqueue_scripts' );
@@ -68,7 +68,7 @@ function dp_core_load_admin_ui() {
 /**
  * dp_roles()
  *
- * Add custom role for DirectoryPress members. Add new capabiloties for admin.
+ * Add custom role for Directory members. Add new capabiloties for admin.
  *
  * @global $wp_roles
  */
@@ -76,7 +76,7 @@ function dp_roles() {
     global $wp_roles;
 
     if ( $wp_roles ) {
-        $wp_roles->add_role( 'dpmember', 'DirectoryPress Member', array(
+        $wp_roles->add_role( 'dpmember', 'Directory Member', array(
             'read'                      => 1,
             'read_listing'              => 1,
             'edit_others_listings'      => 0,
@@ -320,6 +320,21 @@ function dp_core_process_ads_settings() {
     update_site_option( 'dp_options', $options );
 }
 add_action( 'init', 'dp_core_process_ads_settings' );
+
+function dp_core_process_general_settings() {
+    // return if no post request is made
+    if ( !isset( $_POST['dp_submit_general_settings'] ))
+        return;
+    // verify wp_nonce
+    if ( !wp_verify_nonce( $_POST['dp_submit_settings_general_secret'], 'dp_submit_settings_general_verify'))
+        return;
+
+    $settings = array( 'general_settings' => array( 'order_taxonomies' => $_POST['order_taxonomies'] ));
+    $options = get_site_option( 'dp_options' );
+    $options = array_merge( $options, $settings );
+    update_site_option( 'dp_options', $options );
+}
+add_action( 'init', 'dp_core_process_general_settings' );
 
 /**
  * dp_init()

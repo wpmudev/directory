@@ -6,7 +6,7 @@
 
 			<div id="comments">
 <?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'directorypress' ); ?></p>
+				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'directory' ); ?></p>
 			</div><!-- #comments -->
 <?php
 		/* Stop the rest of comments.php from being processed,
@@ -23,14 +23,14 @@
 
 <?php if ( have_comments() ) : ?>
 			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'directorypress' ),
+			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'directory' ),
 			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 			?></h3>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'directorypress' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'directorypress' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'directory' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'directory' ) ); ?></div>
 			</div> <!-- .navigation -->
 <?php endif; // check for comment navigation ?>
 
@@ -42,8 +42,8 @@
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'directorypress' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'directorypress' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'directory' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'directory' ) ); ?></div>
 			</div><!-- .navigation -->
 <?php endif; // check for comment navigation ?>
 
@@ -54,7 +54,7 @@
 	 */
 	if ( ! comments_open() ) :
 ?>
-	<p class="nocomments"><?php _e( 'Comments are closed.', 'directorypress' ); ?></p>
+	<p class="nocomments"><?php _e( 'Comments are closed.', 'directory' ); ?></p>
 <?php endif; // end ! comments_open() ?>
 
 <?php endif; // end have_comments() ?>

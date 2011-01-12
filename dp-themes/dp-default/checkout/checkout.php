@@ -2,7 +2,7 @@
 
 <?php if ( $dp_global->checkout->paypal_express->current_step == 'paypal_disabled' ): ?>
 
-    <?php _e('This feature is currently disabled by the system administrator.', 'directorypress'); ?>
+    <?php _e('This feature is currently disabled by the system administrator.', 'directory'); ?>
 
 <?php endif; ?>
 

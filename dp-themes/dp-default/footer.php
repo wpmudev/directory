@@ -9,6 +9,7 @@
 	</div><!-- #main -->
 
 	<div id="footer" role="contentinfo">
+        <div class="dp-widgets-stra"></div>
 		<div id="colophon">
 
 <?php
@@ -25,9 +26,9 @@
 			</div><!-- #site-info -->
 
 			<div id="site-generator">
-				<a href="<?php echo esc_url( __('http://wordpress.org/', 'directorypress') ); ?>"
-						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'directorypress'); ?>" rel="generator">
-					<?php printf( __('Proudly powered by %s.', 'directorypress'), 'WordPress' ); ?>
+				<a href="<?php echo esc_url( __('http://wordpress.org/', 'directory') ); ?>"
+						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'directory'); ?>" rel="generator">
+					<?php printf( __('Proudly powered by %s.', 'directory'), 'WordPress' ); ?>
 				</a>
 			</div><!-- #site-generator -->
 

@@ -8,10 +8,10 @@
 function dp_admin_ui_main() { ?>
 
     <div class="wrap dp-wrap dp-settings">
-        <div class="icon32" id="icon-edit"><br></div>
+        <?php screen_icon('options-general'); ?>
         <h2>
-            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=dp_main&dp_settings=main"><?php _e('DirectoryPress', 'directorypress'); ?></a>
-            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'payments' ) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=dp_main&dp_settings=payments"><?php _e('Payments', 'directorypress'); ?></a>
+            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=dp_main&dp_settings=main"><?php _e('Directory', 'directory'); ?></a>
+            <a class="nav-tab <?php if ( $_GET['dp_settings'] == 'payments' ) { echo( 'nav-tab-active' ); } ?>" href="admin.php?page=dp_main&dp_settings=payments"><?php _e('Payments', 'directory'); ?></a>
         </h2> <?php
         
         if ( $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) {

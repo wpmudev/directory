@@ -1,7 +1,7 @@
 /*
-Theme Name: DirectoryPress
+Theme Name: Directory
 Theme URI: http://wordpress.org/
-Description: DirectoryPress default theme. You can customize it by copying it to the "wp-content/themes" directory and editing it. Based on the "Twenty Ten v1.1" WordPress theme.
+Description: Directory default theme. You can customize it by copying it to the "wp-content/themes" directory and editing it. Based on the "Twenty Ten v1.1" WordPress theme.
 Author: Ivan Shaovchev
 Version: 1.0
 Tags:
@@ -1175,8 +1175,7 @@ h3#reply-title {
 	margin-bottom: 20px;
 }
 #colophon {
-	border-top: 30px solid #727171;
-	margin-top: -4px;
+	margin-top: -20px;
 	overflow: hidden;
 	padding: 18px 0;
 }
@@ -1316,7 +1315,7 @@ code {
 	}
 }
 
-/* =DirectoryPress Styles
+/* =Directory Styles
 -------------------------------------------------------------- */
 .current_page_item {
     background: #fff;current_page_item
@@ -1453,7 +1452,7 @@ div.menu {
 }
 #submit-site {
     background-color: #D3401A;
-    width: 155px;
+    width: 170px;
     height: 30px;
     position: absolute;
     right: 40px;
@@ -1464,7 +1463,7 @@ div.menu {
 }
 #add-listing {
     background-color: #D3401A;
-    width: 130px;
+    width: 145px;
     height: 30px;
     position: absolute;
     right: 40px;
@@ -1482,8 +1481,8 @@ div.menu {
     padding: 0 0 0 10px;
 }
 #go-to-profile {
-        background-color: #D3401A;
-    width: 140px;
+    background-color: #D3401A;
+    width: 155px;
     height: 30px;
     position: absolute;
     right: 190px;

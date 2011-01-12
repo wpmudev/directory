@@ -3,7 +3,7 @@
 /**
  * dp_admin_ui_settings_submit_site()
  *
- * Outputs "DirectoryPress Settings" admin page.
+ * Outputs "Directory Settings" admin page.
  *
  */
 function dp_admin_ui_settings_submit_site( $options ) { ?>
@@ -19,31 +19,31 @@ function dp_admin_ui_settings_submit_site( $options ) { ?>
         <table class="form-table">
             <tr>
                 <th>
-                    <label for="annual_payment_option_price"><?php _e('Annual Payment Option', 'directorypress') ?></label>
+                    <label for="annual_payment_option_price"><?php _e('Annual Payment Option', 'directory') ?></label>
                 </th>
                 <td>
                     <input type="text" name="annual_payment_option_price" value="<?php echo $options['annual_price']; ?>" />
-                    <span class="description"><?php _e('Price of "Annual" service.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Price of "Annual" service.', 'directory'); ?></span>
                     <br /><br />
                     <input type="text" name="annual_payment_option_txt" value="<?php echo $options['annual_txt']; ?>" />
-                    <span class="description"><?php _e('Text of "Annual" service.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Text of "Annual" service.', 'directory'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th>
-                    <label for="one_time_payment_option_price"><?php _e('One Time Payment Option', 'directorypress') ?></label>
+                    <label for="one_time_payment_option_price"><?php _e('One Time Payment Option', 'directory') ?></label>
                 </th>
                 <td>
                     <input type="text" name="one_time_payment_option_price" value="<?php echo $options['one_time_price']; ?>" />
-                    <span class="description"><?php _e('Price of "One Time" service.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Price of "One Time" service.', 'directory'); ?></span>
                     <br /><br />
                     <input type="text" name="one_time_payment_option_txt" value="<?php echo $options['one_time_txt']; ?>" />
-                    <span class="description"><?php _e('Text of "One Time" service.', 'directorypress'); ?></span>
+                    <span class="description"><?php _e('Text of "One Time" service.', 'directory'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th>
-                    <label for="tos_txt"><?php _e('Terms of Service Text', 'directorypress') ?></label>
+                    <label for="tos_txt"><?php _e('Terms of Service Text', 'directory') ?></label>
                 </th>
                 <td>
                     <textarea name="tos_txt" rows="15" cols="50"><?php echo $options['tos_txt']; ?></textarea>

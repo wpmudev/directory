@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: DirectoryPress
-Plugin URI: http://premium.wpmudev.org/project/directorypress
-Description: DirectoryPress - Create full blown directory.
+Plugin Name: Directory
+Plugin URI: http://premium.wpmudev.org/project/directory
+Description: Directory - Create full blown directory site.
 Version: 1.0.2
-Author: Ivan Shaovchev
+Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
 */
@@ -52,7 +52,7 @@ define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__),
 /* include core file */
 include_once 'dp-core/dp-core.php';
 include_once 'dp-core/dp-core-checkout.php';
-include_once 'dp-core/dp-load-data.php';
+include_once 'dp-core/dp-core-load-data.php';
 
 /* include payment PayPal Express payment gateway */
 include_once 'dp-gateways/dp-gateways-paypal-express-core.php';
@@ -67,7 +67,7 @@ include_once 'dp-submodules/content-types/ct-loader.php';
  */
 function dp_load_plugin_textdomain() {
     $plugin_dir = DP_PLUGIN_DIR . 'dp-languages';
-    load_plugin_textdomain( 'directorypress', null, $plugin_dir );
+    load_plugin_textdomain( 'directory', null, $plugin_dir );
 }
 add_action( 'init', 'dp_load_plugin_textdomain', 0 );
 
@@ -113,7 +113,7 @@ register_activation_hook( __FILE__, 'dp_plugin_activate' );
 function dp_plugin_deactivate() {
 
     // set this to "true" if you want to delete all of the plugin stored data
-    $flush_dp_data = false;
+    $flush_dp_data = true;
 
     // if $flush_dp_data is true it will delete all plugin data
     if ( $flush_dp_data ) {
@@ -122,6 +122,7 @@ function dp_plugin_deactivate() {
         delete_site_option( 'ct_custom_taxonomies' );
         delete_site_option( 'ct_custom_fields' );
         delete_site_option( 'ct_flush_rewrite_rules' );
+        delete_option( 'dir_colors' );
 
         $options = get_site_option( 'dp_options' );
         wp_delete_post( $options['submit_page_id'], true );
@@ -130,5 +131,18 @@ function dp_plugin_deactivate() {
     switch_theme('twentyten', 'twentyten' );
 }
 register_deactivation_hook( __FILE__, 'dp_plugin_deactivate' );
+
+/**
+ *
+ * @param <type> $links
+ * @return <type> 
+ */
+function dp_plugin_settings_link( $links ) {
+    $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
+    array_unshift( $links, $settings_link );
+    return $links;
+}
+$plugin = plugin_basename(__FILE__);
+add_filter( "plugin_action_links_$plugin", 'dp_plugin_settings_link' );
 
 ?>

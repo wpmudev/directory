@@ -18,7 +18,7 @@ Template Name: Submit Listing
                     
 					<div class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directorypress' ), 'after' => '</div>' ) ); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directory' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
                     
 				</div><!-- #post-## -->
