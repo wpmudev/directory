@@ -30,8 +30,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /*
  * Enable error repporting if in debug mode
  */
-//error_reporting( E_ALL ^ E_NOTICE );
-//ini_set( 'display_errors', 1 );
+ //error_reporting( E_ALL ^ E_NOTICE );
+ //ini_set( 'display_errors', 1 );
 
 
 /* tmp debug func */
@@ -45,10 +45,14 @@ function dp_debug( $param ) {
 define ( 'DP_VERSION', '1.0.0' );
 define ( 'DP_DB_VERSION', '1.1' );
 
+/* define the plugin folder url */
+define ( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+/* define the plugin folder dir */
+define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+
 /* include core file */
 include_once 'dp-core/dp-core.php';
 include_once 'dp-core/dp-load-data.php';
-
 
 /* include payment PayPal Express payment gateway */
 include_once 'dp-gateways/dp-gateways-paypal-express-core.php';

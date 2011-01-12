@@ -1,10 +1,5 @@
 <?php
 
-/** Define the submodule root folder url. */
-define ( 'CT_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__DIR__), '', plugin_basename(__DIR__) ));
-/** Define the submodule root folder dir. */
-define ( 'CT_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__DIR__), '', plugin_basename(__DIR__) ));
-
 /**
  * ct_core_admin_menu()
  *

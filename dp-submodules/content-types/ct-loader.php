@@ -3,7 +3,7 @@
 /*
 Submodule Name: Content Types
 Description: Content Types - Custom Post, Taxonomy and Field Manager.
-Version: 1.0.4
+Version: 1.0.5
 Author: Ivan Shaovchev
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -26,6 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
+
+/** Define the submodule root folder url. */
+define ( 'CT_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+/** Define the submodule root folder dir. */
+define ( 'CT_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
 include_once 'ct-config.php';
 include_once 'ct-core/ct-core.php';

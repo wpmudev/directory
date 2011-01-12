@@ -62,17 +62,19 @@ function ct_admin_ui_edit_custom_field( $custom_field, $post_types ) { ?>
                                     </select
                                 </p>
 
-                                <?php foreach ( $custom_field['field_options'] as $key => $field_option ): ?>
-                                    <p>
-                                        <?php _e('Option', 'content_types'); ?> <?php echo( $key ); ?>:
-                                        <input type="text" name="field_options[<?php echo( $key ); ?>]" value="<?php echo( $field_option ); ?>" />
-                                        <input type="radio" value="<?php echo( $key ); ?>" name="field_default_option" <?php if ( $custom_field['field_default_option'] == $key ) echo ( 'checked="checked"' ); ?> />
-                                        <?php _e('Default Value', 'content_types'); ?>
-                                        <?php if ( $key != 1 ): ?>
-                                            <a href="#" class="ct-field-delete-option">[x]</a>
-                                        <?php endif; ?>
-                                    </p>
-                                <?php endforeach; ?>
+                                <?php if ( is_array( $custom_field['field_options'] )): ?>
+                                    <?php foreach ( $custom_field['field_options'] as $key => $field_option ): ?>
+                                        <p>
+                                            <?php _e('Option', 'content_types'); ?> <?php echo( $key ); ?>:
+                                            <input type="text" name="field_options[<?php echo( $key ); ?>]" value="<?php echo( $field_option ); ?>" />
+                                            <input type="radio" value="<?php echo( $key ); ?>" name="field_default_option" <?php if ( $custom_field['field_default_option'] == $key ) echo ( 'checked="checked"' ); ?> />
+                                            <?php _e('Default Value', 'content_types'); ?>
+                                            <?php if ( $key != 1 ): ?>
+                                                <a href="#" class="ct-field-delete-option">[x]</a>
+                                            <?php endif; ?>
+                                        </p>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
 
                                 <div class="ct-field-additional-options"></div>
                                 <input type="hidden" value="<?php echo( count( $custom_field['field_options'] )); ?>" name="track_number">

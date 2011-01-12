@@ -23,6 +23,7 @@
         <?php endif; ?>
 
     <?php elseif ( isset( $_POST['terms_submit'] )): ?>
+                
         <?php $tos = dp_validate_field( 'tos_agree' ); $billing = dp_validate_field( 'billing' ); ?>
         <?php if ( $tos && $billing ): ?>
             <?php locate_template( array( 'checkout/checkout-select-payment-method.php' ), true ); ?>
@@ -32,11 +33,7 @@
 
     <?php elseif ( isset( $_POST['payment_method_submit'] ) ): ?>
 
-        <?php if ( $_POST['payment_method'] == 'paypal' ): ?>
-
-            <?php dp_geteway_paypal_express_call_checkout( $_POST['cost'] ); ?>
-
-        <?php elseif ( $_POST['payment_method'] == 'cc' ): ?>
+        <?php if ( $_POST['payment_method'] == 'cc' ): ?>
 
             <?php locate_template( array( 'checkout/checkout-cc-details.php' ), true ); ?>
 

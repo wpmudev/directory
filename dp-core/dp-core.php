@@ -1,10 +1,5 @@
 <?php
 
-/* define the plugin folder url */
-define ( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__DIR__), '', plugin_basename(__DIR__) ));
-/* define the plugin folder dir */
-define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__DIR__), '', plugin_basename(__DIR__) ));
-
 /* Register DirectoryPress themes contained within the dp-themes folder */
 if ( function_exists( 'register_theme_directory' ))
 	register_theme_directory( DP_PLUGIN_DIR . 'dp-themes' );
@@ -390,7 +385,7 @@ function dp_validate_field( $field ) {
 }
 
 /**
- *
+ * dp_invalid_login()
  */
 function dp_invalid_login() {
     echo 'class="dp-error"';
@@ -398,11 +393,21 @@ function dp_invalid_login() {
 }
 
 /**
- * 
+ * dp_invalid_class()
  */
 function dp_invalid_class() {
     echo 'class="dp-error"';
 }
+
+function dp_checkout_submit_paypal() {
+
+    if ( !isset( $_POST['payment_method_submit'] ))
+        return;
+
+    if ( $_POST['payment_method'] == 'paypal' )
+        dp_geteway_paypal_express_call_checkout( $_POST['cost'] );
+}
+add_action( 'init', 'dp_checkout_submit_paypal' );
 
 /**
  * dp_init()

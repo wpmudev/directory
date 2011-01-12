@@ -2,7 +2,6 @@
 /*
 Template Name: Submit Listing
 */
-
 ?>
 
 <?php get_header(); ?>
