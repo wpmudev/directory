@@ -1,0 +1,1036 @@
+# LANGUAGE (LOCALE) translation for Content Types Submodule.
+# Copyright 2010 Incsub, (http://incsub.com)
+# This file is distributed under the same license as the Content Types Submodule package.
+# Author: Ivan Shaovchev <ivan.shaovchev@gmail.com>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Types Submodule v1.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-21 08:31+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ivan Shaovchev <ivan.shaovchev@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /content-types/ct-core/ct-core.php:14
+msgid "Content Types"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:14
+msgid "Delete Post Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:17
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:57
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:100
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:21
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:59
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:89
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:21
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:57
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:96
+msgid "Delete Permanently"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:22
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:35
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:19
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:93
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:97
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:36
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:40
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:16
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:20
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:34
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:104
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:108
+msgid "Post Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:36
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:103
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:61
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:24
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:35
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:101
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:61
+msgid "Name"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:24
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:37
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:25
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:37
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:204
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:208
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:28
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:40
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:202
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:206
+msgid "Description"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:25
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:234
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:238
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:232
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:236
+msgid "Menu Icon"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:26
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:39
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:34
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:31
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:35
+msgid "Supports"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:40
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:82
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:86
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:79
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:83
+msgid "Capability Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:28
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:41
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:251
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:255
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:191
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:195
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:249
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:253
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:30
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:41
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:191
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:195
+msgid "Public"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:29
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:42
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:382
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:386
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:290
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:294
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:28
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:39
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:380
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:384
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:31
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:42
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:290
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:294
+msgid "Hierarchical"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:30
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:43
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:406
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:410
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:314
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:318
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:29
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:40
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:404
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:408
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:32
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:43
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:314
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:318
+msgid "Rewrite"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:54
+msgid "Edit this post type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:54
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:54
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:56
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:54
+msgid "Edit"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:74
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:70
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:70
+msgid "Advanced"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:76
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:83
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:90
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:72
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:79
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:86
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:72
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:79
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:86
+msgid "True"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:78
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:85
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-post-type.php:92
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:74
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:81
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:88
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:74
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:81
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:88
+msgid "False"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:35
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:26
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:38
+msgid "Custom Field"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:24
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:36
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:34
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:36
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:40
+msgid "Field Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:26
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-content-types.php:13
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:25
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:36
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:29
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:41
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:28
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:39
+msgid "Post Types"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:39
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:26
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:37
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:30
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:42
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:29
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:40
+msgid "Embed Code"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-custom-fields.php:56
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:56
+msgid "Edit this custom field"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:13
+msgid "Edit Post Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:24
+msgid "The new post type system name ( max. 20 characters ). Alphanumeric characters and underscores only. Min 2 letters. Once added the post type system name cannot be changed."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:41
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:38
+msgid "An alias for calling add_post_type_support() directly."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:48
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:45
+msgid "Title"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:51
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:48
+msgid "Editor"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:51
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:48
+msgid "Content"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:54
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:51
+msgid "Author"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:57
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:54
+msgid "Thumbnail"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:57
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:54
+msgid "Featured Image - current theme must also support post-thumbnails."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:60
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:57
+msgid "Excerpt"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:63
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:60
+msgid "Trackbacks"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:66
+#: /content-types/ct-admin-ui/ct-admin-ui-content-types.php:15
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:63
+msgid "Custom Fields"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:69
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:66
+msgid "Comments"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:69
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:66
+msgid "Also will see comment count balloon on edit screen."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:72
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:69
+msgid "Revisions"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:72
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:69
+msgid "Will store revisions."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:75
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:72
+msgid "Page Attributes"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:75
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:72
+msgid "Template and menu order - Hierarchical must be true!"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:91
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:88
+msgid "EDIT"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:91
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:88
+msgid "advanced"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:92
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:89
+msgid "The post type to use for checking read, edit, and delete capabilities. Default: \"post\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:99
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:57
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:97
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:57
+msgid "Labels"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:107
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:105
+msgid "General name for the post type, usually plural."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:112
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:70
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:110
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:70
+msgid "Singular Name"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:116
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:114
+msgid "Name for one object of this post type. Defaults to value of name."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:121
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:119
+msgid "Add New"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:125
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:123
+msgid "The add new text. The default is Add New for both hierarchical and non-hierarchical types."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:130
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:79
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:128
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:79
+msgid "Add New Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:134
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:132
+msgid "The add new item text. Default is Add New Post/Add New Page."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:139
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:97
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:137
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:97
+msgid "Edit Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:143
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:141
+msgid "The edit item text. Default is Edit Post/Edit Page."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:148
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:146
+msgid "New Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:152
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:150
+msgid "The new item text. Default is New Post/New Page."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:157
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:155
+msgid "View Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:161
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:159
+msgid "The view item text. Default is View Post/View Page."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:166
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:115
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:164
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:115
+msgid "Search Items"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:170
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:168
+msgid "The search items text. Default is Search Posts/Search Pages."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:175
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:173
+msgid "Not Found"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:179
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:177
+msgid "The not found text. Default is No posts found/No pages found."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:184
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:182
+msgid "Not Found In Trash"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:188
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:186
+msgid "The not found in trash text. Default is No posts found in Trash/No pages found in Trash."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:193
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:151
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:191
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:151
+msgid "Parent Item Colon"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:197
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:195
+msgid "The parent text. This string isn't used on non-hierarchical types. In hierarchical ones the default is Parent Page"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:212
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:210
+msgid "A short descriptive summary of what the post type is."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:219
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:223
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:217
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:221
+msgid "Menu Position"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:227
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:225
+msgid "5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:242
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:240
+msgid "The url to the icon to be used for this menu."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:258
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:256
+msgid "Meta argument used to define default values for publicly_queriable, show_ui, show_in_nav_menus and exclude_from_search."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:265
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:300
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:324
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:348
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:372
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:396
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:420
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:451
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:475
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:205
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:232
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:256
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:280
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:304
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:328
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:359
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:263
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:298
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:322
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:346
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:370
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:394
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:418
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:449
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:473
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:205
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:232
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:256
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:280
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:304
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:328
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:359
+msgid "TRUE"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:266
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:264
+msgid "Display a user-interface for this \"post_type\""
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:267
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:265
+msgid "Show \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:268
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:266
+msgid "\"post_type\" queries can be performed from the front-end"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:269
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:276
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:267
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:274
+msgid "Exclude posts with this post type from search results"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:272
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:303
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:327
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:351
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:375
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:399
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:423
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:454
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:478
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:208
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:235
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:259
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:283
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:307
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:331
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:362
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:270
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:301
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:325
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:349
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:373
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:397
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:421
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:452
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:476
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:208
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:235
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:259
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:283
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:307
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:331
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:362
+msgid "FALSE"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:273
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:271
+msgid "Don not display a user-interface for this \"post_type\""
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:274
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:272
+msgid "Hide \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:275
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:273
+msgid "\"post_type\" queries cannot be performed from the front-end"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:279
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:211
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:277
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:211
+msgid "ADVANCED"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:279
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:277
+msgid "You can set each component manualy."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:286
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:290
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:218
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:222
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:284
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:288
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:218
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:222
+msgid "Show UI"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:293
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:291
+msgid "Whether to generate a default UI for managing this post type. Note that built-in post types, such as post and page, are intentionally set to false."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:300
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:298
+msgid "Display a user-interface (admin panel) for this post type."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:303
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:301
+msgid "Do not display a user-interface for this post type."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:310
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:266
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:308
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:266
+msgid "Show In Nav Menus "
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:314
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:270
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:312
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:270
+msgid "Show In Nav Menus"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:317
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:315
+msgid "Whether post_type is available for selection in navigation menus."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:334
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:338
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:332
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:336
+msgid "Publicly Queryable"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:341
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:339
+msgid "Whether post_type queries can be performed from the front end."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:358
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:362
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:356
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:360
+msgid "Exclude From Search"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:365
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:363
+msgid "Whether to exclude posts with this post type from search results."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:389
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:297
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:387
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:297
+msgid "Whether the post type is hierarchical. Allows Parent to be specified."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:413
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:321
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:321
+msgid "Rewrite permalinks with this format."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:426
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:334
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:424
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:334
+msgid "CUSTOM SLUG"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:430
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:338
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:428
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:338
+msgid "Prepend posts with this slug."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:437
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:441
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:345
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:349
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:435
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:439
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:345
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:349
+msgid "Query var"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:444
+msgid "Name of the query var to use for this post type."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:461
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:465
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:459
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:463
+msgid "Can Export"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-post-type.php:468
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:466
+msgid "Can this post_type be exported."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-content-types.php:14
+msgid "Taxonomies"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:13
+msgid "Add Custom Field"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:19
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:21
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:25
+msgid "Field Title"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:38
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:97
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:20
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:25
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:40
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:108
+msgid "required"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:29
+msgid "The title of the custom field."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:49
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:108
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:51
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:119
+msgid "Select one or more post types to add this custom field to."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:51
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:53
+msgid "Fill in the options for this field"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:52
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:55
+msgid "Order By"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:54
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:57
+msgid "Order Entered"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:61
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:67
+msgid "Option"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:64
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:70
+msgid "Default Value"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:68
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:79
+msgid "Add another option"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:76
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:80
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:87
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:91
+msgid "Field Description"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-custom-field.php:84
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:95
+msgid "Description for the custom field."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:15
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:21
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:25
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:23
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:34
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:26
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:37
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:19
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:23
+msgid "Taxonomy"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:29
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:27
+msgid "The system name of the taxonomy. Alphanumeric characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:50
+msgid "Select one or more post types to add this taxonomy to"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:65
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:65
+msgid "General name for the taxonomy, usually plural."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:74
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:74
+msgid "Name for one object of this taxonomy. Defaults to value of name."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:83
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:83
+msgid "The add new item text. Default is \"Add New Tag\" or \"Add New Category\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:88
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:88
+msgid "New Item Name"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:92
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:92
+msgid "The new item name text. Default is \"New Tag Name\" or \"New Category Name\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:101
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:101
+msgid "The edit item text. Default is \"Edit Tag\" or \"Edit Category\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:106
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:106
+msgid "Update Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:110
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:110
+msgid "The update item text. Default is \"Update Tag\" or \"Update Category\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:119
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:119
+msgid "The search items text. Default is \"Search Tags\" or \"Search Categories\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:124
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:124
+msgid "Popular Items"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:128
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:128
+msgid "The popular items text. Default is \"Popular Tags\" or null."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:133
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:133
+msgid "All Items"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:137
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:137
+msgid "The all items text. Default is \"All Tags\" or \"All Categories\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:142
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:142
+msgid "Parent Item"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:146
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:146
+msgid "The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or \"Parent Category\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:155
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:155
+msgid "The same as parent_item, but with colon : in the end null, \"Parent Category:\"."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:160
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:160
+msgid "Add Or Remove Items"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:164
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:164
+msgid "The add or remove items text is used in the meta box when JavaScript is disabled. This string isn't used on hierarchical taxonomies. Default is \"Add or remove tags\" or null."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:169
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:169
+msgid "Separate Items With Commas"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:173
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:173
+msgid "The separate item with commas text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Separate tags with commas\", or null."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:178
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:178
+msgid "Choose From Most Used"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:182
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:182
+msgid "The choose from most used text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Choose from the most used tags\" or null."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:198
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:198
+msgid "Should this taxonomy be exposed in the admin UI."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:225
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:225
+msgid "Whether to generate a default UI for managing this taxonomy."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:242
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:246
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:242
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:246
+msgid "Show Tagcloud"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:249
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:249
+msgid "Whether to show a tag cloud in the admin UI for this taxonomy."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:273
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:273
+msgid "Whether to make this taxonomy available for selection in navigation menus."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-taxonomy.php:352
+msgid "False to prevent queries, or string to customize query var. Default will use $taxonomy as query var."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:18
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:97
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:13
+msgid "Add Taxonomy"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:54
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:54
+msgid "Edit this taxonomy"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-taxonomies.php:57
+msgid "Delete"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:14
+msgid "Delete Custom Field"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:27
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-custom-field.php:39
+msgid "Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:10
+msgid "Add Post Type"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:411
+msgid "Rewrite permalinks with this format. If TRUE, the post type system name will be used for the rewrite slug. "
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-post-type.php:442
+msgid "Can queries be performed on this post_type."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-delete-taxonomy.php:14
+msgid "Delete Taxonomy"
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:50
+msgid "Select one or more post types to add this taxonomy to."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-add-taxonomy.php:352
+msgid "False to prevent queries. Default will use the taxonomy system name as query var."
+msgstr ""
+
+#: /content-types/ct-admin-ui/ct-admin-ui-edit-custom-field.php:15
+msgid "Edit Custom Field"
+msgstr ""

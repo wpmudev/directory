@@ -1,0 +1,61 @@
+# LANGUAGE (LOCALE) translation for CustomPress.
+# Copyright 2010 Incsub, (http://incsub.com)
+# This file is distributed under the same license as the CustomPress package.
+# Author: Ivan Shaovchev <ivan.shaovchev@gmail.com>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CustomPress v1.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-21 08:31+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ivan Shaovchev <ivan.shaovchev@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:15
+msgid "CustomPress Settings"
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:26
+msgid "Display post types on \"Home\": "
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:54
+msgid "Check the custom post types you want to display on the \"Home\" page."
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:58
+msgid "If \"default\" is checked the \"Home\" page will display the default post types."
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:65
+msgid "Create theme file for: "
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:75
+msgid "No custom post types available"
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:78
+msgid "This will create \"single-[post_type].php\" file inside your theme. This file will be the custom template for your custom post type. You can then edit the file and customize it however you like."
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:79
+msgid "In some cases you may not want to do that. For example if you don't have a template for your custom post type the default \"single.php\" will be used."
+msgstr ""
+
+#: /custompress/cp-admin-ui/cp-admin-ui-settings.php:80
+msgid "Your active theme folder permissions have to be set to 777 for this option to work. After the file is created you can set your active theme folder permission back to 755."
+msgstr ""
+
+#: /custompress/cp-core/cp-core.php:12
+msgid "CustomPress"
+msgstr ""
+
+#: /custompress/cp-core/cp-core.php:13
+msgid "Settings"
+msgstr ""

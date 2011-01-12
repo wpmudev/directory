@@ -1,0 +1,19 @@
+
+.ct-form-field {
+    margin: 0 !important;
+}
+.ct-form-field label {
+    color: #464646;
+}
+.ct-form-field input[type="radio"], .ct-form-field input[type="checkbox"] {
+    margin: 5px 0;
+}
+.ct-form-field select {
+    min-width: 200px;
+}
+.ct-form-field .ct-select-multiple {
+    height: auto !important;
+}
+.ct-form-field p {
+    margin-left: 0 !important;
+}
