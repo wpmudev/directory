@@ -3,7 +3,7 @@
 Plugin Name: DirectoryPress
 Plugin URI: http://premium.wpmudev.org/project/directorypress
 Description: DirectoryPress - Create full blown directory.
-Version: 1.0.1
+Version: 1.0.2
 Author: Ivan Shaovchev
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -30,9 +30,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /*
  * Enable error repporting if in debug mode
  */
- //error_reporting( E_ALL ^ E_NOTICE );
- //ini_set( 'display_errors', 1 );
-
+  error_reporting( E_ALL ^ E_NOTICE );
+  ini_set( 'display_errors', 1 );
 
 /* tmp debug func */
 function dp_debug( $param ) {
@@ -42,7 +41,7 @@ function dp_debug( $param ) {
 }
 
 /* Define plugin version */ 
-define ( 'DP_VERSION', '1.0.0' );
+define ( 'DP_VERSION', '1.0.2' );
 define ( 'DP_DB_VERSION', '1.1' );
 
 /* define the plugin folder url */
@@ -52,6 +51,7 @@ define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__),
 
 /* include core file */
 include_once 'dp-core/dp-core.php';
+include_once 'dp-core/dp-core-checkout.php';
 include_once 'dp-core/dp-load-data.php';
 
 /* include payment PayPal Express payment gateway */
@@ -76,7 +76,7 @@ add_action( 'init', 'dp_load_plugin_textdomain', 0 );
  *
  * Allow dependent plugins and core actions to attach themselves in a safe way.
  *
- * See cm-admin-core.php for the following core actions: cp_init
+ * See dp-core.php for the following core actions: dp_init
  */
 function dp_loaded() {
 	do_action( 'dp_loaded' );
@@ -89,10 +89,18 @@ add_action( 'init', 'dp_loaded', 20 );
  * Update plugin version
  */
 function dp_plugin_activate() {
-    $old_options = get_site_option( 'dp_options' );
-    $new_options = array_merge( $old_options,     array( 'versions' => array( 'version' => DP_VERSION, 'db_version' => DP_DB_VERSION )));
-	update_site_option( 'dp_options', $new_options );
-    switch_theme('dp-default', 'dp-default' );
+
+    $options  = get_site_option( 'dp_options' );
+    $versions = array( 'versions' => array( 'dp_version' => DP_VERSION, 'dp_db_version' => DP_DB_VERSION ));
+
+    if ( !isset( $options['versions'] )) {
+        update_site_option( 'dp_options', $versions );
+    } else {
+        $options = array_merge( $options, $versions );
+        update_site_option( 'dp_options', $options );
+    }
+    
+    switch_theme( 'dp-default', 'dp-default' );
 }
 register_activation_hook( __FILE__, 'dp_plugin_activate' );
 
@@ -110,11 +118,13 @@ function dp_plugin_deactivate() {
     // if $flush_dp_data is true it will delete all plugin data
     if ( $flush_dp_data ) {
         delete_site_option( 'dp_options' );
-        delete_site_option( 'dp_main_settings' );
         delete_site_option( 'ct_custom_post_types' );
         delete_site_option( 'ct_custom_taxonomies' );
         delete_site_option( 'ct_custom_fields' );
         delete_site_option( 'ct_flush_rewrite_rules' );
+
+        $options = get_site_option( 'dp_options' );
+        wp_delete_post( $options['submit_page_id'], true );
     }
 
     switch_theme('twentyten', 'twentyten' );

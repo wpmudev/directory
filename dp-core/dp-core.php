@@ -5,35 +5,6 @@ if ( function_exists( 'register_theme_directory' ))
 	register_theme_directory( DP_PLUGIN_DIR . 'dp-themes' );
 
 /**
- * Add custom role for DirectoryPress members
- * 
- */
-function dp_roles() {
-    global $wp_roles;
-
-    if ( $wp_roles ) {
-        $wp_roles->add_role( 'dpmember', 'DirectoryPress Member', array(
-            'read'                      => 1,
-            'read_listing'              => 1,
-            'edit_others_listings'      => 0,
-            'edit_listing'              => 1,
-            'edit_listings'             => 1,
-            'publish_listings'          => 1,
-            'delete_listing'            => 0,
-            'upload_files'              => 1,
-            'assign_terms'              => 1,
-        ));
-        $wp_roles->add_cap( 'administrator', 'read_listing' );
-        $wp_roles->add_cap( 'administrator', 'edit_others_listings' );
-        $wp_roles->add_cap( 'administrator', 'edit_listing' );
-        $wp_roles->add_cap( 'administrator', 'edit_listings' );
-        $wp_roles->add_cap( 'administrator', 'publish_listings' );
-        $wp_roles->add_cap( 'administrator', 'delete_listing' );
-    }
-}
-add_action( 'init', 'dp_roles', 20 );
-
-/**
  * dp_core_admin_menu()
  *
  * Register all admin menues.
@@ -53,18 +24,12 @@ function dp_core_hook() {
 	if ( function_exists( 'get_plugin_page_hook' ))
 		$hook = get_plugin_page_hook( $_GET['page'], 'dp_main' );
 	else
-		$hook = 'directorypress' . '_page_' . $_GET['page']; /** @todo Make hook plugin specific */
+		$hook = 'directorypress' . '_page_' . $_GET['page'];
 
     add_action( 'admin_print_styles-' .  $hook, 'dp_core_enqueue_styles' );
     add_action( 'admin_print_scripts-' . $hook, 'dp_core_enqueue_scripts' );
-
-    /** @deprecated
-    if ( $_GET['page'] == 'dp_main' )
-        add_action( 'admin_head-' . $hook, 'dp_ajax_actions');
-    */
 }
 add_action( 'admin_init', 'dp_core_hook' );
-
 
 /**
  * dp_core_enqueue_styles()
@@ -99,73 +64,39 @@ function dp_core_load_admin_ui() {
     if ( $_GET['page'] == 'dp_main' )
         dp_admin_ui_main();
 }
-/**
- * dp_core_process_paypal_express_settings()
- * 
- */
-function dp_core_process_paypal_express_settings() {
-
-    // stop execution and return if no request is made
-    if ( !isset( $_POST['dp_submit_paypal_express_settings'] ))
-        return;
-
-    // verify wp_nonce
-    if ( !wp_verify_nonce( $_POST['dp_submit_paypal_express_settings_secret'], 'dp_submit_paypal_express_settings_verify'))
-        return;
-
-    $post_options = array( 'paypal' => array(
-        'api_url'       => $_POST['paypal_express_url'],
-        'api_username'  => $_POST['paypal_express_api_username'],
-        'api_password'  => $_POST['paypal_express_api_password'],
-        'api_signature' => $_POST['paypal_express_api_signature'],
-        'currency_code' => $_POST['paypal_express_currency_code']
-    ));
-
-    $old_options = get_site_option( 'dp_options' );
-    $new_options = array_merge( $old_options, $post_options );
-
-	update_site_option( 'dp_options', $new_options );
-
-}
-add_action( 'init', 'dp_core_process_paypal_express_settings' );
 
 /**
+ * dp_roles()
  *
- * @global <type> $wp_rewrite
- * @param <type> $query
- * @return <type> 
+ * Add custom role for DirectoryPress members. Add new capabiloties for admin.
+ *
+ * @global $wp_roles
  */
-function dp_query_filter( $query ) {
-    global $wp_rewrite;
-    $query->query_vars['dp_page'] = 'top';
+function dp_roles() {
+    global $wp_roles;
 
-    dp_debug( $wp_rewrite, $query );
+    if ( $wp_roles ) {
+        $wp_roles->add_role( 'dpmember', 'DirectoryPress Member', array(
+            'read'                      => 1,
+            'read_listing'              => 1,
+            'edit_others_listings'      => 0,
+            'edit_listing'              => 1,
+            'edit_listings'             => 1,
+            'publish_listings'          => 1,
+            'delete_listing'            => 0,
+            'upload_files'              => 1,
+            'assign_terms'              => 1,
+        ));
 
-    return $query;
+        $wp_roles->add_cap( 'administrator', 'read_listing' );
+        $wp_roles->add_cap( 'administrator', 'edit_others_listings' );
+        $wp_roles->add_cap( 'administrator', 'edit_listing' );
+        $wp_roles->add_cap( 'administrator', 'edit_listings' );
+        $wp_roles->add_cap( 'administrator', 'publish_listings' );
+        $wp_roles->add_cap( 'administrator', 'delete_listing' );
+    }
 }
-//add_filter( 'pre_get_posts', 'dp_query_filter' );
-
-/**
- * dp_create_rewrite_rules()
- * 
- * @global <type> $wp_rewrite
- * @return <type>
- */
-function dp_create_rewrite_rules() {
-	global $wp_rewrite;
-
-	// add rewrite tokens
-	$keytag = '%dp_signup%';
-	$wp_rewrite->add_rewrite_tag( $keytag, '(.+?)', 'dp_signup=' );
-
-	$keywords_structure = $wp_rewrite->root . $wp_rewrite->front . "/{$keytag}/";
-    
-	$keywords_rewrite = $wp_rewrite->generate_rewrite_rules($keywords_structure);
-
-	$wp_rewrite->rules = $keywords_rewrite + $wp_rewrite->rules;
-	return $wp_rewrite->rules;
-}
-//add_action('generate_rewrite_rules', 'createRewriteRules');
+add_action( 'init', 'dp_roles', 20 );
 
 /**
  * dp_add_signup_page()
@@ -173,25 +104,37 @@ function dp_create_rewrite_rules() {
  * Add neccessary pages.
  */
 function dp_add_pages() {
-    
-    if ( !get_page_by_title( 'Submit Listing' )) {
+    $page      = get_page_by_title( 'Submit Listing' );
+    $options   = get_site_option( 'dp_options' );
+
+    // check whether page exists 
+    if ( !isset( $page )) {
         $args = array(
             'post_title' => 'Submit Listing',
             'post_content' => '',
             'post_status' => 'publish',
             'post_type' => 'page',
             'ping_status' => 'closed',
-            'comment_status' => 'closed');
+            'comment_status' => 'closed'
+        );
 
+        // insert page and get the id 
         $post_id = wp_insert_post( $args );
+        // update post meta with the template file which we will use for submit listing
         update_post_meta( $post_id , '_wp_page_template', 'submit-listing.php' );
-
-        $old_options = get_site_option( 'dp_options' );
-        $id_record   = array( 'submit_page_id' => $post_id );
-        $new_options = array_merge( $old_options, $id_record );
-        update_site_option( 'dp_options', $new_options );
+        
+        $id_record = array( 'submit_page_id' => $post_id );
+        $options   = array_merge( $options, $id_record );
+        update_site_option( 'dp_options', $options );
     }
+    elseif ( isset( $page ) && !isset( $options['submit_page_id'] )) {
+        // update post meta with the template file which we will use for submit listing
+        update_post_meta( $page->ID , '_wp_page_template', 'submit-listing.php' );
 
+        $id_record = array( 'submit_page_id' => $page->ID );
+        $options   = array_merge( $options, $id_record );
+        update_site_option( 'dp_options', $options );
+    }
 }
 add_action( 'init', 'dp_add_pages' );
 
@@ -246,7 +189,8 @@ function dp_insert_user( $email, $first_name, $last_name, $billing ) {
 }
 
 /**
- *
+ * dp_set_billing_type()
+ * 
  * @return <type> 
  */
 function dp_set_billing_type() {
@@ -258,21 +202,53 @@ function dp_set_billing_type() {
 add_action('init', 'dp_set_billing_type');
 
 /**
- * 
+ * dp_redirect_after_payment()
  */
 function dp_redirect_after_payment() {
 
     if ( isset( $_REQUEST['redirect_admin_profile'] )) {
         wp_redirect( admin_url( 'profile.php' ));
-        exit();
-    }
-
-    if ( isset( $_REQUEST['redirect_admin_listings'] )) {
+        exit;
+    } elseif ( isset( $_REQUEST['redirect_admin_listings'] )) {
         wp_redirect( admin_url( 'post-new.php?post_type=directory_listing' ));
-        exit();
+        exit;
     }   
 }
 add_action( 'init', 'dp_redirect_after_payment' );
+
+/**
+ * dp_core_process_paypal_express_settings()
+ *
+ * Process PayPal admin settings add/update
+ */
+function dp_core_process_paypal_express_settings() {
+
+    // stop execution and return if no request is made
+    if ( !isset( $_POST['dp_submit_paypal_express_settings'] ))
+        return;
+
+    // verify wp_nonce
+    if ( !wp_verify_nonce( $_POST['dp_submit_paypal_express_settings_secret'], 'dp_submit_paypal_express_settings_verify'))
+        return;
+
+    $post_options = array( 'paypal' => array(
+        'api_url'       => $_POST['paypal_express_url'],
+        'api_username'  => $_POST['paypal_express_api_username'],
+        'api_password'  => $_POST['paypal_express_api_password'],
+        'api_signature' => $_POST['paypal_express_api_signature'],
+        'currency_code' => $_POST['paypal_express_currency_code']
+    ));
+
+    $old_options = get_site_option( 'dp_options' );
+
+    if ( isset( $old_options['paypal'] )) {
+        $new_options = array_merge( $old_options, $post_options );
+        update_site_option( 'dp_options', $new_options );
+    } else {
+        update_site_option( 'dp_options', $post_options );
+    }
+}
+add_action( 'init', 'dp_core_process_paypal_express_settings' );
 
 /**
  * dp_core_init_submit_site_settings()
@@ -281,9 +257,9 @@ add_action( 'init', 'dp_redirect_after_payment' );
  */
 function dp_core_init_submit_site_settings() {
     
-    $old_options = get_site_option( 'dp_options' );
+    $options = get_site_option( 'dp_options' );
 
-    if ( empty( $old_options['submit_site_settings'] )) {
+    if ( !isset( $options['submit_site_settings'] )) {
         $submit_site_settings = array( 'submit_site_settings' => array(
             'annual_price'   => 10,
             'annual_txt'     => 'Annually Recurring Charge',
@@ -291,17 +267,14 @@ function dp_core_init_submit_site_settings() {
             'one_time_txt'   => 'One-Time Only Charge',
             'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
         ));
-
-        $new_options = array_merge( $old_options, $submit_site_settings );
-        update_site_option( 'dp_options', $new_options );
-
+        $options = array_merge( $options, $submit_site_settings );
+        update_site_option( 'dp_options', $options );
         return;
     }
 
     // stop execution and return if no request is made
     if ( !isset( $_POST['dp_submit_site_settings'] ))
         return;
-
     // verify wp_nonce
     if ( !wp_verify_nonce( $_POST['dp_submit_settings_submit_site_secret'], 'dp_submit_settings_submit_site_verify'))
         return;
@@ -314,100 +287,39 @@ function dp_core_init_submit_site_settings() {
         'tos_txt'        => $_POST['tos_txt']
     ));
     
-    $new_options = array_merge( $old_options, $submit_site_settings );
-
-    update_site_option( 'dp_options', $new_options );
+    $options = array_merge( $options, $submit_site_settings );
+    update_site_option( 'dp_options', $options );
 }
 add_action( 'init', 'dp_core_init_submit_site_settings' );
 
 /**
- *
+ * dp_core_process_ads_settings()
+ * 
  * @return <type> 
  */
 function dp_core_process_ads_settings() {
+
+    $options = get_site_option( 'dp_options' );
+
+    if ( !isset( $options['ads']['h_ad'] )) {
+        $ads     = array( 'ads' => array( 'h_ad' => '<div class="h-ads"><span>Advertise Here</span></div>' ));
+        $options = array_merge( $options, $ads );
+        update_site_option( 'dp_options', $options );
+        return;
+    }
+
+    // return if no post request is made
     if ( !isset( $_POST['dp_submit_ads_settings'] ))
         return;
-
     // verify wp_nonce
     if ( !wp_verify_nonce( $_POST['dp_submit_settings_ads_secret'], 'dp_submit_settings_ads_verify'))
         return;
 
-    $old_options = get_site_option( 'dp_options' );
-    $ads         = array( 'ads' => array( 'h_ad' => stripslashes( $_POST['h_ad_code'] )));
-    $new_options = array_merge( $old_options, $ads );
-    update_site_option( 'dp_options', $new_options );
+    $ads     = array( 'ads' => array( 'h_ad' => stripslashes( $_POST['h_ad_code'] )));
+    $options = array_merge( $options, $ads );
+    update_site_option( 'dp_options', $options );
 }
 add_action( 'init', 'dp_core_process_ads_settings' );
-
-
-/**
- *
- * @return <type> 
- */
-function dp_login_user() {
-
-    $credentials = array( 'remember'=>true, 'user_login' => $_POST['username'], 'user_password' => $_POST['password'] );
-    $result = wp_signon( $credentials );
-    
-    if ( isset( $result->errors )) {
-        add_action( 'login_invalid', 'dp_invalid_class' );
-        return $result;
-    }
-    
-    wp_safe_redirect( get_bloginfo( 'url' ));
-    exit();
-}
-
-/**
- *
- * @param <type> $field
- * @return <type> 
- */
-function dp_validate_field( $field ) {
-
-    if ( $field == 'tos_agree' ) {
-        if ( empty( $_POST['tos_agree'] )) {
-            add_action( 'tos_agree_invalid', 'dp_invalid_class' );
-            return false;   
-        } else {
-            return true;
-        }
-    }
-
-    if ( $field == 'billing' ) {
-        if ( empty( $_POST['billing'] )) {
-            add_action( 'billing_invalid', 'dp_invalid_class' );
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-
-/**
- * dp_invalid_login()
- */
-function dp_invalid_login() {
-    echo 'class="dp-error"';
-    
-}
-
-/**
- * dp_invalid_class()
- */
-function dp_invalid_class() {
-    echo 'class="dp-error"';
-}
-
-function dp_checkout_submit_paypal() {
-
-    if ( !isset( $_POST['payment_method_submit'] ))
-        return;
-
-    if ( $_POST['payment_method'] == 'paypal' )
-        dp_geteway_paypal_express_call_checkout( $_POST['cost'] );
-}
-add_action( 'init', 'dp_checkout_submit_paypal' );
 
 /**
  * dp_init()

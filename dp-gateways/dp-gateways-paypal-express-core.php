@@ -10,63 +10,67 @@
  */
 
 /* All PayPal settings defined in the admin area */
-$dp_options = get_site_option( 'dp_options' );
+$options = get_site_option( 'dp_options' );
 
-/* PayPal API Credentials */
-$API_UserName  = $dp_options['paypal']['api_username'];
-$API_Password  = $dp_options['paypal']['api_password'];
-$API_Signature = $dp_options['paypal']['api_signature'];
+if ( isset( $options['paypal'] )) {
 
-/*
- * Define the PayPal Redirect URLs.
- * This is the URL that the buyer is first sent to do authorize payment
- * with their paypal account change the URL depending if you are testing
- * on the sandbox or the live PayPal site.
- * For the sandbox, the URL is:
- * https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=
- * For the live site, the URL is:
- * https://www.paypal.com/webscr&cmd=_express-checkout&token=
- */
-if ( $dp_options['paypal']['api_url'] == 'Sandbox' ) {
-    $API_Endpoint = "https://api-3t.sandbox.paypal.com/nvp";
-    $PAYPAL_URL = "https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=";
+    /* PayPal API Credentials */
+    $API_UserName  = $options['paypal']['api_username'];
+    $API_Password  = $options['paypal']['api_password'];
+    $API_Signature = $options['paypal']['api_signature'];
+
+    /*
+     * Define the PayPal Redirect URLs.
+     * This is the URL that the buyer is first sent to do authorize payment
+     * with their paypal account change the URL depending if you are testing
+     * on the sandbox or the live PayPal site.
+     * For the sandbox, the URL is:
+     * https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=
+     * For the live site, the URL is:
+     * https://www.paypal.com/webscr&cmd=_express-checkout&token=
+     */
+    if ( $options['paypal']['api_url'] == 'Sandbox' ) {
+        $API_Endpoint = 'https://api-3t.sandbox.paypal.com/nvp';
+        $PAYPAL_URL   = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=';
+    }
+    else {
+        $API_Endpoint = 'https://api-3t.paypal.com/nvp';
+        $PAYPAL_URL   = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=';
+    }
+
+    /*
+     * The currencyCodeType and paymentType are set to the selections
+     * made on the Integration Assistant.
+     */
+    $currencyCodeType = $options['paypal']['currency_code'];
+    $paymentType      = 'Sale';
+
+    /*
+     * The returnURL is the location where buyers return to when a payment
+     * has been succesfully authorized.
+     * This is set to the value entered on the Integration Assistant.
+     */
+    $returnURL =  get_bloginfo('url') . '/submit-listing/';
+
+    /*
+     * The cancelURL is the location buyers are sent to when they hit the
+     * cancel button during authorization of payment during the PayPal flow.
+     * This is set to the value entered on the Integration Assistant
+     */
+    $cancelURL = get_bloginfo('url') . '/';
+
+    /* Defines all the global variables  */
+    $PROXY_HOST = '127.0.0.1';
+    $PROXY_PORT = '808';
+
+    /* BN Code 	is only applicable for partners */
+    $sBNCode = "PP-ECWizard";
+
+    /* Version and Proxy Usage  */
+    $USE_PROXY = false;
+    $version   = '64';
+
 }
-else {
-    $API_Endpoint = "https://api-3t.paypal.com/nvp";
-    $PAYPAL_URL = "https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=";
-}
-
-/*
- * The currencyCodeType and paymentType are set to the selections
- * made on the Integration Assistant.
- */
-$currencyCodeType = $dp_options['paypal']['currency_code'];
-$paymentType      = 'Sale';
-
-/*
- * The returnURL is the location where buyers return to when a payment
- * has been succesfully authorized.
- * This is set to the value entered on the Integration Assistant.
- */
-$returnURL =  get_bloginfo('url') . '/submit-listing/';
-
-/*
- * The cancelURL is the location buyers are sent to when they hit the
- * cancel button during authorization of payment during the PayPal flow.
- * This is set to the value entered on the Integration Assistant
- */
-$cancelURL = get_bloginfo('url') . '/';
-
-/* Defines all the global variables  */
-$PROXY_HOST = '127.0.0.1';
-$PROXY_PORT = '808';
-
-/* BN Code 	is only applicable for partners */
-$sBNCode = "PP-ECWizard";
-
-/* Version and Proxy Usage  */
-$USE_PROXY = false;
-$version   = '64';
 
 if ( session_id() == '' )
     session_start();
@@ -629,11 +633,10 @@ function hash_call( $methodName, $nvpStr ) {
 function RedirectToPayPal( $token ) {
     global $PAYPAL_URL;
     
-    // Redirect to paypal.com here
     $payPalURL = $PAYPAL_URL . $token;
-
+    
     header( 'Location: ' . $payPalURL );
-    exit();
+    exit;
 }
 
 /**
@@ -668,5 +671,4 @@ function deformatNVP( $nvpstr ) {
      
     return $nvpArray;
 }
-
 ?>

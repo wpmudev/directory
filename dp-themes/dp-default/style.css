@@ -1585,3 +1585,7 @@ div.menu {
 .h-ads span {
     line-height: 85px;
 }
+.archive .wp-post-image {
+    width: 50px !important;
+    height: 50px !important;
+}

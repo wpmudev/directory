@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * dp_setup()
  */
 function dp_setup() {
     add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );

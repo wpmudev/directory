@@ -19,7 +19,11 @@ get_header(); ?>
             <?php if ( is_multisite() ): ?>
                 <?php dp_categories_top( $wp_query->query_vars['category_name'] ); ?>
             <?php else: ?>
-                <?php dp_categories_top( $wp_query->query_vars['pagename'] ); ?>
+                <?php if ( isset( $wp_query->query_vars['pagename'] ) && !empty( $wp_query->query_vars['pagename'] )): ?>
+                    <?php dp_categories_top( $wp_query->query_vars['pagename'] ); ?>
+                <?php elseif ( isset( $wp_query->query_vars['name'] ) && !empty( $wp_query->query_vars['name'] )): ?>
+                    <?php dp_categories_top( $wp_query->query_vars['name'] ); ?>
+                <?php endif; ?>
             <?php endif; ?>
 
 			<?php

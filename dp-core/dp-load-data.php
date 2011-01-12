@@ -1,15 +1,22 @@
 <?php
 
+/**
+ * dp_load_data()
+ * 
+ * @global <type> $wpdb
+ * @return NULL If data is already loaded
+ */
 function dp_load_data() {
     global $wpdb;
 
     $options = get_site_option( 'dp_options' );
 
-    if ( isset( $options['load_data'] ))
+    // stop execution if the data flag is already set
+    if ( isset( $options['data_loaded'] ))
         return;
-    
+
+    // insert data into DB
     if ( is_multisite() ) {
-        
         $wpdb->insert( $wpdb->prefix . 'sitemeta', array(
             'site_id'    => 1,
             'meta_key'   => 'ct_custom_post_types_tmp',
@@ -26,10 +33,15 @@ function dp_load_data() {
             'site_id'    => 1,
             'meta_key'   => 'ct_custom_fields_tmp',
             'meta_value' => 'a:1:{s:18:"text_4ccc5fd023950";a:8:{s:11:"field_title";s:8:"Site URL";s:10:"field_type";s:4:"text";s:16:"field_sort_order";s:7:"default";s:20:"field_default_option";N;s:17:"field_description";s:99:"URL stands for Uniform Resource Locator, which means your site address. Example: http://example.com";s:11:"object_type";a:1:{i:0;s:17:"directory_listing";}s:8:"required";N;s:8:"field_id";s:18:"text_4ccc5fd023950";}}'
-            ), array( '%d', '%s', '%s' ));    
+            ), array( '%d', '%s', '%s' ));
+        
+        $wpdb->insert( $wpdb->prefix . 'sitemeta', array(
+            'site_id'    => 1,
+            'meta_key'   => 'ct_flush_rewrite_rules',
+            'meta_value' => 1
+            ), array( '%d', '%s', '%d' ));
     }
     else {
-        
         $wpdb->insert( $wpdb->options, array(
             'blog_id'      => 0,
             'option_name'  => 'ct_custom_post_types_tmp',
@@ -48,50 +60,56 @@ function dp_load_data() {
             'option_value' => 'a:1:{s:18:"text_4ccc5fd023950";a:8:{s:11:"field_title";s:8:"Site URL";s:10:"field_type";s:4:"text";s:16:"field_sort_order";s:7:"default";s:20:"field_default_option";N;s:17:"field_description";s:99:"URL stands for Uniform Resource Locator, which means your site address. Example: http://example.com";s:11:"object_type";a:1:{i:0;s:17:"directory_listing";}s:8:"required";N;s:8:"field_id";s:18:"text_4ccc5fd023950";}}'
             ), array( '%d', '%s', '%s' ));
 
+        $wpdb->insert( $wpdb->options, array(
+            'blog_id'      => 0,
+            'option_name'  => 'ct_flush_rewrite_rules',
+            'option_value' => 1
+            ), array( '%d', '%s', '%d' ));
     }
 
-    $available_post_types = get_site_option( 'ct_custom_post_types' );
-    $available_taxonomies = get_site_option( 'ct_custom_taxonomies' );
-    $available_fields     = get_site_option( 'ct_custom_fields' );
+    // get available data into the vars
+    $post_types    = get_site_option( 'ct_custom_post_types' );
+    $taxonomies    = get_site_option( 'ct_custom_taxonomies' );
+    $custom_fields = get_site_option( 'ct_custom_fields' );
 
+    // put proper data into var
+    if ( empty( $post_types )) {
+        $post_types = get_site_option( 'ct_custom_post_types_tmp' );
+    } else {
+        $tmp_post_types = get_site_option( 'ct_custom_post_types_tmp' );
+        $post_types     = array_merge( $post_types, $tmp_post_types );
+    }
 
-    if ( !empty( $available_post_types )) {
-        $imported_post_types  = get_site_option( 'ct_custom_post_types_tmp' );
-        $new_post_types       = array_merge( $available_post_types, $imported_post_types );
-        update_site_option( 'ct_custom_post_types', $new_post_types );
+    // put proper data into var
+    if ( empty( $taxonomies )) {
+        $taxonomies = get_site_option( 'ct_custom_taxonomies_tmp' );
     }
     else {
-        $imported_post_types  = get_site_option( 'ct_custom_post_types_tmp' );
-        update_site_option( 'ct_custom_post_types', $imported_post_types );
+        $tmp_taxonomies = get_site_option( 'ct_custom_taxonomies_tmp' );
+        $taxonomies     = array_merge( $taxonomies, $tmp_taxonomies );
     }
 
-    if ( !empty( $available_taxonomies )) {
-        $imported_taxonomies  = get_site_option( 'ct_custom_taxonomies_tmp' );
-        $new_taxonomies       = array_merge( $available_taxonomies, $imported_taxonomies );
-        update_site_option( 'ct_custom_taxonomies', $new_taxonomies );
+    // put proper data into var
+    if ( empty( $custom_fields )) {
+        $custom_fields  = get_site_option( 'ct_custom_fields_tmp' );
     }
     else {
-        $imported_taxonomies  = get_site_option( 'ct_custom_taxonomies_tmp' );
-        update_site_option( 'ct_custom_taxonomies', $imported_taxonomies );
+        $tmp_custom_fields = get_site_option( 'ct_custom_fields_tmp' );
+        $custom_fields     = array_merge( $custom_fields, $tmp_custom_fields );
     }
 
-    if ( !empty( $available_fields )) {
-        $imported_fields  = get_site_option( 'ct_custom_fields_tmp' );
-        $new_fields       = array_merge( $available_fields, $imported_fields );
-        update_site_option( 'ct_custom_fields', $new_fields );
-    }
-    else {
-        $imported_fields  = get_site_option( 'ct_custom_fields_tmp' );
-        update_site_option( 'ct_custom_fields', $imported_fields );
-    }
+    update_site_option( 'ct_custom_post_types', $post_types );
+    update_site_option( 'ct_custom_taxonomies', $taxonomies );
+    update_site_option( 'ct_custom_fields', $custom_fields );
 
     delete_site_option( 'ct_custom_post_types_tmp' );
     delete_site_option( 'ct_custom_taxonomies_tmp' );
     delete_site_option( 'ct_custom_fields_tmp' );
 
-    $load_data   = array( 'load_data' => true );
-    $new_options = array_merge( $options, $load_data );
-    update_site_option( 'dp_options', $new_options );
+    // create data loaded flag so we don't load the data twice
+    $data_loaded = array( 'data_loaded' => true );
+    $options = array_merge( $options, $data_loaded );
+    update_site_option( 'dp_options', $options );
 }
 add_action( 'init', 'dp_load_data' );
 
