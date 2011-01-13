@@ -1,39 +1,46 @@
-(function($) {
+// Handle show embed code clicks
+var embed_code = {
+    toggle_embed_code: function(key) {
+        jQuery('#embed-code-'+key).toggle();
+//        jQuery('.action-links-'+key).hide();
+//        jQuery('.separators-'+key).hide();
+//        jQuery('input[name="action"]').val('end');
+    },
+    cancel: function(key) {
+        jQuery('#form-'+key).hide();
+        jQuery('.action-links-'+key).show();
+        jQuery('.separators-'+key).show();
+    }
+};
 
+(function($) {
+    
     $(document).ready(function($) {
 
-        $('.ct-toggle').toggle(
-            function() {
-                $(this).next().hide(); },
-            function() {
-                $(this).next().show(); }
-        );
+        $('.embed-code').hide();
 
+        $('.ct-toggle').toggle(
+            function() { $(this).next().hide(); },
+            function() { $(this).next().show(); }
+        );
         $('.ct-arrow').toggle(
-            function() {
-                $(this).next().next().hide(); },
-            function() {
-                $(this).next().next().show(); }
+            function() { $(this).next().next().hide(); },
+            function() { $(this).next().next().show(); }
         );
 
         // bind functions
-        $(window).bind('load', ct_init_public_checked_post_type);
-        $('.ct-post-type input[name="public"]').bind('change', ct_init_public_checked_post_type);
-
-        $(window).bind('load', ct_init_rewrite_checked_post_type);
-        $('.ct-post-type input[name="rewrite"]').bind('change', ct_init_rewrite_checked_post_type);
-
-        $(window).bind('load', ct_init_capability_checked_post_type);
-        $('.ct-post-type input[name="capability_type_edit"]').bind('change', ct_init_capability_checked_post_type);
-
-        $(window).bind('load', ct_init_public_checked_taxonomy);
-        $('.ct-taxonomy input[name="public"]').bind('change', ct_init_public_checked_taxonomy);
-        
-        $(window).bind('load', ct_init_rewrite_checked_taxonomy);
-        $('.ct-taxonomy input[name="rewrite"]').bind('change', ct_init_rewrite_checked_taxonomy);
-
-        $(window).bind('load', ct_field_type_options);
-        $('.ct-custom-fields select[name="field_type"]').bind('change', ct_field_type_options);
+        $(window).bind('load', init_public_checked_post_type);
+        $('.ct-post-type input[name="public"]').bind('change', init_public_checked_post_type);
+        $(window).bind('load', init_rewrite_checked_post_type);
+        $('.ct-post-type input[name="rewrite"]').bind('change', init_rewrite_checked_post_type);
+        $(window).bind('load', init_capability_checked_post_type);
+        $('.ct-post-type input[name="capability_type_edit"]').bind('change', init_capability_checked_post_type);
+        $(window).bind('load', init_public_checked_taxonomy);
+        $('.ct-taxonomy input[name="public"]').bind('change', init_public_checked_taxonomy);
+        $(window).bind('load', init_rewrite_checked_taxonomy);
+        $('.ct-taxonomy input[name="rewrite"]').bind('change', init_rewrite_checked_taxonomy);
+        $(window).bind('load', field_type_options);
+        $('.ct-custom-fields select[name="field_type"]').bind('change', field_type_options);
 
         // custom fields add options
         $('.ct-field-add-option').click(function() {
@@ -50,16 +57,20 @@
                         '</p>'; 
             });
         });
-
         // custom fields remove options
         $('.ct-field-delete-option').live('click', function() {
             $(this).parent().remove();
         });
 
+        $('#embed-code-link').click(function() {
+
+            
+        });
+
     });
 
     // initiate the values associated with the post type public field
-    function ct_init_public_checked_post_type() {
+    function init_public_checked_post_type() {
         if ( $('.ct-post-type input[name="public"]:checked').val() === '0' ) {
             $('.ct-post-type input[name="show_ui"][value="0"]').attr( 'checked', true );
             $('.ct-post-type input[name="show_in_nav_menus"][value="0"]').attr( 'checked', true );
@@ -89,7 +100,7 @@
     }
 
     // initiate the values for the post type rewrite field
-    function ct_init_rewrite_checked_post_type() {
+    function init_rewrite_checked_post_type() {
         if ( $('.ct-post-type input[name="rewrite"]:checked').val() === '1'
           || $('.ct-post-type input[name="rewrite"]:checked').val() === '0' ) {
             $('.ct-post-type input[name="rewrite_slug"]').attr( 'disabled', true );
@@ -99,7 +110,7 @@
     }
 
     // initiate the values for the post type capability field
-    function ct_init_capability_checked_post_type() {
+    function init_capability_checked_post_type() {
         if ( $('.ct-post-type input[name="capability_type"]').val() != 'post' ) {
             $('.ct-post-type input[name="capability_type"]').attr( 'disabled', false );
         } else if ( $('.ct-post-type input[name="capability_type_edit"]:checked').val() === '1' ) {
@@ -110,7 +121,7 @@
     }
 
     // initiate the values for the taxonomy public field
-    function ct_init_public_checked_taxonomy() {
+    function init_public_checked_taxonomy() {
         if ( $('.ct-taxonomy input[name="public"]:checked').val() === '0' ) {
             $('.ct-taxonomy input[name="show_ui"][value="0"]').attr( 'checked', true );
             $('.ct-taxonomy input[name="show_in_nav_menus"][value="0"]').attr( 'checked', true );
@@ -135,7 +146,7 @@
     }
 
     // initiate the value of the taxonomy rewrite field
-    function ct_init_rewrite_checked_taxonomy() {
+    function init_rewrite_checked_taxonomy() {
         if ( $('.ct-taxonomy input[name="rewrite"]:checked').val() === '1'
           || $('.ct-taxonomy input[name="rewrite"]:checked').val() === '0' ) {
             $('.ct-taxonomy input[name="rewrite_slug"]').attr( 'disabled', true );
@@ -145,7 +156,7 @@
     }
 
     // public field values initiation
-    function ct_field_type_options() {
+    function field_type_options() {
         if ( $('.ct-custom-fields select option:selected').val() === 'radio'
           || $('.ct-custom-fields select option:selected').val() === 'selectbox'
           || $('.ct-custom-fields select option:selected').val() === 'multiselectbox'

@@ -3,7 +3,7 @@
 /*
 Submodule Name: Content Types
 Description: Content Types - Custom Post, Taxonomy and Field Manager.
-Version: 1.0.7
+Version: 1.1.0
 Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -32,18 +32,6 @@ define ( 'CT_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE_
 /** Define the submodule root folder dir. */
 define ( 'CT_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
-include_once 'ct-config.php';
-include_once 'ct-core/ct-core.php';
-include_once 'ct-admin-ui/ct-admin-ui-display-custom-fields.php';
-include_once 'ct-admin-ui/ct-admin-ui-content-types.php';
-
-/**
- * cp_load_plugin_textdomain()
- *
- * Loads "content_types-[xx_XX].mo" language file from the "ct-languages" directory
- */
-function ct_load_plugin_textdomain() {
-    $plugin_dir = CT_SUBMODULE_DIR . 'ct-languages';
-    load_plugin_textdomain( 'content_types', null, $plugin_dir );
-}
-add_action( 'init', 'ct_load_plugin_textdomain', 0 );
+include_once 'config.php';
+include_once 'core/core.php';
+include_once 'core/admin.php';

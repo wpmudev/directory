@@ -78,6 +78,7 @@
 }
 .ct-object-type {
     width: 200px;
+    height: inherit !important;
 }
 .ct-field-type-options {
     display: none;
@@ -97,4 +98,13 @@
 }
 .ct-embed-code {
     max-width: 400px;
+}
+.updated {
+    margin: 10px 15px 0 0;
+}
+.embed-code td {
+    padding: 8px 0 16px 0 !important;
+}
+.embed-code-wrap {
+    margin-left: 10px;
 }
