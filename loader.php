@@ -27,19 +27,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
-/*
- * Enable error repporting if in debug mode
- */
-//  error_reporting( E_ALL ^ E_NOTICE );
-//  ini_set( 'display_errors', 1 );
-
-/* tmp debug func */
-function dp_debug( $param ) {
-    echo '<pre>';
-    print_r( (array) $param );
-    echo '</pre>';
-}
-
 /* Define plugin version */ 
 define ( 'DP_VERSION', '1.0.5' );
 define ( 'DP_DB_VERSION', '1.1' );

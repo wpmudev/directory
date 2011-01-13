@@ -3,7 +3,7 @@
 /*
 Submodule Name: Content Types
 Description: Content Types - Custom Post, Taxonomy and Field Manager.
-Version: 1.1.0
+Version: 1.1.1
 Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)

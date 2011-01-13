@@ -61,7 +61,7 @@ function dp_load_data() {
         update_site_option( 'dp_options', $options );
     }
 
-    if ( !isset( $options['data']['taxonomies_loaded'] ) && $_POST['import_taxonomies'] == 1 )  {
+    if ( !isset( $options['data']['taxonomies_loaded'] ) && !empty( $_POST['import_taxonomies'] ) )  {
 
          // insert data into DB
         if ( is_multisite() ) {
@@ -114,7 +114,7 @@ function dp_load_data() {
         update_site_option( 'dp_options', $options );
     }
 
-    if ( !isset( $options['data']['custom_fields_loaded'] ) && $_POST['import_custom_fields'] == 1 ) {
+    if ( !isset( $options['data']['custom_fields_loaded'] ) && !empty( $_POST['import_custom_fields'] ) ) {
 
          // insert data into DB
         if ( is_multisite() ) {

@@ -45,8 +45,8 @@ function dp_admin_ui_settings_general( $options ) { ?>
                 </th>
                 <td>
                     <select name="order_taxonomies">
-                        <option value="default" <?php if ( $options['general_settings']['order_taxonomies'] == 'default' ) echo 'selected="selected"'; ?> >Order Entered</option>
-                        <option value="alphabetical" <?php if ( $options['general_settings']['order_taxonomies'] == 'alphabetical' ) echo 'selected="selected"'; ?> >Alphabetically</option>
+                        <option value="default" <?php if ( isset( $options['general_settings']['order_taxonomies'] ) && $options['general_settings']['order_taxonomies'] == 'default' ) echo 'selected="selected"'; ?> ><?php _e( 'Order Entered', 'directory' ); ?></option>
+                        <option value="alphabetical" <?php if ( isset( $options['general_settings']['order_taxonomies'] ) && $options['general_settings']['order_taxonomies'] == 'alphabetical' ) echo 'selected="selected"'; ?> ><?php _e( 'Alphabetically', 'directory' ); ?></option>
                     </select>
                     <span class="description"><?php _e('This setting will order the taxonomies.', 'directory'); ?></span>
                 </td>

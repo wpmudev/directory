@@ -90,7 +90,7 @@
 ?>
 </head>
 
-<body <?php if ( dp_categories_top_check_slug( $wp_query->query_vars['categorydp_name'] )) { echo 'class="dp-top-level"'; } else { body_class(); }  ?>>
+<body <?php if ( isset( $wp_query->query_vars['categorydp_name'] ) && dp_categories_top_check_slug( $wp_query->query_vars['categorydp_name'] ) ) { echo 'class="dp-top-level"'; } else { body_class(); }  ?>>
 <div id="wrapper" class="hfeed">
 	<div id="header">
 		<div id="masthead">
