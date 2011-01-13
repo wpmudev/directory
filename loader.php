@@ -58,7 +58,7 @@ include_once 'dp-core/dp-core-load-data.php';
 include_once 'dp-gateways/dp-gateways-paypal-express-core.php';
 
 /* include "Content Types" submodule */
-include_once 'dp-submodules/content-types/ct-loader.php';
+include_once 'dp-submodules/content-types/loader.php';
 
 /**
  * dp_load_plugin_textdomain()
