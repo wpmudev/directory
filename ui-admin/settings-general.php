@@ -1,21 +1,14 @@
-<?php
+<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-/**
- * dp_admin_ui_settings_ads()
- *
- * Outputs "Directory Settings" admin page.
- *
- */
-function dp_admin_ui_settings_general( $options ) { ?>
+<?php $options = $this->get_options(); ?>
 
-    <div class="clear"></div>
+<div class="wrap">
+    <?php screen_icon('options-general'); ?>
+
+    <?php $this->render_admin( 'navigation', array( 'sub' => 'general' ) ); ?>
+    
     <form action="" method="post" class="dp-general">
-        <?php wp_nonce_field( 'dp_submit_settings_general_verify', 'dp_submit_settings_general_secret' ); ?>
-
-        <?php /** @todo
-        <div class="updated below-h2" id="message">
-            <p><a href=""></a></p>
-        </div> */ ?>
+        
         <h3><?php _e( 'Import', 'directory' ); ?></h3>
         <table class="form-table">
             <tr>
@@ -52,7 +45,13 @@ function dp_admin_ui_settings_general( $options ) { ?>
                 </td>
             </tr>
         </table>
-        <br />
-        <input type="submit" class="button-primary" name="dp_submit_general_settings" value="Save Changes">
-    </form> <?php
-} ?>
+
+        <p class="submit">
+            <?php wp_nonce_field('verify'); ?>
+            <input type="hidden" name="key" value="general_settings" />
+            <input type="submit" class="button-primary" name="save" value="Save Changes">
+        </p>
+        
+    </form>
+    
+</div>

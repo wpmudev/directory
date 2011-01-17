@@ -11,13 +11,15 @@ class Directory_Core {
     /** @var string $plugin_db_version plugin database version */
     var $plugin_db_version = DP_DB_VERSION;
     /** @var string $plugin_url Plugin URL */
-    var $plugin_url    = DP_PLUGIN_URL;
+    var $plugin_url = DP_PLUGIN_URL;
     /** @var string $plugin_dir Path to plugin directory */
-    var $plugin_dir    = DP_PLUGIN_DIR;
+    var $plugin_dir = DP_PLUGIN_DIR;
     /** @var string $text_domain The text domain for strings localization */
-    var $text_domain   = 'directory';
+    var $text_domain = 'directory';
     /** @var string User role */
     var $user_role = 'dp_member';
+    /** @var string Name of options DB entry */
+    var $options_name = 'dp_options';
 
     /**
      * Constructor.
@@ -36,19 +38,12 @@ class Directory_Core {
      **/
     function init() {
         /* Register Directory themes contained within the dp-themes folder */
-        if ( function_exists( 'register_theme_directory' ))
+        if ( function_exists( 'register_theme_directory' ) )
             register_theme_directory( $this->plugin_dir . 'themes' );
-        
-        add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
-        add_action( 'admin_init', array( &$this, 'hook' ) );
         add_action( 'init', array( &$this, 'roles' ) );
         add_action( 'init', array( &$this, 'add_pages' ) );
-        add_action( 'init', array( &$this, 'dp_set_billing_type' ) );
-        add_action( 'init', array( &$this, 'dp_redirect_after_payment' ) );
-        add_action( 'init', array( &$this, 'dp_core_process_paypal_express_settings' ) );
-        add_action( 'init', array( &$this, 'dp_core_init_submit_site_settings' ) );
-        add_action( 'init', array( &$this, 'dp_core_process_ads_settings' ) );
-        add_action( 'init', array( &$this, 'dp_core_process_general_settings' ) );
+        add_action( 'init', array( &$this, 'set_billing_type' ) );
+        add_action( 'init', array( &$this, 'redirect_after_payment' ) );
         add_action( 'dp_loaded', array( &$this, 'dp_init' ) );
     }
 
@@ -59,66 +54,6 @@ class Directory_Core {
      **/
     function init_vars() {
 
-    }
-
-    /**
-     * Register all admin menues.
-     *
-     * @return void
-     **/
-    function admin_menu() {
-        add_menu_page( __( 'Directory', $this->text_domain ), __( 'Directory', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'load_admin_ui' ) );
-        add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'load_admin_ui' ) );
-    }
-
-    /**
-     * Get page hook and hook ct_core_enqueue_styles() and ct_core_enqueue_scripts() to it.
-     * 
-     * @return void
-     **/
-    function hook() {
-        $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : NULL;
-        if ( function_exists( 'get_plugin_page_hook' ))
-            $hook = get_plugin_page_hook( $page, 'dp_main' );
-        else
-            $hook = 'directory' . '_page_' . $page;
-
-        add_action( 'admin_print_styles-' .  $hook, array( &$this, 'enqueue_styles' ) );
-        add_action( 'admin_print_scripts-' . $hook, array( &$this, 'enqueue_scripts' ) );
-    }
-
-    /**
-     * Load styles on plugin admin pages only.
-     *
-     * @return void
-     **/
-    function enqueue_styles() {
-        wp_enqueue_style( 'dp-admin-styles',
-                           $this->plugin_url . 'ui-admin/css/dp-admin-ui-styles.css');
-    }
-
-    /**
-     * Load scripts on plugin specific admin pages only.
-     *
-     * @return void
-     **/
-    function enqueue_scripts() {
-        wp_enqueue_script( 'dp-admin-scripts',
-                            $this->plugin_url . 'ui-admin/js/dp-admin-ui-scripts.js',
-                            array( 'jquery' ) );
-    }
-
-    /**
-     * dp_core_load_admin_ui()
-     *
-     * Loads admin page templates based on $_GET request values and passes variables.
-     */
-    function load_admin_ui() {
-        include_once $this->plugin_dir . 'ui-admin/main.php';
-
-        // load settings ui
-        if ( $_GET['page'] == 'dp_main' )
-            dp_admin_ui_main();
     }
 
     /**
@@ -207,7 +142,7 @@ class Directory_Core {
      * @param <type> $last_name
      * @return <type>
      */
-    function dp_insert_user( $email, $first_name, $last_name, $billing ) {
+    function insert_user( $email, $first_name, $last_name, $billing ) {
 
         require_once( ABSPATH . WPINC . '/registration.php' );
 
@@ -250,11 +185,11 @@ class Directory_Core {
     }
 
     /**
-     * dp_set_billing_type()
+     * Set billing type.
      *
      * @return <type>
      */
-    function dp_set_billing_type() {
+    function set_billing_type() {
         if ( !isset( $_POST['payment_method_submit'] ))
             return;
 
@@ -262,9 +197,9 @@ class Directory_Core {
     }
 
     /**
-     * dp_redirect_after_payment()
+     * Redirect after payment
      */
-    function dp_redirect_after_payment() {
+    function redirect_after_payment() {
 
         if ( isset( $_REQUEST['redirect_admin_profile'] )) {
             wp_redirect( admin_url( 'profile.php' ));
@@ -276,121 +211,55 @@ class Directory_Core {
     }
 
     /**
-     * dp_core_process_paypal_express_settings()
+     * Save plugin options.
      *
-     * Process PayPal admin settings add/update
-     */
-    function dp_core_process_paypal_express_settings() {
-
-        // stop execution and return if no request is made
-        if ( !isset( $_POST['dp_submit_paypal_express_settings'] ))
-            return;
-
-        // verify wp_nonce
-        if ( !wp_verify_nonce( $_POST['dp_submit_paypal_express_settings_secret'], 'dp_submit_paypal_express_settings_verify'))
-            return;
-
-        $post_options = array( 'paypal' => array(
-            'api_url'       => $_POST['paypal_express_url'],
-            'api_username'  => $_POST['paypal_express_api_username'],
-            'api_password'  => $_POST['paypal_express_api_password'],
-            'api_signature' => $_POST['paypal_express_api_signature'],
-            'currency_code' => $_POST['paypal_express_currency_code']
-        ));
-
-        $old_options = get_site_option( 'dp_options' );
-
-        if ( isset( $old_options['paypal'] )) {
-            $new_options = array_merge( $old_options, $post_options );
-            update_site_option( 'dp_options', $new_options );
+     * @param  array $params The $_POST array
+     * @return die() if _wpnonce is not verified
+     **/
+    function save_options( $params ) {
+        if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
+            /* Remove unwanted parameters */
+            unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
+            /* Update options by merging the old ones */
+            $options = $this->get_options();
+            $options = array_merge( $options, array( $params['key'] => $params ) );
+            update_site_option( $this->options_name, $options );
         } else {
-            update_site_option( 'dp_options', $post_options );
+            die( __( 'Security check failed!', $this->text_domain ) );
         }
-    }
-
-
-    /**
-     * dp_core_init_submit_site_settings()
-     *
-     * @return <type>
-     */
-    function dp_core_init_submit_site_settings() {
-
-        $options = get_site_option( 'dp_options' );
-
-        if ( !isset( $options['submit_site_settings'] )) {
-            $submit_site_settings = array( 'submit_site_settings' => array(
-                'annual_price'   => 10,
-                'annual_txt'     => 'Annually Recurring Charge',
-                'one_time_price' => 50,
-                'one_time_txt'   => 'One-Time Only Charge',
-                'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
-            ));
-            $options = array_merge( $options, $submit_site_settings );
-            update_site_option( 'dp_options', $options );
-            return;
-        }
-
-        // stop execution and return if no request is made
-        if ( !isset( $_POST['dp_submit_site_settings'] ))
-            return;
-        // verify wp_nonce
-        if ( !wp_verify_nonce( $_POST['dp_submit_settings_submit_site_secret'], 'dp_submit_settings_submit_site_verify'))
-            return;
-
-        $submit_site_settings = array( 'submit_site_settings' => array(
-            'annual_price'   => $_POST['annual_payment_option_price'],
-            'annual_txt'     => $_POST['annual_payment_option_txt'],
-            'one_time_price' => $_POST['one_time_payment_option_price'],
-            'one_time_txt'   => $_POST['one_time_payment_option_txt'],
-            'tos_txt'        => $_POST['tos_txt']
-        ));
-
-        $options = array_merge( $options, $submit_site_settings );
-        update_site_option( 'dp_options', $options );
     }
 
     /**
-     * dp_core_process_ads_settings()
+     * Get plugin options.
      *
-     * @return <type>
-     */
-    function dp_core_process_ads_settings() {
-
-        $options = get_site_option( 'dp_options' );
-
-        if ( !isset( $options['ads']['h_ad'] )) {
-            $ads     = array( 'ads' => array( 'h_ad' => '<div class="h-ads"><span>Advertise Here</span></div>' ));
-            $options = array_merge( $options, $ads );
-            update_site_option( 'dp_options', $options );
-            return;
-        }
-
-        // return if no post request is made
-        if ( !isset( $_POST['dp_submit_ads_settings'] ))
-            return;
-        // verify wp_nonce
-        if ( !wp_verify_nonce( $_POST['dp_submit_settings_ads_secret'], 'dp_submit_settings_ads_verify'))
-            return;
-
-        $ads     = array( 'ads' => array( 'h_ad' => stripslashes( $_POST['h_ad_code'] )));
-        $options = array_merge( $options, $ads );
-        update_site_option( 'dp_options', $options );
+     * @param  string|NULL $key The key for that plugin option.
+     * @return array $options Plugin options or empty array if no options are found
+     **/
+    function get_options( $key = NULL ) {
+        $options = get_site_option( $this->options_name );
+        $options = is_array( $options ) ? $options : array();
+        /* Check if specific plugin option is requested and return it */
+        if ( isset( $key ) && array_key_exists( $key, $options ) )
+            return $options[$key];
+        else
+            return $options;
     }
 
-    function dp_core_process_general_settings() {
-        // return if no post request is made
-        if ( !isset( $_POST['dp_submit_general_settings'] ))
-            return;
-        // verify wp_nonce
-        if ( !wp_verify_nonce( $_POST['dp_submit_settings_general_secret'], 'dp_submit_settings_general_verify'))
-            return;
-
-        $settings = array( 'general_settings' => array( 'order_taxonomies' => $_POST['order_taxonomies'] ));
-        $options = get_site_option( 'dp_options' );
-        $options = array_merge( $options, $settings );
-        update_site_option( 'dp_options', $options );
-    }
+    /**
+	 * Renders an admin section of display code.
+	 *
+	 * @param  string $name Name of the admin file(without extension)
+	 * @param  string $vars Array of variable name=>value that is available to the display code(optional)
+	 * @return void
+	 **/
+    function render_admin( $name, $vars = array() ) {
+		foreach ( $vars as $key => $val )
+			$$key = $val;
+		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
+			include "{$this->plugin_dir}ui-admin/{$name}.php";
+		else
+			echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
+	}
 
     /**
      * dp_init()
