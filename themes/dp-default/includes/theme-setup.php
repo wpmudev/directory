@@ -1,8 +1,10 @@
 <?php
 
 /**
- * dp_setup()
- */
+ * Setup theme.
+ *
+ * @return void
+ **/
 function dp_setup() {
     add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );
     add_theme_support( 'automatic-feed-links', array( 'directory_listing' ) );
@@ -26,8 +28,10 @@ function dp_setup() {
 add_action('after_setup_theme', 'dp_setup' );
 
 /**
+ * Init widgets.
  *
- */
+ * @return void
+ **/
 function dp_widgets_init() {
 	// Area 1, located in the footer. Empty by default.
 	register_sidebar( array(
@@ -78,7 +82,7 @@ add_action( 'widgets_init', 'dp_widgets_init' );
 
 /**
  * Prints HTML with meta information for the current post—date/time and author.
- */
+ **/
 function dp_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
 		'meta-prep meta-prep-author',
@@ -97,7 +101,7 @@ function dp_posted_on() {
 
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
- */
+ **/
 function dp_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
@@ -119,160 +123,91 @@ function dp_posted_in() {
 }
 
 /**
- * dp_categories_home()
- *
  * Display Categories on Home
- */
-function dp_categories_home() {
+ *
+ * @param string $section The section where these will be loded.
+ * @return string(HTML)
+ **/
+function dp_list_categories( $section ) {
     global $wp_rewrite;
     $taxonomies = get_taxonomies( '', 'label' );
 
-    foreach ( $taxonomies as $taxonomy => $value ) {
-        if ( is_object_in_taxonomy('directory_listing', $taxonomy )  ) {
-            $args = array(
-                'orderby'            => 'name',
-                'order'              => 'ASC',
-                'show_last_update'   => 0,
-                'style'              => 'list',
-                'show_count'         => 0,
-                'hide_empty'         => 0,
-                'use_desc_for_title' => 0,
-                'child_of'           => 0,
-                'hierarchical'       => true,
-                'title_li'           => "<h2>{$value->labels->name}</h2>",
-                'number'             => 10,
-                'echo'               => 1,
-                'depth'              => 1,
-                'current_category'   => 0,
-                'pad_counts'         => 1,
-                'taxonomy'           =>  $taxonomy
-                // optional:
-                // 'show_option_all'    => ,
-                // 'feed'               => ,
-                // 'feed_type'          => ,
-                // 'feed_image'         => ,
-                // 'exclude'            => ,
-                // 'exclude_tree'       => ,
-                // 'include'            => ,
-                // 'walker'             => 'Walker_Category'
-            );
+    if ( isset( $section ) && $section == 'home' ) {
+        foreach ( $taxonomies as $taxonomy => $value ) {
+            if ( is_object_in_taxonomy('directory_listing', $taxonomy )  ) {
+                $args = array(
+                    'orderby'            => 'name',
+                    'order'              => 'ASC',
+                    'show_last_update'   => 0,
+                    'style'              => 'list',
+                    'show_count'         => 0,
+                    'hide_empty'         => 0,
+                    'use_desc_for_title' => 0,
+                    'child_of'           => 0,
+                    'hierarchical'       => true,
+                    'title_li'           => "<h2>{$value->labels->name}</h2>",
+                    'number'             => 10,
+                    'echo'               => 1,
+                    'depth'              => 1,
+                    'current_category'   => 0,
+                    'pad_counts'         => 1,
+                    'taxonomy'           =>  $taxonomy
+                    // optional arguments:
+                    // 'show_option_all'    => ,
+                    // 'feed'               => ,
+                    // 'feed_type'          => ,
+                    // 'feed_image'         => ,
+                    // 'exclude'            => ,
+                    // 'exclude_tree'       => ,
+                    // 'include'            => ,
+                    // 'walker'             => 'Walker_Category'
+                );
 
-            wp_list_categories( $args );
+                wp_list_categories( $args );
 
+            }
         }
+    } elseif ( isset( $section ) && $section == 'sub' ) {
+        global $wp_query;
+
+        $args = array(
+            'orderby'            => 'name',
+            'order'              => 'ASC',
+            'show_last_update'   => 0,
+            'style'              => 'list',
+            'show_count'         => 1,
+            'hide_empty'         => 0,
+            'child_of'           => $wp_query->queried_object->parent,
+            'exclude_tree'       => $wp_query->queried_object->parent ,
+            'hierarchical'       => true,
+            'title_li'           => '', //'<h2>' . $wp_query->queried_object->name . '</h2>',
+            'echo'               => 1,
+            'depth'              => 2,
+            'current_category'   => 0,
+            'pad_counts'         => 1,
+            'taxonomy'           => $wp_query->queried_object->taxonomy,
+            // optional arguments:
+            // 'use_desc_for_title' => 0,
+            // 'show_option_all'    => ,
+            // 'include'            => ,
+            // 'number'             => 2,
+            // 'feed'               => ,
+            // 'feed_type'          => ,
+            // 'feed_image'         => ,
+            // 'exclude'            => ,
+            // 'walker'             => 'Walker_Category'
+        );
+
+        wp_list_categories( $args );
     }
 }
 
 /**
- * dp_categories_top()
- *
- * @global <type> $wp_rewrite
- * @param <type> $slug
- */
-function dp_categories_top( $slug ) {
-    global $wp_rewrite;
-    $taxonomies = get_taxonomies( '', 'label' );
-
-    foreach ( $taxonomies as $taxonomy => $value ) {
-        if ( $value->rewrite['slug'] == $slug ) {
-
-            $args = array(
-                'orderby'            => 'name',
-                'order'              => 'ASC',
-                'show_last_update'   => 0,
-                'style'              => 'list',
-                'show_count'         => 1,
-                'hide_empty'         => 0,
-                'use_desc_for_title' => 0,
-                'child_of'           => 0,
-                'hierarchical'       => true,
-                'title_li'           => '<h2></h2>',
-                'number'             => 10,
-                'echo'               => 1,
-                'depth'              => 1,
-                'current_category'   => 0,
-                'pad_counts'         => 1,
-                'taxonomy'           =>  $taxonomy
-                // optional:
-                // 'show_option_all'    => ,
-                // 'feed'               => ,
-                // 'feed_type'          => ,
-                // 'feed_image'         => ,
-                // 'exclude'            => ,
-                // 'exclude_tree'       => ,
-                // 'include'            => ,
-                // 'walker'             => 'Walker_Category'
-            );
-
-            wp_list_categories( $args );
-
-        }
-    }
-}
-
-/**
- * dp_categories_top_check_slug()
- *
- * @param <type> $slug
- * @return <type>
- */
-function dp_categories_top_check_slug( $slug ) {
-    $taxonomies = get_taxonomies( '', 'label' );
-
-    foreach ( $taxonomies as $taxonomy => $value ) {
-        if ( $value->rewrite['slug'] == $slug ) {
-            if ( is_404() )
-                return $value->labels->name;
-            else
-                return false;
-        }
-    }
-}
-
-/**
- * dp_sub_categories()
- *
- * @global <type> $wp_query
- */
-function dp_sub_categories() {
-    global $wp_query;
-
-    $args = array(
-        'orderby'            => 'name',
-        'order'              => 'ASC',
-        'show_last_update'   => 0,
-        'style'              => 'list',
-        'show_count'         => 1,
-        'child_of'           => $wp_query->queried_object->parent,
-        'exclude_tree'       => $wp_query->queried_object->parent ,
-        'hierarchical'       => true,
-        'title_li'           => '', //'<h2>' . $wp_query->queried_object->name . '</h2>',
-        'echo'               => 1,
-        'depth'              => 2,
-        'current_category'   => 0,
-        'pad_counts'         => 1,
-        'taxonomy'           => $wp_query->queried_object->taxonomy,
-        // optional:
-        // 'use_desc_for_title' => 0,
-        // 'show_option_all'    => ,
-        // 'hide_empty'         => 0,
-        // 'include'            => ,
-        // 'number'             => 2,
-        // 'feed'               => ,
-        // 'feed_type'          => ,
-        // 'feed_image'         => ,
-        // 'exclude'            => ,
-        // 'walker'             => 'Walker_Category'
-    );
-
-    wp_list_categories( $args );
-}
-
-/**
- * dp_get_taxonomy_vars()
+ * Get query var parateres.
  *
  * @global $wp_query
- */
+ * @return string Query var name/slug
+ **/
 function dp_get_taxonomy_vars( $param ) {
     global $wp_query;
 
@@ -288,11 +223,12 @@ function dp_get_taxonomy_vars( $param ) {
 }
 
 /**
+ * Filter excerpt more link.
  *
  * @global <type> $post
  * @param <type> $more
- * @return <type>
- */
+ * @return string(HTML)
+ **/
 function dp_new_excerpt_more( $more ) {
     global $post;
 	return ' ... <br /><a class="view-listing" href="'. get_permalink($post->ID) . '">' . '{View Listing}' . '</a>';
@@ -300,23 +236,22 @@ function dp_new_excerpt_more( $more ) {
 add_filter('excerpt_more', 'dp_new_excerpt_more');
 
 /**
+ * Filter excerpt lenght.
  *
- * @param <type> $length
- * @return <type>
- */
+ * @param int Chracter size of excerpt
+ * @return int Chracter size of excerpt
+ **/
 function dp_new_excerpt_length( $length ) {
 	return 23;
 }
 add_filter('excerpt_length', 'dp_new_excerpt_length');
 
 
-//register_setting();
-
 /**
  * Template for comments and pingbacks.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
- */
+ **/
 function dp_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :

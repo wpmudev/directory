@@ -8,7 +8,7 @@ get_header(); ?>
 		<div id="container">
 			<div id="content" role="main">
 
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+            <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -26,7 +26,7 @@ get_header(); ?>
 
 					</div><!-- .entry-content -->
 
-<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
+                <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">
 						<div id="author-avatar">
 							<?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ); ?>
@@ -41,17 +41,18 @@ get_header(); ?>
 							</div><!-- #author-link	-->
 						</div><!-- #author-description -->
 					</div><!-- #entry-author-info -->
-<?php endif; ?>
+                <?php endif; ?>
 
 					<div class="entry-utility">
 						<?php dp_posted_in(); ?>
 						<?php edit_post_link( __( 'Edit', 'directory' ), '<span class="edit-link">', '</span>' ); ?>
 					</div><!-- .entry-utility -->
+                    
 				</div><!-- #post-## -->
 
 				<?php comments_template( '', true ); ?>
 
-<?php endwhile; // end of the loop. ?>
+            <?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content -->
 		</div><!-- #container -->

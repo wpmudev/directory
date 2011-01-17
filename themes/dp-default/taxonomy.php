@@ -18,11 +18,10 @@ get_header(); ?>
             ?>
 
             <h1 class="page-title dp-taxonomy-name">
-                
-                <a href="<?php echo get_bloginfo('url') . $wp_rewrite->front . dp_get_taxonomy_vars('slug') . '/'; ?>"><?php echo dp_get_taxonomy_vars('name'); ?></a> /
+                <?php /* <a href="<?php echo get_bloginfo('url') . $wp_rewrite->front . dp_get_taxonomy_vars('slug') . '/'; ?>"> */ ?> <?php echo dp_get_taxonomy_vars('name'); ?> <?php //</a> ?> /
             </h1>
 
-            <?php  dp_sub_categories(); ?>
+            <?php dp_list_categories('sub'); ?>
 
             <div class="clear"></div>
             <div class="dp-widgets-stra"></div>

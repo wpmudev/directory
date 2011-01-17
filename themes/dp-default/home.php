@@ -7,7 +7,7 @@
 		<div id="container">
 			<div id="content" role="main">
                 
-            <?php dp_categories_home(); ?>
+            <?php dp_list_categories('home'); ?>
 
 			</div><!-- #content -->
 		</div><!-- #container -->

@@ -14,27 +14,22 @@
 	/*
 	 * Print the <title> tag based on what is being viewed.
 	 */
-    if ( dp_categories_top_check_slug( $wp_query->query_vars['category_name'] )) {
-        echo dp_categories_top_check_slug( $wp_query->query_vars['category_name'] ) . ' | ';
-        bloginfo( 'name' );
-    }
-    else {
-        global $page, $paged;
 
-        wp_title( '|', true, 'right' );
+    global $page, $paged;
 
-        // Add the blog name.
-        bloginfo( 'name' );
+    wp_title( '|', true, 'right' );
 
-        // Add the blog description for the home/front page.
-        $site_description = get_bloginfo( 'description', 'display' );
-        if ( $site_description && ( is_home() || is_front_page() ) )
-            echo " | $site_description";
+    // Add the blog name.
+    bloginfo( 'name' );
 
-        // Add a page number if necessary:
-        if ( $paged >= 2 || $page >= 2 )
-            echo ' | ' . sprintf( __( 'Page %s', 'directory' ), max( $paged, $page ) );
-    }
+    // Add the blog description for the home/front page.
+    $site_description = get_bloginfo( 'description', 'display' );
+    if ( $site_description && ( is_home() || is_front_page() ) )
+        echo " | $site_description";
+
+    // Add a page number if necessary:
+    if ( $paged >= 2 || $page >= 2 )
+        echo ' | ' . sprintf( __( 'Page %s', 'directory' ), max( $paged, $page ) );
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -90,7 +85,7 @@
 ?>
 </head>
 
-<body <?php if ( isset( $wp_query->query_vars['categorydp_name'] ) && dp_categories_top_check_slug( $wp_query->query_vars['categorydp_name'] ) ) { echo 'class="dp-top-level"'; } else { body_class(); }  ?>>
+<body <?php body_class(); ?>>
 <div id="wrapper" class="hfeed">
 	<div id="header">
 		<div id="masthead">

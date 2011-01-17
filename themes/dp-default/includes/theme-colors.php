@@ -108,13 +108,13 @@ class Directory_Theme_Colors
      */
     function output_admin_page() {
         if ( isset( $_REQUEST['updated'] ) )
-            $msg = __('Colors Saved!', 'directory'); ?>
+            $msg = __( 'Colors Saved!', 'directory' ); ?>
 
         <div class="wrap">
             <?php screen_icon(); ?>
             <h2><?php echo get_current_theme() . ' ' . __('Colors', 'directory') ?></h2>
 
-            <?php if ( $msg ) : ?>
+            <?php if ( isset( $msg ) ) : ?>
             <div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
             <?php endif; ?>
 
@@ -214,6 +214,7 @@ class Directory_Theme_Colors
 }
 endif;
 
-if ( class_exists('Directory_Theme_Colors') ) {
+if ( class_exists('Directory_Theme_Colors') )
 	$__directory_theme_colors = new Directory_Theme_Colors();
-}
+
+?>
