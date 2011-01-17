@@ -1600,3 +1600,6 @@ div.menu {
 body {
     background-image: url('images/bgr.jpg');
 }
+.error {
+    background: #FFEBE8 !important;
+}

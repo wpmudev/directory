@@ -9,6 +9,7 @@
  */
 
 $text_domain = 'directory';
+$plugin_url = DP_PLUGIN_URL;
 
 get_header(); ?>
 
@@ -137,7 +138,7 @@ get_header(); ?>
                                         <td><label for="payment_method"><?php _e( 'Credit Card', 'classifieds' ); ?></label></td>
                                         <td>
                                             <input type="radio" name="payment_method" value="cc" />
-                                            <img  src="<?php echo CF_PLUGIN_URL; ?>ui-front/general/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
+                                            <img  src="<?php echo $plugin_url; ?>ui-front/general/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
                                         </td>
                                     </tr>
                                 </table>

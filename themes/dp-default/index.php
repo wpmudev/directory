@@ -1,5 +1,4 @@
 <?php
-status_header( 200 );
 
 /**
  * The main template file.
@@ -16,6 +15,7 @@ get_header(); ?>
 		<div id="container">
 			<div id="content" role="main">
 
+            <?php /*
             <?php if ( is_multisite() ): ?>
                 <?php dp_categories_top( $wp_query->query_vars['category_name'] ); ?>
             <?php else: ?>
@@ -25,6 +25,9 @@ get_header(); ?>
                     <?php dp_categories_top( $wp_query->query_vars['name'] ); ?>
                 <?php endif; ?>
             <?php endif; ?>
+             *
+             */
+            ?>
 
 			<?php
 			/* Run the loop to output the posts.

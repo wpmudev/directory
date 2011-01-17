@@ -20,7 +20,6 @@ function dp_setup() {
         'primary' => __( 'Primary Navigation', 'directory' ),
     ) );
 
-
     // This theme allows users to set a custom background
     add_custom_background();
 }
@@ -130,7 +129,6 @@ function dp_categories_home() {
 
     foreach ( $taxonomies as $taxonomy => $value ) {
         if ( is_object_in_taxonomy('directory_listing', $taxonomy )  ) {
-
             $args = array(
                 'orderby'            => 'name',
                 'order'              => 'ASC',
@@ -141,12 +139,12 @@ function dp_categories_home() {
                 'use_desc_for_title' => 0,
                 'child_of'           => 0,
                 'hierarchical'       => true,
-                'title_li'           => '<h2></h2>',
+                'title_li'           => "<h2>{$value->labels->name}</h2>",
                 'number'             => 10,
                 'echo'               => 1,
                 'depth'              => 1,
                 'current_category'   => 0,
-                'pad_counts'         => 0,
+                'pad_counts'         => 1,
                 'taxonomy'           =>  $taxonomy
                 // optional:
                 // 'show_option_all'    => ,

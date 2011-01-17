@@ -6,6 +6,7 @@
 
 		<div id="container">
 			<div id="content" role="main">
+                
             <?php dp_categories_home(); ?>
 
 			</div><!-- #content -->

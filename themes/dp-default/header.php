@@ -103,7 +103,7 @@
 					</span>
 				</<?php echo $heading_tag; ?>>
                 <?php $options = get_site_option('dp_options'); ?>
-                <div id="h-banner"><?php echo $options['ads']['h_ad']; ?></div>
+                <div id="h-banner"><?php echo $options['ads_settings']['header_ad_code']; ?></div>
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
 			</div><!-- #branding -->
             <div  class="clear"></div>
