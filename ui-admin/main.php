@@ -15,11 +15,11 @@ function dp_admin_ui_main() { ?>
         </h2> <?php
         
         if ( isset( $_GET['dp_settings'] ) && $_GET['dp_settings'] == 'main' || empty( $_GET['dp_settings'] )) {
-            include_once 'dp-admin-ui-settings.php';
+            include_once 'settings.php';
             dp_admin_ui_settings();
         }
         elseif ( isset( $_GET['dp_settings'] ) && $_GET['dp_settings'] == 'payments' ) {
-            include_once 'dp-admin-ui-payments.php';
+            include_once 'payments.php';
             dp_admin_ui_payments();
         } ?>
         

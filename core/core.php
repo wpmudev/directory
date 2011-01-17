@@ -37,7 +37,7 @@ class Directory_Core {
     function init() {
         /* Register Directory themes contained within the dp-themes folder */
         if ( function_exists( 'register_theme_directory' ))
-            register_theme_directory( $this->plugin_dir . 'dp-themes' );
+            register_theme_directory( $this->plugin_dir . 'themes' );
         
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
         add_action( 'admin_init', array( &$this, 'hook' ) );
@@ -94,7 +94,7 @@ class Directory_Core {
      **/
     function enqueue_styles() {
         wp_enqueue_style( 'dp-admin-styles',
-                           $this->plugin_url . 'dp-admin-ui/css/dp-admin-ui-styles.css');
+                           $this->plugin_url . 'ui-admin/css/dp-admin-ui-styles.css');
     }
 
     /**
@@ -104,7 +104,7 @@ class Directory_Core {
      **/
     function enqueue_scripts() {
         wp_enqueue_script( 'dp-admin-scripts',
-                            $this->plugin_url . 'dp-admin-ui/js/dp-admin-ui-scripts.js',
+                            $this->plugin_url . 'ui-admin/js/dp-admin-ui-scripts.js',
                             array( 'jquery' ) );
     }
 
@@ -114,7 +114,7 @@ class Directory_Core {
      * Loads admin page templates based on $_GET request values and passes variables.
      */
     function load_admin_ui() {
-        include_once $this->plugin_dir . 'dp-admin-ui/dp-admin-ui-main.php';
+        include_once $this->plugin_dir . 'ui-admin/main.php';
 
         // load settings ui
         if ( $_GET['page'] == 'dp_main' )

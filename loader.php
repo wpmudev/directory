@@ -37,15 +37,15 @@ define ( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__),
 define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
 /* include core file */
-include_once 'dp-core/dp-core.php';
-include_once 'dp-core/dp-core-checkout.php';
-include_once 'dp-core/dp-core-load-data.php';
+include_once 'core/core.php';
+include_once 'core/checkout.php';
+include_once 'core/data.php';
 
 /* include payment PayPal Express payment gateway */
-include_once 'dp-gateways/dp-gateways-paypal-express-core.php';
+include_once 'gateways/dp-gateways-paypal-express-core.php';
 
 /* include "Content Types" submodule */
-include_once 'dp-submodules/content-types/loader.php';
+include_once 'submodules/content-types/loader.php';
 
 /**
  * dp_load_plugin_textdomain()
@@ -100,7 +100,7 @@ register_activation_hook( __FILE__, 'dp_plugin_activate' );
 function dp_plugin_deactivate() {
 
     // set this to "true" if you want to delete all of the plugin stored data
-    $flush_dp_data = true;
+    $flush_dp_data = false;
 
     // if $flush_dp_data is true it will delete all plugin data
     if ( $flush_dp_data ) {

@@ -16,17 +16,17 @@ function dp_admin_ui_settings() { ?>
 
     <?php
     if ( isset( $_GET['dp_gen'] ) || ( !isset( $_GET['dp_ss'] ) && !isset( $_GET['dp_ads'] ) ) ) {
-        include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings-general.php';
+        include_once DP_PLUGIN_DIR . 'ui-admin/settings-general.php';
         $options = get_site_option( 'dp_options' );
         dp_admin_ui_settings_general( $options );
     }
     elseif ( isset( $_GET['dp_ss'] ) ) {
-        include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings-submit-site.php';
+        include_once DP_PLUGIN_DIR . 'ui-admin/settings-submit-site.php';
         $options = get_site_option('dp_options');
         dp_admin_ui_settings_submit_site( $options['submit_site_settings'] );
     }
     elseif ( isset( $_GET['dp_ads'] )) {
-        include_once DP_PLUGIN_DIR . 'dp-admin-ui/dp-admin-ui-settings-ads.php';
+        include_once DP_PLUGIN_DIR . 'ui-admin/settings-ads.php';
         $options = get_site_option('dp_options');
         dp_admin_ui_settings_ads( $options['ads'] );
     }
