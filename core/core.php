@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classifieds Core Class
+ * Directory Core Class
  **/
 if ( !class_exists('Directory_Core') ):
 class Directory_Core {
