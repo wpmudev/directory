@@ -3,7 +3,7 @@
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
 
-    <?php $this->render_admin( 'navigation', array( 'sub' => 'authorizenet' ) ); ?>
+    <?php do_action('render_admin_navigation', 'authorizenet' ); ?>
 
     <table class="form-table">
         <tr>

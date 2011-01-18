@@ -1,11 +1,11 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $options = $this->get_options('paypal'); ?>
+<?php // $options = $this->get_options('paypal'); ?>
 
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
-    
-    <?php $this->render_admin( 'navigation', array( 'sub' => 'paypal' ) ); ?>
+
+    <?php do_action( 'render_admin_navigation', 'paypal' ); ?>
 
     <form action="" method="post" class="dp-payments">
         <table class="form-table">

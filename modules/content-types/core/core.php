@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classifieds Core Class
+ * Content Types Core Class
  **/
 if ( !class_exists('Content_Types_Core') ):
 class Content_Types_Core {
@@ -44,7 +44,7 @@ class Content_Types_Core {
      * @return void
      **/
     function init() {
-        add_action( 'sanitize_comment_cookies', array( &$this, 'init_submodules' ) );
+        add_action( 'sanitize_comment_cookies', array( &$this, 'init_child_classes' ) );
         add_action( 'init', array( &$this, 'handle_post_type_requests' ) );
         add_action( 'init', array( &$this, 'register_post_types' ), 2 );
         add_action( 'init', array( &$this, 'handle_taxonomy_requests' ), 0 );
@@ -69,7 +69,7 @@ class Content_Types_Core {
         $this->registered_post_type_names = get_post_types('','names');
     }
 
-    function init_submodules() {
+    function init_child_classes() {
         if ( class_exists('Content_Types_Core_Admin') )
             $content_types_core_admin = new Content_Types_Core_Admin( $this->parent_menu_slug );
     }

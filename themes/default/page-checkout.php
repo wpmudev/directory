@@ -29,7 +29,7 @@ get_header(); ?>
 
                     <div class="entry-content">
 
-                        <?php $step = get_query_var('cf_step'); ?>
+                        <?php $step = get_query_var('checkout_step'); ?>
 
                         <?php if ( isset( $step ) && $step == 'disabled' ): ?>
 
@@ -93,7 +93,7 @@ get_header(); ?>
                                 </div>
                             </form>
 
-                            <form action="" method="post" class="cf-login">
+                            <form action="" method="post" class="checkout-login">
 
                                 <strong><?php _e( 'Existing client', 'classifieds' ); ?></strong>
                                 <table  <?php do_action( 'login_invalid' ); ?>>
@@ -115,7 +115,7 @@ get_header(); ?>
 
                             </form>
 
-                            <?php $error = get_query_var('cf_error'); ?>
+                            <?php $error = get_query_var('checkout_error'); ?>
 
                             <?php if ( isset( $error ) ): ?>
                                 <div class="invalid-login"><?php echo $error; ?></div>
@@ -123,7 +123,7 @@ get_header(); ?>
 
                         <?php elseif( isset( $step ) && $step == 'payment_method' ): ?>
 
-                            <form action="" method="post"  class="cf-checkout">
+                            <form action="" method="post"  class="checkout">
 
                                 <strong><?php _e('Choose Payment Method', 'classifieds' ); ?></strong>
                                 <table>
@@ -167,7 +167,7 @@ get_header(); ?>
 
                             <?php $options = get_option('classifieds_options'); ?>
 
-                            <form action="" method="post" class="cf-checkout">
+                            <form action="" method="post" class="checkout">
 
                                 <strong><?php _e( 'Payment Details', 'classifieds' ); ?></strong>
                                 <div class="clear"></div>
@@ -498,9 +498,9 @@ get_header(); ?>
 
                         <?php elseif ( isset( $step ) && $step == 'confirm_payment' ): ?>
 
-                            <?php $transaction_details = get_query_var('cf_transaction_details'); ?>
+                            <?php $transaction_details = get_query_var('checkout_transaction_details'); ?>
 
-                            <form action="" method="post" class="cf-checkout">
+                            <form action="" method="post" class="checkout">
 
                                 <strong><?php _e( 'Confirm Payment', 'classifieds' ); ?></strong>
                                 <table>
@@ -538,7 +538,7 @@ get_header(); ?>
 
                         <?php elseif ( isset( $step ) && $step == 'api_call_error' ): ?>
 
-                            <?php $error = get_query_var('cf_error'); ?>
+                            <?php $error = get_query_var('checkout_error'); ?>
 
                             <ul>
                                 <li><?php echo $error['error_call'] . ' API call failed.'; ?></li>

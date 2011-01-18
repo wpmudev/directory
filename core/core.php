@@ -24,6 +24,8 @@ class Directory_Core {
     var $admin_page_tabs;
     /** @var array Name of options DB entry */
     var $admin_page_subtabs;
+    /** @var string Name of options DB entry */
+    var $payments_module;
 
     /**
      * Constructor.
@@ -71,9 +73,11 @@ class Directory_Core {
             $content_types_submodule = new Content_Types_Core('dp_main');
         /* Initiate Class */
         if ( class_exists('Payments_Core') ) {
-            $payment_submodule = new Payments_Core('dp_main');
-            //$this->admin_page_tabs =
+            $this->payments_module = new Payments_Core('dp_main');
         }
+        /* Initiate Class */
+        if ( class_exists('Directory_Core_Admin') )
+            $__directory_core_admin = new Directory_Core_Admin( $this->payments_module );
     }
 
     /**

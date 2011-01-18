@@ -28,9 +28,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /** Define the submodule root folder url. */
-define ( 'PG_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define ( 'PG_MODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 /** Define the submodule root folder dir. */
-define ( 'PG_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define ( 'PG_MODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
 include_once 'core/core.php';
 include_once 'gateways/paypal-api-module.php';

@@ -9,21 +9,30 @@ class Directory_Core_Admin extends Directory_Core {
     /**
      * Constructor.
      **/
-    function Directory_Core_Admin() {
+    function Directory_Core_Admin( $payments_module ) {
         $this->init();
         $this->init_vars();
+        $this->payments_module = $payments_module;
     }
 
+    /**
+     * Setup hooks.
+     *
+     * @return void
+     **/
     function init() {
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
         add_action( 'admin_init', array( &$this, 'hook' ) );
         add_action( 'init', array( &$this, 'init_submit_site_settings' ) );
+        add_action( 'render_admin_navigation', array( &$this, 'render_admin_navigation' ) );
     }
 
-    function init_vars() {
-        
-    }
-
+    /**
+     * Initiate class variables.
+     *
+     * @return void
+     **/
+    function init_vars() {}
 
     /**
      * Register all admin menues.
@@ -32,7 +41,7 @@ class Directory_Core_Admin extends Directory_Core {
      **/
     function admin_menu() {
         add_menu_page( __( 'Directory', $this->text_domain ), __( 'Directory', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
-        add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
+        //add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
     }
 
     /**
@@ -75,25 +84,8 @@ class Directory_Core_Admin extends Directory_Core {
      **/
     function handle_admin_requests() {
         if ( isset( $_GET['page'] ) && $_GET['page'] == 'dp_main' ) {
-            if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) {
-                if ( $_GET['sub'] == 'authorizenet' ) {
-                    $this->render_admin( 'payments-authorizenet' );
-                } else {
-                    /* Save options */
-                    if ( isset( $_POST['save'] ) ) {
-                        $this->save_options( $_POST );
-                    }
-                    /* Render admin template */
-                    $this->render_admin( 'payments-paypal' );
-                }
-            } 
-            else {
-                if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'submit_site' ) {
-                    if ( isset( $_POST['save'] ) ) {
-                        $this->save_options( $_POST );
-                    }
-                    $this->render_admin( 'settings-submit-site' );
-                } elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
+            if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ) {
+                if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
                     if ( isset( $_POST['save'] ) ) {
                         $this->save_options( $_POST );
                     }
@@ -106,6 +98,7 @@ class Directory_Core_Admin extends Directory_Core {
                 }
             }
         }
+        do_action('handle_module_admin_requests');
     }
 
     /**
@@ -128,10 +121,15 @@ class Directory_Core_Admin extends Directory_Core {
             return;
         }
     }
+
+    /**
+     * Render admin navigation.
+     */
+    function render_admin_navigation( $sub ) {
+        $this->render_admin( 'navigation', array( 'sub' => $sub ) );
+    }
+
 }
 endif;
 
-/* Initiate Class */
-if ( class_exists('Directory_Core_Admin') )
-	$__directory_core_admin = new Directory_Core_Admin();
 ?>

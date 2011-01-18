@@ -1,12 +1,12 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $options = $this->get_options('submit_site_settings'); ?>
+<?php //$options = $this->get_options('submit_site_settings'); ?>
 
 <div class="wrap">
     
     <?php screen_icon('options-general'); ?>
 
-    <?php $this->render_admin( 'navigation', array( 'sub' => 'submit_site' ) ); ?>
+    <?php do_action( 'render_admin_navigation', 'checkout' ); ?>
     
     <form action="" method="post" class="dp-payments">
         
