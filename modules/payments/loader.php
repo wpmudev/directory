@@ -1,9 +1,9 @@
 <?php
 
 /*
-Submodule Name: Content Types
+Submodule Name: Payment Gateways
 Description: Content Types - Custom Post, Taxonomy and Field Manager.
-Version: 1.1.1
+Version: 1.1.0
 Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -28,10 +28,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /** Define the submodule root folder url. */
-define ( 'CT_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define ( 'PG_SUBMODULE_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 /** Define the submodule root folder dir. */
-define ( 'CT_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define ( 'PG_SUBMODULE_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
-include_once 'config.php';
 include_once 'core/core.php';
-include_once 'core/admin.php';
+include_once 'gateways/paypal-api-module.php';

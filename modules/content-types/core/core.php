@@ -11,7 +11,7 @@ class Content_Types_Core {
     /** @var string Path to the submodule directory */
     var $submodule_dir = CT_SUBMODULE_DIR;
     /** @var string Parent menu slug */
-    var $parent_menu_slug = CT_SUBMENU_PARENT_SLUG;
+    var $parent_menu_slug;
     /** @var string Parent menu slug */
     var $text_domain = 'content_types';
     /** @var array Avilable Post Types */
@@ -32,9 +32,10 @@ class Content_Types_Core {
      *
      * @return void
      **/
-    function Content_Types_Core() {
+    function Content_Types_Core( $parent_menu_slug ) {
         $this->init();
         $this->init_vars();
+        $this->parent_menu_slug = $parent_menu_slug;
     }
 
     /**
@@ -43,6 +44,7 @@ class Content_Types_Core {
      * @return void
      **/
     function init() {
+        add_action( 'sanitize_comment_cookies', array( &$this, 'init_submodules' ) );
         add_action( 'init', array( &$this, 'handle_post_type_requests' ) );
         add_action( 'init', array( &$this, 'register_post_types' ), 2 );
         add_action( 'init', array( &$this, 'handle_taxonomy_requests' ), 0 );
@@ -57,6 +59,7 @@ class Content_Types_Core {
     /**
      * Initiate variables
      *
+     * @param $parent_menu_slug Slug of the main menu to which the submodule will attach itself.
      * @return void
      **/
     function init_vars() {
@@ -64,6 +67,11 @@ class Content_Types_Core {
         $this->taxonomies = get_site_option( 'ct_custom_taxonomies' );
         $this->custom_fields = get_site_option( 'ct_custom_fields' );
         $this->registered_post_type_names = get_post_types('','names');
+    }
+
+    function init_submodules() {
+        if ( class_exists('Content_Types_Core_Admin') )
+            $content_types_core_admin = new Content_Types_Core_Admin( $this->parent_menu_slug );
     }
 
     /**
@@ -482,15 +490,12 @@ class Content_Types_Core {
     function render_admin( $name, $vars = array() ) {
 		foreach ( $vars as $key => $val )
 			$$key = $val;
-		if ( file_exists( "{$this->submodule_dir}/ui-admin/{$name}.php" ) )
-			include "{$this->submodule_dir}/ui-admin/{$name}.php";
+		if ( file_exists( "{$this->submodule_dir}ui-admin/{$name}.php" ) )
+			include "{$this->submodule_dir}ui-admin/{$name}.php";
 		else
-			echo "<p>Rendering of admin template {$this->submodule_dir}/ui-admin/{$name}.php failed</p>";
+			echo "<p>Rendering of admin template {$this->submodule_dir}ui-admin/{$name}.php failed</p>";
 	}
 }
 endif;
 
-/* Initiate Class */
-if ( class_exists('Content_Types_Core') )
-	$__content_types_core = new Content_Types_Core();
 ?>

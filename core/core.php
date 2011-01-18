@@ -20,6 +20,10 @@ class Directory_Core {
     var $user_role = 'dp_member';
     /** @var string Name of options DB entry */
     var $options_name = 'dp_options';
+    /** @var array Name of options DB entry */
+    var $admin_page_tabs;
+    /** @var array Name of options DB entry */
+    var $admin_page_subtabs;
 
     /**
      * Constructor.
@@ -37,6 +41,7 @@ class Directory_Core {
      * @return void
      **/
     function init() {
+        add_action( 'plugins_loaded', array( &$this, 'init_submodules' ) );
         /* Register Directory themes contained within the dp-themes folder */
         if ( function_exists( 'register_theme_directory' ) )
             register_theme_directory( $this->plugin_dir . 'themes' );
@@ -54,6 +59,21 @@ class Directory_Core {
      **/
     function init_vars() {
 
+    }
+
+    /**
+     * Initiate submodule to be used with this plugin.
+     *
+     * @return void
+     */
+    function init_submodules() {
+        if ( class_exists('Content_Types_Core') )
+            $content_types_submodule = new Content_Types_Core('dp_main');
+        /* Initiate Class */
+        if ( class_exists('Payments_Core') ) {
+            $payment_submodule = new Payments_Core('dp_main');
+            //$this->admin_page_tabs =
+        }
     }
 
     /**

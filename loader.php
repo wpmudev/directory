@@ -42,9 +42,7 @@ include_once 'core/admin.php';
 include_once 'core/data.php';
 
 /* include payment PayPal Express payment gateway */
-include_once 'payment-gateways/paypal-api-module.php';
-include_once 'payment-gateways/paypal-request-handler.php';
-
+include_once 'submodules/payments/loader.php';
 /* include "Content Types" submodule */
 include_once 'submodules/content-types/loader.php';
 

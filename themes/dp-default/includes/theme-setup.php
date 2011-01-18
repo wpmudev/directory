@@ -129,10 +129,9 @@ function dp_posted_in() {
  * @return string(HTML)
  **/
 function dp_list_categories( $section ) {
-    global $wp_rewrite;
-    $taxonomies = get_taxonomies( '', 'label' );
-
     if ( isset( $section ) && $section == 'home' ) {
+        global $wp_rewrite;
+        $taxonomies = get_taxonomies( '', 'label' );
         foreach ( $taxonomies as $taxonomy => $value ) {
             if ( is_object_in_taxonomy('directory_listing', $taxonomy )  ) {
                 $args = array(
@@ -162,14 +161,11 @@ function dp_list_categories( $section ) {
                     // 'include'            => ,
                     // 'walker'             => 'Walker_Category'
                 );
-
                 wp_list_categories( $args );
-
             }
         }
     } elseif ( isset( $section ) && $section == 'sub' ) {
         global $wp_query;
-
         $args = array(
             'orderby'            => 'name',
             'order'              => 'ASC',
@@ -197,7 +193,6 @@ function dp_list_categories( $section ) {
             // 'exclude'            => ,
             // 'walker'             => 'Walker_Category'
         );
-
         wp_list_categories( $args );
     }
 }

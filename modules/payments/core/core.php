@@ -4,16 +4,19 @@
  * Handles requests for "page-checkout.php". You can customize it for any
  * other request handling flow.
  **/
-if ( !class_exists('PayPal_Request_Handler') ):
-class PayPal_Request_Handler {
+if ( !class_exists('Payments_Core') ):
+class Payments_Core {
 
     /** @var object $paypal_api_module The PayPal API Module object */
     var $paypal_api_module;
+    /** @var object $paypal_api_module The PayPal API Module object */
+    var $admin_page_slug;
 
     /**
      * Constructor.
      **/
-    function PayPal_Request_Handler() {
+    function Payments_Submodule( $admin_page_slug ) {
+        $this->admin_page_slug = $admin_page_slug;
         /* Hook the vars assignment to init hook */
         add_action( 'init', array( &$this, 'init_vars' ) );
         /* Handle all requests for checkout */
@@ -27,6 +30,22 @@ class PayPal_Request_Handler {
      **/
     function init_vars() {
         $this->paypal_api_module = new PayPal_API_Module();
+    }
+
+
+    function navigation_tab() { ?>
+        <a class="nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) echo 'nav-tab-active'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=paypal"><?php _e( 'Payments', $this->text_domain ); ?></a>
+        <?php
+    }
+
+    function navigation_sub() { ?>
+        <?php if ( $sub == 'paypal' || $sub == 'authorizenet'  ): ?>
+        <ul>
+            <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'paypal' )       echo 'current'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=paypal"><?php _e( 'PayPal Express', $this->text_domain ); ?></a> | </h3></li>
+            <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) echo 'current'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=authorizenet"><?php _e( 'Authorize.net', $this->text_domain ); ?></a></h3></li>
+        </ul>
+        <?php endif; ?>
+        <?php
     }
 
     /**
@@ -166,7 +185,4 @@ class PayPal_Request_Handler {
 }
 endif;
 
-/* Initiate Class */
-if ( class_exists('PayPal_Request_Handler') )
-	$paypal_request_handler = new PayPal_Request_Handler();
 ?>

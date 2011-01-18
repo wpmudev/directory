@@ -47,7 +47,7 @@ class PayPal_API_Module {
      *
      * @return void
      **/
-    function Classifieds_Core_PayPal() {
+    function PayPal_API_Module() {
         $this->init_vars();
     }
 

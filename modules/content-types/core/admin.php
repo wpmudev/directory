@@ -11,9 +11,10 @@ class Content_Types_Core_Admin extends Content_Types_Core {
     /**
      * Constructor.
      **/
-    function Content_Types_Core() {
+    function Content_Types_Core_Admin( $parent_menu_slug ) {
         $this->init();
         $this->init_vars();
+        $this->parent_menu_slug = $parent_menu_slug;
     }
 
     /**
@@ -123,6 +124,4 @@ class Content_Types_Core_Admin extends Content_Types_Core {
 }
 endif;
 
-if ( class_exists('Content_Types_Core_Admin') )
-	$__content_types_core_admin = new Content_Types_Core_Admin();
 ?>
