@@ -1,6 +1,9 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $options = $this->get_options(); ?>
+<?php
+$options = $this->get_options();
+$allow_per_site_content_types = get_site_option('allow_per_site_content_types');
+?>
 
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
@@ -17,8 +20,8 @@
                     <label for="allow_per_site_content_types"><?php _e('Allow per site content types.', 'directory') ?></label>
                 </th>
                 <td>
-                    <input type="checkbox" id="allow_per_site_content_types" name="allow_per_site_content_types" value="1" <?php if ( isset( $options['general_settings']['allow_per_site_content_types'] ) ) echo 'checked="checked"'; ?>  />
-                    <span class="description"><?php _e('If you enable this setting, sites on your network will be able to define own content types.', 'directory'); ?></span>
+                    <input type="checkbox" id="allow_per_site_content_types" name="allow_per_site_content_types" value="1" <?php if ( !empty( $allow_per_site_content_types ) ) echo 'checked="checked"'; ?>  />
+                    <span class="description"><?php _e('If you enable this setting, sites on your network will be able to define their own content types. Please note that these content types are local to each site including the root one and the already defined network-wide content types types will not be present ( unless you uncheck this setting - they are preserved ). If you disable this setting ( default behaviour ) all sites on your network can use the network-wide content types set by you the Super Admin but they cannot modify them.', 'directory'); ?></span>
                 </td>
             </tr>
         </table>
@@ -65,7 +68,7 @@
                         <option value="default" <?php if ( isset( $options['general_settings']['order_taxonomies'] ) && $options['general_settings']['order_taxonomies'] == 'default' ) echo 'selected="selected"'; ?> ><?php _e( 'Order Entered', 'directory' ); ?></option>
                         <option value="alphabetical" <?php if ( isset( $options['general_settings']['order_taxonomies'] ) && $options['general_settings']['order_taxonomies'] == 'alphabetical' ) echo 'selected="selected"'; ?> ><?php _e( 'Alphabetically', 'directory' ); ?></option>
                     </select>
-                    <span class="description"><?php _e('This setting will order the taxonomies.', 'directory'); ?></span>
+                    <span class="description"><?php _e('This setting will order the available taxonomies.', 'directory'); ?></span>
                 </td>
             </tr>
         </table>

@@ -40,7 +40,6 @@ define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__),
 include_once 'core/core.php';
 include_once 'core/admin.php';
 include_once 'core/data.php';
-
 /* include payment PayPal Express payment gateway */
 include_once 'modules/payments/loader.php';
 /* include "Content Types" submodule */

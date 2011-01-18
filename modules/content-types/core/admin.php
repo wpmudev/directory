@@ -5,16 +5,16 @@
 if ( !class_exists('Content_Types_Core_Admin') ):
 class Content_Types_Core_Admin extends Content_Types_Core {
 
-    /** @var string Current page hook */
-    var $hook;
+    /** @var string Plugin menu slug */
+    var $plugin_menu_slug;
 
     /**
      * Constructor.
      **/
-    function Content_Types_Core_Admin( $parent_menu_slug ) {
+    function Content_Types_Core_Admin( $plugin_menu_slug ) {
         $this->init();
         $this->init_vars();
-        $this->parent_menu_slug = $parent_menu_slug;
+        $this->plugin_menu_slug = $plugin_menu_slug;
     }
 
     /**
@@ -24,7 +24,7 @@ class Content_Types_Core_Admin extends Content_Types_Core {
      **/
     function init() {
         add_action( 'admin_menu', array( &$this, 'admin_menu' ), 20 );
-        add_action( 'admin_init', array( &$this, 'get_hook' ) );
+        add_action( 'admin_init', array( &$this, 'admin_head' ) );
         add_action( 'admin_print_styles-post.php', array( &$this, 'enqueue_custom_field_styles') );
         add_action( 'admin_print_styles-post-new.php', array( &$this, 'enqueue_custom_field_styles') );
     }
@@ -35,19 +35,20 @@ class Content_Types_Core_Admin extends Content_Types_Core {
      * @return void
      **/
     function admin_menu() {
-        add_submenu_page( $this->parent_menu_slug , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_admin_requests' ) );
+        $capability = ( $this->allow_per_site_content_types == true ) ? 'activate_plugins' : 'edit_users';
+        add_submenu_page( $this->plugin_menu_slug , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), $capability, 'ct_content_types', array( &$this, 'handle_admin_requests' ) );
     }
 
     /**
-     * Get page hook and hook ct_core_enqueue_styles() and ct_core_enqueue_scripts() to it.
+     * Print admin scripts and styles.
      *
      * @return void
      **/
-    function get_hook() {
+    function admin_head() {
         $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : NULL;
-        $this->hook = get_plugin_page_hook( $page , $this->parent_menu_slug );
-        add_action( 'admin_print_styles-' .  $this->hook, array( &$this, 'enqueue_styles' ) );
-        add_action( 'admin_print_scripts-' . $this->hook, array( &$this, 'enqueue_scripts' ) );
+        $hook = get_plugin_page_hook( $page , $this->plugin_menu_slug );
+        add_action( 'admin_print_styles-' .  $hook, array( &$this, 'enqueue_styles' ) );
+        add_action( 'admin_print_scripts-' . $hook, array( &$this, 'enqueue_scripts' ) );
     }
 
     /**
@@ -87,7 +88,6 @@ class Content_Types_Core_Admin extends Content_Types_Core {
      * @return void
      */
     function handle_admin_requests() {
-
         if ( isset( $_GET['page'] ) && $_GET['page'] == 'ct_content_types' ) {
             $this->render_admin('navigation');
             

@@ -20,12 +20,6 @@ class Directory_Core {
     var $user_role = 'dp_member';
     /** @var string Name of options DB entry */
     var $options_name = 'dp_options';
-    /** @var array Name of options DB entry */
-    var $admin_page_tabs;
-    /** @var array Name of options DB entry */
-    var $admin_page_subtabs;
-    /** @var string Name of options DB entry */
-    var $payments_module;
 
     /**
      * Constructor.
@@ -34,7 +28,6 @@ class Directory_Core {
      **/
     function Directory_Core() {
         $this->init();
-        $this->init_vars();
     }
 
     /**
@@ -43,20 +36,13 @@ class Directory_Core {
      * @return void
      **/
     function init() {
-        add_action( 'plugins_loaded', array( &$this, 'init_submodules' ) );
-        /* Load plugin translation file */
+        add_action( 'plugins_loaded', array( &$this, 'init_modules' ) );
+        add_action( 'plugins_loaded', array( &$this, 'init_vars' ) );
         add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
-        /* Register activation hook */
-        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
-        /* Register deactivation hook */
-        register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
-        /* Register Directory themes contained within the dp-themes folder */
-        if ( function_exists( 'register_theme_directory' ) )
-            register_theme_directory( $this->plugin_dir . 'themes' );
-        
         add_action( 'init', array( &$this, 'roles' ) );
-        add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
-        
+        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
+        register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
+        register_theme_directory( $this->plugin_dir . 'themes' );
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
     }
@@ -66,8 +52,20 @@ class Directory_Core {
      *
      * @return void
      **/
-    function init_vars() {
+    function init_vars() {}
 
+    /**
+     * Initiate plugin modules.
+     *
+     * @return void
+     **/
+    function init_modules() {
+        /* Initiate Admin Class */
+        new Directory_Core_Admin();
+        /* Initiate Content Types Module */
+        new Content_Types_Core('dp_main');
+        /* Initiate Payments Module */
+        new Payments_Core('dp_main');
     }
 
     /**
@@ -127,23 +125,6 @@ class Directory_Core {
     }
 
     /**
-     * Initiate submodule to be used with this plugin.
-     *
-     * @return void
-     */
-    function init_submodules() {
-        if ( class_exists('Content_Types_Core') )
-            $content_types_submodule = new Content_Types_Core('dp_main');
-        /* Initiate Class */
-        if ( class_exists('Payments_Core') ) {
-            $this->payments_module = new Payments_Core('dp_main');
-        }
-        /* Initiate Class */
-        if ( class_exists('Directory_Core_Admin') )
-            $__directory_core_admin = new Directory_Core_Admin( $this->payments_module );
-    }
-
-    /**
      * Add custom role for Classifieds members. Add new capabilities for admin.
      *
      * @global $wp_roles
@@ -180,71 +161,6 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'read_listing' );
             $wp_roles->add_cap( 'administrator', 'assign_terms' );
         }
-    }
-
-    /**
-     * Insert User
-     *
-     * @param <type> $email
-     * @param <type> $first_name
-     * @param <type> $last_name
-     * @return <type>
-     */
-    function insert_user( $email, $first_name, $last_name, $billing ) {
-
-        require_once( ABSPATH . WPINC . '/registration.php' );
-
-        // variables
-        $user_login     = sanitize_user( strtolower( $first_name ));
-        $user_email     = $email;
-        $user_pass      = wp_generate_password();
-
-        if ( username_exists( $user_login ) )
-            $user_login .= '-' . sanitize_user( strtolower( $last_name ));
-
-        if ( username_exists( $user_login ) )
-            $user_login .= rand(1,9);
-
-        if ( email_exists( $user_email )) {
-            $user = get_user_by( 'email', $user_email );
-
-            if ( $user ) {
-                wp_update_user( array ('ID' => $user->ID, 'role' => 'dpmember' )) ;
-                update_user_meta( $user->ID, 'dp_billing', $billing );
-                $credentials = array( 'remember'=>true, 'user_login' => $user->user_login, 'user_password' => $user->user_pass );
-                wp_signon( $credentials );
-                return;
-            }
-        }
-
-        $user_id = wp_insert_user( array( 'user_login'   => $user_login,
-                                          'user_pass'    => $user_pass,
-                                          'user_email'   => $email,
-                                          'display_name' => $first_name . ' ' . $last_name,
-                                          'first_name'   => $first_name,
-                                          'last_name'    => $last_name,
-                                          'role'         => 'dpmember'
-                                        )) ;
-
-        update_user_meta( $user_id, 'dp_billing', $billing );
-        wp_new_user_notification( $user_id, $user_pass );
-        $credentials = array( 'remember'=>true, 'user_login' => $user_login, 'user_password' => $user_pass );
-        wp_signon( $credentials );
-    }
-
-    /**
-     * Allow users to be able to register content types for their sites or
-     * disallow it ( only super admin can add content types )
-     *
-     * @param <type> $bool
-     * @return bool 
-     */
-    function allow_per_site_content_types( $bool ) {
-        $options = $this->get_options('general_settings');
-        if ( isset( $options['allow_per_site_content_types'] ) )
-            return true;
-        else
-            return $bool;
     }
 
     /**

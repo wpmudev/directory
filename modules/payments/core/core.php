@@ -25,6 +25,7 @@ class Payments_Core {
         $this->admin_page_slug = $admin_page_slug;
         /* Hook the vars assignment to init hook */
         add_action( 'init', array( &$this, 'init_vars' ) );
+        //add_action( 'init', array( &$this, 'init_submit_site_settings' ) );
         /* Handle all requests for checkout */
         add_action( 'template_redirect', array( &$this, 'handle_checkout_requests' ) );
         /* Handle all requests for checkout */
@@ -42,6 +43,29 @@ class Payments_Core {
      **/
     function init_vars() {
         $this->paypal_api_module = new PayPal_API_Module( '' );
+    }
+
+
+    /**
+     * Init data for submit site.
+     *
+     * @return <type>
+     * @todo Move to Payments Module
+     */
+    function init_submit_site_settings() {
+        $options = $this->get_options();
+        if ( !isset( $options['submit_site_settings'] )) {
+            $submit_site_settings = array( 'submit_site_settings' => array(
+                'annual_price'   => 10,
+                'annual_txt'     => 'Annually Recurring Charge',
+                'one_time_price' => 50,
+                'one_time_txt'   => 'One-Time Only Charge',
+                'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
+            ));
+            $options = array_merge( $options, $submit_site_settings );
+            update_site_option( 'dp_options', $options );
+            return;
+        }
     }
 
     /**
@@ -133,7 +157,6 @@ class Payments_Core {
                 session_start();
             /* Get site options */
             $options = get_site_option('dp_options');
-            //var_dump($options);
             /* Redirect if user is logged in */
             if ( is_user_logged_in() ) {
                 /** @todo Set redirect */

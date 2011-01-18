@@ -9,10 +9,8 @@ class Directory_Core_Admin extends Directory_Core {
     /**
      * Constructor.
      **/
-    function Directory_Core_Admin( $payments_module ) {
+    function Directory_Core_Admin() {
         $this->init();
-        $this->init_vars();
-        $this->payments_module = $payments_module;
     }
 
     /**
@@ -21,10 +19,10 @@ class Directory_Core_Admin extends Directory_Core {
      * @return void
      **/
     function init() {
+        add_action( 'admin_init', array( &$this, 'admin_head' ) );
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
-        add_action( 'admin_init', array( &$this, 'hook' ) );
-        add_action( 'init', array( &$this, 'init_submit_site_settings' ) );
         add_action( 'render_admin_navigation', array( &$this, 'render_admin_navigation' ) );
+        add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
     }
 
     /**
@@ -41,7 +39,7 @@ class Directory_Core_Admin extends Directory_Core {
      **/
     function admin_menu() {
         add_menu_page( __( 'Directory', $this->text_domain ), __( 'Directory', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
-        //add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
+    //  add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
     }
 
     /**
@@ -49,7 +47,7 @@ class Directory_Core_Admin extends Directory_Core {
      *
      * @return void
      **/
-    function hook() {
+    function admin_head() {
         $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : NULL;
         $hook = get_plugin_page_hook( $page, 'dp_main' );
         add_action( 'admin_print_styles-' .  $hook, array( &$this, 'enqueue_styles' ) );
@@ -92,6 +90,11 @@ class Directory_Core_Admin extends Directory_Core {
                     $this->render_admin( 'settings-ads' );
                 } else {
                     if ( isset( $_POST['save'] ) ) {
+                        /* Set network-wide content types */
+                        if ( !empty( $_POST['allow_per_site_content_types'] ) )
+                            update_site_option( 'allow_per_site_content_types', true );
+                        else
+                            update_site_option( 'allow_per_site_content_types', false );
                         $this->save_options( $_POST );
                     }
                     $this->render_admin( 'settings-general' );
@@ -102,24 +105,18 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
     /**
-     * Init data for submit site. 
+     * Allow users to be able to register content types for their sites or
+     * disallow it ( only super admin can add content types )
      *
-     * @return <type>
+     * @param <type> $bool
+     * @return bool 
      */
-    function init_submit_site_settings() {
-        $options = $this->get_options();
-        if ( !isset( $options['submit_site_settings'] )) {
-            $submit_site_settings = array( 'submit_site_settings' => array(
-                'annual_price'   => 10,
-                'annual_txt'     => 'Annually Recurring Charge',
-                'one_time_price' => 50,
-                'one_time_txt'   => 'One-Time Only Charge',
-                'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
-            ));
-            $options = array_merge( $options, $submit_site_settings );
-            update_site_option( 'dp_options', $options );
-            return;
-        }
+    function allow_per_site_content_types( $bool ) {
+        $option = get_site_option('allow_per_site_content_types');
+        if ( !empty( $option ) )
+            return true;
+        else
+            return $bool;
     }
 
     /**

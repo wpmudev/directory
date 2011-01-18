@@ -11,8 +11,6 @@ class Content_Types_Core {
     /** @var string Path to the submodule directory */
     var $submodule_dir = CT_SUBMODULE_DIR;
     /** @var string Parent menu slug */
-    var $parent_menu_slug;
-    /** @var string Parent menu slug */
     var $text_domain = 'content_types';
     /** @var array Avilable Post Types */
     var $post_types;
@@ -22,22 +20,21 @@ class Content_Types_Core {
     var $custom_fields;
     /** @var array Avilable Custom Fields */
     var $registered_post_type_names;
-    /** @var boolean Flag whether to redirect or not */
-    var $allow_redirect;
     /** @var boolean Flag whether to flush the rewrite rules or not */
     var $flush_rewrite_rules = false;
     /** @var boolean Flag whether the users have the ability to declair post type for their own blogs */
     var $allow_per_site_content_types = false;
-    
+
     /**
      * Constructor
      *
      * @return void
      **/
-    function Content_Types_Core( $parent_menu_slug ) {
+    function Content_Types_Core( $plugin_menu_slug ) {
         $this->init();
-        $this->init_vars();
-        $this->parent_menu_slug = $parent_menu_slug;
+        $this->init_vars( $plugin_menu_slug );
+        /* Initiate Admin class */
+        new Content_Types_Core_Admin( $plugin_menu_slug );
     }
 
     /**
@@ -46,7 +43,6 @@ class Content_Types_Core {
      * @return void
      **/
     function init() {
-        add_action( 'sanitize_comment_cookies', array( &$this, 'init_child_classes' ) );
         add_action( 'init', array( &$this, 'handle_post_type_requests' ) );
         add_action( 'init', array( &$this, 'register_post_types' ), 2 );
         add_action( 'init', array( &$this, 'handle_taxonomy_requests' ), 0 );
@@ -61,12 +57,11 @@ class Content_Types_Core {
     /**
      * Initiate variables
      *
-     * @param $parent_menu_slug Slug of the main menu to which the submodule will attach itself.
      * @return void
      **/
     function init_vars() {
         $this->allow_per_site_content_types = apply_filters( 'allow_per_site_content_types', false );
-        if ( !empty( $this->allow_per_site_content_types ) ) {
+        if ( $this->allow_per_site_content_types == true ) {
             $this->post_types = get_option( 'ct_custom_post_types' );
             $this->taxonomies = get_option( 'ct_custom_taxonomies' );
             $this->custom_fields = get_option( 'ct_custom_fields' );
@@ -78,19 +73,14 @@ class Content_Types_Core {
         $this->registered_post_type_names = get_post_types('','names');
     }
 
-    function init_child_classes() {
-        if ( class_exists('Content_Types_Core_Admin') )
-            $content_types_core_admin = new Content_Types_Core_Admin( $this->parent_menu_slug );
-    }
-
     /**
      * Loads "content_types-[xx_XX].mo" language file from the "ct-languages" directory
      *
      * @return void
      **/
     function load_plugin_textdomain() {
-        $submodule_dir = $this->submodule_dir . 'languages';
-        load_plugin_textdomain( $this->text_domain, null, $submodule_dir );
+        $module_dir = $this->submodule_dir . 'languages';
+        load_plugin_textdomain( $this->text_domain, null, $module_dir );
     }
 
     /**

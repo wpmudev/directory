@@ -98,6 +98,6 @@
         <?php endif; ?>
     </tbody>
 </table>
-<form name="ct_form_redirect_add_taxonomy" action="" method="post" class="ct-form-single-btn">
-    <input type="submit" class="button-secondary" name="ct_redirect_add_taxonomy" value="<?php _e('Add Taxonomy', 'content_types'); ?>" />
+<form action="" method="post" class="ct-form-single-btn">
+    <input type="submit" class="button-secondary" name="redirect_add_taxonomy" value="<?php _e('Add Taxonomy', 'content_types'); ?>" />
 </form>
