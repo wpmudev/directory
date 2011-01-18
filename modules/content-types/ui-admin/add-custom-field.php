@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $post_types = $this->registered_post_type_names; ?>
+<?php $post_types = get_post_types('','names'); ?>
 
 <h3><?php _e('Add Custom Field', 'content_types'); ?></h3>
 <form action="" method="post" class="ct-custom-fields">
@@ -14,7 +14,7 @@
                         <label for="field_title"><?php _e('Field Title', 'content_types') ?> <span class="ct-required">( <?php _e('required', 'content_types'); ?> )</span></label>
                     </th>
                     <td>
-                        <input type="text" name="field_title" value="<?php echo( $_POST['field_title'] ); ?>">
+                        <input type="text" name="field_title" value="<?php if ( isset( $_POST['field_title'] ) ) echo $_POST['field_title']; ?>">
                         <span class="description"><?php _e('The title of the custom field.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -30,12 +30,12 @@
                     </th>
                     <td>
                         <select name="field_type">
-                            <option value="text" <?php if ( $_POST['field_type'] == 'text' ) echo( 'selected="selected"' ); ?>>Text Box</option>
-                            <option value="textarea" <?php if ( $_POST['field_type'] == 'textarea' ) echo( 'selected="selected"' ); ?>>Multi-line Text Box</option>
-                            <option value="radio" <?php if ( $_POST['field_type'] == 'radio' ) echo( 'selected="selected"' ); ?>>Radio Buttons</option>
-                            <option value="checkbox" <?php if ( $_POST['field_type'] == 'checkbox' ) echo( 'selected="selected"' ); ?>>Checkboxes</option>
-                            <option value="selectbox" <?php if ( $_POST['field_type'] == 'selectbox' ) echo( 'selected="selected"' ); ?>>Drop Down Select Box</option>
-                            <option value="multiselectbox" <?php if ( $_POST['field_type'] == 'multiselectbox' ) echo( 'selected="selected"' ); ?>>Multi Select Box</option>
+                            <option value="text" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'text' ) echo( 'selected="selected"' ); ?>><?php _e('Text Box', 'content_types'); ?></option>
+                            <option value="textarea" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'textarea' ) echo( 'selected="selected"' ); ?>><?php _e('Multi-line Text Box', 'content_types'); ?></option>
+                            <option value="radio" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'radio' ) echo( 'selected="selected"' ); ?>><?php _e('Radio Buttons', 'content_types'); ?></option>
+                            <option value="checkbox" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'checkbox' ) echo( 'selected="selected"' ); ?>><?php _e('Checkboxes', 'content_types'); ?></option>
+                            <option value="selectbox" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'selectbox' ) echo( 'selected="selected"' ); ?>><?php _e('Drop Down Select Box', 'content_types'); ?></option>
+                            <option value="multiselectbox" <?php if ( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'multiselectbox' ) echo( 'selected="selected"' ); ?>><?php _e('Multi Select Box', 'content_types'); ?></option>
                         </select>
                         <span class="description"><?php _e('Select one or more post types to add this custom field to.', 'content_types'); ?></span>
                         <div class="ct-field-type-options">
@@ -50,8 +50,8 @@
                                 </select
                             </p>
                             <p><?php _e('Option', 'content_types'); ?> 1:
-                                <input type="text" name="field_options[1]" value="<?php echo( $_POST['field_options'][1] ); ?>">
-                                <input type="radio" value="1" name="field_default_option" <?php if ( $_POST['field_default_option'] == '1' ) echo( 'checked="checked"' ); ?>>
+                                <input type="text" name="field_options[1]" value="<?php if ( isset( $_POST['field_options'][1] ) ) echo $_POST['field_options'][1]; ?>">
+                                <input type="radio" value="1" name="field_default_option" <?php if ( isset( $_POST['field_default_option'] ) && $_POST['field_default_option'] == '1' ) echo 'checked="checked"'; ?>>
                                 <?php _e('Default Value', 'content_types'); ?>
                             </p>
                             <div class="ct-field-additional-options"></div>
@@ -71,7 +71,7 @@
                         <label for="field_description"><?php _e('Field Description', 'content_types') ?></label>
                     </th>
                     <td>
-                        <textarea class="ct-field-description" name="field_description" rows="3" ><?php echo( $_POST['field_description'] ); ?></textarea>
+                        <textarea class="ct-field-description" name="field_description" rows="3" ><?php if ( isset( $_POST['field_description'] ) ) echo $_POST['field_description']; ?></textarea>
                         <span class="description"><?php _e('Description for the custom field.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
                         <select name="object_type[]" multiple="multiple" class="ct-object-type">
                             <?php if ( is_array( $post_types )): ?>
                                 <?php foreach( $post_types as $post_type ): ?>
-                                    <option value="<?php echo ( $post_type ); ?>" <?php if ( is_array( $_POST['object_type'] )) { foreach ( $_POST['object_type'] as $post_value ) { if ( $post_value == $post_type ) echo( 'selected="selected"' ); }} ?>><?php echo ( $post_type ); ?></option>
+                                    <option value="<?php echo ( $post_type ); ?>" <?php if ( isset( $_POST['object_type'] ) && is_array( $_POST['object_type'] )) { foreach ( $_POST['object_type'] as $post_value ) { if ( $post_value == $post_type ) echo( 'selected="selected"' ); }} ?>><?php echo ( $post_type ); ?></option>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </select>

@@ -1,7 +1,5 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php //$post_type = $this->post_types[$_GET['ct_edit_post_type']]; ?>
-
 <h3><?php _e('Add Post Type', 'content_types'); ?></h3>
 <form action="" method="post" class="ct-post-type">
     <div class="ct-wrap-left">

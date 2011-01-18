@@ -104,7 +104,7 @@
                         <label for="singular_name"><?php _e('Singular Name', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[singular_name]" value="<?php echo ( $post_type['labels']['singular_name'] ); ?>">
+                        <input type="text" name="labels[singular_name]" value="<?php if ( isset( $post_type['labels']['singular_name'] ) ) echo ( $post_type['labels']['singular_name'] ); ?>">
                         <span class="description"><?php _e('Name for one object of this post type. Defaults to value of name.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -113,7 +113,7 @@
                         <label for="add_new"><?php _e('Add New', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[add_new]" value="<?php echo ( $post_type['labels']['add_new'] ); ?>">
+                        <input type="text" name="labels[add_new]" value="<?php if ( isset( $post_type['labels']['add_new'] ) ) echo ( $post_type['labels']['add_new'] ); ?>">
                         <span class="description"><?php _e('The add new text. The default is Add New for both hierarchical and non-hierarchical types.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -122,7 +122,7 @@
                         <label for="add_new_item"><?php _e('Add New Item', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[add_new_item]" value="<?php echo ( $post_type['labels']['add_new_item'] ); ?>">
+                        <input type="text" name="labels[add_new_item]" value="<?php if ( isset( $post_type['labels']['add_new_item'] ) ) echo ( $post_type['labels']['add_new_item'] ); ?>">
                         <span class="description"><?php _e('The add new item text. Default is Add New Post/Add New Page.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -131,7 +131,7 @@
                         <label for="edit_item"><?php _e('Edit Item', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[edit_item]" value="<?php echo ( $post_type['labels']['edit_item'] ); ?>">
+                        <input type="text" name="labels[edit_item]" value="<?php if ( isset( $post_type['labels']['edit_item'] ) ) echo ( $post_type['labels']['edit_item'] ); ?>">
                         <span class="description"><?php _e('The edit item text. Default is Edit Post/Edit Page.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -140,7 +140,7 @@
                         <label for="new_item"><?php _e('New Item', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[new_item]" value="<?php echo ( $post_type['labels']['new_item'] ); ?>">
+                        <input type="text" name="labels[new_item]" value="<?php if ( isset( $post_type['labels']['new_item'] ) ) echo ( $post_type['labels']['new_item'] ); ?>">
                         <span class="description"><?php _e('The new item text. Default is New Post/New Page.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -149,7 +149,7 @@
                         <label for="view_item"><?php _e('View Item', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[view_item]" value="<?php echo ( $post_type['labels']['view_item'] ); ?>">
+                        <input type="text" name="labels[view_item]" value="<?php if ( isset( $post_type['labels']['view_item'] ) ) echo ( $post_type['labels']['view_item'] ); ?>">
                         <span class="description"><?php _e('The view item text. Default is View Post/View Page.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -158,7 +158,7 @@
                         <label for="search_items"><?php _e('Search Items', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[search_items]" value="<?php echo ( $post_type['labels']['search_items'] ); ?>">
+                        <input type="text" name="labels[search_items]" value="<?php if ( isset( $post_type['labels']['search_items'] ) ) echo ( $post_type['labels']['search_items'] ); ?>">
                         <span class="description"><?php _e('The search items text. Default is Search Posts/Search Pages.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -167,7 +167,7 @@
                         <label for="not_found"><?php _e('Not Found', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[not_found]" value="<?php echo ( $post_type['labels']['not_found'] ); ?>">
+                        <input type="text" name="labels[not_found]" value="<?php if ( isset( $post_type['labels']['not_found'] ) ) echo ( $post_type['labels']['not_found'] ); ?>">
                         <span class="description"><?php _e('The not found text. Default is No posts found/No pages found.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -176,7 +176,7 @@
                         <label for="not_found_in_trash"><?php _e('Not Found In Trash', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[not_found_in_trash]" value="<?php echo ( $post_type['labels']['not_found_in_trash'] ); ?>">
+                        <input type="text" name="labels[not_found_in_trash]" value="<?php if ( isset( $post_type['labels']['not_found_in_trash'] ) ) echo ( $post_type['labels']['not_found_in_trash'] ); ?>">
                         <span class="description"><?php _e('The not found in trash text. Default is No posts found in Trash/No pages found in Trash.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -185,7 +185,7 @@
                         <label for="parent_item_colon"><?php _e('Parent Item Colon', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="labels[parent_item_colon]" value="<?php echo ( $post_type['labels']['parent_item_colon'] ); ?>">
+                        <input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $post_type['labels']['parent_item_colon'] ) ) echo ( $post_type['labels']['parent_item_colon'] ); ?>">
                         <span class="description"><?php _e('The parent text. This string isn\'t used on non-hierarchical types. In hierarchical ones the default is Parent Page', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -200,7 +200,7 @@
                         <label for="description"><?php _e('Description', 'content_types') ?></label>
                     </th>
                     <td>
-                        <textarea name="description" cols="52" rows="3"><?php echo ( $post_type['description'] ); ?></textarea>
+                        <textarea name="description" cols="52" rows="3"><?php if ( isset( $post_type['description'] ) ) echo ( $post_type['description'] ); ?></textarea>
                         <span class="description"><?php _e('A short descriptive summary of what the post type is.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -215,7 +215,7 @@
                         <label for="menu_position"><?php _e('Menu Position', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="menu_position" value="<?php echo ( $post_type['menu_position'] ); ?>">
+                        <input type="text" name="menu_position" value="<?php if ( isset( $post_type['menu_position'] ) ) echo ( $post_type['menu_position'] ); ?>">
                         <span class="description"><?php _e('5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -230,7 +230,7 @@
                         <label for="menu_icon"><?php _e('Menu Icon', 'content_types') ?></label>
                     </th>
                     <td>
-                        <input type="text" name="menu_icon" value="<?php echo ( $post_type['menu_icon'] ); ?>">
+                        <input type="text" name="menu_icon" value="<?php if ( isset( $post_type['menu_icon'] ) ) echo ( $post_type['menu_icon'] ); ?>">
                         <span class="description"><?php _e('The url to the icon to be used for this menu.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -253,21 +253,21 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="public" value="1" <?php if ( $post_type['public'] === true ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="public" value="1" <?php if ( isset( $post_type['public'] ) && $post_type['public'] === true ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong><br />
                         <?php _e('Display a user-interface for this "post_type"', 'content_types');?><br />( show_ui = TRUE )<br /><br />
                         <?php _e('Show "post_type" for selection in navigation menus', 'content_types'); ?><br />( show_in_nav_menus = TRUE )<br /><br />
                         <?php _e('"post_type" queries can be performed from the front-end', 'content_types'); ?><br />( publicly_queryable = TRUE )<br /><br />
                         <?php _e('Exclude posts with this post type from search results', 'content_types'); ?><br /> ( exclude_from_search = FALSE )</span>
                         <br /><br />
-                        <input type="radio" name="public" value="0" <?php if ( $post_type['public'] === false ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="public" value="0" <?php if ( isset( $post_type['public'] ) && $post_type['public'] === false ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong><br />
                         <?php _e('Don not display a user-interface for this "post_type"', 'content_types');?><br />( show_ui = FALSE )<br /><br />
                         <?php _e('Hide "post_type" for selection in navigation menus', 'content_types'); ?><br />( show_in_nav_menus = FALSE )<br /><br />
                         <?php _e('"post_type" queries cannot be performed from the front-end', 'content_types'); ?><br />( publicly_queryable = FALSE )<br /><br />
                         <?php _e('Exclude posts with this post type from search results', 'content_types'); ?><br /> ( exclude_from_search = TRUE )</span>
                         <br /><br />
-                        <input type="radio" name="public" value="advanced" <?php if ( $post_type['public'] === NULL ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="public" value="advanced" <?php if ( !isset( $post_type['public'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('ADVANCED', 'content_types'); ?></strong> - <?php _e('You can set each component manualy.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -288,10 +288,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="show_ui" value="1" <?php if ( $post_type['show_ui'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="show_ui" value="1" <?php if ( !empty( $post_type['show_ui'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong> - <?php _e('Display a user-interface (admin panel) for this post type.', 'content_types'); ?></span>
                         <br />
-                        <input type="radio" name="show_ui" value="0" <?php if ( !$post_type['show_ui'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="show_ui" value="0" <?php if ( empty( $post_type['show_ui'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong> - <?php _e('Do not display a user-interface for this post type.', 'content_types'); ?></span>
                     </td>
                 </tr>
@@ -312,10 +312,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="show_in_nav_menus" value="1" <?php if ( $post_type['show_in_nav_menus'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="show_in_nav_menus" value="1" <?php if ( !empty( $post_type['show_in_nav_menus'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="show_in_nav_menus" value="0" <?php if ( !$post_type['show_in_nav_menus'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="show_in_nav_menus" value="0" <?php if ( empty( $post_type['show_in_nav_menus'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>
@@ -336,10 +336,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="publicly_queryable" value="1" <?php if ( $post_type['publicly_queryable'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="publicly_queryable" value="1" <?php if ( !empty( $post_type['publicly_queryable'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="publicly_queryable" value="0" <?php if ( !$post_type['publicly_queryable'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="publicly_queryable" value="0" <?php if ( empty( $post_type['publicly_queryable'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>
@@ -360,10 +360,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="exclude_from_search" value="1" <?php if ( $post_type['exclude_from_search'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="exclude_from_search" value="1" <?php if ( !empty( $post_type['exclude_from_search'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="exclude_from_search" value="0" <?php if ( !$post_type['exclude_from_search'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="exclude_from_search" value="0" <?php if ( empty( $post_type['exclude_from_search'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>
@@ -384,10 +384,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="hierarchical" value="1" <?php if ( $post_type['hierarchical'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="hierarchical" value="1" <?php if ( !empty( $post_type['hierarchical'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="hierarchical" value="0" <?php if ( !$post_type['hierarchical'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="hierarchical" value="0" <?php if ( empty( $post_type['hierarchical'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>
@@ -408,16 +408,16 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="rewrite" value="1" <?php if ( $post_type['rewrite'] == '1' ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="rewrite" value="1" <?php if ( isset( $post_type['rewrite'] ) && $post_type['rewrite'] == '1' ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="rewrite" value="0" <?php if ( $post_type['rewrite'] == '0' ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="rewrite" value="0" <?php if ( isset( $post_type['rewrite'] ) && $post_type['rewrite'] == '0' ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="rewrite" value="advanced" <?php if ( isset( $post_type['rewrite']['slug'] )) echo( 'checked="checked"' ); ?>>
+                        <input type="radio" name="rewrite" value="advanced" <?php if ( isset( $post_type['rewrite']['slug'] ) ) echo( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('CUSTOM SLUG', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="text" name="rewrite_slug" value="<?php echo( $post_type['rewrite']['slug'] ); ?>" />
+                        <input type="text" name="rewrite_slug" value="<?php if ( isset( $post_type['rewrite']['slug'] )) echo( $post_type['rewrite']['slug'] ); ?>" />
                         <br />
                         <span class="description"><?php _e('Prepend posts with this slug.', 'content_types'); ?></span>
                     </td>
@@ -439,10 +439,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="query_var" value="1" <?php if ( $post_type['query_var'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="query_var" value="1" <?php if ( !empty( $post_type['query_var'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="query_var" value="0" <?php if ( !$post_type['query_var'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="query_var" value="0" <?php if ( empty( $post_type['query_var'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>
@@ -463,10 +463,10 @@
                <tr>
                     <th></th>
                     <td>
-                        <input type="radio" name="can_export" value="1" <?php if ( $post_type['can_export'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="can_export" value="1" <?php if ( !empty( $post_type['can_export'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('TRUE', 'content_types'); ?></strong></span>
                         <br />
-                        <input type="radio" name="can_export" value="0" <?php if ( !$post_type['can_export'] ) echo ( 'checked="checked"' ); ?>>
+                        <input type="radio" name="can_export" value="0" <?php if ( empty( $post_type['can_export'] ) ) echo ( 'checked="checked"' ); ?>>
                         <span class="description"><strong><?php _e('FALSE', 'content_types'); ?></strong></span>
                     </td>
                 </tr>

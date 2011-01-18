@@ -44,14 +44,20 @@
                     <strong>
                         <a href="<?php echo( admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=post_type&ct_edit_post_type=' . $name ) ); ?>"><?php echo $name; ?></a>
                     </strong>
-                    <div class="row-actions">
+                    <div class="row-actions" id="row-actions-<?php echo $name; ?>">
                         <span class="edit">
                             <a title="<?php _e('Edit the post type', 'content_types'); ?>" href="<?php echo admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=post_type&ct_edit_post_type=' . $name ); ?>"><?php _e('Edit', 'content_types'); ?></a> |
                         </span>
                         <span class="trash">
-                            <a class="submitdelete" href="<?php echo admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=post_type&ct_delete_post_type=' . $name ); ?>"><?php _e('Delete', 'content_types'); ?></a>
+                            <a class="submitdelete" href="#" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', 'content_types'); ?></a>
                         </span>
                     </div>
+                    <form action="" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
+                        <?php wp_nonce_field('delete_post_type'); ?>
+                        <input type="hidden" name="post_type_name" value="<?php echo( $name ); ?>" />
+                        <input type="submit" class="button confirm" value="<?php _e( 'Confirm', $this->text_domain ); ?>" name="submit" />
+                        <input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
+                    </form>
                 </td>
                 <td><?php if ( isset( $post_type['labels']['name'] ) ) echo $post_type['labels']['name']; ?></td>
                 <td><?php if ( isset( $post_type['description'] ) ) echo $post_type['description']; ?></td>

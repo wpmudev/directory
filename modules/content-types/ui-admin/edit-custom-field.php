@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
-$post_types = $this->registered_post_type_names;
+$post_types = get_post_types('','names');
 $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 ?>
 
@@ -34,12 +34,12 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
                     </th>
                     <td>
                         <select name="field_type">
-                            <option value="text" <?php if ( $custom_field['field_type'] == 'text' ) echo ( 'selected="selected"' ); ?>>Text Box</option>
-                            <option value="textarea" <?php if ( $custom_field['field_type'] == 'textarea' ) echo ( 'selected="selected"' ); ?>>Multi-line Text Box</option>
-                            <option value="radio" <?php if ( $custom_field['field_type'] == 'radio' ) echo ( 'selected="selected"' ); ?>>Radio Buttons</option>
-                            <option value="checkbox" <?php if ( $custom_field['field_type'] == 'checkbox' ) echo ( 'selected="selected"' ); ?>>Checkboxes</option>
-                            <option value="selectbox" <?php if ( $custom_field['field_type'] == 'selectbox' ) echo ( 'selected="selected"' ); ?>>Drop Down Select Box</option>
-                            <option value="multiselectbox" <?php if ( $custom_field['field_type'] == 'multiselectbox' ) echo ( 'selected="selected"' ); ?>>Multi Select Box</option>
+                            <option value="text" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'text' ) echo ( 'selected="selected"' ); ?>>Text Box</option>
+                            <option value="textarea" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'textarea' ) echo ( 'selected="selected"' ); ?>>Multi-line Text Box</option>
+                            <option value="radio" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'radio' ) echo ( 'selected="selected"' ); ?>>Radio Buttons</option>
+                            <option value="checkbox" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'checkbox' ) echo ( 'selected="selected"' ); ?>>Checkboxes</option>
+                            <option value="selectbox" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'selectbox' ) echo ( 'selected="selected"' ); ?>>Drop Down Select Box</option>
+                            <option value="multiselectbox" <?php if ( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'multiselectbox' ) echo ( 'selected="selected"' ); ?>>Multi Select Box</option>
                         </select>
                         <span class="description"><?php _e('Select one or more post types to add this custom field to.', 'content_types'); ?></span>
                         <div class="ct-field-type-options">
@@ -55,7 +55,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
                                 </select
                             </p>
 
-                            <?php if ( is_array( $custom_field['field_options'] )): ?>
+                            <?php if ( isset( $custom_field['field_options'] ) && is_array( $custom_field['field_options'] )): ?>
                                 <?php foreach ( $custom_field['field_options'] as $key => $field_option ): ?>
                                     <p>
                                         <?php _e('Option', 'content_types'); ?> <?php echo( $key ); ?>:
@@ -70,7 +70,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
                             <?php endif; ?>
 
                             <div class="ct-field-additional-options"></div>
-                            <input type="hidden" value="<?php echo( count( $custom_field['field_options'] )); ?>" name="track_number">
+                            <input type="hidden" value="<?php if ( isset( $custom_field['field_options'] ) ) echo count( $custom_field['field_options'] ); ?>" name="track_number">
                             <p><a href="#" class="ct-field-add-option"><?php _e('Add another option', 'content_types'); ?></a></p>
                         </div>
                     </td>

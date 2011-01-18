@@ -125,10 +125,10 @@ class Content_Types_Core {
                     'description'         => $_POST['description'],
                     'menu_position'       => (int)  $_POST['menu_position'],
                     'public'              => (bool) $_POST['public'] ,
-                    'show_ui'             => (bool) $_POST['show_ui'],
-                    'show_in_nav_menus'   => (bool) $_POST['show_in_nav_menus'],
-                    'publicly_queryable'  => (bool) $_POST['publicly_queryable'],
-                    'exclude_from_search' => (bool) $_POST['exclude_from_search'],
+                    'show_ui'             => ( isset( $_POST['show_ui'] ) ) ? (bool) $_POST['show_ui'] : NULL,
+                    'show_in_nav_menus'   => ( isset( $_POST['show_in_nav_menus'] ) ) ? (bool) $_POST['show_in_nav_menus'] : NULL,
+                    'publicly_queryable'  => ( isset( $_POST['publicly_queryable'] ) ) ? (bool) $_POST['publicly_queryable'] : NULL,
+                    'exclude_from_search' => ( isset( $_POST['exclude_from_search'] ) ) ? (bool) $_POST['exclude_from_search'] : NULL,
                     'hierarchical'        => (bool) $_POST['hierarchical'],
                     'rewrite'             => (bool) $_POST['rewrite'],
                     'query_var'           => (bool) $_POST['query_var'],
@@ -175,10 +175,10 @@ class Content_Types_Core {
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated' ));
             }
         }
-        elseif ( isset( $_REQUEST['submit'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'delete_post_type' )  ) {
+        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_post_type' )  ) {
             $post_types = $this->post_types;
             /* remove the deleted post type */
-            unset( $post_types[$_GET['ct_delete_post_type']] );
+            unset( $post_types[$_POST['post_type_name']] );
             /* update the available post types */
             if ( $this->allow_per_site_content_types == true )
                 update_option( 'ct_custom_post_types', $post_types );
@@ -220,8 +220,8 @@ class Content_Types_Core {
         /* If valid add/edit taxonomy request is made */
         if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'submit_taxonomy' ) ) {
             /* Validate input fields */
-            $valid_taxonomy = $this->validate_field( 'taxonomy', $_POST['taxonomy'] );
-            $valid_object_type = $this->validate_field( 'object_type', $_POST['object_type'] );
+            $valid_taxonomy = $this->validate_field( 'taxonomy', ( isset( $_POST['taxonomy'] ) ) ? $_POST['taxonomy'] : NULL );
+            $valid_object_type = $this->validate_field( 'object_type', ( isset( $_POST['object_type'] ) ) ? $_POST['object_type'] : NULL );
             if ( $valid_taxonomy && $valid_object_type ) {
                 /* Construct args */
                 $labels = array(
@@ -243,9 +243,9 @@ class Content_Types_Core {
                 $args = array(
                     'labels'              => $labels,
                     'public'              => (bool) $_POST['public'] ,
-                    'show_ui'             => (bool) $_POST['show_ui'],
-                    'show_tagcloud'       => (bool) $_POST['show_tagcloud'],
-                    'show_in_nav_menus'   => (bool) $_POST['show_in_nav_menus'],
+                    'show_ui'             => ( isset( $_POST['show_ui'] ) ) ? (bool) $_POST['show_ui'] : NULL,
+                    'show_tagcloud'       => ( isset( $_POST['show_tagcloud'] ) ) ? (bool) $_POST['show_tagcloud'] : NULL,
+                    'show_in_nav_menus'   => ( isset( $_POST['show_in_nav_menus'] ) ) ? (bool) $_POST['show_in_nav_menus'] : NULL,
                     'hierarchical'        => (bool) $_POST['hierarchical'],
                     'rewrite'             => (bool) $_POST['rewrite'],
                     'query_var'           => (bool) $_POST['query_var'],
@@ -291,11 +291,11 @@ class Content_Types_Core {
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated' ) );
             }
         }
-        elseif ( isset( $_REQUEST['submit'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'delete_taxonomy' )  ) {
+        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_taxonomy' )  ) {
             /* Set available taxonomies */
             $taxonomies = $this->taxonomies;
             /* Remove the deleted taxonomy */
-            unset( $taxonomies[$_GET['ct_delete_taxonomy']] );
+            unset( $taxonomies[$_POST['taxonomy_name']] );
             /* Update the available taxonomies */
             if ( $this->allow_per_site_content_types == true )
                 update_option( 'ct_custom_taxonomies', $taxonomies );
@@ -341,8 +341,8 @@ class Content_Types_Core {
         /* If valid add/edit custom field request is made */
         if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'submit_custom_field' ) ) {
             /* Validate input fields data */
-            $field_title_valid       = $this->validate_field( 'field_title', $_POST['field_title'] );
-            $field_object_type_valid = $this->validate_field( 'object_type', $_POST['object_type'] );
+            $field_title_valid       = $this->validate_field( 'field_title', ( isset( $_POST['field_title'] ) ) ? $_POST['field_title'] : NULL );
+            $field_object_type_valid = $this->validate_field( 'object_type', ( isset( $_POST['object_type'] ) ) ? $_POST['object_type'] : NULL );
             /* Check for specific field types and validate differently */
             if ( in_array( $_POST['field_type'], array( 'radio', 'checkbox', 'selectbox', 'multiselectbox' ) ) ) {
                 $field_options_valid = $this->validate_field( 'field_options', $_POST['field_options'][1] );
@@ -362,10 +362,10 @@ class Content_Types_Core {
                 'field_type'           => $_POST['field_type'],
                 'field_sort_order'     => $_POST['field_sort_order'],
                 'field_options'        => $_POST['field_options'],
-                'field_default_option' => $_POST['field_default_option'],
+                'field_default_option' => ( isset( $_POST['field_default_option'] ) ) ? $_POST['field_default_option'] : NULL,
                 'field_description'    => $_POST['field_description'],
                 'object_type'          => $_POST['object_type'],
-                'required'             => $_POST['required'],
+                //'required'             => $_POST['required'],
                 'field_id'             => $field_id
             );
 
@@ -381,11 +381,11 @@ class Content_Types_Core {
                 update_site_option( 'ct_custom_fields', $custom_fields );
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=custom_field&updated' ) );
         }
-        elseif ( isset( $_REQUEST['submit'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'delete_custom_field' )  ) {
+        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_custom_field' )  ) {
             /* Set available custom fields */
             $custom_fields = $this->custom_fields;
             /* Remove the deleted custom field */
-            unset( $custom_fields[$_GET['ct_delete_custom_field']] );
+            unset( $custom_fields[$_POST['custom_field_id']] );
             /* Update the available custom fields */
             if ( $this->allow_per_site_content_types == true )
                 update_option( 'ct_custom_fields', $custom_fields );

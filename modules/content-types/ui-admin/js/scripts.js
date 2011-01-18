@@ -1,23 +1,26 @@
 // Handle show embed code clicks
-var embed_code = {
+var content_types = {
     toggle_embed_code: function(key) {
         jQuery('#embed-code-'+key).toggle();
-//        jQuery('.action-links-'+key).hide();
-//        jQuery('.separators-'+key).hide();
-//        jQuery('input[name="action"]').val('end');
+    },
+    toggle_delete: function(key) {
+        jQuery('#form-'+key).show();
+        jQuery('#row-actions-'+key).hide();
+        jQuery('input[name="action"]').val('delete');
     },
     cancel: function(key) {
         jQuery('#form-'+key).hide();
-        jQuery('.action-links-'+key).show();
-        jQuery('.separators-'+key).show();
+        jQuery('#row-actions-'+key).show();
     }
 };
 
 (function($) {
     
     $(document).ready(function($) {
-
+        // hide embed codes
         $('.embed-code').hide();
+        // hide delete forms
+        $('.del-form').hide();
 
         $('.ct-toggle').toggle(
             function() { $(this).next().hide(); },

@@ -37,19 +37,25 @@
                     <strong>
                         <a href="<?php echo( admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>"><?php echo( $name ); ?></a>
                     </strong>
-                    <div class="row-actions">
+                    <div class="row-actions" id="row-actions-<?php echo $name; ?>">
                         <span class="edit">
                             <a title="<?php _e('Edit this taxonomy', 'content_types'); ?>" href="<?php echo( admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>"><?php _e('Edit', 'content_types'); ?></a> |
                         </span>
                         <span>
-                            <a id="embed-code-link-<?php echo $i; ?>" title="<?php _e('Show embed code', 'content_types'); ?>" href="<?php echo( admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>" onclick="javascript:embed_code.toggle_embed_code('<?php echo $i; ?>'); return false;"><?php _e('Embed Code', 'content_types'); ?></a> |
+                            <a title="<?php _e('Show embed code', 'content_types'); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo( $name ); ?>'); return false;"><?php _e('Embed Code', 'content_types'); ?></a> |
                         </span>
                         <span class="trash">
-                            <a class="submitdelete" href="<?php echo( admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_delete_taxonomy=' . $name ) ); ?>"><?php _e('Delete', 'content_types'); ?></a>
+                            <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', 'content_types'); ?></a>
                         </span>
                     </div>
+                    <form action="" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
+                        <?php wp_nonce_field('delete_taxonomy'); ?>
+                        <input type="hidden" name="taxonomy_name" value="<?php echo( $name ); ?>" />
+                        <input type="submit" class="button confirm" value="<?php _e( 'Confirm', $this->text_domain ); ?>" name="submit" />
+                        <input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
+                    </form>
                 </td>
-                <td><?php echo( $taxonomy['args']['labels']['name'] ); ?></td>
+                <td><?php if ( isset( $taxonomy['args']['labels']['name'] ) ) echo $taxonomy['args']['labels']['name']; ?></td>
                 <td>
                     <?php foreach( $taxonomy['object_type'] as $object_type ): ?>
                         <?php echo( $object_type ); ?>
@@ -79,7 +85,7 @@
                     <?php endif; ?>
                 </td>
             </tr>
-            <tr id="embed-code-<?php echo $i; ?>" class="embed-code <?php echo ( $class ); ?>">
+            <tr id="embed-code-<?php echo( $name ); ?>" class="embed-code <?php echo ( $class ); ?>">
                 <td colspan="10">
                     <div class="embed-code-wrap">
                         <span class="description"><?php _e('Returns an HTML string of taxonomy terms associated with a post and given taxonomy. Terms are linked to their respective term listing pages. Use it inside the Loop.', $this->text_domain ); ?></span>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Classifieds Core Admin Class
+ * Content Types Core Admin Class
  */
 if ( !class_exists('Content_Types_Core_Admin') ):
 class Content_Types_Core_Admin extends Content_Types_Core {
@@ -18,8 +18,10 @@ class Content_Types_Core_Admin extends Content_Types_Core {
     }
 
     /**
-     * 
-     */
+     * Setup hooks.
+     *
+     * @return void
+     **/
     function init() {
         add_action( 'admin_menu', array( &$this, 'admin_menu' ), 20 );
         add_action( 'admin_init', array( &$this, 'get_hook' ) );
@@ -50,7 +52,9 @@ class Content_Types_Core_Admin extends Content_Types_Core {
 
     /**
      * Load styles on plugin admin pages only.
-     */
+     *
+     * @return void
+     **/
     function enqueue_styles() {
         wp_enqueue_style( 'ct-admin-styles',
                            $this->submodule_url . 'ui-admin/css/styles.css');
@@ -58,7 +62,9 @@ class Content_Types_Core_Admin extends Content_Types_Core {
 
     /**
      * Load scripts on plugin specific admin pages only.
-     */
+     *
+     * @return void
+     **/
     function enqueue_scripts() {
         wp_enqueue_script( 'ct-admin-scripts',
                             $this->submodule_url . 'ui-admin/js/scripts.js',
@@ -83,15 +89,13 @@ class Content_Types_Core_Admin extends Content_Types_Core {
     function handle_admin_requests() {
 
         if ( isset( $_GET['page'] ) && $_GET['page'] == 'ct_content_types' ) {
-            $this->render_admin('content-types');
+            $this->render_admin('navigation');
             
             if ( isset( $_GET['ct_content_type'] ) && $_GET['ct_content_type'] == 'post_type' || !isset( $_GET['ct_content_type'] ) ) {
                 if ( isset( $_GET['ct_add_post_type'] ) )
                     $this->render_admin('add-post-type');
                 elseif ( isset( $_GET['ct_edit_post_type'] ) )
                     $this->render_admin('edit-post-type');
-                elseif ( isset( $_GET['ct_delete_post_type'] ) )
-                    $this->render_admin('delete-post-type');
                 else 
                     $this->render_admin('post-types');
             }
@@ -100,24 +104,16 @@ class Content_Types_Core_Admin extends Content_Types_Core {
                     $this->render_admin('add-taxonomy');
                 elseif ( isset( $_GET['ct_edit_taxonomy'] ) )
                     $this->render_admin('edit-taxonomy');
-                elseif ( isset( $_GET['ct_delete_taxonomy'] ) )
-                    $this->render_admin('delete-taxonomy');
                 else
                     $this->render_admin('taxonomies');
             }
             elseif ( $_GET['ct_content_type'] == 'custom_field' ) {
-                if ( isset( $_GET['ct_add_custom_field'] )) {
+                if ( isset( $_GET['ct_add_custom_field'] ))
                     $this->render_admin('add-custom-field');
-                }
-                elseif ( isset( $_GET['ct_edit_custom_field'] ) ) {
+                elseif ( isset( $_GET['ct_edit_custom_field'] ) )
                     $this->render_admin('edit-custom-field');
-                }
-                elseif ( isset( $_GET['ct_delete_custom_field'] )) {
-                    $this->render_admin('delete-custom-field');
-                }
-                else {
+                else
                     $this->render_admin('custom-fields');
-                }
             }
         }
     }
