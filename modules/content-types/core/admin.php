@@ -33,7 +33,7 @@ class Content_Types_Core_Admin extends Content_Types_Core {
      * @return void
      **/
     function admin_menu() {
-        add_submenu_page( $this->parent_menu_slug , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'edit_users', 'ct_content_types', array( &$this, 'handle_admin_requests' ) );
+        add_submenu_page( $this->parent_menu_slug , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'activate_plugins', 'ct_content_types', array( &$this, 'handle_admin_requests' ) );
     }
 
     /**

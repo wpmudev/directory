@@ -7,7 +7,7 @@
 
     <table class="form-table">
         <tr>
-            <th><?php _e( 'Under Development', $this->text_domain ); ?></th>
+            <th><code><?php _e( 'Under Development. Coming Soon!', $this->text_domain ); ?></code></th>
         </tr>
     </table>
 </div>

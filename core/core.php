@@ -44,14 +44,21 @@ class Directory_Core {
      **/
     function init() {
         add_action( 'plugins_loaded', array( &$this, 'init_submodules' ) );
+        /* Load plugin translation file */
+        add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
+        /* Register activation hook */
+        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
+        /* Register deactivation hook */
+        register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
         /* Register Directory themes contained within the dp-themes folder */
         if ( function_exists( 'register_theme_directory' ) )
             register_theme_directory( $this->plugin_dir . 'themes' );
+        
         add_action( 'init', array( &$this, 'roles' ) );
-        add_action( 'init', array( &$this, 'add_pages' ) );
-        add_action( 'init', array( &$this, 'set_billing_type' ) );
-        add_action( 'init', array( &$this, 'redirect_after_payment' ) );
-        add_action( 'dp_loaded', array( &$this, 'dp_init' ) );
+        add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
+        
+        $plugin = plugin_basename(__FILE__);
+        add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
     }
 
     /**
@@ -61,6 +68,62 @@ class Directory_Core {
      **/
     function init_vars() {
 
+    }
+
+    /**
+     * Loads "directory-[xx_XX].mo" language file from the "languages" directory
+     *
+     * @return void
+     **/
+    function load_plugin_textdomain() {
+        $plugin_dir = $this->plugin_dir . 'languages';
+        load_plugin_textdomain( 'directory', null, $plugin_dir );
+    }
+
+    /**
+     * Update plugin versions
+     *
+     * @return void
+     **/
+    function plugin_activate() {
+        /* Update plugin versions */
+        $versions = array( 'versions' => array( 'version' => $this->plugin_version, 'db_version' => $this->plugin_db_version ) );
+        $options = $this->get_options();
+        $options = ( isset( $options['versions'] ) ) ? array_merge( $options, $versions ) : $versions;
+        update_option( $this->options_name, $options );
+    }
+
+    /**
+     * Deactivate plugin. If $this->flush_plugin_data is set to "true"
+     * all plugin data will be deleted
+     *
+     * @return void
+     */
+    function plugin_deactivate() {
+        /* if true all plugin data will be deleted */
+        if ( false ) {
+            delete_option( $this->options_name );
+            delete_option( 'ct_custom_post_types' );
+            delete_option( 'ct_custom_taxonomies' );
+            delete_option( 'ct_custom_fields' );
+            delete_option( 'ct_flush_rewrite_rules' );
+            delete_site_option( $this->options_name );
+            delete_site_option( 'ct_custom_post_types' );
+            delete_site_option( 'ct_custom_taxonomies' );
+            delete_site_option( 'ct_custom_fields' );
+            delete_site_option( 'ct_flush_rewrite_rules' );
+        }
+    }
+
+    /**
+     *
+     * @param <type> $links
+     * @return <type>
+     */
+    function plugin_settings_link( $links ) {
+        $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
+        array_unshift( $links, $settings_link );
+        return $links;
     }
 
     /**
@@ -120,45 +183,6 @@ class Directory_Core {
     }
 
     /**
-     * Add neccessary pages.
-     *
-     * @return void
-     **/
-    function add_pages() {
-        $page      = get_page_by_title( 'Submit Listing' );
-        $options   = get_site_option( 'dp_options' );
-
-        // check whether page exists
-        if ( !isset( $page ) ) {
-            $args = array(
-                'post_title' => 'Submit Listing',
-                'post_content' => '',
-                'post_status' => 'publish',
-                'post_type' => 'page',
-                'ping_status' => 'closed',
-                'comment_status' => 'closed'
-            );
-
-            // insert page and get the id
-            $post_id = wp_insert_post( $args );
-            // update post meta with the template file which we will use for submit listing
-            update_post_meta( $post_id , '_wp_page_template', 'submit-listing.php' );
-
-            $id_record = array( 'submit_page_id' => $post_id );
-            $options   = array_merge( $options, $id_record );
-            update_site_option( 'dp_options', $options );
-        }
-        elseif ( isset( $page ) && !isset( $options['submit_page_id'] )) {
-            // update post meta with the template file which we will use for submit listing
-            update_post_meta( $page->ID , '_wp_page_template', 'submit-listing.php' );
-
-            $id_record = array( 'submit_page_id' => $page->ID );
-            $options   = array_merge( $options, $id_record );
-            update_site_option( 'dp_options', $options );
-        }
-    }
-
-    /**
      * Insert User
      *
      * @param <type> $email
@@ -209,29 +233,18 @@ class Directory_Core {
     }
 
     /**
-     * Set billing type.
+     * Allow users to be able to register content types for their sites or
+     * disallow it ( only super admin can add content types )
      *
-     * @return <type>
+     * @param <type> $bool
+     * @return bool 
      */
-    function set_billing_type() {
-        if ( !isset( $_POST['payment_method_submit'] ))
-            return;
-
-        $_SESSION['billing'] = $_POST['billing'];
-    }
-
-    /**
-     * Redirect after payment
-     */
-    function redirect_after_payment() {
-
-        if ( isset( $_REQUEST['redirect_admin_profile'] )) {
-            wp_redirect( admin_url( 'profile.php' ));
-            exit;
-        } elseif ( isset( $_REQUEST['redirect_admin_listings'] )) {
-            wp_redirect( admin_url( 'post-new.php?post_type=directory_listing' ));
-            exit;
-        }
+    function allow_per_site_content_types( $bool ) {
+        $options = $this->get_options('general_settings');
+        if ( isset( $options['allow_per_site_content_types'] ) )
+            return true;
+        else
+            return $bool;
     }
 
     /**
@@ -247,7 +260,7 @@ class Directory_Core {
             /* Update options by merging the old ones */
             $options = $this->get_options();
             $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_site_option( $this->options_name, $options );
+            update_option( $this->options_name, $options );
         } else {
             die( __( 'Security check failed!', $this->text_domain ) );
         }
@@ -260,7 +273,7 @@ class Directory_Core {
      * @return array $options Plugin options or empty array if no options are found
      **/
     function get_options( $key = NULL ) {
-        $options = get_site_option( $this->options_name );
+        $options = get_option( $this->options_name );
         $options = is_array( $options ) ? $options : array();
         /* Check if specific plugin option is requested and return it */
         if ( isset( $key ) && array_key_exists( $key, $options ) )
@@ -284,15 +297,6 @@ class Directory_Core {
 		else
 			echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
 	}
-
-    /**
-     * dp_init()
-     *
-     * Allow components to initialize themselves cleanly
-     */
-    function dp_init() {
-        do_action( 'dp_init' );
-    }
 
 }
 endif;

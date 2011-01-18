@@ -26,6 +26,8 @@ class Content_Types_Core {
     var $allow_redirect;
     /** @var boolean Flag whether to flush the rewrite rules or not */
     var $flush_rewrite_rules = false;
+    /** @var boolean Flag whether the users have the ability to declair post type for their own blogs */
+    var $allow_per_site_content_types = false;
     
     /**
      * Constructor
@@ -63,9 +65,16 @@ class Content_Types_Core {
      * @return void
      **/
     function init_vars() {
-        $this->post_types = get_site_option( 'ct_custom_post_types' );
-        $this->taxonomies = get_site_option( 'ct_custom_taxonomies' );
-        $this->custom_fields = get_site_option( 'ct_custom_fields' );
+        $this->allow_per_site_content_types = apply_filters( 'allow_per_site_content_types', false );
+        if ( !empty( $this->allow_per_site_content_types ) ) {
+            $this->post_types = get_option( 'ct_custom_post_types' );
+            $this->taxonomies = get_option( 'ct_custom_taxonomies' );
+            $this->custom_fields = get_option( 'ct_custom_fields' );
+        } else {
+            $this->post_types = get_site_option( 'ct_custom_post_types' );
+            $this->taxonomies = get_site_option( 'ct_custom_taxonomies' );
+            $this->custom_fields = get_site_option( 'ct_custom_fields' );
+        }
         $this->registered_post_type_names = get_post_types('','names');
     }
 
@@ -112,7 +121,7 @@ class Content_Types_Core {
                 $args = array(
                     'labels'              => $labels,
                     'supports'            => $_POST['supports'],
-                    'capability_type'     => ( $_POST['capability_type'] ) ? $_POST['capability_type'] : 'post',
+                    'capability_type'     => ( isset( $_POST['capability_type'] ) ) ? $_POST['capability_type'] : 'post',
                     'description'         => $_POST['description'],
                     'menu_position'       => (int)  $_POST['menu_position'],
                     'public'              => (bool) $_POST['public'] ,
@@ -158,7 +167,10 @@ class Content_Types_Core {
                 if ( count( $post_types ) > count( $this->post_types ) )
                     $this->flush_rewrite_rules = true;
                 /* Update options with the post type options */
-                update_site_option( 'ct_custom_post_types', $post_types );
+                if ( $this->allow_per_site_content_types == true )
+                    update_option( 'ct_custom_post_types', $post_types );
+                else
+                    update_site_option( 'ct_custom_post_types', $post_types );
                 /* Redirect to post types page */
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated' ));
             }
@@ -168,7 +180,10 @@ class Content_Types_Core {
             /* remove the deleted post type */
             unset( $post_types[$_GET['ct_delete_post_type']] );
             /* update the available post types */
-            update_site_option( 'ct_custom_post_types', $post_types );
+            if ( $this->allow_per_site_content_types == true )
+                update_option( 'ct_custom_post_types', $post_types );
+            else
+                update_site_option( 'ct_custom_post_types', $post_types );
             /* Redirect to post types page */
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated' ));
         }
@@ -268,7 +283,10 @@ class Content_Types_Core {
                 if ( count( $taxonomies ) > count( $this->taxonomies ) )
                     $this->flush_rewrite_rules = true;
                 /* Update wp_options with the taxonomies options */
-                update_site_option( 'ct_custom_taxonomies', $taxonomies );
+                if ( $this->allow_per_site_content_types == true )
+                    update_option( 'ct_custom_taxonomies', $taxonomies );
+                else
+                    update_site_option( 'ct_custom_taxonomies', $taxonomies );
                 /* Redirect back to the taxonomies page */
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated' ) );
             }
@@ -279,7 +297,10 @@ class Content_Types_Core {
             /* Remove the deleted taxonomy */
             unset( $taxonomies[$_GET['ct_delete_taxonomy']] );
             /* Update the available taxonomies */
-            update_site_option( 'ct_custom_taxonomies', $taxonomies );
+            if ( $this->allow_per_site_content_types == true )
+                update_option( 'ct_custom_taxonomies', $taxonomies );
+            else
+                update_site_option( 'ct_custom_taxonomies', $taxonomies );
             /* Redirect back to the taxonomies page */
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated' ) );
         }
@@ -354,7 +375,10 @@ class Content_Types_Core {
 
             /* Set new custom fields */
             $custom_fields = ( $this->custom_fields ) ? array_merge( $this->custom_fields, array( $field_id => $args ) ) : array( $field_id => $args );
-            update_site_option( 'ct_custom_fields', $custom_fields );
+            if ( $this->allow_per_site_content_types == true )
+                update_option( 'ct_custom_fields', $custom_fields );
+            else
+                update_site_option( 'ct_custom_fields', $custom_fields );
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=custom_field&updated' ) );
         }
         elseif ( isset( $_REQUEST['submit'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'delete_custom_field' )  ) {
@@ -363,7 +387,10 @@ class Content_Types_Core {
             /* Remove the deleted custom field */
             unset( $custom_fields[$_GET['ct_delete_custom_field']] );
             /* Update the available custom fields */
-            update_site_option( 'ct_custom_fields', $custom_fields );
+            if ( $this->allow_per_site_content_types == true )
+                update_option( 'ct_custom_fields', $custom_fields );
+            else
+                update_site_option( 'ct_custom_fields', $custom_fields );
             /* Redirect back to the taxonomies page */
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=custom_field&updated' ) );
         }

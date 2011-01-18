@@ -31,6 +31,8 @@ class Payments_Core {
         add_action( 'handle_module_admin_requests', array( &$this, 'handle_admin_requests' ) );
         add_action( 'render_admin_navigation_tabs', array( &$this, 'render_admin_navigation_tabs' ) );
         add_action( 'render_admin_navigation_subs', array( &$this, 'render_admin_navigation_subs' ) );
+        /* Create neccessary pages */
+        add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
     }
 
     /**
@@ -40,6 +42,28 @@ class Payments_Core {
      **/
     function init_vars() {
         $this->paypal_api_module = new PayPal_API_Module( '' );
+    }
+
+    /**
+     * Create the default Classifieds pages.
+     *
+     * @return void
+     **/
+    function create_default_pages() {
+        $page['checkout'] = get_page_by_title('Checkout');
+        if ( !isset( $page['checkout'] ) ) {
+            $current_user = wp_get_current_user();
+            /* Construct args for the new post */
+            $args = array(
+                'post_title'     => 'Checkout',
+                'post_status'    => 'publish',
+                'post_author'    => $current_user->ID,
+                'post_type'      => 'page',
+                'ping_status'    => 'closed',
+                'comment_status' => 'closed'
+            );
+            wp_insert_post( $args );
+        }
     }
 
     /**
