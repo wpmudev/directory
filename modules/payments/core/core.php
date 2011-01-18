@@ -15,7 +15,7 @@ class Payments_Core {
     /**
      * Constructor.
      **/
-    function Payments_Submodule( $admin_page_slug ) {
+    function Payments_Core( $admin_page_slug ) {
         $this->admin_page_slug = $admin_page_slug;
         /* Hook the vars assignment to init hook */
         add_action( 'init', array( &$this, 'init_vars' ) );
@@ -29,7 +29,7 @@ class Payments_Core {
      * @return void
      **/
     function init_vars() {
-        $this->paypal_api_module = new PayPal_API_Module();
+        $this->paypal_api_module = new PayPal_API_Module( '' );
     }
 
 

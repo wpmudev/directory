@@ -47,8 +47,8 @@ class PayPal_API_Module {
      *
      * @return void
      **/
-    function PayPal_API_Module() {
-        $this->init_vars();
+    function PayPal_API_Module( $options ) {
+        $this->init_vars( $options );
     }
 
     /**
@@ -56,9 +56,9 @@ class PayPal_API_Module {
      *
      * @return void
      */
-    function init_vars() {
+    function init_vars( $options ) {
         /* Get PayPal options defined in the admin area */
-        $options = get_options('paypal');
+        //$options = get_options('paypal');
 
         if ( !empty( $options ) ) {
 
