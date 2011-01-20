@@ -43,12 +43,12 @@ class Content_Types_Core {
      * @return void
      **/
     function init() {
-        add_action( 'init', array( &$this, 'handle_post_type_requests' ) );
+        add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
+        add_action( 'init', array( &$this, 'handle_post_type_requests' ), 0 );
         add_action( 'init', array( &$this, 'register_post_types' ), 2 );
         add_action( 'init', array( &$this, 'handle_taxonomy_requests' ), 0 );
         add_action( 'init', array( &$this, 'register_taxonomies' ), 1 );
         add_action( 'init', array( &$this, 'handle_custom_field_requests' ), 0 );
-        add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
         add_action( 'admin_menu', array( &$this, 'create_custom_fields' ), 2 );
         add_action( 'save_post', array( &$this, 'save_custom_fields' ), 1, 1 );
         add_action( 'user_register', array( &$this, 'set_user_registration_rewrite_rules' ) );
@@ -154,15 +154,20 @@ class Content_Types_Core {
                 /* Set new post types */
                 $post_types = ( $this->post_types ) ? array_merge( $this->post_types, array( $post_type => $args ) ) : array( $post_type => $args );
                 /* Check whether we have a new post type and set flag which will later be used in register_post_types() */
-                if ( count( $post_types ) > count( $this->post_types ) )
+                if ( !is_array( $this->post_types ) || !array_key_exists( $post_type, $this->post_types ) )
                     $this->flush_rewrite_rules = true;
                 /* Update options with the post type options */
-                if ( $this->allow_per_site_content_types == true )
+                if ( $this->allow_per_site_content_types == true ) {
                     update_option( 'ct_custom_post_types', $post_types );
-                else
+                } else {
                     update_site_option( 'ct_custom_post_types', $post_types );
+                    /* Set flag for flush rewrite rules network-wide */
+                    if ( $this->flush_rewrite_rules ) {
+                        update_site_option( 'ct_frr_id', uniqid() );
+                    }
+                }
                 /* Redirect to post types page */
-                wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated' ));
+                wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated&frr=' . $this->flush_rewrite_rules ) );
             }
         }
         elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_post_type' )  ) {
@@ -238,8 +243,8 @@ class Content_Types_Core {
                     'show_in_nav_menus'   => ( isset( $_POST['show_in_nav_menus'] ) ) ? (bool) $_POST['show_in_nav_menus'] : NULL,
                     'hierarchical'        => (bool) $_POST['hierarchical'],
                     'rewrite'             => (bool) $_POST['rewrite'],
-                    'query_var'           => (bool) $_POST['query_var'],
-                    'capabilities'        => array ( 'assign_terms' => 'assign_terms' ) /** @todo chek whether default isn't better */
+                    'query_var'           => (bool) $_POST['query_var']
+                //  'capabilities'        => array ( 'assign_terms' => 'assign_terms' ) /** @todo implement advanced capabilities */
                 );
 
                 /* If custom rewrite slug is set use it */
@@ -270,15 +275,20 @@ class Content_Types_Core {
                     ? array_merge( $this->taxonomies, array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) ) )
                     : array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) );
                 /* Check whether we have a new post type and set flush rewrite rules */
-                if ( count( $taxonomies ) > count( $this->taxonomies ) )
+                if ( !is_array( $this->taxonomies ) || !array_key_exists( $taxonomy, $this->taxonomies ) )
                     $this->flush_rewrite_rules = true;
                 /* Update wp_options with the taxonomies options */
-                if ( $this->allow_per_site_content_types == true )
+                if ( $this->allow_per_site_content_types == true ) {
                     update_option( 'ct_custom_taxonomies', $taxonomies );
-                else
+                } else {
                     update_site_option( 'ct_custom_taxonomies', $taxonomies );
+                    /* Set flag for flush rewrite rules network-wide */
+                    if ( $this->flush_rewrite_rules ) {
+                        update_site_option( 'ct_frr_id', uniqid() );
+                    }
+                }
                 /* Redirect back to the taxonomies page */
-                wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated' ) );
+                wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated&frr' . $this->flush_rewrite_rules ) );
             }
         }
         elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_taxonomy' )  ) {
@@ -443,9 +453,19 @@ class Content_Types_Core {
      * @return void
      **/
     function flush_rewrite_rules() {
+        /* Mechanisum for detecting changes in root site content types for flushing rewrite rules */
+        if ( is_multisite() && !is_main_site() && $this->allow_per_site_content_types == false ) {
+            $global_frr_id = get_site_option('ct_frr_id');
+            $local_frr_id = get_option('ct_frr_id');
+            if ( $global_frr_id != $local_frr_id ) {
+                $this->flush_rewrite_rules = true;
+                update_option('ct_frr_id', $global_frr_id );
+            }
+        }
+
         // flush rewrite rules
-        if ( $this->flush_rewrite_rules ) {
-            flush_rewrite_rules();
+        if ( $this->flush_rewrite_rules || !empty( $_GET['frr'] ) ) {
+            flush_rewrite_rules(false);
             $this->flush_rewrite_rules = false;
         }
     }
