@@ -15,6 +15,7 @@ get_header(); ?>
 
 					<div class="entry-meta">
 						<?php dp_posted_on(); ?>
+                        <?php do_action('sr_avg_rating'); ?>
 					</div><!-- .entry-meta -->
 					<div class="entry-content">
                         <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
@@ -25,6 +26,8 @@ get_header(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directory' ), 'after' => '</div>' ) ); ?>
 
 					</div><!-- .entry-content -->
+
+                    <?php do_action('sr_rate_this'); ?>
 
                 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">

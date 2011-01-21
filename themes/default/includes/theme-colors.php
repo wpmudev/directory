@@ -6,10 +6,7 @@
 if ( !class_exists('Directory_Theme_Colors') ):
 class Directory_Theme_Colors
 {
-    /**
-     * The current page. Used for custom hooks. 
-     * @var string
-     */
+    /** @var string The current page. Used for custom hooks. */
     var $page;
 
     /**
@@ -31,7 +28,7 @@ class Directory_Theme_Colors
     /**
      * Init plugin options to white list our options.
      */
-    function register_color_settings(){
+    function register_color_settings() {
         register_setting( 'dir_colors_group', 'dir_colors' );
     }
 
