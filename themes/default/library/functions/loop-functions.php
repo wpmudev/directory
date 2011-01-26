@@ -193,8 +193,8 @@ add_action('wpmu_singleloop', 'wpmu_single_loop');
 function wpmu_page_loop(){
 		rewind_posts();
 		while (have_posts()) : the_post(); ?>
-				<h2 class="pagetitle"><?php the_title(); ?></h2>
 				<div class="post" id="post-<?php the_ID(); ?>">
+						<h2 class="pagetitle"><?php the_title(); ?></h2>
 					<div class="entry">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => __( '<p><strong>Pages:</strong> ', TEMPLATE_DOMAIN ), 'after' => '</p>', 'next_or_number' => 'number')); ?>
@@ -202,7 +202,9 @@ function wpmu_page_loop(){
 					</div>
 				</div>
 				
-				<?php comments_template('', true); ?>
+					<div id="commentbox">
+					<?php comments_template('', true); ?>
+					</div>
 			<?php endwhile;
 }
 add_action('wpmu_pageloop', 'wpmu_page_loop');
@@ -226,7 +228,9 @@ function wpmu_attachment_loop(){
 					</div>
 
 				</div>
-			<?php comments_template(); ?>
+					<div id="commentbox">
+					<?php comments_template('', true); ?>
+					</div>
 				<?php endwhile;
 }
 add_action('wpmu_attachmentloop', 'wpmu_attachment_loop');

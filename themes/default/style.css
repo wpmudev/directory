@@ -20,8 +20,10 @@ http://www.opensource.org/licenses/gpl-license.php
 @import url( _inc/css/layout.css );
 
 @import url(_inc/css/colours.css);
-
 @import url(_inc/css/directory.css);
+
+/*@import url(_inc/css/directory-grid.css);*/
+@import url(_inc/css/directory-row.css);
 
 /* rtl languages styling */
 /* @import url( rtl.css ); */
