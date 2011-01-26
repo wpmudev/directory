@@ -31,7 +31,7 @@
 			$get_current_scheme = get_option('dev_directory_custom_style');
 			?>
 			<?php 
-			if (($get_current_scheme == "") || ($get_current_scheme == 'modern.css') || ($get_current_scheme == 'modern.css')) { ?>
+			if (($get_current_scheme == "") || ($get_current_scheme == 'default.css') || ($get_current_scheme == 'modern.css')) { ?>
 			<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/library/styles/modern.css" type="text/css" media="all" />
 			<?php
 			}	else { ?>

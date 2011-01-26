@@ -10,7 +10,7 @@
 				                        <?php do_action('sr_avg_rating'); ?><br />
 											<?php dp_posted_in(); ?><br />
 											<?php edit_post_link( __( 'Edit', 'directory' ), '<span class="edit-link">', '</span>' ); ?><br />
-											<span class="tags"><?php the_tags( __( 'Tags: ', TEMPLATE_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', TEMPLATE_DOMAIN ), __( '1 Comment &#187;', TEMPLATE_DOMAIN ), __( '% Comments &#187;', TEMPLATE_DOMAIN ) ); ?></span>
+											<span class="tags"><?php the_tags( __( 'Tags: ', TEMPLATE_DOMAIN ), ', ', ''); ?></span> 	<br /><span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', TEMPLATE_DOMAIN ), __( '1 Comment &#187;', TEMPLATE_DOMAIN ), __( '% Comments &#187;', TEMPLATE_DOMAIN ) ); ?></span>
 											 <?php do_action('sr_rate_this'); ?>
 								</div>
 

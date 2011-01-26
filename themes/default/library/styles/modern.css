@@ -49,7 +49,7 @@ border-radius: 5px;
 	font-size: 12px;
 }
 
-h3#comments, h3.comments-header {
+h3#comments, h3#comments-title {
 padding-top: 10px;
 }
 
@@ -219,9 +219,12 @@ background: none;
 }
 
 /********************************** footer */
+#footer-widget-area{
+	border-top: 3px solid #eeeeee;
+}
 /********************************** forms */
 #searchbox{
-	background: #009ec4 url('../images/search-background.jpg') repeat-x;
+	background: #009ec4 url('modern-images/search-background.jpg') repeat-x;
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -249,7 +252,7 @@ color: #ffffff;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 text-decoration: none;
-background: #ff930c url('../images/button-background.jpg');
+background: #ff930c url('modern-images/button-background.jpg');
 border: 1px solid #ff930c;
 text-shadow: 1px 1px 0px #e7850a;
 }
@@ -266,7 +269,7 @@ color: #ffffff;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 text-decoration: none;
-background: #ff930c url('../images/button-background.jpg');
+background: #ff930c url('modern-images/button-background.jpg');
 border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
@@ -314,11 +317,11 @@ background: #FFFFFF;
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('../images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('modern-images/nav-background.jpg') repeat-x;
 }
 
 #navigation-wrapper{
-	background: #009ec4 url('../images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('modern-images/nav-background.jpg') repeat-x;
 }
 
 #navigation .menu-header,
@@ -425,7 +428,7 @@ font-size: 12px;
 font-weight: normal;
 }
 
-.headerpad, h3#comments   {
+.headerpad, h3#comments-title   {
     color: #666666;
 	text-shadow: 1px 1px 0px #ffffff;
 	font-size: 18px;
