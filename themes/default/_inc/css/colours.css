@@ -1,0 +1,140 @@
+h1, h2, h3, h4, h5, h6 {
+color: #009ec4;
+}
+
+
+a:link {
+color: #009ec4;
+}
+
+a:visited {
+color: #009ec4;
+}
+
+a:active,
+a:hover {
+color: #ff8a00;
+}
+
+body {
+background: #FFFFFF;
+color: #111111;
+    font-family: arial,helvetica,verdana,sans-serif;
+}
+
+#site-wrapper{
+	background: #ffffff;
+}
+
+ins {
+background: #ffc;
+text-decoration: none;
+}
+
+pre {
+background: #f7f7f7;
+color: #222;
+}
+
+abbr,
+acronym {
+border-bottom: 1px dotted #666;
+cursor: help;
+}
+
+a.button, input[type=submit], input[type=button],
+ul.button-nav li a, div.generic-button a, a.button:visited {
+font-size: 14px;
+font-weight: bold;
+padding: 5px 10px;
+color: #ffffff;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+text-decoration: none;
+background: #ff930c url('../images/button-background.jpg');
+border: 1px solid #ff930c;
+text-shadow: 1px 1px 0px #e7850a;
+}
+	
+a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
+ul.button-nav li a:hover, ul.button-nav li.current a,
+div.generic-button a:hover {
+font-size: 14px;
+font-weight: bold;
+padding: 5px 10px;
+color: #ffffff;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+text-decoration: none;
+background: #ff930c url('../images/button-background.jpg');
+border: 1px solid #ffffff;
+text-shadow: 1px 1px 0px #e7850a;
+}
+
+input[type="text"], input[type="password"],
+textarea {
+background: #ffffff;
+border: 1px solid #ffffff;
+color: #111111;
+padding: 5px;
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+input[type="textarea"],
+textarea {
+	background: #ffffff;
+	border: 1px solid #ffffff;
+	color: #111111;
+	padding: 5px;
+	border: 1px solid #ccc;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+width: 95%;
+}
+
+#content .wp-caption {
+background: #f1f1f1;
+}
+
+#content .wp-caption p.wp-caption-text {
+color: #888;
+}
+
+#content .gallery img {
+border: 2px solid #cfcfcf;
+}
+
+#content .gallery .gallery-caption {
+color: #888;
+}
+
+#content .gallery img {
+border: 10px solid #f1f1f1;
+}
+
+#wp-calendar caption {
+color: #222;
+}
+
+#wp-calendar tbody {
+color: #aaa;
+}
+
+#wp-calendar tbody td {
+background: #f5f5f5;
+border: 1px solid #fff;
+}
+
+#wp-calendar tbody .pad {
+background: none;
+}

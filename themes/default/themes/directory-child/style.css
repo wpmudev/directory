@@ -1,0 +1,26 @@
+/*
+
+Theme Name: Directory Child
+Theme Date: 12/07/2010
+Version: 1.0.3
+Theme URI: http://premium.wpmudev.org/
+Description: Skeleton theme for WordPress : NEVER RELEASE
+Author: Tammie Lister at Logical Binary (Incsub)
+Author URI: http://www.logicalbinary.com/
+WPD ID: 
+
+Tags: wordpress
+
+The CSS, XHTML and design is released under GPL:
+http://www.opensource.org/licenses/gpl-license.php
+
+Template: directory
+*/
+
+/* basic styling for all elements */
+@import url( ../directory/_inc/css/layout.css );
+
+@import url(../directory/_inc/css/colours.css);
+
+/* Uncomment the following line and add your custom child styles to '_inc/css/child.css' */
+/*@import url( _inc/css/child.css );*/
