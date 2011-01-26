@@ -7,9 +7,9 @@ function wpmu_excerptloop() {
 		do_action('wpmu_excerptloop');
 }
 
-function wpmu_singleloop() {
+/*function wpmu_singleloop() {
 		do_action('wpmu_singleloop');
-}
+}*/
 
 function wpmu_pageloop() {
 		do_action('wpmu_pageloop');
@@ -139,16 +139,17 @@ function wpmu_excerpt_loop(){
 add_action('wpmu_excerptloop', 'wpmu_excerpt_loop');
 
 /* single function */
-function wpmu_single_loop(){
+/*function wpmu_single_loop(){
 		rewind_posts();
 		while (have_posts()) : the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<div class="entry-meta">
-							<?php dp_posted_on(); ?><br />
+							<?php dp_posted_on(); ?>
 	                        <?php do_action('sr_avg_rating'); ?><br />
 								<?php dp_posted_in(); ?><br />
 								<?php edit_post_link( __( 'Edit', 'directory' ), '<span class="edit-link">', '</span>' ); ?><br />
-								<span class="tags"><?php the_tags( __( 'Tags: ', TEMPLATE_DOMAIN ), ', ', '<br />'); ?></span> <br /><span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', TEMPLATE_DOMAIN ), __( '1 Comment &#187;', TEMPLATE_DOMAIN ), __( '% Comments &#187;', TEMPLATE_DOMAIN ) ); ?></span>
+								<span class="tags"><?php the_tags( __( 'Tags: ', TEMPLATE_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', TEMPLATE_DOMAIN ), __( '1 Comment &#187;', TEMPLATE_DOMAIN ), __( '% Comments &#187;', TEMPLATE_DOMAIN ) ); ?></span>
+								 <?php do_action('sr_rate_this'); ?>
 					</div>
 					
 					<div class="entry-post">
@@ -160,7 +161,7 @@ function wpmu_single_loop(){
 								<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directory' ), 'after' => '</div>' ) ); ?>
 
 							</div><!-- .entry-content -->
-							  <?php do_action('sr_rate_this'); ?>
+						
 										<div class="clear"></div>
 					</div>
 				
@@ -188,6 +189,7 @@ function wpmu_single_loop(){
 		
 }
 add_action('wpmu_singleloop', 'wpmu_single_loop');
+*/
 
 /* page function */
 function wpmu_page_loop(){
