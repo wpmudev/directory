@@ -19,8 +19,8 @@ http://www.opensource.org/licenses/gpl-license.php
 /* basic styling for all elements */
 @import url( _inc/css/layout.css );
 
-@import url(_inc/css/colours.css);
-@import url(_inc/css/directory.css);
+@import url(_inc/css/styling.css);
+/*@import url(_inc/css/directory.css);*/
 
 /*@import url(_inc/css/directory-grid.css);*/
 @import url(_inc/css/directory-row.css);

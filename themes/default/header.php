@@ -31,8 +31,8 @@
 			$get_current_scheme = get_option('dev_directory_custom_style');
 			?>
 			<?php 
-			if (($get_current_scheme == "") || ($get_current_scheme == 'basic.css') || ($get_current_scheme == 'default.css')) { ?>
-			<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/library/styles/basic.css" type="text/css" media="all" />
+			if (($get_current_scheme == "") || ($get_current_scheme == 'modern.css') || ($get_current_scheme == 'modern.css')) { ?>
+			<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/library/styles/modern.css" type="text/css" media="all" />
 			<?php
 			}	else { ?>
 			<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/library/styles/<?php echo $get_current_scheme; ?>" type="text/css" media="all" />
