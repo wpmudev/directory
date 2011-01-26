@@ -31,7 +31,7 @@
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
     color: #009ec4;
     text-decoration: none;
-    font-style: italic;
+	font-size: 14px;
 }
 .home #content li ul li a:hover, .archive #content li ul li a:hover, .dp-top-level #content ul li a:hover {
     color: #666666;

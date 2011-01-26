@@ -18,8 +18,6 @@ if( function_exists( 'load_theme_textdomain' ) ) {
 load_theme_textdomain(TEMPLATE_DOMAIN, DEVLIB . '/languages/');
 }
 
-wp_enqueue_script("jquery");
-
 //require_once(DEVLIB . '/functions/custom-header.php');
 require_once(DEVLIB . '/functions/custom-functions.php');
 require_once(DEVLIB . '/functions/option-functions.php');

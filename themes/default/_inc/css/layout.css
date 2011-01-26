@@ -173,47 +173,40 @@ margin-right: 15px;
 }
 
 p {
-margin-bottom: 18px;
+margin-bottom: 10px;
 }
 
-ul {
+#content ul {
 list-style: square;
-margin: 0 0 18px 1.5em;
+margin: 10px;
 }
 
-ol {
+#content ol {
 list-style: decimal;
-margin: 0 0 18px 1.5em;
+margin: 10px;
 }
 
-ol ol {
+#content ol ol {
 list-style: upper-alpha;
 }
 
-ol ol ol {
+#content ol ol ol {
 list-style: lower-roman;
 }
 
-ol ol ol ol {
+#content ol ol ol ol {
 list-style: lower-alpha;
 }
 
-ul ul,
-ol ol,
-ul ol,
-ol ul {
-margin-bottom: 0;
-}
-
-dl {
+#content dl {
 margin: 0 0 24px 0;
 }
 
-dt {
+#content dt {
 font-weight: bold;
 }
 
-dd {
+#content dd {
 margin-bottom: 18px;
 }
 
