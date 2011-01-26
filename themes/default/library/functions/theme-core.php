@@ -172,16 +172,7 @@ class Directory_Theme_Core
                             array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
     }
 
-    /**
-     * Print document styles.
-     */
-    function print_style() { ?>
-        <style type="text/css">
-            div.colorpicker { z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none; }
-            input.use_default { margin-left: 10px; }
-        </style> <?php
-    }
-
+   
     /**
      * Print document scripts. Handles the colorpickers.
      */

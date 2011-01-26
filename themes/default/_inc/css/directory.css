@@ -267,20 +267,21 @@ div.menu {
 	color: #ffffff;
 	font-size: 24px;
 	float: left;
-	padding-top: 10px;
+	padding-top: 6px;
 	padding-right: 20px;
 	text-shadow: 1px 1px 0px #00728f;
 }
 
 #searchbox input[type="text"]{
-	padding: 10px;
+	padding: 6px 10px;
+	font-size: 18px;
 }
 
 #searchbox input[type=submit]{
 	padding: 8px 10px;
 }
 
-.excerptpost, #commentbox, .post{
+.excerptpost, #commentbox, .post, #checkout-page{
 	margin-bottom: 10px;
 	border: 1px solid #eeeeee;
 	padding: 10px;
@@ -313,4 +314,8 @@ div.menu {
     -moz-border-radius: 5px;
     border-radius: 5px;
 	margin-bottom: 10px;
+}
+
+h1.entry-title{
+	padding-bottom: 20px;
 }
