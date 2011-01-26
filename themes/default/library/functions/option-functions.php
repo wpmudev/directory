@@ -5,7 +5,7 @@ return __($str, 'option-page');
 }
 
 $themename = "Directory";
-$themeversion = "1.0";
+$themeversion = "1";
 $shortname = "dev";
 $shortprefix = "_directory_";
 /* get pages so can set them */
@@ -28,80 +28,13 @@ $categories_tmp = array_unshift($dev_categories, "Select a category:");
 /* start of theme options */
 
 $options = array (
-	array(
-		"name" => __("Site name", TEMPLATE_DOMAIN),
-		"id" => $shortname . $shortprefix . "site_title",
-		"inblock" => "branding",
-		"type" => "text",
-		"std" => "",
-	),
-	array("name" => __("Do you to use a custom large image logo rather than domain name text?", TEMPLATE_DOMAIN),
-		"description" => __("Enter your url in the next section if saying yes", TEMPLATE_DOMAIN),
-		"id" => $shortname . $shortprefix . "header_image",	     	
-		"inblock" => "branding",
-		"type" => "select",
-		"std" => "Select",
-		"options" => array("yes", "no")),
-
-	array(
-		"name" => __("Insert your logo full url here", TEMPLATE_DOMAIN),
-		"description" => __("You can upload your logo in <a href='media-new.php'>media panel</a> and copy paste the url here", TEMPLATE_DOMAIN),
-		"id" => $shortname . $shortprefix . "header_logo",
-		"inblock" => "branding",
-		"type" => "text",
-		"std" => "",
-	),
-
-	array("name" => __("Do you to use a custom square image logo and your domain name text?", TEMPLATE_DOMAIN),
-		"description" => __("Enter your url in the next section if saying yes", TEMPLATE_DOMAIN),
-		"id" => $shortname . $shortprefix . "header_image_square",	     	
-		"inblock" => "branding",
-		"type" => "select",
-		"std" => "Select",
-		"options" => array("yes", "no")),
-
-	array(
-		"name" => __("Insert your square logo full url here", TEMPLATE_DOMAIN),
-		"description" => __("You can upload your logo in <a href='media-new.php'>media panel</a> and copy paste the url here", TEMPLATE_DOMAIN),
-		"id" => $shortname . $shortprefix . "header_logo_square",
-		"inblock" => "branding",
-		"type" => "text",
-		"std" => "",
-	),
-
-array(
-	"name" => __("Show sign up box?", TEMPLATE_DOMAIN),
-	"id" => $shortname . $shortprefix . "signupfeat_on",
-	"inblock" => "branding",
-	"type" => "select",
-	"std" => "Select",
-	"options" => array("yes", "no")
-),
-
-array(
-	"name" => __("Sign up feature text", TEMPLATE_DOMAIN),
-	"id" => $shortname . $shortprefix . "signupfeat_text",
-	"inblock" => "branding",
-	"type" => "textarea",
-	"std" => "",
-),
-
-array(
-	"name" => __("Sign up button text", TEMPLATE_DOMAIN),
-	"id" => $shortname . $shortprefix . "signupfeat_buttontext",
-	"inblock" => "branding",
-	"type" => "text",
-	"std" => "",
-),
-
-
-array(
-	"name" => __("Sign up custom link (enter a custom link if don't want default ones)", TEMPLATE_DOMAIN),
-	"id" => $shortname . $shortprefix . "signupfeat_buttontextcustom",
-	"inblock" => "branding",
-	"type" => "text",
-	"std" => "",
-),
+	array("name" => __("Show custom header", TEMPLATE_DOMAIN),
+		"description" => __("You can show or hide the custom header, the default is off", TEMPLATE_DOMAIN),
+		"id" => $shortname . $shortprefix . "customheader_on",	     	
+		"inblock" => "slideone",
+	    "type" => "select",
+		"std" => "Show",
+		"options" => array("no", "yes")),
 
 array(
 	"name" => __("Turn simple SEO on?", TEMPLATE_DOMAIN),
@@ -147,12 +80,13 @@ array(
 	"type" => "textarea",
 	"std" => "",
 ),
+
 );
 
 function directory_admin_panel() {
 	global $themename, $shortname, $options, $options2, $options3, $bp_existed, $multi_site_on;
-	if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings saved.', TEMPLATE_DOMAIN) . '</strong></p></div>';
-	if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings reset.', TEMPLATE_DOMAIN) . '</strong></p></div>';
+	if ( isset($_REQUEST['saved']) ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings saved.', TEMPLATE_DOMAIN) . '</strong></p></div>';
+	if ( isset($_REQUEST['reset']) ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings reset.', TEMPLATE_DOMAIN) . '</strong></p></div>';
 	?>
 	<div id="options-panel">
 	<form action="" method="post">
@@ -160,278 +94,111 @@ function directory_admin_panel() {
 	  <div id="sbtabs">
 	  <div class="tabmc">
 	  <ul class="ui-tabs-nav" id="tabm">
-	  <li class="first ui-tabs-selected"><a href="#home"><?php _e("Home",TEMPLATE_DOMAIN); ?></a></li>
-		  <?php if($bp_existed == 'true') { ?><li class=""><a href="#buddypress"><?php _e("BuddyPress",TEMPLATE_DOMAIN); ?></a></li><?php } ?>
-	  <li class=""><a href="#branding"><?php _e("Branding",TEMPLATE_DOMAIN); ?></a></li>
-		  <li class=""><a href="#seo"><?php _e("SEO",TEMPLATE_DOMAIN); ?></a></li>
-	  </ul>
-	  </div>
+	 	<li class="first ui-tabs-selected"><a href="#seo"><?php _e("SEO",TEMPLATE_DOMAIN); ?></a></li>
+		  </ul>
+		  </div>
 
-	<div class="tabc">
+		<div class="tabc">
 
 
-	<ul style="" class="ui-tabs-panel" id="home">
-	<li>
+		<ul style="" class="ui-tabs-panel" id="seo">
+		<li>
 
-	<h2><?php _e("Home page settings", TEMPLATE_DOMAIN) ?></h2>
+		<h2><?php _e("SEO", TEMPLATE_DOMAIN) ?></h2>
 
 
-	<?php $value_var = 'home'; foreach ($options as $value) { ?>
+		<?php $value_var = 'seo'; foreach ($options as $value) { ?>
 
-	<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
+		<?php if ((isset($value['inblock']) == $value_var) && ($value['type'] == "text")) { // setting ?>
 
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
-	</div>
+		<div class="tab-option">
+		<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+				if (isset($value['description'])){
+			echo $value['description']; }
+			?></span></div>
+		<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
+		</div>
 
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "textarea")) { // setting ?>
+		<?php } elseif ((isset($value['inblock']) == $value_var) && ($value['type'] == "textarea")) { // setting ?>
 
 
-	<div class="tab-option">
-	<?php
-	$valuex = $value['id'];
-	$valuey = stripslashes($valuex);
-	$video_code = get_option($valuey);
-	?>
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
-	</textarea></p></div>
-	</div>
-
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
-
-	<?php $i == $i++ ; ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
-	<?php foreach ($value['options'] as $option) { ?>
-	<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-	<?php } ?>
-	</select>
-	</p>
-	</div>
-	</div>
-
-	<?php } ?>
-	<?php } ?>
-	</li></ul>
-
-	
-
-
-	<?php if($bp_existed == 'true') { ?>
-	<ul style="" class="list7 ui-tabs-panel ui-tabs-hide" id="buddypress">
-
-	<li>
-
-	<h2><?php _e("BuddyPress Settings", TEMPLATE_DOMAIN) ?></h2>
-
-	<?php $value_var = 'buddypress'; foreach ($options as $value) { ?>
-
-	<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "textarea")) { // setting ?>
-
-
-	<div class="tab-option">
-	<?php
-	$valuex = $value['id'];
-	$valuey = stripslashes($valuex);
-	$video_code = get_option($valuey);
-	?>
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
-	</textarea></p></div>
-	</div>
-
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
-
-	<?php $i == $i++ ; ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
-	<?php foreach ($value['options'] as $option) { ?>
-	<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-	<?php } ?>
-	</select>
-	</p>
-	</div>
-	</div>
-
-	<?php } ?>
-	<?php } ?>
-	</li></ul>
-	<?php } ?>
-
-
-	<ul style="" class="list9 ui-tabs-panel ui-tabs-hide" id="branding">
-
-	<li>
-
-	<h2><?php _e("Branding Settings", TEMPLATE_DOMAIN) ?></h2>
-
-	<?php $value_var = 'branding'; foreach ($options as $value) { ?>
-
-	<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "textarea")) { // setting ?>
-
-
-	<div class="tab-option">
-	<?php
-	$valuex = $value['id'];
-	$valuey = stripslashes($valuex);
-	$video_code = get_option($valuey);
-	?>
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
-	</textarea></p></div>
-	</div>
-
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
-
-	<?php $i == $i++ ; ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
-	<?php foreach ($value['options'] as $option) { ?>
-	<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-	<?php } ?>
-	</select>
-	</p>
-	</div>
-	</div>
-
-	<?php } ?>
-	<?php } ?>
-	</li></ul>
-	<ul style="" class="list9 ui-tabs-panel ui-tabs-hide" id="seo">
-
-	<li>
-
-	<h2><?php _e("SEO Settings", TEMPLATE_DOMAIN) ?></h2>
-
-	<?php $value_var = 'seo'; foreach ($options as $value) { ?>
-
-	<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "textarea")) { // setting ?>
-
-
-	<div class="tab-option">
-	<?php
-	$valuex = $value['id'];
-	$valuey = stripslashes($valuex);
-	$video_code = get_option($valuey);
-	?>
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
-	</textarea></p></div>
-	</div>
-
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
-
-	<?php $i == $i++ ; ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
-	</div>
-
-	<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
-
-	<div class="tab-option">
-	<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
-	<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
-	<?php foreach ($value['options'] as $option) { ?>
-	<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-	<?php } ?>
-	</select>
-	</p>
-	</div>
-	</div>
-
-	<?php } ?>
-	<?php } ?>
-	</li></ul>
-
-
-	</div>
-	</div>
-
-
-
-	<div id="submitsection">
+		<div class="tab-option">
+		<?php
+		$valuex = $value['id'];
+		$valuey = stripslashes($valuex);
+		$video_code = get_option($valuey);
+		?>
 		
+		<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+			if (isset($value['description'])){
+		echo $value['description']; }
+		?></span></div>
+		<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
+		</textarea></p></div>
+		</div>
+
+
+		<?php } elseif ((isset($value['inblock']) == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
+
+		<?php $i == $i++ ; ?>
+
+		<div class="tab-option">
+		<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+				if (isset($value['description'])){
+			echo $value['description']; }
+			?></span></div>
+		<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
+		</div>
+
+		<?php } elseif ((isset($value['inblock']) == $value_var) && ($value['type'] == "select") ) { // setting ?>
+
+		<div class="tab-option">
+		<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+		<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
+		<?php foreach ($value['options'] as $option) { ?>
+		<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		<?php } ?>
+		</select>
+		</p>
+		</div>
+		</div>
+
+		<?php } ?>
+		<?php } ?>
+		</li></ul>
+
+		</div>
+		</div>
+
+
+		<div id="submitsection">
+
+			<div class="submit">
+			<h2><?php _e("Click this to save your theme options", TEMPLATE_DOMAIN) ?></h2>
+		<input name="save" type="submit" class="sbutton" value="<?php echo esc_attr(__('Save All Options',TEMPLATE_DOMAIN)); ?>" />
+		<input type="hidden" name="action" value="save" />
+		</div>
+		</div>
+		</div>
+		</form>
+
+
+
+		<form method="post">
+		<div id="resetsection">
 		<div class="submit">
-		<h2><?php _e("Click this to save your theme options", TEMPLATE_DOMAIN) ?></h2>
-	<input name="save" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Save All Options',TEMPLATE_DOMAIN)); ?>" />
-	<input type="hidden" name="action" value="save" />
-	</div>
-	</div>
-	</div>
-	</form>
+			<h2><?php _e("Clicking this will reset all theme options - use with caution", TEMPLATE_DOMAIN) ?></h2>
+		<input name="reset" type="submit" class="sbutton" value="<?php echo esc_attr(__('Reset All Options',TEMPLATE_DOMAIN)); ?>" />
+		<input type="hidden" name="action" value="reset" />
+		</div>
+		</div>
+		</form>
 
 
+		</div>
 
-	<form method="post">
-	<div id="resetsection">
-	<div class="submit">
-		<h2><?php _e("Clicking this will reset all theme options - use with caution", TEMPLATE_DOMAIN) ?></h2>
-	<input name="reset" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Reset All Options',TEMPLATE_DOMAIN)); ?>" />
-	<input type="hidden" name="action" value="reset" />
-	</div>
-	</div>
-	</form>
-
-
-	</div>
-	<?php
-	}
+		<?php
+		}
 	
 $options3 = array (
 
@@ -628,12 +395,13 @@ array(
 	"type" => "colorpicker"),
 );
 
+
 function directory_custom_style_admin_panel() {
 
 		global $options, $options2, $options3, $bp_existed, $multi_site_on;
-
-		if ( $_REQUEST['saved3'] ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings saved.', TEMPLATE_DOMAIN) . '</strong></p></div>';
-		if ( $_REQUEST['reset3'] ) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings reset.', TEMPLATE_DOMAIN) . '</strong></p></div>';
+		$themename = "Directory";
+		if ( isset($_REQUEST['saved3'] )) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings saved.', TEMPLATE_DOMAIN) . '</strong></p></div>';
+		if ( isset($_REQUEST['reset3'] )) echo '<div id="message" class="updated fade"><p><strong>'. $themename . __(' settings reset.', TEMPLATE_DOMAIN) . '</strong></p></div>';
 		?>
 
 		<div id="options-panel">
@@ -665,7 +433,10 @@ function directory_custom_style_admin_panel() {
 			<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
 
 			<div class="tab-option">
-			<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+			<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+					if (isset($value['description'])){
+				echo $value['description']; }
+				?></span></div>
 			<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
 			</div>
 
@@ -678,7 +449,10 @@ function directory_custom_style_admin_panel() {
 			$valuey = stripslashes($valuex);
 			$video_code = get_option($valuey);
 			?>
-			<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+			<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+				if (isset($value['description'])){
+			echo $value['description']; }
+			?></span></div>
 			<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
 			</textarea></p></div>
 			</div>
@@ -689,14 +463,20 @@ function directory_custom_style_admin_panel() {
 			<?php $i == $i++ ; ?>
 
 			<div class="tab-option">
-			<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+			<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+					if (isset($value['description'])){
+				echo $value['description']; }
+				?></span></div>
 			<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
 			</div>
 
 			<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
 
 			<div class="tab-option">
-			<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+			<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+					if (isset($value['description'])){
+				echo $value['description']; }
+				?></span></div>
 			<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
 			<?php foreach ($value['options'] as $option) { ?>
 			<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
@@ -719,7 +499,10 @@ function directory_custom_style_admin_panel() {
 				<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
 
 				<div class="tab-option">
-				<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+				<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+						if (isset($value['description'])){
+					echo $value['description']; }
+					?></span></div>
 				<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
 				</div>
 
@@ -732,7 +515,10 @@ function directory_custom_style_admin_panel() {
 				$valuey = stripslashes($valuex);
 				$video_code = get_option($valuey);
 				?>
-				<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+				<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+					if (isset($value['description'])){
+				echo $value['description']; }
+				?></span></div>
 				<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
 				</textarea></p></div>
 				</div>
@@ -740,17 +526,23 @@ function directory_custom_style_admin_panel() {
 
 				<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
 
-				<?php $i == $i++ ; ?>
+				<?php $i = ""; $i == $i++ ; ?>
 
 				<div class="tab-option">
-				<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+				<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+						if (isset($value['description'])){
+					echo $value['description']; }
+					?></span></div>
 				<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
 				</div>
 
 				<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
 
 				<div class="tab-option">
-				<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+				<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+						if (isset($value['description'])){
+					echo $value['description']; }
+					?></span></div>
 				<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
 				<?php foreach ($value['options'] as $option) { ?>
 				<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
@@ -773,7 +565,10 @@ function directory_custom_style_admin_panel() {
 					<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
 					</div>
 
@@ -786,7 +581,10 @@ function directory_custom_style_admin_panel() {
 					$valuey = stripslashes($valuex);
 					$video_code = get_option($valuey);
 					?>
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+						if (isset($value['description'])){
+					echo $value['description']; }
+					?></span></div>
 					<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
 					</textarea></p></div>
 					</div>
@@ -797,14 +595,20 @@ function directory_custom_style_admin_panel() {
 					<?php $i == $i++ ; ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
 					</div>
 
 					<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
 					<?php foreach ($value['options'] as $option) { ?>
 					<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
@@ -828,7 +632,10 @@ function directory_custom_style_admin_panel() {
 					<?php if (($value['inblock'] == $value_var) && ($value['type'] == "text")) { // setting ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><input name="<?php echo $value['id']; ?>" class="myfield" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo stripslashes($value['std']); } ?>" /></p></div>
 					</div>
 
@@ -841,7 +648,10 @@ function directory_custom_style_admin_panel() {
 					$valuey = stripslashes($valuex);
 					$video_code = get_option($valuey);
 					?>
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span><?php 
+						if (isset($value['description'])){
+					echo $value['description']; }
+					?></span></div>
 					<div class="input-option"><p><textarea name="<?php echo $valuey; ?>" class="mytext" cols="40%" rows="8" /><?php if ( get_option($valuey) != "") { echo stripslashes($video_code); } else { echo $value['std']; } ?>
 					</textarea></p></div>
 					</div>
@@ -849,17 +659,23 @@ function directory_custom_style_admin_panel() {
 
 					<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "colorpicker") ) { // setting ?>
 
-					<?php $i == $i++ ; ?>
+					<?php $i = ""; $i == $i++ ; ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><input class="color {required:false,hash:true}" name="<?php echo $value['id']; ?>" id="colorpickerField<?php echo $i; ?>" type="text" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></p></div>
 					</div>
 
 					<?php } elseif (($value['inblock'] == $value_var) && ($value['type'] == "select") ) { // setting ?>
 
 					<div class="tab-option">
-					<div class="description"><?php echo $value['name']; ?><br /><span><?php echo $value['description']; ?></span></div>
+					<div class="description"><?php echo $value['name']; ?><br /><span>	<?php 
+							if (isset($value['description'])){
+						echo $value['description']; }
+						?></span></div>
 					<div class="input-option"><p><select name="<?php echo $value['id']; ?>" class="myselect" id="<?php echo $value['id']; ?>">
 					<?php foreach ($value['options'] as $option) { ?>
 					<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
@@ -882,7 +698,7 @@ function directory_custom_style_admin_panel() {
 		
 		<div class="submit">
 		<h2><?php _e("Click this to save your theme options", TEMPLATE_DOMAIN) ?></h2>
-	<input name="save" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Save All Options',TEMPLATE_DOMAIN)); ?>" />
+	<input name="save" type="submit" class="sbutton" value="<?php echo esc_attr(__('Save All Options',TEMPLATE_DOMAIN)); ?>" />
 	<input type="hidden" name="action" value="save3" />
 	</div>
 	</div>
@@ -895,7 +711,7 @@ function directory_custom_style_admin_panel() {
 	<div id="resetsection">
 	<div class="submit">
 		<h2><?php _e("Clicking this will reset all theme options - use with caution", TEMPLATE_DOMAIN) ?></h2>
-	<input name="reset" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Reset All Options',TEMPLATE_DOMAIN)); ?>" />
+	<input name="reset" type="submit" class="sbutton" value="<?php echo esc_attr(__('Reset All Options',TEMPLATE_DOMAIN)); ?>" />
 	<input type="hidden" name="action" value="reset3" />
 	</div>
 	</div>
@@ -925,7 +741,7 @@ if ( is_dir($alt_stylesheet_path) ) {
 $category_bulk_list = array_unshift($alt_stylesheets, "default.css");
 	$options2 = array (
 
-	array(  "name" => __("Choose Your directory Preset Style:", TEMPLATE_DOMAIN),
+	array(  "name" => __("Choose Your BP directory Preset Style:", TEMPLATE_DOMAIN),
 		  	"id" => $shortname. $shortprefix . "custom_style",
 			"std" => "default.css",
 			"type" => "radio",
@@ -937,12 +753,11 @@ function directory_ready_style_admin_panel() {
 	
 	global $themename, $shortname, $options2;
 	
-	if ( $_REQUEST['saved2'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
-	if ( $_REQUEST['reset2'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
+	if ( isset($_REQUEST['saved2']) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
+	if ( isset($_REQUEST['reset2']) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
 ?>
 
-<h4><?php echo "$themename"; ?> <?php _e('Choose your directory Preset Style', TEMPLATE_DOMAIN); ?></h4>
-<h2><?php _e('If you want to customise the theme options you MUST have default.css selected'); ?></h2>
+<h4><?php echo "$themename"; ?> <?php _e('Choose your Preset Style', TEMPLATE_DOMAIN); ?></h4>
 <form action="" method="post">
 <div class="get-listings">
 <h2><?php _e("Style Select:", TEMPLATE_DOMAIN) ?></h2>
@@ -981,14 +796,14 @@ else {
 </div>
 </div>
 	<p id="top-margin" class="save-p">
-		<input name="save" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Save Options', TEMPLATE_DOMAIN)); ?>" />
+		<input name="save" type="submit" class="sbutton" value="<?php echo esc_attr(__('Save Options', TEMPLATE_DOMAIN)); ?>" />
 		<input type="hidden" name="action" value="save2" />
 	</p>
 </form>
 
 <form method="post">
 	<p class="save-p">
-		<input name="reset" type="submit" class="sbutton" value="<?php echo attribute_escape(__('Reset Options', TEMPLATE_DOMAIN)); ?>" />
+		<input name="reset" type="submit" class="sbutton" value="<?php echo esc_attr(__('Reset Options', TEMPLATE_DOMAIN)); ?>" />
 		<input type="hidden" name="action" value="reset2" />
 	</p>
 </form>
@@ -998,15 +813,15 @@ else {
 
 function directory_admin_register() {
 	global $themename, $shortname, $options;
-	if ( $_GET['page'] == 'functions.php' ) {
-	if ( 'save' == $_REQUEST['action'] ) {
+	if ( isset($_GET['page']) == 'functions.php' ) {
+	if ( 'save' == isset($_REQUEST['action']) ) {
 	foreach ($options as $value) {
 	update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 	foreach ($options as $value) {
 	if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 	header("Location: themes.php?page=functions.php&saved=true");
 	die;
-	} else if( 'reset' == $_REQUEST['action'] ) {
+	} else if( 'reset' == isset($_REQUEST['action']) ) {
 	foreach ($options as $value) {
 	delete_option( $value['id'] ); }
 	header("Location: themes.php?page=functions.php&reset=true");
@@ -1018,11 +833,11 @@ function directory_admin_register() {
 
 
 function directory_ready_style_admin_register() {
-	global $themename, $shortname, $options, $options2, $options3;
-	if ( $_GET['page'] == 'directory-themes.php' ) {
-		if ( 'save2' == $_REQUEST['action'] ) {
+	global $themename, $shortname, $options, $options2, $options3, $bp_existed, $multi_site_on;
+	if ( isset($_GET['page']) == 'directory-themes.php' ) {
+		if ( 'save2' == isset($_REQUEST['action']) ) {
 			foreach ($options2 as $value) {
-				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+				update_option( $value['id'], isset($_REQUEST[ $value['id'] ]) ); 
 			}
 			foreach ($options2 as $value) {
 				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
@@ -1035,7 +850,7 @@ function directory_ready_style_admin_register() {
 			header("Location: themes.php?page=directory-themes.php&saved2=true");
 			die;
 		} 
-		else if( 'reset2' == $_REQUEST['action'] ) {
+		else if( 'reset2' == isset($_REQUEST['action']) ) {
 			foreach ($options2 as $value) {
 				delete_option( $value['id'] ); 
 			}
@@ -1043,14 +858,14 @@ function directory_ready_style_admin_register() {
 			die;
 		}
 	}
-	add_theme_page(_g (__('directory Preset Style', TEMPLATE_DOMAIN)),  _g (__('Preset Style', TEMPLATE_DOMAIN)),  'edit_theme_options', 'directory-themes.php', 'directory_ready_style_admin_panel');
+	add_theme_page(_g (__('BP directory Preset Style', TEMPLATE_DOMAIN)),  _g (__('Preset Style', TEMPLATE_DOMAIN)),  'edit_theme_options', 'directory-themes.php', 'directory_ready_style_admin_panel');
 }
 
 
 function directory_custom_style_admin_register() {
-	global $themename, $shortname, $options, $options2, $options3;
-		if ( $_GET['page'] == 'styling-functions.php' ) {
-			if ( 'save3' == $_REQUEST['action'] ) {
+	global $themename, $shortname, $options, $options2, $options3, $bp_existed, $multi_site_on;
+		if ( isset($_GET['page']) == 'styling-functions.php' ) {
+			if ( 'save3' == isset($_REQUEST['action']) ) {
 				foreach ($options3 as $value) {	
 					update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 				foreach ($options3 as $value) {
@@ -1061,7 +876,7 @@ function directory_custom_style_admin_register() {
 				header("Location: themes.php?page=styling-functions.php&saved3=true");
 				die;
 				} 
-				else if( 'reset3' == $_REQUEST['action'] ) {
+				else if( 'reset3' == isset($_REQUEST['action']) ) {
 					foreach ($options3 as $value) {
 						delete_option( $value['id'] ); 
 					}
@@ -1075,7 +890,7 @@ function directory_custom_style_admin_register() {
 function directory_admin_head() { ?>
 	<link href="<?php bloginfo('template_directory'); ?>/library/options/options-css.css" rel="stylesheet" type="text/css" />
 
-	<?php if ( ($_GET['page'] == 'styling-functions.php' ) || ( $_GET['page'] == 'functions.php' )) {?>
+	<?php if ( (isset($_GET['page']) == 'styling-functions.php' ) || ( isset($_GET['page']) == 'functions.php' )) {?>
 		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/library/scripts/jquery.js"></script>
 		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/library/scripts/jscolor.js"></script>
 		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/library/scripts/jquery-ui-personalized-1.6rc2.min.js"></script>
@@ -1091,7 +906,7 @@ function directory_admin_head() { ?>
 
 	<?php } ?>
 	
-	<?php if ($_GET['page'] == 'directory-themes.php'){?>
+	<?php if (isset($_GET['page']) == 'directory-themes.php'){?>
 			<link href="<?php bloginfo('template_directory'); ?>/library/options/custom-admin.css" rel="stylesheet" type="text/css" />
 	<?php } ?>
 	
