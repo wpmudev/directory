@@ -1,0 +1,28 @@
+/*
+
+Theme Name: Skeleton
+Theme Date: 
+Version: 1.0
+Theme URI: http://premium.wpmudev.org/
+Description: Directory theme
+Author: Tammie Lister at Logical Binary (Incsub)
+Author URI: http://www.logicalbinary.com/
+WPD ID:
+
+Tags: wordpress
+
+The CSS, XHTML and design is released under GPL:
+http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+/* basic styling for all elements */
+@import url( _inc/css/layout.css );
+
+/*@import url(_inc/css/directory.css);*/
+
+@import url(_inc/css/directory-grid.css);
+/*@import url(_inc/css/directory-row.css);*/
+
+/* rtl languages styling */
+/* @import url( rtl.css ); */
