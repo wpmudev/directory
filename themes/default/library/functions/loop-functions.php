@@ -26,6 +26,8 @@ function wpmu_directoryloop() {
 /* blog / news template function */
 function wpmu_directory_loop(){
 		rewind_posts();
+		
+		global $wp_query;
 		while ( have_posts() ) : the_post(); ?>
 
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -154,9 +156,7 @@ function wpmu_single_loop(){
 							<div class="entry-content">
 		                        <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 								<?php the_content(); ?>
-		                        <?php _e( 'Website URL', 'directory'); ?>:
-		                        <a href="<?php echo get_post_meta( $post->ID, '_ct_text_4ccc5fd023950', true ); ?>"><?php echo get_post_meta( $post->ID, '_ct_text_4ccc5fd023950', true ); ?></a>
-		                        <br /><br />
+		                  
 								<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'directory' ), 'after' => '</div>' ) ); ?>
 
 							</div><!-- .entry-content -->
