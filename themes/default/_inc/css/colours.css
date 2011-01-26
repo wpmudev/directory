@@ -138,3 +138,43 @@ border: 1px solid #fff;
 #wp-calendar tbody .pad {
 background: none;
 }
+
+/********************************************* comments */
+ol.commentlist li {
+margin-bottom: 10px;
+padding: 10px;
+border: 1px solid #eeeeee;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+.fn, .says{
+	padding-top: 10px;
+	font-size: 24px;
+}
+
+h3#comments, h3.comments-header {
+padding-top: 10px;
+}
+
+.comment-body {
+padding: 10px;
+}
+
+ul.children {
+margin-top: 10px;
+}
+
+.author-box img.avatar {
+margin-bottom: 10px;
+}
+
+.comment-author img{
+padding: 5px;
+background: none repeat scroll 0 0 #FFFFFF;
+border: 1px solid #EEEEEE !important;
+margin-bottom: 10px;
+float: right;
+}

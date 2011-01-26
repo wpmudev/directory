@@ -281,7 +281,7 @@ div.menu {
 	padding: 8px 10px;
 }
 
-.excerptpost, #commentbox, .post, #checkout-page{
+.excerptpost, .post, #checkout-page{
 	margin-bottom: 10px;
 	border: 1px solid #eeeeee;
 	padding: 10px;
@@ -290,7 +290,7 @@ div.menu {
     border-radius: 5px;
 }
 
-#commentbox, .breadcrumbtrail{
+#respond, .breadcrumbtrail{
 	margin-bottom: 10px;
 	background: #eeeeee;
 	padding: 10px;
@@ -303,7 +303,7 @@ div.menu {
 	margin: 0px;
 }
 
-.home #content h2, .headerpad   {
+.headerpad, h3#comments   {
     color: #666666;
 	text-shadow: 1px 1px 0px #ffffff;
 	font-size: 18px;

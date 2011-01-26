@@ -14,7 +14,7 @@
 		$numTrackBacks = 0; $numComments = 0;
 		foreach ( (array)$comments as $comment ) if ( get_comment_type() != "comment") $numTrackBacks++; else $numComments++;
 		?>
-		<h3 id="comments"><?php comments_number( '', '', $numComments );?></h3>
+		<h3 id="comments"><?php _e('Comments', TEMPLATE_DOMAIN); ?>&nbsp;<?php comments_number( '', '', $numComments );?></h3>
 		<ol class="commentlist">
 					<?php wp_list_comments(); ?>
 		</ol><!-- .comment-list -->
