@@ -67,36 +67,6 @@ class Directory_Theme_Core
             'before_title' => '<h3 class="widget-title">',
             'after_title' => '</h3>',
         ) );
-        // Area 2, located in the footer. Empty by default.
-        register_sidebar( array(
-            'name' => __( 'Second Footer Widget Area', 'directory' ),
-            'id' => 'second-footer-widget-area',
-            'description' => __( 'The second footer widget area', 'directory' ),
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget' => '</li>',
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>',
-        ) );
-        // Area 3, located in the footer. Empty by default.
-        register_sidebar( array(
-            'name' => __( 'Third Footer Widget Area', 'directory' ),
-            'id' => 'third-footer-widget-area',
-            'description' => __( 'The third footer widget area', 'directory' ),
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget' => '</li>',
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>',
-        ) );
-        // Area 4, located in the footer. Empty by default.
-        register_sidebar( array(
-            'name' => __( 'Fourth Footer Widget Area', 'directory' ),
-            'id' => 'fourth-footer-widget-area',
-            'description' => __( 'The fourth footer widget area', 'directory' ),
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget' => '</li>',
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>',
-        ) );
     }
 
     /**
@@ -158,7 +128,7 @@ class Directory_Theme_Core
      */
     function enqueue_styles() {
         wp_enqueue_style( 'jquery-ui-stars',
-                           get_template_directory_uri() . '/library/scripts/jquery-ui-stars/jquery-ui-stars.css');
+                           get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui-stars.css');
     }
 
     /**
@@ -166,9 +136,9 @@ class Directory_Theme_Core
      */
     function enqueue_scripts() {
         wp_register_script( 'jquery-ui-core-1.8',
-                            get_template_directory_uri() . '/library/scripts/jquery-ui-stars/jquery-ui.custom.min.js' );
+                            get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui.custom.min.js' );
         wp_enqueue_script( 'jquery-ui-stars-script',
-                            get_template_directory_uri() . '/library/scripts/jquery-ui-stars/jquery-ui-stars.js',
+                            get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui-stars.js',
                             array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
     }
 
@@ -232,7 +202,7 @@ class Directory_Theme_Core
                 <div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
             <?php endif; ?>
             */ ?>
-<div class="clear-left"></div>
+            <div class="clear-left"></div>
             <div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
                 <form id="rat" action="" method="post">
                     <select name="rate">
