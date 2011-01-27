@@ -13,7 +13,7 @@
 /********************************** styles start >>> */
 /********************************** adverts */
 .h-ads {
-    background: #333333;
+    background: #eeeeee;
 }
 /********************************** comments */
 #comments .title {
@@ -32,7 +32,7 @@ font-weight: normal;
 ol.commentlist li {
 margin-bottom: 10px;
 padding: 10px;
-border: 1px solid #333333;
+border: 1px solid #eeeeee;
 }
 
 .fn, .says{
@@ -62,8 +62,8 @@ margin-bottom: 10px;
 
 .comment-author img{
 padding: 5px;
-background: none repeat scroll 0 0 #333333;
-border: 1px solid #333333;
+background: none repeat scroll 0 0 #FFFFFF;
+border: 1px solid #EEEEEE;
 margin-bottom: 10px;
 float: right;
 }
@@ -106,14 +106,18 @@ background: none;
 }
 /********************************** directory */
 .archive #content h2, .dp-top-level #content h2 {
-    color: #cccccc;
+    color: #471111;
 	font-size: 18px;
 	font-weight: normal;
 	padding: 5px 10px 5px 0px;
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid #471111;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 .archive #content .current-cat a {
-    color: #009ec4;
+    color: #471111;
     font-size: 24px;
     text-decoration: none;
 }
@@ -123,21 +127,21 @@ background: none;
 }
 
 .archive #content .current-cat ul li a {
-    color: #009ec4;
+    color: #471111;
     text-decoration: none;
     font-style: italic;
     font-size: 16px;
 }
 
 .dp-taxonomy-name {
-    color: #009ec4;
+    color: #471111;
     font-size: 24px;
     text-decoration: none;
     font-weight: normal;
 }
 
 .directory_listing {
-	border: none;
+	border: 1px solid #EEEEEE;
 }
 
 .dp-submit-txt {
@@ -146,7 +150,7 @@ background: none;
 }
 
 .wp-post-image {
-    border: none;
+    border: 1px solid #eeeeee;
 }
 
 .dp-error, .error {
@@ -154,11 +158,15 @@ background: none;
 }
 
 #action-bar{
-	border: 1px solid #333333;
-	background: #333333;
-	font-size: 18px;
+	border: 1px solid #eeeeee;
+	background: #eeeeee;
+	font-size: 16px;
 	color: #666666;
-	text-shadow: 1px 1px 0px #111111;
+	text-shadow: 1px 1px 0px #ffffff;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .entry-meta{
@@ -176,7 +184,7 @@ background: none;
 }
 
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
-    color: #009ec4;
+    color: #471111;
     text-decoration: none;
 	font-size: 14px;
 }
@@ -185,7 +193,7 @@ background: none;
     text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-    color: #009ec4;
+    color: #471111;
     text-decoration: none;
 }
 
@@ -194,39 +202,58 @@ background: none;
 }
 
 .home #content li{
-  	border: 1px solid #111111;
-	background: #111111;
+  	border: 1px solid #EEEEEE;
 } 
 
 .home #content li ul, .archive #content li ul{
-  	border: none;	
+  	border: 1px solid #EEEEEE;	
 }
 
 .home #content h2{
     color: #666666;
-	text-shadow: 1px 1px 0px #111111;
+	text-shadow: 1px 1px 0px #ffffff;
 	font-size: 18px;
 	font-weight: normal;
+	background: #eeeeee;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
+
+.home #content ul{
+		margin: 10px 0px;
+}
+
 /********************************** footer */
 #footer-widget-area{
 	border-top: 3px solid #eeeeee;
 }
 /********************************** forms */
 #searchbox{
-	background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
-	border: 1px solid #009ec4;
+	background: #611212;
+	border: 1px solid #611212;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #searchbox label{
 	color: #ffffff;
-	font-size: 24px;
+	font-size: 22px;
+	margin-bottom: 20px;
 	text-shadow: 1px 1px 0px #00728f;
 }
 
 #searchbox input[type="text"]{
-	padding: 6px 10px;
+	clear: both;
+	padding: 4px 20px;
 	font-size: 18px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 a.button, input[type=submit], input[type=button],
@@ -234,11 +261,15 @@ ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;
 padding: 5px 10px;
-color: #ffffff;
+color: #eeeeee;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
-border: 1px solid #ff930c;
-text-shadow: 1px 1px 0px #e7850a;
+background: #471111;
+border: 1px solid #280606;
+text-shadow: 1px 1px 0px #471111;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
@@ -249,16 +280,24 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
-border: 1px solid #ffffff;
-text-shadow: 1px 1px 0px #e7850a;
+background: #471111;
+border: 1px solid #471111;
+text-shadow: 1px 1px 0px #471111;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }
 
-textarea {
+input[type="text"]{
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
 padding: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }
 
 textarea {
@@ -266,7 +305,11 @@ textarea {
 	border: 1px solid #EEEEEE;
 	color: #111111;
 	padding: 5px;
-	width: 95%;
+	width: 98%;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 /********************************** header */
 #site-logo {
@@ -278,18 +321,21 @@ text-decoration: none;
 }
 /********************************** layout */
 body {
-background: #333333 url('../images/gloss-images/background.jpg');
-background-position: 50% 0;
+background: #eeeeee;
 }
 #site-wrapper{
+	background: #ffffff;
+	width: 600px;
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #cccccc url('../images/modern-images/nav-background.jpg') repeat-x;
+	padding: 0px 10px;
+	width: 600px;
 }
 
 #navigation-wrapper{
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #eeeeee;
 }
 
 #navigation .menu-header,
@@ -319,21 +365,21 @@ div.menu {
 
 #navigation li:hover > a,
 #navigation ul ul :hover > a {
-	color: #ff8a00;
+	color: #113b47;
 }
 
 #navigation ul li.current_page_item > a,
 #navigation ul li.current-menu-ancestor > a,
 #navigation ul li.current-menu-item > a,
 #navigation ul li.current-menu-parent > a {
-	color: #ff8a00;
+	color: #113b47;
 }
 * html #navigation ul li.current_page_item a,
 * html #navigation ul li.current-menu-ancestor a,
 * html #navigation ul li.current-menu-item a,
 * html #navigation ul li.current-menu-parent a,
 * html #navigation ul li a:hover {
-	color: #ff8a00;
+	color: #113b47;
 }
 
 .current_page_item {
@@ -342,28 +388,28 @@ div.menu {
 
 /********************************** typography */
 h1, h2, h3, h4, h5, h6 {
-color: #009ec4;
+color: #471111;
 }
 
 
 a:link {
-color: #009ec4;
+color: #471111;
 }
 
 a:visited {
-color: #009ec4;
+color: #471111;
 }
 
 a:active,
 a:hover {
-color: #ff8a00;
+color: #222222;
 }
 
 body {
 font-size: 12px;
 line-height: 22px;
-color: #eeeeee;
-font-family: arial,helvetica,verdana,sans-serif;
+color: #111111;
+font-family: Verdana,"Bitstream Vera Sans",Arial,sans-serif;
 }
 
 h1 {
@@ -403,6 +449,10 @@ font-weight: normal;
 	font-weight: normal;
 	background: #eeeeee;
 	padding: 10px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #content blockquote {

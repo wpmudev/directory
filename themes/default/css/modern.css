@@ -290,7 +290,7 @@ border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
 
-textarea {
+input[type="text"]{
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;

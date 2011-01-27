@@ -349,9 +349,6 @@ div.menu {
 #respond, .breadcrumbtrail, .excerptpost, .post, #checkout-page{
 	margin-bottom: 10px;
 	padding: 10px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
 }
 
 .archive #content .breadcrumbtrail li{

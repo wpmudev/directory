@@ -77,7 +77,7 @@ color: #888;
 }
 
 #content .gallery img {
-border: 2px solid #cfcfcf;
+border: 2px solid #ffffff;
 }
 
 #content .gallery .gallery-caption {
@@ -97,8 +97,8 @@ color: #aaa;
 }
 
 #wp-calendar tbody td {
-background: #f5f5f5;
-border: 1px solid #fff;
+background: #333333;
+border: 1px solid #222222;
 }
 
 #wp-calendar tbody .pad {
@@ -113,7 +113,7 @@ background: none;
 	border-bottom: 1px solid #333333;
 }
 .archive #content .current-cat a {
-    color: #009ec4;
+    color: #ffffff;
     font-size: 24px;
     text-decoration: none;
 }
@@ -123,14 +123,14 @@ background: none;
 }
 
 .archive #content .current-cat ul li a {
-    color: #009ec4;
+    color: #ffffff;
     text-decoration: none;
     font-style: italic;
     font-size: 16px;
 }
 
 .dp-taxonomy-name {
-    color: #009ec4;
+    color: #ffffff;
     font-size: 24px;
     text-decoration: none;
     font-weight: normal;
@@ -154,8 +154,8 @@ background: none;
 }
 
 #action-bar{
-	border: 1px solid #222222;
-	background: #222222;
+	background: #000000;
+	border: 1px solid #333333;
 	font-size: 18px;
 	color: #666666;
 	text-shadow: 1px 1px 0px #111111;
@@ -165,21 +165,23 @@ background: none;
 }
 
 .entry-meta{
-	border-left: 1px solid #dddddd;
+	border-left: 1px solid #222222;
 }
 
 .excerptpost, .post, #checkout-page{
-	border: 1px solid #eeeeee;
+	background: #000000;
+	border: 1px solid #333333;
 	padding: 10px;
 }
 
 #respond, .breadcrumbtrail{
-	background: #eeeeee;
+	background: #000000;
+	border: 1px solid #333333;
 	padding: 10px;
 }
 
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
-    color: #009ec4;
+    color: #ffffff;
     text-decoration: none;
 	font-size: 14px;
 }
@@ -188,7 +190,7 @@ background: none;
     text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-    color: #009ec4;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -197,8 +199,8 @@ background: none;
 }
 
 .home #content li{
-  	border: 1px solid #111111;
-	background: #111111;
+	background: #000000;
+	border: 1px solid #333333;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -216,7 +218,7 @@ background: none;
 }
 /********************************** footer */
 #footer-widget-area{
-	border-top: 3px solid #eeeeee;
+	border-top: 3px solid #333333;
 }
 /********************************** forms */
 #searchbox{
@@ -299,8 +301,7 @@ text-decoration: none;
 }
 /********************************** layout */
 body {
-background: #333333 url('../images/gloss-images/background.jpg') no-repeat;
-background-position: 10% 0;
+background: #000000 url('../images/gloss-images/background.jpg') repeat-x;
 }
 #site-wrapper{
 }

@@ -106,14 +106,14 @@ background: none;
 }
 /********************************** directory */
 .archive #content h2, .dp-top-level #content h2 {
-    color: #009ec4;
+    color: #337d92;
 	font-size: 18px;
 	font-weight: normal;
 	padding: 5px 10px 5px 0px;
-	border-bottom: 1px solid #009ec4;
+	border-bottom: 1px solid #337d92;
 }
 .archive #content .current-cat a {
-    color: #009ec4;
+    color: #337d92;
     font-size: 24px;
     text-decoration: none;
 }
@@ -123,14 +123,14 @@ background: none;
 }
 
 .archive #content .current-cat ul li a {
-    color: #009ec4;
+    color: #337d92;
     text-decoration: none;
     font-style: italic;
     font-size: 16px;
 }
 
 .dp-taxonomy-name {
-    color: #009ec4;
+    color: #337d92;
     font-size: 24px;
     text-decoration: none;
     font-weight: normal;
@@ -176,7 +176,7 @@ background: none;
 }
 
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
-    color: #009ec4;
+    color: #337d92;
     text-decoration: none;
 	font-size: 14px;
 }
@@ -185,7 +185,7 @@ background: none;
     text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-    color: #009ec4;
+    color: #337d92;
     text-decoration: none;
 }
 
@@ -214,18 +214,18 @@ background: none;
 }
 /********************************** forms */
 #searchbox{
-	background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
-	border: 1px solid #009ec4;
+	background: #225e6f;
+	border: 1px solid #225e6f;
 }
 
 #searchbox label{
 	color: #ffffff;
-	font-size: 24px;
+	font-size: 22px;
 	text-shadow: 1px 1px 0px #00728f;
 }
 
 #searchbox input[type="text"]{
-	padding: 6px 10px;
+	padding: 4px 5px;
 	font-size: 18px;
 }
 
@@ -236,9 +236,9 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
-border: 1px solid #ff930c;
-text-shadow: 1px 1px 0px #e7850a;
+background: #113b47;
+border: 1px solid #337d92;
+text-shadow: 1px 1px 0px #113b47;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
@@ -249,12 +249,12 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
+background: #113b47;
 border: 1px solid #ffffff;
-text-shadow: 1px 1px 0px #e7850a;
+text-shadow: 1px 1px 0px #113b47;
 }
 
-textarea {
+input[type="text"]{
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
@@ -278,18 +278,19 @@ text-decoration: none;
 }
 /********************************** layout */
 body {
-background: #FFFFFF;
+background: #eeeeee;
 }
 #site-wrapper{
 	background: #ffffff;
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #cccccc url('../images/modern-images/nav-background.jpg') repeat-x;
+	width: 960px;
 }
 
 #navigation-wrapper{
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #eeeeee;
 }
 
 #navigation .menu-header,
@@ -319,21 +320,21 @@ div.menu {
 
 #navigation li:hover > a,
 #navigation ul ul :hover > a {
-	color: #ff8a00;
+	color: #113b47;
 }
 
 #navigation ul li.current_page_item > a,
 #navigation ul li.current-menu-ancestor > a,
 #navigation ul li.current-menu-item > a,
 #navigation ul li.current-menu-parent > a {
-	color: #ff8a00;
+	color: #113b47;
 }
 * html #navigation ul li.current_page_item a,
 * html #navigation ul li.current-menu-ancestor a,
 * html #navigation ul li.current-menu-item a,
 * html #navigation ul li.current-menu-parent a,
 * html #navigation ul li a:hover {
-	color: #ff8a00;
+	color: #113b47;
 }
 
 .current_page_item {
@@ -342,28 +343,28 @@ div.menu {
 
 /********************************** typography */
 h1, h2, h3, h4, h5, h6 {
-color: #009ec4;
+color: #337d92;
 }
 
 
 a:link {
-color: #009ec4;
+color: #337d92;
 }
 
 a:visited {
-color: #009ec4;
+color: #337d92;
 }
 
 a:active,
 a:hover {
-color: #ff8a00;
+color: #222222;
 }
 
 body {
 font-size: 12px;
 line-height: 22px;
 color: #111111;
-font-family: arial,helvetica,verdana,sans-serif;
+font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
 }
 
 h1 {

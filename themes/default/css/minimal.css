@@ -264,7 +264,7 @@ border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #669911;
 }
 
-textarea {
+input[type="text"]{
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
