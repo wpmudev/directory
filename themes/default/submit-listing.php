@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Submit Listingasda
+Template Name: Submit Listing
 */
 ?>
 
