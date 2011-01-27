@@ -5,7 +5,7 @@
 				<?php if (have_posts()) :  ?>	
 					<?php wpmu_attachmentloop(); ?>
 				<?php else: ?>
-						<p><?php _e( 'Sorry, no attachments matched your criteria.', TEMPLATE_DOMAIN) ?></p>
+						<p><?php _e( 'Sorry, no attachments matched your criteria.', THEME_TEXT_DOMAIN ) ?></p>
 				<?php endif; ?>
 		</div><!-- end #blog-latest -->
 	</div>

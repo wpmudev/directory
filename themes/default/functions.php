@@ -1,21 +1,19 @@
 <?php
 
-define('TEMPLATE_DOMAIN', 'directory');
-
-define('DEVLIB', TEMPLATEPATH . '/library');
+define( 'THEME_TEXT_DOMAIN', 'directory' );
 
 function init_localization( $locale ) {
-return "en_EN";
+    return "en_EN";
 }
 // Uncomment add_filter below to test your localization, make sure to enter the right language code.
 // add_filter('locale','init_localization');
 
 if( function_exists( 'load_theme_textdomain' ) ) {
-load_theme_textdomain(TEMPLATE_DOMAIN, DEVLIB . '/languages/');
+    load_theme_textdomain( THEME_TEXT_DOMAIN, TEMPLATEPATH . '/languages/' );
 }
 
-require_once(DEVLIB . '/functions/loop-functions.php');
-require_once(DEVLIB . '/functions/theme-core.php');
-require_once(DEVLIB . '/functions/theme-functions.php');
+include_once 'includes/core/theme-core.php';
+include_once 'includes/functions/loop-functions.php';
+include_once 'includes/functions/theme-functions.php';
 
 ?>

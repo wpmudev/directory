@@ -9,7 +9,7 @@ Template Name: blog news
 	<div class="padder">
 		<div class="page" id="blog-latest"><!-- start #blog-latest -->
 			<?php wpmu_blogpageloop(); ?>
-			<?php locate_template( array( '/library/components/pagination.php' ), true ); ?>
+			<?php locate_template( array( '/includes/components/pagination.php' ), true ); ?>
 		</div><!-- end #blog-latest -->
 	</div>
 </div><!-- end #content -->

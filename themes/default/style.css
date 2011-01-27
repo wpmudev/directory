@@ -5,8 +5,8 @@ Theme Date:
 Version: 1.0
 Theme URI: http://premium.wpmudev.org/
 Description: Directory theme
-Author: Tammie Lister at Logical Binary (Incsub)
-Author URI: http://www.logicalbinary.com/
+Author: Tammie Lister, Ivan Shaovchev (Incsub)
+Author URI: http://premium.wpmudev.org 
 WPD ID:
 
 Tags: wordpress
@@ -17,13 +17,11 @@ http://www.opensource.org/licenses/gpl-license.php
 */
 
 /* basic styling for all elements */
-@import url( _inc/css/layout.css );
-
-/*@import url(_inc/css/directory.css);*/
-@import url(library/styles/modern.css);
-
-@import url(_inc/css/directory-grid.css);
-/*@import url(_inc/css/directory-row.css);*/
+@import url( css/layout.css );
+@import url( css/modern.css);
+@import url( css/directory-grid.css );
+/*@import url( css/directory.css);*/
+/*@import url( css/directory-row.css);*/
 
 /* rtl languages styling */
 /* @import url( rtl.css ); */

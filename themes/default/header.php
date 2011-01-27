@@ -6,8 +6,8 @@
 		<title>
 			<?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?>
 		</title>
-		<meta name="description" content="<?php echo stripslashes($seodescription); ?>" />
-		<meta name="keywords" content="<?php echo stripslashes($seokeywords); ?>" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
 		<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
 		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_inc/css/reset.css" type="text/css" media="all" />
 
@@ -19,13 +19,16 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class() ?>>
-					<?php locate_template( array( '/library/components/navigation.php' ), true ); ?>
+
+		<?php locate_template( array( '/includes/components/navigation.php' ), true ); ?>
+
 		<div id="site-wrapper"><!-- start #site-wrapper -->
+
 			<div id="header"><!-- start #header -->
-				<?php locate_template( array( '/library/components/branding-header.php' ), true ); ?>
+				<?php locate_template( array( '/includes/components/branding-header.php' ), true ); ?>
 			</div><!-- end #header -->
-				<?php locate_template( array( '/library/components/searchcontainer.php' ), true ); ?>
-				
-							<?php locate_template( array( '/library/components/actionbuttons.php' ), true ); ?>
+
+				<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
+			    <?php locate_template( array( '/includes/components/actionbuttons.php' ), true ); ?>
 					
 			<div id="container"><!-- start #container -->
