@@ -26,11 +26,11 @@ http://www.opensource.org/licenses/gpl-license.php
 /*@import url( css/gloss.css );*/
 
 /* directory home page rows / grid*/
-@import url( css/directory-row.css );
+/*@import url( css/directory-row.css );*/
 /*@import url(_inc/css/directory-row.css);*/
 
 /* textshadows on / off*/
-@import url(css/notextshadows.css);
+/*@import url(css/notextshadows.css);*/
 
 /* rtl languages styling */
 /* @import url( rtl.css ); */

@@ -136,8 +136,8 @@ class Directory_Theme_Options
                         <th><label for="layout"><?php _e('Layout', 'directory'); ?></label></th>
                         <td>
                             <select id="layout" name="dir_options[layout]">;
-                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Grid Layout', 'directory' ); ?></option>
-                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Rows Layout', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'grid' ) echo 'selected="selected"'; ?> value="grid"><?php _e( 'Grid Layout', 'directory' ); ?></option>;
+                                <option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'row' ) echo 'selected="selected"'; ?> value="row"><?php _e( 'Rows Layout', 'directory' ); ?></option>
                             </select>
                             <span class="description"><?php _e('Switch Theme Layout', 'directory'); ?></span>
                         </td>
@@ -146,9 +146,12 @@ class Directory_Theme_Options
                         <th><label for="style"><?php _e('Styles', 'directory'); ?></label></th>
                         <td>
                             <select id="style" name="dir_options[style]">
-                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style One', 'directory' ); ?></option>
-                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style Two', 'directory' ); ?></option>
-                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style Three', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'modern' ) echo 'selected="selected"'; ?> value="modern"><?php _e( 'Style Modern', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'minimal' ) echo 'selected="selected"'; ?> value="minimal"><?php _e( 'Style Minimal', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'boxed' ) echo 'selected="selected"'; ?> value="boxed"><?php _e( 'Style Boxed', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'gloss' ) echo 'selected="selected"'; ?> value="gloss"><?php _e( 'Style Gloss', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'skinny' ) echo 'selected="selected"'; ?> value="skinny"><?php _e( 'Style Skinny', 'directory' ); ?></option>
+                                <option <?php if ( isset( $options['style'] ) && $options['style'] == 'wide' ) echo 'selected="selected"'; ?> value="wide"><?php _e( 'Style Wide', 'directory' ); ?></option>
                             </select>
                             <span class="description"><?php _e('Switch Theme Style', 'directory'); ?></span>
                         </td>
@@ -161,28 +164,33 @@ class Directory_Theme_Options
         </div> <?php
     }
 
+    /**
+     * Load theme styles based on user options 
+     * 
+     * @return void
+     */
     function output_theme_options() { 
         $options = get_option('dir_options');
-
+        // load main styles 
+        if ( isset( $options['style'] ) ) { ?>
+            <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/<?php echo $options['style']; ?>.css" type="text/css" media="all" />
+            <?php
+        } else { ?>
+            <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/modern.css" type="text/css" media="all" />
+            <?php 
+        }
+        // load layout styles
+        if ( isset( $options['layout'] ) ) { ?>
+            <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-<?php echo $options['layout']; ?>.css" type="text/css" media="all" />
+            <?php
+        } else { ?>
+            <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
+            <?php
+        }
+        // load no text shadows styles
         if ( !empty( $options['text_shadows'] ) ) { ?>
 		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/notextshadows.css" type="text/css" media="all" />
             <?php 
-        }
-
-        if ( $options['layout'] == 'grid' ) { ?>
-		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
-            <?php
-        } elseif ( $options['layout'] == 'row' ) { ?>
-		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-row.css" type="text/css" media="all" />
-            <?php
-        }
-
-        if ( $options['layout'] == 'grid' ) { ?>
-		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
-            <?php
-        } elseif ( $options['layout'] == 'row' ) { ?>
-		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-row.css" type="text/css" media="all" />
-            <?php
         }
     }
 }
