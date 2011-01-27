@@ -9,8 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
-		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_inc/css/reset.css" type="text/css" media="all" />
-
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<link rel="icon" href="<?php bloginfo('stylesheet_directory');?>/favicon.ico" type="images/x-icon" />
