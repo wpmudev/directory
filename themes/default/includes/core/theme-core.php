@@ -88,7 +88,7 @@ class Directory_Theme_Core
      */
     function get_rating( $post_id, $user_id = NULL ) {
         if ( isset( $user_id ) ) {
-            $rating = get_user_meta( $user_id, '_sr_post_vote' );
+            $rating = get_user_meta( $user_id, '_sr_post_vote', true );
             return $rating[$post_id];
         } else {
             $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
@@ -104,16 +104,15 @@ class Directory_Theme_Core
      * @param <type> $rating 
      */
     function save_rating( $post_id, $rating ) {
-        $votes = get_post_meta( $post_id, '_sr_post_votes', true );
+        if ( is_user_logged_in() ) {
+            $user = wp_get_current_user();
+            update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
+        }       $votes = get_post_meta( $post_id, '_sr_post_votes', true );
         $current_rating = get_post_meta( $post_id, '_sr_post_rating', true );
         $votes++;
         $rating = $current_rating + $rating;
         update_post_meta( $post_id, '_sr_post_votes', $votes  );
         update_post_meta( $post_id, '_sr_post_rating', $rating  );
-        if ( is_user_logged_in() ) {
-            $user = wp_get_current_user();
-            update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
-        }
     }
 
     /**
