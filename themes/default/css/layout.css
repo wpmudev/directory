@@ -337,13 +337,13 @@ div.menu {
 
 .entry-meta{
 	float: right;
-	width: 150px;
-	padding-left: 10px;
+	width: 200px;
+	padding: 0 10px;
 	border-left: 1px solid #dddddd;
 }
 
 .entry-post{
-	margin-right: 180px;
+	margin-right: 230px;
 }
 
 #respond, .breadcrumbtrail, .excerptpost, .post, #checkout-page{

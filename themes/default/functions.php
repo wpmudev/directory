@@ -13,6 +13,7 @@ if( function_exists( 'load_theme_textdomain' ) ) {
 }
 
 include_once 'includes/core/theme-core.php';
+include_once 'includes/core/theme-colors.php';
 include_once 'includes/functions/loop-functions.php';
 include_once 'includes/functions/theme-functions.php';
 

@@ -29,6 +29,7 @@ class Directory_Theme_Core
         //add_action( 'wp_print_styles', array( &$this, 'print_styles' ));
         add_action( 'wp_head', array( &$this, 'print_scripts' ) );
         add_action( 'sr_avg_rating', array( &$this, 'render_avg_rating' ) );
+        add_action( 'sr_user_rating', array( &$this, 'render_user_rating' ) );
         add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
         add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
         add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
@@ -85,11 +86,16 @@ class Directory_Theme_Core
      * @global <type> $post
      * @return <type> 
      */
-    function get_rating( $post_id ) {
-        $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
-        $rating = get_post_meta( $post_id, '_sr_post_rating', true ) ? get_post_meta( $post_id, '_sr_post_rating', true ) : '0';
-        $avg = ( !empty( $rating ) && !empty( $votes ) ) ? round( (int) $rating / (int) $votes ) : '0';
-        return array( 'votes' => $votes, 'rating' => $rating, 'avg' => $avg );
+    function get_rating( $post_id, $user_id = NULL ) {
+        if ( isset( $user_id ) ) {
+            $rating = get_user_meta( $user_id, '_sr_post_vote' );
+            return $rating[$post_id];
+        } else {
+            $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
+            $rating = get_post_meta( $post_id, '_sr_post_rating', true ) ? get_post_meta( $post_id, '_sr_post_rating', true ) : '0';
+            $avg = ( !empty( $rating ) && !empty( $votes ) ) ? round( (int) $rating / (int) $votes ) : '0';
+            return array( 'votes' => $votes, 'rating' => $rating, 'avg' => $avg );
+        }
     }
 
     /**
@@ -104,6 +110,10 @@ class Directory_Theme_Core
         $rating = $current_rating + $rating;
         update_post_meta( $post_id, '_sr_post_votes', $votes  );
         update_post_meta( $post_id, '_sr_post_rating', $rating  );
+        if ( is_user_logged_in() ) {
+            $user = wp_get_current_user();
+            update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
+        }
     }
 
     /**
@@ -154,8 +164,10 @@ class Directory_Theme_Core
         jQuery(function($) {
 			$("#avg").children().not(":input").hide();
 			$("#rat").children().not("select, #messages").hide();
+			$(".user_votes").children().not(":input").hide();
             // Create stars for: Average rating
 			$("#avg").stars();
+			$(".user_votes").stars();
 			// Create stars for: Rate this
 			$("#rat").stars({
 				inputType: "select",
@@ -191,33 +203,38 @@ class Directory_Theme_Core
         </script> <?php
     }
 
-    /*
-     *
+    /**
+     * render_rate_this 
+     * 
+     * @access public
+     * @return void
      */
     function render_rate_this() {
         global $post;
         $rating = $this->get_rating( $post->ID ); ?>
-            <?php /*
-            <?php if (isset($post_message)): ?>
-                <div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
-            <?php endif; ?>
-            */ ?>
-            <div class="clear-left"></div>
-            <div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
-                <form id="rat" action="" method="post">
-                    <select name="rate">
-                    <?php foreach ( $this->quality as $scale => $text ): ?>
-                        <option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
-                    <?php endforeach; ?>
-                    </select>
-                    <input type="submit" value="Rate it!" />
-                </form>
-            </div>
-    <?php 
+        <?php /*
+        <?php if (isset($post_message)): ?>
+            <div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
+        <?php endif; ?>
+        */ ?>
+        <div class="clear-left"></div>
+        <div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
+            <form id="rat" action="" method="post">
+                <select name="rate">
+                <?php foreach ( $this->quality as $scale => $text ): ?>
+                    <option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
+                <?php endforeach; ?>
+                </select>
+                <input type="submit" value="Rate it!" />
+            </form>
+        </div> <?php 
     }
 
-    /*
+    /**
+     * render_avg_rating 
      * 
+     * @access public
+     * @return void
      */
     function render_avg_rating() {
         global $post;
@@ -227,6 +244,20 @@ class Directory_Theme_Core
             <form id="avg" style="float: left; padding: 3px 8px 0 0;">
             <?php foreach ( $this->quality as $scale => $text ): ?>
                 <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
+            <?php endforeach; ?>
+            </form>
+        </div> <?php
+    }
+
+    function render_user_rating() {
+        global $post;  
+        $user = wp_get_current_user();
+        $rating = $this->get_rating( $post->ID, $user->ID ); ?>  
+        <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong> ;
+        <span>(<span id="all_votes"><?php echo $rating; ?></span> votes; <span id="all_avg"><?php echo $rating ?></span>)</span>
+            <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
+            <?php foreach ( $this->quality as $scale => $text ): ?>
+                <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
             <?php endforeach; ?>
             </form>
         </div> <?php
