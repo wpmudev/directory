@@ -13,13 +13,14 @@
 /********************************** styles start >>> */
 /********************************** adverts */
 .h-ads {
-    width: 728px;
-    height: 90px;
-    display: block;
-    float: right;
-    text-align: center;
-    margin-top: 7px;
+	width: 728px;
+	height: 90px;
+	display: block;
+	float: right;
+	text-align: center;
+	margin-top: 10px;
 }
+
 .h-ads span {
     line-height: 85px;
 }

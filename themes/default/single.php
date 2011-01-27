@@ -28,6 +28,11 @@
                     <div class="entry-content">
                         <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
                         <?php the_content(); ?>
+
+						<?php echo get_post_meta( $post->ID, '_ct_text_4ccc5fd023950', true ); ?>
+						
+						<?php echo get_post_meta( $post->ID, '_ct_textarea_4d41cdafe95c6', true ); ?>
+						
                         <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', THEME_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
                     </div><!-- .entry-content -->
                     <div class="clear"></div>

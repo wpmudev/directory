@@ -1,22 +1,22 @@
 /********************************** Home page row styles start >>> */
 
 .home #content li {
-    list-style: none outside none;
-	margin: 10px 0px;
-	border: none;
+list-style: none outside none;
+margin: 10px 0px;
+border: none;
 }
 
 .home #content li ul, .archive #content li ul {
-    margin: 0 !important;
-	padding: 10px;
+margin: 0 !important;
+padding: 10px;
 }
 
-.home #content li ul li, .archive #content li ul li, .dp-top-level #content ul li  {
-    margin: 0 10px 0 0;
-	border: none;
-	padding: none;
-    width: inherit;
-    min-height: inherit;
+.home #content li ul li, .archive #content li ul li, .dp-top-level #content ul li {
+margin: 0 10px 0 0;
+border: none;
+padding: none;
+width: inherit;
+min-height: inherit;
 }
 
 /********************************** Home page row styles end <<< */

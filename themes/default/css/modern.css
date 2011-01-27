@@ -13,7 +13,7 @@
 /********************************** styles start >>> */
 /********************************** adverts */
 .h-ads {
-    background: #eeeeee;
+background: #eeeeee;
 }
 /********************************** comments */
 #comments .title {
@@ -39,13 +39,13 @@ border: 1px solid #eeeeee;
 border-radius: 5px;
 }
 
-.fn, .says{
-	padding-top: 10px;
-	font-size: 24px;
+.fn, .says {
+padding-top: 10px;
+font-size: 24px;
 }
 
-.entry-meta .fn{
-	font-size: 12px;
+.entry-meta .fn {
+font-size: 12px;
 }
 
 h3#comments, h3#comments-title {
@@ -64,7 +64,7 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
-.comment-author img{
+.comment-author img {
 padding: 5px;
 background: none repeat scroll 0 0 #FFFFFF;
 border: 1px solid #EEEEEE;
@@ -110,151 +110,151 @@ background: none;
 }
 /********************************** directory */
 .archive #content h2, .dp-top-level #content h2 {
-    color: #009ec4;
-	font-size: 18px;
-	font-weight: normal;
-	padding: 5px 10px 5px 0px;
-	border-bottom: 1px solid #009ec4;
+color: #009ec4;
+font-size: 18px;
+font-weight: normal;
+padding: 5px 10px 5px 0px;
+border-bottom: 1px solid #009ec4;
 }
 .archive #content .current-cat a {
-    color: #009ec4;
-    font-size: 24px;
-    text-decoration: none;
+color: #009ec4;
+font-size: 24px;
+text-decoration: none;
 }
 
 .archive #content .current-cat a:hover {
-    text-decoration: underline;
+text-decoration: underline;
 }
 
 .archive #content .current-cat ul li a {
-    color: #009ec4;
-    text-decoration: none;
-    font-style: italic;
-    font-size: 16px;
+color: #009ec4;
+text-decoration: none;
+font-style: italic;
+font-size: 16px;
 }
 
 .dp-taxonomy-name {
-    color: #009ec4;
-    font-size: 24px;
-    text-decoration: none;
-    font-weight: normal;
+color: #009ec4;
+font-size: 24px;
+text-decoration: none;
+font-weight: normal;
 }
 
 .directory_listing {
-	border: 1px solid #EEEEEE;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+border: 1px solid #EEEEEE;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 .dp-submit-txt {
-    font-size: 14px;
-    font-style: italic;
+font-size: 14px;
+font-style: italic;
 }
 
 .wp-post-image {
-    border: 1px solid #eeeeee;
+border: 1px solid #eeeeee;
 }
 
 .dp-error, .error {
-    background: #FFEBE8 !important;
+background: #FFEBE8 !important;
 }
 
-#action-bar{
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-	border: 1px solid #eeeeee;
-	background: #eeeeee;
-	font-size: 18px;
-	color: #666666;
-	text-shadow: 1px 1px 0px #ffffff;
+#action-bar {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: 1px solid #eeeeee;
+background: #eeeeee;
+font-size: 18px;
+color: #666666;
+text-shadow: 1px 1px 0px #ffffff;
 }
 
-.entry-meta{
-	border-left: 1px solid #dddddd;
+.entry-meta {
+border-left: 1px solid #dddddd;
 }
 
-.excerptpost, .post, #checkout-page{
-	border: 1px solid #eeeeee;
-	padding: 10px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.excerptpost, .post, #checkout-page {
+border: 1px solid #eeeeee;
+padding: 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
-#respond, .breadcrumbtrail{
-	background: #eeeeee;
-	padding: 10px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+#respond, .breadcrumbtrail {
+background: #eeeeee;
+padding: 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
-.home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
-    color: #009ec4;
-    text-decoration: none;
-	font-size: 14px;
+.home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a {
+color: #009ec4;
+text-decoration: none;
+font-size: 14px;
 }
 .home #content li ul li a:hover, .archive #content li ul li a:hover, .dp-top-level #content ul li a:hover {
-    color: #666666;
-    text-decoration: underline;
+color: #666666;
+text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-    color: #009ec4;
-    text-decoration: none;
+color: #009ec4;
+text-decoration: none;
 }
 
 .home #content h2 a:hover, .dp-top-level #content h2 a:hover, .archive #content h1 a:hover {
-    text-decoration: underline;
+text-decoration: underline;
 }
 
-.home #content li{
-  	border: 1px solid #EEEEEE;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-} 
-
-.home #content li ul, .archive #content li ul{
-  	border: 1px solid #EEEEEE;	
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.home #content li {
+border: 1px solid #EEEEEE;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
-.home #content h2{
-    color: #666666;
-	text-shadow: 1px 1px 0px #ffffff;
-	font-size: 18px;
-	font-weight: normal;
-	background: #eeeeee;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.home #content li ul, .archive #content li ul {
+border: 1px solid #EEEEEE;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.home #content h2 {
+color: #666666;
+text-shadow: 1px 1px 0px #ffffff;
+font-size: 18px;
+font-weight: normal;
+background: #eeeeee;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 /********************************** footer */
-#footer-widget-area{
-	border-top: 3px solid #eeeeee;
+#footer-widget-area {
+border-top: 3px solid #eeeeee;
 }
 /********************************** forms */
-#searchbox{
-	background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-	border: 1px solid #009ec4;
+#searchbox {
+background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: 1px solid #009ec4;
 }
 
-#searchbox label{
-	color: #ffffff;
-	font-size: 24px;
-	text-shadow: 1px 1px 0px #00728f;
+#searchbox label {
+color: #ffffff;
+font-size: 24px;
+text-shadow: 1px 1px 0px #00728f;
 }
 
-#searchbox input[type="text"]{
-	padding: 6px 10px;
-	font-size: 18px;
+#searchbox input[type="text"] {
+padding: 6px 10px;
+font-size: 18px;
 }
 
 a.button, input[type=submit], input[type=button],
@@ -290,7 +290,7 @@ border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
 
-input[type="text"]{
+input[type="text"] {
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
@@ -302,15 +302,15 @@ border-radius: 5px;
 }
 
 textarea {
-	background: #ffffff;
-	border: 1px solid #EEEEEE;
-	color: #111111;
-	padding: 5px;
-	-moz-border-radius: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	width: 95%;
+background: #ffffff;
+border: 1px solid #EEEEEE;
+color: #111111;
+padding: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+width: 95%;
 }
 /********************************** header */
 #site-logo {
@@ -324,64 +324,64 @@ text-decoration: none;
 body {
 background: #FFFFFF;
 }
-#site-wrapper{
-	background: #ffffff;
+#site-wrapper {
+background: #ffffff;
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
 }
 
-#navigation-wrapper{
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+#navigation-wrapper {
+background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
 }
 
 #navigation .menu-header,
 div.menu {
-	font-size: 14px;
+font-size: 14px;
 }
 
 #navigation a {
-	color: #666666;
-	text-shadow: 1px 1px 0px #ffffff;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 38px;
-	text-decoration: none;
+color: #666666;
+text-shadow: 1px 1px 0px #ffffff;
+font-size: 14px;
+font-weight: bold;
+line-height: 38px;
+text-decoration: none;
 }
 
 #navigation ul ul {
-	box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
-	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
 }
 
 #navigation ul ul a {
-	background: #cccccc;
-	line-height: 1em;
+background: #cccccc;
+line-height: 1em;
 }
 
 #navigation li:hover > a,
 #navigation ul ul :hover > a {
-	color: #ff8a00;
+color: #ff8a00;
 }
 
 #navigation ul li.current_page_item > a,
 #navigation ul li.current-menu-ancestor > a,
 #navigation ul li.current-menu-item > a,
 #navigation ul li.current-menu-parent > a {
-	color: #ff8a00;
+color: #ff8a00;
 }
 * html #navigation ul li.current_page_item a,
 * html #navigation ul li.current-menu-ancestor a,
 * html #navigation ul li.current-menu-item a,
 * html #navigation ul li.current-menu-parent a,
 * html #navigation ul li a:hover {
-	color: #ff8a00;
+color: #ff8a00;
 }
 
 .current_page_item {
-    background: #fff;
+background: #fff;
 }
 
 /********************************** typography */
@@ -440,16 +440,16 @@ font-size: 12px;
 font-weight: normal;
 }
 
-.headerpad, h3#comments-title   {
-    color: #666666;
-	text-shadow: 1px 1px 0px #ffffff;
-	font-size: 18px;
-	font-weight: normal;
-	background: #eeeeee;
-	padding: 10px;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.headerpad, h3#comments-title {
+color: #666666;
+text-shadow: 1px 1px 0px #ffffff;
+font-size: 18px;
+font-weight: normal;
+background: #eeeeee;
+padding: 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 #content blockquote {
