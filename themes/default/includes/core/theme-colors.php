@@ -116,6 +116,7 @@ class Directory_Theme_Colors
             <?php endif; ?>
 
             <form method="post" action="options.php">
+                <h3><?php _e( 'Colors', 'directory'  ); ?></h3>
                 <?php settings_fields('dir_colors_group'); ?>
                 <?php $colors = get_option('dir_colors'); ?>
                 <input type="hidden" name="dir_colors[enable]" value="1" />
