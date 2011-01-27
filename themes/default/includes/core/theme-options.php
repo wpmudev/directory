@@ -3,8 +3,8 @@
 /**
  * Setup the Colors page inside WordPress Appearance Menu
  */
-if ( !class_exists('Directory_Theme_Colors') ):
-class Directory_Theme_Colors
+if ( !class_exists('Directory_Theme_Options') ):
+class Directory_Theme_Options
 {
     /** @var string The current page. Used for custom hooks. */
     var $page;
@@ -12,7 +12,7 @@ class Directory_Theme_Colors
     /**
      * Class constructor. 
      */
-    function Directory_Theme_Colors() {
+    function Directory_Theme_Options() {
 		add_action( 'init', array( &$this, 'init' ) );
 	}
 
@@ -29,14 +29,14 @@ class Directory_Theme_Colors
      * Init plugin options to white list our options.
      */
     function register_color_settings() {
-        register_setting( 'dir_colors_group', 'dir_colors' );
+        register_setting( 'dir_options_group', 'dir_options' );
     }
 
     /**
      * Load up the menu page.
      */
     function add_page() {
-       $this->page = add_theme_page( __('Colors', 'directory'), __('Colors', 'directory'), 'edit_theme_options', 'colors', array( &$this, 'output_admin_page' ) );
+       $this->page = add_theme_page( __('Options', 'directory'), __('Options', 'directory'), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
     }
 
     /**
@@ -109,15 +109,15 @@ class Directory_Theme_Colors
 
         <div class="wrap">
             <?php screen_icon(); ?>
-            <h2><?php echo get_current_theme() . ' ' . __('Colors', 'directory') ?></h2>
+            <h2><?php echo get_current_theme() . ' ' . __('Options', 'directory') ?></h2>
 
             <?php if ( isset( $msg ) ) : ?>
             <div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
             <?php endif; ?>
 
             <form method="post" action="options.php">
-                <?php settings_fields('dir_colors_group'); ?>
-                <?php $colors = get_option('dir_colors'); ?>
+                <?php settings_fields('dir_options_group'); ?>
+                <?php $colors = get_option('dir_options'); ?>
                 <input type="hidden" name="dir_colors[enable]" value="1" />
                 <table class="form-table">
                     <tr>
@@ -211,7 +211,7 @@ class Directory_Theme_Colors
 }
 endif;
 
-if ( class_exists('Directory_Theme_Colors') )
-	$__directory_theme_colors = new Directory_Theme_Colors();
+if ( class_exists('Directory_Theme_Options') )
+	$__directory_theme_options = new Directory_Theme_Options();
 
 ?>
