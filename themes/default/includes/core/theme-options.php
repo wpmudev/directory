@@ -20,7 +20,7 @@ class Directory_Theme_Options
      * Init hooks.
      */
 	function init() {
-        add_action( 'admin_init', array( &$this, 'register_color_settings' ) );
+        add_action( 'admin_init', array( &$this, 'register_option_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
         add_action( 'admin_init', array( &$this, 'page_init' ) );
         add_action( 'dp_theme_options', array( &$this, 'output_theme_options' ) );
@@ -29,7 +29,7 @@ class Directory_Theme_Options
     /**
      * Init plugin options to white list our options.
      */
-    function register_color_settings() {
+    function register_option_settings() {
         register_setting( 'dir_options_group', 'dir_options' );
     }
 
@@ -125,8 +125,8 @@ class Directory_Theme_Options
                     <tr>
                         <th><label for="text_shadows"><?php _e('Text Shadows', 'directory'); ?></label></th>
                         <td>
-                            <input id="text_shadows" type="checkbox" name="text_shadows" value="1" <?php if ( !empty( $options['text_shadows'] ) ) echo 'checked="checked"'; ?> />
-                            <span class="description"><?php _e('Switch text shadows ON', 'directory'); ?></span>
+                            <input id="text_shadows" type="checkbox" name="dir_options[text_shadows]" value="1" <?php if ( !empty( $options['text_shadows'] ) ) echo 'checked="checked"'; ?> />
+                            <span class="description"><?php _e('Switch text shadows OFF', 'directory'); ?></span>
                         </td>
                     </tr>
                 </table>
@@ -135,20 +135,20 @@ class Directory_Theme_Options
                     <tr>
                         <th><label for="layout"><?php _e('Layout', 'directory'); ?></label></th>
                         <td>
-                            <select id="layout" name="layout">
-                                <option><?php _e( 'Grid Layout', 'directory' ); ?></option>
-                                <option><?php _e( 'Rows Layout', 'directory' ); ?></option>
+                            <select id="layout" name="dir_options[layout]">;
+                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Grid Layout', 'directory' ); ?></option>
+                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Rows Layout', 'directory' ); ?></option>
                             </select>
                             <span class="description"><?php _e('Switch Theme Layout', 'directory'); ?></span>
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="text_shadows"><?php _e('Styles', 'directory'); ?></label></th>
+                        <th><label for="style"><?php _e('Styles', 'directory'); ?></label></th>
                         <td>
-                            <select name="layout">
-                                <option><?php _e( 'Style One', 'directory' ); ?></option>
-                                <option><?php _e( 'Style Two', 'directory' ); ?></option>
-                                <option><?php _e( 'Style Three', 'directory' ); ?></option>
+                            <select id="style" name="dir_options[style]">
+                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style One', 'directory' ); ?></option>
+                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style Two', 'directory' ); ?></option>
+                                <option <?php if ( $options['style'] == 'style_one' ) echo 'selected="selected"'; ?> value="style_one"><?php _e( 'Style Three', 'directory' ); ?></option>
                             </select>
                             <span class="description"><?php _e('Switch Theme Style', 'directory'); ?></span>
                         </td>
@@ -163,9 +163,27 @@ class Directory_Theme_Options
 
     function output_theme_options() { 
         $options = get_option('dir_options');
-        if ( empty( $options['text_shadows'] ) ): ?>
-		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/notextshadows.css" type="text/css" media="all" />
-        <?php endif;
+
+        if ( !empty( $options['text_shadows'] ) ) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/notextshadows.css" type="text/css" media="all" />
+            <?php 
+        }
+
+        if ( $options['layout'] == 'grid' ) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
+            <?php
+        } elseif ( $options['layout'] == 'row' ) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-row.css" type="text/css" media="all" />
+            <?php
+        }
+
+        if ( $options['layout'] == 'grid' ) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-grid.css" type="text/css" media="all" />
+            <?php
+        } elseif ( $options['layout'] == 'row' ) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/home-row.css" type="text/css" media="all" />
+            <?php
+        }
     }
 }
 endif;
