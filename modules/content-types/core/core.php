@@ -71,6 +71,7 @@ class Content_Types_Core {
             $this->custom_fields = get_site_option( 'ct_custom_fields' );
         }
         $this->registered_post_type_names = get_post_types('','names');
+        $_POST['_wpnonce'] = isset( $_POST['_wpnonce'] ) ? $_POST['_wpnonce'] : NULL;
     }
 
     /**
