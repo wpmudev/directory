@@ -13,8 +13,7 @@
 /********************************** styles start >>> */
 /********************************** adverts */
 .h-ads {
-    background: #ddd;
-    border: 1px solid #333;
+    background: #eeeeee;
 }
 /********************************** comments */
 #comments .title {
@@ -68,7 +67,7 @@ margin-bottom: 10px;
 .comment-author img{
 padding: 5px;
 background: none repeat scroll 0 0 #FFFFFF;
-border: 1px solid #EEEEEE !important;
+border: 1px solid #EEEEEE;
 margin-bottom: 10px;
 float: right;
 }
@@ -122,11 +121,7 @@ background: none;
     font-size: 24px;
     text-decoration: none;
 }
-.archive #content .current-cat a  {
-    color: #009ec4;
-    font-size: 24px;
-    text-decoration: none;
-}
+
 .archive #content .current-cat a:hover {
     text-decoration: underline;
 }
@@ -153,37 +148,15 @@ background: none;
 }
 
 .dp-submit-txt {
-    color: 666;
     font-size: 14px;
     font-style: italic;
 }
 
-#access a {
-    color: #fff;
-}
-
-#access a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
 .wp-post-image {
-    border: 3px solid #eeeeee;
+    border: 1px solid #eeeeee;
 }
 
-.dp-error {
-    background: #FFEBE8 !important;
-}
-
-#access .menu-header .current_page_item a:hover {
-    color: #333 !important;
-}
-
-#main-btns {
-    background: #4C4B4B;
-}
-
-.error {
+.dp-error, .error {
     background: #FFEBE8 !important;
 }
 
@@ -241,6 +214,7 @@ background: none;
 	padding: 6px 10px;
 	font-size: 18px;
 }
+
 a.button, input[type=submit], input[type=button],
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
@@ -274,31 +248,27 @@ border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
 
-input[type="text"], input[type="password"],
 textarea {
 background: #ffffff;
-border: 1px solid #ffffff;
+border: 1px solid #EEEEEE;
 color: #111111;
 padding: 5px;
-border: 1px solid #ccc;
 -moz-border-radius: 5px;
 -khtml-border-radius: 5px;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 }
 
-input[type="textarea"],
 textarea {
 	background: #ffffff;
-	border: 1px solid #ffffff;
+	border: 1px solid #EEEEEE;
 	color: #111111;
 	padding: 5px;
-	border: 1px solid #ccc;
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-width: 95%;
+	width: 95%;
 }
 /********************************** header */
 #site-logo {
