@@ -103,8 +103,8 @@ function wpmu_blogpage_loop(){
 				<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 				<div class="entry">
 							<a href="<?php the_permalink() ?>">
-								<?php if(function_exists('the_post_thumbnail')) { ?><?php if(get_the_post_thumbnail() != "") { ?><div class="alignleft">
-								<?php the_post_thumbnail(); ?></div><?php } } ?>
+								  <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+						
 							</a>
 					<?php the_excerpt(); ?>
 					<div class="clear-left"></div>
@@ -120,20 +120,24 @@ add_action('wpmu_blogpageloop', 'wpmu_blogpage_loop');
 function wpmu_excerpt_loop(){
 		rewind_posts();
 		while (have_posts()) : the_post(); ?>
-		<div class="post" id="post-<?php the_ID(); ?>">
-			<div class="post-content-wp">
+			<div class="excerptpost" id="post-<?php the_ID(); ?>">
+				<div class="entry-meta">
+					<span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span>
+					<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
+				</div>
+				<div class="entry-post">
 					<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-					<p class="date"><span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span></p>
-						<div class="entry">
-									<a href="<?php the_permalink() ?>">
-										<?php if(function_exists('the_post_thumbnail')) { ?><?php if(get_the_post_thumbnail() != "") { ?><div class="alignleft">
-										<?php the_post_thumbnail(); ?></div><?php } } ?>
-									</a>
-							<?php the_excerpt(); ?>
-						</div>
-				<p class="postmetadata"><span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span></p>
+					<div class="entry">
+								<a href="<?php the_permalink() ?>">
+									  <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+
+								</a>
+						<?php the_excerpt(); ?>
+						<div class="clear-left"></div>
+					</div>
+				</div>
+						<div class="clear"></div>
 			</div>
-		</div>
 			<?php endwhile;
 }
 add_action('wpmu_excerptloop', 'wpmu_excerpt_loop');
