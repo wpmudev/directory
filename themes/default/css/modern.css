@@ -191,6 +191,48 @@ background: none;
     border-radius: 5px;
 }
 
+.home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a  {
+    color: #009ec4;
+    text-decoration: none;
+	font-size: 14px;
+}
+.home #content li ul li a:hover, .archive #content li ul li a:hover, .dp-top-level #content ul li a:hover {
+    color: #666666;
+    text-decoration: underline;
+}
+.home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
+    color: #009ec4;
+    text-decoration: none;
+}
+
+.home #content h2 a:hover, .dp-top-level #content h2 a:hover, .archive #content h1 a:hover {
+    text-decoration: underline;
+}
+
+.home #content li{
+  	border: 1px solid #EEEEEE;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+} 
+
+.home #content li ul, .archive #content li ul{
+  	border: 1px solid #EEEEEE;	
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.home #content h2{
+    color: #666666;
+	text-shadow: 1px 1px 0px #ffffff;
+	font-size: 18px;
+	font-weight: normal;
+	background: #eeeeee;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
 /********************************** footer */
 #footer-widget-area{
 	border-top: 3px solid #eeeeee;
