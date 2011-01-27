@@ -224,7 +224,7 @@ background: none;
 }
 /********************************** forms */
 #searchbox{
-	background: #009ec4 url('modern-images/search-background.jpg') repeat-x;
+	background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -252,7 +252,7 @@ color: #ffffff;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 text-decoration: none;
-background: #ff930c url('modern-images/button-background.jpg');
+background: #ff930c url('../images/modern-images/button-background.jpg');
 border: 1px solid #ff930c;
 text-shadow: 1px 1px 0px #e7850a;
 }
@@ -269,7 +269,7 @@ color: #ffffff;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 text-decoration: none;
-background: #ff930c url('modern-images/button-background.jpg');
+background: #ff930c url('../images/modern-images/button-background.jpg');
 border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
@@ -317,11 +317,11 @@ background: #FFFFFF;
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('modern-images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
 }
 
 #navigation-wrapper{
-	background: #009ec4 url('modern-images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
 }
 
 #navigation .menu-header,
