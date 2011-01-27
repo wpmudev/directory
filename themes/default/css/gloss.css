@@ -154,11 +154,14 @@ background: none;
 }
 
 #action-bar{
-	border: 1px solid #333333;
-	background: #333333;
+	border: 1px solid #222222;
+	background: #222222;
 	font-size: 18px;
 	color: #666666;
 	text-shadow: 1px 1px 0px #111111;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .entry-meta{
@@ -196,6 +199,9 @@ background: none;
 .home #content li{
   	border: 1px solid #111111;
 	background: #111111;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 } 
 
 .home #content li ul, .archive #content li ul{
@@ -214,8 +220,11 @@ background: none;
 }
 /********************************** forms */
 #searchbox{
-	background: #009ec4 url('../images/modern-images/search-background.jpg') repeat-x;
-	border: 1px solid #009ec4;
+	background: #000000;
+	border: 1px solid #333333;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #searchbox label{
@@ -225,8 +234,11 @@ background: none;
 }
 
 #searchbox input[type="text"]{
-	padding: 6px 10px;
+	padding: 4px 10px;
 	font-size: 18px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 a.button, input[type=submit], input[type=button],
@@ -236,9 +248,12 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
-border: 1px solid #ff930c;
-text-shadow: 1px 1px 0px #e7850a;
+background: #111111 url('../images/gloss-images/button-background.jpg');
+border: 1px solid #444444;
+text-shadow: 1px 1px 0px #111111;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
@@ -249,21 +264,27 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #ff930c url('../images/modern-images/button-background.jpg');
+background: #111111 url('../images/gloss-images/button-background.jpg');
 border: 1px solid #ffffff;
-text-shadow: 1px 1px 0px #e7850a;
+text-shadow: 1px 1px 0px #111111;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
-textarea {
-background: #ffffff;
-border: 1px solid #EEEEEE;
+input[type="text"]{
+background: #333333;
+border: 1px solid #333333;
 color: #111111;
 padding: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 textarea {
-	background: #ffffff;
-	border: 1px solid #EEEEEE;
+	background: #333333;
+	border: 1px solid #333333;
 	color: #111111;
 	padding: 5px;
 	width: 95%;
@@ -278,18 +299,18 @@ text-decoration: none;
 }
 /********************************** layout */
 body {
-background: #333333 url('../images/gloss-images/background.jpg');
-background-position: 50% 0;
+background: #333333 url('../images/gloss-images/background.jpg') no-repeat;
+background-position: 10% 0;
 }
 #site-wrapper{
 }
 /********************************** navigation */
 #navigation {
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('../images/gloss-images/nav-background.jpg') repeat-x;
 }
 
 #navigation-wrapper{
-	background: #009ec4 url('../images/modern-images/nav-background.jpg') repeat-x;
+	background: #009ec4 url('../images/gloss-images/nav-background.jpg') repeat-x;
 }
 
 #navigation .menu-header,
@@ -319,44 +340,44 @@ div.menu {
 
 #navigation li:hover > a,
 #navigation ul ul :hover > a {
-	color: #ff8a00;
+	color: #ffffff;
 }
 
 #navigation ul li.current_page_item > a,
 #navigation ul li.current-menu-ancestor > a,
 #navigation ul li.current-menu-item > a,
 #navigation ul li.current-menu-parent > a {
-	color: #ff8a00;
+	color: #ffffff;
 }
 * html #navigation ul li.current_page_item a,
 * html #navigation ul li.current-menu-ancestor a,
 * html #navigation ul li.current-menu-item a,
 * html #navigation ul li.current-menu-parent a,
 * html #navigation ul li a:hover {
-	color: #ff8a00;
+	color: #ffffff;
 }
 
 .current_page_item {
-    background: #fff;
+    background: #111111;
 }
 
 /********************************** typography */
 h1, h2, h3, h4, h5, h6 {
-color: #009ec4;
+color: #eeeeee;
 }
 
 
 a:link {
-color: #009ec4;
+color: #aaaaaa;
 }
 
 a:visited {
-color: #009ec4;
+color: #666666;
 }
 
 a:active,
 a:hover {
-color: #ff8a00;
+color: #ffffff;
 }
 
 body {
@@ -397,12 +418,15 @@ font-weight: normal;
 }
 
 .headerpad, h3#comments-title   {
-    color: #666666;
-	text-shadow: 1px 1px 0px #ffffff;
+    color: #cccccc;
+	text-shadow: 1px 1px 0px #111111;
 	font-size: 18px;
 	font-weight: normal;
-	background: #eeeeee;
+	background: #222222;
 	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #content blockquote {
