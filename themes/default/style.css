@@ -18,11 +18,19 @@ http://www.opensource.org/licenses/gpl-license.php
 
 /* basic styling for all elements */
 @import url( css/layout.css );
-@import url( css/directory.css );
-@import url( css/modern.css );
 
-@import url( css/directory-grid.css );
+/* styles */
+/*@import url( css/minimal.css );*/
+/*@import url( css/modern.css );*/
+/*@import url( css/boxed.css );*/
+@import url( css/gloss.css );
+
+/* directory home page rows / grid*/
+@import url( css/directory-row.css );
 /*@import url(_inc/css/directory-row.css);*/
+
+/* textshadows on / off*/
+@import url(css/notextshadows.css);
 
 /* rtl languages styling */
 /* @import url( rtl.css ); */

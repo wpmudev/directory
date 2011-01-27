@@ -358,6 +358,10 @@ div.menu {
 	margin: 0px;
 }
 
+.home #content ul{
+	list-style: none;
+}
+
 h1.entry-title{
 	padding-bottom: 20px;
 	padding-top: 10px;

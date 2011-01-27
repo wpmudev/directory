@@ -36,13 +36,11 @@ function wpmu_directory_loop(){
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<div class="entry-meta">
 							<?php dp_posted_on(); ?>
-							<br />
 							<div class="entry-utility">
 								<?php if ( count( get_the_category() ) ) : ?>
 									<span class="cat-links">
 										<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
 									</span>
-									<br />
 								<?php endif; ?>
 								<?php
 									$tags_list = get_the_tag_list( '', ', ' );
@@ -51,9 +49,8 @@ function wpmu_directory_loop(){
 									<span class="tag-links">
 										<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
 									</span>
-									<br />
 								<?php endif; ?>
-								<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', THEME_TEXT_DOMAIN ), __( '1 Comment', THEME_TEXT_DOMAIN ), __( '% Comments', THEME_TEXT_DOMAIN ) ); ?></span><br />
+								<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', THEME_TEXT_DOMAIN ), __( '1 Comment', THEME_TEXT_DOMAIN ), __( '% Comments', THEME_TEXT_DOMAIN ) ); ?></span>
 								<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 							</div><!-- .entry-utility -->
 						</div><!-- .entry-meta -->
@@ -99,8 +96,8 @@ function wpmu_blogpage_loop(){
 		$page = (get_query_var('paged')) ? get_query_var('paged') : 1; query_posts("cat=&showposts=5&paged=$page"); while ( have_posts() ) : the_post();?>
 		<div class="excerptpost" id="post-<?php the_ID(); ?>">
 			<div class="entry-meta">
-				<span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?><br /> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span><br />
-				<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <br /><span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
+				<span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span>
+				<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
 			</div>
 			<div class="entry-post">
 				<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -140,59 +137,6 @@ function wpmu_excerpt_loop(){
 			<?php endwhile;
 }
 add_action('wpmu_excerptloop', 'wpmu_excerpt_loop');
-
-/* single function */
-/*function wpmu_single_loop(){
-		rewind_posts();
-		while (have_posts()) : the_post(); ?>
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<div class="entry-meta">
-							<?php dp_posted_on(); ?>
-	                        <?php do_action('sr_avg_rating'); ?><br />
-								<?php dp_posted_in(); ?><br />
-								<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?><br />
-								<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
-								 <?php do_action('sr_rate_this'); ?>
-					</div>
-					
-					<div class="entry-post">
-						<h1 class="entry-title"><?php the_title(); ?></h1>
-							<div class="entry-content">
-		                        <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
-								<?php the_content(); ?>
-		                  
-								<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', THEME_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
-
-							</div><!-- .entry-content -->
-						
-										<div class="clear"></div>
-					</div>
-				
-					  <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-							<div id="entry-author-info">
-								<div id="author-avatar">
-									<?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ); ?>
-								</div><!-- #author-avatar -->
-								<div id="author-description">
-									<h2><?php printf( esc_attr__( 'About %s', THEME_TEXT_DOMAIN ), get_the_author() ); ?></h2>
-									<?php the_author_meta( 'description' ); ?>
-									<div id="author-link">
-										<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-											<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', THEME_TEXT_DOMAIN ), get_the_author() ); ?>
-										</a>
-									</div><!-- #author-link	-->
-								</div><!-- #author-description -->
-							</div><!-- #entry-author-info -->
-		                <?php endif; ?>
-				</div>
-			<div id="commentbox">
-			<?php comments_template('', true); ?>
-			</div>
-			<?php endwhile;
-		
-}
-add_action('wpmu_singleloop', 'wpmu_single_loop');
-*/
 
 /* page function */
 function wpmu_page_loop(){
