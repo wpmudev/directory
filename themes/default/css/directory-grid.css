@@ -1,5 +1,4 @@
-/* =Directory Styles
--------------------------------------------------------------- */
+/********************************** Home page grid styles start >>> */
 
 .home #content li {
     float: left;
@@ -21,3 +20,5 @@
     min-height: inherit;
 	border: none;
 }
+
+/********************************** Home page grid styles end <<< */
