@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<link rel="icon" href="<?php bloginfo('stylesheet_directory');?>/favicon.ico" type="images/x-icon" />
+        <?php do_action('dp_theme_options'); ?>
 		<?php if ( is_singular() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' ); ?>
 		<?php wp_head(); ?>

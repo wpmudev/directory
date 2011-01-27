@@ -23,6 +23,7 @@ class Directory_Theme_Options
         add_action( 'admin_init', array( &$this, 'register_color_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
         add_action( 'admin_init', array( &$this, 'page_init' ) );
+        add_action( 'dp_theme_options', array( &$this, 'output_theme_options' ) );
 	}
 
     /**
@@ -117,14 +118,14 @@ class Directory_Theme_Options
 
             <form method="post" action="options.php">
                 <?php settings_fields('dir_options_group'); ?>
-                <?php $colors = get_option('dir_options'); ?>
+                <?php $options = get_option('dir_options'); ?>
                 <input type="hidden" name="dir_colors[enable]" value="1" />
                 <h3><?php _e( 'Presentation', 'directory'  ); ?></h3>
                 <table class="form-table">
                     <tr>
                         <th><label for="text_shadows"><?php _e('Text Shadows', 'directory'); ?></label></th>
                         <td>
-                            <input type="checkbox" name="dir_colors[site_title_ud]" value="1" <?php if ( $colors['site_title_ud'] == 1 ) echo 'checked="checked"'; ?> />
+                            <input id="text_shadows" type="checkbox" name="text_shadows" value="1" <?php if ( !empty( $options['text_shadows'] ) ) echo 'checked="checked"'; ?> />
                             <span class="description"><?php _e('Switch text shadows ON', 'directory'); ?></span>
                         </td>
                     </tr>
@@ -132,9 +133,9 @@ class Directory_Theme_Options
                 <h3><?php _e( 'Layout', 'directory'  ); ?></h3>
                 <table class="form-table">
                     <tr>
-                        <th><label for="text_shadows"><?php _e('Layout', 'directory'); ?></label></th>
+                        <th><label for="layout"><?php _e('Layout', 'directory'); ?></label></th>
                         <td>
-                            <select name="layout">
+                            <select id="layout" name="layout">
                                 <option><?php _e( 'Grid Layout', 'directory' ); ?></option>
                                 <option><?php _e( 'Rows Layout', 'directory' ); ?></option>
                             </select>
@@ -158,6 +159,13 @@ class Directory_Theme_Options
                 </p>
             </form>
         </div> <?php
+    }
+
+    function output_theme_options() { 
+        $options = get_option('dir_options');
+        if ( empty( $options['text_shadows'] ) ): ?>
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/notextshadows.css" type="text/css" media="all" />
+        <?php endif;
     }
 }
 endif;
