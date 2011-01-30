@@ -43,11 +43,9 @@ class Directory_Theme_Core
     function theme_setup() {
         add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );
         add_theme_support( 'automatic-feed-links', array( 'directory_listing' ) );
-      
         register_nav_menus( array(
             'primary' => __( 'Primary Navigation', 'directory' ),
         ) );
-      
   		// This theme allows users to set a custom background
         add_custom_background();
     }
@@ -63,6 +61,36 @@ class Directory_Theme_Core
             'name' => __( 'First Footer Widget Area', 'directory' ),
             'id' => 'first-footer-widget-area',
             'description' => __( 'The first footer widget area', 'directory' ),
+            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        // Area 2, located in the footer. Empty by default.
+        register_sidebar( array(
+            'name' => __( 'Second Footer Widget Area', 'directory' ),
+            'id' => 'second-footer-widget-area',
+            'description' => __( 'The second footer widget area', 'directory' ),
+            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        // Area 3, located in the footer. Empty by default.
+        register_sidebar( array(
+            'name' => __( 'Third Footer Widget Area', 'directory' ),
+            'id' => 'third-footer-widget-area',
+            'description' => __( 'The third footer widget area', 'directory' ),
+            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        // Area 4, located in the footer. Empty by default.
+        register_sidebar( array(
+            'name' => __( 'Fourth Footer Widget Area', 'directory' ),
+            'id' => 'fourth-footer-widget-area',
+            'description' => __( 'The fourth footer widget area', 'directory' ),
             'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
             'after_widget' => '</li>',
             'before_title' => '<h3 class="widget-title">',
@@ -252,8 +280,8 @@ class Directory_Theme_Core
         global $post;  
         $user = wp_get_current_user();
         $rating = $this->get_rating( $post->ID, $user->ID ); ?>  
-        <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong> ;
-        <span>(<span id="all_votes"><?php echo $rating; ?></span> votes; <span id="all_avg"><?php echo $rating ?></span>)</span>
+        <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
+        <span>(<?php echo $rating ?>)</span>
             <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
             <?php foreach ( $this->quality as $scale => $text ): ?>
                 <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />

@@ -137,8 +137,6 @@ class Directory_Core {
     function roles() {
         global $wp_roles;
         if ( $wp_roles ) {
-            /** @todo remove remove_role */
-            $wp_roles->remove_role( $this->user_role );
             $wp_roles->add_role( $this->user_role, 'Directory Member', array(
                 'publish_listings'       => true,
                 'edit_listings'          => true,
@@ -153,7 +151,7 @@ class Directory_Core {
                 'assign_terms'           => true,
                 'read'                   => true
             ) );
-            /* Set administrator roles 
+            /* Set administrator roles */
             $wp_roles->add_cap( 'administrator', 'publish_listings' );
             $wp_roles->add_cap( 'administrator', 'edit_listings' );
             $wp_roles->add_cap( 'administrator', 'edit_others_listings' );
@@ -164,7 +162,6 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'delete_listing' );
             $wp_roles->add_cap( 'administrator', 'read_listing' );
             $wp_roles->add_cap( 'administrator', 'assign_terms' );
-            */
         }
     }
     
