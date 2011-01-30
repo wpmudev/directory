@@ -50,7 +50,7 @@ function wpmu_directory_loop(){
 										<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
 									</span>
 								<?php endif; ?>
-								<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', THEME_TEXT_DOMAIN ), __( '1 Comment', THEME_TEXT_DOMAIN ), __( '% Comments', THEME_TEXT_DOMAIN ) ); ?></span>
+								<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', THEME_TEXT_DOMAIN ), __( '1 Review', THEME_TEXT_DOMAIN ), __( '% Reviews', THEME_TEXT_DOMAIN ), __( 'Reviews Off', THEME_TEXT_DOMAIN ) ); ?></span>;
 								<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 							</div><!-- .entry-utility -->
 						</div><!-- .entry-meta -->
@@ -97,7 +97,7 @@ function wpmu_blogpage_loop(){
 		<div class="excerptpost" id="post-<?php the_ID(); ?>">
 			<div class="entry-meta">
 				<span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span>
-				<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
+				<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', THEME_TEXT_DOMAIN ), __( '1 Review &#187;', THEME_TEXT_DOMAIN ), __( '% Reviews &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
 			</div>
 			<div class="entry-post">
 				<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -123,7 +123,7 @@ function wpmu_excerpt_loop(){
 			<div class="excerptpost" id="post-<?php the_ID(); ?>">
 				<div class="entry-meta">
 					<span class="byline"><?php the_time('M j Y') ?> <?php _e( 'in', THEME_TEXT_DOMAIN ) ?> <?php the_category(', ') ?> <em><?php _e( 'by ', THEME_TEXT_DOMAIN ) ?><?php the_author_link();  ?></em></span>
-					<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', THEME_TEXT_DOMAIN ), __( '1 Comment &#187;', THEME_TEXT_DOMAIN ), __( '% Comments &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
+					<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', THEME_TEXT_DOMAIN ), __( '1 Review &#187;', THEME_TEXT_DOMAIN ), __( '% Reviews &#187;', THEME_TEXT_DOMAIN ) ); ?></span>
 				</div>
 				<div class="entry-post">
 					<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>

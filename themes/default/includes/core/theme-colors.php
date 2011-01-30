@@ -217,28 +217,28 @@ class Directory_Theme_Colors
         if ( isset( $colors['enable'] ) ) { ?>
             <style type="text/css">
 
-            <?php if ( empty( $colors['site_title_ud'] ) ): ?>
+            <?php if ( empty( $colors['site_title_ud'] ) && isset( $colors['site_title'] ) ): ?>
                 /* Site Title Custom Colors */
                 #site-logo a, #site-logo a:hover, #site-logo a:visited {
                     color: <?php echo $colors['site_title']; ?> !important;
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['navigation_bar_ud'] ) ): ?>
+            <?php if ( empty( $colors['navigation_bar_ud'] ) && isset( $colors['navigation_bar'] ) ): ?>
                 /* Navigation Bar Custom Colors */
                 #navigation-wrapper, #navigation {
                     background: <?php echo $colors['navigation_bar']; ?> !important;
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['content_wrapper_ud'] ) ): ?>
+            <?php if ( empty( $colors['content_wrapper_ud'] ) && isset( $colors['content_wrapper'] ) ): ?>
                 /* Content Wrapper Custom Colors */
                 #site-wrapper, .current_page_item {
                     background: <?php echo $colors['content_wrapper']; ?> !important;
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['search_box_ud'] ) ): ?>
+            <?php if ( empty( $colors['search_box_ud'] ) && isset( $colors['search_box'] ) ): ?>
                 /* Search Box Custom Colors */
                 #searchbox {
                     background: <?php echo $colors['search_box']; ?> !important;
@@ -246,7 +246,7 @@ class Directory_Theme_Colors
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['ga_bars_ud'] ) ): ?>
+            <?php if ( empty( $colors['ga_bars_ud'] ) && isset( $colors['ga_bars'] ) ): ?>
                 /* Grid and Action Bars Custom Colors */
                 #action-bar, #content h2 {
                     background: <?php echo $colors['ga_bars']; ?> !important;
@@ -259,14 +259,14 @@ class Directory_Theme_Colors
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['hbars_ud'] ) ): ?>
+            <?php if ( empty( $colors['hbars_ud'] ) && isset( $colors['hbars'] ) ): ?>
                 /* Headers Custom Colors */
                 #action-bar span, #content h2, #searchbox label {
                     color: <?php echo $colors['hbars']; ?> !important;
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['btns_ud'] ) ): ?>
+            <?php if ( empty( $colors['btns_ud'] ) && isset( $colors['btns'] ) ): ?>
                 /* Btns Custom Colors */
                 a.button, a.button:visited, ul.button-nav li a, div.generic-button a, 
                 input[type="submit"], input[type="button"] {
@@ -275,7 +275,7 @@ class Directory_Theme_Colors
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['btns_txt_ud'] ) ): ?>
+            <?php if ( empty( $colors['btns_txt_ud'] ) && isset( $colors['btns_txt'] ) ): ?>
                 /* Btns Text Custom Colors */
                 a.button, a.button:visited, ul.button-nav li a, div.generic-button a, 
                 input[type="submit"], input[type="button"] {
@@ -283,7 +283,7 @@ class Directory_Theme_Colors
                 }
             <?php endif; ?> 
 
-            <?php if ( empty( $colors['global_txt_ud'] ) ): ?>
+            <?php if ( empty( $colors['global_txt_ud'] ) && isset( $colors['global_txt'] ) ): ?>
                 /* Global Text Custom Colors */
                 body {
                     color: <?php echo $colors['global_txt']; ?> !important;
