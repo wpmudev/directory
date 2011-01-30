@@ -23,6 +23,7 @@ class Directory_Theme_Colors
         add_action( 'admin_init', array( &$this, 'register_color_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
         add_action( 'admin_init', array( &$this, 'page_init' ) );
+        add_action( 'dp_theme_colors', array( &$this, 'output_theme_colors' ) );
 	}
 
     /**
@@ -124,27 +125,18 @@ class Directory_Theme_Colors
                     <tr>
                         <th><?php _e('Site Title', 'directory'); ?></th>
                         <td class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[site_title]" value="<?php if ( isset( $colors['site_title'] )) echo $colors['site_title']; else echo '#000000'; ?>" />
+                            <input class="colors_field" type="text" name="dir_colors[site_title]" value="<?php if ( isset( $colors['site_title'] )) echo $colors['site_title']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
                             <input class="use_default" type="checkbox" name="dir_colors[site_title_ud]"  <?php if ( !empty( $colors['site_title_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
                     <tr>
-                        <th><?php _e('Header Bar One', 'directory'); ?></th>
+                        <th><?php _e('Navigation Bar', 'directory'); ?></th>
                         <td class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[header_bar_one]" value="<?php if ( isset( $colors['header_bar_one'] )) echo $colors['header_bar_one']; else echo '#4C4B4B'; ?>" />
+                            <input class="colors_field" type="text" name="dir_colors[navigation_bar]" value="<?php if ( isset( $colors['navigation_bar'] )) echo $colors['navigation_bar']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_one_ud]" value="1" <?php if ( !empty( $colors['header_bar_one_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
-                            <div class="colorpicker"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><?php _e('Header Bar Two', 'directory'); ?></th>
-                        <td  class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[header_bar_two]" value="<?php if ( isset( $colors['header_bar_two'] )) echo $colors['header_bar_two']; else echo '#727171'; ?>" />
-                            <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_two_ud]" value="1" <?php if ( !empty( $colors['header_bar_two_ud'] ) ) echo 'checked="checked"'; ?>  /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[navigation_bar_ud]" value="1" <?php if ( !empty( $colors['navigation_bar_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -158,38 +150,47 @@ class Directory_Theme_Colors
                         </td>
                     </tr>
                     <tr>
-                        <th><?php _e('Above And Below Listings Bars', 'directory'); ?></th>
+                        <th><?php _e('Search Box', 'directory'); ?></th>
                         <td class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[listing_bars]" value="<?php if ( isset( $colors['listing_bars'] )) echo $colors['listing_bars']; else echo '#727171'; ?>" />
+                            <input class="colors_field" type="text" name="dir_colors[search_box]" value="<?php if ( isset( $colors['search_box'] )) echo $colors['search_box']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[listing_bars_ud]" value="1" <?php if ( !empty( $colors['listing_bars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[search_box_ud]" value="1" <?php if ( !empty( $colors['search_box_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
                     <tr>
-                        <th><?php _e('Main Buttons', 'directory'); ?></th>
+                        <th><?php _e('Grid and Action Bars', 'directory'); ?></th>
                         <td class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[btns_bgr]" value="<?php if ( isset( $colors['btns_bgr'] )) echo $colors['btns_bgr']; else echo '#D3401A'; ?>" />
+                            <input class="colors_field" type="text" name="dir_colors[ga_bars]" value="<?php if ( isset( $colors['ga_bars'] )) echo $colors['ga_bars']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[btns_bgr_ud]" value="1" <?php if ( !empty( $colors['btns_bgr_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[ga_bars_ud]" value="1" <?php if ( !empty( $colors['ga_bars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
                     <tr>
-                        <th><?php _e('Main Buttons Text', 'directory'); ?></th>
+                        <th><?php _e('Headings Bars', 'directory'); ?></th>
+                        <td class="colors">
+                            <input class="colors_field" type="text" name="dir_colors[hbars]" value="<?php if ( isset( $colors['hbars'] )) echo $colors['hbars']; else echo '#FFFFFF'; ?>" />
+                            <a href="#"><?php _e('Select Color', 'directory'); ?></a>
+                            <input class="use_default" type="checkbox" name="dir_colors[hbars_ud]" value="1" <?php if ( !empty( $colors['hbars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <div class="colorpicker"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Buttons', 'directory'); ?></th>
+                        <td class="colors">
+                            <input class="colors_field" type="text" name="dir_colors[btns]" value="<?php if ( isset( $colors['btns'] )) echo $colors['btns']; else echo '#FFFFFF'; ?>" />
+                            <a href="#"><?php _e('Select Color', 'directory'); ?></a>
+                            <input class="use_default" type="checkbox" name="dir_colors[btns_ud]" value="1" <?php if ( !empty( $colors['btns_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <div class="colorpicker"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Buttons Text', 'directory'); ?></th>
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[btns_txt]" value="<?php if ( isset( $colors['btns_txt'] )) echo $colors['btns_txt']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
                             <input class="use_default" type="checkbox" name="dir_colors[btns_txt_ud]" value="1" <?php if ( !empty( $colors['btns_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
-                            <div class="colorpicker"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><?php _e('Category Headings', 'directory'); ?></th>
-                        <td class="colors">
-                            <input class="colors_field" type="text" name="dir_colors[cath]" value="<?php if ( isset( $colors['cath'] )) echo $colors['cath']; else echo '#D3401A'; ?>" />
-                            <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[cath_ud]" value="1" <?php if ( !empty( $colors['cath_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -208,6 +209,89 @@ class Directory_Theme_Colors
                 </p>
             </form>
         </div> <?php
+    }
+
+    function output_theme_colors() {
+        $colors = get_option('dir_colors');
+
+        if ( isset( $colors['enable'] ) ) { ?>
+            <style type="text/css">
+
+            <?php if ( empty( $colors['site_title_ud'] ) ): ?>
+                /* Site Title Custom Colors */
+                #site-logo a, #site-logo a:hover, #site-logo a:visited {
+                    color: <?php echo $colors['site_title']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['navigation_bar_ud'] ) ): ?>
+                /* Navigation Bar Custom Colors */
+                #navigation-wrapper, #navigation {
+                    background: <?php echo $colors['navigation_bar']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['content_wrapper_ud'] ) ): ?>
+                /* Content Wrapper Custom Colors */
+                #site-wrapper, .current_page_item {
+                    background: <?php echo $colors['content_wrapper']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['search_box_ud'] ) ): ?>
+                /* Search Box Custom Colors */
+                #searchbox {
+                    background: <?php echo $colors['search_box']; ?> !important;
+                    border: none !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['ga_bars_ud'] ) ): ?>
+                /* Grid and Action Bars Custom Colors */
+                #action-bar, #content h2 {
+                    background: <?php echo $colors['ga_bars']; ?> !important;
+                }
+                #action-bar {
+                    border: none !important;
+                }
+                #content li {
+                    border-color: <?php echo $colors['ga_bars']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['hbars_ud'] ) ): ?>
+                /* Headers Custom Colors */
+                #action-bar span, #content h2, #searchbox label {
+                    color: <?php echo $colors['hbars']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['btns_ud'] ) ): ?>
+                /* Btns Custom Colors */
+                a.button, a.button:visited, ul.button-nav li a, div.generic-button a, 
+                input[type="submit"], input[type="button"] {
+                    background: <?php echo $colors['btns']; ?> !important;
+                    border: none !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['btns_txt_ud'] ) ): ?>
+                /* Btns Text Custom Colors */
+                a.button, a.button:visited, ul.button-nav li a, div.generic-button a, 
+                input[type="submit"], input[type="button"] {
+                    color: <?php echo $colors['btns_txt']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            <?php if ( empty( $colors['global_txt_ud'] ) ): ?>
+                /* Global Text Custom Colors */
+                body {
+                    color: <?php echo $colors['global_txt']; ?> !important;
+                }
+            <?php endif; ?> 
+
+            </style> <?php 
+        }
     }
 }
 endif;
