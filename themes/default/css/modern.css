@@ -290,7 +290,7 @@ border: 1px solid #ffffff;
 text-shadow: 1px 1px 0px #e7850a;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
 background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
@@ -391,7 +391,7 @@ color: #009ec4;
 
 
 a:link {
-color: #009ec4;
+color: #009EC4;
 }
 
 a:visited {

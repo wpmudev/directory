@@ -184,6 +184,19 @@ margin: 0;
 display: none;
 }
 /********************************** directory */
+.cf-checkout table, .checkout-login table, .checkout table{
+	padding: 10px;
+	width: 100%;
+}
+
+.cf-checkout td, .checkout-login td, .checkout td{
+	padding: 10px 0px;
+}
+
+.cf-checkout strong, .checkout-login strong, .checkout strong{
+	font-size: 18px;
+}
+
 .home #content, .archive #content, .dp-top-level #content {
     margin: 0px;
 }

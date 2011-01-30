@@ -274,7 +274,7 @@ text-shadow: 1px 1px 0px #111111;
 border-radius: 5px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
 background: #333333;
 border: 1px solid #333333;
 color: #111111;
