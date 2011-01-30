@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $options = $this->get_options('submit_site_settings'); ?>
+<?php $options = $this->get_options('checkout'); ?>
 
 <div class="wrap">
     
@@ -49,7 +49,7 @@
 
         <p class="submit">
             <?php wp_nonce_field('verify'); ?>
-            <input type="hidden" name="key" value="submit_site_settings" />
+            <input type="hidden" name="key" value="checkout" />
             <input type="submit" class="button-primary" name="save" value="Save Changes">
         </p>
         

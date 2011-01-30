@@ -351,7 +351,15 @@ div.menu {
 	margin-bottom: 10px;
 	padding: 10px;
 }
-
+.checkout-login {
+    margin-top: 10px;
+}
+.cf-checkout div.submit, .checkout-login div.submit, .checkout div.submit {
+    margin-top: 10px;
+}
+.checkout table tr {
+     min-width: 200px;
+}
 .archive #content .breadcrumbtrail li{
 	margin: 0px;
 }

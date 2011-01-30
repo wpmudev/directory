@@ -144,7 +144,7 @@ class PayPal_API_Module {
             $error_code          = urldecode( $result['L_ERRORCODE0'] );
             $error_short_msg     = urldecode( $result['L_SHORTMESSAGE0'] );
             $error_long_msg      = urldecode( $result['L_LONGMESSAGE0'] );
-            $error_severity_code = urldecode( $result['L_SEVERITYCODE0'] );
+            $error_severity_code = isset( $result['L_SEVERITYCODE0'] ) ? urldecode( $result['L_SEVERITYCODE0'] ) : NULL;
             /* Build error messages array */
             $result = array(
                 'error_call'          => $error_call,
@@ -273,26 +273,26 @@ class PayPal_API_Module {
                  * The information that is returned by the GetExpressCheckoutDetails
                  * call should be integrated by the partner into his Order Review page
                  */
-                $email                = $result["EMAIL"]; // ' Email address of payer.
-                $payer_id             = $result["PAYERID"]; // ' Unique PayPal customer account identification number.
-                $payer_status         = $result["PAYERSTATUS"]; // ' Status of payer. Character length and limitations: 10 single-byte alphabetic characters.
-                $salutation           = $result["SALUTATION"]; // ' Payer's salutation.
-                $first_name           = $result["FIRSTNAME"]; // ' Payer's first name.
-                $middle_name          = $result["MIDDLENAME"]; // ' Payer's middle name.
-                $last_name            = $result["LASTNAME"]; // ' Payer's last name.
-                $suffix               = $result["SUFFIX"]; // ' Payer's suffix.
-                $country_code         = $result["COUNTRYCODE"]; // ' Payer's country of residence in the form of ISO standard 3166 two-character country codes.
-                $business             = $result["BUSINESS"]; // ' Payer's business name.
-                $ship_to_name         = $result["SHIPTONAME"]; // ' Person's name associated with this address.
-                $ship_to_street       = $result["SHIPTOSTREET"]; // ' First street address.
-                $ship_to_street2      = $result["SHIPTOSTREET2"]; // ' Second street address.
-                $ship_to_city         = $result["SHIPTOCITY"]; // ' Name of city.
-                $ship_to_state        = $result["SHIPTOSTATE"]; // ' State or province
-                $ship_to_country_code = $result["SHIPTOCOUNTRYCODE"]; // ' Country code.
-                $ship_to_zip          = $result["SHIPTOZIP"]; // ' U.S. Zip code or other country-specific postal code.
-                $address_status       = $result["ADDRESSSTATUS"]; // ' Status of street address on file with PayPal
-                $invoice_number       = $result["INVNUM"]; // ' Your own invoice or tracking number, as set by you in the element of the same name in SetExpressCheckout request .
-                $phone_number         = $result["PHONENUM"]; // ' Payer's contact telephone number. Note:  PayPal returns a contact telephone number only if your Merchant account profile settings require that the buyer enter one.
+//                 $email                = $result["EMAIL"]; // ' Email address of payer.
+//                 $payer_id             = $result["PAYERID"]; // ' Unique PayPal customer account identification number.
+//                 $payer_status         = $result["PAYERSTATUS"]; // ' Status of payer. Character length and limitations: 10 single-byte alphabetic characters.
+//                 $salutation           = $result["SALUTATION"]; // ' Payer's salutation.
+//                 $first_name           = $result["FIRSTNAME"]; // ' Payer's first name.
+//                 $middle_name          = $result["MIDDLENAME"]; // ' Payer's middle name.
+//                 $last_name            = $result["LASTNAME"]; // ' Payer's last name.
+//                 $suffix               = $result["SUFFIX"]; // ' Payer's suffix.
+//                 $country_code         = $result["COUNTRYCODE"]; // ' Payer's country of residence in the form of ISO standard 3166 two-character country codes.
+//                 $business             = $result["BUSINESS"]; // ' Payer's business name.
+//                 $ship_to_name         = $result["SHIPTONAME"]; // ' Person's name associated with this address.
+//                 $ship_to_street       = $result["SHIPTOSTREET"]; // ' First street address.
+//                 $ship_to_street2      = $result["SHIPTOSTREET2"]; // ' Second street address.
+//                 $ship_to_city         = $result["SHIPTOCITY"]; // ' Name of city.
+//                 $ship_to_state        = $result["SHIPTOSTATE"]; // ' State or province
+//                 $ship_to_country_code = $result["SHIPTOCOUNTRYCODE"]; // ' Country code.
+//                 $ship_to_zip          = $result["SHIPTOZIP"]; // ' U.S. Zip code or other country-specific postal code.
+//                 $address_status       = $result["ADDRESSSTATUS"]; // ' Status of street address on file with PayPal
+//                 $invoice_number       = $result["INVNUM"]; // ' Your own invoice or tracking number, as set by you in the element of the same name in SetExpressCheckout request .
+//                 $phone_number         = $result["PHONENUM"]; // ' Payer's contact telephone number. Note:  PayPal returns a contact telephone number only if your Merchant account profile settings require that the buyer enter one.
 
                 $result['status'] = 'success';
                 return $result;
@@ -365,16 +365,16 @@ class PayPal_API_Module {
              * IN THEIR OWN  DATABASE
              * AND THE REST OF THE INFORMATION CAN BE USED TO UNDERSTAND THE STATUS OF THE PAYMENT
              */
-            $transaction_id   = $result["TRANSACTIONID"]; // ' Unique transaction ID of the payment. Note:  If the PaymentAction of the request was Authorization or Order, this value is your AuthorizationID for use with the Authorization & Capture APIs.
-            $transaction_type = $result["TRANSACTIONTYPE"]; //' The type of transaction Possible values: l  cart l  express-checkout
-            $payment_type     = $result["PAYMENTTYPE"];  //' Indicates whether the payment is instant or delayed. Possible values: l  none l  echeck l  instant
-            $order_time       = $result["ORDERTIME"];  //' Time/date stamp of payment
-            $amt              = $result["AMT"];  //' The final amount charged, including any shipping and taxes from your Merchant Profile.
-            $currency_code    = $result["CURRENCYCODE"];  //' A three-character currency code for one of the currencies listed in PayPay-Supported Transactional Currencies. Default: USD.
-            $fee_amt          = $result["FEEAMT"];  //' PayPal fee amount charged for the transaction
-            $settle_amt       = $result["SETTLEAMT"];  //' Amount deposited in your PayPal account after a currency conversion.
-            $tax_amt          = $result["TAXAMT"];  //' Tax charged on the transaction.
-            $exchange_rate    = $result["EXCHANGERATE"];  //' Exchange rate if a currency conversion occurred. Relevant only if your are billing in their non-primary currency. If the customer chooses to pay with a currency other than the non-primary currency, the conversion occurs in the customer’s account.
+//             $transaction_id   = $result["TRANSACTIONID"]; // ' Unique transaction ID of the payment. Note:  If the PaymentAction of the request was Authorization or Order, this value is your AuthorizationID for use with the Authorization & Capture APIs.
+//             $transaction_type = $result["TRANSACTIONTYPE"]; //' The type of transaction Possible values: l  cart l  express-checkout
+//             $payment_type     = $result["PAYMENTTYPE"];  //' Indicates whether the payment is instant or delayed. Possible values: l  none l  echeck l  instant
+//             $order_time       = $result["ORDERTIME"];  //' Time/date stamp of payment
+//             $amt              = $result["AMT"];  //' The final amount charged, including any shipping and taxes from your Merchant Profile.
+//             $currency_code    = $result["CURRENCYCODE"];  //' A three-character currency code for one of the currencies listed in PayPay-Supported Transactional Currencies. Default: USD.
+//             $fee_amt          = $result["FEEAMT"];  //' PayPal fee amount charged for the transaction
+//             $settle_amt       = $result["SETTLEAMT"];  //' Amount deposited in your PayPal account after a currency conversion.
+//             $tax_amt          = $result["TAXAMT"];  //' Tax charged on the transaction.
+//             $exchange_rate    = $result["EXCHANGERATE"];  //' Exchange rate if a currency conversion occurred. Relevant only if your are billing in their non-primary currency. If the customer chooses to pay with a currency other than the non-primary currency, the conversion occurs in the customer’s account.
 
             /*
              * Status of the payment:
@@ -382,7 +382,7 @@ class PayPal_API_Module {
              * 'Completed: The payment has been completed, and the funds have been added successfully to your account balance.
              * 'Pending: The payment is pending. See the PendingReason element for more information.
              */
-            $payment_status = $result["PAYMENTSTATUS"];
+//             $payment_status = $result["PAYMENTSTATUS"];
 
             /*
              * The reason the payment is pending:
@@ -395,7 +395,7 @@ class PayPal_API_Module {
              * verify: The payment is pending because you are not yet verified. You must verify your account before you can accept this payment.
              * other: The payment is pending for a reason other than those listed above. For more information, contact PayPal customer service.
              */
-            $pending_reason = $result["PENDINGREASON"];
+//             $pending_reason = $result["PENDINGREASON"];
 
             /*
              * The reason for a reversal if TransactionType is reversal:
@@ -407,7 +407,7 @@ class PayPal_API_Module {
              * refund: A reversal has occurred on this transaction because you have given the customer a refund.
              * other: A reversal has occurred on this transaction due to a reason not listed above.
              */
-            $reason_code = $result["REASONCODE"];
+//             $reason_code = $result["REASONCODE"];
 
             /* Set status and return result */
             $result['status'] = 'success';

@@ -20,6 +20,9 @@ class Directory_Core {
     var $user_role = 'dp_member';
     /** @var string Name of options DB entry */
     var $options_name = 'dp_options';
+    /** @var string Main plugin menu slug */
+    var $admin_menu_slug = 'dp_main';
+    /** @var string Main plugin menu slug */
 
     /**
      * Constructor.
@@ -63,9 +66,9 @@ class Directory_Core {
         /* Initiate Admin Class */
         new Directory_Core_Admin();
         /* Initiate Content Types Module */
-        new Content_Types_Core('dp_main');
+        new Content_Types_Core( $this->admin_menu_slug );
         /* Initiate Payments Module */
-        new Payments_Core('dp_main');
+        new Payments_Core( $this->admin_menu_slug, $this->user_role );
     }
 
     /**

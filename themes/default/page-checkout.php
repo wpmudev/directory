@@ -28,6 +28,8 @@ get_header(); ?>
 
                 <div class="entry-content">
 
+                <?php if ( !is_user_logged_in() ) : ?>
+
                     <?php $step = get_query_var('checkout_step'); ?>
 
                     <?php if ( isset( $step ) && $step == 'disabled' ): ?>
@@ -139,7 +141,7 @@ get_header(); ?>
                                     <td><label for="payment_method"><?php _e( 'Credit Card', 'classifieds' ); ?></label></td>
                                     <td>
                                         <input type="radio" name="payment_method" value="cc" />
-                                        <img  src="<?php echo $plugin_url; ?>ui-front/general/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
+                                        <img  src="<?php echo get_template_directory_uri(); ?>/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
                                     </td>
                                 </tr>
                             </table>
@@ -560,15 +562,24 @@ get_header(); ?>
                         </form>
 
                     <?php endif; ?>
+                
+                <?php else: ?>
 
-                    <div class="clear"></div><br />
+                    <?php $current_user = wp_get_current_user(); ?>
 
-                    <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
-                    <?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
+                    <?php var_dump( $current_user ); ?> 
+                    <div class="dp-thank-you"><?php _e( '', 'classifieds' ); ?></div>
+                    <span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to the directory listing submission page.', 'classifieds' ); ?></span>
+                    <br /><br />
+
+                    <form action="" method="post">
+                        <input type="submit" name="redirect_my_classifieds" value="Proceed To Your Classifieds" />
+                    </form>
+
+                <?php endif; ?>
+    
                 </div><!-- .entry-content -->
             </div><!-- #post-## -->
-
-            <?php comments_template( '', true ); ?>
 
         <?php endwhile; ?>
 

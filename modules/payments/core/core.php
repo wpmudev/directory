@@ -19,15 +19,18 @@ class Payments_Core {
     var $text_domain = 'payments';
     /** @var string Payments module options name */
     var $options_name = 'module_payments';   
+    /** @var string Payments module options name */
+    var $user_role;   
 
     /**
      * Constructor.
      **/
-    function Payments_Core( $admin_page_slug ) {
+    function Payments_Core( $admin_page_slug, $user_role ) {
         $this->admin_page_slug = $admin_page_slug;
+        $this->user_role = $user_role;
         /* Hook the vars assignment to init hook */
         add_action( 'init', array( &$this, 'init_vars' ) );
-        //add_action( 'init', array( &$this, 'init_submit_site_settings' ) );
+        add_action( 'init', array( &$this, 'init_checkout_settings' ) );
         /* Handle all requests for checkout */
         add_action( 'template_redirect', array( &$this, 'handle_checkout_requests' ) );
         /* Handle all requests for checkout */
@@ -54,18 +57,18 @@ class Payments_Core {
      * @return <type>
      * @todo Move to Payments Module
      */
-    function init_submit_site_settings() {
-        $options = $this->get_options();
-        if ( !isset( $options['submit_site_settings'] )) {
-            $submit_site_settings = array( 'submit_site_settings' => array(
+    function init_checkout_settings() {
+        $options = $this->get_options( $this->options_name );
+        if ( !isset( $options['checkout'] ) ) {
+            $checkout_settings = array( 'checkout' => array(
                 'annual_price'   => 10,
-                'annual_txt'     => 'Annually Recurring Charge',
+                'annual_txt'     => 'Annually Charge',
                 'one_time_price' => 50,
                 'one_time_txt'   => 'One-Time Only Charge',
                 'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
             ));
-            $options = array_merge( $options, $submit_site_settings );
-            update_site_option( 'dp_options', $options );
+            $options = array_merge( $options, $checkout_settings );
+            update_option( $this->options_name, $options );
             return;
         }
     }
@@ -89,6 +92,55 @@ class Payments_Core {
                 'comment_status' => 'closed'
             );
             wp_insert_post( $args );
+        }
+    }
+
+    /**
+     * Insert/Update User
+     *
+     * @param string $email
+     * @param string $first_name
+     * @param string $last_name
+     * @param string $billing The billing type for the user
+     * @return NULL|void
+      **/
+    function update_user( $email, $first_name, $last_name, $billing, $credits = '' ) {
+        /* Include registration helper functions */
+        require_once( ABSPATH . WPINC . '/registration.php' );
+        /* Variables */
+        $user_login     = sanitize_user( strtolower( $first_name ));
+        $user_email     = $email;
+        $user_pass      = wp_generate_password();
+        if ( username_exists( $user_login ) )
+            $user_login .= '-' . sanitize_user( strtolower( $last_name ));
+        if ( username_exists( $user_login ) )
+            $user_login .= rand(1,9);
+        if ( email_exists( $user_email )) {
+            $user = get_user_by( 'email', $user_email );
+            /* If user exists update it */
+            if ( $user ) {
+                wp_update_user( array( 'ID' => $user->ID, 'role' => $this->user_role ) );
+                update_user_meta( $user->ID, $this->options_name . '_billing', $billing );
+                $credentials = array( 'remember'=>true, 'user_login' => $user->user_login, 'user_password' => $user->user_pass );
+                wp_signon( $credentials );
+                return;
+            }
+        }
+        $user_id = wp_insert_user( array(
+            'user_login'   => $user_login,
+            'user_pass'    => $user_pass,
+            'user_email'   => $email,
+            'display_name' => $first_name . ' ' . $last_name,
+            'first_name'   => $first_name,
+            'last_name'    => $last_name,
+            'role'         => $this->user_role
+        ) ) ;
+        if ( $user_id ) {
+            update_user_meta( $user_id, $this->options_name . '_billing', $billing );
+            //$this->update_user_credits( $credits, $user_id );
+            wp_new_user_notification( $user_id, $user_pass );
+            $credentials = array( 'remember'=> true, 'user_login' => $user_login, 'user_password' => $user_pass );
+            wp_signon( $credentials );
         }
     }
 
