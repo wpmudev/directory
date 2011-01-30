@@ -214,7 +214,8 @@ class Payments_Core {
             /* Redirect if user is logged in */
             if ( is_user_logged_in() ) {
                 /** @todo Set redirect */
-                //wp_redirect( get_bloginfo('url') );
+                wp_redirect( get_bloginfo('url') );
+                exit();
             }
             /* If no PayPal API credentials are set, disable the checkout process */
             if ( empty( $options['paypal'] ) ) {
@@ -318,10 +319,6 @@ class Payments_Core {
                     /* Pass error params to "page-checkout.php" */
                     set_query_var( 'checkout_error', $result );
                 }
-            }
-            /* If transaction processed successfully, redirect to my-classifieds */
-            elseif( isset( $_POST['redirect_my_classifieds'] ) ) {
-                wp_redirect( get_bloginfo('url') . '/classifieds/my-classifieds/' );
             }
             /* If no requests are made load default step */
             else {

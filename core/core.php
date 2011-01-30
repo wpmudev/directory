@@ -42,6 +42,7 @@ class Directory_Core {
         add_action( 'plugins_loaded', array( &$this, 'init_modules' ) );
         add_action( 'plugins_loaded', array( &$this, 'init_vars' ) );
         add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
+        add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
         add_action( 'init', array( &$this, 'roles' ) );
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
@@ -164,6 +165,25 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'read_listing' );
             $wp_roles->add_cap( 'administrator', 'assign_terms' );
             */
+        }
+    }
+    
+
+    /**
+     * handle_action_buttons_requests 
+     * 
+     * @access public
+     * @return void
+     */
+    function handle_action_buttons_requests(  ) {
+        /* If your want to go to admin profile */
+        if ( isset( $_POST['redirect_profile'] ) ) {
+            wp_redirect( admin_url() . 'profile.php' );
+            exit();
+        }
+        elseif ( isset( $_POST['redirect_listing'] ) ) {
+            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
+            exit();
         }
     }
 
