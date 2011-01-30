@@ -126,7 +126,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[site_title]" value="<?php if ( isset( $colors['site_title'] )) echo $colors['site_title']; else echo '#000000'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[site_title_ud]" value="1" <?php if ( $colors['site_title_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[site_title_ud]"  <?php if ( !empty( $colors['site_title_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -135,7 +135,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[header_bar_one]" value="<?php if ( isset( $colors['header_bar_one'] )) echo $colors['header_bar_one']; else echo '#4C4B4B'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_one_ud]" value="1" <?php if ( $colors['header_bar_one_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_one_ud]" value="1" <?php if ( !empty( $colors['header_bar_one_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -144,7 +144,7 @@ class Directory_Theme_Colors
                         <td  class="colors">
                             <input class="colors_field" type="text" name="dir_colors[header_bar_two]" value="<?php if ( isset( $colors['header_bar_two'] )) echo $colors['header_bar_two']; else echo '#727171'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_two_ud]" value="1" <?php if ( $colors['header_bar_two_ud'] == 1 ) echo 'checked="checked"'; ?>  /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[header_bar_two_ud]" value="1" <?php if ( !empty( $colors['header_bar_two_ud'] ) ) echo 'checked="checked"'; ?>  /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -153,7 +153,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[content_wrapper]" value="<?php if ( isset( $colors['content_wrapper'] )) echo $colors['content_wrapper']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[content_wrapper_ud]" value="1" <?php if ( $colors['content_wrapper_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[content_wrapper_ud]" value="1" <?php if ( !empty( $colors['content_wrapper_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -162,7 +162,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[listing_bars]" value="<?php if ( isset( $colors['listing_bars'] )) echo $colors['listing_bars']; else echo '#727171'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[listing_bars_ud]" value="1" <?php if ( $colors['listing_bars_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[listing_bars_ud]" value="1" <?php if ( !empty( $colors['listing_bars_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -171,7 +171,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[btns_bgr]" value="<?php if ( isset( $colors['btns_bgr'] )) echo $colors['btns_bgr']; else echo '#D3401A'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[btns_bgr_ud]" value="1" <?php if ( $colors['btns_bgr_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[btns_bgr_ud]" value="1" <?php if ( !empty( $colors['btns_bgr_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -180,7 +180,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[btns_txt]" value="<?php if ( isset( $colors['btns_txt'] )) echo $colors['btns_txt']; else echo '#FFFFFF'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[btns_txt_ud]" value="1" <?php if ( $colors['btns_txt_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[btns_txt_ud]" value="1" <?php if ( !empty( $colors['btns_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -189,7 +189,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[cath]" value="<?php if ( isset( $colors['cath'] )) echo $colors['cath']; else echo '#D3401A'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[cath_ud]" value="1" <?php if ( $colors['cath_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[cath_ud]" value="1" <?php if ( !empty( $colors['cath_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>
@@ -198,7 +198,7 @@ class Directory_Theme_Colors
                         <td class="colors">
                             <input class="colors_field" type="text" name="dir_colors[global_txt]" class="colors" value="<?php if ( isset( $colors['global_txt'] )) echo $colors['global_txt']; else echo '#666666'; ?>" />
                             <a href="#"><?php _e('Select Color', 'directory'); ?></a>
-                            <input class="use_default" type="checkbox" name="dir_colors[global_txt_ud]" value="1" <?php if ( $colors['global_txt_ud'] == 1 ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
+                            <input class="use_default" type="checkbox" name="dir_colors[global_txt_ud]" value="1" <?php if ( !empty( $colors['global_txt_ud'] ) ) echo 'checked="checked"'; ?> /> <?php _e('Use Default', 'directory'); ?>
                             <div class="colorpicker"></div>
                         </td>
                     </tr>     
