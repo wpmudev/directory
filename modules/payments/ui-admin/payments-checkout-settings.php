@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php //$options = $this->get_options('submit_site_settings'); ?>
+<?php $options = $this->get_options('submit_site_settings'); ?>
 
 <div class="wrap">
     

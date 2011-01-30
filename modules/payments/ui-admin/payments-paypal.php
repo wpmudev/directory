@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php // $options = $this->get_options('paypal'); ?>
+<?php $options = $this->get_options('paypal'); ?>
 
 <div class="wrap">
     <?php screen_icon('options-general'); ?>

@@ -149,7 +149,7 @@ class Directory_Core {
                 'assign_terms'           => true,
                 'read'                   => true
             ) );
-            /* Set administrator roles */
+            /* Set administrator roles 
             $wp_roles->add_cap( 'administrator', 'publish_listings' );
             $wp_roles->add_cap( 'administrator', 'edit_listings' );
             $wp_roles->add_cap( 'administrator', 'edit_others_listings' );
@@ -160,6 +160,7 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'delete_listing' );
             $wp_roles->add_cap( 'administrator', 'read_listing' );
             $wp_roles->add_cap( 'administrator', 'assign_terms' );
+            */
         }
     }
 

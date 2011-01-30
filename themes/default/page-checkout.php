@@ -36,12 +36,13 @@ get_header(); ?>
 
                     <?php elseif ( isset( $step ) && $step == 'terms' ): ?>
 
-                        <?php $options = get_option('classifieds_options'); ?>
+                        <?php $options = get_option('module_payments'); ?>
 
                         <form action="" method="post"  class="cf-checkout">
 
                             <strong><?php _e( 'Cost of Service', $text_domain ); ?></strong>
                             <table <?php do_action( 'billing_invalid' ); ?>>
+                                <?php /*
                                 <tr>
                                     <td><label for="billing"><?php _e( 'Buy Credits', $text_domain ) ?></label></td>
                                     <td>
@@ -55,17 +56,18 @@ get_header(); ?>
                                         </select>
                                     </td>
                                 </tr>
+                                 */ ?>
                                 <tr>
-                                    <td><label for="billing"><?php echo $options['checkout']['annual_txt']; ?></label></td>
+                                    <td><label for="billing"><?php if ( isset( $options['checkout']['annual_txt'] ) ) echo $options['checkout']['annual_txt']; ?></label></td>
                                     <td>
-                                        <input type="radio" name="billing" value="annual" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'annual' ) echo 'checked="checked"'; ?> />  <?php echo $options['checkout']['annual_cost']; ?> <?php echo $options['paypal']['currency']; ?>
+                                        <input type="radio" name="billing" value="annual" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'annual' ) echo 'checked="checked"'; ?> />  <?php if ( isset(  $options['checkout']['annual_cost'] ) ) echo $options['checkout']['annual_cost']; ?> <?php echo $options['paypal']['currency']; ?>
                                         <input type="hidden" name="annual_cost" value="<?php if ( isset( $options['checkout']['annual_cost'] ) ) echo $options['checkout']['annual_cost']; ?>" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="billing"><?php echo $options['checkout']['one_time_txt']; ?></label></td>
+                                    <td><label for="billing"><?php if ( isset( $options['checkout']['one_time_txt'] ) ) echo $options['checkout']['one_time_txt']; ?></label></td>
                                     <td>
-                                        <input type="radio" name="billing" value="one_time" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php echo $options['checkout']['one_time_cost']; ?> <?php echo $options['paypal']['currency']; ?>
+                                        <input type="radio" name="billing" value="one_time" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $options['checkout']['one_time_cost'] ) ) echo $options['checkout']['one_time_cost']; ?> <?php echo $options['paypal']['currency']; ?>
                                         <input type="hidden" name="one_time_cost" value="<?php if ( isset( $options['checkout']['one_time_cost'] ) ) echo $options['checkout']['one_time_cost']; ?>" />
                                     </td>
                                 </tr>
@@ -75,7 +77,7 @@ get_header(); ?>
                             <strong><?php _e( 'Terms of Service', 'classifieds' ); ?></strong>
                             <table>
                                 <tr>
-                                    <td><div class="terms"><?php echo nl2br( $options['checkout']['tos_txt'] ); ?></div></td>
+                                    <td><div class="terms"><?php if ( isset( $options['checkout']['tos_txt'] ) ) echo nl2br( $options['checkout']['tos_txt'] ); ?></div></td>
                                 </tr>
                             </table>
                             <br />

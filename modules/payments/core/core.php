@@ -17,6 +17,8 @@ class Payments_Core {
     var $admin_page_slug;
     /** @var string Text domain string */
     var $text_domain = 'payments';
+    /** @var string Payments module options name */
+    var $options_name = 'module_payments';   
 
     /**
      * Constructor.
@@ -42,9 +44,9 @@ class Payments_Core {
      * @return void
      **/
     function init_vars() {
-        $this->paypal_api_module = new PayPal_API_Module( '' );
+        $options = $this->get_options( 'paypal' );
+        $this->paypal_api_module = new PayPal_API_Module( $options );
     }
-
 
     /**
      * Init data for submit site.
@@ -156,7 +158,7 @@ class Payments_Core {
             if ( !session_id() )
                 session_start();
             /* Get site options */
-            $options = get_site_option('dp_options');
+            $options = get_option( $this->options_name );
             /* Redirect if user is logged in */
             if ( is_user_logged_in() ) {
                 /** @todo Set redirect */
@@ -306,7 +308,7 @@ class Payments_Core {
             /* Update options by merging the old ones */
             $options = $this->get_options();
             $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_site_option( $this->options_name, $options );
+            update_option( $this->options_name, $options );
         } else {
             die( __( 'Security check failed!', $this->text_domain ) );
         }
@@ -319,7 +321,7 @@ class Payments_Core {
      * @return array $options Plugin options or empty array if no options are found
      **/
     function get_options( $key = NULL ) {
-        $options = get_site_option( $this->options_name );
+        $options = get_option( $this->options_name );
         $options = is_array( $options ) ? $options : array();
         /* Check if specific plugin option is requested and return it */
         if ( isset( $key ) && array_key_exists( $key, $options ) )

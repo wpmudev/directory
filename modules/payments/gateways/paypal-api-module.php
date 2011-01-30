@@ -58,7 +58,6 @@ class PayPal_API_Module {
      */
     function init_vars( $options ) {
         /* Get PayPal options defined in the admin area */
-        //$options = get_options('paypal');
 
         if ( !empty( $options ) ) {
 
