@@ -1,0 +1,24 @@
+/********************************** Home page grid styles start >>> */
+
+.home #content li {
+float: left;
+list-style: none outside none;
+margin: 8px;
+min-height: 140px;
+padding: 10px;
+width: 190px;
+}
+
+.home #content li ul, .archive #content li ul {
+margin: 0 !important;
+border: none;
+}
+
+.home #content li ul li, .archive #content li ul li, .dp-top-level #content ul li {
+margin: 0 10px 0 0;
+width: inherit;
+min-height: inherit;
+border: none;
+}
+
+/********************************** Home page grid styles end <<< */

@@ -1,0 +1,10 @@
+#action-bar, #navigation a, .headerpad, h3#comments-title, .home #content h2 {
+text-shadow: none;
+}
+
+a.button, input[type=submit], input[type=button],
+ul.button-nav li a, div.generic-button a, a.button:visited, a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
+ul.button-nav li a:hover, ul.button-nav li.current a,
+div.generic-button a:hover {
+text-shadow: none;
+}
