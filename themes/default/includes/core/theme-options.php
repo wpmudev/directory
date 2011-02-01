@@ -4,16 +4,13 @@
  * Setup the Colors page inside WordPress Appearance Menu
  */
 if ( !class_exists('Directory_Theme_Options') ):
-class Directory_Theme_Options
-{
-    /** @var string The current page. Used for custom hooks. */
-    var $page;
+class Directory_Theme_Options {
 
     /**
      * Class constructor. 
      */
     function Directory_Theme_Options() {
-		add_action( 'init', array( &$this, 'init' ) );
+        $this->init();
 	}
 
     /**
@@ -22,7 +19,6 @@ class Directory_Theme_Options
 	function init() {
         add_action( 'admin_init', array( &$this, 'register_option_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
-        add_action( 'admin_init', array( &$this, 'page_init' ) );
         add_action( 'dp_theme_options', array( &$this, 'output_theme_options' ) );
 	}
 
@@ -38,67 +34,6 @@ class Directory_Theme_Options
      */
     function add_page() {
        $this->page = add_theme_page( __('Options', 'directory'), __('Options', 'directory'), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
-    }
-
-    /**
-     * Load scripts and styles.
-     */
-    function page_init() {
-        add_action( 'admin_print_styles-'  . $this->page, array( &$this, 'enqueue_styles' ));
-        add_action( 'admin_print_scripts-' . $this->page, array( &$this, 'enqueue_scripts' ));
-        add_action( 'admin_head-' . $this->page, array( &$this, 'print_admin_style' ));
-        add_action( 'admin_head-' . $this->page, array( &$this, 'print_admin_scripts' ));
-    }
-
-    /**
-     * Enqueue styles.
-     */
-    function enqueue_styles() {
-        wp_enqueue_style('farbtastic');
-    }
-
-    /**
-     * Enqueue scripts.
-     */
-    function enqueue_scripts() {
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('farbtastic');
-    }
-
-    /**
-     * Print document styles.
-     */
-    function print_admin_style() { ?>
-        <style type="text/css">
-            div.colorpicker { z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none; }
-            input.use_default { margin-left: 10px; }
-        </style> <?php
-    }
-
-    /**
-     * Print document scripts. Handles the colorpickers.
-     */
-    function print_admin_scripts() { ?>
-        <script type="text/javascript">
-        //<![CDATA[
-        jQuery(document).ready(function($) {
-           $(this).mousedown(function() {
-                $(this).find('.colorpicker').each(function() {
-                    var display = $(this).css('display');
-                    if (display == 'block') {
-                        $(this).fadeOut(2);
-                    }
-                });
-            });
-            $('.colors').each(function() {
-                $(this).children('.colorpicker').farbtastic($(this).children('.colors_field'));
-                $(this).children('a').click(function() {
-                    $(this).parent().children('.colorpicker').fadeIn(2);
-                });
-            });
-        });
-        //]]>
-        </script> <?php
     }
 
     /**
