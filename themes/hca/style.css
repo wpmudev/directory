@@ -18,7 +18,7 @@ http://www.opensource.org/licenses/gpl-license.php
 
 /* basic styling for all elements */
 @import url( css/layout.css );
-
+@import url( css/hca.css );
 /* styles */
 /*@import url( css/minimal.css );*/
 /*@import url( css/modern.css );*/

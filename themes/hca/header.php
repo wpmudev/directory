@@ -10,26 +10,31 @@
 		<meta name="keywords" content="" />
 		<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
 		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<link rel="icon" href="<?php bloginfo('stylesheet_directory');?>/favicon.ico" type="images/x-icon" />
-        <?php do_action('dp_theme_colors'); ?>
-        <?php do_action('dp_theme_options'); ?>
+        <?php //do_action('dp_theme_colors'); ?>
+        <?php //do_action('dp_theme_options'); ?>
 		<?php if ( is_singular() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' ); ?>
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class() ?>>
 
-		<?php locate_template( array( '/includes/components/navigation.php' ), true ); ?>
+		<?php //locate_template( array( '/includes/components/navigation.php' ), true ); ?>
 
 		<div id="site-wrapper"><!-- start #site-wrapper -->
-
+			<div id="container">
 			<div id="header"><!-- start #header -->
 				<?php locate_template( array( '/includes/components/branding-header.php' ), true ); ?>
+					<?php locate_template( array( '/includes/components/navigation.php' ), true ); ?>
+					<div class="clear"></div>
 			</div><!-- end #header -->
 
-				<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
-			    <?php locate_template( array( '/includes/components/actionbuttons.php' ), true ); ?>
-					
-			<div id="container"><!-- start #container -->
+				<?php if (is_home()){?>
+					<?php locate_template( array( '/includes/components/featurecontent.php' ), true ); ?>
+				<?php } ?>	
+
+
+			

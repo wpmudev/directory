@@ -1,9 +1,8 @@
 <?php get_header() ?>
-<div id="content"><!-- start #content -->
-	<div class="padder">
-		<ul>
-    <?php dp_list_categories('home'); ?>
-</ul>
-	</div>
-</div><!-- end #content -->
+	<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
+			<?php locate_template( array( '/includes/components/articleblock.php' ), true ); ?>
+
+			<?php locate_template( array( '/includes/components/directorylist.php' ), true ); ?>
+			
+			<?php locate_template( array( '/includes/components/topresults.php' ), true ); ?>
 <?php get_footer() ?>

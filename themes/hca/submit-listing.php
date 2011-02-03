@@ -4,8 +4,9 @@ Template Name: Submit Listing
 */
 ?>
 
-<?php get_header(); ?>
-
+<?php get_header() ?>
+<?php locate_template( array( '/includes/components/sectionheaders.php' ), true ); ?>
+<div id="content-wrapper">
 		<div id="container">
 			<div id="content" role="main">
 
@@ -28,6 +29,9 @@ Template Name: Submit Listing
             <?php endwhile; ?>
 
 			</div><!-- #content -->
-		</div><!-- #container -->
-
-<?php get_footer(); ?>
+			<div id="sidebar">
+				Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet.
+			</div>
+			<div class="clear"></div>
+			</div>
+			<?php get_footer(); ?>
