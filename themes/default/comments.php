@@ -22,7 +22,7 @@
 
     <?php if ( have_comments() ) : ?>
 		<h3 id="comments-title"><?php
-		printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), THEME_TEXT_DOMAIN ),
+		printf( _n( 'One Review for %2$s', '%1$s Reviews for %2$s', get_comments_number(), THEME_TEXT_DOMAIN ),
 		number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 		?></h3>
 

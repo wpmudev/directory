@@ -54,6 +54,7 @@ function dp_list_categories( $section ) {
         $taxonomies = get_taxonomies( '', 'label' );
         foreach ( $taxonomies as $taxonomy => $value ) {
             if ( is_object_in_taxonomy('directory_listing', $taxonomy )  ) {
+                $taxavailable = true;
                 $args = array(
                     'orderby'            => 'name',
                     'order'              => 'ASC',
@@ -84,6 +85,12 @@ function dp_list_categories( $section ) {
                 wp_list_categories( $args );
             }
         }
+
+        if ( empty( $taxavailable ) ) { ?>
+            <h1><?php _e( 'No taxonomies found. Please add/import taxonomies.', 'directory' ); ?></h1>
+            <?php
+        }
+
     } elseif ( isset( $section ) && $section == 'sub' ) {
         global $wp_query;
         $args = array(

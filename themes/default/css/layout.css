@@ -351,13 +351,13 @@ div.menu {
 
 .entry-meta{
 	float: right;
-	width: 200px;
+	width: 230px;
 	padding: 0 10px;
 	border-left: 1px solid #dddddd;
 }
 
 .entry-post{
-	margin-right: 230px;
+	margin-right: 250px;
 }
 
 #respond, .breadcrumbtrail, .excerptpost, .post, #checkout-page{
@@ -376,14 +376,62 @@ div.menu {
 .archive #content .breadcrumbtrail li{
 	margin: 0px;
 }
-
 .home #content ul{
 	list-style: none;
 }
-
 h1.entry-title{
 	padding-bottom: 20px;
 	padding-top: 10px;
+}
+#tos-agree, #payment-method, #confirm-payment {
+	margin-bottom: 10px;
+}
+#tos-agree td, #billing-type td, #payment-method td, #confirm-payment td {
+	width: 200px;
+	background: #EEE;
+	padding-left: 10px;
+	font-weight: bold;
+	border: 1px solid #ddd;	
+}
+#tos-agree td.error, #billing-type td.error, #payment-method td.error {
+	background: #FFEBE8;
+}
+#tos-agree td label {
+	padding-right: 30px;
+}
+#billing-type, #payment-method, #confirm-payment {
+	margin-top: 10px;
+}
+#billing-type td label, #payment-method td label {
+	display: inline-block;
+	width: 100px;
+}
+#confirm-payment td {
+	border: 1px solid #ddd;	
+}
+#add-listing-su {
+    float: left;
+    margin: 4px 5px 0 5px;
+}
+#go-to-profile-su {
+    float: left;
+    margin: 4px 0 0 5px;
+}
+#cc-user-details {
+	margin: 10px 20px 10px 0;
+    float: left;
+    width: 48%;
+}
+#cc-card-details {
+	margin-top: 10px;
+    float: left;
+    width: 48%;
+}
+#cc-user-details td, #cc-card-details td {
+	background: #EEE;
+	padding-left: 10px;
+	font-weight: bold;
+	border: 1px solid #ddd;	
 }
 /********************************** footer */
 #footer {
