@@ -44,7 +44,7 @@ class Payments_Core {
      */
     function init() {
         // Initiate default payment settings 
-        add_action( 'init', array( &$this, 'init_payments_default_settings' ) );
+        add_action( 'init', array( &$this, 'init_module_default_options' ) );
         // Create neccessary pages 
         add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
         // Handle all requests for checkout 
@@ -75,22 +75,37 @@ class Payments_Core {
      * @return <type>
      * @todo Move to Payments Module
      */
-    function init_payments_default_settings() {
+    function init_module_default_options() {
 
         $user = wp_get_current_user();
         $usermeta = get_user_meta( 5, $this->options_name, true );
-        // var_dump($usermeta);
 
         $options = $this->get_options( $this->options_name );
-        if ( !isset( $options['checkout'] ) ) {
-            $checkout_settings = array( 'checkout' => array(
-                'annual_price'   => 10,
-                'annual_txt'     => 'Annually Charge',
-                'one_time_price' => 50,
-                'one_time_txt'   => 'One-Time Only Charge',
-                'tos_txt'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.'
+
+        if ( empty( $options ) ) {
+
+            $defaults = array(
+                'settings' => array( 
+                    'recurring_cost'    => '9.99',
+                    'recurring_name'    => 'Subscription',
+                    'billing_period'    => 'Month',
+                    'billing_frequency' => '1',
+                    'billing_agreement' => 'Customer will be billed at “9.99 per month for 2 years”',
+                    'one_time_cost'     => '99.99',
+                    'one_time_name'     => 'One Time Only',
+                    'tos_content'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.',
+                    'key'               => 'settings'
+                ),
+                'paypal' => array(
+                    'api_url'       => 'sandbox',
+                    'api_username'  => '',
+                    'api_password'  => '',
+                    'api_signature' => '',
+                    'currency'      => 'USD',
+                    'key'           => 'paypal'
             ));
-            $options = array_merge( $options, $checkout_settings );
+
+            $options = array_merge( $options, $defaults );
             update_option( $this->options_name, $options );
             return;
         }
@@ -102,12 +117,12 @@ class Payments_Core {
      * @return void
      */
     function create_default_pages() {
-        $page['checkout'] = get_page_by_title('Checkout');
-        if ( !isset( $page['checkout'] ) ) {
+        $page = get_page_by_title('Sign Up');
+        if ( empty( $page ) ) {
             $current_user = wp_get_current_user();
             /* Construct args for the new post */
             $args = array(
-                'post_title'     => 'Checkout',
+                'post_title'     => 'Sign Up',
                 'post_status'    => 'publish',
                 'post_author'    => $current_user->ID,
                 'post_type'      => 'page',
@@ -146,8 +161,8 @@ class Payments_Core {
                 $this->update_user_payment_details( $user->ID, $billing_type, $transaction_details );
 
                 // Set login credentials and sign user
-                $credentials = array( 'remember' => true, 'user_login' => $user->user_login, 'user_password' => $user->user_pass );
-                wp_signon( $credentials );
+                // $credentials = array( 'remember' => true, 'user_login' => $user->user_login, 'user_password' => $user->user_pass );
+                // $result = wp_signon( $credentials );
 
                 return;
             }
@@ -270,7 +285,7 @@ class Payments_Core {
      */
     function handle_checkout_requests() {
         // Only handle request if on the proper page 
-        if ( is_page('checkout') ) {
+        if ( is_page('sign-up') ) {
 
             $options = get_option( $this->options_name );
 
@@ -325,36 +340,46 @@ class Payments_Core {
             }
 
             // If payment method is selected and submitted 
-            elseif ( isset( $_POST['payment_method_submit'] )) {
+            elseif ( isset( $_POST['payment_method_submit'] ) ) {
 
-                // var_dump($_SESSION); die;
-                if ( $_POST['payment_method'] == 'paypal' ) {
+                // Validate fields 
+                if ( empty( $_POST['payment_method'] ) ) {
 
-                    // If recuring payment selected pass '0' so we can void the direct payment 
-                    $cost = $_SESSION['billing_type'] == 'recurring' ? 0 : $_SESSION['cost']; 
-                    $billing_agreement = $_SESSION['billing_type'] == 'recurring' ? $_SESSION['billing_agreement'] : null;  
+                    add_action( 'pm_invalid', create_function('', 'echo "class=\"error\"";') );
 
-                    // Make API call 
-                    $result = $this->paypal_api_module->call_shortcut_express_checkout( 
-                        $cost, 
-                        $_SESSION['billing_type'], 
-                        $billing_agreement 
-                    );
-
-                    // Handle Error scenarios 
-                    if ( $result['status'] == 'error' ) {
-                        // Set the proper step which will be loaded by "page-checkout.php" 
-                        set_query_var( 'checkout_step', 'api_call_error' );
-                        // Pass error params to "page-checkout.php" 
-                        set_query_var( 'checkout_error', $result );
-
-                        // Destroys the $_SESSION
-                        $this->destroy_session();
-                    }
-
-                } elseif ( $_POST['payment_method'] == 'cc' ) {
                     // Set the proper step which will be loaded by "page-checkout.php" 
-                    set_query_var( 'checkout_step', 'cc_details' );
+                    set_query_var( 'checkout_step', 'payment_method' );
+
+                } else {
+
+                    if ( $_POST['payment_method'] == 'paypal' ) {
+
+                        // If recuring payment selected pass '0' so we can void the direct payment 
+                        $cost = $_SESSION['billing_type'] == 'recurring' ? 0 : $_SESSION['cost']; 
+                        $billing_agreement = $_SESSION['billing_type'] == 'recurring' ? $_SESSION['billing_agreement'] : null;  
+
+                        // Make API call 
+                        $result = $this->paypal_api_module->call_shortcut_express_checkout( 
+                            $cost, 
+                            $_SESSION['billing_type'], 
+                            $billing_agreement 
+                        );
+
+                        // Handle Error scenarios 
+                        if ( $result['status'] == 'error' ) {
+                            // Set the proper step which will be loaded by "page-checkout.php" 
+                            set_query_var( 'checkout_step', 'api_call_error' );
+                            // Pass error params to "page-checkout.php" 
+                            set_query_var( 'checkout_error', $result );
+
+                            // Destroys the $_SESSION
+                            $this->destroy_session();
+                        }
+
+                    } elseif ( $_POST['payment_method'] == 'cc' ) {
+                        // Set the proper step which will be loaded by "page-checkout.php" 
+                        set_query_var( 'checkout_step', 'cc_details' );
+                    }
                 }
             }
 
@@ -366,7 +391,7 @@ class Payments_Core {
                     $_POST['total_amount'], 
                     $_POST['cc_type'], 
                     $_POST['cc_number'], 
-                    $_POST['exp_date'], 
+                    $_POST['exp_date_month'] . $_POST['exp_date_year'], 
                     $_POST['cvv2'], 
                     $_POST['first_name'], 
                     $_POST['last_name'], 

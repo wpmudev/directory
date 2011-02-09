@@ -99,7 +99,7 @@ class PayPal_API_Module {
              * has been succesfully authorized.
              * This is set to the value entered on the Integration Assistant.
              */
-            $this->return_url =  get_bloginfo('url') . '/checkout/';
+            $this->return_url =  get_bloginfo('url') . '/sign-up/';
 
             /*
              * The cancelURL is the location buyers are sent to when they hit the
