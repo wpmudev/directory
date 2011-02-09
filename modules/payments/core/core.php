@@ -294,7 +294,7 @@ class Payments_Core {
                 session_start();
 
             // Redirect if user is logged in 
-            if ( /*is_user_logged_in()*/ false ) {
+            if ( is_user_logged_in() ) {
                 wp_redirect( get_bloginfo('url') );
                 exit;
             }

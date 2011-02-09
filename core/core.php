@@ -5,8 +5,7 @@ if ( !class_exists('Directory_Core') ):
 /**
  * Directory_Core 
  * 
- * @package 
- * @version $id$
+ * @package Directory
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
@@ -15,8 +14,6 @@ class Directory_Core {
 
     /** @var string $plugin_version plugin version */
     var $plugin_version = DP_VERSION;
-    /** @var string $plugin_db_version plugin database version */
-    var $plugin_db_version = DP_DB_VERSION;
     /** @var string $plugin_url Plugin URL */
     var $plugin_url = DP_PLUGIN_URL;
     /** @var string $plugin_dir Path to plugin directory */
@@ -34,7 +31,7 @@ class Directory_Core {
      * Constructor.
      */
     function Directory_Core() {
-        $var = $this->init();
+        $this->init();
     }
 
     /**
@@ -48,16 +45,15 @@ class Directory_Core {
         add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
         add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
         add_action( 'init', array( &$this, 'roles' ) );
+        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
+        add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
+        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
+        add_filter( 'sort_custom_taxonomies', array( &$this, 'sort_custom_taxonomies' ) );
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
         register_theme_directory( $this->plugin_dir . 'themes' );
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
-        add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
-        /* Schedule expiration check */
-        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
-        /* Cehck expiration dates */
-        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
     }
 
     /**
@@ -102,9 +98,9 @@ class Directory_Core {
      **/
     function plugin_activate() {
         /* Update plugin versions */
-        $versions = array( 'versions' => array( 'version' => $this->plugin_version, 'db_version' => $this->plugin_db_version ) );
+        $version = array( 'version' => $this->plugin_version );
         $options = $this->get_options();
-        $options = ( isset( $options['versions'] ) ) ? array_merge( $options, $versions ) : $versions;
+        $options = isset( $options['version'] ) ? array_merge( $options, $version ) : $version;
         update_option( $this->options_name, $options );
     }
 
@@ -116,7 +112,7 @@ class Directory_Core {
      */
     function plugin_deactivate() {
         /* if true all plugin data will be deleted */
-        if ( true ) {
+        if ( false ) {
             delete_option( $this->options_name );
             delete_option( 'ct_custom_post_types' );
             delete_option( 'ct_custom_taxonomies' );
@@ -151,6 +147,7 @@ class Directory_Core {
      **/
     function roles() {
         global $wp_roles;
+
         if ( $wp_roles ) {
             $wp_roles->add_role( $this->user_role, 'Directory Member', array(
                 'publish_listings'       => true,
@@ -166,6 +163,7 @@ class Directory_Core {
                 'assign_terms'           => true,
                 'read'                   => true
             ) );
+
             /* Set administrator roles */
             $wp_roles->add_cap( 'administrator', 'publish_listings' );
             $wp_roles->add_cap( 'administrator', 'edit_listings' );
@@ -176,10 +174,25 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'edit_listing' );
             $wp_roles->add_cap( 'administrator', 'delete_listing' );
             $wp_roles->add_cap( 'administrator', 'read_listing' );
-            $wp_roles->add_cap( 'administrator', 'assign_terms' );
         }
     }
 
+    /**
+     * Sets sort type for taxonomies 
+     * 
+     * @param string $sort 
+     * @access public
+     * @return string Sort type
+     */
+    function sort_custom_taxonomies( $sort ) {
+        $options = $this->get_options('general_settings');
+        $sort = $options['order_taxonomies'];
+        return $sort; 
+    }
+
+    /**
+     *  
+     */
     function output_banners() { 
         $options = $this->get_options( 'ads_settings' );
         if ( !empty( $options['header_ad_code'] ) ) {
@@ -283,5 +296,15 @@ endif;
 /* Initiate Class */
 if ( class_exists('Directory_Core') )
 	$__directory_core = new Directory_Core();
+
+/* Update Notifications Notice */
+if ( !function_exists( 'wdp_un_check' ) ):
+function wdp_un_check() {
+    if ( !class_exists('WPMUDEV_Update_Notifications') && current_user_can('edit_users') )
+        echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</a></p></div>';
+}
+add_action( 'admin_notices', 'wdp_un_check', 5 );
+add_action( 'network_admin_notices', 'wdp_un_check', 5 );
+endif;
 
 ?>

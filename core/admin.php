@@ -6,7 +6,7 @@ if ( !class_exists('Directory_Core_Admin') ):
  * Directory_Core_Admin 
  * 
  * @uses Directory_Core
- * @package 
+ * @package Directory
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}

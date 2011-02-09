@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 1.0.5
+Version: 1.0.6
 Author: Ivan Shaovchev (Incsub)
 Author URI: http://ivan.sh
 License: GNU General Public License (Version 2 - GPLv2)
@@ -28,8 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Define plugin version */ 
-define ( 'DP_VERSION', '1.0.5' );
-define ( 'DP_DB_VERSION', '1.1' );
+define ( 'DP_VERSION', '1.0.6' );
 
 /* define the plugin folder url */
 define ( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
@@ -40,10 +39,12 @@ define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__),
 include_once 'core/core.php';
 include_once 'core/admin.php';
 include_once 'core/data.php';
+
 /* include "Payments" module */
 include_once 'modules/payments/loader.php';
 /* include "Content Types" module */
 include_once 'modules/content-types/loader.php';
 /* include "Ratings" module */
 include_once 'modules/ratings/loader.php';
+
 ?>
