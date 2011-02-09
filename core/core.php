@@ -81,7 +81,7 @@ class Directory_Core {
 
     /**
      * Loads "directory-[xx_XX].mo" language file from the "languages" directory
-     *
+     * @todo To do something! 
      * @return void
      **/
     function load_plugin_textdomain() {
@@ -136,7 +136,7 @@ class Directory_Core {
     }
 
     /**
-     * Add custom role for Classifieds members. Add new capabilities for admin.
+     * Add custom role for members. Add new capabilities for admin.
      *
      * @global $wp_roles
      * @return void

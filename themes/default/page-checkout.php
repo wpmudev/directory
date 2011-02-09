@@ -1,52 +1,47 @@
 <?php
+
 /**
  * The template for displaying the Checkout page.
  * You can override this file in your active theme.
- *
- * @package Classifieds
- * @subpackage UI Front
- * @since Classifieds 2.0
+ * 
+ * @package Payments
+ * @version 1.0.0 
+ * @copyright Incsub 2007-2011 {@link http://incsub.com}
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
+$step        = get_query_var('checkout_step') ? get_query_var('checkout_step') : null;
+$options     = get_option('module_payments'); 
 $text_domain = THEME_TEXT_DOMAIN;  
-$plugin_url = DP_PLUGIN_URL;
+$plugin_url  = DP_PLUGIN_URL;
+$error       = get_query_var('checkout_error'); 
 
 get_header(); ?>
 
 <div id="content"><!-- start #content -->
-	<div class="padder">
-		<div class="page" id="checkout-page"><!-- start #blog-page -->
+    <div class="page" id="checkout-page"><!-- start #blog-page -->
 
-        <?php /* For BuddyPress compatibility */ ?>
-        <?php global $bp; ?>
-
-        <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+    <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
             <h1 class="entry-title"><?php the_title(); ?></h1>
-
             <div class="entry-content">
 
-            <?php $step = get_query_var('checkout_step'); ?>
-
-            <?php if ( isset( $step ) && $step == 'disabled' ): ?>
+            <?php if ( $step == 'disabled' ): ?>
 
                 <?php _e( 'This feature is currently disabled by the system administrator.', $text_domain ); ?>
 
-            <?php elseif ( isset( $step ) && $step == 'terms' ): ?>
-
-                <?php $options = get_option('module_payments'); ?>
+            <?php elseif ( $step == 'terms' ): ?>
 
                 <form action="" method="post"  class="cf-checkout">
-
                     <strong><?php _e( 'Cost of Service', $text_domain ); ?></strong>
                     <table <?php do_action( 'billing_invalid' ); ?>>
                         <?php /*
                         <tr>
                             <td><label for="billing"><?php _e( 'Buy Credits', $text_domain ) ?></label></td>
                             <td>
-                                <input type="radio" name="billing" value="credits" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'credits' ) echo 'checked="checked"'; ?> />
+                                <input type="radio" name="billing" value="credits" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'credits' ) echo 'checked="checked"'; ?> />
                                 <select name="credits_cost">
                                     <?php for ( $i = 1; $i <= 10; $i++ ): ?>
                                     <?php $credits = 10 * $i; ?>
@@ -58,52 +53,67 @@ get_header(); ?>
                         </tr>
                          */ ?>
                         <tr>
-                            <td><label for="billing"><?php if ( isset( $options['checkout']['annual_txt'] ) ) echo $options['checkout']['annual_txt']; ?></label></td>
+                            <td><label for="billing"><?php if ( isset( $options['settings']['recurring_name'] ) ) echo $options['settings']['recurring_name']; ?></label></td>
                             <td>
-                                <input type="radio" name="billing" value="annual" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'annual' ) echo 'checked="checked"'; ?> />  <?php if ( isset(  $options['checkout']['annual_cost'] ) ) echo $options['checkout']['annual_cost']; ?> <?php echo $options['paypal']['currency']; ?>
-                                <input type="hidden" name="annual_cost" value="<?php if ( isset( $options['checkout']['annual_cost'] ) ) echo $options['checkout']['annual_cost']; ?>" />
+                                <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />  
+                                <?php 
+                                if ( isset(  $options['settings']['recurring_cost'] ) ) 
+                                    echo $options['settings']['recurring_cost'] . ' '; 
+                                echo $options['paypal']['currency'];  
+                                _e( ' per ', $text_domain ); 
+                                if ( !empty( $options['settings']['billing_frequency'] ) && $options['settings']['billing_frequency'] != 1 )
+                                    echo $options['settings']['billing_frequency'] . ' ';
+                                if ( !empty( $options['settings']['billing_period'] ) )
+                                    echo $options['settings']['billing_period'];
+                                ?>
+                                <input type="hidden" name="recurring_cost" value="<?php if ( isset( $options['settings']['recurring_cost'] ) ) echo $options['settings']['recurring_cost']; ?>" />
+                                <input type="hidden" name="billing_agreement" value="<?php if ( isset( $options['settings']['billing_agreement'] ) ) echo $options['settings']['billing_agreement']; ?>" />
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="billing"><?php if ( isset( $options['checkout']['one_time_txt'] ) ) echo $options['checkout']['one_time_txt']; ?></label></td>
+                            <td><label for="billing"><?php if ( isset( $options['settings']['one_time_name'] ) ) echo $options['settings']['one_time_name']; ?></label></td>
                             <td>
-                                <input type="radio" name="billing" value="one_time" <?php if ( isset( $_POST['billing'] ) && $_POST['billing'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $options['checkout']['one_time_cost'] ) ) echo $options['checkout']['one_time_cost']; ?> <?php echo $options['paypal']['currency']; ?>
-                                <input type="hidden" name="one_time_cost" value="<?php if ( isset( $options['checkout']['one_time_cost'] ) ) echo $options['checkout']['one_time_cost']; ?>" />
+                                <input type="radio" name="billing_type" value="one_time" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $options['settings']['one_time_cost'] ) ) echo $options['settings']['one_time_cost']; ?> <?php echo $options['paypal']['currency']; ?>
+                                <input type="hidden" name="one_time_cost" value="<?php if ( isset( $options['settings']['one_time_cost'] ) ) echo $options['settings']['one_time_cost']; ?>" />
                             </td>
                         </tr>
                     </table>
                     <br />
 
-                    <strong><?php _e( 'Terms of Service', 'classifieds' ); ?></strong>
+                    <strong><?php _e( 'Terms of Service', $text_domain ); ?></strong>
                     <table>
                         <tr>
-                            <td><div class="terms"><?php if ( isset( $options['checkout']['tos_txt'] ) ) echo nl2br( $options['checkout']['tos_txt'] ); ?></div></td>
+                            <td><div class="terms">
+                            <?php 
+                            if ( isset( $options['settings']['tos_content'] ) ) 
+                                echo nl2br( $options['settings']['tos_content'] ); 
+                            ?>
+                            </div></td>
                         </tr>
                     </table>
                     <br />
 
                     <table  <?php do_action( 'tos_invalid' ); ?> >
                         <tr>
-                            <td><label for="tos_agree"><?php _e( 'I agree with the Terms of Service', 'classifieds' ); ?></label></td>
+                            <td><label for="tos_agree"><?php _e( 'I agree with the Terms of Service', $text_domain ); ?></label></td>
                             <td><input type="checkbox" id="tos_agree" name="tos_agree" value="1" <?php if ( isset( $_POST['tos_agree'] ) ) echo 'checked="checked"'; ?> /></td>
                         </tr>
                     </table>
 
                     <div class="submit">
-                        <input type="submit" name="terms_submit" value="<?php _e( 'Continue', 'classifieds' ); ?>" />
+                        <input type="submit" name="terms_submit" value="<?php _e( 'Continue', $text_domain ); ?>" />
                     </div>
                 </form>
 
                 <form action="" method="post" class="checkout-login">
-
-                    <strong><?php _e( 'Existing client', 'classifieds' ); ?></strong>
+                    <strong><?php _e( 'Existing client', $text_domain ); ?></strong>
                     <table  <?php do_action( 'login_invalid' ); ?>>
                         <tr>
-                            <td><label for="username"><?php _e( 'Username', 'classifieds' ); ?>:</label></td>
+                            <td><label for="username"><?php _e( 'Username', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="username" name="username" /></td>
                         </tr>
                         <tr>
-                            <td><label for="password"><?php _e( 'Password', 'classifieds' ); ?>:</label></td>
+                            <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
                             <td><input type="password" id="password" name="password" /></td>
                         </tr>
                     </table>
@@ -111,32 +121,29 @@ get_header(); ?>
                     <div class="clear"></div>
 
                     <div class="submit">
-                        <input type="submit" name="login_submit" value="<?php _e( 'Continue', 'classifieds' ); ?>" />
+                        <input type="submit" name="login_submit" value="<?php _e( 'Continue', $text_domain ); ?>" />
                     </div>
-
                 </form>
 
-                <?php $error = get_query_var('checkout_error'); ?>
-
-                <?php if ( isset( $error ) ): ?>
+                <?php if ( !empty( $error ) ): ?>
                     <div class="invalid-login"><?php echo $error; ?></div>
                 <?php endif; ?>
 
-            <?php elseif( isset( $step ) && $step == 'payment_method' ): ?>
+            <?php /* Payment Method Selection */ ?>
+            <?php elseif( $step == 'payment_method' ): ?>
 
                 <form action="" method="post"  class="checkout">
-
-                    <strong><?php _e('Choose Payment Method', 'classifieds' ); ?></strong>
+                    <strong><?php _e('Choose Payment Method', $text_domain ); ?></strong>
                     <table>
                         <tr>
-                            <td><label for="payment_method"><?php _e( 'PayPal', 'classifieds' ); ?></label></td>
+                            <td><label for="payment_method"><?php _e( 'PayPal', $text_domain ); ?></label></td>
                             <td>
                                 <input type="radio" name="payment_method" value="paypal"/>
                                 <img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" border="0" alt="Acceptance Mark">
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="payment_method"><?php _e( 'Credit Card', 'classifieds' ); ?></label></td>
+                            <td><label for="payment_method"><?php _e( 'Credit Card', $text_domain ); ?></label></td>
                             <td>
                                 <input type="radio" name="payment_method" value="cc" />
                                 <img  src="<?php echo get_template_directory_uri(); ?>/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
@@ -145,64 +152,47 @@ get_header(); ?>
                     </table>
 
                     <div class="submit">
-
-                        <?php if ( $_POST['billing'] == 'credits' ): ?>
-                            <input type="hidden" name="cost" value="<?php echo $_POST['credits_cost']; ?>" />
-                            <input type="hidden" name="billing" value="credits" />
-                            <?php $options = get_option('classifieds_options'); ?>
-                            <?php $credits = $_POST['credits_cost'] / $options['credits']['cost_credit']; ?>
-                            <input type="hidden" name="credits" value="<?php echo $credits; ?>" />
-                        <?php elseif ( $_POST['billing'] == 'annual' ): ?>
-                            <input type="hidden" name="cost" value="<?php echo $_POST['annual_cost']; ?>" />
-                            <input type="hidden" name="billing" value="annual" />
-                        <?php elseif ( $_POST['billing'] == 'one_time' ): ?>
-                            <input type="hidden" name="cost" value="<?php echo $_POST['one_time_cost']; ?>" />
-                            <input type="hidden" name="billing" value="one_time" />
-                        <?php endif; ?>
-
-                        <input type="submit" name="payment_method_submit" value="<?php _e( 'Continue', 'classifieds' ); ?>" />
+                        <input type="submit" name="payment_method_submit" value="<?php _e( 'Continue', $text_domain ); ?>" />
                     </div>
                 </form>
 
-            <?php elseif ( isset( $step ) && $step == 'cc_details' ): ?>
-
-                <?php $options = get_option('classifieds_options'); ?>
+            <?php /* Credit Card Details */ ?>
+            <?php elseif ( $step == 'cc_details' ): ?>
 
                 <form action="" method="post" class="checkout">
-
-                    <strong><?php _e( 'Payment Details', 'classifieds' ); ?></strong>
+                    <strong><?php _e( 'Payment Details', $text_domain ); ?></strong>
                     <div class="clear"></div>
                     <table>
                         <tr>
-                            <td><label for="email"><?php _e( 'Email Adress', 'classifieds' ); ?>:</label></td>
+                            <td><label for="email"><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="email" name="email" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="first-name"><?php _e( 'First Name', 'classifieds' ); ?>:</label></td>
+                            <td><label for="first-name"><?php _e( 'First Name', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="first-name" name="first_name" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="last-name"><?php _e( 'Last Name', 'classifieds' ); ?>:</label></td>
+                            <td><label for="last-name"><?php _e( 'Last Name', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="last-name" name="last_name" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="street"><?php _e( 'Street', 'classifieds' ); ?>:</label></td>
+                            <td><label for="street"><?php _e( 'Street', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="street" name="street" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="city"><?php _e( 'City', 'classifieds' ); ?>:</label></td>
+                            <td><label for="city"><?php _e( 'City', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="city" name="city" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="state"><?php _e( 'State', 'classifieds' ); ?>:</label></td>
+                            <td><label for="state"><?php _e( 'State', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="state" name="state" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="zip"><?php _e( 'ZIP', 'classifieds' ); ?>:</label></td>
+                            <td><label for="zip"><?php _e( 'ZIP', $text_domain ); ?>:</label></td>
                             <td><input type="text" id="zip" name="zip" value="" /></td>
                         </tr>
                         <tr>
-                            <td><label for="country"><?php _e( 'Country', 'classifieds' ); ?>:</label></td>
+                            <td><label for="country"><?php _e( 'Country', $text_domain ); ?>:</label></td>
                             <td>
                                 <select id="country" name="country_code">
                                     <option value="">Select One</option>
@@ -456,7 +446,7 @@ get_header(); ?>
                             </td>
                         </tr>
                         <tr>
-                            <td><?php _e( 'Total Amount', 'classifieds' ); ?>:</td>
+                            <td><?php _e( 'Total Amount', $text_domain ); ?>:</td>
                             <td>
                                 <strong><?php echo $_POST['cost']; ?> <?php echo $options['paypal']['currency']; ?></strong>
                                 <input type="hidden" name="total_amount" value="<?php echo $_POST['cost']; ?>" />
@@ -466,26 +456,26 @@ get_header(); ?>
                     <br />
                     <table>
                         <tr>
-                            <td><label for="cc_type"><?php _e( 'Credit Card Type', 'classifieds' ); ?>:</label></td>
+                            <td><label for="cc_type"><?php _e( 'Credit Card Type', $text_domain ); ?>:</label></td>
                             <td>
                                 <select name="cc_type">
-                                    <option><?php _e( 'Visa', 'classifieds' ); ?></option>
-                                    <option><?php _e( 'MasterCard', 'classifieds' ); ?></option>
-                                    <option><?php _e( 'Amex', 'classifieds' ); ?></option>
-                                    <option><?php _e( 'Discover', 'classifieds' ); ?></option>
+                                    <option><?php _e( 'Visa', $text_domain ); ?></option>
+                                    <option><?php _e( 'MasterCard', $text_domain ); ?></option>
+                                    <option><?php _e( 'Amex', $text_domain ); ?></option>
+                                    <option><?php _e( 'Discover', $text_domain ); ?></option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="cc_number"><?php _e( 'Credit Card Number', 'classifieds' ); ?>:</label></td>
+                            <td><label for="cc_number"><?php _e( 'Credit Card Number', $text_domain ); ?>:</label></td>
                             <td><input type="text" name="cc_number" /></td>
                         </tr>
                         <tr>
-                            <td><label for="exp_date"><?php _e( 'Expiration Date', 'classifieds' ); ?>:</label></td>
+                            <td><label for="exp_date"><?php _e( 'Expiration Date', $text_domain ); ?>:</label></td>
                             <td><input type="text" name="exp_date" /></td>
                         </tr>
                         <tr>
-                            <td><label for="cvv2"><?php _e( 'CVV2', 'classifieds' ); ?>:</label></td>
+                            <td><label for="cvv2"><?php _e( 'CVV2', $text_domain ); ?>:</label></td>
                             <td><input type="text" name="cvv2" /></td>
                         </tr>
                     </table>
@@ -497,31 +487,37 @@ get_header(); ?>
 
                 </form>
 
-            <?php elseif ( isset( $step ) && $step == 'confirm_payment' ): ?>
+            <?php /* Confirm Payment Step */ ?>
+            <?php elseif ( $step == 'confirm_payment' ): ?>
 
                 <?php $transaction_details = get_query_var('checkout_transaction_details'); ?>
 
                 <form action="" method="post" class="checkout">
-
-                    <strong><?php _e( 'Confirm Payment', 'classifieds' ); ?></strong>
+                    <strong><?php _e( 'Confirm Payment', $text_domain ); ?></strong>
                     <table>
                         <tr>
-                            <td><label><?php _e( 'Email Adress', 'classifieds' ); ?>:</label></td>
+                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
                             <td><?php echo $transaction_details['EMAIL']; ?></td>
                         </tr>
                         <tr>
-                            <td><label><?php _e( 'Name', 'classifieds' ); ?>:</label></td>
+                            <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
                             <td><?php echo $transaction_details['FIRSTNAME'] . ' ' . $transaction_details['LASTNAME']; ?></td>
                         </tr>
                         <tr>
-                            <td><label><?php _e( 'Address', 'classifieds' ); ?>:</label></td>
+                            <td><label><?php _e( 'Address', $text_domain ); ?>:</label></td>
                             <td><?php echo $transaction_details['SHIPTOSTREET']; ?>, <?php echo $transaction_details['SHIPTOCITY']; ?>, <?php echo $transaction_details['SHIPTOSTATE']; ?>, <?php echo $transaction_details['SHIPTOZIP']; ?>, <?php echo $transaction_details['SHIPTOCOUNTRYNAME']; ?></td>
                         </tr>
+                        <?php if ( $_SESSION['billing_type'] == 'recurring' ): ?>
                         <tr>
-                            <td><label><?php _e('Total Amount', 'directory'); ?>:</label></td>
+                            <td><label><?php _e( 'Billing Agreement', $text_domain ); ?>:</label></td>
+                            <td><?php echo $_SESSION['billing_agreement']; ?></td>
+                        </tr>
+                        <?php endif; ?>
+                        <tr>
+                            <td><label><?php _e('Total Amount', $text_domain); ?>:</label></td>
                             <td>
-                                <strong><?php echo $transaction_details['AMT'] . ' ' . $transaction_details['CURRENCYCODE'] ?></strong>
-                                <input type="hidden" name="total_amount" value="<?php echo $transaction_details['AMT']; ?>" />
+                                <strong><?php if ( isset( $_SESSION['cost'] ) ) echo $_SESSION['cost'] . ' ' . $transaction_details['CURRENCYCODE']; else echo $transaction_details['AMT'] . ' ' . $transaction_details['CURRENCYCODE']; ?></strong>
+                                <input type="hidden" name="total_amount" value="<?php if ( isset( $_SESSION['recurring_cost'] ) ) echo $_SESSION['recurring_cost']; else echo $transaction_details['AMT']; ?>" />
                             </td>
                         </tr>
                     </table>
@@ -530,14 +526,15 @@ get_header(); ?>
                         <input type="hidden" name="email" value="<?php echo $transaction_details['EMAIL']; ?>" />
                         <input type="hidden" name="first_name" value="<?php echo $transaction_details['FIRSTNAME']; ?>" />
                         <input type="hidden" name="last_name" value="<?php echo $transaction_details['LASTNAME']; ?>" />
-                        <input type="hidden" name="billing" value="<?php echo $_SESSION['billing']; ?>" />
-                        <input type="hidden" name="credits" value="<?php echo $_SESSION['credits']; ?>" />
+                        <input type="hidden" name="billing_type" value="<?php echo $_SESSION['billing_type']; ?>" />
+                        <?php /* <input type="hidden" name="credits" value="<?php echo $_SESSION['credits']; ?>" /> */ ?>
                         <input type="submit" name="confirm_payment_submit" value="Confirm Payment" />
                     </div>
 
                 </form>
 
-            <?php elseif ( isset( $step ) && $step == 'api_call_error' ): ?>
+            <?php /* API Call Error */ ?>
+            <?php elseif ( $step == 'api_call_error' ): ?>
 
                 <?php $error = get_query_var('checkout_error'); ?>
 
@@ -549,10 +546,11 @@ get_header(); ?>
                     <li><?php echo 'Error Severity Code: '    . $error['error_severity_code']; ?></li>
                 </ul>
 
-            <?php elseif ( isset( $step ) && $step == 'success' ): ?>
+            <?php /* Success */ ?>
+            <?php elseif ( $step == 'success' ): ?>
 
-                <div class="dp-submit-txt"><?php _e( 'Thank you for your business. Transaction processed successfully!', 'classifieds' ); ?></div>
-                <span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to the directory listing submission page.', 'classifieds' ); ?></span>
+                <div class="dp-submit-txt"><?php _e( 'Thank you for your business. Transaction processed successfully!', $text_domain ); ?></div>
+                <span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information. You can also go straight to the directory listing submission page.', $text_domain ); ?></span>
                 <br /><br />
 
                 <form action="" method="post">
@@ -566,9 +564,8 @@ get_header(); ?>
             
         </div><!-- #post-## -->
 
-        <?php endwhile; ?>
+    <?php endwhile; ?>
 
-		</div><!-- end #blog-page -->
-	</div>
+    </div><!-- end #blog-page -->
 </div><!-- end #content -->
 <?php get_footer(); ?>
