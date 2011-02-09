@@ -16,7 +16,7 @@
                     <label for="header_ad_code"><?php _e('Ad Code Header Banner', 'directory') ?></label>
                 </th>
                 <td>
-                    <textarea id="header_ad_code" name="header_ad_code" rows="15" cols="50"><?php if ( isset( $options['header_ad_code'] ) ) echo $options['header_ad_code']; ?></textarea>
+                    <textarea id="header_ad_code" name="header_ad_code" rows="15" cols="50"><?php if ( isset( $options['header_ad_code'] ) ) echo stripslashes( $options['header_ad_code'] ); ?></textarea>
                     <br />
                     <span class="description"><?php _e('Place ad code here!', 'directory'); ?></span>
                 </td>

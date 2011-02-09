@@ -387,9 +387,9 @@ h1.entry-title{
 }
 /********************************** footer */
 #footer {
-clear: both;
-padding: 10px 0px 15px;
-width: 100%;
+    clear: both;
+    padding: 10px 0px 15px;
+    width: 100%;
 }
 
 #footer a {
@@ -433,6 +433,16 @@ text-decoration: none;
 #container{
 	clear: both;
 	padding: 10px 0px;
+}
+#banner-header {
+    width: 468px;
+    height: 60px;
+    background: #ddd;
+    float: right;
+}
+#banner-header span {
+    padding: 10px;
+    color: #999;
 }
 /********************************** layout */
 body {

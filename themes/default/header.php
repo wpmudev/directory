@@ -26,10 +26,11 @@
 		<div id="site-wrapper"><!-- start #site-wrapper -->
 
 			<div id="header"><!-- start #header -->
+                <?php locate_template( array( '/includes/components/banner-header.php' ), true ) ?>
 				<?php locate_template( array( '/includes/components/branding-header.php' ), true ); ?>
 			</div><!-- end #header -->
 
-				<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
-			    <?php locate_template( array( '/includes/components/actionbuttons.php' ), true ); ?>
+			<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
+		    <?php locate_template( array( '/includes/components/actionbuttons.php' ), true ); ?>
 					
 			<div id="container"><!-- start #container -->

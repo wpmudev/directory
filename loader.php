@@ -36,13 +36,14 @@ define ( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__),
 /* define the plugin folder dir */
 define ( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 
-/* include core file */
+/* include core files */
 include_once 'core/core.php';
 include_once 'core/admin.php';
 include_once 'core/data.php';
-/* include payment PayPal Express payment gateway */
+/* include "Payments" module */
 include_once 'modules/payments/loader.php';
-/* include "Content Types" submodule */
+/* include "Content Types" module */
 include_once 'modules/content-types/loader.php';
-
+/* include "Ratings" module */
+include_once 'modules/ratings/loader.php';
 ?>

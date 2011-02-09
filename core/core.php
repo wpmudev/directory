@@ -1,9 +1,16 @@
 <?php
 
-/**
- * Directory Core Classs
- **/
 if ( !class_exists('Directory_Core') ):
+
+/**
+ * Directory_Core 
+ * 
+ * @package 
+ * @version $id$
+ * @copyright Incsub 2007-2011 {@link http://incsub.com}
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
+ */
 class Directory_Core {
 
     /** @var string $plugin_version plugin version */
@@ -22,15 +29,12 @@ class Directory_Core {
     var $options_name = 'dp_options';
     /** @var string Main plugin menu slug */
     var $admin_menu_slug = 'dp_main';
-    /** @var string Main plugin menu slug */
 
     /**
      * Constructor.
-     *
-     * @return void
-     **/
+     */
     function Directory_Core() {
-        $this->init();
+        $var = $this->init();
     }
 
     /**
@@ -49,6 +53,7 @@ class Directory_Core {
         register_theme_directory( $this->plugin_dir . 'themes' );
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
+        add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
     }
 
     /**
@@ -70,6 +75,8 @@ class Directory_Core {
         new Content_Types_Core( $this->admin_menu_slug );
         /* Initiate Payments Module */
         new Payments_Core( $this->admin_menu_slug, $this->user_role );
+        /* Initiate Ratings Module */
+        new Ratings_Core();
     }
 
     /**
@@ -164,7 +171,15 @@ class Directory_Core {
             $wp_roles->add_cap( 'administrator', 'assign_terms' );
         }
     }
-    
+
+    function output_banners() { 
+        $options = $this->get_options( 'ads_settings' );
+        if ( !empty( $options['header_ad_code'] ) ) {
+            echo stripslashes( $options['header_ad_code'] );
+        } else {
+            echo '<span>' .  __( 'Advartise Here', $this->text_domain ) . '</span>';
+        }
+    }    
 
     /**
      * handle_action_buttons_requests 
