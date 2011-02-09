@@ -90,7 +90,10 @@ class Content_Types_Core {
      **/
     function handle_post_type_requests() {
         /* If add/update request is made */
-        if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'submit_post_type' ) ) {
+        if ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] ) 
+            && wp_verify_nonce( $_POST['_wpnonce'], 'submit_post_type' ) 
+        ) {
             /* Validate input fields */
             if ( $this->validate_field( 'post_type', $_POST['post_type'] ) ) {
                 /* Post type labels */
@@ -170,7 +173,10 @@ class Content_Types_Core {
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated&frr=' . $this->flush_rewrite_rules ) );
             }
         }
-        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_post_type' )  ) {
+        elseif ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] )
+            && wp_verify_nonce( $_POST['_wpnonce'], 'delete_post_type' )  
+        ) {
             $post_types = $this->post_types;
             /* remove the deleted post type */
             unset( $post_types[$_POST['post_type_name']] );
@@ -213,7 +219,10 @@ class Content_Types_Core {
      **/
     function handle_taxonomy_requests() {
         /* If valid add/edit taxonomy request is made */
-        if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'submit_taxonomy' ) ) {
+        if ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] )
+            && wp_verify_nonce( $_POST['_wpnonce'], 'submit_taxonomy' ) 
+        ) {
             /* Validate input fields */
             $valid_taxonomy = $this->validate_field( 'taxonomy', ( isset( $_POST['taxonomy'] ) ) ? $_POST['taxonomy'] : NULL );
             $valid_object_type = $this->validate_field( 'object_type', ( isset( $_POST['object_type'] ) ) ? $_POST['object_type'] : NULL );
@@ -291,7 +300,10 @@ class Content_Types_Core {
                 wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated&frr' . $this->flush_rewrite_rules ) );
             }
         }
-        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_taxonomy' )  ) {
+        elseif ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] )
+            && wp_verify_nonce( $_POST['_wpnonce'], 'delete_taxonomy' ) 
+        ) {
             /* Set available taxonomies */
             $taxonomies = $this->taxonomies;
             /* Remove the deleted taxonomy */
@@ -339,7 +351,10 @@ class Content_Types_Core {
      **/
     function handle_custom_field_requests() {
         /* If valid add/edit custom field request is made */
-        if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'submit_custom_field' ) ) {
+        if ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] )
+            && wp_verify_nonce( $_POST['_wpnonce'], 'submit_custom_field' ) 
+        ) {
             /* Validate input fields data */
             $field_title_valid       = $this->validate_field( 'field_title', ( isset( $_POST['field_title'] ) ) ? $_POST['field_title'] : NULL );
             $field_object_type_valid = $this->validate_field( 'object_type', ( isset( $_POST['object_type'] ) ) ? $_POST['object_type'] : NULL );
@@ -381,7 +396,10 @@ class Content_Types_Core {
                 update_site_option( 'ct_custom_fields', $custom_fields );
             wp_redirect( admin_url( 'admin.php?page=ct_content_types&ct_content_type=custom_field&updated' ) );
         }
-        elseif ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'delete_custom_field' )  ) {
+        elseif ( isset( $_POST['submit'] ) 
+            && isset( $_POST['_wpnonce'] ) 
+            && wp_verify_nonce( $_POST['_wpnonce'], 'delete_custom_field' ) 
+        ) {
             /* Set available custom fields */
             $custom_fields = $this->custom_fields;
             /* Remove the deleted custom field */
