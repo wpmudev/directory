@@ -34,7 +34,7 @@ $allow_per_site_content_types = get_site_option('allow_per_site_content_types');
                     <label for="import_post_types"><?php _e('Import Post Types', 'directory') ?></label>
                 </th>
                 <td>
-                    <input type="checkbox" id="import_post_types" name="import_post_types" value="1" <?php if ( isset( $options['dp-data']['post_types_loaded'] ) ) echo 'checked="checked" disabled="disabled"'; ?>  />
+                    <input type="checkbox" id="import_post_types" name="import_post_types" value="1" <?php if ( isset( $options['data']['post_types_loaded'] ) ) echo 'checked="checked" disabled="disabled"'; ?>  />
                     <span class="description"><?php _e('If you check this option a preconfigured post type will be imported for you ( Recomended ). You can edit and remove it afterwards.', 'directory'); ?></span>
                 </td>
             </tr>
@@ -43,7 +43,7 @@ $allow_per_site_content_types = get_site_option('allow_per_site_content_types');
                     <label for="import_taxonomies"><?php _e('Import Taxonomies', 'directory') ?></label>
                 </th>
                 <td>
-                    <input type="checkbox" id="import_taxonomies" name="import_taxonomies" value="1" <?php if ( isset( $options['dp-data']['taxonomies_loaded'] ) ) echo 'checked="checked" disabled="disabled"'; ?>  />
+                    <input type="checkbox" id="import_taxonomies" name="import_taxonomies" value="1" <?php if ( isset( $options['general_settings']['import_taxonomies'] ) ) echo 'checked="checked" disabled="disabled"'; ?>  />
                     <span class="description"><?php _e('If you check this option a preconfigured set of taxonomies will be imported for you ( Recomended ). You can edit and remove them afterwards.', 'directory'); ?></span>
                 </td>
             </tr>
@@ -52,7 +52,7 @@ $allow_per_site_content_types = get_site_option('allow_per_site_content_types');
                     <label for="import_custom_fields"><?php _e('Import Custom Fields', 'directory') ?></label>
                 </th>
                 <td>
-                    <input type="checkbox" id="import_custom_fields" name="import_custom_fields" value="1" <?php if ( isset( $options['dp-data']['custom_fields_loaded'] ) ) echo 'checked="checked" disabled="disabled"'; ?> />
+                    <input type="checkbox" id="import_custom_fields" name="import_custom_fields" value="1" <?php if ( isset( $options['general_settings']['import_custom_fields'] ) ) echo 'checked="checked" disabled="disabled"'; ?> />
                     <span class="description"><?php _e('If you check this option an example custom field will be imported for you ( Recomended ). You can edit and remove it afterwards.', 'directory'); ?></span>
                 </td>
             </tr>
