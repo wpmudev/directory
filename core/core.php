@@ -54,6 +54,10 @@ class Directory_Core {
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
+        /* Schedule expiration check */
+        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
+        /* Cehck expiration dates */
+        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
     }
 
     /**
@@ -67,10 +71,12 @@ class Directory_Core {
      * Initiate plugin modules.
      *
      * @return void
-     **/
+      **/
     function init_modules() {
-        /* Initiate Admin Class */
+        /* Initiate Admin */
         new Directory_Core_Admin();
+        /* Initiate Data Imports */
+        new Directory_Core_Data();
         /* Initiate Content Types Module */
         new Content_Types_Core( $this->admin_menu_slug );
         /* Initiate Payments Module */
@@ -110,17 +116,19 @@ class Directory_Core {
      */
     function plugin_deactivate() {
         /* if true all plugin data will be deleted */
-        if ( false ) {
+        if ( true ) {
             delete_option( $this->options_name );
             delete_option( 'ct_custom_post_types' );
             delete_option( 'ct_custom_taxonomies' );
             delete_option( 'ct_custom_fields' );
             delete_option( 'ct_flush_rewrite_rules' );
+            delete_option( 'module_payments' );
             delete_site_option( $this->options_name );
             delete_site_option( 'ct_custom_post_types' );
             delete_site_option( 'ct_custom_taxonomies' );
             delete_site_option( 'ct_custom_fields' );
             delete_site_option( 'ct_flush_rewrite_rules' );
+            delete_site_option( 'allow_per_site_content_types' );
         }
     }
 
@@ -200,6 +208,25 @@ class Directory_Core {
     }
 
     /**
+     * Schedule expiration check for twice daily.
+     *
+     * @return void
+     **/
+    function scheduly_expiration_check() {
+        if ( !wp_next_scheduled( 'check_expiration_dates' ) ) {
+            wp_schedule_event( time(), 'twicedaily', 'check_expiration_dates' );
+        }
+    }
+
+    /**
+     * Check each post from the used post type and compare the expiration date/time
+     * with the current date/time. If the post is expired update it's status.
+     *
+     * @return void
+     **/
+    function check_expiration_dates_callback() {}
+
+    /**
      * Save plugin options.
      *
      * @param  array $params The $_POST array
@@ -224,7 +251,7 @@ class Directory_Core {
      * @param  string|NULL $key The key for that plugin option.
      * @return array $options Plugin options or empty array if no options are found
      **/
-    function get_options( $key = NULL ) {
+    function get_options( $key = null ) {
         $options = get_option( $this->options_name );
         $options = is_array( $options ) ? $options : array();
         /* Check if specific plugin option is requested and return it */
