@@ -44,17 +44,20 @@ class Ratings_Core
 	}
 
     /**
-     * Get post rating. 
+     * Returns rating for post. If user ID is passed it will return the rating 
+     * given by the particular user ( if it exists for the current post ). If no 
+     * user ID is passed the method returns the aggregated rating for the post. 
      * 
      * @param mixed $post_id 
      * @param mixed $user_id 
      * @access public
      * @return string|array
      */
-    function get_rating( $post_id, $user_id = NULL ) {
+    function get_rating( $post_id, $user_id = null ) {
         if ( isset( $user_id ) ) {
             $rating = get_user_meta( $user_id, '_sr_post_vote', true );
-            return $rating[$post_id];
+            if ( isset( $rating[$post_id] ) )  
+                return $rating[$post_id];
         } else {
             $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
             $rating = get_post_meta( $post_id, '_sr_post_rating', true ) ? get_post_meta( $post_id, '_sr_post_rating', true ) : '0';
@@ -75,7 +78,8 @@ class Ratings_Core
         if ( is_user_logged_in() ) {
             $user = wp_get_current_user();
             update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
-        }       $votes = get_post_meta( $post_id, '_sr_post_votes', true );
+        }       
+        $votes = get_post_meta( $post_id, '_sr_post_votes', true );
         $current_rating = get_post_meta( $post_id, '_sr_post_rating', true );
         $votes++;
         $rating = $current_rating + $rating;
@@ -228,8 +232,10 @@ class Ratings_Core
      */
     function render_user_rating() {
         global $post;  
+        // var_dump( $GLOBALS['comment'] );
+        $comment = $GLOBALS['comment'];
         $user = wp_get_current_user();
-        $rating = $this->get_rating( $post->ID, $user->ID ); ?>  
+        $rating = $this->get_rating( $post->ID, $comment->user_id ); ?>  
         <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
         <span>(<?php echo $rating ?>)</span>
             <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
