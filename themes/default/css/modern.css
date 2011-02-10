@@ -12,9 +12,7 @@
 
 /********************************** styles start >>> */
 /********************************** adverts */
-.h-ads {
-background: #eeeeee;
-}
+
 /********************************** comments */
 #comments .title {
 font-size: 16px;
@@ -115,6 +113,7 @@ font-size: 18px;
 font-weight: normal;
 padding: 5px 10px 5px 0px;
 border-bottom: 1px solid #009ec4;
+margin-right: 10px;
 }
 .archive #content .current-cat a {
 color: #009ec4;
@@ -124,6 +123,10 @@ text-decoration: none;
 
 .archive #content .current-cat a:hover {
 text-decoration: underline;
+}
+
+.entry-summary{
+	margin-right: 10px;
 }
 
 .archive #content .current-cat ul li a {
@@ -257,7 +260,7 @@ padding: 6px 10px;
 font-size: 18px;
 }
 
-a.button, input[type=submit], input[type=button],
+a.button, a:link.button, input[type=submit], input[type=button],
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;
