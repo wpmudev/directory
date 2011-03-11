@@ -605,7 +605,7 @@ class Payments_Core {
      * @param  string|NULL $key The key for that plugin option.
      * @return array $options Plugin options or empty array if no options are found
      **/
-    function get_options( $key = NULL ) {
+    function get_options( $key = null ) {
         $options = get_option( $this->options_name );
         $options = is_array( $options ) ? $options : array();
         /* Check if specific plugin option is requested and return it */
