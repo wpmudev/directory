@@ -5,6 +5,7 @@
 ?>
 
 <?php get_header() ?>
+
 <div id="content"><!-- start #content -->
 	<div class="padder">
 		<div class="breadcrumbtrail">

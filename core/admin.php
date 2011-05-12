@@ -13,40 +13,47 @@ class Directory_Core_Admin extends Directory_Core {
 
     /**
      * Constructor.
-     **/
+     */
     function Directory_Core_Admin() {
-        add_action( 'admin_init', array( &$this, 'admin_head' ) );
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
         add_action( 'render_admin_navigation', array( &$this, 'render_admin_navigation' ) );
-        add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
+
+        // add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
+
+		// TODO Fix link 
+        $plugin = plugin_basename(__FILE__);
+        add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
     }
 
     /**
      * Register all admin menues.
      *
      * @return void
-     **/
+     */
     function admin_menu() {
-		add_submenu_page( 'edit.php?post_type=listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_admin_requests' ) );
+		$settings_page = add_submenu_page( 'edit.php?post_type=listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
+
+		// Hook styles and scripts 
+        add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_styles' ) );
+        add_action( 'admin_print_scripts-' . $settings_page, array( &$this, 'enqueue_scripts' ) );
     }
 
     /**
-     * Get page hook and hook ct_core_enqueue_styles() and ct_core_enqueue_scripts() to it.
      *
-     * @return void
-     **/
-    function admin_head() {
-        $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : null;
-        $hook = get_plugin_page_hook( $page, 'settings' );
-        add_action( 'admin_print_styles-' .  $hook, array( &$this, 'enqueue_styles' ) );
-        add_action( 'admin_print_scripts-' . $hook, array( &$this, 'enqueue_scripts' ) );
+     * @param <type> $links
+     * @return <type>
+     */
+    function plugin_settings_link( $links ) {
+        $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
+        array_unshift( $links, $settings_link );
+        return $links;
     }
 
     /**
      * Load styles on plugin admin pages only.
      *
      * @return void
-     **/
+     */
     function enqueue_styles() {
         wp_enqueue_style( 'dp-admin-styles',
                            $this->plugin_url . 'ui-admin/css/ui-styles.css');
@@ -56,7 +63,7 @@ class Directory_Core_Admin extends Directory_Core {
      * Load scripts on plugin specific admin pages only.
      *
      * @return void
-     **/
+     */
     function enqueue_scripts() {
         wp_enqueue_script( 'dp-admin-scripts',
                             $this->plugin_url . 'ui-admin/js/ui-scripts.js',
@@ -64,32 +71,35 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
     /**
-     * Loads admin page templates based on $_GET request values and passes variables.
+     * Handles $_GET and $_POST requests for the settings page. 
      *
-     * @return HTML
-     **/
-    function handle_admin_requests() {
-        if ( $_GET['post_type'] == 'listing' && $_GET['page'] == 'settings' ) {
-            if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ) {
-                if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
-                    if ( isset( $_POST['save'] ) ) {
-                        $this->save_options( $_POST );
-                    }
-                    $this->render_admin( 'settings-ads' );
-                } else {
-                    if ( isset( $_POST['save'] ) ) {
-                        /* Set network-wide content types */
-                        if ( !empty( $_POST['allow_per_site_content_types'] ) )
-                            update_site_option( 'allow_per_site_content_types', true );
-                        else
-                            update_site_option( 'allow_per_site_content_types', false );
-                        $this->save_options( $_POST );
-                    }
-                    $this->render_admin( 'settings-general' );
-                }
-            }
-        }
-        do_action('handle_module_admin_requests');
+     * @return void
+     */
+    function handle_settings_page_requests() {
+		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ) {
+
+			if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
+				if ( isset( $_POST['save'] ) ) {
+					$this->save_admin_options( $_POST );
+				}
+
+				$this->render_admin( 'settings-ads' );
+			} else {
+				if ( isset( $_POST['save'] ) ) {
+					// Set network-wide content types 
+					if ( !empty( $_POST['allow_per_site_content_types'] ) )
+						update_site_option( 'allow_per_site_content_types', true );
+					else
+						update_site_option( 'allow_per_site_content_types', false );
+
+					$this->save_admin_options( $_POST );
+				}
+
+				$this->render_admin( 'settings-general' );
+			}
+		}
+
+        do_action('directory_handle_settings_page_requests');
     }
 
     /**
@@ -108,15 +118,40 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
     /**
-     * Render admin navigation.
-     */
-    function render_admin_navigation( $sub ) {
-        $this->render_admin( 'navigation', array( 'sub' => $sub ) );
-    }
+	 * Renders an admin section of display code.
+	 *
+	 * @param  string $name Name of the admin file(without extension)
+	 * @param  string $vars Array of variable name=>value that is available to the display code(optional)
+	 * @return void
+	 **/
+    function render_admin( $name, $vars = array() ) {
+		foreach ( $vars as $key => $val )
+			$$key = $val;
+		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
+			include "{$this->plugin_dir}ui-admin/{$name}.php";
+		else
+			echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
+	}
 
+    /**
+     * Save plugin options.
+     *
+     * @param  array $params The $_POST array
+     * @return die() if _wpnonce is not verified
+     **/
+    function save_admin_options( $params ) {
+        if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
+            /* Remove unwanted parameters */
+            unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
+            /* Update options by merging the old ones */
+            $options = $this->get_options();
+            $options = array_merge( $options, array( $params['key'] => $params ) );
+            update_option( $this->options_name, $options );
+        } else {
+            die( __( 'Security check failed!', $this->text_domain ) );
+        }
+    }
 }
 
 /* Initiate Admin */
 new Directory_Core_Admin();
-
-?>

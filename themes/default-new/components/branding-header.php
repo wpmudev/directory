@@ -6,4 +6,4 @@
     <div id="h-banner"><?php if ( isset( $options['ads_settings']['header_ad_code'] ) ) echo $options['ads_settings']['header_ad_code']; ?></div>
 	<div class="clear"></div>
 </div>
-	<!-- end branding -->
+<!-- end branding -->

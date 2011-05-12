@@ -15,37 +15,53 @@ class Directory_Core {
     /** @var string $plugin_dir Path to plugin directory */
     var $plugin_dir = DP_PLUGIN_DIR;
     /** @var string $text_domain The text domain for strings localization */
-    var $text_domain = DP_TEXTDOMAIN;
+    var $text_domain = DP_TEXT_DOMAIN;
     /** @var string Name of options DB entry */
     var $options_name = DP_OPTIONS_NAME;
     /** @var string User role */
-    var $user_role = 'dp_member';
+    var $user_role = 'dp_member'; // TODO Remove var
     /** @var string Main plugin menu slug */
-    var $admin_menu_slug = 'dp_main';
+    var $admin_menu_slug = 'dp_main'; // TODO Remove var
 
     /**
      * Constructor.
      */
     function Directory_Core() {
+        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
+        register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
 
-		// TODO: Flush rewrite rules on plugin activation
+        register_theme_directory( $this->plugin_dir . 'themes' );
 
-        add_action( 'init', array( &$this, 'init' ), 5 );
+		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
         add_action( 'plugins_loaded', array( &$this, 'init_modules' ) );
-        add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
+		add_action( 'init', array( &$this, 'init' ) );
+
+		// TODO Uncomment
+		// if ( is_admin() )
+			// return;
+
+		// add_action( 'template_redirect', array( &$this, 'load_default_style' ), 11 );
+		add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+
+		add_filter( 'single_template', array( &$this, 'handle_template' ) );
+		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
+		
+		// TODO Clean that shit
         add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
         add_action( 'init', array( &$this, 'roles' ) );
         add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
-        add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
         add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
+        add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
         add_filter( 'sort_custom_taxonomies', array( &$this, 'sort_custom_taxonomies' ) );
-        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
-        register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
-        register_theme_directory( $this->plugin_dir . 'themes' );
-        $plugin = plugin_basename(__FILE__);
-        add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
+    }
 
-		add_filter( 'single_template', array( &$this, 'handle_template' ) );
+    /**
+     * Loads "{$text_domain}-[xx_XX].mo" language file from the "languages" directory
+	 *
+     * @return void
+     */
+    function load_plugin_textdomain() {
+        load_plugin_textdomain( $this->text_domain, null, plugin_basename( $this->plugin_dir . 'languages' ) );
     }
 
     /**
@@ -73,7 +89,7 @@ class Directory_Core {
 		) );
 
 		register_taxonomy( 'listing_category', 'listing', array(
-			'rewrite' => array( 'slug' => 'listings/category', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'listings/category', 'with_front' => false, 'hierarchical' => true ),
 			'hierarchical' => true,
 			'labels' => array(
 				'name'			=> __( 'Listing Categories', $this->text_domain ),
@@ -118,15 +134,16 @@ class Directory_Core {
     }
 
     /**
-     * Initiate plugin modules.
-     *
+     * Init plugin modules 
+     * 
+     * @access public
      * @return void
-      **/
+	 *
+	 * TODO Clean this
+     */
     function init_modules() {
         /* Initiate Data Imports */
         new Directory_Core_Data();
-        /* Initiate Content Types Module */
-        // new Content_Types_Core( $this->admin_menu_slug );
         /* Initiate Payments Module */
         new Payments_Core( 'settings', $this->user_role );
         /* Initiate Ratings Module */
@@ -134,33 +151,24 @@ class Directory_Core {
     }
 
     /**
-     * Loads "directory-[xx_XX].mo" language file from the "languages" directory
-     * @todo To do something! 
-     * @return void
-     **/
-    function load_plugin_textdomain() {
-        $plugin_dir = $this->plugin_dir . 'languages';
-        load_plugin_textdomain( 'directory', null, $plugin_dir );
-    }
-
-    /**
-     * Update plugin versions
+     * Fire on plugin activation.
      *
      * @return void
-     **/
+     */
     function plugin_activate() {
 		$this->init();
 		flush_rewrite_rules();
     }
 
     /**
-     * Deactivate plugin. If $this->flush_plugin_data is set to "true"
+	 * Fire on plugin deactivation. 
+	 * If $this->flush_plugin_data is set to "true"
      * all plugin data will be deleted
      *
      * @return void
      */
     function plugin_deactivate() {
-        /* if true all plugin data will be deleted */
+		// if true all plugin data will be deleted 
         if ( false ) {
             delete_option( $this->options_name );
             delete_option( 'ct_custom_post_types' );
@@ -177,17 +185,36 @@ class Directory_Core {
         }
     }
 
-    /**
-     *
-     * @param <type> $links
-     * @return <type>
-     */
-    function plugin_settings_link( $links ) {
-        $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
-        array_unshift( $links, $settings_link );
-        return $links;
-    }
+	/**
+	 * Redirect templates using $wp_query.
+	 */
+	function template_redirect() {
+		global $wp_query;
 
+		// if ( is_qa_page( 'ask' ) )
+			// $this->load_template( 'ask-question.php' );
+
+		// if ( is_qa_page( 'edit' ) ) {
+			// $post_type = $wp_query->posts[0]->post_type;
+			// $this->load_template( "edit-{$post_type}.php" );
+		// }
+
+		// if ( is_qa_page( 'user' ) ) {
+			// $wp_query->queried_object_id = (int) $wp_query->get('author');
+			// $wp_query->queried_object = get_userdata( $wp_query->queried_object_id );
+			// $wp_query->is_post_type_archive = false;
+
+			// $this->load_template( 'user-question.php' );
+		// }
+
+		// if ( ( is_qa_page( 'archive' ) && is_search() ) || is_qa_page( 'unanswered' ) )
+			// $this->load_template( 'archive-question.php' );
+
+		// Redirect template loading to archive-listing.php rather than to archive.php
+		if ( is_dir_page( 'tag' ) || is_dir_page( 'category' ) ) {
+			$wp_query->set( 'post_type', 'listing' );
+		}
+	}
 
 	/**
 	 * Loads default templates if the current theme doesn't have them.
@@ -195,16 +222,14 @@ class Directory_Core {
 	function handle_template( $path ) {
 		global $wp_query;
 
-		// $this->_load_default_style();
-
-		// if ( is_qa_page( 'archive' ) && is_search() )
-			// $this->load_template( 'archive-question.php' );
+		if ( 'listing' != get_query_var( 'post_type' ) )
+			return $path;
 
 		$type = reset( explode( '_', current_filter() ) );
 
 		$file = basename( $path );
 
-		if ( 'listing' == get_query_var( 'post_type' ) && "$type.php" == $file ) {
+		if ( empty( $path ) || "$type.php" == $file ) {
 			// A more specific template was not found, so load the default one
 			$path = $this->plugin_dir . "templates/$type-listing.php";
 		}
@@ -227,12 +252,30 @@ class Directory_Core {
 	}
 
 	/**
-	 * Enqueue default CSS.
+	 * Enqueue default CSS and JS.
 	 */
-	function _load_default_style() {
-		if ( is_qa_page() && !current_theme_supports( 'qa_section' ) ) {
-			wp_enqueue_style( 'qa-section', $this->plugin_dir . "templates/css/general.css" );
-		}
+	function load_default_style() {
+		// if ( !is_dir_page() )
+			// return;
+
+		// if ( !current_theme_supports( 'qa_style' ) ) {
+			// wp_enqueue_style( 'qa-section', QA_PLUGIN_URL . 'default-templates/css/general.css', array(), QA_VERSION );
+		// }
+
+		// if ( !current_theme_supports( 'qa_script' ) ) {
+			// if ( is_qa_page( 'ask' ) || is_qa_page( 'edit' ) || is_qa_page( 'single' ) ) {
+				// wp_enqueue_style( 'cleditor', QA_PLUGIN_URL . 'default-templates/js/cleditor/jquery.cleditor.css', array(), '1.3.0-l10n' );
+
+				// wp_enqueue_script( 'cleditor', QA_PLUGIN_URL . 'default-templates/js/cleditor/jquery.cleditor.js', array( 'jquery' ), '1.3.0-l10n' );
+
+				// wp_enqueue_script( 'suggest' );
+			// }
+
+			// wp_enqueue_script( 'qa-init', QA_PLUGIN_URL . 'default-templates/js/init.js', array('jquery'), QA_VERSION );
+			// wp_localize_script( 'qa-init', 'QA_L10N', array(
+				// 'ajaxurl' => admin_url( 'admin-ajax.php' )
+			// ) );
+		// }
 	}
 
     /**
@@ -341,25 +384,6 @@ class Directory_Core {
     function check_expiration_dates_callback() {}
 
     /**
-     * Save plugin options.
-     *
-     * @param  array $params The $_POST array
-     * @return die() if _wpnonce is not verified
-     **/
-    function save_options( $params ) {
-        if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
-            /* Remove unwanted parameters */
-            unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
-            /* Update options by merging the old ones */
-            $options = $this->get_options();
-            $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_option( $this->options_name, $options );
-        } else {
-            die( __( 'Security check failed!', $this->text_domain ) );
-        }
-    }
-
-    /**
      * Get plugin options.
      *
      * @param  string|NULL $key The key for that plugin option.
@@ -374,37 +398,7 @@ class Directory_Core {
         else
             return $options;
     }
-
-    /**
-	 * Renders an admin section of display code.
-	 *
-	 * @param  string $name Name of the admin file(without extension)
-	 * @param  string $vars Array of variable name=>value that is available to the display code(optional)
-	 * @return void
-	 **/
-    function render_admin( $name, $vars = array() ) {
-		foreach ( $vars as $key => $val )
-			$$key = $val;
-		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
-			include "{$this->plugin_dir}ui-admin/{$name}.php";
-		else
-			echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
-	}
-
 }
 
 /* Initiate Class */
-if ( class_exists('Directory_Core') )
-	$__directory_core = new Directory_Core();
-
-/* Update Notifications Notice */
-// if ( !function_exists( 'wdp_un_check' ) ):
-// function wdp_un_check() {
-    // if ( !class_exists('WPMUDEV_Update_Notifications') && current_user_can('edit_users') )
-        // echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</a></p></div>';
-// }
-// add_action( 'admin_notices', 'wdp_un_check', 5 );
-// add_action( 'network_admin_notices', 'wdp_un_check', 5 );
-// endif;
-
-?>
+new Directory_Core();

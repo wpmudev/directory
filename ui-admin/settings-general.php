@@ -8,7 +8,8 @@ $allow_per_site_content_types = get_site_option('allow_per_site_content_types');
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
 
-    <?php $this->render_admin( 'navigation', array( 'sub' => 'general' ) ); ?>
+    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'general', 'sub' => 'general' ) ); ?>
+	<?php $this->render_admin( 'message' ); ?>
     
     <form action="" method="post" class="dp-general">
 

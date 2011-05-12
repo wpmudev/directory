@@ -1,25 +1,22 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $settings_page = 'settings';  ?>
+<?php $href_part = 'edit.php?post_type=listing'; ?>
 
 <h2>
-    <?php if ( isset( $_GET['page'] ) && $_GET['page'] == $settings_page ): ?>
-        <a class="nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) )  echo 'nav-tab-active'; ?>" href="admin.php?page=<?php echo $settings_page; ?>&tab=general&sub=general"><?php _e( 'General', $this->text_domain ); ?></a>
-    <?php endif; ?>
+<?php if ( $page == 'settings' ): ?>
+	<a class="nav-tab <?php if ( $tab == 'general' || empty( $tab ) ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, $tab ); ?>"><?php _e( 'General', $this->text_domain ); ?></a>
+<?php endif; ?>
 
-    <?php do_action('render_admin_navigation_tabs'); ?>
-        
+<?php do_action('directory_render_admin_navigation_tabs', $href_part, $page, $tab ); ?>
 </h2>
 
-<?php if ( isset( $_GET['page'] ) && $_GET['page'] == $settings_page && isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ): ?>
+<?php if ( $page == 'settings' && $tab == 'general' || empty( $tab ) ): ?>
 <ul>
-    <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'general' || empty( $_GET['tab'] ) )   echo 'current'; ?>" href="admin.php?page=<?php echo $settings_page; ?>&tab=general&sub=general"><?php _e( 'General Settings', $this->text_domain ); ?></a> | </h3></li>
-    <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) echo 'current'; ?>" href="admin.php?page=<?php echo $settings_page; ?>&tab=general&sub=ads"><?php _e( 'Advertising', $this->text_domain ); ?></a></h3></li>
+    <li class="subsubsub"><h3><a class="<?php if ( $sub == 'general' || empty( $sub ) ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, $tab, 'general' ); ?>"><?php _e( 'General Settings', $this->text_domain ); ?></a> | </h3></li>
+    <li class="subsubsub"><h3><a class="<?php if ( $sub == 'ads' ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, $tab, 'ads' ); ?>"><?php _e( 'Advertising', $this->text_domain ); ?></a></h3></li>
 </ul>
 <?php endif; ?>
 
-<?php do_action('render_admin_navigation_subs'); ?>
+<?php do_action('directory_render_admin_navigation_subs', $href_part, $page, $tab, $sub ); ?>
 
 <div class="clear"></div>
-
-<?php $this->render_admin( 'message' ); ?>

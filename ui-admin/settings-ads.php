@@ -6,7 +6,8 @@
 
     <?php screen_icon('options-general'); ?>
 
-    <?php $this->render_admin( 'navigation', array( 'sub' => 'ads' ) ); ?>
+    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'general', 'sub' => 'ads' ) ); ?>
+	<?php $this->render_admin( 'message' ); ?>
 
     <form action="" method="post" class="dp-ads">
         

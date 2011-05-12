@@ -8,55 +8,81 @@
 /* = General Template Tags
 -------------------------------------------------------------- */
 
-/**
- * the_listing_tags 
- * 
- * @param string $before 
- * @param string $sep 
- * @param string $after 
- * @access public
- * @return void
- */
-function the_listing_tags( $before = '<div class="listing-tags">', $sep = ' ', $after = '</div>' ) {
-	the_terms( 0, 'listing_tag', $before, $sep, $after );
-}
-
-/**
- * Display Categories on Home
- *
- * @param string $section The section where these will be loded.
- * @return string(HTML)
- **/
-function the_listing_categories() {
+function the_dir_categories_home() {
 	$args = array(
-		'orderby'            => 'name',
-		'order'              => 'ASC',
-		'show_last_update'   => 0,
-		'style'              => 'list',
-		'show_count'         => 0,
-		'hide_empty'         => 0,
-		'use_desc_for_title' => 0,
-		'child_of'           => 0,
-		'hierarchical'       => true,
-		'title_li'           => "<h2>Example</h2>",
-		'number'             => 10,
-		'echo'               => 1,
-		'depth'              => 1,
-		'current_category'   => 0,
-		'pad_counts'         => 1,
-		'taxonomy'           => 'listing_category' 
-		// optional arguments:
-		// 'show_option_all'    => ,
-		// 'feed'               => ,
-		// 'feed_type'          => ,
-		// 'feed_image'         => ,
-		// 'exclude'            => ,
-		// 'exclude_tree'       => ,
-		// 'include'            => ,
-		// 'walker'             => 'Walker_Category'
+		'orderby'      => 'name',
+		'order'        => 'ASC',
+		'hide_empty'   => 0,
+		'hierarchical' => 1,
+		'number'       => 10,
+		'taxonomy'     => 'listing_category',
+		'pad_counts'   => 1 
 	);
-	wp_list_categories( $args );
+
+	$categories = get_categories( $args );  
+
+	$output = '<ul>';
+
+	foreach( $categories as $category ) { 		
+
+		$output .= '<li>';
+		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DP_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> </h2>';
+		// $output .= '<p> Description:'. $category->description . '</p>';
+		// $output .= '<p> Post Count: '. $category->count . '</p>';  
+
+		$args = array(
+			'type'         => 'post',
+			'parent'       => $category->term_id,
+			'orderby'      => 'name',
+			'order'        => 'ASC',
+			'hide_empty'   => 0,
+			'hierarchical' => 1,
+			'number'       => 10,
+			'taxonomy'     => 'listing_category',
+			'pad_counts'   => 1 
+		);
+
+		$sub_categories = get_categories( $args );
+
+		foreach ( $sub_categories as $sub_category ) {
+
+			$output .= '<a href="' . get_term_link( $sub_category ) . '" title="' . sprintf( __( 'View all posts in %s', DP_TEXT_DOMAIN ), $sub_category->name ) . '" ' . '>' . $sub_category->name.'</a>(' . $sub_category->count . ') ';
+		}
+
+		$output .= '</li>';
+	}
+
+	$output .= '</ul>';
+
+	echo $output;
 }
 
+function the_dir_categories_archive() {
+	$args = array(
+		'orderby'      => 'name',
+		'order'        => 'ASC',
+		'hide_empty'   => 0,
+		'hierarchical' => 1,
+		'number'       => 10,
+		'taxonomy'     => 'listing_category',
+		'pad_counts'   => 1 
+	);
 
-?>
+	$categories = get_categories( $args );  
+
+	$output = '<ul>';
+
+	foreach( $categories as $category ) { 		
+
+		$output .= '<li>';
+		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DP_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> </h2>';
+		// $output .= '<p> Description:'. $category->description . '</p>';
+		// $output .= '<p> Post Count: '. $category->count . '</p>';  
+
+		$output .= '</li>';
+	}
+
+	$output .= '</ul>';
+
+	echo $output;
+}
