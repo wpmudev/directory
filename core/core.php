@@ -1,7 +1,5 @@
 <?php
 
-if ( !class_exists('Directory_Core') ):
-
 /**
  * Directory_Core 
  * 
@@ -12,18 +10,16 @@ if ( !class_exists('Directory_Core') ):
  */
 class Directory_Core {
 
-    /** @var string $plugin_version plugin version */
-    var $plugin_version = DP_VERSION;
     /** @var string $plugin_url Plugin URL */
     var $plugin_url = DP_PLUGIN_URL;
     /** @var string $plugin_dir Path to plugin directory */
     var $plugin_dir = DP_PLUGIN_DIR;
     /** @var string $text_domain The text domain for strings localization */
-    var $text_domain = 'directory';
+    var $text_domain = DP_TEXTDOMAIN;
+    /** @var string Name of options DB entry */
+    var $options_name = DP_OPTIONS_NAME;
     /** @var string User role */
     var $user_role = 'dp_member';
-    /** @var string Name of options DB entry */
-    var $options_name = 'dp_options';
     /** @var string Main plugin menu slug */
     var $admin_menu_slug = 'dp_main';
 
@@ -31,17 +27,11 @@ class Directory_Core {
      * Constructor.
      */
     function Directory_Core() {
-        $this->init();
-    }
 
-    /**
-     * Intiate plugin.
-     *
-     * @return void
-     **/
-    function init() {
+		// TODO: Flush rewrite rules on plugin activation
+
+        add_action( 'init', array( &$this, 'init' ), 5 );
         add_action( 'plugins_loaded', array( &$this, 'init_modules' ) );
-        add_action( 'plugins_loaded', array( &$this, 'init_vars' ) );
         add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
         add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
         add_action( 'init', array( &$this, 'roles' ) );
@@ -54,14 +44,78 @@ class Directory_Core {
         register_theme_directory( $this->plugin_dir . 'themes' );
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
+
+		add_filter( 'single_template', array( &$this, 'handle_template' ) );
     }
 
     /**
-     * Initiate variables.
+     * Intiate plugin.
      *
      * @return void
-     **/
-    function init_vars() {}
+     */
+    function init() {
+		register_taxonomy( 'listing_tag', 'listing', array(
+			'rewrite' => array( 'slug' => 'listings/tag', 'with_front' => false ),
+			'labels' => array(
+				'name'			=> __( 'Listing Tags', $this->text_domain ),
+				'singular_name'	=> __( 'Listing Tag', $this->text_domain ),
+				'search_items'	=> __( 'Search Listing Tags', $this->text_domain ),
+				'popular_items'	=> __( 'Popular Listing Tags', $this->text_domain ),
+				'all_items'		=> __( 'All Listing Tags', $this->text_domain ),
+				'edit_item'		=> __( 'Edit Listing Tag', $this->text_domain ),
+				'update_item'	=> __( 'Update Listing Tag', $this->text_domain ),
+				'add_new_item'	=> __( 'Add New Listing Tag', $this->text_domain ),
+				'new_item_name'	=> __( 'New Listing Tag Name', $this->text_domain ),
+				'separate_items_with_commas'	=> __( 'Separate listing tags with commas', $this->text_domain ),
+				'add_or_remove_items'			=> __( 'Add or remove listing tags', $this->text_domain ),
+				'choose_from_most_used'			=> __( 'Choose from the most used listing tags', $this->text_domain ),
+			)
+		) );
+
+		register_taxonomy( 'listing_category', 'listing', array(
+			'rewrite' => array( 'slug' => 'listings/category', 'with_front' => false ),
+			'hierarchical' => true,
+			'labels' => array(
+				'name'			=> __( 'Listing Categories', $this->text_domain ),
+				'singular_name'	=> __( 'Listing Category', $this->text_domain ),
+				'search_items'	=> __( 'Search Listing Categories', $this->text_domain ),
+				'popular_items'	=> __( 'Popular Listing Categories', $this->text_domain ),
+				'all_items'		=> __( 'All Listing Categories', $this->text_domain ),
+				'parent_item'	=> __( 'Parent Category', $this->text_domain ),
+				'edit_item'		=> __( 'Edit Listing Category', $this->text_domain ),
+				'update_item'	=> __( 'Update Listing Category', $this->text_domain ),
+				'add_new_item'	=> __( 'Add New Listing Category', $this->text_domain ),
+				'new_item_name'	=> __( 'New Listing Category', $this->text_domain ),
+				'parent_item_colon'		=> __( 'Parent Category:', $this->text_domain ),
+				'add_or_remove_items'	=> __( 'Add or remove listing categories', $this->text_domain ),
+			)
+		) );
+
+		register_post_type( 'listing', array(
+			'public' => true,
+			'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
+			'has_archive' => true,
+
+			'capability_type' => 'listing',
+			'capabilities' => array( 'read' => 'read_listings' ),
+			'map_meta_cap' => true,
+
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions' ),
+
+			'labels' => array(
+				'name'			=> __('Listings', $this->text_domain ),
+				'singular_name'	=> __('Listing', $this->text_domain ),
+				'add_new'		=> __('Add New', $this->text_domain ),
+				'add_new_item'	=> __('Add New Listing', $this->text_domain ),
+				'edit_item'		=> __('Edit Listing', $this->text_domain ),
+				'new_item'		=> __('New Listing', $this->text_domain ),
+				'view_item'		=> __('View Listing', $this->text_domain ),
+				'search_items'	=> __('Search Listings', $this->text_domain ),
+				'not_found'		=> __('No listings found', $this->text_domain ),
+				'not_found_in_trash'	=> __('No listings found in trash', $this->text_domain ),
+			)
+		) );
+    }
 
     /**
      * Initiate plugin modules.
@@ -69,14 +123,12 @@ class Directory_Core {
      * @return void
       **/
     function init_modules() {
-        /* Initiate Admin */
-        new Directory_Core_Admin();
         /* Initiate Data Imports */
         new Directory_Core_Data();
         /* Initiate Content Types Module */
-        new Content_Types_Core( $this->admin_menu_slug );
+        // new Content_Types_Core( $this->admin_menu_slug );
         /* Initiate Payments Module */
-        new Payments_Core( $this->admin_menu_slug, $this->user_role );
+        new Payments_Core( 'settings', $this->user_role );
         /* Initiate Ratings Module */
         new Ratings_Core();
     }
@@ -97,11 +149,8 @@ class Directory_Core {
      * @return void
      **/
     function plugin_activate() {
-        /* Update plugin versions */
-        $version = array( 'version' => $this->plugin_version );
-        $options = $this->get_options();
-        $options = isset( $options['version'] ) ? array_merge( $options, $version ) : $version;
-        update_option( $this->options_name, $options );
+		$this->init();
+		flush_rewrite_rules();
     }
 
     /**
@@ -139,12 +188,61 @@ class Directory_Core {
         return $links;
     }
 
+
+	/**
+	 * Loads default templates if the current theme doesn't have them.
+	 */
+	function handle_template( $path ) {
+		global $wp_query;
+
+		// $this->_load_default_style();
+
+		// if ( is_qa_page( 'archive' ) && is_search() )
+			// $this->load_template( 'archive-question.php' );
+
+		$type = reset( explode( '_', current_filter() ) );
+
+		$file = basename( $path );
+
+		if ( 'listing' == get_query_var( 'post_type' ) && "$type.php" == $file ) {
+			// A more specific template was not found, so load the default one
+			$path = $this->plugin_dir . "templates/$type-listing.php";
+		}
+
+		return $path;
+	}
+
+	/**
+	 * Load a template, with fallback to default-templates.
+	 */
+	function load_template( $name ) {
+		$path = locate_template( $name );
+
+		if ( !$path ) {
+			$path = $this->plugin_dir . "templates/$name";
+		}
+
+		load_template( $path );
+		die;
+	}
+
+	/**
+	 * Enqueue default CSS.
+	 */
+	function _load_default_style() {
+		if ( is_qa_page() && !current_theme_supports( 'qa_section' ) ) {
+			wp_enqueue_style( 'qa-section', $this->plugin_dir . "templates/css/general.css" );
+		}
+	}
+
     /**
+	 * TODO: Remove roles entirely, use capabilities instead
+	 *
      * Add custom role for members. Add new capabilities for admin.
      *
      * @global $wp_roles
      * @return void
-     **/
+     */
     function roles() {
         global $wp_roles;
 
@@ -294,7 +392,6 @@ class Directory_Core {
 	}
 
 }
-endif;
 
 /* Initiate Class */
 if ( class_exists('Directory_Core') )
