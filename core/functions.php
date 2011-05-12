@@ -11,7 +11,7 @@
  * @param string $type The type of page
  * @return bool
  */
-function is_dir_page( $type = '' ) {
+function is_dr_page( $type = '' ) {
 	static $flags;
 
 	if ( is_404() )
@@ -40,7 +40,7 @@ function is_dir_page( $type = '' ) {
  * @access public
  * @return void
  */
-function get_dir_term_parents( $term ) {
+function get_dr_term_parents( $term ) {
 	static $terms = array();
 
 	array_unshift( $terms, $term );

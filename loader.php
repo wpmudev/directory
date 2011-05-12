@@ -28,29 +28,25 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version  
-define( 'DIR_VERSION', '1.0.8' );
+define( 'DR_VERSION', '1.0.8' );
 // define the plugin folder url 
-define( 'DIR_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define( 'DR_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // define the plugin folder dir 
-define( 'DIR_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define( 'DR_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // The text domain for strings localization
-define( 'DIR_TEXT_DOMAIN', 'dir_text_domain' );
+define( 'DR_TEXT_DOMAIN', 'dr_text_domain' );
 // The key for the options array
-define( 'DIR_OPTIONS_NAME', 'dir_options' );
+define( 'DR_OPTIONS_NAME', 'dr_options' );
 
 // include core files 
 include_once 'core/core.php';
-include_once 'core/data.php';
 include_once 'core/functions.php';
 include_once 'core/template-tags.php';
+include_once 'core/payments.php';
+include_once 'core/ratings.php';
 
 if ( is_admin() )
 	include_once 'core/admin.php';
-
-// include "Payments" module 
-include_once 'modules/payments/loader.php';
-// include "Ratings" module 
-include_once 'modules/ratings/loader.php';
 
 /* Update Notifications Notice */
 // if ( !function_exists( 'wdp_un_check' ) ):

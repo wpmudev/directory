@@ -1,29 +1,60 @@
 <?php
 
 /**
- * Directory_Core_Admin 
+ * DR_Admin 
  * 
- * @uses Directory_Core
- * @package Directory
+ * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Directory_Core_Admin extends Directory_Core {
+class DR_Admin extends DR_Core {
+
+	/** @var array Holds all capability names, along with descriptions. */
+	var $capability_map;
 
     /**
      * Constructor.
      */
-    function Directory_Core_Admin() {
-        add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
-        add_action( 'render_admin_navigation', array( &$this, 'render_admin_navigation' ) );
+    function DR_Admin() {
+		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_defaults' ) );
 
-        // add_filter( 'allow_per_site_content_types', array( &$this, 'allow_per_site_content_types' ) );
+        add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
+
+		add_action( 'wp_ajax_dr-get-caps', array( &$this, 'ajax_get_caps' ) );
+		add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
+
+		// Render admin via action hook. Used mainly by modules.
+		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
 
 		// TODO Fix link 
         $plugin = plugin_basename(__FILE__);
         add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
+
+		$this->capability_map = array(
+			'read_listings'             => __( 'View listings.', $this->text_domain ),
+			'publish_listings'          => __( 'Add listings.', $this->text_domain ),
+			'edit_published_listings'   => __( 'Edit listings.', $this->text_domain ),
+			'delete_published_listings' => __( 'Delete listings.', $this->text_domain ),
+			'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
+			'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain )
+		);
     }
+
+	/**
+	 * Initiate admin default settings.
+	 *
+	 * @return void
+	 */
+	function init_defaults() {
+		global $wp_roles;
+		
+		foreach ( array_keys( $this->capability_map ) as $capability )
+			$wp_roles->add_cap( 'administrator', $capability );
+
+		// add option to the autoload list
+		add_option( $this->options_name, array() );
+	}
 
     /**
      * Register all admin menues.
@@ -39,9 +70,11 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
     /**
-     *
-     * @param <type> $links
-     * @return <type>
+     * plugin_settings_link 
+     * 
+     * @param mixed $links 
+     * @access public
+     * @return void
      */
     function plugin_settings_link( $links ) {
         $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
@@ -55,7 +88,7 @@ class Directory_Core_Admin extends Directory_Core {
      * @return void
      */
     function enqueue_styles() {
-        wp_enqueue_style( 'dp-admin-styles',
+        wp_enqueue_style( 'dr-admin-styles',
                            $this->plugin_url . 'ui-admin/css/ui-styles.css');
     }
 
@@ -65,7 +98,7 @@ class Directory_Core_Admin extends Directory_Core {
      * @return void
      */
     function enqueue_scripts() {
-        wp_enqueue_script( 'dp-admin-scripts',
+        wp_enqueue_script( 'dr-admin-scripts',
                             $this->plugin_url . 'ui-admin/js/ui-scripts.js',
                             array( 'jquery' ) );
     }
@@ -86,36 +119,100 @@ class Directory_Core_Admin extends Directory_Core {
 				$this->render_admin( 'settings-ads' );
 			} else {
 				if ( isset( $_POST['save'] ) ) {
-					// Set network-wide content types 
-					if ( !empty( $_POST['allow_per_site_content_types'] ) )
-						update_site_option( 'allow_per_site_content_types', true );
-					else
-						update_site_option( 'allow_per_site_content_types', false );
-
 					$this->save_admin_options( $_POST );
 				}
 
 				$this->render_admin( 'settings-general' );
 			}
+		} elseif ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) {
+
+			if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) {
+
+				$this->render_admin( 'payments-authorizenet' );
+
+			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'paypal' ) {
+				if ( isset( $_POST['save'] ) ) {
+					$this->save_admin_options( $_POST );
+				}
+
+				$this->render_admin( 'payments-paypal' );
+			} else {
+				if ( isset( $_POST['save'] ) ) {
+					$this->save_admin_options( $_POST );
+				}
+
+				$this->render_admin( 'payments-settings' );
+			}
 		}
 
-        do_action('directory_handle_settings_page_requests');
+        do_action('dr_handle_settings_page_requests');
     }
 
-    /**
-     * Allow users to be able to register content types for their sites or
-     * disallow it ( only super admin can add content types )
-     *
-     * @param <type> $bool
-     * @return bool 
-     */
-    function allow_per_site_content_types( $bool ) {
-        $option = get_site_option('allow_per_site_content_types');
-        if ( !empty( $option ) )
-            return true;
-        else
-            return $bool;
-    }
+	/**
+	 * Ajax callback which gets the post types associated with each page.
+	 *
+	 * @return JSON Encoded string
+	 */
+	function ajax_get_caps() {
+		if ( !current_user_can( 'manage_options' ) )
+			die(-1);
+
+		global $wp_roles;
+
+		$role = $_POST['role'];
+
+		if ( !$wp_roles->is_role( $role ) )
+			die(-1);
+
+		$role_obj = $wp_roles->get_role( $role );
+
+		$response = array_intersect( array_keys( $role_obj->capabilities ), array_keys( $this->capability_map ) );
+		$response = array_flip( $response );
+
+		// response output
+		header( "Content-Type: application/json" );
+		echo json_encode( $response );
+		die();
+	}
+
+	/**
+	 * Save admin options.
+	 *
+	 * @return void die() if _wpnonce is not verified
+	 */
+	function ajax_save() {
+		check_admin_referer( 'dir-verify' );
+
+		if ( !current_user_can( 'manage_options' ) )
+			die(-1);
+
+		// add/remove capabilities
+		global $wp_roles;
+
+		$role = $_POST['roles'];
+
+		$all_caps = array_keys( $this->capability_map );
+		$to_add = array_keys( $_POST['capabilities'] );
+		$to_remove = array_diff( $all_caps, $to_add );
+
+		foreach ( $to_remove as $capability ) {
+			$wp_roles->remove_cap( $role, $capability );
+		}
+
+		foreach ( $to_add as $capability ) {
+			$wp_roles->add_cap( $role, $capability );
+		}
+
+		$options = array(
+			'general_settings' => array(
+				'moderation' => isset( $_POST['moderation'] )
+			)
+		);
+
+		update_option( $this->options_name, $options );
+
+		die(1);
+	}
 
     /**
 	 * Renders an admin section of display code.
@@ -123,7 +220,7 @@ class Directory_Core_Admin extends Directory_Core {
 	 * @param  string $name Name of the admin file(without extension)
 	 * @param  string $vars Array of variable name=>value that is available to the display code(optional)
 	 * @return void
-	 **/
+	 */
     function render_admin( $name, $vars = array() ) {
 		foreach ( $vars as $key => $val )
 			$$key = $val;
@@ -138,7 +235,7 @@ class Directory_Core_Admin extends Directory_Core {
      *
      * @param  array $params The $_POST array
      * @return die() if _wpnonce is not verified
-     **/
+     */
     function save_admin_options( $params ) {
         if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
             /* Remove unwanted parameters */
@@ -154,4 +251,5 @@ class Directory_Core_Admin extends Directory_Core {
 }
 
 /* Initiate Admin */
-new Directory_Core_Admin();
+new DR_Admin();
+

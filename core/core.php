@@ -1,37 +1,33 @@
 <?php
 
 /**
- * Directory_Core 
+ * DR_Core 
  * 
- * @package Directory
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Directory_Core {
+class DR_Core {
 
     /** @var string $plugin_url Plugin URL */
-    var $plugin_url = DIR_PLUGIN_URL;
+    var $plugin_url = DR_PLUGIN_URL;
     /** @var string $plugin_dir Path to plugin directory */
-    var $plugin_dir = DIR_PLUGIN_DIR;
+    var $plugin_dir = DR_PLUGIN_DIR;
     /** @var string $text_domain The text domain for strings localization */
-    var $text_domain = DIR_TEXT_DOMAIN;
+    var $text_domain = DR_TEXT_DOMAIN;
     /** @var string Name of options DB entry */
-    var $options_name = DIR_OPTIONS_NAME;
-    /** @var string User role */
-    var $user_role = 'dir_member'; // TODO Remove var
+    var $options_name = DR_OPTIONS_NAME;
 
     /**
      * Constructor.
      */
-    function Directory_Core() {
+    function DR_Core() {
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
 
         register_theme_directory( $this->plugin_dir . 'themes' );
 
 		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
-        add_action( 'plugins_loaded', array( &$this, 'init_modules' ) );
 		add_action( 'init', array( &$this, 'init' ) );
 
 		// TODO Uncomment
@@ -45,20 +41,9 @@ class Directory_Core {
 		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
 		
 		// TODO Clean that shit
-        add_action( 'init', array( &$this, 'roles' ) );
         add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
         add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
-        add_filter( 'sort_custom_taxonomies', array( &$this, 'sort_custom_taxonomies' ) );
-    }
-
-    /**
-     * Loads "{$text_domain}-[xx_XX].mo" language file from the "languages" directory
-	 *
-     * @return void
-     */
-    function load_plugin_textdomain() {
-        load_plugin_textdomain( $this->text_domain, null, plugin_basename( $this->plugin_dir . 'languages' ) );
     }
 
     /**
@@ -131,23 +116,6 @@ class Directory_Core {
     }
 
     /**
-     * Init plugin modules 
-     * 
-     * @access public
-     * @return void
-	 *
-	 * TODO Clean this
-     */
-    function init_modules() {
-        /* Initiate Data Imports */
-        new Directory_Core_Data();
-        /* Initiate Payments Module */
-        new Payments_Core( 'settings', $this->user_role );
-        /* Initiate Ratings Module */
-        new Ratings_Core();
-    }
-
-    /**
      * Fire on plugin activation.
      *
      * @return void
@@ -168,18 +136,17 @@ class Directory_Core {
 		// if true all plugin data will be deleted 
         if ( false ) {
             delete_option( $this->options_name );
-            delete_option( 'ct_custom_post_types' );
-            delete_option( 'ct_custom_taxonomies' );
-            delete_option( 'ct_custom_fields' );
-            delete_option( 'ct_flush_rewrite_rules' );
-            delete_option( 'module_payments' );
             delete_site_option( $this->options_name );
-            delete_site_option( 'ct_custom_post_types' );
-            delete_site_option( 'ct_custom_taxonomies' );
-            delete_site_option( 'ct_custom_fields' );
-            delete_site_option( 'ct_flush_rewrite_rules' );
-            delete_site_option( 'allow_per_site_content_types' );
         }
+    }
+
+    /**
+     * Loads "{$text_domain}-[xx_XX].mo" language file from the "languages" directory
+	 *
+     * @return void
+     */
+    function load_plugin_textdomain() {
+        load_plugin_textdomain( $this->text_domain, null, plugin_basename( $this->plugin_dir . 'languages' ) );
     }
 
 	/**
@@ -208,7 +175,7 @@ class Directory_Core {
 			// $this->load_template( 'archive-question.php' );
 
 		// Redirect template loading to archive-listing.php rather than to archive.php
-		if ( is_dir_page( 'tag' ) || is_dir_page( 'category' ) ) {
+		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
 			$wp_query->set( 'post_type', 'listing' );
 		}
 	}
@@ -276,63 +243,10 @@ class Directory_Core {
 	}
 
     /**
-	 * TODO: Remove roles entirely, use capabilities instead
+	 * Output banner.
 	 *
-     * Add custom role for members. Add new capabilities for admin.
-     *
-     * @global $wp_roles
-     * @return void
-     */
-    function roles() {
-        global $wp_roles;
-
-        if ( $wp_roles ) {
-            $wp_roles->add_role( $this->user_role, 'Directory Member', array(
-                'publish_listings'       => true,
-                'edit_listings'          => true,
-                'edit_others_listings'   => false,
-                'delete_listings'        => false,
-                'delete_others_listings' => false,
-                'read_private_listings'  => false,
-                'edit_listing'           => true,
-                'delete_listing'         => true,
-                'read_listing'           => true,
-                'upload_files'           => true,
-                'assign_terms'           => true,
-                'read'                   => true
-            ) );
-
-            /* Set administrator roles */
-            $wp_roles->add_cap( 'administrator', 'publish_listings' );
-            $wp_roles->add_cap( 'administrator', 'edit_listings' );
-            $wp_roles->add_cap( 'administrator', 'edit_others_listings' );
-            $wp_roles->add_cap( 'administrator', 'delete_listings' );
-            $wp_roles->add_cap( 'administrator', 'delete_others_listings' );
-            $wp_roles->add_cap( 'administrator', 'read_private_listings' );
-            $wp_roles->add_cap( 'administrator', 'edit_listing' );
-            $wp_roles->add_cap( 'administrator', 'delete_listing' );
-            $wp_roles->add_cap( 'administrator', 'read_listing' );
-        }
-    }
-
-    /**
-     * Sets sort type for taxonomies 
-     * 
-     * @param string $sort 
-     * @access public
-     * @return string Sort type
-     */
-    function sort_custom_taxonomies( $sort ) {
-        $options = $this->get_options('general_settings');
-
-		if ( isset( $options['order_taxonomies'] ) )
-			$sort = $options['order_taxonomies'];
-
-        return $sort; 
-    }
-
-    /**
-     *  
+	 * @access public
+	 * @return void
      */
     function output_banners() { 
         $options = $this->get_options( 'ads_settings' );
@@ -348,7 +262,7 @@ class Directory_Core {
      * Schedule expiration check for twice daily.
      *
      * @return void
-     **/
+     */
     function scheduly_expiration_check() {
         if ( !wp_next_scheduled( 'check_expiration_dates' ) ) {
             wp_schedule_event( time(), 'twicedaily', 'check_expiration_dates' );
@@ -360,7 +274,7 @@ class Directory_Core {
      * with the current date/time. If the post is expired update it's status.
      *
      * @return void
-     **/
+     */
     function check_expiration_dates_callback() {}
 
     /**
@@ -368,7 +282,7 @@ class Directory_Core {
      *
      * @param  string|NULL $key The key for that plugin option.
      * @return array $options Plugin options or empty array if no options are found
-     **/
+     */
     function get_options( $key = null ) {
         $options = get_option( $this->options_name );
         $options = is_array( $options ) ? $options : array();
@@ -381,4 +295,5 @@ class Directory_Core {
 }
 
 /* Initiate Class */
-new Directory_Core();
+new DR_Core();
+

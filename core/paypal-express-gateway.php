@@ -1,9 +1,9 @@
 <?php
 
-if ( !class_exists('PayPal_API_Module') ):
+if ( !class_exists('Paypal_Express_Gateway') ):
 
 /**
- * PayPal API Module
+ * Paypal_Express_Gateway
  *
  * An express checkout transaction starts with a token, that identifies
  * to PayPal your transaction. In this example, when the script sees a token,
@@ -17,7 +17,7 @@ if ( !class_exists('PayPal_API_Module') ):
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class PayPal_API_Module {
+class Paypal_Express_Gateway {
 
     /** @var string PayPal API Credentials - Username */
     var $api_username;
@@ -51,7 +51,7 @@ class PayPal_API_Module {
     /**
      * Constructor.
      */
-    function PayPal_API_Module( $options ) {
+    function Paypal_Express_Gateway( $options ) {
         $this->init_vars( $options );
     }
 
@@ -558,4 +558,4 @@ class PayPal_API_Module {
     }
 }
 endif;
-?>
+

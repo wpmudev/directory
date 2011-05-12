@@ -1,7 +1,5 @@
 <?php
 
-if ( !class_exists('Ratings_Core') ):
-
 /**
  * Ratings_Core 
  * 
@@ -11,8 +9,8 @@ if ( !class_exists('Ratings_Core') ):
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Ratings_Core
-{
+class DR_Ratings {
+
     /** @var string The current page. Used for custom hooks. */
     var $page;
     /** @var array Array with values used for determining post quality. */
@@ -21,7 +19,7 @@ class Ratings_Core
     /**
      * Class constructor. 
      */
-    function Ratings_Core() {
+    function DR_Ratings() {
 		$this->init();
 	}
 
@@ -260,6 +258,5 @@ class Ratings_Core
     }
 
 }
-endif;
 
-?>
+new DR_Ratings();

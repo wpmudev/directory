@@ -3,10 +3,10 @@
 <?php $options = $this->get_options('settings'); ?>
 
 <div class="wrap">
-    
     <?php screen_icon('options-general'); ?>
 
-    <?php do_action( 'render_admin_navigation', 'checkout' ); ?>
+    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'payments', 'sub' => 'checkout' ) ); ?>
+	<?php $this->render_admin( 'message' ); ?>
     
     <form action="" method="post" class="dp-payments">
         

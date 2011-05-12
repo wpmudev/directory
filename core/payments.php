@@ -1,81 +1,65 @@
 <?php
 
-if ( !class_exists('Payments_Core') ):
-
 /**
+ * DR_Payments 
  * Payments Core Class. Handles requests and defines common utility functions.
- *
- * @package Payments
- * @version 1.0.0 
+ * 
+ * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Payments_Core {
+class DR_Payments extends DR_Core {
 
-    /** @var string Url to the submodule directory */
-    var $module_url = PG_MODULE_URL;
-    /** @var string Path to the submodule directory */
-    var $module_dir = PG_MODULE_DIR;
     /** @var object The PayPal API Module object */
-    var $paypal_api_module;
-    /** @var string The passed plugin admin slug ( admin.php?page=[slug] ) */
-    var $admin_page_slug;
-    /** @var string Text domain string */
-    var $text_domain = 'payments';
-    /** @var string Payments module options name */
-    var $options_name = 'module_payments';   
-    /** @var string Payments module options name */
-    var $user_role;   
+    var $paypal_express_gateway;
 
     /**
      * Constructor.
      */
-    function Payments_Core( $admin_page_slug, $user_role ) {
-        $this->init();
-        $this->init_vars( $admin_page_slug, $user_role );
-    }
-    
-    /**
-     * Hook class methods into WordPress 
-     * 
-     * @access public
-     * @return void
-     */
-    function init() {
+    function DR_Payments() {
+		add_action( 'init', array( &$this, 'init' ) );
         // Initiate default payment settings 
-        add_action( 'init', array( &$this, 'init_module_default_options' ) );
-        // Create neccessary pages 
-        add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
+        add_action( 'init', array( &$this, 'init_default_options' ) );
         // Handle all requests for checkout 
         add_action( 'template_redirect', array( &$this, 'handle_checkout_requests' ) );
-        // Handle all requests for checkout 
-        add_action( 'handle_module_admin_requests', array( &$this, 'handle_admin_requests' ) );
-        // Render module admin navigation
-        add_action( 'render_admin_navigation_tabs', array( &$this, 'render_admin_navigation_tabs' ) );
-        add_action( 'render_admin_navigation_subs', array( &$this, 'render_admin_navigation_subs' ) );
     }
 
-    /**
-     * Initiate class variables.
-     *
-     * @return void
-     **/
-    function init_vars( $admin_page_slug, $user_role ) {
-        $this->user_role = $user_role;
-        $this->admin_page_slug = $admin_page_slug;
+	function init() {
+		global $wp, $wp_rewrite;
 
-        $options = $this->get_options( 'paypal' );
-        $this->paypal_api_module = new PayPal_API_Module( $options );
-    }
+		// Ask page
+		$wp->add_query_var( 'dr_signup' );
+		$this->add_rewrite_rule( 'signup/?$', array(
+			'dr_signup' => 1
+		) );
+	}
 
+	/**
+	 * Simple wrapper for adding straight rewrite rules,
+	 * but with the matched rule as an associative array.
+	 *
+	 * @see http://core.trac.wordpress.org/ticket/16840
+	 *
+	 * @param string $regex The rewrite regex
+	 * @param array $args The mapped args
+	 * @param string $position Where to stick this rule in the rules array. Can be 'top' or 'bottom'
+	 */
+	function add_rewrite_rule( $regex, $args, $position = 'top' ) {
+		global $wp, $wp_rewrite;
+
+		$result = add_query_arg( $args, 'index.php' );
+		add_rewrite_rule( $regex, $result, $position );
+	}
+    
     /**
+	 * TODO: Clean this shit.
+	 *
      * Init data for submit site.
      *
      * @return <type>
-     * @todo Move to Payments Module
      */
-    function init_module_default_options() {
+    function init_default_options() {
 
         $user = wp_get_current_user();
         $usermeta = get_user_meta( 5, $this->options_name, true );
@@ -83,7 +67,6 @@ class Payments_Core {
         $options = $this->get_options( $this->options_name );
 
         if ( empty( $options ) ) {
-
             $defaults = array(
                 'settings' => array( 
                     'recurring_cost'    => '9.99',
@@ -112,28 +95,6 @@ class Payments_Core {
     }
 
     /**
-     * Create the default pages.
-     *
-     * @return void
-     */
-    function create_default_pages() {
-        $page = get_page_by_title('Sign Up');
-        if ( empty( $page ) ) {
-            $current_user = wp_get_current_user();
-            /* Construct args for the new post */
-            $args = array(
-                'post_title'     => 'Sign Up',
-                'post_status'    => 'publish',
-                'post_author'    => $current_user->ID,
-                'post_type'      => 'page',
-                'ping_status'    => 'closed',
-                'comment_status' => 'closed'
-            );
-            wp_insert_post( $args );
-        }
-    }
-
-    /**
      * Update user information. This method handles both add and update 
      * operations.
      *
@@ -155,7 +116,7 @@ class Payments_Core {
             if ( !empty( $user ) ) {
 
                 // Set new user role
-                wp_update_user( array( 'ID' => $user->ID, 'role' => $this->user_role ) ); 
+                wp_update_user( array( 'ID' => $user->ID ) ); 
 
                 // Set payment details ( transaction ID's and recurring payment profile ID ) 
                 $this->update_user_payment_details( $user->ID, $billing_type, $transaction_details );
@@ -186,7 +147,6 @@ class Payments_Core {
                 'display_name' => $first_name . ' ' . $last_name,
                 'first_name'   => $first_name,
                 'last_name'    => $last_name,
-                'role'         => $this->user_role
             ));
 
             // If user account created successfully, proceed
@@ -251,33 +211,6 @@ class Payments_Core {
     }
 
     /**
-     * Handle the admin requests for the payments module.
-     */
-    function handle_admin_requests() {
-        if ( isset( $_GET['page'] ) && $_GET['page'] == $this->admin_page_slug ) {
-            if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) {
-                if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) {
-                    $this->render_admin( 'payments-authorizenet' );
-                } elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'paypal' ) {
-                    /* Save options */
-                    if ( isset( $_POST['save'] ) ) {
-                        $this->save_options( $_POST );
-                    }
-                    /* Render admin template */
-                    $this->render_admin( 'payments-paypal' );
-                } else {
-                    /* Save options */
-                    if ( isset( $_POST['save'] ) ) {
-                        $this->save_options( $_POST );
-                    }
-                    /* Render admin template */
-                    $this->render_admin( 'payments-settings' );
-                }
-            }
-        }
-    }
-
-    /**
      * Handle all checkout requests.
      *
      * @uses session_start() We need to keep track of some session variables for the checkout
@@ -287,7 +220,9 @@ class Payments_Core {
         // Only handle request if on the proper page 
         if ( is_page('sign-up') ) {
 
-            $options = get_option( $this->options_name );
+            $options = get_options();
+			include_once $this->plugin_dir . 'core/paypal_express_gateway.php';
+			$this->paypal_express_gateway = new Paypal_Express_Gateway( $options['paypal'] );
 
             // We need to use session variables during the checkout process
             if ( !session_id() )
@@ -359,7 +294,7 @@ class Payments_Core {
                         $billing_agreement = $_SESSION['billing_type'] == 'recurring' ? $_SESSION['billing_agreement'] : null;  
 
                         // Make API call 
-                        $result = $this->paypal_api_module->call_shortcut_express_checkout( 
+                        $result = $this->paypal_express_gateway->call_shortcut_express_checkout( 
                             $cost, 
                             $_SESSION['billing_type'], 
                             $billing_agreement 
@@ -387,7 +322,7 @@ class Payments_Core {
             elseif ( isset( $_POST['direct_payment_submit'] ) ) {
 
                 // Make API call 
-                $result = $this->paypal_api_module->direct_payment( 
+                $result = $this->paypal_express_gateway->direct_payment( 
                     $_POST['total_amount'], 
                     $_POST['cc_type'], 
                     $_POST['cc_number'], 
@@ -425,7 +360,7 @@ class Payments_Core {
                 $_SESSION['token'] = $_REQUEST['token'];
 
                 // Make API call 
-                $result = $this->paypal_api_module->get_express_checkout_details( $_SESSION['token'] );
+                $result = $this->paypal_express_gateway->get_express_checkout_details( $_SESSION['token'] );
 
                 // Handle Success and Error scenarios 
                 if ( $result['status'] == 'success' ) {
@@ -450,7 +385,7 @@ class Payments_Core {
                 if ( $_SESSION['billing_type'] == 'recurring' ) {
 
                     // Make CreateRecurringPaymentsProfile API call 
-                    $result = $this->paypal_api_module->create_recurring_payments_profile( 
+                    $result = $this->paypal_express_gateway->create_recurring_payments_profile( 
                         $_SESSION['cost'], 
                         $_SESSION['billing_period'], 
                         $_SESSION['billing_frequency'], 
@@ -459,7 +394,7 @@ class Payments_Core {
 
                 } else {
                     // Make DoExpressCheckout API call 
-                    $result = $this->paypal_api_module->do_express_checkout_payment( $_POST['total_amount'] );
+                    $result = $this->paypal_express_gateway->do_express_checkout_payment( $_POST['total_amount'] );
                 }
                 
                 // Handle Success and Error scenarios 
@@ -537,84 +472,8 @@ class Payments_Core {
         // Finally, destroy the session.
         session_destroy();
     }
-
-    /**
-     * Render the admin navigation tabs ( the big ones at the top )
-     *
-     * @return string(HTML)
-     */
-    function render_admin_navigation_tabs() {
-        if ( isset( $_GET['page'] ) && $_GET['page'] == $this->admin_page_slug ): ?>
-            <a class="nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) echo 'nav-tab-active'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=checkout"><?php _e( 'Payments', $this->text_domain ); ?></a>
-        <?php endif;
-    }
-
-    /**
-     * Render the admin navigation sub-tabs ( the small ones below the big ones )
-     *
-     * @return string(HTML)
-     */
-    function render_admin_navigation_subs() {
-        if ( isset( $_GET['page'] ) && $_GET['page'] == $this->admin_page_slug && isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ): ?>
-        <ul>
-            <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'checkout' )     echo 'current'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=checkout"><?php _e( 'Payments Settings', $this->text_domain ); ?></a> | </h3></li>
-            <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'paypal' )       echo 'current'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=paypal"><?php _e( 'PayPal Express', $this->text_domain ); ?></a> | </h3></li>
-            <li class="subsubsub"><h3><a class="<?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) echo 'current'; ?>" href="admin.php?page=<?php echo $this->admin_page_slug; ?>&tab=payments&sub=authorizenet"><?php _e( 'Authorize.net', $this->text_domain ); ?></a></h3></li>
-        </ul>
-        <?php endif;
-    }
-
-    /**
-	 * Renders an admin section of display code.
-	 *
-	 * @param  string $name Name of the admin file(without extension)
-	 * @param  string $vars Array of variable name=>value that is available to the display code(optional)
-	 * @return void
-	 **/
-    function render_admin( $name, $vars = array() ) {
-		foreach ( $vars as $key => $val )
-			$$key = $val;
-		if ( file_exists( "{$this->module_dir}ui-admin/{$name}.php" ) )
-			include "{$this->module_dir}ui-admin/{$name}.php";
-		else
-			echo "<p>Rendering of admin template {$this->module_dir}ui-admin/{$name}.php failed</p>";
-	}
-
-    /**
-     * Save plugin options.
-     *
-     * @param  array $params The $_POST array
-     * @return die() if _wpnonce is not verified
-     **/
-    function save_options( $params ) {
-        if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
-            /* Remove unwanted parameters */
-            unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
-            /* Update options by merging the old ones */
-            $options = $this->get_options();
-            $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_option( $this->options_name, $options );
-        } else {
-            die( __( 'Security check failed!', $this->text_domain ) );
-        }
-    }
-
-    /**
-     * Get plugin options.
-     *
-     * @param  string|NULL $key The key for that plugin option.
-     * @return array $options Plugin options or empty array if no options are found
-     **/
-    function get_options( $key = null ) {
-        $options = get_option( $this->options_name );
-        $options = is_array( $options ) ? $options : array();
-        /* Check if specific plugin option is requested and return it */
-        if ( isset( $key ) && array_key_exists( $key, $options ) )
-            return $options[$key];
-        else
-            return $options;
-    }
 }
-endif;
 
-?>
+/* Initiate Payments */
+new DR_Payments();
+

@@ -5,3 +5,6 @@
 .dp-payments li, .dp-settings li {
     float: left;
 }
+#ajax-loader {
+	float: right;
+}

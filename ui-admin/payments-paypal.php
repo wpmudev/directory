@@ -5,7 +5,8 @@
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
 
-    <?php do_action( 'render_admin_navigation', 'paypal' ); ?>
+    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'payments', 'sub' => 'paypal' ) ); ?>
+	<?php $this->render_admin( 'message' ); ?>
 
     <form action="" method="post" class="dp-payments">
         <table class="form-table">

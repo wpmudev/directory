@@ -1,8 +1,9 @@
 <?php
 
-if ( !class_exists('Directory_Gateway_Athorizenet') ):
-class Directory_Gateway_Athorizenet
-{
+if ( !class_exists('Athorizenet_Gateway') ):
+
+class Athorizenet_Gateway {
+
     //var $admin_options_name = "ShareADraft_options";
     
     // By default, this sample code is designed to post to our test server for
@@ -11,7 +12,7 @@ class Directory_Gateway_Athorizenet
     // posting to: https://secure.authorize.net/gateway/transact.dll
     var $post_url = "https://test.authorize.net/gateway/transact.dll";
 
-    function Directory_Gateway_Athorizenet() {
+    function Athorizenet_Gateway() {
         add_action( 'init', array( &$this, 'init' ) );
     }
 
@@ -117,7 +118,3 @@ class Directory_Gateway_Athorizenet
 }
 endif;
 
-if ( class_exists('Directory_Gateway_Athorizenet') )
-	$_directory_gateway_athorizenet = new Directory_Gateway_Athorizenet();
-
-?>
