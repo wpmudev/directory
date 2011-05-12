@@ -16,7 +16,7 @@ $options     = get_option('module_payments');
 $opset		 = $options['settings'];
 $oppay		 = $options['paypal'];
 $text_domain = THEME_TEXT_DOMAIN;  
-$plugin_url  = DP_PLUGIN_URL;
+$plugin_url  = DR_PLUGIN_URL;
 $error       = get_query_var('checkout_error'); 
 
 get_header(); ?>
@@ -24,11 +24,9 @@ get_header(); ?>
 <div id="content"><!-- start #content -->
     <div class="page" id="checkout-page"><!-- start #blog-page -->
 
-    <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h1 class="entry-title">
-				<?php the_title();  ?>
+				<?php _e('Signup', THEME_TEXT_DOMAIN ); ?>
 				<?php if ( $step == 'terms' ) echo ' ( step 1 of 3 ) '; ?>	
 				<?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>	
 				<?php if ( $step == 'confirm_payment' ) echo ' ( step 3 of 3 ) '; ?>	
@@ -608,8 +606,6 @@ get_header(); ?>
             <?php endif; ?>
             
         </div><!-- #post-## -->
-
-    <?php endwhile; ?>
 
     </div><!-- end #blog-page -->
 </div><!-- end #content -->

@@ -30,9 +30,12 @@ class DR_Core {
 		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( &$this, 'init' ) );
 
-		// TODO Uncomment
-		// if ( is_admin() )
-			// return;
+		// TODO: These are not properly implemented
+        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
+        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
+
+		if ( is_admin() )
+			return;
 
 		// add_action( 'template_redirect', array( &$this, 'load_default_style' ), 11 );
 		add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
@@ -40,9 +43,6 @@ class DR_Core {
 		add_filter( 'single_template', array( &$this, 'handle_template' ) );
 		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
 		
-		// TODO Clean that shit
-        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
-        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
     }
 
@@ -52,7 +52,15 @@ class DR_Core {
      * @return void
      */
     function init() {
-		register_taxonomy( 'listing_tag', 'listing', array(
+		global $wp, $wp_rewrite;
+
+		// Signup page
+		$wp->add_query_var( 'dr_signup' );
+		$this->add_rewrite_rule( 'signup/?$', array(
+			'dr_signup' => 1
+		) );
+
+		register_taxonomy( 'listing_tag', 'directory_listing', array(
 			'rewrite' => array( 'slug' => 'listings/tag', 'with_front' => false ),
 			'labels' => array(
 				'name'			=> __( 'Listing Tags', $this->text_domain ),
@@ -70,7 +78,7 @@ class DR_Core {
 			)
 		) );
 
-		register_taxonomy( 'listing_category', 'listing', array(
+		register_taxonomy( 'listing_category', 'directory_listing', array(
 			'rewrite' => array( 'slug' => 'listings/category', 'with_front' => false, 'hierarchical' => true ),
 			'hierarchical' => true,
 			'labels' => array(
@@ -89,7 +97,7 @@ class DR_Core {
 			)
 		) );
 
-		register_post_type( 'listing', array(
+		register_post_type( 'directory_listing', array(
 			'public' => true,
 			'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
 			'has_archive' => true,
@@ -98,7 +106,7 @@ class DR_Core {
 			'capabilities' => array( 'read' => 'read_listings' ),
 			'map_meta_cap' => true,
 
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions' ),
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
 
 			'labels' => array(
 				'name'			=> __('Listings', $this->text_domain ),
@@ -114,6 +122,23 @@ class DR_Core {
 			)
 		) );
     }
+
+	/**
+	 * Simple wrapper for adding straight rewrite rules,
+	 * but with the matched rule as an associative array.
+	 *
+	 * @see http://core.trac.wordpress.org/ticket/16840
+	 *
+	 * @param string $regex The rewrite regex
+	 * @param array $args The mapped args
+	 * @param string $position Where to stick this rule in the rules array. Can be 'top' or 'bottom'
+	 */
+	function add_rewrite_rule( $regex, $args, $position = 'top' ) {
+		global $wp, $wp_rewrite;
+
+		$result = add_query_arg( $args, 'index.php' );
+		add_rewrite_rule( $regex, $result, $position );
+	}
 
     /**
      * Fire on plugin activation.
@@ -134,7 +159,7 @@ class DR_Core {
      */
     function plugin_deactivate() {
 		// if true all plugin data will be deleted 
-        if ( false ) {
+        if ( true ) {
             delete_option( $this->options_name );
             delete_site_option( $this->options_name );
         }
@@ -155,28 +180,13 @@ class DR_Core {
 	function template_redirect() {
 		global $wp_query;
 
-		// if ( is_qa_page( 'ask' ) )
-			// $this->load_template( 'ask-question.php' );
-
-		// if ( is_qa_page( 'edit' ) ) {
-			// $post_type = $wp_query->posts[0]->post_type;
-			// $this->load_template( "edit-{$post_type}.php" );
-		// }
-
-		// if ( is_qa_page( 'user' ) ) {
-			// $wp_query->queried_object_id = (int) $wp_query->get('author');
-			// $wp_query->queried_object = get_userdata( $wp_query->queried_object_id );
-			// $wp_query->is_post_type_archive = false;
-
-			// $this->load_template( 'user-question.php' );
-		// }
-
-		// if ( ( is_qa_page( 'archive' ) && is_search() ) || is_qa_page( 'unanswered' ) )
-			// $this->load_template( 'archive-question.php' );
+		if ( is_dr_page( 'signup' ) ) {
+			$this->load_template( 'page-signup.php' );
+		}
 
 		// Redirect template loading to archive-listing.php rather than to archive.php
 		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
-			$wp_query->set( 'post_type', 'listing' );
+			$wp_query->set( 'post_type', 'directory_listing' );
 		}
 	}
 
@@ -186,7 +196,7 @@ class DR_Core {
 	function handle_template( $path ) {
 		global $wp_query;
 
-		if ( 'listing' != get_query_var( 'post_type' ) )
+		if ( 'directory_listing' != get_query_var( 'post_type' ) )
 			return $path;
 
 		$type = reset( explode( '_', current_filter() ) );
@@ -213,33 +223,6 @@ class DR_Core {
 
 		load_template( $path );
 		die;
-	}
-
-	/**
-	 * Enqueue default CSS and JS.
-	 */
-	function load_default_style() {
-		// if ( !is_dir_page() )
-			// return;
-
-		// if ( !current_theme_supports( 'qa_style' ) ) {
-			// wp_enqueue_style( 'qa-section', QA_PLUGIN_URL . 'default-templates/css/general.css', array(), QA_VERSION );
-		// }
-
-		// if ( !current_theme_supports( 'qa_script' ) ) {
-			// if ( is_qa_page( 'ask' ) || is_qa_page( 'edit' ) || is_qa_page( 'single' ) ) {
-				// wp_enqueue_style( 'cleditor', QA_PLUGIN_URL . 'default-templates/js/cleditor/jquery.cleditor.css', array(), '1.3.0-l10n' );
-
-				// wp_enqueue_script( 'cleditor', QA_PLUGIN_URL . 'default-templates/js/cleditor/jquery.cleditor.js', array( 'jquery' ), '1.3.0-l10n' );
-
-				// wp_enqueue_script( 'suggest' );
-			// }
-
-			// wp_enqueue_script( 'qa-init', QA_PLUGIN_URL . 'default-templates/js/init.js', array('jquery'), QA_VERSION );
-			// wp_localize_script( 'qa-init', 'QA_L10N', array(
-				// 'ajaxurl' => admin_url( 'admin-ajax.php' )
-			// ) );
-		// }
 	}
 
     /**

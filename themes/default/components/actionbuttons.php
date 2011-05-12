@@ -2,7 +2,7 @@
     <span><?php _e( 'Welcome, what would you like to do?', THEME_TEXT_DOMAIN ); ?></span>
 
     <?php if ( !is_user_logged_in()): ?>
-        <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/checkout/'; ?>" class="button">Sign Up</a></div>
+        <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/signup/'; ?>" class="button">Sign Up</a></div>
     <?php else: ?>
         <form id="add-listing" action="" method="post">
             <input type="submit" name="redirect_listing" value="Add Listing" />

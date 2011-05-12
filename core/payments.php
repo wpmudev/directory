@@ -13,62 +13,30 @@ class DR_Payments extends DR_Core {
 
     /** @var object The PayPal API Module object */
     var $paypal_express_gateway;
+	// var $options_name = 'module_payments';
 
     /**
      * Constructor.
      */
     function DR_Payments() {
-		add_action( 'init', array( &$this, 'init' ) );
+        register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_default_options' ) );
         // Initiate default payment settings 
         add_action( 'init', array( &$this, 'init_default_options' ) );
         // Handle all requests for checkout 
         add_action( 'template_redirect', array( &$this, 'handle_checkout_requests' ) );
     }
 
-	function init() {
-		global $wp, $wp_rewrite;
-
-		// Ask page
-		$wp->add_query_var( 'dr_signup' );
-		$this->add_rewrite_rule( 'signup/?$', array(
-			'dr_signup' => 1
-		) );
-	}
-
-	/**
-	 * Simple wrapper for adding straight rewrite rules,
-	 * but with the matched rule as an associative array.
-	 *
-	 * @see http://core.trac.wordpress.org/ticket/16840
-	 *
-	 * @param string $regex The rewrite regex
-	 * @param array $args The mapped args
-	 * @param string $position Where to stick this rule in the rules array. Can be 'top' or 'bottom'
-	 */
-	function add_rewrite_rule( $regex, $args, $position = 'top' ) {
-		global $wp, $wp_rewrite;
-
-		$result = add_query_arg( $args, 'index.php' );
-		add_rewrite_rule( $regex, $result, $position );
-	}
-    
     /**
-	 * TODO: Clean this shit.
-	 *
      * Init data for submit site.
      *
      * @return <type>
      */
     function init_default_options() {
-
-        $user = wp_get_current_user();
-        $usermeta = get_user_meta( 5, $this->options_name, true );
-
-        $options = $this->get_options( $this->options_name );
+        $options = $this->get_options();
 
         if ( empty( $options ) ) {
             $defaults = array(
-                'settings' => array( 
+                'payment_settings' => array( 
                     'recurring_cost'    => '9.99',
                     'recurring_name'    => 'Subscription',
                     'billing_period'    => 'Month',
@@ -88,9 +56,7 @@ class DR_Payments extends DR_Core {
                     'key'           => 'paypal'
             ));
 
-            $options = array_merge( $options, $defaults );
-            update_option( $this->options_name, $options );
-            return;
+            update_option( $this->options_name, $defaults );
         }
     }
 
@@ -218,21 +184,23 @@ class DR_Payments extends DR_Core {
      */
     function handle_checkout_requests() {
         // Only handle request if on the proper page 
-        if ( is_page('sign-up') ) {
+        if ( is_dr_page('signup') ) {
 
-            $options = get_options();
-			include_once $this->plugin_dir . 'core/paypal_express_gateway.php';
+			// Redirect if user is logged in 
+			if ( is_user_logged_in() ) {
+				wp_redirect( get_bloginfo('url') );
+				exit;
+			}
+
+            $options = $this->get_options();
+
+			include_once $this->plugin_dir . 'core/paypal-express-gateway.php';
+
 			$this->paypal_express_gateway = new Paypal_Express_Gateway( $options['paypal'] );
 
             // We need to use session variables during the checkout process
             if ( !session_id() )
                 session_start();
-
-            // Redirect if user is logged in 
-            if ( is_user_logged_in() ) {
-                wp_redirect( get_bloginfo('url') );
-                exit;
-            }
 
             // If no PayPal API credentials are set, disable the checkout process 
             if ( empty( $options['paypal'] ) ) {
@@ -260,9 +228,9 @@ class DR_Payments extends DR_Core {
                     $_SESSION['billing_type'] = $_POST['billing_type'];
                     if ( $_SESSION['billing_type'] == 'recurring' ) {
                         $_SESSION['cost']              = $_POST['recurring_cost'];
-                        $_SESSION['billing_agreement'] = $options['settings']['billing_agreement'];
-                        $_SESSION['billing_period']    = $options['settings']['billing_period'];
-                        $_SESSION['billing_frequency'] = $options['settings']['billing_frequency'];
+                        $_SESSION['billing_agreement'] = $options['payment_settings']['billing_agreement'];
+                        $_SESSION['billing_period']    = $options['payment_settings']['billing_period'];
+                        $_SESSION['billing_frequency'] = $options['payment_settings']['billing_frequency'];
                     }
                     else {
                         $_SESSION['cost'] = $_POST['one_time_cost'];

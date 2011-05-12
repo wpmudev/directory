@@ -2,8 +2,8 @@
 Contributors: ivanshaovchev
 Tags: directory, paypal, post types, taxonomies, custom fields,
 Requires at least: 3.0.0
-Tested up to: 3.0.4
-Stable tag: 1.0.6
+Tested up to: 3.1.2
+Stable tag: 1.0.8
 
 The Directory plugin lets you create full blown directory website.
 
@@ -35,6 +35,13 @@ URL structure.
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.0.8 =
+* Change plugin architecture
+* Bug fixes 
+
+= 1.0.7 =
+* Bug fixes  
 
 = 1.0.6 =
 * New default theme 

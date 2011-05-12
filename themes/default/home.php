@@ -2,7 +2,7 @@
 
 <div id="content"><!-- start #content -->
     <div class="padder">
-		<?php the_dir_categories_home(); ?>
+		<?php the_dr_categories_home(); ?>
     </div>
 </div><!-- end #content -->
 

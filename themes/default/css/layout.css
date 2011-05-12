@@ -219,10 +219,10 @@ display: none;
     float: left;
 }
 
-.single .listing {
+.single .directory_listing {
     min-height: inherit;
 }
-.listing {
+.directory_listing {
     margin: 10px 0px;
     padding: 10px;
 }

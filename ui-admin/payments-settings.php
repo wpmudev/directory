@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $options = $this->get_options('settings'); ?>
+<?php $options = $this->get_options('payment_settings'); ?>
 
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
@@ -103,7 +103,7 @@
 
         <p class="submit">
             <?php wp_nonce_field('verify'); ?>
-            <input type="hidden" name="key" value="settings" />
+            <input type="hidden" name="key" value="payment_settings" />
             <input type="submit" class="button-primary" name="save" value="Save Changes">
         </p>
         

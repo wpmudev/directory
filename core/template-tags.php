@@ -14,7 +14,7 @@
  * @access public
  * @return void
  */
-function the_dir_categories_home() {
+function the_dr_categories_home() {
 	$args = array(
 		'parent'       => 0,
 		'orderby'      => 'name',
@@ -67,7 +67,7 @@ function the_dir_categories_home() {
  * @access public
  * @return void
  */
-function the_dir_categories_archive() {
+function the_dr_categories_archive() {
 	$args = array(
 		'parent'       => get_queried_object_id(),
 		'orderby'      => 'name',
@@ -105,7 +105,7 @@ function the_dir_categories_archive() {
  * @access public
  * @return void
  */
-function the_dir_breadcrumbs() {
+function the_dr_breadcrumbs() {
 	$category = get_queried_object();
 
 	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy ); 
@@ -128,7 +128,7 @@ function the_dir_breadcrumbs() {
  * @access public
  * @return void
  */
-function the_dir_posted_on() {
+function the_dr_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
 		'meta-prep meta-prep-author',
 		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
@@ -150,7 +150,7 @@ function the_dir_posted_on() {
  * @access public
  * @return void
  */
-function the_dir_posted_in() {
+function the_dr_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 
@@ -177,7 +177,7 @@ function the_dir_posted_in() {
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function the_dir_comment( $comment, $args, $depth ) {
+function the_dr_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 
 	switch ( $comment->comment_type ) :

@@ -3,18 +3,16 @@
 /**
  * Directory_Theme_Core 
  * 
- * @package Directory Theme 
- * @version 1.0.0
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
  * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Directory_Theme_Core {
+class DR_Theme_Core {
 
     /**
      * Class constructor. 
      */
-    function Directory_Theme_Core() {
+    function DR_Theme_Core() {
         add_action( 'after_setup_theme', array( &$this, 'theme_setup' ) );
         add_action( 'widgets_init', array( &$this, 'register_sidebars' ) );
 		add_filter( 'excerpt_length', array( &$this, 'new_excerpt_length' ) );
@@ -28,8 +26,9 @@ class Directory_Theme_Core {
      * @return void
      **/
     function theme_setup() {
-        add_theme_support( 'post-thumbnails', array( 'listing' ) );
-        add_theme_support( 'automatic-feed-links', array( 'listing' ) );
+        add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );
+        add_theme_support( 'automatic-feed-links', array( 'directory_listing' ) );
+
         register_nav_menus( array(
             'primary' => __( 'Primary Navigation', 'directory' ),
         ) );
@@ -126,4 +125,4 @@ class Directory_Theme_Core {
     }
 }
 
-new Directory_Theme_Core();
+new DR_Theme_Core();

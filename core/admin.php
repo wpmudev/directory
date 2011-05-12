@@ -27,10 +27,6 @@ class DR_Admin extends DR_Core {
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
 
-		// TODO Fix link 
-        $plugin = plugin_basename(__FILE__);
-        add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
-
 		$this->capability_map = array(
 			'read_listings'             => __( 'View listings.', $this->text_domain ),
 			'publish_listings'          => __( 'Add listings.', $this->text_domain ),
@@ -62,24 +58,11 @@ class DR_Admin extends DR_Core {
      * @return void
      */
     function admin_menu() {
-		$settings_page = add_submenu_page( 'edit.php?post_type=listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
+		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
 
 		// Hook styles and scripts 
         add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_styles' ) );
         add_action( 'admin_print_scripts-' . $settings_page, array( &$this, 'enqueue_scripts' ) );
-    }
-
-    /**
-     * plugin_settings_link 
-     * 
-     * @param mixed $links 
-     * @access public
-     * @return void
-     */
-    function plugin_settings_link( $links ) {
-        $settings_link = '<a href="admin.php?page=dp_main&dp_settings=main&dp_gen">Settings</a>';
-        array_unshift( $links, $settings_link );
-        return $links;
     }
 
     /**
@@ -202,14 +185,6 @@ class DR_Admin extends DR_Core {
 		foreach ( $to_add as $capability ) {
 			$wp_roles->add_cap( $role, $capability );
 		}
-
-		$options = array(
-			'general_settings' => array(
-				'moderation' => isset( $_POST['moderation'] )
-			)
-		);
-
-		update_option( $this->options_name, $options );
 
 		die(1);
 	}

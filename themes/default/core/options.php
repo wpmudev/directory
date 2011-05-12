@@ -1,14 +1,18 @@
 <?php
 
 /**
- * Setup the Colors page inside WordPress Appearance Menu
+ * DR_Theme_Options 
+ * 
+ * @copyright Incsub 2007-2011 {@link http://incsub.com}
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
-class Directory_Theme_Options {
+class DR_Theme_Options {
 
     /**
      * Class constructor. 
      */
-    function Directory_Theme_Options() {
+    function DR_Theme_Options() {
         add_action( 'admin_init', array( &$this, 'register_option_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
 
@@ -124,4 +128,4 @@ class Directory_Theme_Options {
     }
 }
 
-new Directory_Theme_Options();
+new DR_Theme_Options();

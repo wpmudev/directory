@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $href_part = 'edit.php?post_type=listing'; ?>
+<?php $href_part = 'edit.php?post_type=directory_listing'; ?>
 
 <h2>
 <?php if ( $page == 'settings' ): ?>

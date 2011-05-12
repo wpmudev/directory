@@ -10,12 +10,12 @@
     <div class="padder">
 		<div class="breadcrumbtrail">
 			<h1 class="page-title dp-taxonomy-name">
-				<?php the_dir_breadcrumbs(); ?>
+				<?php the_dr_breadcrumbs(); ?>
 			</h1>
 			<div class="clear"></div>
 		</div>
 
-		<?php the_dir_categories_archive(); ?>  
+		<?php the_dr_categories_archive(); ?>  
 		<div class="clear"></div><br />
 
 		<?php if ( have_posts() ) : ?>
@@ -25,7 +25,7 @@
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<div class="entry-meta">
-					<?php the_dir_posted_on(); ?>
+					<?php the_dr_posted_on(); ?>
 
 					<div class="entry-utility">
 

@@ -99,7 +99,7 @@ class Paypal_Express_Gateway {
              * has been succesfully authorized.
              * This is set to the value entered on the Integration Assistant.
              */
-            $this->return_url =  get_bloginfo('url') . '/sign-up/';
+            $this->return_url =  get_bloginfo('url') . '/signup/';
 
             /*
              * The cancelURL is the location buyers are sent to when they hit the
