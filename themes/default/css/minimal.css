@@ -12,7 +12,9 @@
 
 /********************************** styles start >>> */
 /********************************** adverts */
-
+.h-ads {
+background: #eeeeee;
+}
 /********************************** comments */
 #comments .title {
 font-size: 16px;
@@ -132,7 +134,7 @@ text-decoration: none;
 font-weight: normal;
 }
 
-.directory_listing {
+.listing {
 border: none;
 }
 
@@ -237,7 +239,7 @@ padding: 4px 10px;
 font-size: 18px;
 }
 
-a.button, a:link.button, input[type=submit], input[type=button],
+a.button, input[type=submit], input[type=button],
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;

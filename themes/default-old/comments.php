@@ -41,7 +41,7 @@
                  * define twentyten_comment() and that will be used instead.
                  * See twentyten_comment() in twentyten/functions.php for more.
                  */
-                wp_list_comments( array( 'callback' => 'the_dir_comment' ) );
+                wp_list_comments( array( 'callback' => 'dp_comment' ) );
             ?>
         </ol>
 

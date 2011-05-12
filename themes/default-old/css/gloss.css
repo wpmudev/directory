@@ -12,9 +12,7 @@
 
 /********************************** styles start >>> */
 /********************************** adverts */
-.h-ads {
-background: #eeeeee;
-}
+
 /********************************** comments */
 #comments .title {
 font-size: 16px;
@@ -32,6 +30,7 @@ font-weight: normal;
 ol.commentlist li {
 margin-bottom: 10px;
 padding: 10px;
+border: 1px solid #333333;
 }
 
 .fn, .says {
@@ -61,7 +60,8 @@ margin-bottom: 10px;
 
 .comment-author img {
 padding: 5px;
-border: 1px solid #EEEEEE;
+background: none repeat scroll 0 0 #333333;
+border: 1px solid #333333;
 margin-bottom: 10px;
 float: right;
 }
@@ -75,7 +75,7 @@ color: #888;
 }
 
 #content .gallery img {
-border: 2px solid #cfcfcf;
+border: 2px solid #ffffff;
 }
 
 #content .gallery .gallery-caption {
@@ -95,8 +95,8 @@ color: #aaa;
 }
 
 #wp-calendar tbody td {
-background: #f5f5f5;
-border: 1px solid #fff;
+background: #333333;
+border: 1px solid #222222;
 }
 
 #wp-calendar tbody .pad {
@@ -104,14 +104,14 @@ background: none;
 }
 /********************************** directory */
 .archive #content h2, .dp-top-level #content h2 {
-color: #0000cc;
+color: #cccccc;
 font-size: 18px;
 font-weight: normal;
 padding: 5px 10px 5px 0px;
-border-bottom: 1px solid #0000cc;
+border-bottom: 1px solid #333333;
 }
 .archive #content .current-cat a {
-color: #0000cc;
+color: #ffffff;
 font-size: 24px;
 text-decoration: none;
 }
@@ -121,20 +121,20 @@ text-decoration: underline;
 }
 
 .archive #content .current-cat ul li a {
-color: #0000cc;
+color: #ffffff;
 text-decoration: none;
 font-style: italic;
 font-size: 16px;
 }
 
 .dp-taxonomy-name {
-color: #0000cc;
+color: #ffffff;
 font-size: 24px;
 text-decoration: none;
 font-weight: normal;
 }
 
-.listing {
+.directory_listing {
 border: none;
 }
 
@@ -144,7 +144,7 @@ font-style: italic;
 }
 
 .wp-post-image {
-border: 1px solid #eeeeee;
+border: none;
 }
 
 .dp-error, .error {
@@ -152,41 +152,34 @@ background: #FFEBE8 !important;
 }
 
 #action-bar {
+background: #000000;
+border: 1px solid #333333;
+font-size: 18px;
+color: #666666;
+text-shadow: 1px 1px 0px #111111;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-border-bottom: 1px solid #666666;
-font-size: 18px;
-color: #666666;
-text-shadow: 1px 1px 0px #ffffff;
 }
 
 .entry-meta {
-border-left: none;
-float: none;
-width: 960px;
-padding: 10px 0px;
-margin: 0px;
+border-left: 1px solid #222222;
 }
 
 .excerptpost, .post, #checkout-page {
-border: none;
+background: #000000;
+border: 1px solid #333333;
 padding: 10px;
 }
 
-.entry-post {
-clear: both;
-margin: 0px;
-width: 920px;
-}
-
 #respond, .breadcrumbtrail {
-background: #ffffff;
+background: #000000;
+border: 1px solid #333333;
 padding: 10px;
 }
 
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a {
-color: #0000cc;
+color: #ffffff;
 text-decoration: none;
 font-size: 14px;
 }
@@ -195,7 +188,7 @@ color: #666666;
 text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-color: #0000cc;
+color: #ffffff;
 text-decoration: none;
 }
 
@@ -204,8 +197,11 @@ text-decoration: underline;
 }
 
 .home #content li {
-border: none;
-padding: 0px;
+background: #000000;
+border: 1px solid #333333;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 .home #content li ul, .archive #content li ul {
@@ -213,42 +209,51 @@ border: none;
 }
 
 .home #content h2 {
-color: #0000cc;
-text-shadow: 1px 1px 0px #ffffff;
+color: #666666;
+text-shadow: 1px 1px 0px #111111;
 font-size: 18px;
 font-weight: normal;
 }
 /********************************** footer */
 #footer-widget-area {
-border-top: 3px solid #eeeeee;
+border-top: 3px solid #333333;
 }
 /********************************** forms */
 #searchbox {
-background: #eeeeee;
-border: 1px solid #eeeeee;
+background: #000000;
+border: 1px solid #333333;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 #searchbox label {
-color: #0000cc;
+color: #ffffff;
 font-size: 24px;
-text-shadow: 1px 1px 0px #eeeeee;
+text-shadow: 1px 1px 0px #00728f;
 }
 
 #searchbox input[type="text"] {
 padding: 4px 10px;
 font-size: 18px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
-a.button, input[type=submit], input[type=button],
+a.button, a:link.button, input[type=submit], input[type=button],
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #669911;
-border: 1px solid #669911;
-text-shadow: 1px 1px 0px #669911;
+background: #111111 url('../images/gloss-images/button-background.jpg');
+border: 1px solid #444444;
+text-shadow: 1px 1px 0px #111111;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
@@ -259,31 +264,29 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #111111;
+background: #111111 url('../images/gloss-images/button-background.jpg');
 border: 1px solid #ffffff;
-text-shadow: 1px 1px 0px #669911;
+text-shadow: 1px 1px 0px #111111;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
 input[type="text"], input[type="password"] {
-background: #ffffff;
-border: 1px solid #EEEEEE;
+background: #333333;
+border: 1px solid #333333;
 color: #111111;
 padding: 5px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
 -webkit-border-radius: 5px;
+-moz-border-radius: 5px;
 border-radius: 5px;
 }
 
 textarea {
-background: #ffffff;
-border: 1px solid #EEEEEE;
+background: #333333;
+border: 1px solid #333333;
 color: #111111;
 padding: 5px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 width: 95%;
 }
 /********************************** header */
@@ -296,18 +299,17 @@ text-decoration: none;
 }
 /********************************** layout */
 body {
-background: #FFFFFF;
+background: #000000 url('../images/gloss-images/background.jpg') repeat-x;
 }
 #site-wrapper {
-background: #ffffff;
 }
 /********************************** navigation */
 #navigation {
-/*	background: #0000cc url('../images/modern-images/nav-background.jpg') repeat-x;*/
+background: #009ec4 url('../images/gloss-images/nav-background.jpg') repeat-x;
 }
 
 #navigation-wrapper {
-/*	background: #0000cc url('../images/modern-images/nav-background.jpg') repeat-x;*/
+background: #009ec4 url('../images/gloss-images/nav-background.jpg') repeat-x;
 }
 
 #navigation .menu-header,
@@ -316,7 +318,8 @@ font-size: 14px;
 }
 
 #navigation a {
-color: #111111;
+color: #666666;
+text-shadow: 1px 1px 0px #111111;
 font-size: 14px;
 font-weight: bold;
 line-height: 38px;
@@ -336,50 +339,50 @@ line-height: 1em;
 
 #navigation li:hover > a,
 #navigation ul ul :hover > a {
-color: #0000cc;
+color: #ffffff;
 }
 
 #navigation ul li.current_page_item > a,
 #navigation ul li.current-menu-ancestor > a,
 #navigation ul li.current-menu-item > a,
 #navigation ul li.current-menu-parent > a {
-color: #0000cc;
+color: #ffffff;
 }
 * html #navigation ul li.current_page_item a,
 * html #navigation ul li.current-menu-ancestor a,
 * html #navigation ul li.current-menu-item a,
 * html #navigation ul li.current-menu-parent a,
 * html #navigation ul li a:hover {
-color: #0000cc;
+color: #ffffff;
 }
 
 .current_page_item {
-background: #fff;
+background: #111111;
 }
 
 /********************************** typography */
 h1, h2, h3, h4, h5, h6 {
-color: #0000cc;
+color: #eeeeee;
 }
 
 
 a:link {
-color: #0000cc;
+color: #aaaaaa;
 }
 
 a:visited {
-color: #0000cc;
+color: #666666;
 }
 
 a:active,
 a:hover {
-color: #222222;
+color: #ffffff;
 }
 
 body {
-font-size: 13px;
+font-size: 12px;
 line-height: 22px;
-color: #111111;
+color: #eeeeee;
 font-family: arial,helvetica,verdana,sans-serif;
 }
 
@@ -414,11 +417,11 @@ font-weight: normal;
 }
 
 .headerpad, h3#comments-title {
-color: #111111;
-text-shadow: 1px 1px 0px #ffffff;
+color: #cccccc;
+text-shadow: 1px 1px 0px #111111;
 font-size: 18px;
 font-weight: normal;
-background: #ffffff;
+background: #222222;
 padding: 10px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;

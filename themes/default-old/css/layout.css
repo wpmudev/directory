@@ -103,7 +103,7 @@ margin-right: 15px;
 
 #content img {
 margin: 0;
-max-width: 640px;
+max-width: 900px;
 }
 
 #content .attachment img {
@@ -184,6 +184,9 @@ margin: 0;
 display: none;
 }
 /********************************** directory */
+.entry-title a {
+    text-decoration: none;
+}
 .cf-checkout table, .checkout-login table, .checkout table{
 	padding: 10px;
 	width: 100%;
@@ -219,10 +222,10 @@ display: none;
     float: left;
 }
 
-.single .listing {
+.single .directory_listing {
     min-height: inherit;
 }
-.listing {
+.directory_listing {
     margin: 10px 0px;
     padding: 10px;
 }
@@ -470,7 +473,7 @@ padding: 10px 0 0 0;
 
 #site-logo {
 margin: 0px;
-padding: 25px 0px;
+padding: 0px 0px;
 float: left;
 }
 
@@ -485,7 +488,6 @@ text-decoration: none;
 #banner-header {
     width: 468px;
     height: 60px;
-    background: #ddd;
     float: right;
 }
 #banner-header span {
@@ -588,7 +590,7 @@ margin-bottom: 10px;
 
 #content ul {
 list-style: square;
-margin: 10px;
+margin: 20px;
 }
 
 #content ol {

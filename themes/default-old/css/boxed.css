@@ -12,11 +12,7 @@
 
 /********************************** styles start >>> */
 /********************************** adverts */
-.h-ads {
-background: #eeeeee;
-width: 468px;
-height: 60px;
-}
+
 /********************************** comments */
 #comments .title {
 font-size: 16px;
@@ -108,18 +104,14 @@ background: none;
 }
 /********************************** directory */
 .archive #content h2, .dp-top-level #content h2 {
-color: #471111;
+color: #337d92;
 font-size: 18px;
 font-weight: normal;
 padding: 5px 10px 5px 0px;
-border-bottom: 1px solid #471111;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+border-bottom: 1px solid #337d92;
 }
 .archive #content .current-cat a {
-color: #471111;
+color: #337d92;
 font-size: 24px;
 text-decoration: none;
 }
@@ -129,20 +121,20 @@ text-decoration: underline;
 }
 
 .archive #content .current-cat ul li a {
-color: #471111;
+color: #337d92;
 text-decoration: none;
 font-style: italic;
 font-size: 16px;
 }
 
 .dp-taxonomy-name {
-color: #471111;
+color: #337d92;
 font-size: 24px;
 text-decoration: none;
 font-weight: normal;
 }
 
-.listing {
+.directory_listing {
 border: 1px solid #EEEEEE;
 }
 
@@ -162,13 +154,9 @@ background: #FFEBE8 !important;
 #action-bar {
 border: 1px solid #eeeeee;
 background: #eeeeee;
-font-size: 16px;
+font-size: 18px;
 color: #666666;
 text-shadow: 1px 1px 0px #ffffff;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 }
 
 .entry-meta {
@@ -186,7 +174,7 @@ padding: 10px;
 }
 
 .home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a {
-color: #471111;
+color: #337d92;
 text-decoration: none;
 font-size: 14px;
 }
@@ -195,7 +183,7 @@ color: #666666;
 text-decoration: underline;
 }
 .home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
-color: #471111;
+color: #337d92;
 text-decoration: none;
 }
 
@@ -217,61 +205,38 @@ text-shadow: 1px 1px 0px #ffffff;
 font-size: 18px;
 font-weight: normal;
 background: #eeeeee;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 }
-
-.home #content ul {
-margin: 10px 0px;
-}
-
 /********************************** footer */
 #footer-widget-area {
 border-top: 3px solid #eeeeee;
 }
 /********************************** forms */
 #searchbox {
-background: #611212;
-border: 1px solid #611212;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+background: #225e6f;
+border: 1px solid #225e6f;
 }
 
 #searchbox label {
 color: #ffffff;
 font-size: 22px;
-margin-bottom: 20px;
 text-shadow: 1px 1px 0px #00728f;
 }
 
 #searchbox input[type="text"] {
-clear: both;
-padding: 4px 20px;
+padding: 4px 5px;
 font-size: 18px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 }
 
-a.button, input[type=submit], input[type=button],
+a.button, a:link.button, input[type=submit], input[type=button],
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;
 padding: 5px 10px;
-color: #eeeeee;
+color: #ffffff;
 text-decoration: none;
-background: #471111;
-border: 1px solid #280606;
-text-shadow: 1px 1px 0px #471111;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+background: #113b47;
+border: 1px solid #337d92;
+text-shadow: 1px 1px 0px #113b47;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
@@ -282,13 +247,9 @@ font-weight: bold;
 padding: 5px 10px;
 color: #ffffff;
 text-decoration: none;
-background: #471111;
-border: 1px solid #471111;
-text-shadow: 1px 1px 0px #471111;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+background: #113b47;
+border: 1px solid #ffffff;
+text-shadow: 1px 1px 0px #113b47;
 }
 
 input[type="text"], input[type="password"] {
@@ -296,10 +257,6 @@ background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
 padding: 5px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 }
 
 textarea {
@@ -307,11 +264,7 @@ background: #ffffff;
 border: 1px solid #EEEEEE;
 color: #111111;
 padding: 5px;
-width: 98%;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+width: 95%;
 }
 /********************************** header */
 #site-logo {
@@ -327,13 +280,11 @@ background: #eeeeee;
 }
 #site-wrapper {
 background: #ffffff;
-width: 600px;
 }
 /********************************** navigation */
 #navigation {
 background: #cccccc url('../images/modern-images/nav-background.jpg') repeat-x;
-padding: 0px 10px;
-width: 600px;
+width: 960px;
 }
 
 #navigation-wrapper {
@@ -390,16 +341,16 @@ background: #fff;
 
 /********************************** typography */
 h1, h2, h3, h4, h5, h6 {
-color: #471111;
+color: #337d92;
 }
 
 
 a:link {
-color: #471111;
+color: #337d92;
 }
 
 a:visited {
-color: #471111;
+color: #337d92;
 }
 
 a:active,
@@ -411,7 +362,7 @@ body {
 font-size: 13px;
 line-height: 22px;
 color: #111111;
-font-family: Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
 }
 
 h1 {
@@ -451,10 +402,6 @@ font-size: 18px;
 font-weight: normal;
 background: #eeeeee;
 padding: 10px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
 }
 
 #content blockquote {

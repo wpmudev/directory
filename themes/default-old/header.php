@@ -13,25 +13,24 @@
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<link rel="icon" href="<?php bloginfo('stylesheet_directory');?>/favicon.ico" type="images/x-icon" />
-        <?php do_action('dir_theme_colors'); ?>
-        <?php do_action('dir_theme_options'); ?>
-		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/custom.css" type="text/css" media="all" />
+        <?php do_action('dp_theme_colors'); ?>
+        <?php do_action('dp_theme_options'); ?>
 		<?php if ( is_singular() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' ); ?>
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class() ?>>
 
-		<?php locate_template( array( '/components/navigation.php' ), true ); ?>
+		<?php locate_template( array( '/includes/components/navigation.php' ), true ); ?>
 
 		<div id="site-wrapper"><!-- start #site-wrapper -->
 
 			<div id="header"><!-- start #header -->
-                <?php locate_template( array( '/components/banner-header.php' ), true ) ?>
-				<?php locate_template( array( '/components/branding-header.php' ), true ); ?>
+                <?php locate_template( array( '/includes/components/banner-header.php' ), true ) ?>
+				<?php locate_template( array( '/includes/components/branding-header.php' ), true ); ?>
 			</div><!-- end #header -->
 
-			<?php locate_template( array( '/components/searchcontainer.php' ), true ); ?>
-		    <?php locate_template( array( '/components/actionbuttons.php' ), true ); ?>
+			<?php locate_template( array( '/includes/components/searchcontainer.php' ), true ); ?>
+		    <?php locate_template( array( '/includes/components/actionbuttons.php' ), true ); ?>
 					
 			<div id="container"><!-- start #container -->
