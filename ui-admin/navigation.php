@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php $settings_page = 'dp_main';  ?>
+<?php $settings_page = 'settings';  ?>
 
 <h2>
     <?php if ( isset( $_GET['page'] ) && $_GET['page'] == $settings_page ): ?>
