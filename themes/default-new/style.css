@@ -1,0 +1,38 @@
+/*
+
+Theme Name: Directory Theme
+Theme Date: 
+Version: 1.0
+Theme URI: http://premium.wpmudev.org/
+Description: Directory Theme
+Author: Tammie Lister, Ivan Shaovchev (Incsub)
+Author URI: http://premium.wpmudev.org 
+WPD ID:
+
+Tags: wordpress
+
+The CSS, XHTML and design is released under GPL:
+http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+/* basic styling for all elements */
+@import url( css/layout.css );
+
+/* styles */
+/*@import url( css/minimal.css );*/
+/*@import url( css/modern.css );*/
+/*@import url( css/boxed.css );*/
+/*@import url( css/gloss.css );*/
+/*@import url( css/wide.css );*/
+/*@import url( css/skinny.css );*/
+
+/* directory home page rows / grid*/
+/*@import url( css/directory-row.css );*/
+/*@import url(_inc/css/directory-row.css);*/
+
+/* textshadows on / off*/
+/*@import url(css/notextshadows.css);*/
+
+/* rtl languages styling */
+/* @import url( rtl.css ); */
