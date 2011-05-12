@@ -1,7 +1,5 @@
 <?php
 
-if ( !class_exists('Directory_Core_Admin') ):
-
 /**
  * Directory_Core_Admin 
  * 
@@ -17,15 +15,6 @@ class Directory_Core_Admin extends Directory_Core {
      * Constructor.
      **/
     function Directory_Core_Admin() {
-        $this->init();
-    }
-
-    /**
-     * Setup hooks.
-     *
-     * @return void
-     **/
-    function init() {
         add_action( 'admin_init', array( &$this, 'admin_head' ) );
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
         add_action( 'render_admin_navigation', array( &$this, 'render_admin_navigation' ) );
@@ -33,20 +22,12 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
     /**
-     * Initiate class variables.
-     *
-     * @return void
-     **/
-    function init_vars() {}
-
-    /**
      * Register all admin menues.
      *
      * @return void
      **/
     function admin_menu() {
-        add_menu_page( __( 'Directory', $this->text_domain ), __( 'Directory', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
-    //  add_submenu_page( 'dp_main', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'dp_main', array( &$this, 'handle_admin_requests' ) );
+		add_submenu_page( 'edit.php?post_type=listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_admin_requests' ) );
     }
 
     /**
@@ -55,8 +36,8 @@ class Directory_Core_Admin extends Directory_Core {
      * @return void
      **/
     function admin_head() {
-        $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : NULL;
-        $hook = get_plugin_page_hook( $page, 'dp_main' );
+        $page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : null;
+        $hook = get_plugin_page_hook( $page, 'settings' );
         add_action( 'admin_print_styles-' .  $hook, array( &$this, 'enqueue_styles' ) );
         add_action( 'admin_print_scripts-' . $hook, array( &$this, 'enqueue_scripts' ) );
     }
@@ -88,7 +69,7 @@ class Directory_Core_Admin extends Directory_Core {
      * @return HTML
      **/
     function handle_admin_requests() {
-        if ( isset( $_GET['page'] ) && $_GET['page'] == 'dp_main' ) {
+        if ( $_GET['post_type'] == 'listing' && $_GET['page'] == 'settings' ) {
             if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ) {
                 if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
                     if ( isset( $_POST['save'] ) ) {
@@ -134,6 +115,8 @@ class Directory_Core_Admin extends Directory_Core {
     }
 
 }
-endif;
+
+/* Initiate Admin */
+new Directory_Core_Admin();
 
 ?>
