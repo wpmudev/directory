@@ -11,17 +11,15 @@
 class Directory_Core {
 
     /** @var string $plugin_url Plugin URL */
-    var $plugin_url = DP_PLUGIN_URL;
+    var $plugin_url = DIR_PLUGIN_URL;
     /** @var string $plugin_dir Path to plugin directory */
-    var $plugin_dir = DP_PLUGIN_DIR;
+    var $plugin_dir = DIR_PLUGIN_DIR;
     /** @var string $text_domain The text domain for strings localization */
-    var $text_domain = DP_TEXT_DOMAIN;
+    var $text_domain = DIR_TEXT_DOMAIN;
     /** @var string Name of options DB entry */
-    var $options_name = DP_OPTIONS_NAME;
+    var $options_name = DIR_OPTIONS_NAME;
     /** @var string User role */
-    var $user_role = 'dp_member'; // TODO Remove var
-    /** @var string Main plugin menu slug */
-    var $admin_menu_slug = 'dp_main'; // TODO Remove var
+    var $user_role = 'dir_member'; // TODO Remove var
 
     /**
      * Constructor.
@@ -47,7 +45,6 @@ class Directory_Core {
 		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
 		
 		// TODO Clean that shit
-        add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
         add_action( 'init', array( &$this, 'roles' ) );
         add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
         add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
@@ -346,23 +343,6 @@ class Directory_Core {
         }
     }    
 
-    /**
-     * handle_action_buttons_requests 
-     * 
-     * @access public
-     * @return void
-     */
-    function handle_action_buttons_requests(  ) {
-        /* If your want to go to admin profile */
-        if ( isset( $_POST['redirect_profile'] ) ) {
-            wp_redirect( admin_url() . 'profile.php' );
-            exit();
-        }
-        elseif ( isset( $_POST['redirect_listing'] ) ) {
-            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
-            exit();
-        }
-    }
 
     /**
      * Schedule expiration check for twice daily.

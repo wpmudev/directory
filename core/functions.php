@@ -33,4 +33,21 @@ function is_dir_page( $type = '' ) {
 	return isset( $flags[ $type ] ) && $flags[ $type ];
 }
 
-?>
+/**
+ * get_term_parents 
+ * 
+ * @param mixed $term 
+ * @access public
+ * @return void
+ */
+function get_dir_term_parents( $term ) {
+	static $terms = array();
+
+	array_unshift( $terms, $term );
+
+	if ( !empty( $term->parent ) ) 
+		get_term_parents( get_term( $term->parent, $term->taxonomy ) );
+
+	return $terms;
+}
+

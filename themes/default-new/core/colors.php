@@ -3,27 +3,17 @@
 /**
  * Setup the Colors page inside WordPress Appearance Menu
  */
-if ( !class_exists('Directory_Theme_Colors') ):
-class Directory_Theme_Colors
-{
-    /** @var string The current page. Used for custom hooks. */
-    var $page;
+class Directory_Theme_Colors {
 
     /**
      * Class constructor. 
      */
     function Directory_Theme_Colors() {
-		add_action( 'init', array( &$this, 'init' ) );
-	}
-
-    /**
-     * Init hooks.
-     */
-	function init() {
         add_action( 'admin_init', array( &$this, 'register_color_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
-        add_action( 'admin_init', array( &$this, 'page_init' ) );
-        add_action( 'dp_theme_colors', array( &$this, 'output_theme_colors' ) );
+
+		// Hook located in header.php
+        add_action( 'dir_theme_colors', array( &$this, 'output_theme_colors' ) );
 	}
 
     /**
@@ -37,17 +27,12 @@ class Directory_Theme_Colors
      * Load up the menu page.
      */
     function add_page() {
-       $this->page = add_theme_page( __('Colors', 'directory'), __('Colors', 'directory'), 'edit_theme_options', 'colors', array( &$this, 'output_admin_page' ) );
-    }
+		$page = add_theme_page( __('Colors', 'directory'), __('Colors', 'directory'), 'edit_theme_options', 'colors', array( &$this, 'output_admin_page' ) );
 
-    /**
-     * Load scripts and styles.
-     */
-    function page_init() {
-        add_action( 'admin_print_styles-'  . $this->page, array( &$this, 'enqueue_styles' ));
-        add_action( 'admin_print_scripts-' . $this->page, array( &$this, 'enqueue_scripts' ));
-        add_action( 'admin_head-' . $this->page, array( &$this, 'print_admin_style' ));
-        add_action( 'admin_head-' . $this->page, array( &$this, 'print_admin_scripts' ));
+        add_action( 'admin_print_styles-'  . $page, array( &$this, 'enqueue_styles' ));
+        add_action( 'admin_print_scripts-' . $page, array( &$this, 'enqueue_scripts' ));
+        add_action( 'admin_head-' . $page, array( &$this, 'print_admin_style' ));
+        add_action( 'admin_head-' . $page, array( &$this, 'print_admin_scripts' ));
     }
 
     /**
@@ -113,7 +98,7 @@ class Directory_Theme_Colors
             <h2><?php echo get_current_theme() . ' ' . __('Colors', 'directory') ?></h2>
 
             <?php if ( isset( $msg ) ) : ?>
-            <div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
+				<div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
             <?php endif; ?>
 
             <form method="post" action="options.php">
@@ -211,6 +196,12 @@ class Directory_Theme_Colors
         </div> <?php
     }
 
+    /**
+     * output_theme_colors 
+     * 
+     * @access public
+     * @return void
+     */
     function output_theme_colors() {
         $colors = get_option('dir_colors');
 
@@ -294,9 +285,5 @@ class Directory_Theme_Colors
         }
     }
 }
-endif;
 
-if ( class_exists('Directory_Theme_Colors') )
-	$__directory_theme_colors = new Directory_Theme_Colors();
-
-?>
+new Directory_Theme_Colors();

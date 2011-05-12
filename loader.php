@@ -28,15 +28,15 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version  
-define( 'DP_VERSION', '1.0.8' );
+define( 'DIR_VERSION', '1.0.8' );
 // define the plugin folder url 
-define( 'DP_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define( 'DIR_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // define the plugin folder dir 
-define( 'DP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
+define( 'DIR_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // The text domain for strings localization
-define( 'DP_TEXT_DOMAIN', 'dp_text_domain' );
+define( 'DIR_TEXT_DOMAIN', 'dir_text_domain' );
 // The key for the options array
-define( 'DP_OPTIONS_NAME', 'dp_options' );
+define( 'DIR_OPTIONS_NAME', 'dir_options' );
 
 // include core files 
 include_once 'core/core.php';

@@ -10,13 +10,13 @@
     <div class="padder">
 		<div class="breadcrumbtrail">
 			<h1 class="page-title dp-taxonomy-name">
-
+				<?php the_dir_breadcrumbs(); ?>
 			</h1>
-			<?php //dp_list_categories('sub'); ?>  <div class="clear"></div>
+			<div class="clear"></div>
 		</div>
 
-		<div class="clear"></div>
-		<div class="dp-widgets-stra"></div>
+		<?php the_dir_categories_archive(); ?>  
+		<div class="clear"></div><br />
 
 		<?php if ( have_posts() ) : ?>
 
@@ -25,7 +25,7 @@
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<div class="entry-meta">
-					<?php dp_posted_on(); ?>
+					<?php the_dir_posted_on(); ?>
 
 					<div class="entry-utility">
 
@@ -79,8 +79,10 @@
 				<div class="alignright"><?php next_post_link('%link&raquo;') ?></div>
 			</div>
 
-		<?php else: ?>
-			<?php locate_template( array( '/includes/components/messages.php' ), true ); ?>
+		<?php else : ?>
+
+			<h3><?php _e("Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", THEME_TEXT_DOMAIN); ?></h3>
+
 		<?php endif; ?>
 
 	</div>

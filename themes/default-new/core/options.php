@@ -3,23 +3,17 @@
 /**
  * Setup the Colors page inside WordPress Appearance Menu
  */
-if ( !class_exists('Directory_Theme_Options') ):
 class Directory_Theme_Options {
 
     /**
      * Class constructor. 
      */
     function Directory_Theme_Options() {
-        $this->init();
-	}
-
-    /**
-     * Init hooks.
-     */
-	function init() {
         add_action( 'admin_init', array( &$this, 'register_option_settings' ) );
         add_action( 'admin_menu', array( &$this, 'add_page' ) );
-        add_action( 'dp_theme_options', array( &$this, 'output_theme_options' ) );
+
+		// Hook located in header.php
+        add_action( 'dir_theme_options', array( &$this, 'output_theme_options' ) );
 	}
 
     /**
@@ -33,7 +27,7 @@ class Directory_Theme_Options {
      * Load up the menu page.
      */
     function add_page() {
-       $this->page = add_theme_page( __('Options', 'directory'), __('Options', 'directory'), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
+		add_theme_page( __('Options', 'directory'), __('Options', 'directory'), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
     }
 
     /**
@@ -129,9 +123,5 @@ class Directory_Theme_Options {
         }
     }
 }
-endif;
 
-if ( class_exists('Directory_Theme_Options') )
-	$__directory_theme_options = new Directory_Theme_Options();
-
-?>
+new Directory_Theme_Options();
