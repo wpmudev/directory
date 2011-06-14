@@ -1,10 +1,10 @@
 <?php
 
 /**
- * DR_Core 
- * 
+ * DR_Core
+ *
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Core {
@@ -42,7 +42,7 @@ class DR_Core {
 
 		add_filter( 'single_template', array( &$this, 'handle_template' ) );
 		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
-		
+
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
     }
 
@@ -59,6 +59,32 @@ class DR_Core {
 		$this->add_rewrite_rule( 'signup/?$', array(
 			'dr_signup' => 1
 		) );
+
+
+        register_post_type( 'directory_listing', array(
+            'public' => true,
+            'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
+            'has_archive' => true,
+
+            'capability_type' => 'listing',
+            'capabilities' => array( 'edit_posts' => 'edit_published_listings' ),
+            'map_meta_cap' => true,
+
+            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
+
+            'labels' => array(
+                'name'          => __('Listings', $this->text_domain ),
+                'singular_name' => __('Listing', $this->text_domain ),
+                'add_new'       => __('Add New', $this->text_domain ),
+                'add_new_item'  => __('Add New Listing', $this->text_domain ),
+                'edit_item'     => __('Edit Listing', $this->text_domain ),
+                'new_item'      => __('New Listing', $this->text_domain ),
+                'view_item'     => __('View Listing', $this->text_domain ),
+                'search_items'  => __('Search Listings', $this->text_domain ),
+                'not_found'     => __('No listings found', $this->text_domain ),
+                'not_found_in_trash'    => __('No listings found in trash', $this->text_domain ),
+            )
+        ) );
 
 		register_taxonomy( 'listing_tag', 'directory_listing', array(
 			'rewrite' => array( 'slug' => 'listings/tag', 'with_front' => false ),
@@ -79,7 +105,7 @@ class DR_Core {
 		) );
 
 		register_taxonomy( 'listing_category', 'directory_listing', array(
-			'rewrite' => array( 'slug' => 'listings/category', 'with_front' => false, 'hierarchical' => true ),
+			'rewrite' => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
 			'hierarchical' => true,
 			'labels' => array(
 				'name'			=> __( 'Listing Categories', $this->text_domain ),
@@ -97,30 +123,10 @@ class DR_Core {
 			)
 		) );
 
-		register_post_type( 'directory_listing', array(
-			'public' => true,
-			'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
-			'has_archive' => true,
+        //rewrite rules for categories
+        $wp_rewrite->add_rule('listings-category/([^/]+)/','?listing_category=$matches[1]', 'top');
+        $wp_rewrite->flush_rules(false);  // This should really be done in a plugin activation
 
-			'capability_type' => 'listing',
-			'capabilities' => array( 'read' => 'read_listings' ),
-			'map_meta_cap' => true,
-
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
-
-			'labels' => array(
-				'name'			=> __('Listings', $this->text_domain ),
-				'singular_name'	=> __('Listing', $this->text_domain ),
-				'add_new'		=> __('Add New', $this->text_domain ),
-				'add_new_item'	=> __('Add New Listing', $this->text_domain ),
-				'edit_item'		=> __('Edit Listing', $this->text_domain ),
-				'new_item'		=> __('New Listing', $this->text_domain ),
-				'view_item'		=> __('View Listing', $this->text_domain ),
-				'search_items'	=> __('Search Listings', $this->text_domain ),
-				'not_found'		=> __('No listings found', $this->text_domain ),
-				'not_found_in_trash'	=> __('No listings found in trash', $this->text_domain ),
-			)
-		) );
     }
 
 	/**
@@ -151,14 +157,14 @@ class DR_Core {
     }
 
     /**
-	 * Fire on plugin deactivation. 
+	 * Fire on plugin deactivation.
 	 * If $this->flush_plugin_data is set to "true"
      * all plugin data will be deleted
      *
      * @return void
      */
     function plugin_deactivate() {
-		// if true all plugin data will be deleted 
+		// if true all plugin data will be deleted
         if ( true ) {
             delete_option( $this->options_name );
             delete_site_option( $this->options_name );
@@ -231,14 +237,14 @@ class DR_Core {
 	 * @access public
 	 * @return void
      */
-    function output_banners() { 
+    function output_banners() {
         $options = $this->get_options( 'ads_settings' );
         if ( !empty( $options['header_ad_code'] ) ) {
             echo stripslashes( $options['header_ad_code'] );
         } else {
             echo '<span>' .  __( 'Advartise Here', $this->text_domain ) . '</span>';
         }
-    }    
+    }
 
 
     /**

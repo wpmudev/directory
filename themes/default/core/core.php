@@ -119,7 +119,7 @@ class DR_Theme_Core {
             exit();
         }
         elseif ( isset( $_POST['redirect_listing'] ) ) {
-            wp_redirect( admin_url() . 'post-new.php?post_type=listing' );
+            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
             exit();
         }
     }

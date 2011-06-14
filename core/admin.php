@@ -1,11 +1,11 @@
 <?php
 
 /**
- * DR_Admin 
- * 
+ * DR_Admin
+ *
  * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Admin extends DR_Core {
@@ -44,7 +44,6 @@ class DR_Admin extends DR_Core {
 	 */
 	function init_defaults() {
 		global $wp_roles;
-		
 		foreach ( array_keys( $this->capability_map ) as $capability )
 			$wp_roles->add_cap( 'administrator', $capability );
 
@@ -60,7 +59,7 @@ class DR_Admin extends DR_Core {
     function admin_menu() {
 		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
 
-		// Hook styles and scripts 
+		// Hook styles and scripts
         add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_styles' ) );
         add_action( 'admin_print_scripts-' . $settings_page, array( &$this, 'enqueue_scripts' ) );
     }
@@ -87,7 +86,7 @@ class DR_Admin extends DR_Core {
     }
 
     /**
-     * Handles $_GET and $_POST requests for the settings page. 
+     * Handles $_GET and $_POST requests for the settings page.
      *
      * @return void
      */

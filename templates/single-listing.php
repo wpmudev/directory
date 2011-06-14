@@ -1,4 +1,4 @@
-<?php get_header() ?>	
+<?php get_header() ?>
 
 <div id="content"><!-- start #content -->
 	<div class="padder">
@@ -17,7 +17,7 @@
 						<br />
 						<?php the_dr_posted_in(); ?>
 						<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
-						<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span> 	
+						<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span>
 
 						<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) : ?>
 							<?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>

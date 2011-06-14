@@ -9,8 +9,8 @@
 -------------------------------------------------------------- */
 
 /**
- * the_dir_categories_home 
- * 
+ * the_dir_categories_home
+ *
  * @access public
  * @return void
  */
@@ -23,14 +23,14 @@ function the_dr_categories_home() {
 		'hierarchical' => 1,
 		'number'       => 10,
 		'taxonomy'     => 'listing_category',
-		'pad_counts'   => 1 
+		'pad_counts'   => 1
 	);
 
-	$categories = get_categories( $args );  
+	$categories = get_categories( $args );
 
 	$output = '<ul>';
 
-	foreach( $categories as $category ) { 		
+	foreach( $categories as $category ) {
 
 		$output .= '<li>';
 		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DIR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> </h2>';
@@ -43,7 +43,7 @@ function the_dr_categories_home() {
 			'hierarchical' => 1,
 			'number'       => 10,
 			'taxonomy'     => 'listing_category',
-			'pad_counts'   => 1 
+			'pad_counts'   => 1
 		);
 
 		$sub_categories = get_categories( $args );
@@ -62,8 +62,8 @@ function the_dr_categories_home() {
 }
 
 /**
- * the_dir_categories_archive 
- * 
+ * the_dir_categories_archive
+ *
  * @access public
  * @return void
  */
@@ -76,16 +76,16 @@ function the_dr_categories_archive() {
 		'hierarchical' => 1,
 		'number'       => 10,
 		'taxonomy'     => 'listing_category',
-		'pad_counts'   => 1 
+		'pad_counts'   => 1
 	);
 
-	$categories = get_categories( $args );  
+	$categories = get_categories( $args );
 
 	$i = 1;
 	$output = '<table><tr><td>';
 
-	foreach( $categories as $category ) { 		
-		
+	foreach( $categories as $category ) {
+
 		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DIR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
 
 		if ( $i % 5 == 0 )
@@ -97,19 +97,19 @@ function the_dr_categories_archive() {
 	$output .= '</td></tr></table>';
 
 	echo $output;
-} 
+}
 
 /**
- * the_dir_breadcrumbs 
- * 
+ * the_dir_breadcrumbs
+ *
  * @access public
  * @return void
  */
 function the_dr_breadcrumbs() {
 	$category = get_queried_object();
 
-	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy ); 
-	$category_parent_ids = array_reverse( $category_parent_ids ); 
+	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
+	$category_parent_ids = array_reverse( $category_parent_ids );
 
 	foreach ( $category_parent_ids as $category_parent_id ) {
 		$category_parent = get_term( $category_parent_id, $category->taxonomy );
@@ -124,7 +124,7 @@ function the_dr_breadcrumbs() {
 
 /**
  * Prints HTML with meta information for the current post—date/time and author.
- * 
+ *
  * @access public
  * @return void
  */
@@ -146,11 +146,13 @@ function the_dr_posted_on() {
 
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
- * 
+ *
  * @access public
  * @return void
  */
 function the_dr_posted_in() {
+    global $post;
+
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 
@@ -161,6 +163,11 @@ function the_dr_posted_in() {
 	} else {
 		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
 	}
+
+// TODO tags
+//    $tag_list = wp_get_post_terms( $post->ID, "listing_tag", "" );
+//    echo $tag_list;
+
 
 	// Prints the string, replacing the placeholders.
 	printf(

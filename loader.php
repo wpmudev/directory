@@ -3,9 +3,9 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 1.0.8
-Author: Ivan Shaovchev (Incsub)
-Author URI: http://ivan.sh
+Version: 1.0.8.1
+Author: Ivan Shaovchev, Andrey Shipilov (Incsub)
+Author URI: http://premium.wpmudev.org
 WDP ID: 164
 License: GNU General Public License (Version 2 - GPLv2)
 */
@@ -27,18 +27,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// Define plugin version  
-define( 'DR_VERSION', '1.0.8' );
-// define the plugin folder url 
+// Define plugin version
+define( 'DR_VERSION', '1.0.8.1' );
+// define the plugin folder url
 define( 'DR_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
-// define the plugin folder dir 
+// define the plugin folder dir
 define( 'DR_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // The text domain for strings localization
 define( 'DR_TEXT_DOMAIN', 'dr_text_domain' );
 // The key for the options array
 define( 'DR_OPTIONS_NAME', 'dr_options' );
 
-// include core files 
+// include core files
 include_once 'core/core.php';
 include_once 'core/functions.php';
 include_once 'core/template-tags.php';
@@ -48,7 +48,7 @@ include_once 'core/ratings.php';
 if ( is_admin() )
 	include_once 'core/admin.php';
 
-// notice 
+// notice
 if ( !function_exists( 'wdp_un_check' ) ) {
 	add_action( 'admin_notices', 'wdp_un_check', 5 );
 	add_action( 'network_admin_notices', 'wdp_un_check', 5 );
