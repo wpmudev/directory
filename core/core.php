@@ -4,7 +4,7 @@
  * DR_Core
  *
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
+ * @author Ivan Shaovchev (Incsub) {@link http://premium.wpmudev.org}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Core {
@@ -87,7 +87,7 @@ class DR_Core {
         ) );
 
 		register_taxonomy( 'listing_tag', 'directory_listing', array(
-			'rewrite' => array( 'slug' => 'listings/tag', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'listings-tag', 'with_front' => false ),
 			'labels' => array(
 				'name'			=> __( 'Listing Tags', $this->text_domain ),
 				'singular_name'	=> __( 'Listing Tag', $this->text_domain ),
@@ -103,6 +103,12 @@ class DR_Core {
 				'choose_from_most_used'			=> __( 'Choose from the most used listing tags', $this->text_domain ),
 			)
 		) );
+
+        //rewrite rules for tags
+        $wp_rewrite->add_rule( 'listings-tag/([^/]+)/', '?listing_tag=$matches[1]', 'top' );
+        $wp_rewrite->flush_rules( false );  // This should really be done in a plugin activation
+
+
 
 		register_taxonomy( 'listing_category', 'directory_listing', array(
 			'rewrite' => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
@@ -124,8 +130,8 @@ class DR_Core {
 		) );
 
         //rewrite rules for categories
-        $wp_rewrite->add_rule('listings-category/([^/]+)/','?listing_category=$matches[1]', 'top');
-        $wp_rewrite->flush_rules(false);  // This should really be done in a plugin activation
+        $wp_rewrite->add_rule( 'listings-category/([^/]+)/', '?listing_category=$matches[1]', 'top' );
+        $wp_rewrite->flush_rules( false );  // This should really be done in a plugin activation
 
     }
 

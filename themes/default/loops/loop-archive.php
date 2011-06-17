@@ -27,7 +27,7 @@ while ( have_posts() ) : the_post(); ?>
 
 		</div><!-- .entry-utility -->
     </div><!-- .entry-meta -->
-    
+
     <div class="entry-post">
 		<h2 class="entry-title">
 			<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', THEME_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>

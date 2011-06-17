@@ -3,21 +3,21 @@
 /**
  * The template for displaying the Checkout page.
  * You can override this file in your active theme.
- * 
+ *
  * @package Payments
- * @version 1.0.0 
+ * @version 1.0.0
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
 $step        = get_query_var('checkout_step') ? get_query_var('checkout_step') : null;
-$options     = get_option('module_payments'); 
-$opset		 = $options['settings'];
+$options     = get_option( DR_OPTIONS_NAME );
+$opset		 = $options['payment_settings'];
 $oppay		 = $options['paypal'];
-$text_domain = THEME_TEXT_DOMAIN;  
+$text_domain = THEME_TEXT_DOMAIN;
 $plugin_url  = DR_PLUGIN_URL;
-$error       = get_query_var('checkout_error'); 
+$error       = get_query_var('checkout_error');
 
 get_header(); ?>
 
@@ -27,12 +27,12 @@ get_header(); ?>
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h1 class="entry-title">
 				<?php _e('Signup', THEME_TEXT_DOMAIN ); ?>
-				<?php if ( $step == 'terms' ) echo ' ( step 1 of 3 ) '; ?>	
-				<?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>	
-				<?php if ( $step == 'confirm_payment' ) echo ' ( step 3 of 3 ) '; ?>	
-				<?php if ( $step == 'cc_details' ) echo ' ( step 3 of 3 ) '; ?>	
-				<?php if ( $step == 'success' ) echo ' ( complete ) '; ?>	
-				<?php if ( $step == 'api_call_error' ) echo ' ( error ) '; ?>	
+				<?php if ( $step == 'terms' ) echo ' ( step 1 of 3 ) '; ?>
+				<?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>
+				<?php if ( $step == 'confirm_payment' ) echo ' ( step 3 of 3 ) '; ?>
+				<?php if ( $step == 'cc_details' ) echo ' ( step 3 of 3 ) '; ?>
+				<?php if ( $step == 'success' ) echo ' ( complete ) '; ?>
+				<?php if ( $step == 'api_call_error' ) echo ' ( error ) '; ?>
 			</h1>
             <div class="entry-content">
 
@@ -63,12 +63,12 @@ get_header(); ?>
                         <tr>
 							<td <?php do_action( 'billing_invalid' ); ?>>
 								<label for="billing"><?php if ( isset( $opset['recurring_name'] ) ) echo $opset['recurring_name']; ?></label>
-                                <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />  
+                                <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />
 								<span>
 								<?php
-                                $bastr	= isset( $opset['recurring_cost'] ) ? $opset['recurring_cost'] . ' ' : ''; 
-                                $bastr .= $oppay['currency'];  
-                                $bastr .= __( ' per ', $text_domain );   
+                                $bastr	= isset( $opset['recurring_cost'] ) ? $opset['recurring_cost'] . ' ' : '';
+                                $bastr .= $oppay['currency'];
+                                $bastr .= __( ' per ', $text_domain );
 								$bastr .= ( !empty( $opset['billing_frequency'] ) && $opset['billing_frequency'] != 1 )
 											? $opset['billing_frequency'] . ' ' : '';
                                 $bastr .= !empty( $opset['billing_period'] ) ? $opset['billing_period'] : '';
@@ -93,9 +93,9 @@ get_header(); ?>
                     <table id="tos">
                         <tr>
                             <td><div class="terms">
-                            <?php 
-                            if ( isset( $opset['tos_content'] ) ) 
-                                echo nl2br( $opset['tos_content'] ); 
+                            <?php
+                            if ( isset( $opset['tos_content'] ) )
+                                echo nl2br( $opset['tos_content'] );
                             ?>
                             </div></td>
                         </tr>
@@ -602,9 +602,9 @@ get_header(); ?>
 					<input type="submit" name="redirect_profile" value="Go To Profile" />
 				</form>
 				<br class="clear" />
-	
+
             <?php endif; ?>
-            
+
         </div><!-- #post-## -->
 
     </div><!-- end #blog-page -->

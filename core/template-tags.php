@@ -153,26 +153,34 @@ function the_dr_posted_on() {
 function the_dr_posted_in() {
     global $post;
 
-	// Retrieves tag list of current post, separated by commas.
-	$tag_list = get_the_tag_list( '', ', ' );
+    // Retrieves categories list of current post, separated by commas.
+    $categories = wp_get_post_terms( $post->ID, "listing_category", "" );
+    foreach ( $categories as $category )
+        $categories_list[] = '<a href="' . get_term_link( $category ) . '" title="' . $category->name . '" >' . $category->name . '</a>';
+
+    $categories_list = implode( ", ", ( array ) $categories_list );
+
+    // Retrieves tag list of current post, separated by commas.
+    $tags = wp_get_post_terms( $post->ID, "listing_tag", "" );
+    foreach ( $tags as $tag )
+        $tag_list[] = '<a href="' . get_term_link( $tag ) . '" title="' . $tag->name . '" >' . $tag->name . '</a>';
+
+    $tag_list = implode( ", ", ( array ) $tag_list );
+
 
 	if ( $tag_list ) {
 		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
-	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+	} elseif ( $categories_list ) {
 		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
 	} else {
 		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
 	}
 
-// TODO tags
-//    $tag_list = wp_get_post_terms( $post->ID, "listing_tag", "" );
-//    echo $tag_list;
-
 
 	// Prints the string, replacing the placeholders.
 	printf(
 		$posted_in,
-		get_the_category_list( ', ' ),
+		$categories_list,
 		$tag_list,
 		get_permalink(),
 		the_title_attribute( 'echo=0' )

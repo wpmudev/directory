@@ -5,7 +5,7 @@
  *
  * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
+ * @author Ivan Shaovchev (Incsub) {@link http://premium.wpmudev.org}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Admin extends DR_Core {
@@ -44,6 +44,7 @@ class DR_Admin extends DR_Core {
 	 */
 	function init_defaults() {
 		global $wp_roles;
+
 		foreach ( array_keys( $this->capability_map ) as $capability )
 			$wp_roles->add_cap( 'administrator', $capability );
 

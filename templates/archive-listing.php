@@ -15,7 +15,7 @@
 			<div class="clear"></div>
 		</div>
 
-		<?php the_dr_categories_archive(); ?>  
+		<?php the_dr_categories_archive(); ?>
 		<div class="clear"></div><br />
 
 		<?php if ( have_posts() ) : ?>
@@ -28,18 +28,40 @@
 					<?php the_dr_posted_on(); ?>
 
 					<div class="entry-utility">
+                        <?php
+                        // Retrieves categories list of current post, separated by commas.
+                        $categories = wp_get_post_terms( $post->ID, "listing_category", "" );
 
-						<?php if ( count( get_the_category() ) ) : ?>
+                        foreach ( $categories as $category )
+                            $categories_list[] = '<a href="' . get_term_link( $category ) . '" title="' . $category->name . '" >' . $category->name . '</a>';
+
+                        $categories_list = implode( ", ", ( array ) $categories_list );
+
+                        ?>
+
+						<?php if ( $categories_list ) : ?>
 							<span class="cat-links">
-								<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
+								<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
 							</span>
+                            <br />
+                            <?php unset( $categories_list ) ?>
 						<?php endif; ?>
 
-						<?php $tags_list = get_the_tag_list( '', ', ' ); ?>
+						<?php
+                        // Retrieves tag list of current post, separated by commas.
+                        $tags = wp_get_post_terms( $post->ID, "listing_tag", "" );
+                        foreach ( $tags as $tag )
+                            $tags_list[] = '<a href="' . get_term_link( $tag ) . '" title="' . $tag->name . '" >' . $tag->name . '</a>';
+
+                        $tags_list = implode( ", ", ( array ) $tags_list );
+                        ?>
+
 						<?php if ( $tags_list ): ?>
 							<span class="tag-links">
 								<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
 							</span>
+                            <br />
+                            <?php unset( $tags_list ) ?>
 						<?php endif; ?>
 
 						<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', THEME_TEXT_DOMAIN ), __( '1 Review', THEME_TEXT_DOMAIN ), __( '% Reviews', THEME_TEXT_DOMAIN ), __( 'Reviews Off', THEME_TEXT_DOMAIN ) ); ?></span>;
@@ -47,7 +69,7 @@
 
 					</div><!-- .entry-utility -->
 				</div><!-- .entry-meta -->
-				
+
 				<div class="entry-post">
 					<h2 class="entry-title">
 						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', THEME_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
