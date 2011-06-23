@@ -1,12 +1,12 @@
 <?php
 
 /**
- * DR_Payments 
+ * DR_Payments
  * Payments Core Class. Handles requests and defines common utility functions.
- * 
+ *
  * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Payments extends DR_Core {
@@ -20,9 +20,9 @@ class DR_Payments extends DR_Core {
      */
     function DR_Payments() {
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_default_options' ) );
-        // Initiate default payment settings 
+        // Initiate default payment settings
         add_action( 'init', array( &$this, 'init_default_options' ) );
-        // Handle all requests for checkout 
+        // Handle all requests for checkout
         add_action( 'template_redirect', array( &$this, 'handle_checkout_requests' ) );
     }
 
@@ -36,7 +36,7 @@ class DR_Payments extends DR_Core {
 
         if ( empty( $options ) ) {
             $defaults = array(
-                'payment_settings' => array( 
+                'payment_settings' => array(
                     'recurring_cost'    => '9.99',
                     'recurring_name'    => 'Subscription',
                     'billing_period'    => 'Month',
@@ -61,7 +61,7 @@ class DR_Payments extends DR_Core {
     }
 
     /**
-     * Update user information. This method handles both add and update 
+     * Update user information. This method handles both add and update
      * operations.
      *
      * @param string $email
@@ -70,8 +70,8 @@ class DR_Payments extends DR_Core {
      * @param string $billing The billing type for the user
      * @return NULL|void
      */
-    function update_user( $user_email, $first_name, $last_name, $billing_type, $transaction_details, $credits = '' ) {
-        // Include registration helper functions  
+    function update_user( $user_login, $user_pass, $user_email, $first_name, $last_name, $billing_type, $transaction_details, $credits = '' ) {
+        // Include registration helper functions
         require_once( ABSPATH . WPINC . '/registration.php' );
 
         // If user exists, proceed accordingly
@@ -82,9 +82,9 @@ class DR_Payments extends DR_Core {
             if ( !empty( $user ) ) {
 
                 // Set new user role
-                wp_update_user( array( 'ID' => $user->ID ) ); 
+                wp_update_user( array( 'ID' => $user->ID ) );
 
-                // Set payment details ( transaction ID's and recurring payment profile ID ) 
+                // Set payment details ( transaction ID's and recurring payment profile ID )
                 $this->update_user_payment_details( $user->ID, $billing_type, $transaction_details );
 
                 // Set login credentials and sign user
@@ -93,12 +93,13 @@ class DR_Payments extends DR_Core {
 
                 return;
             }
-        } 
-        // Else new user, proceed accordingly 
+        }
+        // Else new user, proceed accordingly
         else {
 
-            $user_login = sanitize_user( strtolower( $first_name ));
-            $user_pass  = wp_generate_password();
+//            $user_login = sanitize_user( strtolower( $first_name ));
+            if ( "" == $user_pass )
+                $user_pass  = wp_generate_password();
 
             if ( username_exists( $user_login ) ) {
                 $user_login .= '-' . sanitize_user( strtolower( $last_name ));
@@ -107,18 +108,19 @@ class DR_Payments extends DR_Core {
             }
 
             $user_id = wp_insert_user( array(
-                'user_login'   => $user_login,
-                'user_pass'    => $user_pass,
-                'user_email'   => $user_email,
-                'display_name' => $first_name . ' ' . $last_name,
-                'first_name'   => $first_name,
-                'last_name'    => $last_name,
+                'user_login'    => $user_login,
+                'user_pass'     => $user_pass,
+                'user_email'    => $user_email,
+                'display_name'  => $first_name . ' ' . $last_name,
+                'first_name'    => $first_name,
+                'last_name'     => $last_name,
+                'role'          => "directory_member"
             ));
 
             // If user account created successfully, proceed
             if ( !empty( $user_id ) ) {
 
-                // Set payment details ( transaction ID's and recurring payment profile ID ) 
+                // Set payment details ( transaction ID's and recurring payment profile ID )
                 $this->update_user_payment_details( $user_id, $billing_type, $transaction_details );
 
                 // $this->update_user_credits( $credits, $user_id );
@@ -130,12 +132,12 @@ class DR_Payments extends DR_Core {
     }
 
     /**
-     * Set payment details for user in DB 
-     * ( transaction ID's and recurring payment profile ID ) 
-     * 
-     * @param string|int $user_id 
-     * @param string $billing_type 
-     * @param array $transaction_details 
+     * Set payment details for user in DB
+     * ( transaction ID's and recurring payment profile ID )
+     *
+     * @param string|int $user_id
+     * @param string $billing_type
+     * @param array $transaction_details
      * @access public
      * @return void
      */
@@ -145,10 +147,10 @@ class DR_Payments extends DR_Core {
 
         // If user payment details is not populated, update if with a default structure
         if ( !$user_payment_details ) {
-            $user_payment_details_structure = array( 
-                'paypal' => array( 
-                    'transactions' => array(), 
-                    'profile_id'   => '' 
+            $user_payment_details_structure = array(
+                'paypal' => array(
+                    'transactions' => array(),
+                    'profile_id'   => ''
             ));
             update_user_meta( $user_id, $this->options_name, $user_payment_details_structure );
             $user_payment_details = $user_payment_details_structure;
@@ -160,18 +162,18 @@ class DR_Payments extends DR_Core {
             update_user_meta( $user_id, $this->options_name, $user_payment_details );
             return;
         }
-            
-        // Set transaction ID, the different API calls return different array 
+
+        // Set transaction ID, the different API calls return different array
         // keys so we need to check all of them
         if ( isset( $transaction_details['PAYMENTINFO_0_TRANSACTIONID'] ) ) {
             $transaction_id = $transaction_details['PAYMENTINFO_0_TRANSACTIONID'];
         } elseif ( isset( $transaction_details['TRANSACTIONID'] ) ) {
             $transaction_id = $transaction_details['TRANSACTIONID'];
-        } 
+        }
 
         // If we have a valid transaction ID lets add it to our DB entries
         if ( !empty( $transaction_id ) ) {
-            array_push( $user_payment_details['paypal']['transactions'], $transaction_id ); 
+            array_push( $user_payment_details['paypal']['transactions'], $transaction_id );
             update_user_meta( $user_id, $this->options_name, $user_payment_details );
         }
     }
@@ -183,10 +185,10 @@ class DR_Payments extends DR_Core {
      * @return NULL If the payment gateway options are not configured.
      */
     function handle_checkout_requests() {
-        // Only handle request if on the proper page 
+        // Only handle request if on the proper page
         if ( is_dr_page('signup') ) {
 
-			// Redirect if user is logged in 
+			// Redirect if user is logged in
 			if ( is_user_logged_in() ) {
 				wp_redirect( get_bloginfo('url') );
 				exit;
@@ -202,17 +204,17 @@ class DR_Payments extends DR_Core {
             if ( !session_id() )
                 session_start();
 
-            // If no PayPal API credentials are set, disable the checkout process 
+            // If no PayPal API credentials are set, disable the checkout process
             if ( empty( $options['paypal'] ) ) {
-                // Set the proper step which will be loaded by "page-checkout.php" 
+                // Set the proper step which will be loaded by "page-checkout.php"
                 set_query_var( 'checkout_step', 'disabled' );
                 return;
             }
 
-            // If Terms and Costs step is submitted 
+            // If Terms and Costs step is submitted
             if ( isset( $_POST['terms_submit'] )) {
 
-                // Validate fields 
+                // Validate fields
                 if ( empty( $_POST['tos_agree'] ) || empty( $_POST['billing_type'] ) ) {
 
                     if ( empty( $_POST['tos_agree'] ))
@@ -220,7 +222,7 @@ class DR_Payments extends DR_Core {
                     if ( empty( $_POST['billing_type'] ))
                         add_action( 'billing_invalid', create_function('', 'echo "class=\"error\"";') );
 
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'terms' );
 
                 } else {
@@ -236,43 +238,43 @@ class DR_Payments extends DR_Core {
                         $_SESSION['cost'] = $_POST['one_time_cost'];
                     }
 
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'payment_method' );
 
                 }
             }
 
-            // If payment method is selected and submitted 
+            // If payment method is selected and submitted
             elseif ( isset( $_POST['payment_method_submit'] ) ) {
 
-                // Validate fields 
+                // Validate fields
                 if ( empty( $_POST['payment_method'] ) ) {
 
                     add_action( 'pm_invalid', create_function('', 'echo "class=\"error\"";') );
 
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'payment_method' );
 
                 } else {
 
                     if ( $_POST['payment_method'] == 'paypal' ) {
 
-                        // If recuring payment selected pass '0' so we can void the direct payment 
-                        $cost = $_SESSION['billing_type'] == 'recurring' ? 0 : $_SESSION['cost']; 
-                        $billing_agreement = $_SESSION['billing_type'] == 'recurring' ? $_SESSION['billing_agreement'] : null;  
+                        // If recuring payment selected pass '0' so we can void the direct payment
+                        $cost = $_SESSION['billing_type'] == 'recurring' ? 0 : $_SESSION['cost'];
+                        $billing_agreement = $_SESSION['billing_type'] == 'recurring' ? $_SESSION['billing_agreement'] : null;
 
-                        // Make API call 
-                        $result = $this->paypal_express_gateway->call_shortcut_express_checkout( 
-                            $cost, 
-                            $_SESSION['billing_type'], 
-                            $billing_agreement 
+                        // Make API call
+                        $result = $this->paypal_express_gateway->call_shortcut_express_checkout(
+                            $cost,
+                            $_SESSION['billing_type'],
+                            $billing_agreement
                         );
 
-                        // Handle Error scenarios 
+                        // Handle Error scenarios
                         if ( $result['status'] == 'error' ) {
-                            // Set the proper step which will be loaded by "page-checkout.php" 
+                            // Set the proper step which will be loaded by "page-checkout.php"
                             set_query_var( 'checkout_step', 'api_call_error' );
-                            // Pass error params to "page-checkout.php" 
+                            // Pass error params to "page-checkout.php"
                             set_query_var( 'checkout_error', $result );
 
                             // Destroys the $_SESSION
@@ -280,39 +282,39 @@ class DR_Payments extends DR_Core {
                         }
 
                     } elseif ( $_POST['payment_method'] == 'cc' ) {
-                        // Set the proper step which will be loaded by "page-checkout.php" 
+                        // Set the proper step which will be loaded by "page-checkout.php"
                         set_query_var( 'checkout_step', 'cc_details' );
                     }
                 }
             }
 
-            // If direct CC payment is submitted 
+            // If direct CC payment is submitted
             elseif ( isset( $_POST['direct_payment_submit'] ) ) {
 
-                // Make API call 
-                $result = $this->paypal_express_gateway->direct_payment( 
-                    $_POST['total_amount'], 
-                    $_POST['cc_type'], 
-                    $_POST['cc_number'], 
-                    $_POST['exp_date_month'] . $_POST['exp_date_year'], 
-                    $_POST['cvv2'], 
-                    $_POST['first_name'], 
-                    $_POST['last_name'], 
-                    $_POST['street'], 
-                    $_POST['city'], 
-                    $_POST['state'], 
-                    $_POST['zip'], 
-                    $_POST['country_code'] 
+                // Make API call
+                $result = $this->paypal_express_gateway->direct_payment(
+                    $_POST['total_amount'],
+                    $_POST['cc_type'],
+                    $_POST['cc_number'],
+                    $_POST['exp_date_month'] . $_POST['exp_date_year'],
+                    $_POST['cvv2'],
+                    $_POST['first_name'],
+                    $_POST['last_name'],
+                    $_POST['street'],
+                    $_POST['city'],
+                    $_POST['state'],
+                    $_POST['zip'],
+                    $_POST['country_code']
                 );
 
-                // Handle Success and Error scenarios 
+                // Handle Success and Error scenarios
                 if ( $result['status'] == 'success' ) {
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'direct_payment' );
                 } else {
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'api_call_error' );
-                    // Pass error params to "page-checkout.php" 
+                    // Pass error params to "page-checkout.php"
                     set_query_var( 'checkout_error', $result );
 
                     // Destroys the $_SESSION
@@ -320,26 +322,26 @@ class DR_Payments extends DR_Core {
                 }
             }
 
-            // If PayPal has redirected us back with the proper TOKEN 
-            elseif ( isset( $_REQUEST['token'] ) 
-                && !isset( $_POST['confirm_payment_submit'] ) 
+            // If PayPal has redirected us back with the proper TOKEN
+            elseif ( isset( $_REQUEST['token'] )
+                && !isset( $_POST['confirm_payment_submit'] )
                 && !isset( $_POST['redirect_my_classifieds'] ) ) {
 
                 $_SESSION['token'] = $_REQUEST['token'];
 
-                // Make API call 
+                // Make API call
                 $result = $this->paypal_express_gateway->get_express_checkout_details( $_SESSION['token'] );
 
-                // Handle Success and Error scenarios 
+                // Handle Success and Error scenarios
                 if ( $result['status'] == 'success' ) {
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'confirm_payment' );
-                    // Pass transaction details params to "page-checkout.php" 
+                    // Pass transaction details params to "page-checkout.php"
                     set_query_var( 'checkout_transaction_details', $result );
                 } else {
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'api_call_error' );
-                    // Pass error params to "page-checkout.php" 
+                    // Pass error params to "page-checkout.php"
                     set_query_var( 'checkout_error', $result );
 
                     // Destroys the $_SESSION
@@ -347,62 +349,72 @@ class DR_Payments extends DR_Core {
                 }
             }
 
-            // If payment confirmation is submitted 
+            // If payment confirmation is submitted
             elseif ( isset( $_POST['confirm_payment_submit'] ) ) {
 
-                if ( $_SESSION['billing_type'] == 'recurring' ) {
-
-                    // Make CreateRecurringPaymentsProfile API call 
-                    $result = $this->paypal_express_gateway->create_recurring_payments_profile( 
-                        $_SESSION['cost'], 
-                        $_SESSION['billing_period'], 
-                        $_SESSION['billing_frequency'], 
-                        $_SESSION['billing_agreement'] 
-                    );
-
+                if ( username_exists( $_POST['login'] ) ) {
+                    $result =  unserialize( base64_decode( $_POST['result'] ) );
+                    $result['login'] = $_POST['login'];
+                    $result['confirm_error'] = __( 'Login incorrect!', $text_domain );;
+                    set_query_var( 'checkout_transaction_details', $result );
+                    set_query_var( 'checkout_step', 'confirm_payment' );
                 } else {
-                    // Make DoExpressCheckout API call 
-                    $result = $this->paypal_express_gateway->do_express_checkout_payment( $_POST['total_amount'] );
-                }
-                
-                // Handle Success and Error scenarios 
-                if ( $result['status'] == 'success' ) {
+                    if ( $_SESSION['billing_type'] == 'recurring' ) {
 
-                    // Insert/Update User 
-                    $this->update_user( 
-                        $_POST['email'], 
-                        $_POST['first_name'], 
-                        $_POST['last_name'], 
-                        $_POST['billing_type'], 
-                        $result
-                        // $_POST['credits'] 
-                    );
+                        // Make CreateRecurringPaymentsProfile API call
+                        $result = $this->paypal_express_gateway->create_recurring_payments_profile(
+                            $_SESSION['cost'],
+                            $_SESSION['billing_period'],
+                            $_SESSION['billing_frequency'],
+                            $_SESSION['billing_agreement']
+                        );
 
-                    // Set the proper step which will be loaded by "page-checkout.php" 
-                    set_query_var( 'checkout_step', 'success' );
-                    
-                    // Destroys the $_SESSION
-                    $this->destroy_session();
+                    } else {
+                        // Make DoExpressCheckout API call
+                        $result = $this->paypal_express_gateway->do_express_checkout_payment( $_POST['total_amount'] );
+                    }
 
-                } else {
-                    // Set the proper step which will be loaded by "page-checkout.php" 
-                    set_query_var( 'checkout_step', 'api_call_error' );
-                    // Pass error params to "page-checkout.php" 
-                    set_query_var( 'checkout_error', $result );
+                    // Handle Success and Error scenarios
+                    if ( $result['status'] == 'success' ) {
 
-                    // Destroys the $_SESSION
-                    $this->destroy_session();
+                        // Insert/Update User
+                        $this->update_user(
+                            $_POST['login'],
+                            $_POST['password'],
+                            $_POST['email'],
+                            $_POST['first_name'],
+                            $_POST['last_name'],
+                            $_POST['billing_type'],
+                            $result
+                            // $_POST['credits']
+                        );
+
+                        // Set the proper step which will be loaded by "page-checkout.php"
+                        set_query_var( 'checkout_step', 'success' );
+
+                        // Destroys the $_SESSION
+                        $this->destroy_session();
+
+                    } else {
+                        // Set the proper step which will be loaded by "page-checkout.php"
+                        set_query_var( 'checkout_step', 'api_call_error' );
+                        // Pass error params to "page-checkout.php"
+                        set_query_var( 'checkout_error', $result );
+
+                        // Destroys the $_SESSION
+                        $this->destroy_session();
+                    }
                 }
             }
 
-            // If login attempt is made 
+            // If login attempt is made
             elseif ( isset( $_POST['login_submit'] ) ) {
 
                 if ( isset( $this->login_error )) {
                     add_action( 'login_invalid', create_function('', 'echo "class=\"error\"";') );
-                    // Set the proper step which will be loaded by "page-checkout.php" 
+                    // Set the proper step which will be loaded by "page-checkout.php"
                     set_query_var( 'checkout_step', 'terms' );
-                    // Pass error params to "page-checkout.php" 
+                    // Pass error params to "page-checkout.php"
                     set_query_var( 'checkout_error', $this->login_error );
                 } else {
                     wp_redirect( get_bloginfo('url') );
@@ -410,17 +422,17 @@ class DR_Payments extends DR_Core {
                 }
             }
 
-            // If no requests are made load default step 
+            // If no requests are made load default step
             else {
-                // Set the proper step which will be loaded by "page-checkout.php" 
+                // Set the proper step which will be loaded by "page-checkout.php"
                 set_query_var( 'checkout_step', 'terms' );
             }
         }
     }
 
     /**
-     * Destroy $_SESSION 
-     * 
+     * Destroy $_SESSION
+     *
      * @access public
      * @return void
      */

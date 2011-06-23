@@ -22,10 +22,18 @@ class DR_Admin extends DR_Core {
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 
 		add_action( 'wp_ajax_dr-get-caps', array( &$this, 'ajax_get_caps' ) );
-		add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
+        add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
+
+        add_action( 'wp_ajax_nopriv_check_login', array( &$this, 'ajax_check_login' ) );
+		add_action( 'wp_ajax_check_login', array( &$this, 'ajax_check_login' ) );
 
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
+
+        //including JS scripts
+        wp_enqueue_script( 'jquery' );
+        wp_enqueue_script( 'jquery-ui-tabs' );
+
 
 		$this->capability_map = array(
 			'read_listings'             => __( 'View listings.', $this->text_domain ),
@@ -45,11 +53,23 @@ class DR_Admin extends DR_Core {
 	function init_defaults() {
 		global $wp_roles;
 
+        //add role of directory member
+        $wp_roles->remove_role( "directory_member" );
+        $wp_roles->add_role( "directory_member", 'Directory Member', array(
+                'read_listings'             => true,
+                'publish_listings'          => true,
+                'edit_published_listings'   => true,
+                'delete_published_listings' => true,
+                'read'                      => true
+            ) );
+
+        //set capability for admin
 		foreach ( array_keys( $this->capability_map ) as $capability )
 			$wp_roles->add_cap( 'administrator', $capability );
 
 		// add option to the autoload list
 		add_option( $this->options_name, array() );
+
 	}
 
     /**
@@ -111,14 +131,14 @@ class DR_Admin extends DR_Core {
 
 			if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) {
 
-				$this->render_admin( 'payments-authorizenet' );
+				$this->render_admin( 'payments-type' );
 
-			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'paypal' ) {
+			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'type' ) {
 				if ( isset( $_POST['save'] ) ) {
 					$this->save_admin_options( $_POST );
 				}
 
-				$this->render_admin( 'payments-paypal' );
+				$this->render_admin( 'payments-type' );
 			} else {
 				if ( isset( $_POST['save'] ) ) {
 					$this->save_admin_options( $_POST );
@@ -158,35 +178,57 @@ class DR_Admin extends DR_Core {
 		die();
 	}
 
+    /**
+     * Save admin options.
+     *
+     * @return void die() if _wpnonce is not verified
+     */
+    function ajax_save() {
+        check_admin_referer( 'dir-verify' );
+
+        if ( !current_user_can( 'manage_options' ) )
+            die(-1);
+
+        // add/remove capabilities
+        global $wp_roles;
+
+        $role = $_POST['roles'];
+
+        $all_caps = array_keys( $this->capability_map );
+        $to_add = array_keys( $_POST['capabilities'] );
+        $to_remove = array_diff( $all_caps, $to_add );
+
+        foreach ( $to_remove as $capability ) {
+            $wp_roles->remove_cap( $role, $capability );
+        }
+
+        foreach ( $to_add as $capability ) {
+            $wp_roles->add_cap( $role, $capability );
+        }
+
+        die(1);
+    }
+
+
 	/**
-	 * Save admin options.
+	 * Checking login name for register new user.
 	 *
-	 * @return void die() if _wpnonce is not verified
+	 * @return
 	 */
-	function ajax_save() {
-		check_admin_referer( 'dir-verify' );
+	function ajax_check_login() {
 
-		if ( !current_user_can( 'manage_options' ) )
-			die(-1);
-
-		// add/remove capabilities
-		global $wp_roles;
-
-		$role = $_POST['roles'];
-
-		$all_caps = array_keys( $this->capability_map );
-		$to_add = array_keys( $_POST['capabilities'] );
-		$to_remove = array_diff( $all_caps, $to_add );
-
-		foreach ( $to_remove as $capability ) {
-			$wp_roles->remove_cap( $role, $capability );
-		}
-
-		foreach ( $to_add as $capability ) {
-			$wp_roles->add_cap( $role, $capability );
-		}
-
-		die(1);
+        if ( "login" == $_REQUEST['type'] ) {
+            if ( username_exists( $_REQUEST['login'] ) )
+                die('yes');
+            else
+                die('no');
+        } elseif ( "email" == $_REQUEST['type'] ) {
+            if ( email_exists( $_REQUEST['email'] ) )
+                die('yes');
+            else
+                die('no');
+        }
+        die("yes");
 	}
 
     /**

@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Directory_Theme_Core 
- * 
+ * Directory_Theme_Core
+ *
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Theme_Core {
 
     /**
-     * Class constructor. 
+     * Class constructor.
      */
     function DR_Theme_Core() {
         add_action( 'after_setup_theme', array( &$this, 'theme_setup' ) );
@@ -30,7 +30,7 @@ class DR_Theme_Core {
         add_theme_support( 'automatic-feed-links', array( 'directory_listing' ) );
 
         register_nav_menus( array(
-            'primary' => __( 'Primary Navigation', 'directory' ),
+            'top_menu' => __( 'Top Menu', 'directory_listing' ),
         ) );
   		// This theme allows users to set a custom background
         add_custom_background();
@@ -107,8 +107,8 @@ class DR_Theme_Core {
 	}
 
     /**
-     * handle_action_buttons_requests 
-     * 
+     * handle_action_buttons_requests
+     *
      * @access public
      * @return void
      */

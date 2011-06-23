@@ -7,9 +7,8 @@
 
     <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'payments', 'sub' => 'checkout' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
-    
+
     <form action="" method="post" class="dp-payments">
-        
         <h3><?php _e( 'Recurring Payments', 'directory' ); ?></h3>
         <table class="form-table">
             <tr>
@@ -36,11 +35,11 @@
                 </th>
                 <td>
                     <select id="billing_period" name="billing_period">
-                        <option value="Day" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Day' ) echo 'selected="selected"'; ?>><?php _e( 'Day', 'directory' ); ?></option>                    
-                        <option value="Week" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ) echo 'selected="selected"'; ?>><?php _e( 'Week', 'directory' ); ?></option>                    
-                        <option value="SemiMonth" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ) echo 'selected="selected"'; ?>><?php _e( 'SemiMonth', 'directory' ); ?></option>                    
-                        <option value="Month" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Month' ) echo 'selected="selected"'; ?>><?php _e( 'Month', 'directory' ); ?></option>                    
-                        <option value="Year" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Year' ) echo 'selected="selected"'; ?>><?php _e( 'Year', 'directory' ); ?></option>                    
+                        <option value="Day" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Day' ) echo 'selected="selected"'; ?>><?php _e( 'Day', 'directory' ); ?></option>
+                        <option value="Week" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ) echo 'selected="selected"'; ?>><?php _e( 'Week', 'directory' ); ?></option>
+                        <option value="SemiMonth" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ) echo 'selected="selected"'; ?>><?php _e( 'SemiMonth', 'directory' ); ?></option>
+                        <option value="Month" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Month' ) echo 'selected="selected"'; ?>><?php _e( 'Month', 'directory' ); ?></option>
+                        <option value="Year" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Year' ) echo 'selected="selected"'; ?>><?php _e( 'Year', 'directory' ); ?></option>
                     </select>
                     <span class="description"><?php _e('The unit of measure for the billing cycle.', 'directory'); ?></span>
                 </td>
@@ -106,6 +105,6 @@
             <input type="hidden" name="key" value="payment_settings" />
             <input type="submit" class="button-primary" name="save" value="Save Changes">
         </p>
-        
+
     </form>
 </div>
