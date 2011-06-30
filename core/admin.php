@@ -25,7 +25,11 @@ class DR_Admin extends DR_Core {
         add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
 
         add_action( 'wp_ajax_nopriv_check_login', array( &$this, 'ajax_check_login' ) );
-		add_action( 'wp_ajax_check_login', array( &$this, 'ajax_check_login' ) );
+        add_action( 'wp_ajax_check_login', array( &$this, 'ajax_check_login' ) );
+
+        //IPN script for Paypal
+        add_action( 'wp_ajax_nopriv_directory_ipn', array( &$this, 'ajax_directory_ipn' ) );
+		add_action( 'wp_ajax_directory_ipn', array( &$this, 'ajax_directory_ipn' ) );
 
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
@@ -53,13 +57,21 @@ class DR_Admin extends DR_Core {
 	function init_defaults() {
 		global $wp_roles;
 
-        //add role of directory member
+        //add role of directory member with full access
         $wp_roles->remove_role( "directory_member" );
-        $wp_roles->add_role( "directory_member", 'Directory Member', array(
+        $wp_roles->remove_role( "directory_member_paid" );
+        $wp_roles->add_role( "directory_member_paid", 'Directory Member Paid', array(
                 'read_listings'             => true,
                 'publish_listings'          => true,
                 'edit_published_listings'   => true,
                 'delete_published_listings' => true,
+                'read'                      => true
+            ) );
+
+        //add role of directory member with limit access
+        $wp_roles->remove_role( "directory_member_deny" );
+        $wp_roles->remove_role( "directory_member_not_paid" );
+        $wp_roles->add_role( "directory_member_not_paid", 'Directory Member Not Paid', array(
                 'read'                      => true
             ) );
 
@@ -210,12 +222,12 @@ class DR_Admin extends DR_Core {
     }
 
 
-	/**
-	 * Checking login name for register new user.
-	 *
-	 * @return
-	 */
-	function ajax_check_login() {
+    /**
+     * Checking login name for register new user.
+     *
+     * @return
+     */
+    function ajax_check_login() {
 
         if ( "login" == $_REQUEST['type'] ) {
             if ( username_exists( $_REQUEST['login'] ) )
@@ -229,6 +241,149 @@ class DR_Admin extends DR_Core {
                 die('no');
         }
         die("yes");
+    }
+
+
+	/**
+	 * IPN script for change user role when Recurring Payment changed status
+	 *
+	 * @return void
+	 */
+	function ajax_directory_ipn() {
+
+        // debug mode for IPN script (please open plugin dir (directory) for writing)
+        $debug_ipn = 0;
+        if ( 1 == $debug_ipn ) {
+            $File = $this->plugin_dir ."debug_ipn.log";
+            $Handle = fopen( $File, 'a+' );
+            ob_start();
+            print_r( date( "H:i:s m.d.y" ) . " POST\r\n" );
+            print_r( $_POST );
+            $a = ob_get_contents();
+            ob_end_clean();
+            fwrite($Handle, $a );
+        }
+
+        $postdata = "";
+        foreach ( $_POST as $key=>$value )
+            $postdata .= $key."=".urlencode( $value )."&";
+
+        $postdata .= "cmd=_notify-validate";
+        $options = $this->get_options( 'paypal' );
+
+        if ( 'live' == $options['api_url'] )
+            $url = "https://www.paypal.com/cgi-bin/webscr";
+        else
+            $url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+
+        $args =  array(
+            'timeout' => 90,
+            'sslverify' => false
+            );
+
+        $response = wp_remote_get( $url . "?" . $postdata, $args );
+
+        if( is_wp_error( $response ) ) {
+            if ( 1 == $debug_ipn ) {
+                ob_start();
+                print_r( date( "H:i:s m.d.y" ) . " error with send post\r\n" );
+                print_r( "url: " . $url . "\r\n" );
+                print_r( $response );
+                $a = ob_get_contents();
+                ob_end_clean();
+                fwrite($Handle, $a );
+            }
+            die('error with send post');
+        } else {
+            $response = $response["body"];
+        }
+
+
+        if ( $response != "VERIFIED" ) {
+            if ( 1 == $debug_ipn ) {
+                ob_start();
+                print_r( date( "H:i:s m.d.y" ) . " not VERIFIED\r\n" );
+                print_r( $response );
+                $a = ob_get_contents();
+                ob_end_clean();
+                fwrite($Handle, $a );
+            }
+            die( 'not VERIFIED' );
+        }
+
+        if ( $_POST['subscr_id'] ) {
+            $user_id = $_POST['custom'];
+
+            $dr_options = get_usermeta( $user_id, 'dr_options' );
+
+            if ( "subscr_payment" == $_POST['txn_type'] ) {
+
+                $key = md5( $_POST['mc_currency'] . "directory_123" . $_POST['mc_gross'] );
+
+                //checking hash keys
+                if ( $key != $dr_options['paypal']['key'] ) {
+                    if ( 1 == $debug_ipn ) {
+                        ob_start();
+                        print_r( date( "H:i:s m.d.y" ) . " Conflict Keys:\r\n" );
+                        print_r( " key from site: " . $dr_options['paypal']['key'] );
+                        print_r( "key from Paypal: " . $key );
+                        $a = ob_get_contents();
+                        ob_end_clean();
+                        fwrite( $Handle, $a );
+                    }
+                    die("conflict key");
+                }
+
+                if ( 1 == $debug_ipn ) {
+                    ob_start();
+                    print_r( date( "H:i:s m.d.y" ) . " subscr_payment OK\r\n" );
+                    $a = ob_get_contents();
+                    ob_end_clean();
+                    fwrite( $Handle, $a );
+                }
+
+                //write subscr_id (profile_id) to user meta
+                $dr_options['paypal']['profile_id'] = $_POST['subscr_id'];
+                update_user_meta( $user_id, 'dr_options', $dr_options );
+
+                //set role with with access of directory plugin
+                wp_update_user( array(  'ID'    => $user_id,
+                                        'role'  => "directory_member_paid" ) );
+
+            } elseif ( "subscr_cancel" == $_POST['txn_type'] ||
+                       "subscr_failed" == $_POST['txn_type'] ||
+                       "subscr_eot" == $_POST['txn_type'] ) {
+
+                if ( 1 == $debug_ipn ) {
+                    ob_start();
+                    print_r( date( "H:i:s m.d.y" ) . " other payment status:\r\n" );
+                    print_r( $_POST['txn_type'] );
+                    $a = ob_get_contents();
+                    ob_end_clean();
+                    fwrite( $Handle, $a );
+                }
+
+                //checking profile_id
+                if  ( $_POST['subscr_id']  == $dr_options['paypal']['profile_id'] ) {
+                    //set role with with limeted access of directory plugin
+                    wp_update_user( array(  'ID'    => $user_id,
+                                            'role'  => "directory_member_not_paid" ) );
+
+                } else {
+                    if ( 1 == $debug_ipn ) {
+                        ob_start();
+                        print_r( date( "H:i:s m.d.y" ) . " wrong profile_id:\r\n" );
+                        print_r( " profile_id from site: " . $dr_options['paypal']['profile_id'] );
+                        print_r( "profile_id from Paypal: " . $_POST['subscr_id'] );
+                        $a = ob_get_contents();
+                        ob_end_clean();
+                        fwrite( $Handle, $a );
+                    }
+                }
+            }
+        }
+
+        die("ok");
 	}
 
     /**

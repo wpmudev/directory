@@ -21,8 +21,7 @@
 <?php if ( $page == 'settings' && $tab == 'payments' ): ?>
 <ul>
 	<li class="subsubsub"><h3><a class="<?php if ( $sub == 'checkout' || empty( $sub ) ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'payments', 'checkout' ); ?>"><?php _e( 'Payment Settings', $this->text_domain ); ?></a> | </h3></li>
-	<li class="subsubsub"><h3><a class="<?php echo $sub == 'type' ? 'current' : ''; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'payments', 'type' ); ?>"><?php _e( 'Payment Type', $this->text_domain ); ?></a> | </h3></li>
-	<li class="subsubsub"><h3><a class="<?php if ( $sub == 'authorizenet' ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'payments', 'authorizenet' ); ?>"><?php _e( 'Authorize.net', $this->text_domain ); ?></a></h3></li>
+	<li class="subsubsub"><h3><a class="<?php echo $sub == 'type' ? 'current' : ''; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'payments', 'type' ); ?>"><?php _e( 'Payment Type', $this->text_domain ); ?></a></h3></li>
 </ul>
 <?php endif; ?>
 

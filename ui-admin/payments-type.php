@@ -98,10 +98,19 @@ $gateways = $this->get_options('gateways');
                         </tr>
                         <tr>
                             <th>
+                                <label for="api_username"><?php _e( 'Business Email', $this->text_domain ) ?></label>
+                            </th>
+                            <td>
+                                <input type="text" id="business_email" name="business_email" value="<?php if ( isset( $options['business_email'] ) ) echo $options['business_email']; ?>" size="40" />
+                                <span class="description"><?php _e( 'Your PayPal business email for Recurring Payments.', $this->text_domain ); ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 <label for="api_username"><?php _e( 'API Username', $this->text_domain ) ?></label>
                             </th>
                             <td>
-                                <input type="text" id="api_username" name="api_username" value="<?php if ( isset( $options['api_username'] ) ) echo $options['api_username']; ?>" />
+                                <input type="text" id="api_username" name="api_username" value="<?php if ( isset( $options['api_username'] ) ) echo $options['api_username']; ?>" size="40" />
                                 <span class="description"><?php _e( 'Your PayPal API Username.', $this->text_domain ); ?></span>
                             </td>
                         </tr>
@@ -110,7 +119,7 @@ $gateways = $this->get_options('gateways');
                                 <label for="api_password"><?php _e( 'API Password', $this->text_domain ) ?></label>
                             </th>
                             <td>
-                                <input type="text" id="api_password" name="api_password" value="<?php if ( isset( $options['api_password'] ) ) echo $options['api_password']; ?>" />
+                                <input type="text" id="api_password" name="api_password" value="<?php if ( isset( $options['api_password'] ) ) echo $options['api_password']; ?>" size="40" />
                                 <span class="description"><?php _e( 'Your PayPal API Password.', $this->text_domain ); ?></span>
                             </td>
                         </tr>

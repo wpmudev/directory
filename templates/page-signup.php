@@ -27,14 +27,138 @@ get_header(); ?>
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h1 class="entry-title">
 				<?php _e('Signup', THEME_TEXT_DOMAIN ); ?>
+                <?php if ( $step == 'free' ) echo ' ( step 1 of 1 ) '; ?>
 				<?php if ( $step == 'terms' ) echo ' ( step 1 of 3 ) '; ?>
-				<?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>
+                <?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>
+				<?php if ( $step == 'recurring_payment' ) echo ' ( step 3 of 3 ) '; ?>
 				<?php if ( $step == 'confirm_payment' ) echo ' ( step 3 of 3 ) '; ?>
 				<?php if ( $step == 'cc_details' ) echo ' ( step 3 of 3 ) '; ?>
-				<?php if ( $step == 'success' ) echo ' ( complete ) '; ?>
+                <?php if ( $step == 'success' ) echo ' ( complete ) '; ?>
+				<?php if ( $step == 'free_success' ) echo ' ( complete ) '; ?>
 				<?php if ( $step == 'api_call_error' ) echo ' ( error ) '; ?>
 			</h1>
             <div class="entry-content">
+
+
+                <script language="JavaScript">
+                    jQuery( document ).ready( function() {
+
+                        var errorLogin = 0;
+                        var errorEmail = 0;
+
+                        jQuery( "#login" ).blur( function () {
+                            var login = jQuery( "#login" ).val();
+                            if ( "" != login ) {
+                                jQuery( "#status_login" ).css( "color", "black" );
+                                jQuery( "#status_login" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
+                                jQuery( "#status_login" ).show( 400 );
+
+                                jQuery.ajax({
+                                    type: "POST",
+                                    url: "<?php echo get_option( 'siteurl' );?>/wp-admin/admin-ajax.php",
+                                    data: "action=check_login&type=login&login=" + login,
+                                    success: function( html ){
+                                        if ( "yes" == html ) {
+                                            errorLogin = 1;
+                                            jQuery( "#login_error td" ).attr( "class", "error" );
+                                            jQuery( "#status_login" ).css( "color", "red" );
+                                            jQuery( "#status_login" ).html( "<?php _e( 'Exists!', $text_domain ); ?>" );
+
+                                        } else {
+                                            errorLogin =0;
+                                            jQuery( "#login_error td" ).attr( "class", "" );
+                                            jQuery( "#status_login" ).css( "color", "green" );
+                                            jQuery( "#status_login" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
+                                        }
+                                    }
+                                });
+                            }
+
+                        });
+                        jQuery( "#login" ).blur();
+
+                        jQuery( "#email" ).blur( function () {
+                            var email = jQuery( "#email" ).val();
+                            if ( "" != email ) {
+                                jQuery( "#status_email" ).css( "color", "black" );
+                                jQuery( "#status_email" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
+                                jQuery( "#status_email" ).show( 400 );
+
+                                jQuery.ajax({
+                                    type: "POST",
+                                    url: "<?php echo get_option( 'siteurl' );?>/wp-admin/admin-ajax.php",
+                                    data: "action=check_login&type=email&email=" + email,
+                                    success: function( html ){
+                                        if ( "yes" == html ) {
+                                            errorEmail = 1;
+                                            jQuery( "#email_error td" ).attr( "class", "error" );
+                                            jQuery( "#status_email" ).css( "color", "red" );
+                                            jQuery( "#status_email" ).html( "<?php _e( 'Exists!', $text_domain ); ?>" );
+
+                                        } else {
+                                            errorEmail =0;
+                                            jQuery( "#email_error td" ).attr( "class", "" );
+                                            jQuery( "#status_email" ).css( "color", "green" );
+                                            jQuery( "#status_email" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
+
+                                        }
+                                    }
+                                });
+                            }
+
+                        });
+                        jQuery( "#email" ).blur();
+
+                        jQuery( "#confirm_payment" ).submit( function () {
+                            var pass = jQuery( "#password" ).val();
+                            var cpass = jQuery( "#cpassword" ).val();
+
+
+                            if ( "" == jQuery( "#login" ).val() ) {
+                                alert("<?php _e( 'Please write the login!', $text_domain ); ?>");
+                                return false;
+                            }
+
+                            if ( 1 == errorLogin ) {
+                                alert("<?php _e( 'The login already exist!', $text_domain ); ?>");
+                                return false;
+                            }
+
+                            if ( "" == pass ) {
+                                alert("<?php _e( 'Please write the password!', $text_domain ); ?>");
+                                return false;
+                            }
+
+                            if ( "" == cpass ) {
+                                alert("<?php _e( 'Please confirm the password!', $text_domain ); ?>");
+                                return false;
+                            }
+
+                            if ( pass != cpass ) {
+                                alert("<?php _e( 'The confirm password is incorrect!', $text_domain ); ?>");
+                                return false;
+                            }
+
+
+                            if ( "" == jQuery( "#email" ).val() ) {
+                                alert("<?php _e( 'Please write the email!', $text_domain ); ?>");
+                                return false;
+                            }
+
+                            if ( 1 == errorEmail ) {
+                                alert("<?php _e( 'The email already exist!', $text_domain ); ?>");
+                                return false;
+                            }
+
+
+                            return true;
+
+                        });
+
+                    });
+                </script>
+
+
 
             <?php if ( $step == 'disabled' ): ?>
 
@@ -150,18 +274,23 @@ get_header(); ?>
                     <table id="payment-method">
                         <tr>
 							<td <?php do_action('pm_invalid'); ?>>
+
 								<label for="payment_method"><?php _e( 'PayPal', $text_domain ); ?></label>
                                 <input type="radio" name="payment_method" value="paypal"/>
                                 <img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" border="0" alt="Acceptance Mark">
                             </td>
                         </tr>
-                        <tr>
-							<td <?php do_action('pm_invalid'); ?>>
-								<label for="payment_method"><?php _e( 'Credit Card', $text_domain ); ?></label>
-                                <input type="radio" name="payment_method" value="cc" />
-                                <img  src="<?php echo get_template_directory_uri(); ?>/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
-                            </td>
-                        </tr>
+
+                        <?php if ( 'recurring' != $_SESSION['billing_type'] ): ?>
+                            <tr>
+							    <td <?php do_action('pm_invalid'); ?>>
+								    <label for="payment_method"><?php _e( 'Credit Card', $text_domain ); ?></label>
+                                    <input type="radio" name="payment_method" value="cc" />
+                                    <img  src="<?php echo get_template_directory_uri(); ?>/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+
                     </table>
 
                     <div class="submit">
@@ -171,38 +300,43 @@ get_header(); ?>
 
             <?php /* Credit Card Details */ ?>
             <?php elseif ( $step == 'cc_details' ): ?>
-
-                <form action="" method="post" class="checkout">
+                <?php $details = get_query_var('details'); ?>
+                <?php if ( $details['confirm_error'] ): ?>
+                    <span style="color: red;"><?php echo $details['confirm_error']; ?></span>
+                    <div class="clear"></div>
+                    <br clear="all" />
+                <?php endif; ?>
+                <form action="" method="post" id="confirm_payment" class="checkout">
                     <strong><?php _e( 'Payment Details', $text_domain ); ?></strong>
                     <div class="clear"></div>
                     <table id="cc-user-details">
                         <tr>
                             <td><label for="email"><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="email" name="email" value="" /></td>
+                            <td><input type="text" name="email" value="<?php echo $details['email']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="first-name"><?php _e( 'First Name', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="first-name" name="first_name" value="" /></td>
+                            <td><input type="text" id="first-name" name="first_name" value="<?php echo $details['first_name']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="last-name"><?php _e( 'Last Name', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="last-name" name="last_name" value="" /></td>
+                            <td><input type="text" id="last-name" name="last_name" value="<?php echo $details['last_name']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="street"><?php _e( 'Street', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="street" name="street" value="" /></td>
+                            <td><input type="text" id="street" name="street" value="<?php echo $details['street']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="city"><?php _e( 'City', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="city" name="city" value="" /></td>
+                            <td><input type="text" id="city" name="city" value="<?php echo $details['city']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="state"><?php _e( 'State', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="state" name="state" value="" /></td>
+                            <td><input type="text" id="state" name="state" value="<?php echo $details['state']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="zip"><?php _e( 'ZIP', $text_domain ); ?>:</label></td>
-                            <td><input type="text" id="zip" name="zip" value="" /></td>
+                            <td><input type="text" id="zip" name="zip" value="<?php echo $details['zip']; ?>" /></td>
                         </tr>
                         <tr>
                             <td><label for="country"><?php _e( 'Country', $text_domain ); ?>:</label></td>
@@ -521,6 +655,36 @@ get_header(); ?>
                             <td><input type="text" name="cvv2" /></td>
                         </tr>
                     </table>
+                    <div class="clear"></div>
+                    <div class="clear"></div>
+                    <strong><?php _e( 'Registration Details', $text_domain ); ?></strong>
+                    <div class="clear"></div>
+                    <table id="cc-user-details">
+                        <tr id="login_error">
+                            <td width="110"><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="login" id="login" value="<?php echo $details['login']; ?>"/>
+                                <span id="status_login" style="display: none;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="password" id="password" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Confirm Pass', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
+                        </tr>
+                        <tr id="email_error">
+                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="user_email" id="email" value="<?php echo $details['user_email']; ?>" />
+                                <span id="status_email" style="display: none;"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+
 
                     <div class="clear"></div>
                     <div class="submit">
@@ -533,124 +697,6 @@ get_header(); ?>
             <?php elseif ( $step == 'confirm_payment' ): ?>
 
                 <?php $transaction_details = get_query_var('checkout_transaction_details'); ?>
-
-                <script language="JavaScript">
-                    jQuery( document ).ready( function() {
-
-                        var errorLogin = 0;
-                        var errorEmail = 0;
-
-                        jQuery( "#login" ).blur( function () {
-                            var login = jQuery( "#login" ).val();
-                            if ( "" != login ) {
-                                jQuery( "#status_login" ).css( "color", "black" );
-                                jQuery( "#status_login" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
-                                jQuery( "#status_login" ).show( 400 );
-
-                                jQuery.ajax({
-                                    type: "POST",
-                                    url: "<?php echo get_option( 'siteurl' );?>/wp-admin/admin-ajax.php",
-                                    data: "action=check_login&type=login&login=" + login,
-                                    success: function( html ){
-                                        if ( "yes" == html ) {
-                                            errorLogin = 1;
-                                            jQuery( "#login_error td" ).attr( "class", "error" );
-                                            jQuery( "#status_login" ).css( "color", "red" );
-                                            jQuery( "#status_login" ).html( "<?php _e( 'Already exists!', $text_domain ); ?>" );
-
-                                        } else {
-                                            errorLogin =0;
-                                            jQuery( "#login_error td" ).attr( "class", "" );
-                                            jQuery( "#status_login" ).css( "color", "green" );
-                                            jQuery( "#status_login" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
-                                        }
-                                    }
-                                });
-                            }
-
-                        });
-                        jQuery( "#login" ).blur();
-
-                        jQuery( "#email" ).blur( function () {
-                            var email = jQuery( "#email" ).val();
-                            if ( "" != email ) {
-                                jQuery( "#status_email" ).css( "color", "black" );
-                                jQuery( "#status_email" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
-                                jQuery( "#status_email" ).show( 400 );
-
-                                jQuery.ajax({
-                                    type: "POST",
-                                    url: "<?php echo get_option( 'siteurl' );?>/wp-admin/admin-ajax.php",
-                                    data: "action=check_login&type=email&email=" + email,
-                                    success: function( html ){
-                                        if ( "yes" == html ) {
-                                            errorEmail = 1;
-                                            jQuery( "#email_error td" ).attr( "class", "error" );
-                                            jQuery( "#status_email" ).css( "color", "red" );
-                                            jQuery( "#status_email" ).html( "<?php _e( 'Already exists!', $text_domain ); ?>" );
-
-                                        } else {
-                                            errorEmail =0;
-                                            jQuery( "#email_error td" ).attr( "class", "" );
-                                            jQuery( "#status_email" ).css( "color", "green" );
-                                            jQuery( "#status_email" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
-
-                                        }
-                                    }
-                                });
-                            }
-
-                        });
-                        jQuery( "#email" ).blur();
-
-                        jQuery( "#confirm_payment" ).submit( function () {
-                            var pass = jQuery( "#password" ).val();
-                            var cpass = jQuery( "#cpassword" ).val();
-
-
-                            if ( "" == jQuery( "#login" ).val() ) {
-                                alert("<?php _e( 'Please write the login!', $text_domain ); ?>");
-                                return false;
-                            }
-
-                            if ( 1 == errorLogin ) {
-                                alert("<?php _e( 'The login already exist!', $text_domain ); ?>");
-                                return false;
-                            }
-
-                            if ( "" == pass ) {
-                                alert("<?php _e( 'Please write the password!', $text_domain ); ?>");
-                                return false;
-                            }
-
-                            if ( "" == cpass ) {
-                                alert("<?php _e( 'Please confirm the password!', $text_domain ); ?>");
-                                return false;
-                            }
-
-                            if ( pass != cpass ) {
-                                alert("<?php _e( 'The confirm password is incorrect!', $text_domain ); ?>");
-                                return false;
-                            }
-
-
-                            if ( "" == jQuery( "#email" ).val() ) {
-                                alert("<?php _e( 'Please write the email!', $text_domain ); ?>");
-                                return false;
-                            }
-
-                            if ( 1 == errorEmail ) {
-                                alert("<?php _e( 'The email already exist!', $text_domain ); ?>");
-                                return false;
-                            }
-
-
-                            return true;
-
-                        });
-
-                    });
-                </script>
 
                 <form action="" method="post" name="confirm_payment" id="confirm_payment" class="checkout">
                     <strong><?php _e( 'Confirm Payment', $text_domain ); ?></strong>
@@ -736,14 +782,117 @@ get_header(); ?>
                 <span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page.', $text_domain ); ?></span>
                 <br />
 
-				<form id="add-listing-su" action="" method="post">
-					<input type="submit" name="redirect_listing" value="Add Listing" />
-				</form>
-				<form id="go-to-profile-su" action="" method="post">
-					<input type="submit" name="redirect_profile" value="Go To Profile" />
-				</form>
-				<br class="clear" />
+                <form id="add-listing-su" action="" method="post">
+                    <input type="submit" name="redirect_listing" value="Add Listing" />
+                </form>
+                <form id="go-to-profile-su" action="" method="post">
+                    <input type="submit" name="redirect_profile" value="Go To Profile" />
+                </form>
+                <br class="clear" />
 
+
+            <?php /* Free mode */ ?>
+            <?php elseif ( $step == 'free' ): ?>
+
+                <form action="" method="post" name="confirm_payment" id="confirm_payment" class="checkout">
+                    <strong><?php _e( 'Registration', $text_domain ); ?></strong>
+                    <table id="confirm-payment">
+                        <tr id="login_error">
+                            <td><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="login" id="login" value="<?php echo $transaction_details['login']; ?>"/>
+                                <span id="status_login" style="display: none;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="password" id="password" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
+                        </tr>
+                        <tr id="email_error">
+                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
+                                <span id="status_email" style="display: none;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="first_name" id="first_name" value="<?php echo $transaction_details['first_name']; ?>" size="50"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="submit">
+                        <input type="submit" name="free_submit" value="<?php _e( 'Confirm data', $text_domain ); ?>" />
+                    </div>
+
+                </form>
+
+
+            <?php /* Free Success */ ?>
+            <?php elseif ( $step == 'free_success' ): ?>
+
+                <div class="dp-submit-txt"><?php _e( 'The registration is completed successfully!', $text_domain ); ?></div>
+                <span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page.', $text_domain ); ?></span>
+                <br />
+
+                <form id="add-listing-su" action="" method="post">
+                    <input type="submit" name="redirect_listing" value="Add Listing" />
+                </form>
+                <form id="go-to-profile-su" action="" method="post">
+                    <input type="submit" name="redirect_profile" value="Go To Profile" />
+                </form>
+                <br class="clear" />
+
+
+            <?php /* Recurring payment */ ?>
+            <?php elseif ( $step == 'recurring_payment' ): ?>
+
+                <?php $transaction_details = get_query_var('checkout_transaction_details'); ?>
+
+                <form action="" method="post" name="confirm_payment" id="confirm_payment" class="checkout">
+                    <strong><?php _e( 'Registration details', $text_domain ); ?></strong>
+                    <table id="confirm-payment">
+                        <tr id="login_error">
+                            <td><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="login" id="login" value="<?php echo $transaction_details['login']; ?>"/>
+                                <span id="status_login" style="display: none;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="password" id="password" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
+                            <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
+                        </tr>
+                        <tr id="email_error">
+                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="email" id="email" value="<?php echo $transaction_details['email']; ?>" size="50"/>
+                                <span id="status_email" style="display: none;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
+                            <td>
+                                <input type="text" name="first_name" id="first_name" value="<?php echo $transaction_details['first_name']; ?>" size="50"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="submit">
+                        <input type="submit" name="recurring_submit" value="<?php _e( 'Confirm data', $text_domain ); ?>" />
+                    </div>
+
+                </form>
             <?php endif; ?>
 
         </div><!-- #post-## -->
