@@ -59,7 +59,7 @@
                 </th>
                 <td>
                     <input type="text" name="billing_agreement" value="<?php if ( isset( $options['billing_agreement'] ) ) echo $options['billing_agreement']; ?>" />
-                    <span class="description"><?php _e('The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at “9.99 per month for 2 years”.', 'directory'); ?></span>
+                    <span class="description"><?php _e('The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at "$9.99 per month for 2 years."', 'directory'); ?></span>
                 </td>
             </tr>
         </table>

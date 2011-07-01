@@ -87,8 +87,9 @@ class DR_Core {
         ) );
 
 		register_taxonomy( 'listing_tag', 'directory_listing', array(
-			'rewrite' => array( 'slug' => 'listings-tag', 'with_front' => false ),
-			'labels' => array(
+			'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false ),
+            'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
+			'labels'        => array(
 				'name'			=> __( 'Listing Tags', $this->text_domain ),
 				'singular_name'	=> __( 'Listing Tag', $this->text_domain ),
 				'search_items'	=> __( 'Search Listing Tags', $this->text_domain ),
@@ -111,8 +112,9 @@ class DR_Core {
 
 
 		register_taxonomy( 'listing_category', 'directory_listing', array(
-			'rewrite' => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
-			'hierarchical' => true,
+			'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
+            'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
+			'hierarchical'  => true,
 			'labels' => array(
 				'name'			=> __( 'Listing Categories', $this->text_domain ),
 				'singular_name'	=> __( 'Listing Category', $this->text_domain ),

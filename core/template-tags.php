@@ -31,6 +31,7 @@ function the_dr_categories_home() {
 	$output = '<ul>';
 
 	foreach( $categories as $category ) {
+        $count_items = 0;
 
 		$output .= '<li>';
 		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DIR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> </h2>';
@@ -41,7 +42,7 @@ function the_dr_categories_home() {
 			'order'        => 'ASC',
 			'hide_empty'   => 0,
 			'hierarchical' => 1,
-			'number'       => 10,
+			'number'       => 1,
 			'taxonomy'     => 'listing_category',
 			'pad_counts'   => 1
 		);
@@ -49,9 +50,26 @@ function the_dr_categories_home() {
 		$sub_categories = get_categories( $args );
 
 		foreach ( $sub_categories as $sub_category ) {
-
-			$output .= '<a href="' . get_term_link( $sub_category ) . '" title="' . sprintf( __( 'View all posts in %s', DIR_TEXT_DOMAIN ), $sub_category->name ) . '" ' . '>' . $sub_category->name.'</a>(' . $sub_category->count . ') ';
+			$output .= '<a href="' . get_term_link( $sub_category ) . '" title="' . sprintf( __( 'View all posts in %s', DIR_TEXT_DOMAIN ), $sub_category->name ) . '" ' . '>' . $sub_category->name.'</a>(' . $sub_category->count . ')<br />';
+            $count_items++;
 		}
+
+
+        if ( 4 > $count_items ) {
+            $args = array(
+                'numberposts'      => '4',
+                'post_type'        => 'directory_listing',
+                'listing_category'   => $category->slug
+            );
+
+            $my_posts = get_posts( $args );
+
+            foreach( $my_posts as $post ) {
+                $output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . $post->post_title . '" ' . '>' . $post->post_title .'</a><br />';
+                $count_items++;
+                if ( 4 < $count_items ) break;
+            }
+        }
 
 		$output .= '</li>';
 	}
@@ -59,6 +77,10 @@ function the_dr_categories_home() {
 	$output .= '</ul>';
 
 	echo $output;
+
+
+
+
 }
 
 /**

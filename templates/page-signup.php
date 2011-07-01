@@ -311,7 +311,7 @@ get_header(); ?>
                     <div class="clear"></div>
                     <table id="cc-user-details">
                         <tr>
-                            <td><label for="email"><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                             <td><input type="text" name="email" value="<?php echo $details['email']; ?>" /></td>
                         </tr>
                         <tr>
@@ -676,7 +676,7 @@ get_header(); ?>
                             <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                         </tr>
                         <tr id="email_error">
-                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                             <td>
                                 <input type="text" name="user_email" id="email" value="<?php echo $details['user_email']; ?>" />
                                 <span id="status_email" style="display: none;"></span>
@@ -722,7 +722,7 @@ get_header(); ?>
                             <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                         </tr>
                         <tr id="email_error">
-                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                             <td>
                                 <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                                 <span id="status_email" style="display: none;"></span>
@@ -813,7 +813,7 @@ get_header(); ?>
                             <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                         </tr>
                         <tr id="email_error">
-                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                             <td>
                                 <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                                 <span id="status_email" style="display: none;"></span>
@@ -874,7 +874,7 @@ get_header(); ?>
                             <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                         </tr>
                         <tr id="email_error">
-                            <td><label><?php _e( 'Email Adress', $text_domain ); ?>:</label></td>
+                            <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                             <td>
                                 <input type="text" name="email" id="email" value="<?php echo $transaction_details['email']; ?>" size="50"/>
                                 <span id="status_email" style="display: none;"></span>
