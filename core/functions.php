@@ -23,6 +23,7 @@ function is_dr_page( $type = '' ) {
 			'archive'  => is_post_type_archive( 'directory_listing' ),
 			'tag'      => is_tax( 'listing_tag' ),
 			'category' => is_tax( 'listing_category' ),
+            'signin'   => (bool) get_query_var( 'dr_signin' ),
 			'signup'   => (bool) get_query_var( 'dr_signup' )
 		);
 	}
@@ -35,11 +36,11 @@ function is_dr_page( $type = '' ) {
 }
 
 /**
- * Get array of term objects parents of the term passed  
- * 
- * @param mixed $term 
+ * Get array of term objects parents of the term passed
+ *
+ * @param mixed $term
  * @access public
- * @return array Array of term objects ordered in a hierarchical way including 
+ * @return array Array of term objects ordered in a hierarchical way including
  * the term passed as an argument
  */
 function get_dr_term_parents( $term ) {
@@ -47,7 +48,7 @@ function get_dr_term_parents( $term ) {
 
 	array_unshift( $terms, $term );
 
-	if ( !empty( $term->parent ) ) 
+	if ( !empty( $term->parent ) )
 		get_term_parents( get_term( $term->parent, $term->taxonomy ) );
 
 	return $terms;

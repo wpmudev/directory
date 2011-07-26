@@ -54,6 +54,12 @@ class DR_Core {
     function init() {
 		global $wp, $wp_rewrite;
 
+        // Signin page
+        $wp->add_query_var( 'dr_signin' );
+        $this->add_rewrite_rule( 'signin/?$', array(
+            'dr_signin' => 1
+        ) );
+
 		// Signup page
 		$wp->add_query_var( 'dr_signup' );
 		$this->add_rewrite_rule( 'signup/?$', array(
@@ -194,8 +200,39 @@ class DR_Core {
 	function template_redirect() {
 		global $wp_query;
 
-		if ( is_dr_page( 'signup' ) ) {
-			$this->load_template( 'page-signup.php' );
+        if ( is_dr_page( 'signup' ) ) {
+            $this->load_template( 'page-signup.php' );
+        }
+
+		if ( is_dr_page( 'signin' ) ) {
+            if ( !is_user_logged_in() ) {
+                if ( $_POST['signin_submit'] ) {
+                    $args = array( 'remember'   => ( $_POST['user_rem'] ) ? true : false,
+                               'user_login'     => $_POST['user_login'],
+                               'user_password'  => $_POST['user_pass']
+                               );
+
+                    $signin = wp_signon( $args, false );
+
+                    if ( is_wp_error( $signin ) ) {
+                        set_query_var( 'signin_error', $signin->get_error_message() );
+                    } else {
+                        $options = $this->get_options( 'general_settings' );
+
+                        if ( '' != $options['signin_url'] )
+                            wp_redirect( $options['signin_url'] );
+                        else
+                            wp_redirect( get_option( 'siteurl' ) );
+
+                        exit;
+                    }
+                }
+            } else {
+                wp_redirect(  get_option( 'siteurl' ) );
+                exit;
+            }
+
+			$this->load_template( 'page-signin.php' );
 		}
 
 		// Redirect template loading to archive-listing.php rather than to archive.php

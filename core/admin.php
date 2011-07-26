@@ -132,7 +132,13 @@ class DR_Admin extends DR_Core {
 				}
 
 				$this->render_admin( 'settings-ads' );
-			} else {
+			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'capabilities' ) {
+                if ( isset( $_POST['save'] ) ) {
+                    $this->save_admin_options( $_POST );
+                }
+
+                $this->render_admin( 'settings-capabilities' );
+            } else {
 				if ( isset( $_POST['save'] ) ) {
 					$this->save_admin_options( $_POST );
 				}

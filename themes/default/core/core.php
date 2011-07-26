@@ -122,6 +122,18 @@ class DR_Theme_Core {
             wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
             exit();
         }
+        elseif ( isset( $_POST['directory_logout'] ) ) {
+            $options = get_option( DR_OPTIONS_NAME );
+
+            wp_logout();
+
+            if ( '' != $options['general_settings']['logout_url'] )
+                wp_redirect( $options['general_settings']['logout_url'] );
+            else
+                wp_redirect( get_option( 'siteurl' ) );
+
+            exit();
+        }
     }
 }
 

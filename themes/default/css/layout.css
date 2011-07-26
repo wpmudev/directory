@@ -134,8 +134,8 @@ margin-left: auto;
 margin-right: auto;
 }
 
-#content img.alignleft, 
-#content img.alignright, 
+#content img.alignleft,
+#content img.alignright,
 #content img.aligncenter {
 margin-bottom: 12px;
 }
@@ -391,7 +391,7 @@ h1.entry-title{
 	background: #EEE;
 	padding-left: 10px;
 	font-weight: bold;
-	border: 1px solid #ddd;	
+	border: 1px solid #ddd;
 }
 #tos-agree td.error, #billing-type td.error, #payment-method td.error {
 	background: #FFEBE8;
@@ -407,7 +407,7 @@ h1.entry-title{
 	width: 100px;
 }
 #confirm-payment td {
-	border: 1px solid #ddd;	
+	border: 1px solid #ddd;
 }
 #add-listing-su {
     float: left;
@@ -431,7 +431,7 @@ h1.entry-title{
 	background: #EEE;
 	padding-left: 10px;
 	font-weight: bold;
-	border: 1px solid #ddd;	
+	border: 1px solid #ddd;
 }
 /********************************** footer */
 #footer {
@@ -700,4 +700,14 @@ text-align: center;
 #wp-calendar tfoot #next {
 text-align: right;
 }
+
+#signin-page table {
+    width: 200px;
+}
+
+#signin-page #error strong {
+    font-size: 12px;
+}
+
+
 /********************************** styles end <<< */

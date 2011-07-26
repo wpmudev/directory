@@ -14,6 +14,7 @@
 <?php if ( $page == 'settings' && $tab == 'general' || empty( $tab ) ): ?>
 <ul>
     <li class="subsubsub"><h3><a class="<?php if ( $sub == 'general' || empty( $sub ) ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'general', 'general' ); ?>"><?php _e( 'General Settings', $this->text_domain ); ?></a> | </h3></li>
+    <li class="subsubsub"><h3><a class="<?php if ( $sub == 'capabilities' || empty( $sub ) ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'general', 'capabilities' ); ?>"><?php _e( 'Capabilities', $this->text_domain ); ?></a> | </h3></li>
     <li class="subsubsub"><h3><a class="<?php if ( $sub == 'ads' ) echo 'current'; ?>" href="<?php printf( '%s&page=%s&tab=%s&sub=%s', $href_part, $page, 'general', 'ads' ); ?>"><?php _e( 'Advertising', $this->text_domain ); ?></a></h3></li>
 </ul>
 <?php endif; ?>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-01 19:27+0200\n"
+"POT-Creation-Date: 2011-07-26 16:32+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -45,147 +45,147 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: /directory/core/admin.php:420
+#: /directory/core/admin.php:426
 msgid "Security check failed!"
 msgstr ""
 
-#: /directory/core/core.php:76
+#: /directory/core/core.php:82
 msgid "Listings"
 msgstr ""
 
-#: /directory/core/core.php:77
+#: /directory/core/core.php:83
 msgid "Listing"
 msgstr ""
 
-#: /directory/core/core.php:78
+#: /directory/core/core.php:84
 msgid "Add New"
 msgstr ""
 
-#: /directory/core/core.php:79
+#: /directory/core/core.php:85
 msgid "Add New Listing"
 msgstr ""
 
-#: /directory/core/core.php:80
+#: /directory/core/core.php:86
 msgid "Edit Listing"
 msgstr ""
 
-#: /directory/core/core.php:81
+#: /directory/core/core.php:87
 msgid "New Listing"
 msgstr ""
 
-#: /directory/core/core.php:82
+#: /directory/core/core.php:88
 msgid "View Listing"
 msgstr ""
 
-#: /directory/core/core.php:83
+#: /directory/core/core.php:89
 msgid "Search Listings"
 msgstr ""
 
-#: /directory/core/core.php:84
+#: /directory/core/core.php:90
 msgid "No listings found"
 msgstr ""
 
-#: /directory/core/core.php:85
+#: /directory/core/core.php:91
 msgid "No listings found in trash"
 msgstr ""
 
-#: /directory/core/core.php:93
+#: /directory/core/core.php:99
 msgid "Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:94
+#: /directory/core/core.php:100
 msgid "Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:95
+#: /directory/core/core.php:101
 msgid "Search Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:96
+#: /directory/core/core.php:102
 msgid "Popular Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:97
+#: /directory/core/core.php:103
 msgid "All Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:98
+#: /directory/core/core.php:104
 msgid "Edit Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:99
+#: /directory/core/core.php:105
 msgid "Update Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:100
+#: /directory/core/core.php:106
 msgid "Add New Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:101
+#: /directory/core/core.php:107
 msgid "New Listing Tag Name"
 msgstr ""
 
-#: /directory/core/core.php:102
+#: /directory/core/core.php:108
 msgid "Separate listing tags with commas"
 msgstr ""
 
-#: /directory/core/core.php:103
+#: /directory/core/core.php:109
 msgid "Add or remove listing tags"
 msgstr ""
 
-#: /directory/core/core.php:104
+#: /directory/core/core.php:110
 msgid "Choose from the most used listing tags"
 msgstr ""
 
-#: /directory/core/core.php:119
+#: /directory/core/core.php:125
 msgid "Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:120
+#: /directory/core/core.php:126
 msgid "Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:121
+#: /directory/core/core.php:127
 msgid "Search Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:122
+#: /directory/core/core.php:128
 msgid "Popular Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:123
+#: /directory/core/core.php:129
 msgid "All Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:124
+#: /directory/core/core.php:130
 msgid "Parent Category"
 msgstr ""
 
-#: /directory/core/core.php:125
+#: /directory/core/core.php:131
 msgid "Edit Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:126
+#: /directory/core/core.php:132
 msgid "Update Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:127
+#: /directory/core/core.php:133
 msgid "Add New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:128
+#: /directory/core/core.php:134
 msgid "New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:129
+#: /directory/core/core.php:135
 msgid "Parent Category:"
 msgstr ""
 
-#: /directory/core/core.php:130
+#: /directory/core/core.php:136
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: /directory/core/core.php:253
+#: /directory/core/core.php:290
 msgid "Advartise Here"
 msgstr ""
 
@@ -289,6 +289,26 @@ msgstr ""
 
 #: /directory/templates/archive-listing.php:106
 msgid "Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: /directory/templates/page-signin.php:24
+msgid "Username"
+msgstr ""
+
+#: /directory/templates/page-signin.php:28
+#: /directory/templates/page-signup.php:671
+#: /directory/templates/page-signup.php:717
+#: /directory/templates/page-signup.php:808
+#: /directory/templates/page-signup.php:869
+msgid "Password"
+msgstr ""
+
+#: /directory/templates/page-signin.php:35
+msgid "Remember Me"
+msgstr ""
+
+#: /directory/templates/page-signin.php:44
+msgid "Sing in"
 msgstr ""
 
 #: /directory/templates/page-signup.php:29
@@ -461,13 +481,6 @@ msgstr ""
 #: /directory/templates/page-signup.php:801
 #: /directory/templates/page-signup.php:862
 msgid "Login"
-msgstr ""
-
-#: /directory/templates/page-signup.php:671
-#: /directory/templates/page-signup.php:717
-#: /directory/templates/page-signup.php:808
-#: /directory/templates/page-signup.php:869
-msgid "Password"
 msgstr ""
 
 #: /directory/templates/page-signup.php:675
@@ -914,19 +927,158 @@ msgid "General Settings"
 msgstr ""
 
 #: /directory/ui-admin/navigation.php:17
+msgid "Capabilities"
+msgstr ""
+
+#: /directory/ui-admin/navigation.php:18
 msgid "Advertising"
 msgstr ""
 
-#: /directory/ui-admin/navigation.php:23
+#: /directory/ui-admin/navigation.php:24
 msgid "Payment Settings"
 msgstr ""
 
-#: /directory/ui-admin/navigation.php:24
+#: /directory/ui-admin/navigation.php:25
 msgid "Payment Type"
 msgstr ""
 
 #: /directory/ui-admin/payments-authorizenet.php:10
 msgid "Under Development. Coming Soon!"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:15
+#: /directory/ui-admin/payments-type.php:89
+msgid "PayPal API Calls URL"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:19
+#: /directory/ui-admin/payments-type.php:93
+msgid "Sandbox"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:20
+#: /directory/ui-admin/payments-type.php:94
+msgid "Live"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:22
+#: /directory/ui-admin/payments-type.php:96
+msgid "Choose between PayPal Snadbox and PayPal Live."
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:27
+#: /directory/ui-admin/payments-type.php:110
+msgid "API Username"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:31
+#: /directory/ui-admin/payments-type.php:114
+msgid "Your PayPal API Username."
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:36
+#: /directory/ui-admin/payments-type.php:119
+msgid "API Password"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:40
+#: /directory/ui-admin/payments-type.php:123
+msgid "Your PayPal API Password."
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:45
+#: /directory/ui-admin/payments-type.php:128
+msgid "API Signature"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:50
+#: /directory/ui-admin/payments-type.php:133
+msgid "Your PayPal API Signature."
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:55
+#: /directory/ui-admin/payments-type.php:138
+msgid "Currency"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:59
+#: /directory/ui-admin/payments-type.php:142
+msgid "U.S. Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:60
+#: /directory/ui-admin/payments-type.php:143
+msgid "Euro"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:61
+#: /directory/ui-admin/payments-type.php:144
+msgid "Pound Sterling"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:62
+#: /directory/ui-admin/payments-type.php:145
+msgid "Canadian Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:63
+#: /directory/ui-admin/payments-type.php:146
+msgid "Australian Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:64
+#: /directory/ui-admin/payments-type.php:147
+msgid "Japanese Yen"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:65
+#: /directory/ui-admin/payments-type.php:148
+msgid "Swiss Franc"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:66
+#: /directory/ui-admin/payments-type.php:149
+msgid "Singapore Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:67
+#: /directory/ui-admin/payments-type.php:150
+msgid "New Zealand Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:68
+#: /directory/ui-admin/payments-type.php:151
+msgid "Swedish Krona"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:69
+#: /directory/ui-admin/payments-type.php:152
+msgid "Danish Krone"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:70
+#: /directory/ui-admin/payments-type.php:153
+msgid "Norwegian Krone"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:71
+#: /directory/ui-admin/payments-type.php:154
+msgid "Czech Koruna"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:72
+#: /directory/ui-admin/payments-type.php:155
+msgid "Hungarian Forint"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:73
+#: /directory/ui-admin/payments-type.php:156
+msgid "Polish Zloty"
+msgstr ""
+
+#: /directory/ui-admin/payments-paypal.php:75
+#: /directory/ui-admin/payments-type.php:158
+msgid "The currency in which you want to process payments."
 msgstr ""
 
 #: /directory/ui-admin/payments-settings.php:12
@@ -1016,120 +1168,12 @@ msgstr ""
 msgid "PayPal Settings"
 msgstr ""
 
-#: /directory/ui-admin/payments-type.php:89
-msgid "PayPal API Calls URL"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:93
-msgid "Sandbox"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:94
-msgid "Live"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:96
-msgid "Choose between PayPal Snadbox and PayPal Live."
-msgstr ""
-
 #: /directory/ui-admin/payments-type.php:101
 msgid "Business Email"
 msgstr ""
 
 #: /directory/ui-admin/payments-type.php:105
 msgid "Your PayPal business email for Recurring Payments."
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:110
-msgid "API Username"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:114
-msgid "Your PayPal API Username."
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:119
-msgid "API Password"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:123
-msgid "Your PayPal API Password."
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:128
-msgid "API Signature"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:133
-msgid "Your PayPal API Signature."
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:138
-msgid "Currency"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:142
-msgid "U.S. Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:143
-msgid "Euro"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:144
-msgid "Pound Sterling"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:145
-msgid "Canadian Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:146
-msgid "Australian Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:147
-msgid "Japanese Yen"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:148
-msgid "Swiss Franc"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:149
-msgid "Singapore Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:150
-msgid "New Zealand Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:151
-msgid "Swedish Krona"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:152
-msgid "Danish Krone"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:153
-msgid "Norwegian Krone"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:154
-msgid "Czech Koruna"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:155
-msgid "Hungarian Forint"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:156
-msgid "Polish Zloty"
-msgstr ""
-
-#: /directory/ui-admin/payments-type.php:158
-msgid "The currency in which you want to process payments."
 msgstr ""
 
 #: /directory/ui-admin/payments-type.php:168
@@ -1144,19 +1188,32 @@ msgstr ""
 msgid "Place ad code here!"
 msgstr ""
 
-#: /directory/ui-admin/settings-general.php:19
+#: /directory/ui-admin/settings-capabilities.php:19
 msgid "Assign Capabilities"
 msgstr ""
 
-#: /directory/ui-admin/settings-general.php:28
+#: /directory/ui-admin/settings-capabilities.php:28
 msgid "Select a role to which you want to assign Directory capabilities."
 msgstr ""
 
-#: /directory/ui-admin/settings-general.php:46
+#: /directory/ui-admin/settings-capabilities.php:46
 msgid "Moderation"
 msgstr ""
 
-#: /directory/ui-admin/settings-general.php:50
+#: /directory/ui-admin/settings-capabilities.php:50
 msgid "Answers are held for moderation."
+msgstr ""
+
+#: /directory/ui-admin/settings-general.php:18
+msgid "Redirect URL (sign in):"
+msgstr ""
+
+#: /directory/ui-admin/settings-general.php:22
+#: /directory/ui-admin/settings-general.php:31
+msgid "(by default to Homepage)"
+msgstr ""
+
+#: /directory/ui-admin/settings-general.php:27
+msgid "Redirect URL (loguot):"
 msgstr ""
 
