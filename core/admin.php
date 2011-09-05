@@ -65,6 +65,7 @@ class DR_Admin extends DR_Core {
                 'publish_listings'          => true,
                 'edit_published_listings'   => true,
                 'delete_published_listings' => true,
+                'upload_files'              => true,
                 'read'                      => true
             ) );
 
