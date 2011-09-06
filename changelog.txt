@@ -1,0 +1,20 @@
+=== Directory ===
+Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub)   
+Plugin Page: http://premium.wpmudev.org/project/directory     
+
+ 
+== Changelog ==
+
+= 2.0.0 Beta 4 =
+* fixed JS problem for rating script
+
+= 2.0.0 Beta 3 =
+* fixed file upload 
+
+= 2.0.0 Beta 2 =
+* Added page of Sign in
+* Added Logout button
+* Some changes on Settings page
+
+= 2.0.0 Beta 1 =
+* Release new version;

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Ratings_Core 
- * 
- * @package Ratings 
- * @version 1.0.0 
+ * Ratings_Core
+ *
+ * @package Ratings
+ * @version 1.0.0
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh} 
+ * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Ratings {
@@ -17,7 +17,7 @@ class DR_Ratings {
     var $quality = array( 1 => 'Not so great', 2 => 'Quite good', 3 => 'Good', 4 => 'Great!', 5 => 'Excellent!' );
 
     /**
-     * Class constructor. 
+     * Class constructor.
      */
     function DR_Ratings() {
 		$this->init();
@@ -25,7 +25,7 @@ class DR_Ratings {
 
     /**
      * Hook class methods.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -42,19 +42,19 @@ class DR_Ratings {
 	}
 
     /**
-     * Returns rating for post. If user ID is passed it will return the rating 
-     * given by the particular user ( if it exists for the current post ). If no 
-     * user ID is passed the method returns the aggregated rating for the post. 
-     * 
-     * @param mixed $post_id 
-     * @param mixed $user_id 
+     * Returns rating for post. If user ID is passed it will return the rating
+     * given by the particular user ( if it exists for the current post ). If no
+     * user ID is passed the method returns the aggregated rating for the post.
+     *
+     * @param mixed $post_id
+     * @param mixed $user_id
      * @access public
      * @return string|array
      */
     function get_rating( $post_id, $user_id = null ) {
         if ( isset( $user_id ) ) {
             $rating = get_user_meta( $user_id, '_sr_post_vote', true );
-            if ( isset( $rating[$post_id] ) )  
+            if ( isset( $rating[$post_id] ) )
                 return $rating[$post_id];
         } else {
             $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
@@ -65,10 +65,10 @@ class DR_Ratings {
     }
 
     /**
-     * save_rating 
-     * 
-     * @param mixed $post_id 
-     * @param mixed $rating 
+     * save_rating
+     *
+     * @param mixed $post_id
+     * @param mixed $rating
      * @access public
      * @return void
      */
@@ -76,7 +76,7 @@ class DR_Ratings {
         if ( is_user_logged_in() ) {
             $user = wp_get_current_user();
             update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
-        }       
+        }
         $votes = get_post_meta( $post_id, '_sr_post_votes', true );
         $current_rating = get_post_meta( $post_id, '_sr_post_rating', true );
         $votes++;
@@ -106,24 +106,20 @@ class DR_Ratings {
      * Enqueue styles.
      */
     function enqueue_styles() {
-        wp_enqueue_style( 'jquery-ui-stars',
-                           get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui-stars.css');
+        wp_enqueue_style( 'jquery-ui-stars', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui-stars.css');
     }
 
     /**
      * Enqueue scripts.
      */
     function enqueue_scripts() {
-        wp_register_script( 'jquery-ui-core-1.8',
-                            get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui.custom.min.js' );
-        wp_enqueue_script( 'jquery-ui-stars-script',
-                            get_template_directory_uri() . '/js/jquery-ui-stars/jquery-ui-stars.js',
-                            array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
+        wp_register_script( 'jquery-ui-core-1.8', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui.custom.min.js' );
+        wp_enqueue_script( 'jquery-ui-stars-script', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui-stars.js', array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
     }
 
     /**
      * Print document scripts.Handles the colorpickers.
-     * 
+     *
      * @access public
      * @global object $post
      * @return void
@@ -176,8 +172,8 @@ class DR_Ratings {
     }
 
     /**
-     * Render rate this block. 
-     * 
+     * Render rate this block.
+     *
      * @access public
      * @global object $post
      * @return void
@@ -200,12 +196,12 @@ class DR_Ratings {
                 </select>
                 <input type="submit" value="Rate it!" />
             </form>
-        </div> <?php 
+        </div> <?php
     }
 
     /**
-     * Render avarage rating. 
-     * 
+     * Render avarage rating.
+     *
      * @access public
      * @return void
      */
@@ -223,17 +219,17 @@ class DR_Ratings {
     }
 
     /**
-     * render_user_rating 
-     * 
+     * render_user_rating
+     *
      * @access public
      * @return void
      */
     function render_user_rating() {
-        global $post;  
+        global $post;
         // var_dump( $GLOBALS['comment'] );
         $comment = $GLOBALS['comment'];
         $user = wp_get_current_user();
-        $rating = $this->get_rating( $post->ID, $comment->user_id ); ?>  
+        $rating = $this->get_rating( $post->ID, $comment->user_id ); ?>
         <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
         <span>(<?php echo $rating ?>)</span>
             <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
@@ -245,11 +241,11 @@ class DR_Ratings {
     }
 
     /**
-     * in_range 
-     * 
-     * @param mixed $val 
-     * @param int $from 
-     * @param float $to 
+     * in_range
+     *
+     * @param mixed $val
+     * @param int $from
+     * @param float $to
      * @access public
      * @return void
      */
