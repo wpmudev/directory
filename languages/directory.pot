@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 16:32+0200\n"
+"POT-Creation-Date: 2011-09-12 15:55+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -41,11 +41,11 @@ msgstr ""
 msgid "Delete others' listings."
 msgstr ""
 
-#: /directory/core/admin.php:93
+#: /directory/core/admin.php:94
 msgid "Settings"
 msgstr ""
 
-#: /directory/core/admin.php:426
+#: /directory/core/admin.php:427
 msgid "Security check failed!"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgstr ""
 msgid "Login incorrect!"
 msgstr ""
 
-#: /directory/core/ratings.php:237
+#: /directory/core/ratings.php:233
 msgid "Rating:"
 msgstr ""
 
@@ -308,7 +308,7 @@ msgid "Remember Me"
 msgstr ""
 
 #: /directory/templates/page-signin.php:44
-msgid "Sing in"
+msgid "Sign in"
 msgstr ""
 
 #: /directory/templates/page-signup.php:29
