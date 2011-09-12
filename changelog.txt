@@ -5,6 +5,9 @@ Plugin Page: http://premium.wpmudev.org/project/directory
  
 == Changelog ==
 
+= 2.0.0 Beta 5 =
+* fixed button text on sign in page
+
 = 2.0.0 Beta 4 =
 * fixed JS problem for rating script
 

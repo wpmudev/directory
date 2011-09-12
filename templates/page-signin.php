@@ -41,7 +41,7 @@ get_header(); ?>
                 <div class="clear"></div>
 
                 <div class="submit">
-                    <input type="submit" name="signin_submit" value="<?php _e( 'Sing in', $text_domain ); ?>" />
+                    <input type="submit" name="signin_submit" value="<?php _e( 'Sign in', $text_domain ); ?>" />
                 </div>
             </form>
         </center>
