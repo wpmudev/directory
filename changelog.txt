@@ -5,6 +5,9 @@ Plugin Page: http://premium.wpmudev.org/project/directory
  
 == Changelog ==
 
+= 2.0.0 Beta 5.1 =
+* Added transition from v1.0.7 to v2.0.0
+
 = 2.0.0 Beta 5 =
 * fixed button text on sign in page
 

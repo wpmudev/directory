@@ -45,7 +45,7 @@ class DR_Payments extends DR_Core {
                     'one_time_cost'     => '99.99',
                     'one_time_name'     => 'One Time Only',
                     'tos_content'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.',
-                    'key'               => 'settings'
+                    'key'               => 'payment_settings'
                 ),
                 'paypal' => array(
                     'api_url'       => 'sandbox',
@@ -215,9 +215,9 @@ class DR_Payments extends DR_Core {
                 session_start();
 
             // If no selected any gatewayt - disable the checkout process
-            if ( 1 != $options['gateways']['free']
+            if ( ! isset( $options['gateways'] ) || ( 1 != $options['gateways']['free']
                 && 1 != $options['gateways']['paypal']
-                && 1 != $options['gateways']['authorize_net'] ) {
+                && 1 != $options['gateways']['authorize_net'] ) ) {
                 // Set the proper step which will be loaded by "page-checkout.php"
                 set_query_var( 'checkout_step', 'disabled' );
                 return;

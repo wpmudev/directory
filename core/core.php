@@ -141,6 +141,9 @@ class DR_Core {
         $wp_rewrite->add_rule( 'listings-category/([^/]+)/', '?listing_category=$matches[1]', 'top' );
         $wp_rewrite->flush_rules( false );  // This should really be done in a plugin activation
 
+        //import data from old plugin version
+        $this->import_from_old();
+
     }
 
 	/**
@@ -159,6 +162,142 @@ class DR_Core {
 		$result = add_query_arg( $args, 'index.php' );
 		add_rewrite_rule( $regex, $result, $position );
 	}
+
+    /**
+     * Import data from old version to new.
+     *
+     * @return void
+     */
+    function import_from_old() {
+        //update children of categories
+        if ( get_option( 'dr_cache_update' ) ) {
+            clean_term_cache( get_option( 'dp_cache_update' ), 'listing_category' );
+            delete_option( 'dr_cache_update' );
+        }
+
+        if ( get_option( 'dp_options' ) ) {
+            global $wpdb;
+            //put top level Categories and Tags
+            $old_taxonomies = get_option( 'ct_custom_taxonomies' );
+
+            if ( $old_taxonomies ) {
+                foreach( $old_taxonomies as $old_taxonomy => $old_taxonomy_args ) {
+                    $args = array(
+                        'description'   => '',
+                        'slug'          => $old_taxonomy_args['args']['labels']['slug'],
+                        'parent'        => 0
+                        );
+
+                    if ( true == $old_taxonomy_args['args']['hierarchical'] ) {
+                        //add main level category
+                        $new_taxonomy = wp_insert_term( $old_taxonomy_args['args']['labels']['name'], 'listing_category', $args );
+
+                        //add child levels of Categories
+                        $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category', parent=%d WHERE taxonomy = '%s' AND parent=0", $new_taxonomy['term_taxonomy_id'], $old_taxonomy ) );
+                        $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category' WHERE taxonomy = '%s'", $old_taxonomy ) );
+                    } else {
+                        //add tags
+                        $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_tag' WHERE taxonomy = '%s'", $old_taxonomy ) );
+                    }
+                }
+                //add action for update children of categories
+                if ( isset( $new_taxonomy['term_taxonomy_id'] ) )
+                    update_option( 'dr_cache_update', $new_taxonomy['term_taxonomy_id'] );
+            }
+
+            //rewrite options
+            $old_options = get_option( 'dp_options' );
+            if ( $old_options ) {
+                if ( isset( $old_options['ads_settings']['header_ad_code'] ) && '' != $old_options['ads_settings']['header_ad_code'] ) {
+                    $params = array(
+                        'header_ad_code' => $old_options['ads_settings']['header_ad_code'],
+                        'key' => 'ads_settings'
+                        );
+                    $options = $this->get_options();
+                    $options = array_merge( $options, array( $params['key'] => $params ) );
+                    update_option( $this->options_name, $options );
+                }
+            }
+
+            //rewrite payments options
+            $old_payments = get_option( 'module_payments' );
+            if ( $old_payments ) {
+                if ( isset( $old_payments['settings'] ) ) {
+                    $old_settings = $old_payments['settings'];
+                    $new_payments = $this->get_options( 'payment_settings' );
+
+                    $params = array(
+                        'recurring_cost'    => isset( $old_settings['recurring_cost'] ) ? $old_settings['recurring_cost'] : $new_payments['recurring_cost'],
+                        'recurring_name'    => isset( $old_settings['recurring_name'] ) ? $old_settings['recurring_name'] : $new_payments['recurring_name'],
+                        'billing_period'    => isset( $old_settings['billing_period'] ) ? $old_settings['billing_period'] : $new_payments['billing_period'],
+                        'billing_frequency' => isset( $old_settings['billing_frequency'] ) ? $old_settings['billing_frequency'] : $new_payments['billing_frequency'],
+                        'billing_agreement' => isset( $old_settings['billing_agreement'] ) ? $old_settings['billing_agreement'] : $new_payments['billing_agreement'],
+                        'one_time_cost'     => isset( $old_settings['one_time_cost'] ) ? $old_settings['one_time_cost'] : $new_payments['one_time_cost'],
+                        'one_time_name'     => isset( $old_settings['one_time_name'] ) ? $old_settings['one_time_name'] : $new_payments['one_time_name'],
+                        'tos_content'       => isset( $old_settings['tos_content'] ) ? $old_settings['tos_content'] : $new_payments['tos_content'],
+                        'key'               => 'payment_settings'
+                        );
+
+                    $options = $this->get_options();
+                    $options = array_merge( $options, array( $params['key'] => $params ) );
+                    update_option( $this->options_name, $options );
+                }
+
+                if ( isset( $old_payments['paypal'] ) ) {
+                    $old_paypal = $old_payments['paypal'];
+                    $new_paypal = $this->get_options( 'paypal' );
+
+                    $params = array(
+                        'api_url'       => isset( $old_paypal['api_url'] ) ? $old_paypal['api_url'] : $new_paypal['api_url'],
+                        'api_username'  => isset( $old_paypal['api_username'] ) ? $old_paypal['api_username'] : $new_paypal['api_username'],
+                        'api_password'  => isset( $old_paypal['api_password'] ) ? $old_paypal['api_password'] : $new_paypal['api_password'],
+                        'api_signature' => isset( $old_paypal['api_signature'] ) ? $old_paypal['api_signature'] : $new_paypal['api_signature'],
+                        'currency'      => isset( $old_paypal['currency'] ) ? $old_paypal['currency'] : $new_paypal['currency'],
+                        'key'           => 'paypal'
+                        );
+
+                    $options = $this->get_options();
+                    $options = array_merge( $options, array( $params['key'] => $params ) );
+                    update_option( $this->options_name, $options );
+                }
+            }
+
+            //change role for old users
+            $old_users = get_users( array( 'role' => 'dp_member' ) );
+            if ( 0 < count( $old_users ) ) {
+
+                foreach ( $old_users as $old_user ) {
+                    $old_userdata = get_userdata( $old_user->ID );
+
+                    if ( isset( $old_userdata->module_payments ) &&
+                        ( 0 < count( $old_userdata->module_payments['paypal']['transactions'] ) || '' != $old_userdata->module_payments['paypal']['profile_id'] )
+                        ) {
+                        update_usermeta( $old_user->ID, 'wp_capabilities', array( 'directory_member_paid' => '1' ) );
+                    } else {
+                        update_usermeta( $old_user->ID, 'wp_capabilities', array( 'directory_member_not_paid' => '1' ) );
+                    }
+                }
+                $result = $wpdb->query( "UPDATE {$wpdb->usermeta} SET meta_key = 'dr_options' WHERE meta_key = 'module_payments'" );
+            }
+
+            //delete old options
+            delete_option( 'dp_options' );
+            delete_option( 'ct_custom_taxonomies' );
+            delete_option( 'module_payments' );
+            delete_option( 'ct_custom_post_types' );
+            delete_option( 'ct_custom_fields' );
+            delete_option( 'ct_flush_rewrite_rules' );
+            delete_site_option( 'dp_options' );
+            delete_site_option( 'ct_custom_taxonomies' );
+            delete_site_option( 'module_payments' );
+            delete_site_option( 'ct_custom_post_types' );
+            delete_site_option( 'ct_custom_fields' );
+            delete_site_option( 'ct_flush_rewrite_rules' );
+            delete_site_option( 'allow_per_site_content_types' );
+        }
+
+    }
+
 
     /**
      * Fire on plugin activation.
