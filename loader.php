@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 2.0.0 Beta 5.1
+Version: 2.0.0 Beta 5.2
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 164
@@ -56,6 +56,29 @@ if ( !function_exists( 'wdp_un_check' ) ) {
 		if ( !class_exists( 'WPMUDEV_Update_Notifications' ) && current_user_can( 'install_plugins' ) )
 			echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</a></p></div>';
 	}
+}
+
+
+// Notification for Transition from old version 1.x to new version 2.x of the plugin
+if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) ) {
+
+    add_action( 'admin_notices', 'directory_check', 5 );
+    add_action( 'network_admin_notices', 'directory_check', 5 );
+
+    function directory_check() {
+        if ( current_user_can( 'install_plugins' ) ) {
+            ?>
+            <div id="message_directory" class="updated">
+                <p><?php _e( "<b>The Directory plugin</b><br /><b>Notice:</b> We found that you've used an older version of the plugin. To use the new version of the plugin, we recommend you  to make <b>Backup of your Database</b> and then click on <b>'Transition to new version'.</b> All your data will be migrated to the new version.<br /> If you were using the included Directory theme, you will need to <b>reactivate</b> it after the transition is complete.", DR_TEXT_DOMAIN ); ?></p>
+                <form method="post">
+                    <input type="submit" name="install_dir2" value="Transition to new version" />
+                </form>
+                <br />
+            </div>
+            <?php
+        }
+    }
+
 }
 
 ?>

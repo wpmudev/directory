@@ -68,7 +68,7 @@ class DR_Core {
 
 
         register_post_type( 'directory_listing', array(
-            'public' => true,
+            'public' => ( get_option( 'dp_options' ) ) ? false : true,
             'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
             'has_archive' => true,
 
@@ -175,7 +175,7 @@ class DR_Core {
             delete_option( 'dr_cache_update' );
         }
 
-        if ( get_option( 'dp_options' ) ) {
+        if ( get_option( 'dp_options' ) && isset( $_POST['install_dir2'] ) ) {
             global $wpdb;
             //put top level Categories and Tags
             $old_taxonomies = get_option( 'ct_custom_taxonomies' );
@@ -192,17 +192,20 @@ class DR_Core {
                         //add main level category
                         $new_taxonomy = wp_insert_term( $old_taxonomy_args['args']['labels']['name'], 'listing_category', $args );
 
-                        //add child levels of Categories
-                        $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category', parent=%d WHERE taxonomy = '%s' AND parent=0", $new_taxonomy['term_taxonomy_id'], $old_taxonomy ) );
-                        $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category' WHERE taxonomy = '%s'", $old_taxonomy ) );
+                        if ( is_array( $new_taxonomy ) ) {
+                            //add child levels of Categories
+                            $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category', parent=%d WHERE taxonomy = '%s' AND parent=0", $new_taxonomy['term_taxonomy_id'], $old_taxonomy ) );
+                            $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_category' WHERE taxonomy = '%s'", $old_taxonomy ) );
+                            //add action for update children of categories
+                            update_option( 'dr_cache_update', $new_taxonomy['term_taxonomy_id'] );
+                        }
+
                     } else {
                         //add tags
                         $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_tag' WHERE taxonomy = '%s'", $old_taxonomy ) );
                     }
                 }
-                //add action for update children of categories
-                if ( isset( $new_taxonomy['term_taxonomy_id'] ) )
-                    update_option( 'dr_cache_update', $new_taxonomy['term_taxonomy_id'] );
+
             }
 
             //rewrite options
@@ -263,7 +266,13 @@ class DR_Core {
             }
 
             //change role for old users
-            $old_users = get_users( array( 'role' => 'dp_member' ) );
+            if( function_exists( get_users ) ) {
+                $old_users = get_users( array( 'role' => 'dp_member' ) );
+            } else {
+                $wp_user_search = new WP_User_Search( "", "", 'dp_member' );
+                $old_users = $wp_user_search->get_results();
+            }
+
             if ( 0 < count( $old_users ) ) {
 
                 foreach ( $old_users as $old_user ) {
