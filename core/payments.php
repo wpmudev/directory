@@ -37,11 +37,13 @@ class DR_Payments extends DR_Core {
         if ( empty( $options ) ) {
             $defaults = array(
                 'payment_settings' => array(
+                    'enable_recurring'  => '1',
                     'recurring_cost'    => '9.99',
                     'recurring_name'    => 'Subscription',
                     'billing_period'    => 'Month',
                     'billing_frequency' => '1',
                     'billing_agreement' => 'Customer will be billed at “9.99 per month for 2 years”',
+                    'enable_one_time'   => '1',
                     'one_time_cost'     => '99.99',
                     'one_time_name'     => 'One Time Only',
                     'tos_content'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.',

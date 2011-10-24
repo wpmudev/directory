@@ -184,32 +184,37 @@ get_header(); ?>
                             </td>
                         </tr>
                          */ ?>
-                        <tr>
-							<td <?php do_action( 'billing_invalid' ); ?>>
-								<label for="billing"><?php if ( isset( $opset['recurring_name'] ) ) echo $opset['recurring_name']; ?></label>
-                                <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />
-								<span>
-								<?php
-                                $bastr	= isset( $opset['recurring_cost'] ) ? $opset['recurring_cost'] . ' ' : '';
-                                $bastr .= $oppay['currency'];
-                                $bastr .= __( ' per ', $text_domain );
-								$bastr .= ( !empty( $opset['billing_frequency'] ) && $opset['billing_frequency'] != 1 )
-											? $opset['billing_frequency'] . ' ' : '';
-                                $bastr .= !empty( $opset['billing_period'] ) ? $opset['billing_period'] : '';
-								echo $bastr;
-                                ?>
-								<span>
-                                <input type="hidden" name="recurring_cost" value="<?php if ( isset( $opset['recurring_cost'] ) ) echo $opset['recurring_cost']; ?>" />
-                                <input type="hidden" name="billing_agreement" value="<?php if ( isset( $opset['billing_agreement'] ) ) echo $opset['billing_agreement']; ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-							<td <?php do_action( 'billing_invalid' ); ?>>
-								<label for="billing"><?php if ( isset( $opset['one_time_name'] ) ) echo $opset['one_time_name']; ?></label>
-                                <input type="radio" name="billing_type" value="one_time" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?> <?php echo $oppay['currency']; ?>
-                                <input type="hidden" name="one_time_cost" value="<?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?>" />
-                            </td>
-                        </tr>
+                        <?php if ( isset( $opset['enable_recurring'] ) && '1' == $opset['enable_recurring'] ) : ?>
+                            <tr>
+                                <td <?php do_action( 'billing_invalid' ); ?>>
+                                    <label for="billing"><?php if ( isset( $opset['recurring_name'] ) ) echo $opset['recurring_name']; ?></label>
+                                    <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />
+                                    <span>
+                                    <?php
+                                    $bastr    = isset( $opset['recurring_cost'] ) ? $opset['recurring_cost'] . ' ' : '';
+                                    $bastr .= $oppay['currency'];
+                                    $bastr .= __( ' per ', $text_domain );
+                                    $bastr .= ( !empty( $opset['billing_frequency'] ) && $opset['billing_frequency'] != 1 )
+                                                ? $opset['billing_frequency'] . ' ' : '';
+                                    $bastr .= !empty( $opset['billing_period'] ) ? $opset['billing_period'] : '';
+                                    echo $bastr;
+                                    ?>
+                                    <span>
+                                    <input type="hidden" name="recurring_cost" value="<?php if ( isset( $opset['recurring_cost'] ) ) echo $opset['recurring_cost']; ?>" />
+                                    <input type="hidden" name="billing_agreement" value="<?php if ( isset( $opset['billing_agreement'] ) ) echo $opset['billing_agreement']; ?>" />
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+
+                        <?php if ( isset( $opset['enable_one_time'] ) && '1' == $opset['enable_one_time'] ) : ?>
+                            <tr>
+                                <td <?php do_action( 'billing_invalid' ); ?>>
+                                    <label for="billing"><?php if ( isset( $opset['one_time_name'] ) ) echo $opset['one_time_name']; ?></label>
+                                    <input type="radio" name="billing_type" value="one_time" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?> <?php echo $oppay['currency']; ?>
+                                    <input type="hidden" name="one_time_cost" value="<?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?>" />
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                     </table>
                     <br />
 

@@ -90,8 +90,8 @@ $gateways = $this->get_options('gateways');
                             </th>
                             <td>
                                 <select id="api_url" name="api_url">
-                                    <option value="sandbox" <?php if ( isset( $options['api_url'] ) && $options['api_url'] == 'Sandbox' ) echo 'selected="selected"' ?>><?php _e( 'Sandbox', $this->text_domain ); ?></option>
-                                    <option value="live"    <?php if ( isset( $options['api_url'] ) && $options['api_url'] == 'Live' )    echo 'selected="selected"' ?>><?php _e( 'Live', $this->text_domain ); ?></option>
+                                    <option value="sandbox" <?php if ( isset( $options['api_url'] ) && $options['api_url'] == 'sandbox' ) echo 'selected="selected"' ?>><?php _e( 'Sandbox', $this->text_domain ); ?></option>
+                                    <option value="live"    <?php if ( isset( $options['api_url'] ) && $options['api_url'] == 'live' )    echo 'selected="selected"' ?>><?php _e( 'Live', $this->text_domain ); ?></option>
                                 </select>
                                 <span class="description"><?php _e( 'Choose between PayPal Snadbox and PayPal Live.', $this->text_domain ); ?></span>
                             </td>

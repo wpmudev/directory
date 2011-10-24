@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-12 15:55+0200\n"
+"POT-Creation-Date: 2011-10-24 22:49+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -15,6 +15,10 @@ msgstr ""
 
 #: /directory/loader.php:57
 msgid "Please install the latest version of <a href=\"http://premium.wpmudev.org/project/update-notifications/\" title=\"Download Now &raquo;\">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">More information &raquo;</a>"
+msgstr ""
+
+#: /directory/loader.php:72
+msgid "<b>The Directory plugin</b><br /><b>Notice:</b> We found that you've used an older version of the plugin. To use the new version of the plugin, we recommend you  to make <b>Backup of your Database</b> and then click on <b>'Transition to new version'.</b> All your data will be migrated to the new version.<br /> If you were using the included Directory theme, you will need to <b>reactivate</b> it after the transition is complete."
 msgstr ""
 
 #: /directory/core/admin.php:43
@@ -137,62 +141,62 @@ msgstr ""
 msgid "Choose from the most used listing tags"
 msgstr ""
 
-#: /directory/core/core.php:125
+#: /directory/core/core.php:123
 msgid "Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:126
+#: /directory/core/core.php:124
 msgid "Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:127
+#: /directory/core/core.php:125
 msgid "Search Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:128
+#: /directory/core/core.php:126
 msgid "Popular Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:129
+#: /directory/core/core.php:127
 msgid "All Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:130
+#: /directory/core/core.php:128
 msgid "Parent Category"
 msgstr ""
 
-#: /directory/core/core.php:131
+#: /directory/core/core.php:129
 msgid "Edit Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:132
+#: /directory/core/core.php:130
 msgid "Update Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:133
+#: /directory/core/core.php:131
 msgid "Add New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:134
+#: /directory/core/core.php:132
 msgid "New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:135
+#: /directory/core/core.php:133
 msgid "Parent Category:"
 msgstr ""
 
-#: /directory/core/core.php:136
+#: /directory/core/core.php:134
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: /directory/core/core.php:290
+#: /directory/core/core.php:438
 msgid "Advartise Here"
 msgstr ""
 
-#: /directory/core/payments.php:236
-#: /directory/core/payments.php:359
-#: /directory/core/payments.php:442
-#: /directory/core/payments.php:500
+#: /directory/core/payments.php:238
+#: /directory/core/payments.php:361
+#: /directory/core/payments.php:444
+#: /directory/core/payments.php:502
 msgid "Login incorrect!"
 msgstr ""
 
@@ -296,10 +300,10 @@ msgid "Username"
 msgstr ""
 
 #: /directory/templates/page-signin.php:28
-#: /directory/templates/page-signup.php:671
-#: /directory/templates/page-signup.php:717
-#: /directory/templates/page-signup.php:808
-#: /directory/templates/page-signup.php:869
+#: /directory/templates/page-signup.php:676
+#: /directory/templates/page-signup.php:722
+#: /directory/templates/page-signup.php:813
+#: /directory/templates/page-signup.php:874
 msgid "Password"
 msgstr ""
 
@@ -366,174 +370,174 @@ msgstr ""
 msgid "Cost of Service"
 msgstr ""
 
-#: /directory/templates/page-signup.php:195
+#: /directory/templates/page-signup.php:196
 msgid " per "
 msgstr ""
 
-#: /directory/templates/page-signup.php:216
+#: /directory/templates/page-signup.php:221
 msgid "Terms of Service"
 msgstr ""
 
-#: /directory/templates/page-signup.php:232
+#: /directory/templates/page-signup.php:237
 msgid "I agree with the Terms of Service"
 msgstr ""
 
-#: /directory/templates/page-signup.php:239
-#: /directory/templates/page-signup.php:297
+#: /directory/templates/page-signup.php:244
+#: /directory/templates/page-signup.php:302
 msgid "Continue"
 msgstr ""
 
-#: /directory/templates/page-signup.php:273
+#: /directory/templates/page-signup.php:278
 msgid "Choose Payment Method"
 msgstr ""
 
-#: /directory/templates/page-signup.php:278
+#: /directory/templates/page-signup.php:283
 msgid "PayPal"
 msgstr ""
 
-#: /directory/templates/page-signup.php:287
+#: /directory/templates/page-signup.php:292
 msgid "Credit Card"
 msgstr ""
 
-#: /directory/templates/page-signup.php:310
+#: /directory/templates/page-signup.php:315
 msgid "Payment Details"
 msgstr ""
 
-#: /directory/templates/page-signup.php:314
-#: /directory/templates/page-signup.php:679
-#: /directory/templates/page-signup.php:725
-#: /directory/templates/page-signup.php:816
-#: /directory/templates/page-signup.php:877
+#: /directory/templates/page-signup.php:319
+#: /directory/templates/page-signup.php:684
+#: /directory/templates/page-signup.php:730
+#: /directory/templates/page-signup.php:821
+#: /directory/templates/page-signup.php:882
 msgid "Email Address"
 msgstr ""
 
-#: /directory/templates/page-signup.php:318
+#: /directory/templates/page-signup.php:323
 msgid "First Name"
 msgstr ""
 
-#: /directory/templates/page-signup.php:322
+#: /directory/templates/page-signup.php:327
 msgid "Last Name"
 msgstr ""
 
-#: /directory/templates/page-signup.php:326
+#: /directory/templates/page-signup.php:331
 msgid "Street"
 msgstr ""
 
-#: /directory/templates/page-signup.php:330
+#: /directory/templates/page-signup.php:335
 msgid "City"
 msgstr ""
 
-#: /directory/templates/page-signup.php:334
+#: /directory/templates/page-signup.php:339
 msgid "State"
 msgstr ""
 
-#: /directory/templates/page-signup.php:338
+#: /directory/templates/page-signup.php:343
 msgid "ZIP"
 msgstr ""
 
-#: /directory/templates/page-signup.php:342
+#: /directory/templates/page-signup.php:347
 msgid "Country"
 msgstr ""
 
-#: /directory/templates/page-signup.php:596
-#: /directory/templates/page-signup.php:746
+#: /directory/templates/page-signup.php:601
+#: /directory/templates/page-signup.php:751
 msgid "Total Amount"
 msgstr ""
 
-#: /directory/templates/page-signup.php:606
+#: /directory/templates/page-signup.php:611
 msgid "Credit Card Type"
 msgstr ""
 
-#: /directory/templates/page-signup.php:609
+#: /directory/templates/page-signup.php:614
 msgid "Visa"
 msgstr ""
 
-#: /directory/templates/page-signup.php:610
+#: /directory/templates/page-signup.php:615
 msgid "MasterCard"
 msgstr ""
 
-#: /directory/templates/page-signup.php:611
+#: /directory/templates/page-signup.php:616
 msgid "Amex"
 msgstr ""
 
-#: /directory/templates/page-signup.php:612
+#: /directory/templates/page-signup.php:617
 msgid "Discover"
 msgstr ""
 
-#: /directory/templates/page-signup.php:617
+#: /directory/templates/page-signup.php:622
 msgid "Credit Card Number"
 msgstr ""
 
-#: /directory/templates/page-signup.php:621
+#: /directory/templates/page-signup.php:626
 msgid "Expiration Date"
 msgstr ""
 
-#: /directory/templates/page-signup.php:654
+#: /directory/templates/page-signup.php:659
 msgid "CVV2"
 msgstr ""
 
-#: /directory/templates/page-signup.php:660
+#: /directory/templates/page-signup.php:665
 msgid "Registration Details"
 msgstr ""
 
-#: /directory/templates/page-signup.php:664
-#: /directory/templates/page-signup.php:710
-#: /directory/templates/page-signup.php:801
-#: /directory/templates/page-signup.php:862
+#: /directory/templates/page-signup.php:669
+#: /directory/templates/page-signup.php:715
+#: /directory/templates/page-signup.php:806
+#: /directory/templates/page-signup.php:867
 msgid "Login"
 msgstr ""
 
-#: /directory/templates/page-signup.php:675
+#: /directory/templates/page-signup.php:680
 msgid "Confirm Pass"
 msgstr ""
 
-#: /directory/templates/page-signup.php:702
+#: /directory/templates/page-signup.php:707
 msgid "Confirm Payment"
 msgstr ""
 
-#: /directory/templates/page-signup.php:721
-#: /directory/templates/page-signup.php:812
-#: /directory/templates/page-signup.php:873
+#: /directory/templates/page-signup.php:726
+#: /directory/templates/page-signup.php:817
+#: /directory/templates/page-signup.php:878
 msgid "Password Confirm"
 msgstr ""
 
-#: /directory/templates/page-signup.php:732
-#: /directory/templates/page-signup.php:823
-#: /directory/templates/page-signup.php:884
+#: /directory/templates/page-signup.php:737
+#: /directory/templates/page-signup.php:828
+#: /directory/templates/page-signup.php:889
 msgid "Name"
 msgstr ""
 
-#: /directory/templates/page-signup.php:736
+#: /directory/templates/page-signup.php:741
 msgid "Address"
 msgstr ""
 
-#: /directory/templates/page-signup.php:741
+#: /directory/templates/page-signup.php:746
 msgid "Billing Agreement"
 msgstr ""
 
-#: /directory/templates/page-signup.php:781
+#: /directory/templates/page-signup.php:786
 msgid "Thank you for your business. Transaction processed successfully!"
 msgstr ""
 
-#: /directory/templates/page-signup.php:782
-#: /directory/templates/page-signup.php:841
+#: /directory/templates/page-signup.php:787
+#: /directory/templates/page-signup.php:846
 msgid "You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page."
 msgstr ""
 
-#: /directory/templates/page-signup.php:798
+#: /directory/templates/page-signup.php:803
 msgid "Registration"
 msgstr ""
 
-#: /directory/templates/page-signup.php:831
-#: /directory/templates/page-signup.php:892
+#: /directory/templates/page-signup.php:836
+#: /directory/templates/page-signup.php:897
 msgid "Confirm data"
 msgstr ""
 
-#: /directory/templates/page-signup.php:840
+#: /directory/templates/page-signup.php:845
 msgid "The registration is completed successfully!"
 msgstr ""
 
-#: /directory/templates/page-signup.php:859
+#: /directory/templates/page-signup.php:864
 msgid "Registration details"
 msgstr ""
 
@@ -942,212 +946,81 @@ msgstr ""
 msgid "Payment Type"
 msgstr ""
 
-#: /directory/ui-admin/payments-authorizenet.php:10
-msgid "Under Development. Coming Soon!"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:15
-#: /directory/ui-admin/payments-type.php:89
-msgid "PayPal API Calls URL"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:19
-#: /directory/ui-admin/payments-type.php:93
-msgid "Sandbox"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:20
-#: /directory/ui-admin/payments-type.php:94
-msgid "Live"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:22
-#: /directory/ui-admin/payments-type.php:96
-msgid "Choose between PayPal Snadbox and PayPal Live."
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:27
-#: /directory/ui-admin/payments-type.php:110
-msgid "API Username"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:31
-#: /directory/ui-admin/payments-type.php:114
-msgid "Your PayPal API Username."
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:36
-#: /directory/ui-admin/payments-type.php:119
-msgid "API Password"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:40
-#: /directory/ui-admin/payments-type.php:123
-msgid "Your PayPal API Password."
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:45
-#: /directory/ui-admin/payments-type.php:128
-msgid "API Signature"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:50
-#: /directory/ui-admin/payments-type.php:133
-msgid "Your PayPal API Signature."
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:55
-#: /directory/ui-admin/payments-type.php:138
-msgid "Currency"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:59
-#: /directory/ui-admin/payments-type.php:142
-msgid "U.S. Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:60
-#: /directory/ui-admin/payments-type.php:143
-msgid "Euro"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:61
-#: /directory/ui-admin/payments-type.php:144
-msgid "Pound Sterling"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:62
-#: /directory/ui-admin/payments-type.php:145
-msgid "Canadian Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:63
-#: /directory/ui-admin/payments-type.php:146
-msgid "Australian Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:64
-#: /directory/ui-admin/payments-type.php:147
-msgid "Japanese Yen"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:65
-#: /directory/ui-admin/payments-type.php:148
-msgid "Swiss Franc"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:66
-#: /directory/ui-admin/payments-type.php:149
-msgid "Singapore Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:67
-#: /directory/ui-admin/payments-type.php:150
-msgid "New Zealand Dollar"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:68
-#: /directory/ui-admin/payments-type.php:151
-msgid "Swedish Krona"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:69
-#: /directory/ui-admin/payments-type.php:152
-msgid "Danish Krone"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:70
-#: /directory/ui-admin/payments-type.php:153
-msgid "Norwegian Krone"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:71
-#: /directory/ui-admin/payments-type.php:154
-msgid "Czech Koruna"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:72
-#: /directory/ui-admin/payments-type.php:155
-msgid "Hungarian Forint"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:73
-#: /directory/ui-admin/payments-type.php:156
-msgid "Polish Zloty"
-msgstr ""
-
-#: /directory/ui-admin/payments-paypal.php:75
-#: /directory/ui-admin/payments-type.php:158
-msgid "The currency in which you want to process payments."
-msgstr ""
-
-#: /directory/ui-admin/payments-settings.php:12
+#: /directory/ui-admin/payments-settings.php:71
 msgid "Recurring Payments"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:20
+#: /directory/ui-admin/payments-settings.php:76
+msgid "Use the recurring payments"
+msgstr ""
+
+#: /directory/ui-admin/payments-settings.php:87
 msgid "Amount to bill for each billing cycle."
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:25
-#: /directory/ui-admin/payments-settings.php:80
+#: /directory/ui-admin/payments-settings.php:92
+#: /directory/ui-admin/payments-settings.php:155
 msgid "Name of Service"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:29
-#: /directory/ui-admin/payments-settings.php:84
+#: /directory/ui-admin/payments-settings.php:96
+#: /directory/ui-admin/payments-settings.php:159
 msgid "Name of the service."
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:34
+#: /directory/ui-admin/payments-settings.php:101
 msgid "Billing Period"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:38
+#: /directory/ui-admin/payments-settings.php:105
 msgid "Day"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:39
+#: /directory/ui-admin/payments-settings.php:106
 msgid "Week"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:40
+#: /directory/ui-admin/payments-settings.php:107
 msgid "SemiMonth"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:41
+#: /directory/ui-admin/payments-settings.php:108
 msgid "Month"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:42
+#: /directory/ui-admin/payments-settings.php:109
 msgid "Year"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:44
+#: /directory/ui-admin/payments-settings.php:111
 msgid "The unit of measure for the billing cycle."
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:49
+#: /directory/ui-admin/payments-settings.php:116
 msgid "Billing Frequency"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:53
+#: /directory/ui-admin/payments-settings.php:120
 msgid "Number of billing periods that make up one billing cycle. The combination of billing frequency and billing period must be less than or equal to one year. If the billing period is SemiMonth, the billing frequency must be 1."
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:62
+#: /directory/ui-admin/payments-settings.php:129
 msgid "The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at \"$9.99 per month for 2 years.\""
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:67
+#: /directory/ui-admin/payments-settings.php:134
 msgid "One-time Payments"
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:75
+#: /directory/ui-admin/payments-settings.php:139
+msgid "Use the one-time payments"
+msgstr ""
+
+#: /directory/ui-admin/payments-settings.php:150
 msgid "Cost of service."
 msgstr ""
 
-#: /directory/ui-admin/payments-settings.php:98
+#: /directory/ui-admin/payments-settings.php:174
 msgid "Text for \"Terms of Service\""
 msgstr ""
 
@@ -1168,6 +1041,22 @@ msgstr ""
 msgid "PayPal Settings"
 msgstr ""
 
+#: /directory/ui-admin/payments-type.php:89
+msgid "PayPal API Calls URL"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:93
+msgid "Sandbox"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:94
+msgid "Live"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:96
+msgid "Choose between PayPal Snadbox and PayPal Live."
+msgstr ""
+
 #: /directory/ui-admin/payments-type.php:101
 msgid "Business Email"
 msgstr ""
@@ -1176,8 +1065,104 @@ msgstr ""
 msgid "Your PayPal business email for Recurring Payments."
 msgstr ""
 
+#: /directory/ui-admin/payments-type.php:110
+msgid "API Username"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:114
+msgid "Your PayPal API Username."
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:119
+msgid "API Password"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:123
+msgid "Your PayPal API Password."
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:128
+msgid "API Signature"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:133
+msgid "Your PayPal API Signature."
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:138
+msgid "Currency"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:142
+msgid "U.S. Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:143
+msgid "Euro"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:144
+msgid "Pound Sterling"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:145
+msgid "Canadian Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:146
+msgid "Australian Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:147
+msgid "Japanese Yen"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:148
+msgid "Swiss Franc"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:149
+msgid "Singapore Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:150
+msgid "New Zealand Dollar"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:151
+msgid "Swedish Krona"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:152
+msgid "Danish Krone"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:153
+msgid "Norwegian Krone"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:154
+msgid "Czech Koruna"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:155
+msgid "Hungarian Forint"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:156
+msgid "Polish Zloty"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:158
+msgid "The currency in which you want to process payments."
+msgstr ""
+
 #: /directory/ui-admin/payments-type.php:168
 msgid "Authorize.net Settings"
+msgstr ""
+
+#: /directory/ui-admin/payments-type.php:171
+msgid "Under Development. Coming Soon!"
 msgstr ""
 
 #: /directory/ui-admin/settings-ads.php:17

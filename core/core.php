@@ -113,8 +113,6 @@ class DR_Core {
 
         //rewrite rules for tags
         $wp_rewrite->add_rule( 'listings-tag/([^/]+)/', '?listing_tag=$matches[1]', 'top' );
-        $wp_rewrite->flush_rules( false );  // This should really be done in a plugin activation
-
 
 
 		register_taxonomy( 'listing_category', 'directory_listing', array(
@@ -139,7 +137,6 @@ class DR_Core {
 
         //rewrite rules for categories
         $wp_rewrite->add_rule( 'listings-category/([^/]+)/', '?listing_category=$matches[1]', 'top' );
-        $wp_rewrite->flush_rules( false );  // This should really be done in a plugin activation
 
         //import data from old plugin version
         $this->import_from_old();
@@ -303,6 +300,9 @@ class DR_Core {
             delete_site_option( 'ct_custom_fields' );
             delete_site_option( 'ct_flush_rewrite_rules' );
             delete_site_option( 'allow_per_site_content_types' );
+
+            wp_redirect( add_query_arg( array( 'post_type' => 'directory_listing' ), 'edit.php' ) );
+            exit;
         }
 
     }
@@ -315,7 +315,7 @@ class DR_Core {
      */
     function plugin_activate() {
 		$this->init();
-		flush_rewrite_rules();
+		flush_rewrite_rules( false );
     }
 
     /**

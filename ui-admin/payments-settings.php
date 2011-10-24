@@ -2,15 +2,82 @@
 
 <?php $options = $this->get_options('payment_settings'); ?>
 
+
+
+<script type="text/javascript">
+
+    jQuery( document ).ready( function() {
+
+        if ( false == jQuery( "#enable_recurring" ).prop( "checked" ) ) {
+                jQuery( "#recurring_table input" ).prop( "readonly" , true );
+            } else {
+                jQuery( "#recurring_table input" ).prop( "readonly" , false );
+            }
+        jQuery( "#enable_recurring" ).prop( "readonly" , false );
+
+        jQuery( "#enable_recurring" ).change( function () {
+            if ( false == jQuery( "#enable_recurring" ).prop( "checked" ) ) {
+                jQuery( "#recurring_table input" ).prop( "readonly" , true );
+            } else {
+                jQuery( "#recurring_table input" ).prop( "readonly" , false );
+            }
+            jQuery( "#enable_recurring" ).prop( "readonly" , false );
+        });
+
+
+
+        if ( false == jQuery( "#enable_one_time" ).prop( "checked" ) ) {
+                jQuery( "#one_time_table input" ).prop( "readonly" , true );
+            } else {
+                jQuery( "#one_time_table input" ).prop( "readonly" , false );
+            }
+        jQuery( "#enable_one_time" ).prop( "readonly" , false );
+
+        jQuery( "#enable_one_time" ).change( function () {
+            if ( false == jQuery( "#enable_one_time" ).prop( "checked" ) ) {
+                jQuery( "#one_time_table input" ).prop( "readonly" , true );
+            } else {
+                jQuery( "#one_time_table input" ).prop( "readonly" , false );
+            }
+            jQuery( "#enable_one_time" ).prop( "readonly" , false );
+        });
+
+
+        jQuery( "#payment_settings" ).submit( function () {
+
+            if ( true == jQuery( "#enable_recurring" ).prop( "checked" ) || true == jQuery( "#enable_one_time" ).prop( "checked" ) ) {
+               return true;
+            } else {
+                jQuery( "#enable_recurring_tr" ).css( "background-color", "#FFEBE8" );
+                jQuery( "#enable_recurring" ).focus();
+                jQuery( "#one_time_cost_tr" ).css( "background-color", "#FFEBE8" );
+            }
+            return false;
+        });
+
+    });
+
+</script>
+
+
+
 <div class="wrap">
     <?php screen_icon('options-general'); ?>
 
     <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'payments', 'sub' => 'checkout' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-    <form action="" method="post" class="dp-payments">
+    <form method="post" class="dp-payments" id="payment_settings">
         <h3><?php _e( 'Recurring Payments', 'directory' ); ?></h3>
-        <table class="form-table">
+        <table class="form-table" id="recurring_table">
+            <tr id="enable_recurring_tr">
+                <th>
+                    <input type="checkbox" id="enable_recurring" name="enable_recurring" value="1" <?php if ( isset( $options['enable_recurring'] ) && '1' == $options['enable_recurring'] ) echo 'checked'; ?> />
+                    <label for="enable_recurring"><?php _e('Use the recurring payments', 'directory') ?></label>
+                </th>
+                <td>
+                </td>
+            </tr>
             <tr>
                 <th>
                     <label for="recurring_cost"><?php _e('Cost of Service', 'directory') ?></label>
@@ -34,7 +101,7 @@
                     <label for="billing_period"><?php _e('Billing Period', 'directory') ?></label>
                 </th>
                 <td>
-                    <select id="billing_period" name="billing_period">
+                    <select id="billing_period" name="billing_period"  >
                         <option value="Day" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Day' ) echo 'selected="selected"'; ?>><?php _e( 'Day', 'directory' ); ?></option>
                         <option value="Week" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ) echo 'selected="selected"'; ?>><?php _e( 'Week', 'directory' ); ?></option>
                         <option value="SemiMonth" <?php if ( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ) echo 'selected="selected"'; ?>><?php _e( 'SemiMonth', 'directory' ); ?></option>
@@ -65,7 +132,15 @@
         </table>
 
         <h3><?php _e( 'One-time Payments', 'directory' ); ?></h3>
-        <table class="form-table">
+        <table class="form-table" id="one_time_table">
+            <tr id="one_time_cost_tr">
+                <th>
+                    <input type="checkbox" id="enable_one_time" name="enable_one_time" value="1" <?php if ( isset( $options['enable_one_time'] ) && '1' == $options['enable_one_time'] ) echo 'checked'; ?> />
+                    <label for="enable_one_time"><?php _e('Use the one-time payments', 'directory') ?></label>
+                </th>
+                <td>
+                </td>
+            </tr>
             <tr>
                 <th>
                     <label for="one_time_cost"><?php _e('Cost of Service', 'directory') ?></label>
@@ -86,6 +161,7 @@
             </tr>
         </table>
 
+        <br /><br />
         <h3><?php _e( 'Terms of Service', 'directory' ); ?></h3>
         <table class="form-table">
             <tr>
