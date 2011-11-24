@@ -5,6 +5,14 @@ Plugin Page: http://premium.wpmudev.org/project/directory
  
 == Changelog ==
 
+= 2.0.0 Beta 6.1 =
+* Added feature for set count of Categories on Homepage (General Settings);
+* Added feature for set count of Sub-categories on Homepage (General Settings);
+* Added feature for display Listings on Homepage (General Settings);
+* Added feature for hide empty Sub-categories on Homepage (General Settings);
+* Fixed problem of recurring payments - changed format of cost;
+
+
 = 2.0.0 Beta 6 =
 * Added notification for transition from v1.x to v2.x
 * Fixed problem with choice the PayPal Live mode

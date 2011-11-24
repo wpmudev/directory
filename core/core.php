@@ -227,12 +227,12 @@ class DR_Core {
                     $new_payments = $this->get_options( 'payment_settings' );
 
                     $params = array(
-                        'recurring_cost'    => isset( $old_settings['recurring_cost'] ) ? $old_settings['recurring_cost'] : $new_payments['recurring_cost'],
+                        'recurring_cost'    => isset( $old_settings['recurring_cost'] ) ? sprintf( "%01.2f", $old_settings['recurring_cost'] ) : sprintf( "%01.2f", $new_payments['recurring_cost'] ),
                         'recurring_name'    => isset( $old_settings['recurring_name'] ) ? $old_settings['recurring_name'] : $new_payments['recurring_name'],
                         'billing_period'    => isset( $old_settings['billing_period'] ) ? $old_settings['billing_period'] : $new_payments['billing_period'],
                         'billing_frequency' => isset( $old_settings['billing_frequency'] ) ? $old_settings['billing_frequency'] : $new_payments['billing_frequency'],
                         'billing_agreement' => isset( $old_settings['billing_agreement'] ) ? $old_settings['billing_agreement'] : $new_payments['billing_agreement'],
-                        'one_time_cost'     => isset( $old_settings['one_time_cost'] ) ? $old_settings['one_time_cost'] : $new_payments['one_time_cost'],
+                        'one_time_cost'     => isset( $old_settings['one_time_cost'] ) ? sprintf( "%01.2f", $old_settings['one_time_cost'] ) : sprintf( "%01.2f", $new_payments['one_time_cost'] ),
                         'one_time_name'     => isset( $old_settings['one_time_name'] ) ? $old_settings['one_time_name'] : $new_payments['one_time_name'],
                         'tos_content'       => isset( $old_settings['tos_content'] ) ? $old_settings['tos_content'] : $new_payments['tos_content'],
                         'key'               => 'payment_settings'

@@ -256,15 +256,14 @@ class DR_Admin extends DR_Core {
 	 *
 	 * @return void
 	 */
-	function ajax_directory_ipn() {
-
+	 function ajax_directory_ipn() {
         // debug mode for IPN script (please open plugin dir (directory) for writing)
-        $debug_ipn = 0;
+        $debug_ipn = 1;
         if ( 1 == $debug_ipn ) {
             $File = $this->plugin_dir ."debug_ipn.log";
             $Handle = fopen( $File, 'a+' );
             ob_start();
-            print_r( date( "H:i:s m.d.y" ) . " POST\r\n" );
+            print_r( date( "H:i:s m.d.y" ) . ' - 01 -' . " POST\r\n" );
             print_r( $_POST );
             $a = ob_get_contents();
             ob_end_clean();
@@ -293,7 +292,7 @@ class DR_Admin extends DR_Core {
         if( is_wp_error( $response ) ) {
             if ( 1 == $debug_ipn ) {
                 ob_start();
-                print_r( date( "H:i:s m.d.y" ) . " error with send post\r\n" );
+                print_r( date( "H:i:s m.d.y" ) . ' - 02 -' . " error with send post\r\n" );
                 print_r( "url: " . $url . "\r\n" );
                 print_r( $response );
                 $a = ob_get_contents();
@@ -309,7 +308,7 @@ class DR_Admin extends DR_Core {
         if ( $response != "VERIFIED" ) {
             if ( 1 == $debug_ipn ) {
                 ob_start();
-                print_r( date( "H:i:s m.d.y" ) . " not VERIFIED\r\n" );
+                print_r( date( "H:i:s m.d.y" ) . ' - 03 -' . " not VERIFIED\r\n" );
                 print_r( $response );
                 $a = ob_get_contents();
                 ob_end_clean();
@@ -331,7 +330,7 @@ class DR_Admin extends DR_Core {
                 if ( $key != $dr_options['paypal']['key'] ) {
                     if ( 1 == $debug_ipn ) {
                         ob_start();
-                        print_r( date( "H:i:s m.d.y" ) . " Conflict Keys:\r\n" );
+                        print_r( date( "H:i:s m.d.y" ) . ' - 04 -' . " Conflict Keys:\r\n" );
                         print_r( " key from site: " . $dr_options['paypal']['key'] );
                         print_r( "key from Paypal: " . $key );
                         $a = ob_get_contents();
@@ -343,7 +342,7 @@ class DR_Admin extends DR_Core {
 
                 if ( 1 == $debug_ipn ) {
                     ob_start();
-                    print_r( date( "H:i:s m.d.y" ) . " subscr_payment OK\r\n" );
+                    print_r( date( "H:i:s m.d.y" ) . ' - 05 -' . " subscr_payment OK\r\n" );
                     $a = ob_get_contents();
                     ob_end_clean();
                     fwrite( $Handle, $a );
@@ -363,7 +362,7 @@ class DR_Admin extends DR_Core {
 
                 if ( 1 == $debug_ipn ) {
                     ob_start();
-                    print_r( date( "H:i:s m.d.y" ) . " other payment status:\r\n" );
+                    print_r( date( "H:i:s m.d.y" ) . ' - 06 -' . " other payment status:\r\n" );
                     print_r( $_POST['txn_type'] );
                     $a = ob_get_contents();
                     ob_end_clean();
@@ -379,7 +378,7 @@ class DR_Admin extends DR_Core {
                 } else {
                     if ( 1 == $debug_ipn ) {
                         ob_start();
-                        print_r( date( "H:i:s m.d.y" ) . " wrong profile_id:\r\n" );
+                        print_r( date( "H:i:s m.d.y" ) . ' - 07 -' . " wrong profile_id:\r\n" );
                         print_r( " profile_id from site: " . $dr_options['paypal']['profile_id'] );
                         print_r( "profile_id from Paypal: " . $_POST['subscr_id'] );
                         $a = ob_get_contents();
@@ -391,7 +390,7 @@ class DR_Admin extends DR_Core {
         }
 
         die("ok");
-	}
+    }
 
     /**
 	 * Renders an admin section of display code.
@@ -419,6 +418,15 @@ class DR_Admin extends DR_Core {
         if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
             /* Remove unwanted parameters */
             unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
+
+            //change format for cost to .00
+            if ( 'payment_settings' ==  $params['key'] ) {
+                if ( isset( $params['recurring_cost'] ) )
+                    $params['recurring_cost'] = sprintf( "%01.2f", $params['recurring_cost'] );
+                if ( isset( $params['one_time_cost'] ) )
+                    $params['one_time_cost'] = sprintf( "%01.2f", $params['one_time_cost'] );
+            }
+
             /* Update options by merging the old ones */
             $options = $this->get_options();
             $options = array_merge( $options, array( $params['key'] => $params ) );

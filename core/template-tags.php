@@ -15,13 +15,21 @@
  * @return void
  */
 function the_dr_categories_home() {
+
+    //get plugin options
+    $options  = get_option( DR_OPTIONS_NAME );
+
+    $cat_num                = ( isset( $options['general_settings']['count_cat'] ) && is_numeric( $options['general_settings']['count_cat'] ) && 0 < $options['general_settings']['count_cat'] ) ? $options['general_settings']['count_cat'] : 10;
+    $sub_cat_num            = ( isset( $options['general_settings']['count_sub_cat'] ) && is_numeric( $options['general_settings']['count_sub_cat'] ) && 0 < $options['general_settings']['count_sub_cat'] ) ? $options['general_settings']['count_sub_cat'] : 5;
+    $hide_empty_sub_cat     = ( isset( $options['general_settings']['hide_empty_sub_cat'] ) && is_numeric( $options['general_settings']['hide_empty_sub_cat'] ) && 0 < $options['general_settings']['hide_empty_sub_cat'] ) ? $options['general_settings']['hide_empty_sub_cat'] : 0;
+
 	$args = array(
 		'parent'       => 0,
 		'orderby'      => 'name',
 		'order'        => 'ASC',
 		'hide_empty'   => 0,
 		'hierarchical' => 1,
-		'number'       => 10,
+		'number'       => $cat_num,
 		'taxonomy'     => 'listing_category',
 		'pad_counts'   => 1
 	);
@@ -40,9 +48,9 @@ function the_dr_categories_home() {
 			'parent'       => $category->term_id,
 			'orderby'      => 'name',
 			'order'        => 'ASC',
-			'hide_empty'   => 0,
+			'hide_empty'   => $hide_empty_sub_cat,
 			'hierarchical' => 1,
-			'number'       => 1,
+			'number'       => $sub_cat_num,
 			'taxonomy'     => 'listing_category',
 			'pad_counts'   => 1
 		);
@@ -55,22 +63,23 @@ function the_dr_categories_home() {
 		}
 
 
-        if ( 4 > $count_items ) {
-            $args = array(
-                'numberposts'      => '4',
-                'post_type'        => 'directory_listing',
-                'listing_category'   => $category->slug
-            );
+        if ( isset( $options['general_settings']['display_listing'] ) && '1' == $options['general_settings']['display_listing']  ) {
+            if ( $sub_cat_num > $count_items ) {
+                $args = array(
+                    'numberposts'       => $sub_cat_num - $count_items,
+                    'post_type'         => 'directory_listing',
+                    'listing_category'  => $category->slug
+                );
 
-            $my_posts = get_posts( $args );
+                $my_posts = get_posts( $args );
 
-            foreach( $my_posts as $post ) {
-                $output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . $post->post_title . '" ' . '>' . $post->post_title .'</a><br />';
-                $count_items++;
-                if ( 4 < $count_items ) break;
+                foreach( $my_posts as $post ) {
+                    $output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . $post->post_title . '" ' . '>' . $post->post_title .'</a><br />';
+                    $count_items++;
+                    if ( $sub_cat_num < $count_items ) break;
+                }
             }
         }
-
 		$output .= '</li>';
 	}
 
