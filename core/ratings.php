@@ -35,6 +35,7 @@ class DR_Ratings {
         //add_action( 'wp_print_styles', array( &$this, 'print_styles' ));
         add_action( 'wp_head', array( &$this, 'print_scripts' ) );
         add_action( 'sr_avg_rating', array( &$this, 'render_avg_rating' ) );
+        add_action( 'sr_avg_ratings_of_listings', array( &$this, 'render_avg_ratings_of_listings' ) );
         add_action( 'sr_user_rating', array( &$this, 'render_user_rating' ) );
         add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
         add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
@@ -137,7 +138,8 @@ class DR_Ratings {
 			$("#rat").children().not("select, #messages").hide();
 			$(".user_votes").children().not(":input").hide();
             // Create stars for: Average rating
-			$("#avg").stars();
+            $("#avg").stars();
+			$(".avg_of_listings").stars();
 			$(".user_votes").stars();
 			// Create stars for: Rate this
 			$("#rat").stars({
@@ -145,7 +147,7 @@ class DR_Ratings {
 				cancelShow: false,
 				captionEl: $("#caption"),
 				callback: function(ui, type, value) {
-					// Disable Stars while AJAX connection is active
+					// Disable Stars for exclude the next vote
 					ui.disable();
 					// Display message to the user at the begining of request
 					$("#messages").text("Saving...").stop().css("opacity", 1).fadeIn(30);
@@ -160,7 +162,7 @@ class DR_Ratings {
                         $("#messages").text("Rating saved (" + value + "). Thanks!").stop().css("opacity", 1).fadeIn(30);
                         // Hide confirmation message and enable stars for "Rate this" control, after 2 sec...
                         setTimeout(function(){
-                            $("#messages").fadeOut(1000, function(){ui.enable()})
+                            $("#messages").fadeOut(1000, function(){})
                         }, 2000);
 					}, "json" );
 				}
@@ -235,6 +237,30 @@ class DR_Ratings {
         <div class="sr-rate-this"><strong>Average rating</strong>
         <span>(<span id="all_votes"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg"><?php echo $rating['avg'] ?></span>)</span>
             <form id="avg" style="float: left; padding: 3px 8px 0 0;">
+            <?php foreach ( $this->quality as $scale => $text ): ?>
+                <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
+            <?php endforeach; ?>
+            </form>
+        </div> <?php
+    }
+
+    /**
+     * Render avarage rating of listings on category page.
+     *
+     * @access public
+     * @return void
+     */
+    function render_avg_ratings_of_listings( $post_id = 0 ) {
+
+        if ( 0 == $post_id ) {
+            global $post;
+            $post_id = $post->ID;
+        }
+
+        $rating = $this->get_rating( $post_id ); ?>
+        <div class="sr-rate-this"><strong>Average rating</strong>
+        <span>(<span id="all_votes"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg"><?php echo $rating['avg'] ?></span>)</span>
+            <form class="avg_of_listings" style="float: left; padding: 3px 8px 0 0;">
             <?php foreach ( $this->quality as $scale => $text ): ?>
                 <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
             <?php endforeach; ?>
