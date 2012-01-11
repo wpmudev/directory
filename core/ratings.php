@@ -54,8 +54,11 @@ class DR_Ratings {
     function get_rating( $post_id, $user_id = null ) {
         if ( isset( $user_id ) ) {
             $rating = get_user_meta( $user_id, '_sr_post_vote', true );
-            if ( isset( $rating[$post_id] ) )
+            if ( isset( $rating[$post_id] ) ) {
                 return $rating[$post_id];
+            } else {
+                return 'no_rate';
+            }
         } else {
             $votes = get_post_meta( $post_id, '_sr_post_votes', true ) ? get_post_meta( $post_id, '_sr_post_votes', true ) : '0';
             $rating = get_post_meta( $post_id, '_sr_post_rating', true ) ? get_post_meta( $post_id, '_sr_post_rating', true ) : '0';
@@ -74,10 +77,10 @@ class DR_Ratings {
      */
     function save_rating( $post_id, $rating ) {
         if ( is_user_logged_in() ) {
-            $user = wp_get_current_user();
-            update_user_meta( $user->ID, '_sr_post_vote', array( $post_id => $rating ) );
+            $user_id = get_current_user_id();
+            update_user_meta( $user_id, '_sr_post_vote', array( $post_id => $rating ) );
         }
-        $votes = get_post_meta( $post_id, '_sr_post_votes', true );
+        $votes          = get_post_meta( $post_id, '_sr_post_votes', true );
         $current_rating = get_post_meta( $post_id, '_sr_post_rating', true );
         $votes++;
         $rating = $current_rating + $rating;
@@ -180,23 +183,44 @@ class DR_Ratings {
      */
     function render_rate_this() {
         global $post;
-        $rating = $this->get_rating( $post->ID ); ?>
-        <?php /*
-        <?php if (isset($post_message)): ?>
-            <div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
-        <?php endif; ?>
-        */ ?>
-        <div class="clear-left"></div>
-        <div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
-            <form id="rat" action="" method="post">
-                <select name="rate">
-                <?php foreach ( $this->quality as $scale => $text ): ?>
-                    <option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
+
+        $user_id    = get_current_user_id();
+        $rating     = $this->get_rating( $post->ID, $user_id );
+
+        if ( 'no_rate' != $rating ) {
+            ?>
+            <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
+            <span>(<?php echo $this->quality[$rating] ?>)</span>
+                <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
+                <?php foreach ( $this->quality as $scale => $text ):
+
+                ?>
+                    <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
                 <?php endforeach; ?>
-                </select>
-                <input type="submit" value="Rate it!" />
-            </form>
-        </div> <?php
+                </form>
+            </div>
+
+            <?php
+
+        } else {
+            $rating = $this->get_rating( $post->ID ); ?>
+            <?php /*
+            <?php if (isset($post_message)): ?>
+                <div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
+            <?php endif; ?>
+            */ ?>
+            <div class="clear-left"></div>
+            <div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
+                <form id="rat" action="" method="post">
+                    <select name="rate">
+                    <?php foreach ( $this->quality as $scale => $text ): ?>
+                        <option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <input type="submit" value="Rate it!" />
+                </form>
+            </div> <?php
+        }
     }
 
     /**
@@ -226,14 +250,17 @@ class DR_Ratings {
      */
     function render_user_rating() {
         global $post;
-        // var_dump( $GLOBALS['comment'] );
-        $comment = $GLOBALS['comment'];
-        $user = wp_get_current_user();
-        $rating = $this->get_rating( $post->ID, $comment->user_id ); ?>
+
+        $user_id = get_current_user_id();
+        $rating = $this->get_rating( $post->ID, $user_id );
+
+        ?>
         <div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
-        <span>(<?php echo $rating ?>)</span>
+        <span>(<?php echo $this->quality[$rating] ?>)</span>
             <form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
-            <?php foreach ( $this->quality as $scale => $text ): ?>
+            <?php foreach ( $this->quality as $scale => $text ):
+
+            ?>
                 <input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
             <?php endforeach; ?>
             </form>
