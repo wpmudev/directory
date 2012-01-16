@@ -4,7 +4,7 @@
  * Directory_Theme_Core
  *
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
+ * @author Ivan Shaovchev (Incsub)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Theme_Core {
@@ -17,7 +17,6 @@ class DR_Theme_Core {
         add_action( 'widgets_init', array( &$this, 'register_sidebars' ) );
 		add_filter( 'excerpt_length', array( &$this, 'new_excerpt_length' ) );
 		add_filter( 'excerpt_more', array( &$this, 'new_excerpt_more' ) );
-        add_action( 'init', array( &$this, 'handle_action_buttons_requests' ) );
 	}
 
     /**
@@ -106,35 +105,6 @@ class DR_Theme_Core {
 		return 35;
 	}
 
-    /**
-     * handle_action_buttons_requests
-     *
-     * @access public
-     * @return void
-     */
-    function handle_action_buttons_requests(  ) {
-        /* If your want to go to admin profile */
-        if ( isset( $_POST['redirect_profile'] ) ) {
-            wp_redirect( admin_url() . 'profile.php' );
-            exit();
-        }
-        elseif ( isset( $_POST['redirect_listing'] ) ) {
-            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
-            exit();
-        }
-        elseif ( isset( $_POST['directory_logout'] ) ) {
-            $options = get_option( DR_OPTIONS_NAME );
-
-            wp_logout();
-
-            if ( '' != $options['general_settings']['logout_url'] )
-                wp_redirect( $options['general_settings']['logout_url'] );
-            else
-                wp_redirect( get_option( 'siteurl' ) );
-
-            exit();
-        }
-    }
 }
 
 new DR_Theme_Core();

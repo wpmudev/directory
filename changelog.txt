@@ -5,6 +5,9 @@ Plugin Page: http://premium.wpmudev.org/project/directory
  
 == Changelog ==
 
+= 2.0.0 Beta 8 =
+* Added feature use the plugin with any theme;
+
 = 2.0.0 Beta 7 =
 * (ratings) Fixed problem with multiple votings;
 * (ratings) Not logged users can't vote;

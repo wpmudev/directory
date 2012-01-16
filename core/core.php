@@ -37,8 +37,16 @@ class DR_Core {
 		if ( is_admin() )
 			return;
 
+
+        /* Enqueue styles */
+        add_action( 'wp_print_styles', array( &$this, 'enqueue_styles' ) );
+
 		// add_action( 'template_redirect', array( &$this, 'load_default_style' ), 11 );
 		add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+
+
+
+        add_filter( 'home_template', array( &$this, 'get_home_template' ) );
 
 		add_filter( 'single_template', array( &$this, 'handle_template' ) );
 		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
@@ -53,6 +61,32 @@ class DR_Core {
      */
     function init() {
 		global $wp, $wp_rewrite;
+
+        /*
+        handle_action_buttons_requests
+        If your want to go to admin profile
+        */
+        if ( isset( $_POST['redirect_profile'] ) ) {
+            wp_redirect( admin_url() . 'profile.php' );
+            exit();
+        }
+        elseif ( isset( $_POST['redirect_listing'] ) ) {
+            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
+            exit();
+        }
+        elseif ( isset( $_POST['directory_logout'] ) ) {
+            $options = get_option( DR_OPTIONS_NAME );
+
+            wp_logout();
+
+            if ( '' != $options['general_settings']['logout_url'] )
+                wp_redirect( $options['general_settings']['logout_url'] );
+            else
+                wp_redirect( get_option( 'siteurl' ) );
+
+            exit();
+        }
+
 
         // Signin page
         $wp->add_query_var( 'dr_signin' );
@@ -404,7 +438,7 @@ class DR_Core {
 
 		if ( empty( $path ) || "$type.php" == $file ) {
 			// A more specific template was not found, so load the default one
-			$path = $this->plugin_dir . "templates/$type-listing.php";
+			$path = $this->plugin_dir . "ui-front/general/$type-listing.php";
 		}
 
 		return $path;
@@ -417,12 +451,43 @@ class DR_Core {
 		$path = locate_template( $name );
 
 		if ( !$path ) {
-			$path = $this->plugin_dir . "templates/$name";
+			$path = $this->plugin_dir . "ui-front/general/$name";
 		}
 
 		load_template( $path );
 		die;
 	}
+
+    /**
+     * Filter the template path to single{}.php templates.
+     * Load from theme directory primary if it doesn't exist load from plugin dir.
+     *
+     * Learn more: http://codex.wordpress.org/Template_Hierarchy
+     * Learn more: http://codex.wordpress.org/Plugin_API/Filter_Reference#Template_Filters
+     *
+     * @global <type> $post Post object
+     * @param string Templatepath to filter
+     * @return string Templatepath
+     **/
+    function get_home_template( $template ) {
+        if ( ! file_exists( get_template_directory() . '/home_listings.php' )
+            && file_exists( $this->plugin_dir . '/ui-front/general/home_listings.php' ) )
+            return $this->plugin_dir . '/ui-front/general/home_listings.php';
+        else
+            return $template;
+    }
+
+    /**
+     * Enqueue styles.
+     *
+     * @return void
+     **/
+    function enqueue_styles() {
+        if ( file_exists( get_template_directory() . '/style-directory.css' ) )
+            wp_enqueue_style( 'style-directory', get_template_directory() . '/style-directory.css' );
+        elseif ( file_exists( $this->plugin_dir . 'ui-front/general/style-directory.css' ) )
+            wp_enqueue_style( 'style-directory', $this->plugin_url . 'ui-front/general/style-directory.css' );
+    }
 
     /**
 	 * Output banner.

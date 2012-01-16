@@ -6,6 +6,12 @@
 
 <?php get_header() ?>
 
+<?php
+if ( !class_exists( 'DR_Theme_Options' ) ) {
+    require_once( DR_PLUGIN_DIR . 'ui-front/general/components/actionbuttons.php' );
+}
+?>
+
 <div id="content"><!-- start #content -->
     <div class="padder">
 		<div class="breadcrumbtrail">
@@ -41,7 +47,7 @@
 
 						<?php if ( $categories_list ) : ?>
 							<span class="cat-links">
-								<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
+								<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
 							</span>
                             <br />
                             <?php unset( $categories_list ) ?>
@@ -58,7 +64,7 @@
 
 						<?php if ( $tags_list ): ?>
 							<span class="tag-links">
-								<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', THEME_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+								<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
 							</span>
                             <br />
                             <?php unset( $tags_list ) ?>
@@ -66,15 +72,15 @@
 
                         <?php do_action('sr_avg_ratings_of_listings', $post->ID ); ?>
 
-						<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', THEME_TEXT_DOMAIN ), __( '1 Review', THEME_TEXT_DOMAIN ), __( '% Reviews', THEME_TEXT_DOMAIN ), __( 'Reviews Off', THEME_TEXT_DOMAIN ) ); ?></span>;
-						<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+						<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
+						<?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 
 					</div><!-- .entry-utility -->
 				</div><!-- .entry-meta -->
 
 				<div class="entry-post">
 					<h2 class="entry-title">
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', THEME_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 					</h2>
 
 					<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
@@ -84,8 +90,8 @@
 						</div><!-- .entry-summary -->
 					<?php else : ?>
 						<div class="entry-content">
-							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', THEME_TEXT_DOMAIN ) ); ?>
-							<?php //wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', THEME_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
+							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ) ); ?>
+							<?php //wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
 						</div><!-- .entry-content -->
 					<?php endif; ?>
 
@@ -105,7 +111,7 @@
 
 		<?php else : ?>
 
-			<h3><?php _e("Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", THEME_TEXT_DOMAIN); ?></h3>
+			<h3><?php _e("Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", DR_TEXT_DOMAIN); ?></h3>
 
 		<?php endif; ?>
 

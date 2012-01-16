@@ -7,7 +7,7 @@
  * @package Payments
  * @version 1.0.0
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) {@link http://ivan.sh}
+ * @author Ivan Shaovchev (Incsub) 
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 
@@ -15,7 +15,7 @@ $step        = get_query_var('checkout_step') ? get_query_var('checkout_step') :
 $options     = get_option( DR_OPTIONS_NAME );
 $opset		 = $options['payment_settings'];
 $oppay		 = $options['paypal'];
-$text_domain = THEME_TEXT_DOMAIN;
+$text_domain = DR_TEXT_DOMAIN;
 $plugin_url  = DR_PLUGIN_URL;
 $error       = get_query_var('checkout_error');
 
@@ -26,7 +26,7 @@ get_header(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h1 class="entry-title">
-				<?php _e('Signup', THEME_TEXT_DOMAIN ); ?>
+				<?php _e('Signup', DR_TEXT_DOMAIN ); ?>
                 <?php if ( $step == 'free' ) echo ' ( step 1 of 1 ) '; ?>
 				<?php if ( $step == 'terms' ) echo ' ( step 1 of 3 ) '; ?>
                 <?php if ( $step == 'payment_method' ) echo ' ( step 2 of 3 ) '; ?>
