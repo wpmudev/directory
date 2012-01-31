@@ -44,13 +44,28 @@ function is_dr_page( $type = '' ) {
  * the term passed as an argument
  */
 function get_dr_term_parents( $term ) {
-	static $terms = array();
+    static $terms = array();
 
-	array_unshift( $terms, $term );
+    array_unshift( $terms, $term );
 
-	if ( !empty( $term->parent ) )
-		get_term_parents( get_term( $term->parent, $term->taxonomy ) );
+    if ( !empty( $term->parent ) )
+        get_term_parents( get_term( $term->parent, $term->taxonomy ) );
 
-	return $terms;
+    return $terms;
+}
+
+
+/**
+ * Get array of term objects parents of the term passed
+ *
+ * @param mixed $term
+ * @access public
+ * @return array Array of term objects ordered in a hierarchical way including
+ * the term passed as an argument
+ */
+function get_dr_title( $id = 0 ) {
+    $post   = &get_post( $id );
+    $title  = isset( $post->post_title ) ? $post->post_title : '';
+	return $title;
 }
 

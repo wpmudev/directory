@@ -18,6 +18,11 @@ class DR_Core {
     /** @var string Name of options DB entry */
     var $options_name = DR_OPTIONS_NAME;
 
+    var $is_directory_page = false;
+    var $home_listing_template;
+    var $listing_template;
+    var $listing_list_template;
+
     /**
      * Constructor.
      */
@@ -39,17 +44,19 @@ class DR_Core {
 
 
         /* Enqueue styles */
-        add_action( 'wp_print_styles', array( &$this, 'enqueue_styles' ) );
+//        add_action( 'wp_print_styles', array( &$this, 'enqueue_styles' ) );
 
 		// add_action( 'template_redirect', array( &$this, 'load_default_style' ), 11 );
-		add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+        add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+
+        add_action( 'wp', array( &$this, 'load_directory_templates' ) );
 
 
+//        add_filter( 'home_template', array( &$this, 'get_home_template' ) );
 
-        add_filter( 'home_template', array( &$this, 'get_home_template' ) );
-
-		add_filter( 'single_template', array( &$this, 'handle_template' ) );
-		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
+//		add_filter( 'single_template', array( &$this, 'handle_single_template' ) );
+//        add_filter( 'archive_template', array( &$this, 'handle_archive_template' ) );
+//		add_filter( 'archive_template', array( &$this, 'handle_template' ) );
 
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
     }
@@ -423,26 +430,6 @@ class DR_Core {
 		}
 	}
 
-	/**
-	 * Loads default templates if the current theme doesn't have them.
-	 */
-	function handle_template( $path ) {
-		global $wp_query;
-
-		if ( 'directory_listing' != get_query_var( 'post_type' ) )
-			return $path;
-
-		$type = reset( explode( '_', current_filter() ) );
-
-		$file = basename( $path );
-
-		if ( empty( $path ) || "$type.php" == $file ) {
-			// A more specific template was not found, so load the default one
-			$path = $this->plugin_dir . "ui-front/general/$type-listing.php";
-		}
-
-		return $path;
-	}
 
 	/**
 	 * Load a template, with fallback to default-templates.
@@ -458,24 +445,6 @@ class DR_Core {
 		die;
 	}
 
-    /**
-     * Filter the template path to single{}.php templates.
-     * Load from theme directory primary if it doesn't exist load from plugin dir.
-     *
-     * Learn more: http://codex.wordpress.org/Template_Hierarchy
-     * Learn more: http://codex.wordpress.org/Plugin_API/Filter_Reference#Template_Filters
-     *
-     * @global <type> $post Post object
-     * @param string Templatepath to filter
-     * @return string Templatepath
-     **/
-    function get_home_template( $template ) {
-        if ( ! file_exists( get_template_directory() . '/home_listings.php' )
-            && file_exists( $this->plugin_dir . '/ui-front/general/home_listings.php' ) )
-            return $this->plugin_dir . '/ui-front/general/home_listings.php';
-        else
-            return $template;
-    }
 
     /**
      * Enqueue styles.
@@ -539,6 +508,310 @@ class DR_Core {
         else
             return $options;
     }
+
+
+
+
+    //scans post type at template_redirect to apply custom themeing to listings
+    function load_directory_templates() {
+        global $wp_query;
+
+        //load proper theme for single listing page display
+        if ( $wp_query->is_home ) {
+
+            $templates = array( 'home-listing.php' );
+
+            //if custom template exists load it
+            if ( $this->home_listing_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_home_listing_template' ) );
+            }
+
+        }
+
+        //load proper theme for single listing page display
+        if ( $wp_query->is_single &&  'directory_listing' == $wp_query->query_vars['post_type'] ) {
+
+            //check for custom theme templates
+            $listing_name = get_query_var( 'directory_listing' );
+            $listing_id   = (int) $wp_query->get_queried_object_id();
+
+            $templates = array();
+            if ( $listing_name )
+                $templates[] = "single-listing-$listing_name.php";
+            if ( $listing_id )
+                $templates[] = "single-listing-$listing_id.php";
+            $templates[] = 'single-listing.php';
+
+            //if custom template exists load it
+            if ( $this->listing_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_listing_template' ) );
+            } else {
+                //otherwise load the page template and use our own theme
+                $wp_query->is_single    = null;
+                $wp_query->is_page      = 1;
+                add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
+                add_filter( 'the_content', array( &$this, 'listing_content' ), 99 );
+            }
+
+            $this->is_directory_page = true;
+        }
+
+
+        //load proper theme for listings
+        if ( 'listing_category' == $wp_query->query_vars['taxonomy'] || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
+
+            //check for custom theme template
+            $templates = array( 'archive-listing.php' );
+
+            //if custom template exists load it
+            if ( $this->listing_list_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_listing_list_template' ) );
+            } else {
+
+                add_filter( 'the_content', array(&$this, 'listing_list_content'), 99 );
+//                add_filter( 'the_excerpt', array(&$this, 'listing_list_content'), 99 );
+            }
+
+            $this->is_directory_page = true;
+        }
+
+
+        //load shop specific items
+        if ( $this->is_directory_page ) {
+            //fixes a nasty bug in BP theme's functions.php file which always loads the activity stream if not a normal page
+            remove_all_filters( 'page_template' );
+
+            //prevents 404 for virtual pages
+            status_header( 200 );
+        }
+    }
+
+
+    function listing_content( $content ) {
+        global $post, $current_user;
+
+        ob_start();
+        ?>
+
+        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+            <div class="entry-meta">
+                <?php the_dr_posted_on(); ?>
+                <?php do_action('sr_avg_rating'); ?><br />
+                <span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', DR_TEXT_DOMAIN ), __( '1 Review &#187;', DR_TEXT_DOMAIN ), __( '% Reviews &#187;', DR_TEXT_DOMAIN ) ); ?></span>
+                <br />
+                <?php the_dr_posted_in(); ?>
+                <?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+                <span class="tags"><?php the_tags( __( 'Tags: ', DR_TEXT_DOMAIN ), ', ', ''); ?></span>
+
+                <?php if ( !is_user_logged_in() ) : ?>
+                    <?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>
+                <?php else: ?>
+                    <?php do_action('sr_rate_this'); ?>
+                <?php endif; ?>
+            </div>
+
+
+            <div class="entry-post">
+                <h1 class="entry-title"><?php echo get_dr_title( $post->ID ); ?></h1>
+                <div class="entry-content">
+                    <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+                    <?php
+                    $content = get_the_content( null, 0 );
+                    $content = str_replace( ']]>', ']]&gt;', $content );
+                    echo $content;
+                    ?>
+
+                    <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
+                </div><!-- .entry-content -->
+                <div class="clear"></div>
+            </div>
+
+            <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
+                <div id="entry-author-info">
+                    <div id="author-avatar">
+                        <?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ); ?>
+                    </div><!-- #author-avatar -->
+                    <div id="author-description">
+                        <h2><?php printf( esc_attr__( 'About %s', DR_TEXT_DOMAIN ), get_the_author() ); ?></h2>
+                        <?php the_author_meta( 'description' ); ?>
+                        <div id="author-link">
+                            <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+                                <?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), get_the_author() ); ?>
+                            </a>
+                        </div><!-- #author-link    -->
+                    </div><!-- #author-description -->
+                </div><!-- #entry-author-info -->
+            <?php endif; ?>
+
+
+        </div>
+
+
+
+        <?
+        $new_content = ob_get_contents();
+    ob_end_clean();
+
+        return $new_content;
+    }
+
+
+
+    function listing_list_content( $content ) {
+        global $post, $current_user;
+
+        ob_start();
+        ?>
+
+           <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+
+                <div class="entry-post">
+                        <div class="entry-content">
+                            <?php the_post_thumbnail( array( 50, 50 ), array( 'class' => 'alignleft' )); ?>
+                            <?php
+                                $content = get_the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), 20 );
+                                $content = str_replace( ']]>', ']]&gt;', $content );
+                                echo $content;
+                            ?>
+
+                            <?php //wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
+                        </div><!-- .entry-content -->
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="entry-meta">
+                    <?php the_dr_posted_on(); ?>
+
+                    <div class="entry-utility">
+                        <?php
+                        // Retrieves categories list of current post, separated by commas.
+                        $categories = wp_get_post_terms( $post->ID, "listing_category", "" );
+
+                        foreach ( $categories as $category )
+                            $categories_list[] = '<a href="' . get_term_link( $category ) . '" title="' . $category->name . '" >' . $category->name . '</a>';
+
+                        $categories_list = implode( ", ", ( array ) $categories_list );
+
+                        ?>
+
+                        <?php if ( $categories_list ) : ?>
+                            <span class="cat-links">
+                                <?php printf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
+                            </span>
+                            <br />
+                            <?php unset( $categories_list ) ?>
+                        <?php endif; ?>
+
+                        <?php
+                        // Retrieves tag list of current post, separated by commas.
+                        $tags = wp_get_post_terms( $post->ID, "listing_tag", "" );
+                        foreach ( $tags as $tag )
+                            $tags_list[] = '<a href="' . get_term_link( $tag ) . '" title="' . $tag->name . '" >' . $tag->name . '</a>';
+
+                        $tags_list = implode( ", ", ( array ) $tags_list );
+                        ?>
+
+                        <?php if ( $tags_list ): ?>
+                            <span class="tag-links">
+                                <?php printf( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+                            </span>
+                            <br />
+                            <?php unset( $tags_list ) ?>
+                        <?php endif; ?>
+
+                        <?php do_action('sr_avg_ratings_of_listings', $post->ID ); ?>
+
+                        <span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
+                        <?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+
+                    </div><!-- .entry-utility -->
+                </div><!-- .entry-meta -->
+
+
+            </div><!-- #post-## -->
+
+        <?
+        $new_content = ob_get_contents();
+//    ob_end_flush();
+    ob_end_clean();
+        return $new_content;
+    }
+
+
+
+
+    //filter the custom home listing template
+    function custom_home_listing_template( $template ) {
+        return $this->home_listing_template;
+    }
+
+    //filter the custom single listing template
+    function custom_listing_template( $template ) {
+        return $this->listing_template;
+    }
+
+    //filter the custom listing list template
+    function custom_listing_list_template( $template ) {
+        return $this->listing_list_template;
+    }
+
+
+    //filters the titles for our custom pages
+    function page_title_output($title, $id = false) {
+        global $wp_query;
+
+//        return '';
+
+//        var_dump( $title );
+//        var_dump( $wp_query );
+//        var_dump( $wp_query->post_title );
+//        var_dump( $id );
+//        exit;
+        //filter out nav titles
+        if (!empty($title) && $id === false)
+        return $title;
+
+        //taxonomy pages
+        if (($wp_query->query_vars['taxonomy'] == 'product_category' || $wp_query->query_vars['taxonomy'] == 'product_tag') && $wp_query->post->ID == $id) {
+            if ($wp_query->query_vars['taxonomy'] == 'product_category') {
+            $term = get_term_by('slug', get_query_var('product_category'), 'product_category');
+            return sprintf( __('Product Category: %s', 'mp'), $term->name );
+            } else if ($wp_query->query_vars['taxonomy'] == 'product_tag') {
+            $term = get_term_by('slug', get_query_var('product_tag'), 'product_tag');
+            return sprintf( __('Product Tag: %s', 'mp'), $term->name );
+            }
+        }
+
+        switch ($wp_query->query_vars['pagename']) {
+            case 'cart':
+            if ($wp_query->query_vars['checkoutstep'] == 'shipping')
+            return $this->download_only_cart($this->get_cart_contents()) ? __('Checkout Information', 'mp') : __('Shipping Information', 'mp');
+            else if ($wp_query->query_vars['checkoutstep'] == 'checkout')
+            return __('Payment Information', 'mp');
+            else if ($wp_query->query_vars['checkoutstep'] == 'confirm-checkout')
+            return __('Confirm Your Purchase', 'mp');
+            else if ($wp_query->query_vars['checkoutstep'] == 'confirmation')
+            return __('Order Confirmation', 'mp');
+            else
+            return __('Your Shopping Cart', 'mp');
+            break;
+
+            case 'orderstatus':
+            return __('Track Your Order', 'mp');
+            break;
+
+            case 'product_list':
+            return __('Products', 'mp');
+            break;
+
+            default:
+            return $title;
+        }
+    }
+
 }
 
 /* Initiate Class */
