@@ -33,5 +33,5 @@
 
 			<?php locate_template( array( '/components/searchcontainer.php' ), true ); ?>
 		    <?php locate_template( array( '/components/actionbuttons.php' ), true ); ?>
-					
+
 			<div id="container"><!-- start #container -->

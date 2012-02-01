@@ -2,7 +2,7 @@
 
 <div id="content"><!-- start #content -->
     <div class="padder">
-		<?php the_dr_categories_home(); ?>
+    <?php echo do_shortcode( '[dr_list_categories]' ); ?>
     </div>
 </div><!-- end #content -->
 

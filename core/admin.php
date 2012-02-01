@@ -165,6 +165,8 @@ class DR_Admin extends DR_Core {
 
 				$this->render_admin( 'payments-settings' );
 			}
+        } elseif ( isset( $_GET['tab'] ) && $_GET['tab'] == 'shortcodes' ) {
+            $this->render_admin( 'settings-shortcodes' );
 		}
 
         do_action('dr_handle_settings_page_requests');

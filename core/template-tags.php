@@ -14,8 +14,7 @@
  * @access public
  * @return void
  */
-function the_dr_categories_home() {
-
+function the_dr_categories_home( $echo = true ) {
     //get plugin options
     $options  = get_option( DR_OPTIONS_NAME );
 
@@ -85,11 +84,10 @@ function the_dr_categories_home() {
 
 	$output .= '</ul>';
 
-	echo $output;
-
-
-
-
+    if ( $echo )
+        echo $output;
+    else
+        return $output;
 }
 
 /**

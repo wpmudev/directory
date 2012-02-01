@@ -6,12 +6,6 @@
 
 <?php get_header() ?>
 
-<?php
-if ( !class_exists( 'DR_Theme_Options' ) ) {
-    require_once( DR_PLUGIN_DIR . 'ui-front/general/components/actionbuttons.php' );
-}
-?>
-
 <div id="content"><!-- start #content -->
     <div class="padder">
 		<div class="breadcrumbtrail">

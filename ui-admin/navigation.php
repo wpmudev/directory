@@ -5,7 +5,8 @@
 <h2>
 <?php if ( $page == 'settings' ): ?>
 	<a class="nav-tab <?php if ( $tab == 'general' || empty( $tab ) ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'general' ); ?>"><?php _e( 'General', $this->text_domain ); ?></a>
-	<a class="nav-tab <?php if ( $tab == 'payments' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'payments' ); ?>"><?php _e( 'Payments', $this->text_domain ); ?></a>
+    <a class="nav-tab <?php if ( $tab == 'payments' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'payments' ); ?>"><?php _e( 'Payments', $this->text_domain ); ?></a>
+	<a class="nav-tab <?php if ( $tab == 'shortcodes' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'shortcodes' ); ?>"><?php _e( 'Shortcodes', $this->text_domain ); ?></a>
 <?php endif; ?>
 
 <?php do_action('dr_render_admin_navigation_tabs', $href_part, $page, $tab ); ?>
