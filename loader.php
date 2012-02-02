@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 2.0.0 Beta 8.2
+Version: 2.0.0 Beta 8.3
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 164
@@ -11,7 +11,7 @@ License: GNU General Public License (Version 2 - GPLv2)
 */
 
 /*
-Copyright 2011 Incsub, (http://incsub.com)
+Copyright 2012 Incsub, (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
