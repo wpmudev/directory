@@ -19,9 +19,7 @@ class DR_Core {
     var $options_name = DR_OPTIONS_NAME;
 
     var $is_directory_page = false;
-    var $home_listing_template;
-    var $listing_template;
-    var $dr_taxonomy_template;
+    var $directory_template;
     var $dr_first_thumbnail;
 
 
@@ -33,6 +31,9 @@ class DR_Core {
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
 
         register_theme_directory( $this->plugin_dir . 'themes' );
+
+        /* Create neccessary pages */
+        add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
 
 		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( &$this, 'init' ) );
@@ -59,7 +60,7 @@ class DR_Core {
      * @return void
      */
     function init() {
-		global $wp, $wp_rewrite;
+		global $wp_rewrite;
 
         /*
         handle_action_buttons_requests
@@ -85,20 +86,6 @@ class DR_Core {
 
             exit();
         }
-
-
-        // Signin page
-        $wp->add_query_var( 'dr_signin' );
-        $this->add_rewrite_rule( 'signin/?$', array(
-            'dr_signin' => 1
-        ) );
-
-		// Signup page
-		$wp->add_query_var( 'dr_signup' );
-		$this->add_rewrite_rule( 'signup/?$', array(
-			'dr_signup' => 1
-		) );
-
 
         register_post_type( 'directory_listing', array(
             'public' => ( get_option( 'dp_options' ) ) ? false : true,
@@ -176,22 +163,75 @@ class DR_Core {
 
     }
 
-	/**
-	 * Simple wrapper for adding straight rewrite rules,
-	 * but with the matched rule as an associative array.
-	 *
-	 * @see http://core.trac.wordpress.org/ticket/16840
-	 *
-	 * @param string $regex The rewrite regex
-	 * @param array $args The mapped args
-	 * @param string $position Where to stick this rule in the rules array. Can be 'top' or 'bottom'
-	 */
-	function add_rewrite_rule( $regex, $args, $position = 'top' ) {
-		global $wp, $wp_rewrite;
 
-		$result = add_query_arg( $args, 'index.php' );
-		add_rewrite_rule( $regex, $result, $position );
-	}
+
+    /**
+     * Create the default Directory pages.
+     *
+     * @return void
+     **/
+    function create_default_pages() {
+        /* Create neccasary pages */
+
+        $directory_page = $this->get_page_by_meta( 'signup' );
+
+        if ( !$directory_page || 0 >= $directory_page->ID ) {
+            $current_user = wp_get_current_user();
+            /* Construct args for the new post */
+            $args = array(
+                'post_title'     => 'Signup',
+                'post_status'    => 'publish',
+                'post_author'    => $current_user->ID,
+                'post_type'      => 'page',
+                'ping_status'    => 'closed',
+                'comment_status' => 'closed'
+            );
+            $parent_id = wp_insert_post( $args );
+            add_post_meta( $parent_id, "directory_page", "signup" );
+        }
+
+        $directory_page = $this->get_page_by_meta( 'signin' );
+
+        if ( !$directory_page || 0 >= $directory_page->ID ) {
+            $current_user = wp_get_current_user();
+            /* Construct args for the new post */
+            $args = array(
+                'post_title'     => 'Signin',
+                'post_status'    => 'publish',
+                'post_author'    => $current_user->ID,
+                'post_type'      => 'page',
+                'ping_status'    => 'closed',
+                'comment_status' => 'closed'
+            );
+            $parent_id = wp_insert_post( $args );
+            add_post_meta( $parent_id, "directory_page", "signin" );
+        }
+
+    }
+
+    /**
+     * Get page by meta value
+     *
+     * @return int $page[0] /bool false
+     */
+    function get_page_by_meta( $value ) {
+        $post_statuses = array( 'publish', 'trash', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit' );
+        foreach ( $post_statuses as $post_status ) {
+            $args = array(
+                    'hierarchical'  => 0,
+                    'meta_key'      => 'directory_page',
+                    'meta_value'    => $value,
+                    'post_type'     => 'page',
+                    'post_status'   => $post_status
+                );
+
+            $page = get_pages( $args );
+
+            if ( isset( $page[0] ) && 0 < $page[0]->ID )
+                return $page[0];
+        }
+        return false;
+    }
 
     /**
      * Import data from old version to new.
@@ -381,10 +421,6 @@ class DR_Core {
 	function template_redirect() {
 		global $wp_query;
 
-        if ( is_dr_page( 'signup' ) ) {
-            $this->load_template( 'page-signup.php' );
-        }
-
 		if ( is_dr_page( 'signin' ) ) {
             if ( !is_user_logged_in() ) {
                 if ( $_POST['signin_submit'] ) {
@@ -408,33 +444,13 @@ class DR_Core {
                         exit;
                     }
                 }
-            } else {
-                wp_redirect(  get_option( 'siteurl' ) );
-                exit;
             }
-
-			$this->load_template( 'page-signin.php' );
 		}
 
 		// Redirect template loading to archive-listing.php rather than to archive.php
 		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
 			$wp_query->set( 'post_type', 'directory_listing' );
 		}
-	}
-
-
-	/**
-	 * Load a template, with fallback to default-templates.
-	 */
-	function load_template( $name ) {
-		$path = locate_template( $name );
-
-		if ( !$path ) {
-			$path = $this->plugin_dir . "ui-front/general/$name";
-		}
-
-		load_template( $path );
-		die;
 	}
 
     /**
@@ -489,26 +505,23 @@ class DR_Core {
     }
 
 
-
-
     //scans post type at template_redirect to apply custom themeing to listings
     function load_directory_templates() {
         global $wp_query;
 
-        //load proper theme for single listing page display
+        //load proper theme for home listing page
         if ( $wp_query->is_home ) {
 
             $templates = array( 'home-listing.php' );
 
             //if custom template exists load it
-            if ( $this->home_listing_template = locate_template( $templates ) ) {
-                add_filter( 'template_include', array( &$this, 'custom_home_listing_template' ) );
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
             }
-
         }
 
         //load proper theme for single listing page display
-        if ( $wp_query->is_single &&  'directory_listing' == $wp_query->query_vars['post_type'] ) {
+        elseif ( $wp_query->is_single &&  'directory_listing' == $wp_query->query_vars['post_type'] ) {
 
             //check for custom theme templates
             $listing_name = get_query_var( 'directory_listing' );
@@ -522,8 +535,8 @@ class DR_Core {
             $templates[] = 'single-listing.php';
 
             //if custom template exists load it
-            if ( $this->listing_template = locate_template( $templates ) ) {
-                add_filter( 'template_include', array( &$this, 'custom_listing_template' ) );
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
             } else {
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
@@ -535,9 +548,8 @@ class DR_Core {
             $this->is_directory_page = true;
         }
 
-
-        //load proper theme for product category or tag listings
-        if ( 'listing_category' == $wp_query->query_vars['taxonomy'] || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
+        //load proper theme for listing category or tag
+        elseif ( 'listing_category' == $wp_query->query_vars['taxonomy'] || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
             $templates = array();
 
             if ( 'listing_category' == $wp_query->query_vars['taxonomy'] ) {
@@ -578,8 +590,8 @@ class DR_Core {
             }
 
             //if custom template exists load it
-            if ( $this->dr_taxonomy_template = locate_template( $templates ) ) {
-                add_filter( 'template_include', array( &$this, 'custom_dr_taxonomy_template' ) );
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
             } else {
                 //otherwise load the page template and use our own list theme. We don't use theme's taxonomy as not enough control
                 $wp_query->is_page = 1;
@@ -596,6 +608,43 @@ class DR_Core {
             $this->is_directory_page = true;
         }
 
+        //load proper theme for signin listing page
+        elseif ( is_page( 'signin' ) ) {
+
+            $templates = array( 'page-signin.php' );
+
+            //if custom template exists load it
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+            } else {
+                //otherwise load the page template and use our own theme
+                $wp_query->is_single    = null;
+                $wp_query->is_page      = 1;
+                add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
+                add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
+            }
+
+        }
+
+        //load proper theme for signup listing page
+        elseif ( is_page( 'signup' ) ) {
+
+            $templates = array( 'page-signup.php' );
+
+            //if custom template exists load it
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+            } else {
+                //otherwise load the page template and use our own theme
+                $wp_query->is_single    = null;
+                $wp_query->is_page      = 1;
+                add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
+                add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
+            }
+
+        }
+
+
         //load  specific items
         if ( $this->is_directory_page ) {
             //prevents 404 for virtual pages
@@ -604,29 +653,21 @@ class DR_Core {
     }
 
 
-    //filter the custom home listing template
-    function custom_home_listing_template( $template ) {
-        return $this->home_listing_template;
-    }
-
     //filter the custom single listing template
-    function custom_listing_template( $template ) {
-        return $this->listing_template;
-    }
-
-    //filter the custom listing list template
-    function custom_dr_taxonomy_template( $template ) {
-        return $this->dr_taxonomy_template;
+    function custom_directory_template( $template ) {
+        return $this->directory_template;
     }
 
 
-
+    //content for single listing
     function listing_content( $content ) {
         global $post, $current_user;
+        //don't filter outside of the loop
+        if ( !in_the_loop() )
+            return $content;
 
         ob_start();
         ?>
-
 
             <div class="entry-post">
                 <h1 class="entry-title"><?php echo get_dr_title( $post->ID ); ?></h1>
@@ -677,15 +718,32 @@ class DR_Core {
             <?php endif; ?>
 
         <?
-        $new_content = ob_get_contents();
-    ob_end_clean();
+            $new_content = ob_get_contents();
+        ob_end_clean();
 
         return $new_content;
     }
 
 
+    //content for signup page
+    function signup_content( $content ) {
+        ob_start();
+            include( $this->plugin_dir . 'ui-front/general/page-signup.php' );
+            $new_content = ob_get_contents();
+        ob_end_clean();
+        return $new_content;
+    }
 
-    //this is the default theme added to listings
+    //content for singin page
+    function signin_content( $content ) {
+        ob_start();
+            include( $this->plugin_dir . 'ui-front/general/page-signin.php' );
+            $new_content = ob_get_contents();
+        ob_end_clean();
+        return $new_content;
+    }
+
+    //content for listings list
     function listing_list_theme( $content ) {
         //don't filter outside of the loop
         if ( !in_the_loop() )
@@ -716,7 +774,6 @@ class DR_Core {
         //allows pagination links to work get_posts_nav_link()
         if ( $wp_query->max_num_pages == 0 || $taxonomy_query )
             $wp_query->max_num_pages = $custom_query->max_num_pages;
-
 
 
         $content = '<div class="breadcrumbtrail">';
@@ -752,7 +809,6 @@ class DR_Core {
                 $tags_list = implode( ", ", ( array ) $tags_list );
 
 
-
                 //add last css class for styling grids
                 if ( $count == $last )
                     $class = 'dr_listing last-listing';
@@ -771,7 +827,6 @@ class DR_Core {
                 $content .= '       </div>';
                 $content .= '       <div class="clear"></div>';
                 $content .= '   </div>';
-
 
 
                 $content .= '   <div class="entry-meta">';
@@ -820,10 +875,9 @@ class DR_Core {
             return $content;
     }
 
-
     //replaces wp_trim_excerpt in our custom loops
     function listing_excerpt( $excerpt, $content, $post_id ) {
-        $excerpt_more = ' <a class="dr_listing_more_link" href="' . get_permalink( $post_id ) . '">' .  __( 'More Info &raquo;', 'mp' ) . '</a>';
+        $excerpt_more = ' <a class="dr_listing_more_link" href="' . get_permalink( $post_id ) . '">' .  __( 'More Info &raquo;', $this->text_domain ) . '</a>';
         if ( $excerpt ) {
             return $excerpt . $excerpt_more;
         } else {
@@ -846,7 +900,7 @@ class DR_Core {
 
     //delete first image for lising on catregory/tag page (fixed duplication)
     function delete_first_thumbnail( $html ) {
-        if ($this->dr_first_thumbnail ) {
+        if ( $this->dr_first_thumbnail ) {
             $this->dr_first_thumbnail = false;
             return '';
         } else {
@@ -857,11 +911,9 @@ class DR_Core {
     //filters the titles for our custom pages
     function delete_post_title( $title, $id = false ) {
         global $wp_query;
-
         if ( $title == $wp_query->post->post_title ) {
             return '';
         }
-
         return $title;
     }
 
@@ -877,17 +929,15 @@ class DR_Core {
         if (  ( 'listing_category' == $wp_query->query_vars['taxonomy']  || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) && $wp_query->post->ID == $id ) {
             if ( 'listing_category' == $wp_query->query_vars['taxonomy'] ) {
                 $term = get_term_by( 'slug', get_query_var( 'listing_category' ), 'listing_category' );
-                return sprintf( __( 'Listing Category: %s', 'mp' ), $term->name );
+                return sprintf( __( 'Listing Category: %s', $this->text_domain ), $term->name );
             } elseif ( 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
                 $term = get_term_by( 'slug', get_query_var( 'listing_tag' ), 'listing_tag' );
-                return sprintf( __( 'Listing Tag: %s', 'mp' ), $term->name );
+                return sprintf( __( 'Listing Tag: %s', $this->text_domain ), $term->name );
             }
         }
 
         return $title;
     }
-
-
 
 
 

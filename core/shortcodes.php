@@ -25,9 +25,6 @@ class DR_Shortcodes {
     }
 
 
-
-
-
     function dr_actionbuttons_sc( $atts ) {
         ob_start();
 
@@ -62,13 +59,6 @@ class DR_Shortcodes {
 
         return $abuttons;
     }
-
-
-
-
-
-
-
 
 
 }

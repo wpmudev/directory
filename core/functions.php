@@ -23,8 +23,8 @@ function is_dr_page( $type = '' ) {
 			'archive'  => is_post_type_archive( 'directory_listing' ),
 			'tag'      => is_tax( 'listing_tag' ),
 			'category' => is_tax( 'listing_category' ),
-            'signin'   => (bool) get_query_var( 'dr_signin' ),
-			'signup'   => (bool) get_query_var( 'dr_signup' )
+            'signin'   => is_page( 'signin'),
+            'signup'   => is_page( 'signup')
 		);
 	}
 
