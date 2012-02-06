@@ -620,6 +620,8 @@ class DR_Core {
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
+                add_filter( 'comments_close_text', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_open', array( &$this, 'comments_closed_text' ), 99 );
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
             }
@@ -638,6 +640,8 @@ class DR_Core {
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
+                add_filter( 'comments_close_text', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_open', array( &$this, 'comments_closed_text' ), 99 );
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
             }
@@ -915,6 +919,16 @@ class DR_Core {
             return '';
         }
         return $title;
+    }
+
+    //close comments
+    function close_comments( $open ) {
+        return false;
+    }
+
+    //filters the comments close text
+    function comments_closed_text( $text ) {
+        return '';
     }
 
     //filters the titles for our custom pages

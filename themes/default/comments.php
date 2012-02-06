@@ -58,13 +58,13 @@
              */
             if ( ! comments_open() ) :
         ?>
-            <p class="nocomments"><?php _e( 'Reviews are closed.', THEME_TEXT_DOMAIN ); ?></p>
+            <p class="nocomments"><?php echo apply_filters( 'comments_close_text', __( 'Reviews are closed.', THEME_TEXT_DOMAIN ) ); ?></p>
 
         <?php endif; // end ! comments_open() ?>
 
     <?php endif; // end have_comments() ?>
 
-<?php comment_form( array( 
+<?php comment_form( array(
 		'comment_field'        => '<p class="comment-form-comment"><label for="comment">' . _x( 'Review', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 		'must_log_in'          => '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>',
 		'id_form'              => 'commentform',
