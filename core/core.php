@@ -173,8 +173,23 @@ class DR_Core {
     function create_default_pages() {
         /* Create neccasary pages */
 
-        $directory_page = $this->get_page_by_meta( 'signup' );
+        $directory_page = $this->get_page_by_meta( 'listings' );
+        if ( !$directory_page || 0 >= $directory_page->ID ) {
+            $current_user = wp_get_current_user();
+            /* Construct args for the new post */
+            $args = array(
+                'post_title'     => 'Listings',
+                'post_status'    => 'publish',
+                'post_author'    => $current_user->ID,
+                'post_type'      => 'page',
+                'ping_status'    => 'closed',
+                'comment_status' => 'closed'
+            );
+            $parent_id = wp_insert_post( $args );
+            add_post_meta( $parent_id, "directory_page", "listings" );
+        }
 
+        $directory_page = $this->get_page_by_meta( 'signup' );
         if ( !$directory_page || 0 >= $directory_page->ID ) {
             $current_user = wp_get_current_user();
             /* Construct args for the new post */
@@ -191,7 +206,6 @@ class DR_Core {
         }
 
         $directory_page = $this->get_page_by_meta( 'signin' );
-
         if ( !$directory_page || 0 >= $directory_page->ID ) {
             $current_user = wp_get_current_user();
             /* Construct args for the new post */
@@ -520,6 +534,32 @@ class DR_Core {
             }
         }
 
+        //load proper theme for archive listings page
+         elseif ( is_dr_page( 'archive' ) ) {
+            //defaults
+            $templates = array( 'dr_listings.php' );
+
+            //if custom template exists load it
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+            } else {
+                //otherwise load the page template and use our own list theme. We don't use theme's taxonomy as not enough control
+                $wp_query->is_page = 1;
+                $wp_query->is_404 = null;
+                $wp_query->post_count = 1;
+
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
+                add_filter( 'the_title', array( &$this, 'page_title_output' ), 99, 2 );
+                $this->dr_first_thumbnail = true;
+                add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
+                add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 99 );
+                add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 99 );
+            }
+
+            $this->is_directory_page = true;
+        }
+
         //load proper theme for single listing page display
         elseif ( $wp_query->is_single &&  'directory_listing' == $wp_query->query_vars['post_type'] ) {
 
@@ -598,6 +638,8 @@ class DR_Core {
                 $wp_query->is_404 = null;
                 $wp_query->post_count = 1;
 
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
                 add_filter( 'the_title', array( &$this, 'page_title_output' ), 99, 2 );
                 $this->dr_first_thumbnail = true;
                 add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
@@ -620,8 +662,8 @@ class DR_Core {
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
-                add_filter( 'comments_close_text', array( &$this, 'close_comments' ), 99 );
-                add_filter( 'comments_open', array( &$this, 'comments_closed_text' ), 99 );
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
             }
@@ -640,8 +682,8 @@ class DR_Core {
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
-                add_filter( 'comments_close_text', array( &$this, 'close_comments' ), 99 );
-                add_filter( 'comments_open', array( &$this, 'comments_closed_text' ), 99 );
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
             }
@@ -782,10 +824,15 @@ class DR_Core {
 
         $content = '<div class="breadcrumbtrail">';
         $content .= '   <p class="page-title dp-taxonomy-name">';
-        ob_start();
-             the_dr_breadcrumbs();
-            $content .= ob_get_contents();
-        ob_end_clean();
+
+        //breadcrumbs
+        if ( !is_dr_page( 'archive' ) ) {
+            ob_start();
+                 the_dr_breadcrumbs();
+                $content .= ob_get_contents();
+            ob_end_clean();
+        }
+
         $content .= '   </p>';
         $content .= '   <div class="clear"></div>';
         $content .= '</div> ';
@@ -948,6 +995,11 @@ class DR_Core {
                 $term = get_term_by( 'slug', get_query_var( 'listing_tag' ), 'listing_tag' );
                 return sprintf( __( 'Listing Tag: %s', $this->text_domain ), $term->name );
             }
+        }
+
+        //title for listings page
+        if ( is_dr_page( 'archive' ) && $wp_query->post->ID == $id ) {
+            return __( 'Listings', $this->text_domain );
         }
 
         return $title;

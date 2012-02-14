@@ -25,7 +25,7 @@ $options = $this->get_options('general_settings');
             </tr>
             <tr>
                 <th>
-                    <label for="logout_url"><?php _e( 'Redirect URL (loguot):', $this->text_domain ) ?></label>
+                    <label for="logout_url"><?php _e( 'Redirect URL (logout):', $this->text_domain ) ?></label>
                 </th>
                 <td>
                     <input type="text" name="logout_url" id="logout_url" value="<?php echo $options['logout_url'] ? $options['logout_url'] : ''; ?>" size="50" />
