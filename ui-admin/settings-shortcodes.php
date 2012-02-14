@@ -1,10 +1,11 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <div class="wrap">
-	<?php screen_icon( 'options-general' ); ?>
 
     <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'shortcodes' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
+
+    <h1><?php _e( 'Shortcodes', $this->text_domain ); ?></h1>
 
     <div class="postbox">
         <h3 class='hndle'><span><?php _e( 'Shortcodes', $this->text_domain ) ?></span></h3>

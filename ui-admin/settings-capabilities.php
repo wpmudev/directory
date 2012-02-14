@@ -6,39 +6,45 @@ $options = $this->get_options('general_settings');
 ?>
 
 <div class="wrap">
-	<?php screen_icon('options-general'); ?>
 
-    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'general', 'sub' => 'capabilities' ) ); ?>
+    <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'capabilities' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
+    <h1><?php _e( 'Capabilities Settings', $this->text_domain ); ?></h1>
+
 	<form action="" method="post" class="dr-general">
+         <div class="postbox">
+            <h3 class='hndle'><span><?php _e( 'Capabilities', $this->text_domain ) ?></span></h3>
+            <div class="inside">
+                <table class="form-table">
+                    <tr>
+                        <th>
+                            <label for="roles"><?php _e( 'Assign Capabilities', $this->text_domain ) ?></label>
+                            <img id="ajax-loader" src="<?php echo $this->plugin_url . 'ui-admin/images/ajax-loader.gif'; ?>" />
+                        </th>
+                        <td>
+                            <select id="roles" name="roles">
+                                <?php foreach ( $wp_roles->role_names as $role => $name ): ?>
+                                    <option value="<?php echo $role; ?>"><?php echo $name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
 
-        <table class="form-table">
-            <tr>
-                <th>
-                    <label for="roles"><?php _e( 'Assign Capabilities', $this->text_domain ) ?></label>
-                    <img id="ajax-loader" src="<?php echo $this->plugin_url . 'ui-admin/images/ajax-loader.gif'; ?>" />
-                </th>
-                <td>
-                    <select id="roles" name="roles">
-                        <?php foreach ( $wp_roles->role_names as $role => $name ): ?>
-                            <option value="<?php echo $role; ?>"><?php echo $name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
+                            <br /><br />
 
-                    <br /><br />
+                            <div id="capabilities">
+                                <?php foreach ( $this->capability_map as $capability => $description ): ?>
+                                    <input type="checkbox" name="capabilities[<?php echo $capability; ?>]" value="1" />
+                                    <span class="description"><?php echo $description; ?></span>
+                                    <br />
+                                <?php endforeach; ?>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+         </div>
 
-                    <div id="capabilities">
-                        <?php foreach ( $this->capability_map as $capability => $description ): ?>
-                            <input type="checkbox" name="capabilities[<?php echo $capability; ?>]" value="1" />
-                            <span class="description"><?php echo $description; ?></span>
-                            <br />
-                        <?php endforeach; ?>
-                    </div>
-                </td>
-            </tr>
-        </table>
 <!--
 		<table class="form-table">
 			<tr>
@@ -52,7 +58,6 @@ $options = $this->get_options('general_settings');
 			</tr>
 		</table>
 -->
-		<br /><br />
 		<p class="submit">
 			<?php wp_nonce_field('dir-verify'); ?>
 			<input type="hidden" name="action" value="dr-save" />

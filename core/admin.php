@@ -125,51 +125,23 @@ class DR_Admin extends DR_Core {
      * @return void
      */
     function handle_settings_page_requests() {
-		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'general' || empty( $_GET['tab'] ) ) {
+        $valid_tabs = array( 'general', 'capabilities', 'ads', 'payments', 'payments-type', 'shortcodes' );
 
-			if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'ads' ) {
-				if ( isset( $_POST['save'] ) ) {
-					$this->save_admin_options( $_POST );
-				}
+        if ( isset( $_GET['tab'] ) && in_array( $_GET['tab'], $valid_tabs ) ) {
+            if ( isset( $_POST['save'] ) ) {
+                $this->save_admin_options( $_POST );
+            }
+            $this->render_admin( 'settings-'.$_GET['tab'] );
+        } else {
+            if ( isset( $_POST['save'] ) ) {
+                $this->save_admin_options( $_POST );
+            }
+            $this->render_admin( 'settings-general' );
+        }
 
-				$this->render_admin( 'settings-ads' );
-			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'capabilities' ) {
-                if ( isset( $_POST['save'] ) ) {
-                    $this->save_admin_options( $_POST );
-                }
 
-                $this->render_admin( 'settings-capabilities' );
-            } else {
-				if ( isset( $_POST['save'] ) ) {
-					$this->save_admin_options( $_POST );
-				}
-
-				$this->render_admin( 'settings-general' );
-			}
-		} elseif ( isset( $_GET['tab'] ) && $_GET['tab'] == 'payments' ) {
-
-			if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'authorizenet' ) {
-
-				$this->render_admin( 'payments-type' );
-
-			} elseif ( isset( $_GET['sub'] ) && $_GET['sub'] == 'type' ) {
-				if ( isset( $_POST['save'] ) ) {
-					$this->save_admin_options( $_POST );
-				}
-
-				$this->render_admin( 'payments-type' );
-			} else {
-				if ( isset( $_POST['save'] ) ) {
-					$this->save_admin_options( $_POST );
-				}
-
-				$this->render_admin( 'payments-settings' );
-			}
-        } elseif ( isset( $_GET['tab'] ) && $_GET['tab'] == 'shortcodes' ) {
-            $this->render_admin( 'settings-shortcodes' );
-		}
-
-        do_action('dr_handle_settings_page_requests');
+        do_action( 'dr_handle_settings_page_requests' );
+            
     }
 
 	/**

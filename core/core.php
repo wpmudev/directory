@@ -30,7 +30,10 @@ class DR_Core {
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
 
-        register_theme_directory( $this->plugin_dir . 'themes' );
+        //show "Directory Theme" only for old installation
+        if ( 'Directory Theme' == get_current_theme() ) {
+            register_theme_directory( $this->plugin_dir . 'themes' );
+        }
 
         /* Create neccessary pages */
         add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
@@ -52,7 +55,33 @@ class DR_Core {
         add_action( 'wp', array( &$this, 'load_directory_templates' ) );
 
         add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
+
+        //hide some menu pages
+        add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
     }
+
+    /**
+     * Hide some menu pages
+     */
+    function hide_menu_pages( $args ) {
+        if ( is_user_logged_in() ) {
+
+            $pages = '';
+            $directory_page = $this->get_page_by_meta( 'signup' );
+            if ( isset( $directory_page) && 0 < $directory_page->ID )
+                $pages .= $directory_page->ID;
+            $directory_page = $this->get_page_by_meta( 'signin' );
+            if ( isset( $directory_page) && 0 < $directory_page->ID )
+                $pages .= ','.$directory_page->ID;
+
+            if ( isset( $args['exclude'] ) )
+                $args['exclude'] .= ',' . $pages;
+            else
+                $args['exclude'] = $pages;
+        }
+        return $args;
+    }
+
 
     /**
      * Intiate plugin.
