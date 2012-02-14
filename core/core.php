@@ -765,7 +765,6 @@ class DR_Core {
                 <span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', DR_TEXT_DOMAIN ), __( '1 Review &#187;', DR_TEXT_DOMAIN ), __( '% Reviews &#187;', DR_TEXT_DOMAIN ) ); ?></span>
                 <br />
                 <?php the_dr_posted_in(); ?>
-                <?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
                 <span class="tags"><?php the_tags( __( 'Tags: ', DR_TEXT_DOMAIN ), ', ', ''); ?></span>
 
                 <?php if ( !is_user_logged_in() ) : ?>
@@ -851,20 +850,20 @@ class DR_Core {
             $wp_query->max_num_pages = $custom_query->max_num_pages;
 
 
-        $content = '<div class="breadcrumbtrail">';
-        $content .= '   <p class="page-title dp-taxonomy-name">';
-
         //breadcrumbs
         if ( !is_dr_page( 'archive' ) ) {
+            $content = '<div class="breadcrumbtrail">';
+            $content .= '   <p class="page-title dp-taxonomy-name">';
+
             ob_start();
                  the_dr_breadcrumbs();
                 $content .= ob_get_contents();
             ob_end_clean();
-        }
 
-        $content .= '   </p>';
-        $content .= '   <div class="clear"></div>';
-        $content .= '</div> ';
+            $content .= '   </p>';
+            $content .= '   <div class="clear"></div>';
+            $content .= '</div> ';
+        }
 
         $content .= '<div id="dr_listing_list">';
 
@@ -931,8 +930,7 @@ class DR_Core {
                 ob_start();
                 ?>
                     <?php do_action( 'sr_avg_ratings_of_listings', $post->ID ); ?>
-                                        <span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
-                        <?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+                    <span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
                 <?php
                 $content .= ob_get_contents();
                 ob_end_clean();
