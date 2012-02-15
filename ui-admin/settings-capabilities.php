@@ -34,8 +34,8 @@ $options = $this->get_options('general_settings');
 
                             <div id="capabilities">
                                 <?php foreach ( $this->capability_map as $capability => $description ): ?>
-                                    <input type="checkbox" name="capabilities[<?php echo $capability; ?>]" value="1" />
-                                    <span class="description"><?php echo $description; ?></span>
+                                    <input type="checkbox" name="capabilities[<?php echo $capability; ?>]" id="<?php echo $capability; ?>" value="1" />
+                                    <label for="<?php echo $capability; ?>"><span class="description"><?php echo $description; ?></span></label>
                                     <br />
                                 <?php endforeach; ?>
                             </div>

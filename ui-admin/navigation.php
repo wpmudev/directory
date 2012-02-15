@@ -2,7 +2,7 @@
 
 <?php $href_part = 'edit.php?post_type=directory_listing'; ?>
 
-<h3 class="nav-tab-wrapper">
+<h2 class="nav-tab-wrapper">
 <?php if ( $page == 'settings' ): ?>
 	<a class="nav-tab <?php if ( $tab == 'general' || empty( $tab ) ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'general' ); ?>"><?php _e( 'General', $this->text_domain ); ?></a>
     <a class="nav-tab <?php if ( $tab == 'capabilities' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'capabilities' ); ?>"><?php _e( 'Capabilities', $this->text_domain ); ?></a>
@@ -15,6 +15,6 @@
 <?php endif; ?>
 
 <?php do_action('dr_render_admin_navigation_tabs', $href_part, $page, $tab ); ?>
-</h3>
+</h2>
 
 <div class="clear"></div>

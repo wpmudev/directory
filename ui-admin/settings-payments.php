@@ -67,7 +67,11 @@
 	<?php $this->render_admin( 'message' ); ?>
 
     <h1><?php _e( 'Payments Settings', $this->text_domain ); ?></h1>
+    <p class="description">
+        <?php _e( 'Here you can set price that users should pay for capability the creation listings on your site. If you want that users can create listings for free, select "Free Listings" on the "Payments Type" page.', $this->text_domain ) ?>
+    </p>
 
+    <br />
     <form method="post" class="dp-payments" id="payment_settings">
         <div class="postbox">
             <h3 class='hndle'><span><?php _e( 'Recurring Payments', $this->text_domain ) ?></span></h3>
@@ -95,7 +99,7 @@
                             <label for="recurring_name"><?php _e('Name of Service', 'directory') ?></label>
                         </th>
                         <td>
-                            <input type="text" name="recurring_name" value="<?php if ( isset( $options['recurring_name'] ) ) echo $options['recurring_name']; ?>" />
+                            <input type="text" name="recurring_name" id="recurring_name" value="<?php if ( isset( $options['recurring_name'] ) ) echo $options['recurring_name']; ?>" />
                             <span class="description"><?php _e('Name of the service.', 'directory'); ?></span>
                         </td>
                     </tr>
@@ -128,7 +132,7 @@
                             <label for="billing_agreement"><?php _e('Billing Agreement', 'directory') ?></label>
                         </th>
                         <td>
-                            <input type="text" name="billing_agreement" size="100" value="<?php if ( isset( $options['billing_agreement'] ) ) echo $options['billing_agreement']; ?>" />
+                            <input type="text" name="billing_agreement" id="billing_agreement" size="100" value="<?php if ( isset( $options['billing_agreement'] ) ) echo $options['billing_agreement']; ?>" />
                             <br /><span class="description"><?php _e('The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at "$9.99 per month for 2 years."', 'directory'); ?></span>
                         </td>
                     </tr>
@@ -160,10 +164,10 @@
                     </tr>
                     <tr>
                         <th>
-                            <label for="one_time_cost"><?php _e('Name of Service', 'directory') ?></label>
+                            <label for="one_time_name"><?php _e('Name of Service', 'directory') ?></label>
                         </th>
                         <td>
-                            <input type="text" name="one_time_name" value="<?php if ( isset( $options['one_time_name'] ) ) echo $options['one_time_name']; ?>" />
+                            <input type="text" name="one_time_name" id="one_time_name" value="<?php if ( isset( $options['one_time_name'] ) ) echo $options['one_time_name']; ?>" />
                             <span class="description"><?php _e('Name of the service.', 'directory'); ?></span>
                         </td>
                     </tr>

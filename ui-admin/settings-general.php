@@ -15,6 +15,7 @@ $options = $this->get_options('general_settings');
          <div class="postbox">
             <h3 class='hndle'><span><?php _e( 'Redirection Options', $this->text_domain ) ?></span></h3>
             <div class="inside">
+                <p class="description"><?php _e( 'Here you can set the page, to which will redirected the user after registration or login.', $this->text_domain ) ?></p>
                 <table class="form-table">
                     <tr>
                         <th>
@@ -22,7 +23,7 @@ $options = $this->get_options('general_settings');
                         </th>
                         <td>
                             <input type="text" name="signin_url" id="signin_url" value="<?php echo $options['signin_url'] ? $options['signin_url'] : ''; ?>" size="50" />
-                            <span class="description"><?php _e( 'by default to Homepage', $this->text_domain ) ?></span>
+                            <span class="description"><?php _e( 'by default to Home page', $this->text_domain ) ?></span>
                         </td>
                     </tr>
                     <tr>
@@ -31,7 +32,7 @@ $options = $this->get_options('general_settings');
                         </th>
                         <td>
                             <input type="text" name="logout_url" id="logout_url" value="<?php echo $options['logout_url'] ? $options['logout_url'] : ''; ?>" size="50" />
-                            <span class="description"><?php _e( 'by default to Homepage', $this->text_domain ) ?></span>
+                            <span class="description"><?php _e( 'by default to Home page', $this->text_domain ) ?></span>
                         </td>
                     </tr>
                 </table>

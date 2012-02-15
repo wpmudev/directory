@@ -14,7 +14,7 @@ if ( !class_exists('Paypal_Express_Gateway') ):
  * @package Payments
  * @version 1.0.0
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub)  
+ * @author Ivan Shaovchev (Incsub)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class Paypal_Express_Gateway {
@@ -86,7 +86,7 @@ class Paypal_Express_Gateway {
             } else  {
                 $this->api_endpoint = 'https://api-3t.sandbox.paypal.com/nvp';
                 $this->paypal_url   = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=';
-            } 
+            }
 
             /*
              * The currencyCodeType and paymentType are set to the selections
@@ -113,7 +113,7 @@ class Paypal_Express_Gateway {
     /**
      * Prepares the parameters for the SetExpressCheckout API Call.
      *
-     * @param  string $payment_amount Total value of the shopping cart 
+     * @param  string $payment_amount Total value of the shopping cart
      * @return array  $result
      */
     function call_shortcut_express_checkout( $payment_amount, $billing_type, $billing_agreement ) {
@@ -121,6 +121,7 @@ class Paypal_Express_Gateway {
         $nvpstr  = '&PAYMENTREQUEST_0_AMT='           . urlencode( $payment_amount );
         $nvpstr .= '&PAYMENTREQUEST_0_PAYMENTACTION=' . urlencode( $this->payment_type );
         $nvpstr .= '&PAYMENTREQUEST_0_CURRENCYCODE='  . urlencode( $this->currency_code_type );
+        $nvpstr .= '&NOSHIPPING=1';
         $nvpstr .= '&RETURNURL='                      . urlencode( $this->return_url );
         $nvpstr .= '&CANCELURL='                      . urlencode( $this->cancel_url );
         // Set additional arguments if recurring billing
@@ -139,13 +140,13 @@ class Paypal_Express_Gateway {
 
         if ( $ack == 'SUCCESS' || $ack == 'SUCCESSWITHWARNING' ) {
             $token = urldecode( $result['TOKEN'] );
-            //Construct URL and redirect to PayPal 
+            //Construct URL and redirect to PayPal
             $paypal_url = $this->paypal_url . $result['TOKEN'];
             wp_redirect( $paypal_url );
             exit;
         } else {
-            //Display a user friendly Error on the page using any of the following error information returned by PayPal 
-            return $this->error( 'SetExpressCheckout', $result );  
+            //Display a user friendly Error on the page using any of the following error information returned by PayPal
+            return $this->error( 'SetExpressCheckout', $result );
         }
     }
 
@@ -164,8 +165,8 @@ class Paypal_Express_Gateway {
      *
      * @return array $result The NVP Collection object of the SetExpressCheckout Call Response.
      */
-    function call_mark_express_checkout( 
-        $payment_amount , $ship_to_name         , $ship_to_street , $ship_to_city    , 
+    function call_mark_express_checkout(
+        $payment_amount , $ship_to_name         , $ship_to_street , $ship_to_city    ,
         $ship_to_state  , $ship_to_country_code , $ship_to_zip    , $ship_to_street2 , $phone_number ) {
 
         // Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
@@ -204,7 +205,7 @@ class Paypal_Express_Gateway {
             exit;
         } else {
             /* Display a user friendly Error on the page using any of the following error information returned by PayPal */
-            return $this->error( 'SetExpressCheckout', $result );  
+            return $this->error( 'SetExpressCheckout', $result );
         }
     }
 
@@ -217,7 +218,7 @@ class Paypal_Express_Gateway {
      * buyer.  Remember, the authorization is not a completed transaction
      * at this state - the buyer still needs an additional step to finalize
      * the transaction
-     * 
+     *
      * @return The NVP Collection object of the GetExpressCheckoutDetails Call Response.
      */
     function get_express_checkout_details( $token ) {
@@ -266,7 +267,7 @@ class Paypal_Express_Gateway {
             return $result;
         } else {
             /* Display a user friendly Error on the page using any of the following error information returned by PayPal */
-            return $this->error( 'GetExpressCheckoutDetails', $result );  
+            return $this->error( 'GetExpressCheckoutDetails', $result );
         }
     }
 
@@ -281,7 +282,7 @@ class Paypal_Express_Gateway {
          * Gather the information to make the final call to finalize the PayPal payment.
          * The variable nvpstr holds the name value pairs
          *
-         * Format the other parameters that were stored in the session from the previous calls 
+         * Format the other parameters that were stored in the session from the previous calls
          */
         $nvpstr = '&TOKEN='                          . urlencode( $_SESSION['token'] ) .
                   '&PAYERID='                        . urlencode( $_SESSION['payer_id'] ) .
@@ -359,7 +360,7 @@ class Paypal_Express_Gateway {
             return $result;
         } else {
             /* Display user friendly Error using any of the error information returned by PayPal */
-            return $this->error( 'DoExpressCheckoutPayment', $result );  
+            return $this->error( 'DoExpressCheckoutPayment', $result );
         }
     }
 
@@ -381,8 +382,8 @@ class Paypal_Express_Gateway {
      *
      * @return array $result The NVP Collection object of the DoDirectPayment Call Response.
      */
-    function direct_payment( 
-        $payment_amount , $credit_card_type , $credit_card_number , $exp_date , $cvv2  , 
+    function direct_payment(
+        $payment_amount , $credit_card_type , $credit_card_number , $exp_date , $cvv2  ,
         $first_name     , $last_name        , $street             , $city     , $state , $zip , $country_code ) {
 
         //Construct the parameter string that describes DoDirectPayment
@@ -413,17 +414,17 @@ class Paypal_Express_Gateway {
             return $result;
         } else {
             /* Display a user friendly Error on the page using any of the following error information returned by PayPal */
-            return $this->error( 'DoDirectPayment', $result );  
+            return $this->error( 'DoDirectPayment', $result );
         }
     }
 
     /**
-     * This method creates a Recurring Payments Profile for the user in the vendor 
-     * PayPal account. Users must have valid Card associated with their account 
-     * or PayPal with return an error message. 
-     * 
+     * This method creates a Recurring Payments Profile for the user in the vendor
+     * PayPal account. Users must have valid Card associated with their account
+     * or PayPal with return an error message.
+     *
      * @access public
-     * @return array Success|Error  
+     * @return array Success|Error
      */
     function create_recurring_payments_profile( $amount, $billing_period, $billing_frequency, $billing_agreement ) {
         // Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
@@ -451,7 +452,7 @@ class Paypal_Express_Gateway {
             return $result;
         } else {
             /* Display a user friendly Error on the page using any of the following error information returned by PayPal */
-            return $this->error( 'CreateRecurringPaymentsProfile', $result );  
+            return $this->error( 'CreateRecurringPaymentsProfile', $result );
         }
     }
 
@@ -476,16 +477,16 @@ class Paypal_Express_Gateway {
         /* If use_proxy var is set to TRUE, then only proxy will be enabled. */
         if ( $this->use_proxy )
             curl_setopt( $ch, CURLOPT_PROXY, $this->proxy_host . ':' . $this->proxy_port );
-        
+
         /* NVPRequest for submitting to server */
         $nvpreq = 'METHOD='        . urlencode( $method_name ) .
                   '&VERSION='      . urlencode( $this->version ) .
                   '&PWD='          . urlencode( $this->api_password ) .
                   '&USER='         . urlencode( $this->api_username ) .
-                  '&SIGNATURE='    . urlencode( $this->api_signature ) . 
+                  '&SIGNATURE='    . urlencode( $this->api_signature ) .
                   $nvpstr          .
                   '&BUTTONSOURCE=' . urlencode( $this->sbn_code );
-        
+
         /* Setting the nvpreq as POST FIELD to curl */
         curl_setopt( $ch, CURLOPT_POSTFIELDS, $nvpreq );
         /* Getting response from server */
@@ -535,12 +536,12 @@ class Paypal_Express_Gateway {
         }
         return $nvp_array;
     }
-    
+
     /**
-     * Build and return error array 
-     * 
-     * @param mixed $method 
-     * @param mixed $result 
+     * Build and return error array
+     *
+     * @param mixed $method
+     * @param mixed $result
      * @access public
      * @return array Error messages
      */

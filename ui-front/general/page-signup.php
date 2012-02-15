@@ -185,8 +185,8 @@ $error       = get_query_var('checkout_error');
                 <?php if ( isset( $opset['enable_recurring'] ) && '1' == $opset['enable_recurring'] ) : ?>
                     <tr>
                         <td <?php do_action( 'billing_invalid' ); ?>>
-                            <label for="billing"><?php if ( isset( $opset['recurring_name'] ) ) echo $opset['recurring_name']; ?></label>
-                            <input type="radio" name="billing_type" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />
+                            <label for="type_recurring"><?php if ( isset( $opset['recurring_name'] ) ) echo $opset['recurring_name']; ?></label>
+                            <input type="radio" name="billing_type" id="type_recurring" value="recurring" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'recurring' ) echo 'checked="checked"'; ?> />
                             <span>
                             <?php
                             $bastr    = isset( $opset['recurring_cost'] ) ? $opset['recurring_cost'] . ' ' : '';
@@ -207,8 +207,8 @@ $error       = get_query_var('checkout_error');
                 <?php if ( isset( $opset['enable_one_time'] ) && '1' == $opset['enable_one_time'] ) : ?>
                     <tr>
                         <td <?php do_action( 'billing_invalid' ); ?>>
-                            <label for="billing"><?php if ( isset( $opset['one_time_name'] ) ) echo $opset['one_time_name']; ?></label>
-                            <input type="radio" name="billing_type" value="one_time" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?> <?php echo $oppay['currency']; ?>
+                            <label for="type_one_time"><?php if ( isset( $opset['one_time_name'] ) ) echo $opset['one_time_name']; ?></label>
+                            <input type="radio" name="billing_type" id="type_one_time"  value="one_time" <?php if ( isset( $_POST['billing_type'] ) && $_POST['billing_type'] == 'one_time' ) echo 'checked="checked"'; ?> /> <?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?> <?php echo $oppay['currency']; ?>
                             <input type="hidden" name="one_time_cost" value="<?php if ( isset( $opset['one_time_cost'] ) ) echo $opset['one_time_cost']; ?>" />
                         </td>
                     </tr>
@@ -278,8 +278,8 @@ $error       = get_query_var('checkout_error');
                 <tr>
 					<td <?php do_action('pm_invalid'); ?>>
 
-						<label for="payment_method"><?php _e( 'PayPal', $text_domain ); ?></label>
-                        <input type="radio" name="payment_method" value="paypal"/>
+						<label for="pmethod_paypal"><?php _e( 'PayPal', $text_domain ); ?></label>
+                        <input type="radio" name="payment_method" id="pmethod_paypal" value="paypal"/>
                         <img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" border="0" alt="Acceptance Mark">
                     </td>
                 </tr>
@@ -287,9 +287,9 @@ $error       = get_query_var('checkout_error');
                 <?php if ( 'recurring' != $_SESSION['billing_type'] ): ?>
                     <tr>
 						<td <?php do_action('pm_invalid'); ?>>
-							<label for="payment_method"><?php _e( 'Credit Card', $text_domain ); ?></label>
-                            <input type="radio" name="payment_method" value="cc" />
-                            <img  src="<?php echo get_template_directory_uri(); ?>/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
+							<label for="pmethod_cc"><?php _e( 'Credit Card', $text_domain ); ?></label>
+                            <input type="radio" name="payment_method" id="pmethod_cc" value="cc" />
+                            <img  src="<?php echo $plugin_url; ?>ui-front/images/cc-logos-small.jpg" border="0" alt="Solution Graphics">
                         </td>
                     </tr>
                 <?php endif; ?>
@@ -314,8 +314,8 @@ $error       = get_query_var('checkout_error');
             <div class="clear"></div>
             <table id="cc-user-details">
                 <tr>
-                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
-                    <td><input type="text" name="email" value="<?php echo $details['email']; ?>" /></td>
+                    <td><label for="cc_email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><input type="text" name="email" id="cc_email" value="<?php echo $details['email']; ?>" /></td>
                 </tr>
                 <tr>
                     <td><label for="first-name"><?php _e( 'First Name', $text_domain ); ?>:</label></td>
@@ -608,7 +608,7 @@ $error       = get_query_var('checkout_error');
                 <tr>
                     <td><label for="cc_type"><?php _e( 'Credit Card Type', $text_domain ); ?>:</label></td>
                     <td>
-                        <select name="cc_type">
+                        <select name="cc_type" id="cc_type">
                             <option><?php _e( 'Visa', $text_domain ); ?></option>
                             <option><?php _e( 'MasterCard', $text_domain ); ?></option>
                             <option><?php _e( 'Amex', $text_domain ); ?></option>
@@ -618,12 +618,12 @@ $error       = get_query_var('checkout_error');
                 </tr>
                 <tr>
                     <td><label for="cc_number"><?php _e( 'Credit Card Number', $text_domain ); ?>:</label></td>
-                    <td><input type="text" name="cc_number" /></td>
+                    <td><input type="text" name="cc_number" id="cc_number" /></td>
                 </tr>
                 <tr>
                     <td><label for="exp_date"><?php _e( 'Expiration Date', $text_domain ); ?>:</label></td>
                     <td>
-                        <select name="exp_date_month">
+                        <select name="exp_date_month" id="exp_date">
                             <option value="01">01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
@@ -655,7 +655,7 @@ $error       = get_query_var('checkout_error');
                 </tr>
                 <tr>
                     <td><label for="cvv2"><?php _e( 'CVV2', $text_domain ); ?>:</label></td>
-                    <td><input type="text" name="cvv2" /></td>
+                    <td><input type="text" name="cvv2" id="cvv2" /></td>
                 </tr>
             </table>
             <div class="clear"></div>
@@ -664,22 +664,22 @@ $error       = get_query_var('checkout_error');
             <div class="clear"></div>
             <table id="cc-user-details">
                 <tr id="login_error">
-                    <td width="110"><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                    <td width="110"><label for="login"><?php _e( 'Login', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="login" id="login" value="<?php echo $details['login']; ?>"/>
                         <span id="status_login" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                    <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="password" id="password" value=""/></td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Confirm Pass', $text_domain ); ?>:</label></td>
+                    <td><label for="cpassword"><?php _e( 'Confirm Pass', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="user_email" id="email" value="<?php echo $details['user_email']; ?>" />
                         <span id="status_email" style="display: none;"></span>
@@ -710,22 +710,22 @@ $error       = get_query_var('checkout_error');
             <?php endif; ?>
             <table id="confirm-payment">
                 <tr id="login_error">
-                    <td><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                    <td><label for="login"><?php _e( 'Login', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="login" id="login" value="<?php echo $transaction_details['login']; ?>"/>
                         <span id="status_login" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                    <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="password" id="password" value=""/></td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
+                    <td><label for="cpassword"><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>
@@ -734,10 +734,6 @@ $error       = get_query_var('checkout_error');
                 <tr>
                     <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
                     <td><?php echo $transaction_details['FIRSTNAME'] . ' ' . $transaction_details['LASTNAME']; ?></td>
-                </tr>
-                <tr>
-                    <td><label><?php _e( 'Address', $text_domain ); ?>:</label></td>
-                    <td><?php echo $transaction_details['SHIPTOSTREET']; ?>, <?php echo $transaction_details['SHIPTOCITY']; ?>, <?php echo $transaction_details['SHIPTOSTATE']; ?>, <?php echo $transaction_details['SHIPTOZIP']; ?>, <?php echo $transaction_details['SHIPTOCOUNTRYNAME']; ?></td>
                 </tr>
                 <?php if ( $_SESSION['billing_type'] == 'recurring' ): ?>
                 <tr>
@@ -759,6 +755,7 @@ $error       = get_query_var('checkout_error');
                 <input type="hidden" name="first_name" value="<?php echo $transaction_details['FIRSTNAME']; ?>" />
                 <input type="hidden" name="last_name" value="<?php echo $transaction_details['LASTNAME']; ?>" />
                 <input type="hidden" name="billing_type" value="<?php echo $_SESSION['billing_type']; ?>" />
+                <input type="hidden" name="no_shipping" value="1" />
                 <?php /* <input type="hidden" name="credits" value="<?php echo $_SESSION['credits']; ?>" /> */ ?>
                 <input type="submit" name="confirm_payment_submit" value="Confirm Payment" />
             </div>
@@ -801,29 +798,29 @@ $error       = get_query_var('checkout_error');
             <strong><?php _e( 'Registration', $text_domain ); ?></strong>
             <table id="confirm-payment">
                 <tr id="login_error">
-                    <td><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                    <td><label for="login"><?php _e( 'Login', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="login" id="login" value="<?php echo $transaction_details['login']; ?>"/>
                         <span id="status_login" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                    <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="password" id="password" value=""/></td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
+                    <td><label for="cpassword"><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
+                    <td><label for="first_name"><?php _e( 'Name', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="first_name" id="first_name" value="<?php echo $transaction_details['first_name']; ?>" size="50"/>
                     </td>
@@ -862,29 +859,29 @@ $error       = get_query_var('checkout_error');
             <strong><?php _e( 'Registration details', $text_domain ); ?></strong>
             <table id="confirm-payment">
                 <tr id="login_error">
-                    <td><label><?php _e( 'Login', $text_domain ); ?>:</label></td>
+                    <td><label for="login"><?php _e( 'Login', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="login" id="login" value="<?php echo $transaction_details['login']; ?>"/>
                         <span id="status_login" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                    <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="password" id="password" value=""/></td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
+                    <td><label for="cpassword"><?php _e( 'Password Confirm', $text_domain ); ?>:</label></td>
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['email']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label><?php _e( 'Name', $text_domain ); ?>:</label></td>
+                    <td><label for="first_name"><?php _e( 'Name', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="first_name" id="first_name" value="<?php echo $transaction_details['first_name']; ?>" size="50"/>
                     </td>

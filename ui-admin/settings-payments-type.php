@@ -36,8 +36,12 @@ $gateways = $this->get_options('gateways');
     <?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'payments-type' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-    <h1><?php _e( 'Payments Settings', $this->text_domain ); ?></h1>
+    <h1><?php _e( 'Payments Type', $this->text_domain ); ?></h1>
+    <p class="description">
+        <?php _e( 'Here you can set how users can pay to you for capability the creation listings on your site.', $this->text_domain ) ?>
+    </p>
 
+    <br />
     <div id="gateways" class="postbox">
         <h3 class='hndle'><span><?php _e( 'Gateway(s)', $this->text_domain ) ?></span></h3>
         <div class="inside">
@@ -49,15 +53,17 @@ $gateways = $this->get_options('gateways');
                     <tr>
                         <th scope="row"><?php _e( 'Select Payment Gateway(s)', $this->text_domain ) ?></th>
                         <td>
-                            <label>
-                                <input type="checkbox" class="mp_allowed_gateways" name="free" id="payment_free" value="1" <?php echo 1 == $gateways['free']  ? ' checked="checked"' : ''; ?> /><?php _e( 'Free (none Payment Gateway)', $this->text_domain ) ?>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="mp_allowed_gateways" name="paypal" value="1" <?php echo 1 == $gateways['paypal']  ? ' checked="checked"' : ''; ?> /><?php _e( 'PayPal', $this->text_domain ) ?>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="mp_allowed_gateways" name="authorize_net" value="1" <?php echo 1 == $gateways['authorize_net']  ? ' checked="checked"' : ''; ?> /><?php _e( 'Authorize.net', $this->text_domain ) ?>
-                            </label>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="mp_allowed_gateways" name="free" id="payment_free" value="1" <?php echo 1 == $gateways['free']  ? ' checked="checked"' : ''; ?> /> <?php _e( 'Free Listings', $this->text_domain ) ?>
+                                    <span class="description"><?php _e( '(logged users can create listings for free).', $this->text_domain ); ?></span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="mp_allowed_gateways" name="paypal" value="1" <?php echo 1 == $gateways['paypal']  ? ' checked="checked"' : ''; ?> /> <?php _e( 'PayPal', $this->text_domain ) ?>
+                                </label>
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -74,6 +80,10 @@ $gateways = $this->get_options('gateways');
         <div class="postbox">
             <h3 class='hndle'><span><b><?php _e( 'PayPal Settings', $this->text_domain ) ?></b></span></h3>
             <div class="inside">
+                <p class="description">
+                    <?php _e( "Express Checkout is PayPal's premier checkout solution, which streamlines the checkout process for buyers and keeps them on your site after making a purchase. Unlike PayPal Pro, there are no additional fees to use Express Checkout, though you may need to do a free upgrade to a business account.", $this->text_domain ) ?>
+                    <a href="https://cms.paypal.com/us/cgi-bin/?&amp;cmd=_render-content&amp;content_ID=developer/e_howto_api_ECGettingStarted" target="_blank"><?php _e( 'More Info', $this->text_domain ) ?></a>
+                </p>
                 <table class="form-table">
                     <tr>
                         <th>
@@ -89,7 +99,7 @@ $gateways = $this->get_options('gateways');
                     </tr>
                     <tr>
                         <th>
-                            <label for="api_username"><?php _e( 'Business Email', $this->text_domain ) ?></label>
+                            <label for="business_email"><?php _e( 'PayPal Business Email', $this->text_domain ) ?></label>
                         </th>
                         <td>
                             <input type="text" id="business_email" name="business_email" value="<?php if ( isset( $options['business_email'] ) ) echo $options['business_email']; ?>" size="40" />
@@ -98,30 +108,29 @@ $gateways = $this->get_options('gateways');
                     </tr>
                     <tr>
                         <th>
-                            <label for="api_username"><?php _e( 'API Username', $this->text_domain ) ?></label>
+                            <label><?php _e( 'PayPal API Credentials', $this->text_domain ) ?></label>
                         </th>
                         <td>
-                            <input type="text" id="api_username" name="api_username" value="<?php if ( isset( $options['api_username'] ) ) echo $options['api_username']; ?>" size="40" />
-                            <span class="description"><?php _e( 'Your PayPal API Username.', $this->text_domain ); ?></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="api_password"><?php _e( 'API Password', $this->text_domain ) ?></label>
-                        </th>
-                        <td>
-                            <input type="text" id="api_password" name="api_password" value="<?php if ( isset( $options['api_password'] ) ) echo $options['api_password']; ?>" size="40" />
-                            <span class="description"><?php _e( 'Your PayPal API Password.', $this->text_domain ); ?></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="api_signature"><?php _e( 'API Signature', $this->text_domain ) ?></label>
-                        </th>
-                        <td>
-                            <textarea rows="1" cols="55" id="api_signature" name="api_signature"><?php if ( isset( $options['api_signature'] ) ) echo $options['api_signature']; ?></textarea>
-                            <br />
-                            <span class="description"><?php _e( 'Your PayPal API Signature.', $this->text_domain ); ?></span>
+                            <span class="description">
+                                <?php _e( 'You must login to PayPal and create an API signature to get your credentials. ', $this->text_domain ) ?>
+                                <a href="https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_ECAPICredentials" target="_blank"><?php _e( 'Instructions', $this->text_domain ) ?></a>
+                            </span>
+                            <p>
+                                <label for="api_username"><?php _e( 'API Username', $this->text_domain ) ?></label>
+                                <br />
+                                <input type="text" id="api_username" name="api_username" value="<?php if ( isset( $options['api_username'] ) ) echo $options['api_username']; ?>" size="40" />
+                            </p>
+                            <p>
+                                <label for="api_password"><?php _e( 'API Password', $this->text_domain ) ?></label>
+                                <br />
+                                <input type="text" id="api_password" name="api_password" value="<?php if ( isset( $options['api_password'] ) ) echo $options['api_password']; ?>" size="40" />
+
+                            </p>
+                            <p>
+                                <label for="api_signature"><?php _e( 'API Signature', $this->text_domain ) ?></label>
+                                <br />
+                                <textarea rows="2" cols="55" id="api_signature" name="api_signature"><?php if ( isset( $options['api_signature'] ) ) echo $options['api_signature']; ?></textarea>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -154,20 +163,6 @@ $gateways = $this->get_options('gateways');
             </div>
         </div>
         <?php endif;?>
-
-        <?php if ( 1 == $gateways['authorize_net'] ): ?>
-        <div class="postbox">
-            <h3 class='hndle'><span><b><?php _e( 'Authorize.net Settings', $this->text_domain ) ?></b></span></h3>
-            <div class="inside">
-                <table class="form-table">
-                    <tr>
-                        <th><code><?php _e( 'Under Development. Coming Soon!', $this->text_domain ); ?></code></th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <?php endif;?>
-
 
         <p class="submit">
             <?php wp_nonce_field('verify'); ?>

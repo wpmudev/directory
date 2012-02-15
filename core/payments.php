@@ -6,7 +6,7 @@
  *
  * @uses DR_Core
  * @copyright Incsub 2007-2011 {@link http://incsub.com}
- * @author Ivan Shaovchev (Incsub) 
+ * @author Ivan Shaovchev (Incsub)
  * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
  */
 class DR_Payments extends DR_Core {
@@ -545,6 +545,7 @@ class DR_Payments extends DR_Core {
                         $form .= '<input type="hidden" name="return" value="' . get_option( 'siteurl' ) . '">';
                         $form .= '<input type="hidden" name="cancel_return" value="' . get_option( 'siteurl' ) . '">';
                         $form .= '<input type="hidden" name="notify_url" value="' . get_option( 'siteurl' ) . '/wp-admin/admin-ajax.php?action=directory_ipn">';
+                        $form .= '<input type="hidden" name="no_shipping" value="1">';
                         $form .= '<input type="hidden" name="src" value="1">';
                         $form .= '</form>';
                         $form .= '<script>document.form_id.submit();</script>';
