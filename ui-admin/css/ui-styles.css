@@ -9,7 +9,39 @@
 	float: right;
 }
 
-.postbox h3 {
-    cursor: auto;
-    padding: 7px 10px 7px 10px;
+
+   /* ----- Settings / Getting Started boxes ----- */
+.postbox h3.hndle {
+    padding: 7px 10px;
+    cursor: default;
 }
+.postbox .inside .note {
+    background-color: #FFFFE0;
+    border: 1px solid #E6DB55;
+    padding: 0 0.6em;
+    -moz-border-radius:3px;
+    -khtml-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+.postbox .dr-steps li {
+    clear: both;
+    padding: 1em;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+}
+.postbox .dr-steps li:hover {
+    background-color: #eee;
+}
+.postbox .dr-steps li a.button {
+    float: right;
+}
+
+.postbox .dr-steps li span.dr_del {
+    text-decoration: none;
+    color: #666;
+    font-style: italic;
+    font-weight: normal;
+}
+

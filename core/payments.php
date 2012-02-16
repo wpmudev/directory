@@ -56,6 +56,10 @@ class DR_Payments extends DR_Core {
                     'api_signature' => '',
                     'currency'      => 'USD',
                     'key'           => 'paypal'
+            ),
+                'general_settings' => array(
+                    'welcome_redirect'  => 'true',
+                    'key'               => 'general_settings'
             ));
 
             update_option( $this->options_name, $defaults );

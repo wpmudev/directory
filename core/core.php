@@ -82,7 +82,6 @@ class DR_Core {
         return $args;
     }
 
-
     /**
      * Intiate plugin.
      *

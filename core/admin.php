@@ -20,6 +20,9 @@ class DR_Admin extends DR_Core {
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_defaults' ) );
 
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
+        add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
+        add_action( 'admin_init', array( &$this, 'welcome_first_time_user' ) );
+        add_action( 'admin_init', array( &$this, 'handle_getting_started_redirects') );
 
 		add_action( 'wp_ajax_dr-get-caps', array( &$this, 'ajax_get_caps' ) );
         add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
@@ -91,12 +94,114 @@ class DR_Admin extends DR_Core {
      * @return void
      */
     function admin_menu() {
-		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
+        $opts = get_option( $this->options_name );
+        if ( ( isset( $opts['general_settings']['show_getting_started'] ) && '1' == $opts['general_settings']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
+            $menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
+            // Hook styles
+            add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
+        }
+
+        $settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
 
 		// Hook styles and scripts
         add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_styles' ) );
         add_action( 'admin_print_scripts-' . $settings_page, array( &$this, 'enqueue_scripts' ) );
     }
+
+    /**
+     * Quick hack to reorder CPT menu items
+     * so that the welcome page come first.
+     */
+    function reorder_menu () {
+        $opts = get_option( $this->options_name );
+        if ( ( !isset( $opts['general_settings']['show_getting_started'] ) || '0' == $opts['general_settings']['show_getting_started'] ) && $this->_getting_started_complete() )
+            return;
+
+        global $menu, $submenu;
+
+        foreach ( $submenu as $idx => $item ) {
+            if ( 'edit.php?post_type=directory_listing' != $idx ) continue;
+            $tmp = $item[17];
+            unset( $item[17] );
+            array_unshift( $item, $tmp );
+            $submenu[$idx] = $item;
+        }
+    }
+
+    /**
+     * Inject welcome page markup.
+     */
+    function create_getting_started_page () {
+        global $current_user;
+        $dr_tutorial = get_user_meta ( $current_user->ID, 'dr_tutorial', true );
+        $dr_tutorial = $dr_tutorial ? $dr_tutorial : array();
+        include( $this->plugin_dir . 'ui-admin/getting-started.php' );
+    }
+
+
+    /**
+     * Redirect to Getting started page on first load.
+     */
+    function welcome_first_time_user () {
+        if ( is_network_admin() ) return false; // Not applicable on network pages.
+        if ( $this->_getting_started_complete() ) return false; // User already saw this.
+
+        $opts = get_option( $this->options_name );
+        if ( isset( $opts['general_settings']['welcome_redirect'] ) and !$opts['general_settings']['welcome_redirect'] ) return false; // Not a first time user, move on.
+
+        $opts['general_settings']['welcome_redirect'] = false;
+        update_option( $this->options_name, $opts );
+        wp_redirect( admin_url( 'admin.php?page=dr-get_started' ) );
+        die;
+    }
+
+
+    /**
+     * Handle calls from welcome page and record progress.
+     */
+    function handle_getting_started_redirects () {
+        global $current_user;
+        $dr_tutorial = get_user_meta( $current_user->ID, 'dr_tutorial', true );
+        $dr_tutorial = $dr_tutorial ? $dr_tutorial : array();
+
+        $intent = isset( $_GET['intent'] ) ? $_GET['intent'] : false ;
+        switch ( $intent ) {
+            case "settings":
+                $dr_tutorial['settings'] = 1;
+                update_user_meta( $current_user->ID, 'dr_tutorial', $dr_tutorial );
+                wp_redirect( admin_url( 'edit.php?post_type=directory_listing&page=settings' ) );
+                exit;
+            case "category":
+                $dr_tutorial['category'] = 1;
+                update_user_meta( $current_user->ID, 'dr_tutorial', $dr_tutorial );
+                wp_redirect( admin_url( 'edit-tags.php?taxonomy=listing_category&post_type=directory_listing' ) );
+                exit;
+            case "listing":
+                $dr_tutorial['listing'] = 1;
+                update_user_meta( $current_user->ID, 'dr_tutorial', $dr_tutorial );
+                wp_redirect( admin_url( 'edit.php?post_type=directory_listing' ) );
+                exit;
+        }
+    }
+
+
+    /**
+     * Quick "are we done yet" check for welcome page.
+     */
+    private function _getting_started_complete () {
+        global $current_user;
+        $dr_tutorial = get_user_meta( $current_user->ID, 'dr_tutorial', true );
+        $dr_tutorial = $dr_tutorial ? $dr_tutorial : array();
+
+        if ( isset( $dr_tutorial['settings'] ) && isset( $dr_tutorial['category'] ) && isset( $dr_tutorial['listing'] ) )
+            return true;
+        else
+            return false;
+    }
+
+
+
+
 
     /**
      * Load styles on plugin admin pages only.
@@ -141,7 +246,7 @@ class DR_Admin extends DR_Core {
 
 
         do_action( 'dr_handle_settings_page_requests' );
-            
+
     }
 
 	/**
@@ -404,7 +509,7 @@ class DR_Admin extends DR_Core {
             /* Update options by merging the old ones */
             $options = $this->get_options();
             $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_option( $this->options_name, $options );
+            update_option( $this->options_name, $options );          
         } else {
             die( __( 'Security check failed!', $this->text_domain ) );
         }

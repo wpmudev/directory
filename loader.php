@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Directory - Create full blown directory site.
-Version: 2.0.0 Beta 8.9
+Version: 2.0.0 Beta 9
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 164
@@ -46,8 +46,10 @@ include_once 'core/shortcodes.php';
 include_once 'core/payments.php';
 include_once 'core/ratings.php';
 
-if ( is_admin() )
-	include_once 'core/admin.php';
+if ( is_admin() ) {
+    include_once 'core/admin.php';
+	include_once 'core/tutorial.php';
+}
 
 // notice
 if ( !function_exists( 'wdp_un_check' ) ) {

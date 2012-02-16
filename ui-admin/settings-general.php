@@ -42,7 +42,7 @@ $options = $this->get_options('general_settings');
          <div class="postbox">
             <h3 class='hndle'><span><?php _e( 'Display Options', $this->text_domain ) ?></span></h3>
             <div class="inside">
-		        <table class="form-table">
+                <table class="form-table">
                     <tr>
                         <th>
                             <label for="count_cat"><?php _e( 'Count of category:', $this->text_domain ) ?></label>
@@ -76,14 +76,27 @@ $options = $this->get_options('general_settings');
                             <th>
                                 <?php _e( 'Display listing:', $this->text_domain ) ?>
                             </th>
-				            <td>
-					            <input type="checkbox" name="display_listing" id="display_listing" value="1" <?php echo ( isset( $options['display_listing'] ) && '1' == $options['display_listing'] ) ? 'checked' : ''; ?> />
+                            <td>
+                                <input type="checkbox" name="display_listing" id="display_listing" value="1" <?php echo ( isset( $options['display_listing'] ) && '1' == $options['display_listing'] ) ? 'checked' : ''; ?> />
                                 <label for="display_listing"><?php _e( 'add Listings to align blocks according to height while  sub-categories are lacking', $this->text_domain ) ?></label>
-				            </td>
-			            </tr>
+                            </td>
+                        </tr>
                         */
                     ?>
-		        </table>
+                </table>
+            </div>
+         </div>
+
+         <div class="postbox">
+            <h3 class='hndle'><span><?php _e( 'Getting started page', $this->text_domain ) ?></span></h3>
+            <div class="inside">
+                <label for="show_getting_started-yes"><?php _e( 'Show &quot;Getting started&quot; page even after all the steps are done:', $this->text_domain ) ?></label>
+                <input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php echo ( isset( $options['show_getting_started'] ) && '1' == $options['show_getting_started'] ) ? 'checked' : ''; ?>>
+                <label for="show_getting_started-yes"><?php _e( 'Yes', $this->text_domain ) ?></label>
+                <input type="radio" value="0" id="show_getting_started-no" name="show_getting_started" <?php echo ( !isset( $options['show_getting_started'] ) || '0' == $options['show_getting_started'] ) ? 'checked' : ''; ?>>
+                <label for="show_getting_started-no"><?php _e( 'No', $this->text_domain ) ?></label>
+                <br />
+                <span class="description"><?php _e( 'By default, "Getting started" page will be hidden once you completed all the steps. Use this option to make it control that behavior.', $this->text_domain ) ?></span>
             </div>
          </div>
 
