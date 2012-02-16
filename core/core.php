@@ -125,7 +125,7 @@ class DR_Core {
             'capabilities' => array( 'edit_posts' => 'edit_published_listings' ),
             'map_meta_cap' => true,
 
-            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
+            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', /*'custom-fields',*/ 'comments', 'revisions', /*'post-formats'*/ ),
 
             'labels' => array(
                 'name'          => __('Listings', $this->text_domain ),
