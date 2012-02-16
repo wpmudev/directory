@@ -28,7 +28,7 @@
 					<?php if ( isset( $dr_tutorial['settings'] ) && 1 == $dr_tutorial['settings'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&intent=settings" class="button"><?php _e( 'Configure your settings', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&dr_intent=settings" class="button"><?php _e( 'Configure your settings', $this->text_domain ); ?></a>
 				</li>
 				<li>
 					<?php if ( isset( $dr_tutorial['category'] ) && 1 == $dr_tutorial['category'] ) { ?>
@@ -38,7 +38,7 @@
 					<?php if ( isset( $dr_tutorial['category'] ) && 1 == $dr_tutorial['category'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&intent=category" class="button"><?php _e( 'Create Categories', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&dr_intent=category" class="button"><?php _e( 'Create Categories', $this->text_domain ); ?></a>
 				</li>
 				<li>
 					<?php if ( isset( $dr_tutorial['listing'] ) && 1 == $dr_tutorial['listing'] ) { ?>
@@ -48,7 +48,7 @@
 					<?php if ( isset( $dr_tutorial['listing'] ) && 1 == $dr_tutorial['listing'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&intent=listing" class="button"><?php _e( 'Create Listings', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&dr_intent=listing" class="button"><?php _e( 'Create Listings', $this->text_domain ); ?></a>
 				</li>
 			</ol>
 		</div>

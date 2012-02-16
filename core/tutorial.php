@@ -15,7 +15,7 @@ class DR_Tutorial {
      * PHP 5 constructor
      **/
     function __construct () {
-        if ( !class_exists( 'Pointer_Tutorial' ) ) require_once DR_PLUGIN_DIR . 'core/pointers_tutorial.php';
+        if ( !class_exists( 'Pointer_Tutorial' ) ) require_once DR_PLUGIN_DIR . 'libs/pointers_tutorial.php';
         $this->_setup_tutorial  = new Pointer_Tutorial( 'dr-setup', __( 'Setup tutorial', $this->text_domain ), false, false );
         $this->_category_tutorial   = new Pointer_Tutorial( 'dr-category', __( 'Category tutorial', $this->text_domain ), false, false );
         $this->_listing_tutorial = new Pointer_Tutorial( 'dr-listing', __( 'Listing tutorial', $this->text_domain ), false, false );

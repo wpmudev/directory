@@ -21,6 +21,9 @@ class DR_Admin extends DR_Core {
 
         add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
         add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
+
+        add_action( 'admin_print_scripts', array( &$this, 'js_print_scripts' ) );
+
         add_action( 'admin_init', array( &$this, 'welcome_first_time_user' ) );
         add_action( 'admin_init', array( &$this, 'handle_getting_started_redirects') );
 
@@ -97,7 +100,7 @@ class DR_Admin extends DR_Core {
         $opts = get_option( $this->options_name );
         if ( ( isset( $opts['general_settings']['show_getting_started'] ) && '1' == $opts['general_settings']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
             $menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
-            // Hook styles
+            // Hook styles           
             add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
         }
 
@@ -164,8 +167,8 @@ class DR_Admin extends DR_Core {
         $dr_tutorial = get_user_meta( $current_user->ID, 'dr_tutorial', true );
         $dr_tutorial = $dr_tutorial ? $dr_tutorial : array();
 
-        $intent = isset( $_GET['intent'] ) ? $_GET['intent'] : false ;
-        switch ( $intent ) {
+        $dr_intent = isset( $_GET['dr_intent'] ) ? $_GET['dr_intent'] : false ;
+        switch ( $dr_intent ) {
             case "settings":
                 $dr_tutorial['settings'] = 1;
                 update_user_meta( $current_user->ID, 'dr_tutorial', $dr_tutorial );
@@ -223,6 +226,25 @@ class DR_Admin extends DR_Core {
                             $this->plugin_url . 'ui-admin/js/ui-scripts.js',
                             array( 'jquery' ) );
     }
+
+
+    /**
+     * Inject basic javascript dataset, for consistency.
+     */
+    function js_print_scripts () {
+        if ( isset( $_GET['post_type'] ) &&  'directory_listing' == $_GET['post_type'] ) {
+            wp_enqueue_script( 'dr_editor', $this->plugin_url . 'ui-admin/js/admin.js', array('jquery') );
+        }
+        printf(
+            '<script type="text/javascript">
+                var _dr_data = {
+                    "root_url": "%s",
+                };
+            </script>',
+            $this->plugin_url
+        );
+    }
+
 
     /**
      * Handles $_GET and $_POST requests for the settings page.
@@ -509,7 +531,7 @@ class DR_Admin extends DR_Core {
             /* Update options by merging the old ones */
             $options = $this->get_options();
             $options = array_merge( $options, array( $params['key'] => $params ) );
-            update_option( $this->options_name, $options );          
+            update_option( $this->options_name, $options );
         } else {
             die( __( 'Security check failed!', $this->text_domain ) );
         }
