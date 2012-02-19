@@ -442,7 +442,8 @@ class DR_Core {
      */
     function plugin_deactivate() {
 		// if true all plugin data will be deleted
-        if ( true ) {
+        //TODO: do it when unistall plugin.
+        if ( false ) {
             delete_option( $this->options_name );
             delete_site_option( $this->options_name );
         }

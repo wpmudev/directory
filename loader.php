@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Directory
-Plugin URI: http://premium.wpmudev.org/project/directory
+Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.0.0 Beta 9.1
+Version: 2.0.1
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 164
@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.0.0' );
+define( 'DR_VERSION', '2.0.1' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', WP_PLUGIN_URL . '/' . str_replace( basename(__FILE__), '', plugin_basename(__FILE__) ));
 // define the plugin folder dir

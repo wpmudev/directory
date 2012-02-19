@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 16:30+0200\n"
+"POT-Creation-Date: 2012-02-19 17:03+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -13,53 +13,144 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: /directory\n"
 
-#: /directory/loader.php:60
+#: /directory/loader.php:61
 msgid "Please install the latest version of <a href=\"http://premium.wpmudev.org/project/update-notifications/\" title=\"Download Now &raquo;\">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">More information &raquo;</a>"
 msgstr ""
 
-#: /directory/loader.php:75
+#: /directory/loader.php:76
 msgid "<b>The Directory plugin</b><br /><b>Notice:</b> We found that you've used an older version of the plugin. To use the new version of the plugin, we recommend you  to make <b>Backup of your Database</b> and then click on <b>'Transition to new version'.</b> All your data will be migrated to the new version.<br /> If you were using the included Directory theme, you will need to <b>reactivate</b> it after the transition is complete."
 msgstr ""
 
-#: /directory/core/admin.php:46
+#: /directory/core/admin.php:49
 msgid "View listings."
 msgstr ""
 
-#: /directory/core/admin.php:47
+#: /directory/core/admin.php:50
 msgid "Add listings."
 msgstr ""
 
-#: /directory/core/admin.php:48
+#: /directory/core/admin.php:51
 msgid "Edit listings."
 msgstr ""
 
-#: /directory/core/admin.php:49
+#: /directory/core/admin.php:52
 msgid "Delete listings."
 msgstr ""
 
-#: /directory/core/admin.php:50
+#: /directory/core/admin.php:53
 msgid "Edit others' listings."
 msgstr ""
 
-#: /directory/core/admin.php:51
+#: /directory/core/admin.php:54
 msgid "Delete others' listings."
 msgstr ""
 
-#: /directory/core/admin.php:99
+#: /directory/core/admin.php:102
 msgid "Getting Started"
 msgstr ""
 
-#: /directory/core/admin.php:104
+#: /directory/core/admin.php:107
 msgid "Settings"
 msgstr ""
 
-#: /directory/core/admin.php:514
+#: /directory/core/admin.php:540
 msgid "Security check failed!"
 msgstr ""
 
+#: /directory/core/contextual_help.php:38
+msgid "Directory"
+msgstr ""
+
+#: /directory/core/contextual_help.php:40
+#: /directory/core/contextual_help.php:75
+#: /directory/core/contextual_help.php:111
+#: /directory/core/contextual_help.php:147
+#: /directory/core/contextual_help.php:185
+msgid "The Directory plugin transforming your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways."
+msgstr ""
+
+#: /directory/core/contextual_help.php:43
+msgid "Project page"
+msgstr ""
+
+#: /directory/core/contextual_help.php:44
+msgid "Installation and instructions page"
+msgstr ""
+
+#: /directory/core/contextual_help.php:45
+msgid "Support forum"
+msgstr ""
+
+#: /directory/core/contextual_help.php:68
+#: /directory/core/contextual_help.php:104
+#: /directory/core/contextual_help.php:140
+#: /directory/core/contextual_help.php:178
+msgid "Intro"
+msgstr ""
+
+#: /directory/core/contextual_help.php:69
+msgid "All existing listings are listed here."
+msgstr ""
+
+#: /directory/core/contextual_help.php:73
+#: /directory/core/contextual_help.php:109
+#: /directory/core/contextual_help.php:145
+#: /directory/core/contextual_help.php:183
+msgid "General Info"
+msgstr ""
+
+#: /directory/core/contextual_help.php:77
+#: /directory/core/contextual_help.php:113
+#: /directory/core/contextual_help.php:149
+#: /directory/core/contextual_help.php:187
+msgid "You can make your site available free to create lists, or to charge money for it."
+msgstr ""
+
+#: /directory/core/contextual_help.php:79
+#: /directory/core/contextual_help.php:115
+#: /directory/core/contextual_help.php:151
+#: /directory/core/contextual_help.php:189
+#, php-format
+msgid "Get up and running quickly with the <a href=\"%s\">Getting Started Guide</a>"
+msgstr ""
+
+#: /directory/core/contextual_help.php:85
+#: /directory/core/contextual_help.php:121
+#: /directory/core/contextual_help.php:157
+#: /directory/core/contextual_help.php:195
+#: /directory/libs/pointers_tutorial.php:134
+msgid "Tutorial"
+msgstr ""
+
+#: /directory/core/contextual_help.php:88
+#: /directory/core/contextual_help.php:124
+#: /directory/core/contextual_help.php:160
+#: /directory/core/contextual_help.php:198
+msgid "Tutorial dialogs will guide you through the important bits."
+msgstr ""
+
+#: /directory/core/contextual_help.php:90
+#: /directory/core/contextual_help.php:126
+#: /directory/core/contextual_help.php:162
+#: /directory/core/contextual_help.php:200
+msgid "Restart the tutorial"
+msgstr ""
+
+#: /directory/core/contextual_help.php:105
+msgid "This is where you can edit or create a listing."
+msgstr ""
+
+#: /directory/core/contextual_help.php:141
+msgid "This is the guide to get you started with <b>Directory</b> plugin"
+msgstr ""
+
+#: /directory/core/contextual_help.php:179
+msgid "This is where you configure <b>Directory</b> plugin for your site"
+msgstr ""
+
 #: /directory/core/core.php:130
-#: /directory/core/core.php:1028
-#: /directory/core/tutorial.php:178
+#: /directory/core/core.php:1029
+#: /directory/core/tutorial.php:176
 msgid "Listings"
 msgstr ""
 
@@ -195,80 +286,80 @@ msgstr ""
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: /directory/core/core.php:509
+#: /directory/core/core.php:510
 msgid "Advartise Here"
 msgstr ""
 
-#: /directory/core/core.php:756
+#: /directory/core/core.php:757
 msgid "Pages:"
 msgstr ""
 
-#: /directory/core/core.php:764
+#: /directory/core/core.php:765
 msgid "No Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:764
+#: /directory/core/core.php:765
 msgid "1 Review &#187;"
 msgstr ""
 
-#: /directory/core/core.php:764
+#: /directory/core/core.php:765
 msgid "% Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:767
+#: /directory/core/core.php:768
 msgid "Tags: "
 msgstr ""
 
-#: /directory/core/core.php:770
+#: /directory/core/core.php:771
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: /directory/core/core.php:786
+#: /directory/core/core.php:787
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: /directory/core/core.php:920
+#: /directory/core/core.php:921
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:925
+#: /directory/core/core.php:926
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:932
+#: /directory/core/core.php:933
 msgid "Leave a review"
 msgstr ""
 
-#: /directory/core/core.php:932
+#: /directory/core/core.php:933
 msgid "1 Review"
 msgstr ""
 
-#: /directory/core/core.php:932
+#: /directory/core/core.php:933
 msgid "% Reviews"
 msgstr ""
 
-#: /directory/core/core.php:932
+#: /directory/core/core.php:933
 msgid "Reviews Off"
 msgstr ""
 
-#: /directory/core/core.php:944
+#: /directory/core/core.php:945
 msgid "No Products"
 msgstr ""
 
-#: /directory/core/core.php:957
+#: /directory/core/core.php:958
 msgid "More Info &raquo;"
 msgstr ""
 
-#: /directory/core/core.php:1019
+#: /directory/core/core.php:1020
 #, php-format
 msgid "Listing Category: %s"
 msgstr ""
 
-#: /directory/core/core.php:1022
+#: /directory/core/core.php:1023
 #, php-format
 msgid "Listing Tag: %s"
 msgstr ""
@@ -278,34 +369,6 @@ msgstr ""
 #: /directory/core/payments.php:448
 #: /directory/core/payments.php:506
 msgid "Login incorrect!"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:134
-msgid "Tutorial"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:421
-msgid "Next &raquo;"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:436
-#: /directory/core/pointers_tutorial.php:458
-msgid "Dismiss"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:437
-#: /directory/core/pointers_tutorial.php:459
-#, php-format
-msgid "Dismiss %s"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:443
-msgid "&laquo; Previous"
-msgstr ""
-
-#: /directory/core/pointers_tutorial.php:498
-#, php-format
-msgid "%s: Step %d of %d"
 msgstr ""
 
 #: /directory/core/ratings.php:194
@@ -381,56 +444,80 @@ msgstr ""
 msgid "Listing tutorial"
 msgstr ""
 
-#: /directory/core/tutorial.php:100
+#: /directory/core/tutorial.php:98
 msgid "General tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:102
+#: /directory/core/tutorial.php:100
 msgid "Here you can set some settings as redirection, display options."
 msgstr ""
 
-#: /directory/core/tutorial.php:112
+#: /directory/core/tutorial.php:110
 msgid "Capabilities tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:114
+#: /directory/core/tutorial.php:112
 msgid "Here you can change capabilities (edit, view, delete etc.) of listings for user's roles."
 msgstr ""
 
-#: /directory/core/tutorial.php:124
+#: /directory/core/tutorial.php:122
 msgid "Payments tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:126
+#: /directory/core/tutorial.php:124
 msgid "Here you can set price and settings for Recurring and One-time payments and to change Terms of Service."
 msgstr ""
 
-#: /directory/core/tutorial.php:136
+#: /directory/core/tutorial.php:134
 msgid "Payments Type tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:138
+#: /directory/core/tutorial.php:136
 msgid "Here you can set settings for payments gateways or set \"Free listings\" mode."
 msgstr ""
 
-#: /directory/core/tutorial.php:148
+#: /directory/core/tutorial.php:146
 msgid "Shortcodes tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:150
+#: /directory/core/tutorial.php:148
 msgid "Here you can find useful Sortcodes for expansion opportunities."
 msgstr ""
 
-#: /directory/core/tutorial.php:163
+#: /directory/core/tutorial.php:161
 msgid "Categories"
 msgstr ""
 
-#: /directory/core/tutorial.php:165
+#: /directory/core/tutorial.php:163
 msgid "Here you can create new listing category or edit already exist."
 msgstr ""
 
-#: /directory/core/tutorial.php:180
+#: /directory/core/tutorial.php:178
 msgid "Here you can create your own listings or edit already exist."
+msgstr ""
+
+#: /directory/libs/pointers_tutorial.php:421
+msgid "Next &raquo;"
+msgstr ""
+
+#: /directory/libs/pointers_tutorial.php:436
+#: /directory/libs/pointers_tutorial.php:458
+msgid "Dismiss"
+msgstr ""
+
+#: /directory/libs/pointers_tutorial.php:437
+#: /directory/libs/pointers_tutorial.php:459
+#, php-format
+msgid "Dismiss %s"
+msgstr ""
+
+#: /directory/libs/pointers_tutorial.php:443
+msgid "&laquo; Previous"
+msgstr ""
+
+#: /directory/libs/pointers_tutorial.php:498
+#, php-format
+msgid "%s: Step %d of %d"
 msgstr ""
 
 #: /directory/themes/default/comments.php:10
@@ -797,14 +884,6 @@ msgstr ""
 msgid "Welcome to the <b>Directory</b> Getting Started Guide."
 msgstr ""
 
-#: /directory/ui-admin/getting-started.php:17
-msgid "The Directory plugin transforming your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways."
-msgstr ""
-
-#: /directory/ui-admin/getting-started.php:19
-msgid "You can make your site available free to create lists, or to charge money for it."
-msgstr ""
-
 #: /directory/ui-admin/getting-started.php:27
 msgid "First up, you need to configure your settings. This is where you can set the payment type, price and other settings."
 msgstr ""
@@ -837,16 +916,8 @@ msgstr ""
 msgid "Plugin project page"
 msgstr ""
 
-#: /directory/ui-admin/getting-started.php:64
-msgid "Installation and instructions page"
-msgstr ""
-
 #: /directory/ui-admin/getting-started.php:65
 msgid "Video tutorial"
-msgstr ""
-
-#: /directory/ui-admin/getting-started.php:66
-msgid "Support forum"
 msgstr ""
 
 #: /directory/ui-admin/message.php:3

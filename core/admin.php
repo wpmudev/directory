@@ -100,7 +100,7 @@ class DR_Admin extends DR_Core {
         $opts = get_option( $this->options_name );
         if ( ( isset( $opts['general_settings']['show_getting_started'] ) && '1' == $opts['general_settings']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
             $menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
-            // Hook styles           
+            // Hook styles
             add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
         }
 
@@ -151,6 +151,10 @@ class DR_Admin extends DR_Core {
 
         $opts = get_option( $this->options_name );
         if ( isset( $opts['general_settings']['welcome_redirect'] ) and !$opts['general_settings']['welcome_redirect'] ) return false; // Not a first time user, move on.
+
+        //if old version < 2
+        if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) )
+            return false;
 
         $opts['general_settings']['welcome_redirect'] = false;
         update_option( $this->options_name, $opts );
