@@ -27,6 +27,7 @@ class DR_Core {
      * Constructor.
      */
     function DR_Core() {
+
         register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
         register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
 
@@ -59,6 +60,8 @@ class DR_Core {
         //hide some menu pages
         add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
     }
+
+
 
     /**
      * Hide some menu pages
@@ -159,10 +162,6 @@ class DR_Core {
 			)
 		) );
 
-        //rewrite rules for tags
-        $wp_rewrite->add_rule( 'listings-tag/([^/]+)/', '?listing_tag=$matches[1]', 'top' );
-
-
 		register_taxonomy( 'listing_category', 'directory_listing', array(
 			'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
             'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
@@ -182,9 +181,6 @@ class DR_Core {
 				'add_or_remove_items'	=> __( 'Add or remove listing categories', $this->text_domain ),
 			)
 		) );
-
-        //rewrite rules for categories
-        $wp_rewrite->add_rule( 'listings-category/([^/]+)/', '?listing_category=$matches[1]', 'top' );
 
         //import data from old plugin version
         $this->import_from_old();
