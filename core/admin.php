@@ -256,7 +256,7 @@ class DR_Admin extends DR_Core {
      * @return void
      */
     function handle_settings_page_requests() {
-        $valid_tabs = array( 'general', 'capabilities', 'ads', 'payments', 'payments-type', 'shortcodes' );
+        $valid_tabs = array( 'general', 'capabilities', 'ads', 'payments', 'payments-type', 'affiliate', 'shortcodes' );
 
         if ( isset( $_GET['tab'] ) && in_array( $_GET['tab'], $valid_tabs ) ) {
             if ( isset( $_POST['save'] ) ) {
@@ -363,7 +363,7 @@ class DR_Admin extends DR_Core {
 	 */
 	 function ajax_directory_ipn() {
         // debug mode for IPN script (please open plugin dir (directory) for writing)
-        $debug_ipn = 1;
+        $debug_ipn = 0;
         if ( 1 == $debug_ipn ) {
             $File = $this->plugin_dir ."debug_ipn.log";
             $Handle = fopen( $File, 'a+' );
@@ -461,6 +461,10 @@ class DR_Admin extends DR_Core {
                 wp_update_user( array(  'ID'    => $user_id,
                                         'role'  => "directory_member_paid" ) );
 
+                //for affiliate subscription
+                $affiliate_settings = $this->get_options( 'affiliate_settings' );
+                do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, 'recurring' );
+                
             } elseif ( "subscr_cancel" == $_POST['txn_type'] ||
                        "subscr_failed" == $_POST['txn_type'] ||
                        "subscr_eot" == $_POST['txn_type'] ) {

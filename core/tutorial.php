@@ -29,6 +29,7 @@ class DR_Tutorial {
         'capabilities',
         'payments',
         'payments_type',
+        'affiliate',
         'shortcodes',
     );
 
@@ -146,6 +147,18 @@ class DR_Tutorial {
             __( 'Shortcodes tab', $this->text_domain ),
             array(
                 'content' => '<p>' . esc_js( __( 'Here you can find useful Sortcodes for expansion opportunities.', $this->text_domain ) ) . '</p>',
+                'position' => array( 'edge' => 'top', 'align' => 'left' ),
+            )
+        );
+    }
+
+    function add_affiliate_step () {
+        $this->_setup_tutorial->add_step(
+            admin_url( 'edit.php?post_type=directory_listing&page=settings' ), 'directory_listing_page_settings',
+            '#dr-settings_affiliate',
+            __( 'Shortcodes tab', $this->text_domain ),
+            array(
+                'content' => '<p>' . esc_js( __( 'Here you can set reward for your affiliates.', $this->text_domain ) ) . '</p>',
                 'position' => array( 'edge' => 'top', 'align' => 'left' ),
             )
         );

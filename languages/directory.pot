@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-19 17:03+0200\n"
+"POT-Creation-Date: 2012-02-22 16:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: /directory/core/admin.php:540
+#: /directory/core/admin.php:544
 msgid "Security check failed!"
 msgstr ""
 
@@ -148,226 +148,226 @@ msgstr ""
 msgid "This is where you configure <b>Directory</b> plugin for your site"
 msgstr ""
 
-#: /directory/core/core.php:130
-#: /directory/core/core.php:1029
-#: /directory/core/tutorial.php:176
+#: /directory/core/core.php:133
+#: /directory/core/core.php:1025
+#: /directory/core/tutorial.php:189
 msgid "Listings"
 msgstr ""
 
-#: /directory/core/core.php:131
+#: /directory/core/core.php:134
 msgid "Listing"
 msgstr ""
 
-#: /directory/core/core.php:132
+#: /directory/core/core.php:135
 msgid "Add New"
 msgstr ""
 
-#: /directory/core/core.php:133
+#: /directory/core/core.php:136
 msgid "Add New Listing"
 msgstr ""
 
-#: /directory/core/core.php:134
+#: /directory/core/core.php:137
 msgid "Edit Listing"
 msgstr ""
 
-#: /directory/core/core.php:135
+#: /directory/core/core.php:138
 msgid "New Listing"
 msgstr ""
 
-#: /directory/core/core.php:136
+#: /directory/core/core.php:139
 msgid "View Listing"
 msgstr ""
 
-#: /directory/core/core.php:137
+#: /directory/core/core.php:140
 msgid "Search Listings"
 msgstr ""
 
-#: /directory/core/core.php:138
+#: /directory/core/core.php:141
 msgid "No listings found"
 msgstr ""
 
-#: /directory/core/core.php:139
+#: /directory/core/core.php:142
 msgid "No listings found in trash"
 msgstr ""
 
-#: /directory/core/core.php:147
+#: /directory/core/core.php:150
 msgid "Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:148
+#: /directory/core/core.php:151
 msgid "Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:149
+#: /directory/core/core.php:152
 msgid "Search Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:150
+#: /directory/core/core.php:153
 msgid "Popular Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:151
+#: /directory/core/core.php:154
 msgid "All Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:152
+#: /directory/core/core.php:155
 msgid "Edit Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:153
+#: /directory/core/core.php:156
 msgid "Update Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:154
+#: /directory/core/core.php:157
 msgid "Add New Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:155
+#: /directory/core/core.php:158
 msgid "New Listing Tag Name"
 msgstr ""
 
-#: /directory/core/core.php:156
+#: /directory/core/core.php:159
 msgid "Separate listing tags with commas"
 msgstr ""
 
-#: /directory/core/core.php:157
+#: /directory/core/core.php:160
 msgid "Add or remove listing tags"
 msgstr ""
 
-#: /directory/core/core.php:158
+#: /directory/core/core.php:161
 msgid "Choose from the most used listing tags"
 msgstr ""
 
-#: /directory/core/core.php:171
+#: /directory/core/core.php:170
 msgid "Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:172
+#: /directory/core/core.php:171
 msgid "Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:173
+#: /directory/core/core.php:172
 msgid "Search Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:174
+#: /directory/core/core.php:173
 msgid "Popular Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:175
+#: /directory/core/core.php:174
 msgid "All Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:176
+#: /directory/core/core.php:175
 msgid "Parent Category"
 msgstr ""
 
-#: /directory/core/core.php:177
+#: /directory/core/core.php:176
 msgid "Edit Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:178
+#: /directory/core/core.php:177
 msgid "Update Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:179
+#: /directory/core/core.php:178
 msgid "Add New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:180
+#: /directory/core/core.php:179
 msgid "New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:181
+#: /directory/core/core.php:180
 msgid "Parent Category:"
 msgstr ""
 
-#: /directory/core/core.php:182
+#: /directory/core/core.php:181
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: /directory/core/core.php:510
+#: /directory/core/core.php:506
 msgid "Advartise Here"
 msgstr ""
 
-#: /directory/core/core.php:757
+#: /directory/core/core.php:753
 msgid "Pages:"
 msgstr ""
 
-#: /directory/core/core.php:765
+#: /directory/core/core.php:761
 msgid "No Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:765
+#: /directory/core/core.php:761
 msgid "1 Review &#187;"
 msgstr ""
 
-#: /directory/core/core.php:765
+#: /directory/core/core.php:761
 msgid "% Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:768
+#: /directory/core/core.php:764
 msgid "Tags: "
 msgstr ""
 
-#: /directory/core/core.php:771
+#: /directory/core/core.php:767
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: /directory/core/core.php:787
+#: /directory/core/core.php:783
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: /directory/core/core.php:921
+#: /directory/core/core.php:917
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:926
+#: /directory/core/core.php:922
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:933
+#: /directory/core/core.php:929
 msgid "Leave a review"
 msgstr ""
 
-#: /directory/core/core.php:933
+#: /directory/core/core.php:929
 msgid "1 Review"
 msgstr ""
 
-#: /directory/core/core.php:933
+#: /directory/core/core.php:929
 msgid "% Reviews"
 msgstr ""
 
-#: /directory/core/core.php:933
+#: /directory/core/core.php:929
 msgid "Reviews Off"
 msgstr ""
 
-#: /directory/core/core.php:945
+#: /directory/core/core.php:941
 msgid "No Products"
 msgstr ""
 
-#: /directory/core/core.php:958
+#: /directory/core/core.php:954
 msgid "More Info &raquo;"
 msgstr ""
 
-#: /directory/core/core.php:1020
+#: /directory/core/core.php:1016
 #, php-format
 msgid "Listing Category: %s"
 msgstr ""
 
-#: /directory/core/core.php:1023
+#: /directory/core/core.php:1019
 #, php-format
 msgid "Listing Tag: %s"
 msgstr ""
 
-#: /directory/core/payments.php:242
-#: /directory/core/payments.php:365
-#: /directory/core/payments.php:448
-#: /directory/core/payments.php:506
+#: /directory/core/payments.php:247
+#: /directory/core/payments.php:370
+#: /directory/core/payments.php:453
+#: /directory/core/payments.php:511
 msgid "Login incorrect!"
 msgstr ""
 
@@ -444,55 +444,60 @@ msgstr ""
 msgid "Listing tutorial"
 msgstr ""
 
-#: /directory/core/tutorial.php:98
+#: /directory/core/tutorial.php:99
 msgid "General tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:100
+#: /directory/core/tutorial.php:101
 msgid "Here you can set some settings as redirection, display options."
 msgstr ""
 
-#: /directory/core/tutorial.php:110
+#: /directory/core/tutorial.php:111
 msgid "Capabilities tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:112
+#: /directory/core/tutorial.php:113
 msgid "Here you can change capabilities (edit, view, delete etc.) of listings for user's roles."
 msgstr ""
 
-#: /directory/core/tutorial.php:122
+#: /directory/core/tutorial.php:123
 msgid "Payments tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:124
+#: /directory/core/tutorial.php:125
 msgid "Here you can set price and settings for Recurring and One-time payments and to change Terms of Service."
 msgstr ""
 
-#: /directory/core/tutorial.php:134
+#: /directory/core/tutorial.php:135
 msgid "Payments Type tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:136
+#: /directory/core/tutorial.php:137
 msgid "Here you can set settings for payments gateways or set \"Free listings\" mode."
 msgstr ""
 
-#: /directory/core/tutorial.php:146
+#: /directory/core/tutorial.php:147
+#: /directory/core/tutorial.php:159
 msgid "Shortcodes tab"
 msgstr ""
 
-#: /directory/core/tutorial.php:148
+#: /directory/core/tutorial.php:149
 msgid "Here you can find useful Sortcodes for expansion opportunities."
 msgstr ""
 
 #: /directory/core/tutorial.php:161
+msgid "Here you can set reward for your affiliates."
+msgstr ""
+
+#: /directory/core/tutorial.php:174
 msgid "Categories"
 msgstr ""
 
-#: /directory/core/tutorial.php:163
+#: /directory/core/tutorial.php:176
 msgid "Here you can create new listing category or edit already exist."
 msgstr ""
 
-#: /directory/core/tutorial.php:178
+#: /directory/core/tutorial.php:191
 msgid "Here you can create your own listings or edit already exist."
 msgstr ""
 
@@ -948,6 +953,11 @@ msgid "Payments Type"
 msgstr ""
 
 #: /directory/ui-admin/navigation.php:14
+#: /directory/ui-admin/settings-affiliate.php:26
+msgid "Affiliate"
+msgstr ""
+
+#: /directory/ui-admin/navigation.php:15
 #: /directory/ui-admin/settings-shortcodes.php:8
 #: /directory/ui-admin/settings-shortcodes.php:11
 msgid "Shortcodes"
@@ -963,6 +973,43 @@ msgstr ""
 
 #: /directory/ui-admin/settings-ads.php:24
 msgid "Place ad code here!"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:4
+msgid "Affiliate payment credited for signed member (recurring payments):"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:5
+msgid "Affiliate payment credited for permanent member (one-time payments):"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:21
+msgid "Affiliate settings"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:30
+msgid "This feature will be available only after installation the <b>Affiliate plugin</b>  and activation the <b>Directory add-on</b> there."
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:32
+#, php-format
+msgid "More information about the Affiliate plugin you can get <a href=\"%s\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:35
+msgid "Please activate:"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:37
+msgid "1. The <b>Affiliate plugin</b>"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:38
+msgid " - <i>Completed</i>"
+msgstr ""
+
+#: /directory/ui-admin/settings-affiliate.php:40
+msgid "2. The <b>Directory add-on</b> in the Affiliate plugin"
 msgstr ""
 
 #: /directory/ui-admin/settings-capabilities.php:13

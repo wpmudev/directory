@@ -132,6 +132,11 @@ class DR_Payments extends DR_Core {
             // If user account created successfully, proceed
             if ( !empty( $user_id ) ) {
 
+                //for affiliate subscription
+                if ( 'directory_member_paid' == $role ) {
+                    $affiliate_settings = $this->get_options( 'affiliate_settings' );
+                    do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, 'one_time' );
+                }
                 // Set payment details ( transaction ID's and recurring payment profile ID )
                 $this->update_user_payment_details( $user_id, $billing_type, $transaction_details );
 

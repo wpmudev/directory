@@ -11,6 +11,7 @@
     <?php endif; ?>
     <a id="dr-settings_payments" class="nav-tab <?php if ( $tab == 'payments' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'payments' ); ?>"><?php _e( 'Payments', $this->text_domain ); ?></a>
     <a id="dr-settings_payments_type" class="nav-tab <?php if ( $tab == 'payments-type' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'payments-type' ); ?>"><?php _e( 'Payments Type', $this->text_domain ); ?></a>
+    <a id="dr-settings_affiliate" class="nav-tab <?php if ( $tab == 'affiliate' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'affiliate' ); ?>"><?php _e( 'Affiliate', $this->text_domain ); ?></a>
 	<a id="dr-settings_shortcodes" class="nav-tab <?php if ( $tab == 'shortcodes' ) echo 'nav-tab-active'; ?>" href="<?php printf( '%s&page=%s&tab=%s', $href_part, $page, 'shortcodes' ); ?>"><?php _e( 'Shortcodes', $this->text_domain ); ?></a>
 <?php endif; ?>
 
