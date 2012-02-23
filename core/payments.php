@@ -365,6 +365,7 @@ class DR_Payments extends DR_Core {
                     $details['city']            = $_POST['city'];
                     $details['state']           = $_POST['state'];
                     $details['zip']             = $_POST['zip'];
+                    $details['country_code']    = $_POST['country_code'];
                     $details['login']           = $_POST['login'];
                     $details['user_email']      = $_POST['user_email'];
                     $details['confirm_error']   = __( 'Login incorrect!', $text_domain );
@@ -406,13 +407,24 @@ class DR_Payments extends DR_Core {
                         set_query_var( 'checkout_step', 'success' );
 
                     } else {
-                        // Set the proper step which will be loaded by "page-checkout.php"
-                        set_query_var( 'checkout_step', 'api_call_error' );
+
+                        $details['email']           = $_POST['email'];
+                        $details['first_name']      = $_POST['first_name'];
+                        $details['last_name']       = $_POST['last_name'];
+                        $details['street']          = $_POST['street'];
+                        $details['city']            = $_POST['city'];
+                        $details['state']           = $_POST['state'];
+                        $details['zip']             = $_POST['zip'];
+                        $details['country_code']    = $_POST['country_code'];
+                        $details['login']           = $_POST['login'];
+                        $details['user_email']      = $_POST['user_email'];
+
+                        set_query_var( 'details', $details );
+                        set_query_var( 'checkout_step', 'cc_details' );
+
                         // Pass error params to "page-checkout.php"
                         set_query_var( 'checkout_error', $result );
 
-                        // Destroys the $_SESSION
-                        $this->destroy_session();
                     }
                 }
             }

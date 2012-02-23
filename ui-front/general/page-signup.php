@@ -37,17 +37,27 @@ $error       = get_query_var('checkout_error');
 	</h2>
     <div class="entry-content">
 
+    <?php $error = get_query_var('checkout_error'); ?>
+
+
+    <ul id="error_msg_box">
+        <?php if ( $error ): ?>
+        <li><?php echo $error['error_long_msg']; ?></li>
+        <?php endif; ?>
+    </ul>
+
 
         <script language="JavaScript">
             jQuery( document ).ready( function() {
 
-                var errorLogin = 0;
-                var errorEmail = 0;
+                var errorLogin  = 0;
+                var errorEmail  = 0;
+                var regEmail    = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
                 jQuery( "#login" ).blur( function () {
                     var login = jQuery( "#login" ).val();
                     if ( "" != login ) {
-                        jQuery( "#status_login" ).css( "color", "black" );
+                        jQuery( "#status_login" ).attr( "class", "field_checking" );
                         jQuery( "#status_login" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
                         jQuery( "#status_login" ).show( 400 );
 
@@ -59,13 +69,13 @@ $error       = get_query_var('checkout_error');
                                 if ( "yes" == html ) {
                                     errorLogin = 1;
                                     jQuery( "#login_error td" ).attr( "class", "error" );
-                                    jQuery( "#status_login" ).css( "color", "red" );
+                                    jQuery( "#status_login" ).attr( "class", "field_exists" );
                                     jQuery( "#status_login" ).html( "<?php _e( 'Exists!', $text_domain ); ?>" );
 
                                 } else {
                                     errorLogin =0;
                                     jQuery( "#login_error td" ).attr( "class", "" );
-                                    jQuery( "#status_login" ).css( "color", "green" );
+                                    jQuery( "#status_login" ).attr( "class", "field_available" );
                                     jQuery( "#status_login" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
                                 }
                             }
@@ -77,8 +87,8 @@ $error       = get_query_var('checkout_error');
 
                 jQuery( "#email" ).blur( function () {
                     var email = jQuery( "#email" ).val();
-                    if ( "" != email ) {
-                        jQuery( "#status_email" ).css( "color", "black" );
+                    if ( "" != email && false != regEmail.test( jQuery( "#email" ).val() ) ) {
+                        jQuery( "#status_email" ).attr( "class", "field_checking" );
                         jQuery( "#status_email" ).html( "<?php _e( 'Checking...', $text_domain ); ?>" );
                         jQuery( "#status_email" ).show( 400 );
 
@@ -90,67 +100,162 @@ $error       = get_query_var('checkout_error');
                                 if ( "yes" == html ) {
                                     errorEmail = 1;
                                     jQuery( "#email_error td" ).attr( "class", "error" );
-                                    jQuery( "#status_email" ).css( "color", "red" );
+                                    jQuery( "#status_email" ).attr( "class", "field_exists" );
                                     jQuery( "#status_email" ).html( "<?php _e( 'Exists!', $text_domain ); ?>" );
 
                                 } else {
                                     errorEmail =0;
                                     jQuery( "#email_error td" ).attr( "class", "" );
-                                    jQuery( "#status_email" ).css( "color", "green" );
+                                    jQuery( "#status_email" ).attr( "class", "field_available" );
                                     jQuery( "#status_email" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
 
                                 }
                             }
                         });
+                    } else {
+                        jQuery( "#status_email" ).html( "" );
                     }
 
                 });
                 jQuery( "#email" ).blur();
 
+
                 jQuery( "#confirm_payment" ).submit( function () {
-                    var pass = jQuery( "#password" ).val();
-                    var cpass = jQuery( "#cpassword" ).val();
+                    var pass        = jQuery( "#password" ).val();
+                    var cpass       = jQuery( "#cpassword" ).val();
+                    var errorMsg    = '';
+                    var valid       = true;
+
+                    //
+                    jQuery( ".error" ).attr( "class", "" );
 
 
+
+                    <?php if ( $step == 'cc_details' ): ?>
+                    /*  CC validation*/
+                    if ( "" == jQuery( "#cc_email" ).val() ) {
+                        jQuery( "#cc_email" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the email!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( false == regEmail.test( jQuery( "#cc_email" ).val() ) ) {
+                        jQuery( "#cc_email" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Invalid Email Address', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#first-name" ).val() ) {
+                        jQuery( "#first-name" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the first name!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#last-name" ).val() ) {
+                        jQuery( "#last-name" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the last name!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#street" ).val() ) {
+                        jQuery( "#street" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the street!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#city" ).val() ) {
+                        jQuery( "#city" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the city!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#state" ).val() ) {
+                        jQuery( "#state" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the state!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if ( "" == jQuery( "#zip" ).val() ) {
+                        jQuery( "#zip" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the ZIP!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if (  "" == jQuery( "#country" ).val() || "-" == jQuery( "#country" ).val() ) {
+                        jQuery( "#country" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please select the country!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if (  "" == jQuery( "#cc_number" ).val() ) {
+                        jQuery( "#cc_number" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the card number!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    if (  "" == jQuery( "#cvv2" ).val() ) {
+                        jQuery( "#cvv2" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the CVV2!', $text_domain ); ?></li>';
+                        valid = false;
+                    }
+
+                    /* END CC validation*/
+                    <?php endif; ?>
+
+
+
+                    /* Registration Details validation*/
                     if ( "" == jQuery( "#login" ).val() ) {
-                        alert("<?php _e( 'Please write the login!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#login" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the login!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
                     if ( 1 == errorLogin ) {
-                        alert("<?php _e( 'The login already exist!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#login" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'The login already exist!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
                     if ( "" == pass ) {
-                        alert("<?php _e( 'Please write the password!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#password" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the password!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
                     if ( "" == cpass ) {
-                        alert("<?php _e( 'Please confirm the password!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#cpassword" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please confirm the password!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
                     if ( pass != cpass ) {
-                        alert("<?php _e( 'The confirm password is incorrect!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#password" ).parent().parent().attr( "class", "error" );
+                        jQuery( "#cpassword" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'The confirm password is incorrect!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
 
-                    if ( "" == jQuery( "#email" ).val() ) {
-                        alert("<?php _e( 'Please write the email!', $text_domain ); ?>");
-                        return false;
+                    if ( "" == jQuery( "#email" ).val() || false == regEmail.test( jQuery( "#email" ).val() ) ) {
+                        jQuery( "#email" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'Please write the user email!', $text_domain ); ?></li>';
+                        valid = false;
                     }
 
                     if ( 1 == errorEmail ) {
-                        alert("<?php _e( 'The email already exist!', $text_domain ); ?>");
-                        return false;
+                        jQuery( "#email" ).parent().parent().attr( "class", "error" );
+                        errorMsg = errorMsg + '<li><?php _e( 'The user email already exist!', $text_domain ); ?></li>';
+                        valid = false;
                     }
+                    /* END Registration Details validation*/
 
 
-                    return true;
 
+                    jQuery( "#error_msg_box" ).html( errorMsg );
+
+
+                    return valid;
                 });
 
             });
@@ -302,8 +407,261 @@ $error       = get_query_var('checkout_error');
         </form>
 
     <?php /* Credit Card Details */ ?>
-    <?php elseif ( $step == 'cc_details' ): ?>
-        <?php $details = get_query_var('details'); ?>
+    <?php elseif ( $step == 'cc_details' ):
+
+        $countries = array (
+            "" => "Select One",
+            "US" => "United States",
+            "CA" => "Canada",
+            "-" => "----------",
+            "AF" => "Afghanistan",
+            "AL" => "Albania",
+            "DZ" => "Algeria",
+            "AS" => "American Samoa",
+            "AD" => "Andorra",
+            "AO" => "Angola",
+            "AI" => "Anguilla",
+            "AQ" => "Antarctica",
+            "AG" => "Antigua and Barbuda",
+            "AR" => "Argentina",
+            "AM" => "Armenia",
+            "AW" => "Aruba",
+            "AU" => "Australia",
+            "AT" => "Austria",
+            "AZ" => "Azerbaidjan",
+            "BS" => "Bahamas",
+            "BH" => "Bahrain",
+            "BD" => "Bangladesh",
+            "BB" => "Barbados",
+            "BY" => "Belarus",
+            "BE" => "Belgium",
+            "BZ" => "Belize",
+            "BJ" => "Benin",
+            "BM" => "Bermuda",
+            "BT" => "Bhutan",
+            "BO" => "Bolivia",
+            "BA" => "Bosnia-Herzegovina",
+            "BW" => "Botswana",
+            "BV" => "Bouvet Island",
+            "BR" => "Brazil",
+            "IO" => "British Indian Ocean Territory",
+            "BN" => "Brunei Darussalam",
+            "BG" => "Bulgaria",
+            "BF" => "Burkina Faso",
+            "BI" => "Burundi",
+            "KH" => "Cambodia",
+            "CM" => "Cameroon",
+            "CV" => "Cape Verde",
+            "KY" => "Cayman Islands",
+            "CF" => "Central African Republic",
+            "TD" => "Chad",
+            "CL" => "Chile",
+            "CN" => "China",
+            "CX" => "Christmas Island",
+            "CC" => "Cocos (Keeling) Islands",
+            "CO" => "Colombia",
+            "KM" => "Comoros",
+            "CG" => "Congo",
+            "CK" => "Cook Islands",
+            "CR" => "Costa Rica",
+            "HR" => "Croatia",
+            "CU" => "Cuba",
+            "CY" => "Cyprus",
+            "CZ" => "Czech Republic",
+            "DK" => "Denmark",
+            "DJ" => "Djibouti",
+            "DM" => "Dominica",
+            "DO" => "Dominican Republic",
+            "TP" => "East Timor",
+            "EC" => "Ecuador",
+            "EG" => "Egypt",
+            "SV" => "El Salvador",
+            "GQ" => "Equatorial Guinea",
+            "ER" => "Eritrea",
+            "EE" => "Estonia",
+            "ET" => "Ethiopia",
+            "FK" => "Falkland Islands",
+            "FO" => "Faroe Islands",
+            "FJ" => "Fiji",
+            "FI" => "Finland",
+            "CS" => "Former Czechoslovakia",
+            "SU" => "Former USSR",
+            "FR" => "France",
+            "FX" => "France (European Territory)",
+            "GF" => "French Guyana",
+            "TF" => "French Southern Territories",
+            "GA" => "Gabon",
+            "GM" => "Gambia",
+            "GE" => "Georgia",
+            "DE" => "Germany",
+            "GH" => "Ghana",
+            "GI" => "Gibraltar",
+            "GB" => "Great Britain",
+            "GR" => "Greece",
+            "GL" => "Greenland",
+            "GD" => "Grenada",
+            "GP" => "Guadeloupe (French)",
+            "GU" => "Guam (USA)",
+            "GT" => "Guatemala",
+            "GN" => "Guinea",
+            "GW" => "Guinea Bissau",
+            "GY" => "Guyana",
+            "HT" => "Haiti",
+            "HM" => "Heard and McDonald Islands",
+            "HN" => "Honduras",
+            "HK" => "Hong Kong",
+            "HU" => "Hungary",
+            "IS" => "Iceland",
+            "IN" => "India",
+            "ID" => "Indonesia",
+            "INT" => "International",
+            "IR" => "Iran",
+            "IQ" => "Iraq",
+            "IE" => "Ireland",
+            "IL" => "Israel",
+            "IT" => "Italy",
+            "CI" => "Ivory Coast (Cote D&#39;Ivoire)",
+            "JM" => "Jamaica",
+            "JP" => "Japan",
+            "JO" => "Jordan",
+            "KZ" => "Kazakhstan",
+            "KE" => "Kenya",
+            "KI" => "Kiribati",
+            "KW" => "Kuwait",
+            "KG" => "Kyrgyzstan",
+            "LA" => "Laos",
+            "LV" => "Latvia",
+            "LB" => "Lebanon",
+            "LS" => "Lesotho",
+            "LR" => "Liberia",
+            "LY" => "Libya",
+            "LI" => "Liechtenstein",
+            "LT" => "Lithuania",
+            "LU" => "Luxembourg",
+            "MO" => "Macau",
+            "MK" => "Macedonia",
+            "MG" => "Madagascar",
+            "MW" => "Malawi",
+            "MY" => "Malaysia",
+            "MV" => "Maldives",
+            "ML" => "Mali",
+            "MT" => "Malta",
+            "MH" => "Marshall Islands",
+            "MQ" => "Martinique (French)",
+            "MR" => "Mauritania",
+            "MU" => "Mauritius",
+            "YT" => "Mayotte",
+            "MX" => "Mexico",
+            "FM" => "Micronesia",
+            "MD" => "Moldavia",
+            "MC" => "Monaco",
+            "MN" => "Mongolia",
+            "MS" => "Montserrat",
+            "MA" => "Morocco",
+            "MZ" => "Mozambique",
+            "MM" => "Myanmar",
+            "NA" => "Namibia",
+            "NR" => "Nauru",
+            "NP" => "Nepal",
+            "NL" => "Netherlands",
+            "AN" => "Netherlands Antilles",
+            "NT" => "Neutral Zone",
+            "NC" => "New Caledonia (French)",
+            "NZ" => "New Zealand",
+            "NI" => "Nicaragua",
+            "NE" => "Niger",
+            "NG" => "Nigeria",
+            "NU" => "Niue",
+            "NF" => "Norfolk Island",
+            "KP" => "North Korea",
+            "MP" => "Northern Mariana Islands",
+            "NO" => "Norway",
+            "OM" => "Oman",
+            "PK" => "Pakistan",
+            "PW" => "Palau",
+            "PA" => "Panama",
+            "PG" => "Papua New Guinea",
+            "PY" => "Paraguay",
+            "PE" => "Peru",
+            "PH" => "Philippines",
+            "PN" => "Pitcairn Island",
+            "PL" => "Poland",
+            "PF" => "Polynesia (French)",
+            "PT" => "Portugal",
+            "PR" => "Puerto Rico",
+            "QA" => "Qatar",
+            "RE" => "Reunion (French)",
+            "RO" => "Romania",
+            "RU" => "Russian Federation",
+            "RW" => "Rwanda",
+            "GS" => "S. Georgia & S. Sandwich Isls.",
+            "SH" => "Saint Helena",
+            "KN" => "Saint Kitts & Nevis Anguilla",
+            "LC" => "Saint Lucia",
+            "PM" => "Saint Pierre and Miquelon",
+            "ST" => "Saint Tome (Sao Tome) and Principe",
+            "VC" => "Saint Vincent & Grenadines",
+            "WS" => "Samoa",
+            "SM" => "San Marino",
+            "SA" => "Saudi Arabia",
+            "SN" => "Senegal",
+            "SC" => "Seychelles",
+            "SL" => "Sierra Leone",
+            "SG" => "Singapore",
+            "SK" => "Slovak Republic",
+            "SI" => "Slovenia",
+            "SB" => "Solomon Islands",
+            "SO" => "Somalia",
+            "ZA" => "South Africa",
+            "KR" => "South Korea",
+            "ES" => "Spain",
+            "LK" => "Sri Lanka",
+            "SD" => "Sudan",
+            "SR" => "Suriname",
+            "SJ" => "Svalbard and Jan Mayen Islands",
+            "SZ" => "Swaziland",
+            "SE" => "Sweden",
+            "CH" => "Switzerland",
+            "SY" => "Syria",
+            "TJ" => "Tadjikistan",
+            "TW" => "Taiwan",
+            "TZ" => "Tanzania",
+            "TH" => "Thailand",
+            "TG" => "Togo",
+            "TK" => "Tokelau",
+            "TO" => "Tonga",
+            "TT" => "Trinidad and Tobago",
+            "TN" => "Tunisia",
+            "TR" => "Turkey",
+            "TM" => "Turkmenistan",
+            "TC" => "Turks and Caicos Islands",
+            "TV" => "Tuvalu",
+            "UG" => "Uganda",
+            "UA" => "Ukraine",
+            "AE" => "United Arab Emirates",
+            "GB" => "United Kingdom",
+            "UY" => "Uruguay",
+            "MIL" => "USA Military",
+            "UM" => "USA Minor Outlying Islands",
+            "UZ" => "Uzbekistan",
+            "VU" => "Vanuatu",
+            "VA" => "Vatican City State",
+            "VE" => "Venezuela",
+            "VN" => "Vietnam",
+            "VG" => "Virgin Islands (British)",
+            "VI" => "Virgin Islands (USA)",
+            "WF" => "Wallis and Futuna Islands",
+            "EH" => "Western Sahara",
+            "YE" => "Yemen",
+            "YU" => "Yugoslavia",
+            "ZR" => "Zaire",
+            "ZM" => "Zambia",
+            "ZW" => "Zimbabwe",
+        );
+
+        $details = get_query_var('details');
+
+        ?>
         <?php if ( $details['confirm_error'] ): ?>
             <span style="color: red;"><?php echo $details['confirm_error']; ?></span>
             <div class="clear"></div>
@@ -345,253 +703,9 @@ $error       = get_query_var('checkout_error');
                     <td><label for="country"><?php _e( 'Country', $text_domain ); ?>:</label></td>
                     <td>
                         <select id="country" name="country_code">
-                            <option value="">Select One</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="">----------</option>
-                            <option value="AF">Afghanistan</option>
-                            <option value="AL">Albania</option>
-                            <option value="DZ">Algeria</option>
-                            <option value="AS">American Samoa</option>
-                            <option value="AD">Andorra</option>
-                            <option value="AO">Angola</option>
-                            <option value="AI">Anguilla</option>
-                            <option value="AQ">Antarctica</option>
-                            <option value="AG">Antigua and Barbuda</option>
-                            <option value="AR">Argentina</option>
-                            <option value="AM">Armenia</option>
-                            <option value="AW">Aruba</option>
-                            <option value="AU">Australia</option>
-                            <option value="AT">Austria</option>
-                            <option value="AZ">Azerbaidjan</option>
-                            <option value="BS">Bahamas</option>
-                            <option value="BH">Bahrain</option>
-                            <option value="BD">Bangladesh</option>
-                            <option value="BB">Barbados</option>
-                            <option value="BY">Belarus</option>
-                            <option value="BE">Belgium</option>
-                            <option value="BZ">Belize</option>
-                            <option value="BJ">Benin</option>
-                            <option value="BM">Bermuda</option>
-                            <option value="BT">Bhutan</option>
-                            <option value="BO">Bolivia</option>
-                            <option value="BA">Bosnia-Herzegovina</option>
-                            <option value="BW">Botswana</option>
-                            <option value="BV">Bouvet Island</option>
-                            <option value="BR">Brazil</option>
-                            <option value="IO">British Indian Ocean Territory</option>
-                            <option value="BN">Brunei Darussalam</option>
-                            <option value="BG">Bulgaria</option>
-                            <option value="BF">Burkina Faso</option>
-                            <option value="BI">Burundi</option>
-                            <option value="KH">Cambodia</option>
-                            <option value="CM">Cameroon</option>
-                            <option value="CV">Cape Verde</option>
-                            <option value="KY">Cayman Islands</option>
-                            <option value="CF">Central African Republic</option>
-                            <option value="TD">Chad</option>
-                            <option value="CL">Chile</option>
-                            <option value="CN">China</option>
-                            <option value="CX">Christmas Island</option>
-                            <option value="CC">Cocos (Keeling) Islands</option>
-                            <option value="CO">Colombia</option>
-                            <option value="KM">Comoros</option>
-                            <option value="CG">Congo</option>
-                            <option value="CK">Cook Islands</option>
-                            <option value="CR">Costa Rica</option>
-                            <option value="HR">Croatia</option>
-                            <option value="CU">Cuba</option>
-                            <option value="CY">Cyprus</option>
-                            <option value="CZ">Czech Republic</option>
-                            <option value="DK">Denmark</option>
-                            <option value="DJ">Djibouti</option>
-                            <option value="DM">Dominica</option>
-                            <option value="DO">Dominican Republic</option>
-                            <option value="TP">East Timor</option>
-                            <option value="EC">Ecuador</option>
-                            <option value="EG">Egypt</option>
-                            <option value="SV">El Salvador</option>
-                            <option value="GQ">Equatorial Guinea</option>
-                            <option value="ER">Eritrea</option>
-                            <option value="EE">Estonia</option>
-                            <option value="ET">Ethiopia</option>
-                            <option value="FK">Falkland Islands</option>
-                            <option value="FO">Faroe Islands</option>
-                            <option value="FJ">Fiji</option>
-                            <option value="FI">Finland</option>
-                            <option value="CS">Former Czechoslovakia</option>
-                            <option value="SU">Former USSR</option>
-                            <option value="FR">France</option>
-                            <option value="FX">France (European Territory)</option>
-                            <option value="GF">French Guyana</option>
-                            <option value="TF">French Southern Territories</option>
-                            <option value="GA">Gabon</option>
-                            <option value="GM">Gambia</option>
-                            <option value="GE">Georgia</option>
-                            <option value="DE">Germany</option>
-                            <option value="GH">Ghana</option>
-                            <option value="GI">Gibraltar</option>
-                            <option value="GB">Great Britain</option>
-                            <option value="GR">Greece</option>
-                            <option value="GL">Greenland</option>
-                            <option value="GD">Grenada</option>
-                            <option value="GP">Guadeloupe (French)</option>
-                            <option value="GU">Guam (USA)</option>
-                            <option value="GT">Guatemala</option>
-                            <option value="GN">Guinea</option>
-                            <option value="GW">Guinea Bissau</option>
-                            <option value="GY">Guyana</option>
-                            <option value="HT">Haiti</option>
-                            <option value="HM">Heard and McDonald Islands</option>
-                            <option value="HN">Honduras</option>
-                            <option value="HK">Hong Kong</option>
-                            <option value="HU">Hungary</option>
-                            <option value="IS">Iceland</option>
-                            <option value="IN">India</option>
-                            <option value="ID">Indonesia</option>
-                            <option value="INT">International</option>
-                            <option value="IR">Iran</option>
-                            <option value="IQ">Iraq</option>
-                            <option value="IE">Ireland</option>
-                            <option value="IL">Israel</option>
-                            <option value="IT">Italy</option>
-                            <option value="CI">Ivory Coast (Cote D&#39;Ivoire)</option>
-                            <option value="JM">Jamaica</option>
-                            <option value="JP">Japan</option>
-                            <option value="JO">Jordan</option>
-                            <option value="KZ">Kazakhstan</option>
-                            <option value="KE">Kenya</option>
-                            <option value="KI">Kiribati</option>
-                            <option value="KW">Kuwait</option>
-                            <option value="KG">Kyrgyzstan</option>
-                            <option value="LA">Laos</option>
-                            <option value="LV">Latvia</option>
-                            <option value="LB">Lebanon</option>
-                            <option value="LS">Lesotho</option>
-                            <option value="LR">Liberia</option>
-                            <option value="LY">Libya</option>
-                            <option value="LI">Liechtenstein</option>
-                            <option value="LT">Lithuania</option>
-                            <option value="LU">Luxembourg</option>
-                            <option value="MO">Macau</option>
-                            <option value="MK">Macedonia</option>
-                            <option value="MG">Madagascar</option>
-                            <option value="MW">Malawi</option>
-                            <option value="MY">Malaysia</option>
-                            <option value="MV">Maldives</option>
-                            <option value="ML">Mali</option>
-                            <option value="MT">Malta</option>
-                            <option value="MH">Marshall Islands</option>
-                            <option value="MQ">Martinique (French)</option>
-                            <option value="MR">Mauritania</option>
-                            <option value="MU">Mauritius</option>
-                            <option value="YT">Mayotte</option>
-                            <option value="MX">Mexico</option>
-                            <option value="FM">Micronesia</option>
-                            <option value="MD">Moldavia</option>
-                            <option value="MC">Monaco</option>
-                            <option value="MN">Mongolia</option>
-                            <option value="MS">Montserrat</option>
-                            <option value="MA">Morocco</option>
-                            <option value="MZ">Mozambique</option>
-                            <option value="MM">Myanmar</option>
-                            <option value="NA">Namibia</option>
-                            <option value="NR">Nauru</option>
-                            <option value="NP">Nepal</option>
-                            <option value="NL">Netherlands</option>
-                            <option value="AN">Netherlands Antilles</option>
-                            <option value="NT">Neutral Zone</option>
-                            <option value="NC">New Caledonia (French)</option>
-                            <option value="NZ">New Zealand</option>
-                            <option value="NI">Nicaragua</option>
-                            <option value="NE">Niger</option>
-                            <option value="NG">Nigeria</option>
-                            <option value="NU">Niue</option>
-                            <option value="NF">Norfolk Island</option>
-                            <option value="KP">North Korea</option>
-                            <option value="MP">Northern Mariana Islands</option>
-                            <option value="NO">Norway</option>
-                            <option value="OM">Oman</option>
-                            <option value="PK">Pakistan</option>
-                            <option value="PW">Palau</option>
-                            <option value="PA">Panama</option>
-                            <option value="PG">Papua New Guinea</option>
-                            <option value="PY">Paraguay</option>
-                            <option value="PE">Peru</option>
-                            <option value="PH">Philippines</option>
-                            <option value="PN">Pitcairn Island</option>
-                            <option value="PL">Poland</option>
-                            <option value="PF">Polynesia (French)</option>
-                            <option value="PT">Portugal</option>
-                            <option value="PR">Puerto Rico</option>
-                            <option value="QA">Qatar</option>
-                            <option value="RE">Reunion (French)</option>
-                            <option value="RO">Romania</option>
-                            <option value="RU">Russian Federation</option>
-                            <option value="RW">Rwanda</option>
-                            <option value="GS">S. Georgia & S. Sandwich Isls.</option>
-                            <option value="SH">Saint Helena</option>
-                            <option value="KN">Saint Kitts & Nevis Anguilla</option>
-                            <option value="LC">Saint Lucia</option>
-                            <option value="PM">Saint Pierre and Miquelon</option>
-                            <option value="ST">Saint Tome (Sao Tome) and Principe</option>
-                            <option value="VC">Saint Vincent & Grenadines</option>
-                            <option value="WS">Samoa</option>
-                            <option value="SM">San Marino</option>
-                            <option value="SA">Saudi Arabia</option>
-                            <option value="SN">Senegal</option>
-                            <option value="SC">Seychelles</option>
-                            <option value="SL">Sierra Leone</option>
-                            <option value="SG">Singapore</option>
-                            <option value="SK">Slovak Republic</option>
-                            <option value="SI">Slovenia</option>
-                            <option value="SB">Solomon Islands</option>
-                            <option value="SO">Somalia</option>
-                            <option value="ZA">South Africa</option>
-                            <option value="KR">South Korea</option>
-                            <option value="ES">Spain</option>
-                            <option value="LK">Sri Lanka</option>
-                            <option value="SD">Sudan</option>
-                            <option value="SR">Suriname</option>
-                            <option value="SJ">Svalbard and Jan Mayen Islands</option>
-                            <option value="SZ">Swaziland</option>
-                            <option value="SE">Sweden</option>
-                            <option value="CH">Switzerland</option>
-                            <option value="SY">Syria</option>
-                            <option value="TJ">Tadjikistan</option>
-                            <option value="TW">Taiwan</option>
-                            <option value="TZ">Tanzania</option>
-                            <option value="TH">Thailand</option>
-                            <option value="TG">Togo</option>
-                            <option value="TK">Tokelau</option>
-                            <option value="TO">Tonga</option>
-                            <option value="TT">Trinidad and Tobago</option>
-                            <option value="TN">Tunisia</option>
-                            <option value="TR">Turkey</option>
-                            <option value="TM">Turkmenistan</option>
-                            <option value="TC">Turks and Caicos Islands</option>
-                            <option value="TV">Tuvalu</option>
-                            <option value="UG">Uganda</option>
-                            <option value="UA">Ukraine</option>
-                            <option value="AE">United Arab Emirates</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="UY">Uruguay</option>
-                            <option value="MIL">USA Military</option>
-                            <option value="UM">USA Minor Outlying Islands</option>
-                            <option value="UZ">Uzbekistan</option>
-                            <option value="VU">Vanuatu</option>
-                            <option value="VA">Vatican City State</option>
-                            <option value="VE">Venezuela</option>
-                            <option value="VN">Vietnam</option>
-                            <option value="VG">Virgin Islands (British)</option>
-                            <option value="VI">Virgin Islands (USA)</option>
-                            <option value="WF">Wallis and Futuna Islands</option>
-                            <option value="EH">Western Sahara</option>
-                            <option value="YE">Yemen</option>
-                            <option value="YU">Yugoslavia</option>
-                            <option value="ZR">Zaire</option>
-                            <option value="ZM">Zambia</option>
-                            <option value="ZW">Zimbabwe</option>
+                            <?php foreach ( $countries as $key => $value ) { ?>
+                            <option value="<?php echo $key; ?>" <?php echo ( isset( $details['country_code'] ) && $key == $details['country_code'] ) ? 'selected' : ''; ?>  ><?php echo $value; ?></option>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
@@ -637,19 +751,11 @@ $error       = get_query_var('checkout_error');
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
+
                         <select name="exp_date_year">
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
+                            <?php for ( $i = date( 'Y' ); $i <= date( 'Y' ) + 10; $i++ ) { ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
@@ -679,7 +785,7 @@ $error       = get_query_var('checkout_error');
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'User Email', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="user_email" id="email" value="<?php echo $details['user_email']; ?>" />
                         <span id="status_email" style="display: none;"></span>
@@ -725,7 +831,7 @@ $error       = get_query_var('checkout_error');
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'User Email', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>
@@ -813,7 +919,7 @@ $error       = get_query_var('checkout_error');
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'User Email', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['EMAIL']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>
@@ -874,7 +980,7 @@ $error       = get_query_var('checkout_error');
                     <td><input type="password" name="cpassword" id="cpassword" value=""/></td>
                 </tr>
                 <tr id="email_error">
-                    <td><label for="email"><?php _e( 'Email Address', $text_domain ); ?>:</label></td>
+                    <td><label for="email"><?php _e( 'User Email', $text_domain ); ?>:</label></td>
                     <td>
                         <input type="text" name="email" id="email" value="<?php echo $transaction_details['email']; ?>" size="50"/>
                         <span id="status_email" style="display: none;"></span>

@@ -51,6 +51,8 @@ class DR_Core {
 
 
         /* Enqueue styles */
+        add_action( 'wp_enqueue_scripts', array( &$this, 'add_js_css' ) );
+
         add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
 
         add_action( 'wp', array( &$this, 'load_directory_templates' ) );
@@ -59,9 +61,56 @@ class DR_Core {
 
         //hide some menu pages
         add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
+
+        //add menu items
+        add_filter( 'wp_list_pages', array( &$this, 'filter_list_pages' ), 10, 2 );
+
+
+    }
+
+    /**
+     * adds our links to theme nav menus using wp_list_pages()
+     **/
+    function filter_list_pages( $list, $args ) {
+
+        if ( current_user_can( 'publish_listings' ) ) {
+            $directory_page = $this->get_page_by_meta( 'listings' );
+
+            if ( $args['depth'] == 1 )
+                return $list;
+
+            $settings = get_option('mp_settings');
+
+            $link = '<a href="' . $directory_page->guid . '" title="' . $directory_page->post_title . '">' . $directory_page->post_title . '</a>';
+
+            $temp_break = strpos( $list, $link );
+
+            //if we can't find the page for some reason skip
+            if ($temp_break === false)
+                return $list;
+
+            $break = strpos( $list, '</a>', $temp_break ) + 4;
+
+            $nav = substr( $list, 0, $break );
+
+            $nav .= '<ul class="children">';
+            $nav .= '<li class="page_item"><a href="' . admin_url() . 'post-new.php?post_type=directory_listing' . '" title="' . __( 'Add Listing', $this->text_domain ) . '">' . __( 'Add Listing', $this->text_domain ) . '</a></li>';
+            $nav .= '</ul>';
+
+            $nav .= substr( $list, $break );
+            return $nav;
+        }
+        return $list;
     }
 
 
+    /**
+     * including JS/CSS
+     **/
+    function add_js_css() {
+        //including CSS
+        wp_enqueue_style( 'dr_style', $this->plugin_url . 'ui-front/style.css' );
+    }
 
     /**
      * Hide some menu pages

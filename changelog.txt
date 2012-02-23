@@ -1,9 +1,17 @@
 === Directory ===
 Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub)   
-Plugin Page: http://premium.wpmudev.org/project/directory     
+Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
  
 == Changelog ==
+
+
+= 2.0.2 =
+* Fixed problem with permalink of Tags and Categories;
+* Added feature use the Affiliate plugin;
+* Changed validation of signup forms;
+* Added submenu "Add Listing";
+
 
 = 2.0.1 =
 * Released;

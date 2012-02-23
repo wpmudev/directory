@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-22 16:31+0200\n"
+"POT-Creation-Date: 2012-02-24 00:39+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrey Shipilov\n"
 "Language-Team: \n"
@@ -148,226 +148,230 @@ msgstr ""
 msgid "This is where you configure <b>Directory</b> plugin for your site"
 msgstr ""
 
-#: /directory/core/core.php:133
-#: /directory/core/core.php:1025
+#: /directory/core/core.php:97
+msgid "Add Listing"
+msgstr ""
+
+#: /directory/core/core.php:182
+#: /directory/core/core.php:1074
 #: /directory/core/tutorial.php:189
 msgid "Listings"
 msgstr ""
 
-#: /directory/core/core.php:134
+#: /directory/core/core.php:183
 msgid "Listing"
 msgstr ""
 
-#: /directory/core/core.php:135
+#: /directory/core/core.php:184
 msgid "Add New"
 msgstr ""
 
-#: /directory/core/core.php:136
+#: /directory/core/core.php:185
 msgid "Add New Listing"
 msgstr ""
 
-#: /directory/core/core.php:137
+#: /directory/core/core.php:186
 msgid "Edit Listing"
 msgstr ""
 
-#: /directory/core/core.php:138
+#: /directory/core/core.php:187
 msgid "New Listing"
 msgstr ""
 
-#: /directory/core/core.php:139
+#: /directory/core/core.php:188
 msgid "View Listing"
 msgstr ""
 
-#: /directory/core/core.php:140
+#: /directory/core/core.php:189
 msgid "Search Listings"
 msgstr ""
 
-#: /directory/core/core.php:141
+#: /directory/core/core.php:190
 msgid "No listings found"
 msgstr ""
 
-#: /directory/core/core.php:142
+#: /directory/core/core.php:191
 msgid "No listings found in trash"
 msgstr ""
 
-#: /directory/core/core.php:150
+#: /directory/core/core.php:199
 msgid "Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:151
+#: /directory/core/core.php:200
 msgid "Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:152
+#: /directory/core/core.php:201
 msgid "Search Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:153
+#: /directory/core/core.php:202
 msgid "Popular Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:154
+#: /directory/core/core.php:203
 msgid "All Listing Tags"
 msgstr ""
 
-#: /directory/core/core.php:155
+#: /directory/core/core.php:204
 msgid "Edit Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:156
+#: /directory/core/core.php:205
 msgid "Update Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:157
+#: /directory/core/core.php:206
 msgid "Add New Listing Tag"
 msgstr ""
 
-#: /directory/core/core.php:158
+#: /directory/core/core.php:207
 msgid "New Listing Tag Name"
 msgstr ""
 
-#: /directory/core/core.php:159
+#: /directory/core/core.php:208
 msgid "Separate listing tags with commas"
 msgstr ""
 
-#: /directory/core/core.php:160
+#: /directory/core/core.php:209
 msgid "Add or remove listing tags"
 msgstr ""
 
-#: /directory/core/core.php:161
+#: /directory/core/core.php:210
 msgid "Choose from the most used listing tags"
 msgstr ""
 
-#: /directory/core/core.php:170
+#: /directory/core/core.php:219
 msgid "Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:171
+#: /directory/core/core.php:220
 msgid "Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:172
+#: /directory/core/core.php:221
 msgid "Search Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:173
+#: /directory/core/core.php:222
 msgid "Popular Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:174
+#: /directory/core/core.php:223
 msgid "All Listing Categories"
 msgstr ""
 
-#: /directory/core/core.php:175
+#: /directory/core/core.php:224
 msgid "Parent Category"
 msgstr ""
 
-#: /directory/core/core.php:176
+#: /directory/core/core.php:225
 msgid "Edit Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:177
+#: /directory/core/core.php:226
 msgid "Update Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:178
+#: /directory/core/core.php:227
 msgid "Add New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:179
+#: /directory/core/core.php:228
 msgid "New Listing Category"
 msgstr ""
 
-#: /directory/core/core.php:180
+#: /directory/core/core.php:229
 msgid "Parent Category:"
 msgstr ""
 
-#: /directory/core/core.php:181
+#: /directory/core/core.php:230
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: /directory/core/core.php:506
+#: /directory/core/core.php:555
 msgid "Advartise Here"
 msgstr ""
 
-#: /directory/core/core.php:753
+#: /directory/core/core.php:802
 msgid "Pages:"
 msgstr ""
 
-#: /directory/core/core.php:761
+#: /directory/core/core.php:810
 msgid "No Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:761
+#: /directory/core/core.php:810
 msgid "1 Review &#187;"
 msgstr ""
 
-#: /directory/core/core.php:761
+#: /directory/core/core.php:810
 msgid "% Reviews &#187;"
 msgstr ""
 
-#: /directory/core/core.php:764
+#: /directory/core/core.php:813
 msgid "Tags: "
 msgstr ""
 
-#: /directory/core/core.php:767
+#: /directory/core/core.php:816
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: /directory/core/core.php:783
+#: /directory/core/core.php:832
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: /directory/core/core.php:917
+#: /directory/core/core.php:966
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:922
+#: /directory/core/core.php:971
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
 msgstr ""
 
-#: /directory/core/core.php:929
+#: /directory/core/core.php:978
 msgid "Leave a review"
 msgstr ""
 
-#: /directory/core/core.php:929
+#: /directory/core/core.php:978
 msgid "1 Review"
 msgstr ""
 
-#: /directory/core/core.php:929
+#: /directory/core/core.php:978
 msgid "% Reviews"
 msgstr ""
 
-#: /directory/core/core.php:929
+#: /directory/core/core.php:978
 msgid "Reviews Off"
 msgstr ""
 
-#: /directory/core/core.php:941
+#: /directory/core/core.php:990
 msgid "No Products"
 msgstr ""
 
-#: /directory/core/core.php:954
+#: /directory/core/core.php:1003
 msgid "More Info &raquo;"
 msgstr ""
 
-#: /directory/core/core.php:1016
+#: /directory/core/core.php:1065
 #, php-format
 msgid "Listing Category: %s"
 msgstr ""
 
-#: /directory/core/core.php:1019
+#: /directory/core/core.php:1068
 #, php-format
 msgid "Listing Tag: %s"
 msgstr ""
 
 #: /directory/core/payments.php:247
-#: /directory/core/payments.php:370
-#: /directory/core/payments.php:453
-#: /directory/core/payments.php:511
+#: /directory/core/payments.php:371
+#: /directory/core/payments.php:469
+#: /directory/core/payments.php:527
 msgid "Login incorrect!"
 msgstr ""
 
@@ -1126,7 +1130,7 @@ msgid "(logged users can create listings for free)."
 msgstr ""
 
 #: /directory/ui-admin/settings-payments-type.php:64
-#: /directory/ui-front/general/page-signup.php:281
+#: /directory/ui-front/general/page-signup.php:386
 msgid "PayPal"
 msgstr ""
 
@@ -1276,7 +1280,7 @@ msgstr ""
 
 #: /directory/ui-admin/settings-payments.php:90
 #: /directory/ui-admin/settings-payments.php:158
-#: /directory/ui-front/general/page-signup.php:168
+#: /directory/ui-front/general/page-signup.php:273
 msgid "Cost of Service"
 msgstr ""
 
@@ -1331,7 +1335,7 @@ msgid "Number of billing periods that make up one billing cycle. The combination
 msgstr ""
 
 #: /directory/ui-admin/settings-payments.php:132
-#: /directory/ui-front/general/page-signup.php:740
+#: /directory/ui-front/general/page-signup.php:846
 msgid "Billing Agreement"
 msgstr ""
 
@@ -1353,7 +1357,7 @@ msgstr ""
 
 #: /directory/ui-admin/settings-payments.php:179
 #: /directory/ui-admin/settings-payments.php:184
-#: /directory/ui-front/general/page-signup.php:219
+#: /directory/ui-front/general/page-signup.php:324
 msgid "Terms of Service"
 msgstr ""
 
@@ -1378,10 +1382,10 @@ msgid "Username"
 msgstr ""
 
 #: /directory/ui-front/general/page-signin.php:25
-#: /directory/ui-front/general/page-signup.php:674
-#: /directory/ui-front/general/page-signup.php:720
-#: /directory/ui-front/general/page-signup.php:808
-#: /directory/ui-front/general/page-signup.php:869
+#: /directory/ui-front/general/page-signup.php:780
+#: /directory/ui-front/general/page-signup.php:826
+#: /directory/ui-front/general/page-signup.php:914
+#: /directory/ui-front/general/page-signup.php:975
 msgid "Password"
 msgstr ""
 
@@ -1397,205 +1401,252 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:51
-#: /directory/ui-front/general/page-signup.php:82
+#: /directory/ui-front/general/page-signup.php:61
+#: /directory/ui-front/general/page-signup.php:92
 msgid "Checking..."
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:63
-#: /directory/ui-front/general/page-signup.php:94
+#: /directory/ui-front/general/page-signup.php:73
+#: /directory/ui-front/general/page-signup.php:104
 msgid "Exists!"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:69
-#: /directory/ui-front/general/page-signup.php:100
+#: /directory/ui-front/general/page-signup.php:79
+#: /directory/ui-front/general/page-signup.php:110
 msgid "Available"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:116
-msgid "Please write the login!"
-msgstr ""
-
-#: /directory/ui-front/general/page-signup.php:121
-msgid "The login already exist!"
-msgstr ""
-
-#: /directory/ui-front/general/page-signup.php:126
-msgid "Please write the password!"
-msgstr ""
-
-#: /directory/ui-front/general/page-signup.php:131
-msgid "Please confirm the password!"
-msgstr ""
-
-#: /directory/ui-front/general/page-signup.php:136
-msgid "The confirm password is incorrect!"
-msgstr ""
-
-#: /directory/ui-front/general/page-signup.php:142
+#: /directory/ui-front/general/page-signup.php:138
 msgid "Please write the email!"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:147
-msgid "The email already exist!"
+#: /directory/ui-front/general/page-signup.php:144
+msgid "Invalid Email Address"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:163
-msgid "This feature is currently disabled by the system administrator."
+#: /directory/ui-front/general/page-signup.php:150
+msgid "Please write the first name!"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:194
-msgid " per "
+#: /directory/ui-front/general/page-signup.php:156
+msgid "Please write the last name!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:162
+msgid "Please write the street!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:168
+msgid "Please write the city!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:174
+msgid "Please write the state!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:180
+msgid "Please write the ZIP!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:186
+msgid "Please select the country!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:192
+msgid "Please write the card number!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:198
+msgid "Please write the CVV2!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:210
+msgid "Please write the login!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:216
+msgid "The login already exist!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:222
+msgid "Please write the password!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:228
+msgid "Please confirm the password!"
 msgstr ""
 
 #: /directory/ui-front/general/page-signup.php:235
-msgid "I agree with the Terms of Service"
+msgid "The confirm password is incorrect!"
 msgstr ""
 
 #: /directory/ui-front/general/page-signup.php:242
-#: /directory/ui-front/general/page-signup.php:300
+msgid "Please write the user email!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:248
+msgid "The user email already exist!"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:268
+msgid "This feature is currently disabled by the system administrator."
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:299
+msgid " per "
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:340
+msgid "I agree with the Terms of Service"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:347
+#: /directory/ui-front/general/page-signup.php:405
 msgid "Continue"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:276
+#: /directory/ui-front/general/page-signup.php:381
 msgid "Choose Payment Method"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:290
+#: /directory/ui-front/general/page-signup.php:395
 msgid "Credit Card"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:313
+#: /directory/ui-front/general/page-signup.php:671
 msgid "Payment Details"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:317
-#: /directory/ui-front/general/page-signup.php:682
-#: /directory/ui-front/general/page-signup.php:728
-#: /directory/ui-front/general/page-signup.php:816
-#: /directory/ui-front/general/page-signup.php:877
+#: /directory/ui-front/general/page-signup.php:675
 msgid "Email Address"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:321
+#: /directory/ui-front/general/page-signup.php:679
 msgid "First Name"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:325
+#: /directory/ui-front/general/page-signup.php:683
 msgid "Last Name"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:329
+#: /directory/ui-front/general/page-signup.php:687
 msgid "Street"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:333
+#: /directory/ui-front/general/page-signup.php:691
 msgid "City"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:337
+#: /directory/ui-front/general/page-signup.php:695
 msgid "State"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:341
+#: /directory/ui-front/general/page-signup.php:699
 msgid "ZIP"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:345
+#: /directory/ui-front/general/page-signup.php:703
 msgid "Country"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:599
-#: /directory/ui-front/general/page-signup.php:745
+#: /directory/ui-front/general/page-signup.php:713
+#: /directory/ui-front/general/page-signup.php:851
 msgid "Total Amount"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:609
+#: /directory/ui-front/general/page-signup.php:723
 msgid "Credit Card Type"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:612
+#: /directory/ui-front/general/page-signup.php:726
 msgid "Visa"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:613
+#: /directory/ui-front/general/page-signup.php:727
 msgid "MasterCard"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:614
+#: /directory/ui-front/general/page-signup.php:728
 msgid "Amex"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:615
+#: /directory/ui-front/general/page-signup.php:729
 msgid "Discover"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:620
+#: /directory/ui-front/general/page-signup.php:734
 msgid "Credit Card Number"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:624
+#: /directory/ui-front/general/page-signup.php:738
 msgid "Expiration Date"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:657
+#: /directory/ui-front/general/page-signup.php:763
 msgid "CVV2"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:663
+#: /directory/ui-front/general/page-signup.php:769
 msgid "Registration Details"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:667
-#: /directory/ui-front/general/page-signup.php:713
-#: /directory/ui-front/general/page-signup.php:801
-#: /directory/ui-front/general/page-signup.php:862
+#: /directory/ui-front/general/page-signup.php:773
+#: /directory/ui-front/general/page-signup.php:819
+#: /directory/ui-front/general/page-signup.php:907
+#: /directory/ui-front/general/page-signup.php:968
 msgid "Login"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:678
+#: /directory/ui-front/general/page-signup.php:784
 msgid "Confirm Pass"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:705
+#: /directory/ui-front/general/page-signup.php:788
+#: /directory/ui-front/general/page-signup.php:834
+#: /directory/ui-front/general/page-signup.php:922
+#: /directory/ui-front/general/page-signup.php:983
+msgid "User Email"
+msgstr ""
+
+#: /directory/ui-front/general/page-signup.php:811
 msgid "Confirm Payment"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:724
-#: /directory/ui-front/general/page-signup.php:812
-#: /directory/ui-front/general/page-signup.php:873
+#: /directory/ui-front/general/page-signup.php:830
+#: /directory/ui-front/general/page-signup.php:918
+#: /directory/ui-front/general/page-signup.php:979
 msgid "Password Confirm"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:735
-#: /directory/ui-front/general/page-signup.php:823
-#: /directory/ui-front/general/page-signup.php:884
+#: /directory/ui-front/general/page-signup.php:841
+#: /directory/ui-front/general/page-signup.php:929
+#: /directory/ui-front/general/page-signup.php:990
 msgid "Name"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:781
+#: /directory/ui-front/general/page-signup.php:887
 msgid "Thank you for your business. Transaction processed successfully!"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:782
-#: /directory/ui-front/general/page-signup.php:841
+#: /directory/ui-front/general/page-signup.php:888
+#: /directory/ui-front/general/page-signup.php:947
 msgid "You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page."
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:798
+#: /directory/ui-front/general/page-signup.php:904
 msgid "Registration"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:831
-#: /directory/ui-front/general/page-signup.php:892
+#: /directory/ui-front/general/page-signup.php:937
+#: /directory/ui-front/general/page-signup.php:998
 msgid "Confirm data"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:840
+#: /directory/ui-front/general/page-signup.php:946
 msgid "The registration is completed successfully!"
 msgstr ""
 
-#: /directory/ui-front/general/page-signup.php:859
+#: /directory/ui-front/general/page-signup.php:965
 msgid "Registration details"
 msgstr ""
 

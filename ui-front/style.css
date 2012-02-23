@@ -1,0 +1,17 @@
+/* Directory Style */
+
+.dp-error, .error {
+background: #FFEBE8;
+}
+
+.field_checking {
+    color: black;
+}
+
+.field_exists {
+    color: red;
+}
+
+.field_available {
+    color: green;
+}
