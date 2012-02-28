@@ -39,15 +39,15 @@ class DR_Core {
         /* Create neccessary pages */
         add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
 
-		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
-		add_action( 'init', array( &$this, 'init' ) );
+        add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
+        add_action( 'init', array( &$this, 'init' ) );
 
-		// TODO: These are not properly implemented
+        // TODO: These are not properly implemented
         add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
         add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
 
-		if ( is_admin() )
-			return;
+        if ( is_admin() )
+            return;
 
 
         /* Enqueue styles */
@@ -140,7 +140,7 @@ class DR_Core {
      * @return void
      */
     function init() {
-		global $wp_rewrite;
+        global $wp_rewrite;
 
         /*
         handle_action_buttons_requests
@@ -192,44 +192,44 @@ class DR_Core {
             )
         ) );
 
-		register_taxonomy( 'listing_tag', 'directory_listing', array(
-			'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false ),
+        register_taxonomy( 'listing_tag', 'directory_listing', array(
+            'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false ),
             'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
-			'labels'        => array(
-				'name'			=> __( 'Listing Tags', $this->text_domain ),
-				'singular_name'	=> __( 'Listing Tag', $this->text_domain ),
-				'search_items'	=> __( 'Search Listing Tags', $this->text_domain ),
-				'popular_items'	=> __( 'Popular Listing Tags', $this->text_domain ),
-				'all_items'		=> __( 'All Listing Tags', $this->text_domain ),
-				'edit_item'		=> __( 'Edit Listing Tag', $this->text_domain ),
-				'update_item'	=> __( 'Update Listing Tag', $this->text_domain ),
-				'add_new_item'	=> __( 'Add New Listing Tag', $this->text_domain ),
-				'new_item_name'	=> __( 'New Listing Tag Name', $this->text_domain ),
-				'separate_items_with_commas'	=> __( 'Separate listing tags with commas', $this->text_domain ),
-				'add_or_remove_items'			=> __( 'Add or remove listing tags', $this->text_domain ),
-				'choose_from_most_used'			=> __( 'Choose from the most used listing tags', $this->text_domain ),
-			)
-		) );
+            'labels'        => array(
+                'name'            => __( 'Listing Tags', $this->text_domain ),
+                'singular_name'    => __( 'Listing Tag', $this->text_domain ),
+                'search_items'    => __( 'Search Listing Tags', $this->text_domain ),
+                'popular_items'    => __( 'Popular Listing Tags', $this->text_domain ),
+                'all_items'        => __( 'All Listing Tags', $this->text_domain ),
+                'edit_item'        => __( 'Edit Listing Tag', $this->text_domain ),
+                'update_item'    => __( 'Update Listing Tag', $this->text_domain ),
+                'add_new_item'    => __( 'Add New Listing Tag', $this->text_domain ),
+                'new_item_name'    => __( 'New Listing Tag Name', $this->text_domain ),
+                'separate_items_with_commas'    => __( 'Separate listing tags with commas', $this->text_domain ),
+                'add_or_remove_items'            => __( 'Add or remove listing tags', $this->text_domain ),
+                'choose_from_most_used'            => __( 'Choose from the most used listing tags', $this->text_domain ),
+            )
+        ) );
 
-		register_taxonomy( 'listing_category', 'directory_listing', array(
-			'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
+        register_taxonomy( 'listing_category', 'directory_listing', array(
+            'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
             'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
-			'hierarchical'  => true,
-			'labels' => array(
-				'name'			=> __( 'Listing Categories', $this->text_domain ),
-				'singular_name'	=> __( 'Listing Category', $this->text_domain ),
-				'search_items'	=> __( 'Search Listing Categories', $this->text_domain ),
-				'popular_items'	=> __( 'Popular Listing Categories', $this->text_domain ),
-				'all_items'		=> __( 'All Listing Categories', $this->text_domain ),
-				'parent_item'	=> __( 'Parent Category', $this->text_domain ),
-				'edit_item'		=> __( 'Edit Listing Category', $this->text_domain ),
-				'update_item'	=> __( 'Update Listing Category', $this->text_domain ),
-				'add_new_item'	=> __( 'Add New Listing Category', $this->text_domain ),
-				'new_item_name'	=> __( 'New Listing Category', $this->text_domain ),
-				'parent_item_colon'		=> __( 'Parent Category:', $this->text_domain ),
-				'add_or_remove_items'	=> __( 'Add or remove listing categories', $this->text_domain ),
-			)
-		) );
+            'hierarchical'  => true,
+            'labels' => array(
+                'name'            => __( 'Listing Categories', $this->text_domain ),
+                'singular_name'    => __( 'Listing Category', $this->text_domain ),
+                'search_items'    => __( 'Search Listing Categories', $this->text_domain ),
+                'popular_items'    => __( 'Popular Listing Categories', $this->text_domain ),
+                'all_items'        => __( 'All Listing Categories', $this->text_domain ),
+                'parent_item'    => __( 'Parent Category', $this->text_domain ),
+                'edit_item'        => __( 'Edit Listing Category', $this->text_domain ),
+                'update_item'    => __( 'Update Listing Category', $this->text_domain ),
+                'add_new_item'    => __( 'Add New Listing Category', $this->text_domain ),
+                'new_item_name'    => __( 'New Listing Category', $this->text_domain ),
+                'parent_item_colon'        => __( 'Parent Category:', $this->text_domain ),
+                'add_or_remove_items'    => __( 'Add or remove listing categories', $this->text_domain ),
+            )
+        ) );
 
         //import data from old plugin version
         $this->import_from_old();
@@ -338,6 +338,9 @@ class DR_Core {
             $old_taxonomies = get_option( 'ct_custom_taxonomies' );
 
             if ( $old_taxonomies ) {
+
+                $new_taxonomies = array();
+
                 foreach( $old_taxonomies as $old_taxonomy => $old_taxonomy_args ) {
                     $args = array(
                         'description'   => '',
@@ -361,8 +364,13 @@ class DR_Core {
                         //add tags
                         $result = $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy = 'listing_tag' WHERE taxonomy = '%s'", $old_taxonomy ) );
                     }
-                }
 
+                    if ( !in_array( 'directory_listing', $old_taxonomy_args['object_type'] ) ) {
+                        $new_taxonomies[$old_taxonomy] = $old_taxonomy_args;
+                    }
+                }
+                //delete old directory taxonomies
+                update_option( 'ct_custom_taxonomies', $new_taxonomies );
             }
 
             //rewrite options
@@ -448,16 +456,10 @@ class DR_Core {
 
             //delete old options
             delete_option( 'dp_options' );
-            delete_option( 'ct_custom_taxonomies' );
             delete_option( 'module_payments' );
-            delete_option( 'ct_custom_post_types' );
-            delete_option( 'ct_custom_fields' );
             delete_option( 'ct_flush_rewrite_rules' );
             delete_site_option( 'dp_options' );
-            delete_site_option( 'ct_custom_taxonomies' );
             delete_site_option( 'module_payments' );
-            delete_site_option( 'ct_custom_post_types' );
-            delete_site_option( 'ct_custom_fields' );
             delete_site_option( 'ct_flush_rewrite_rules' );
             delete_site_option( 'allow_per_site_content_types' );
 
@@ -474,19 +476,19 @@ class DR_Core {
      * @return void
      */
     function plugin_activate() {
-		$this->init();
-		flush_rewrite_rules( false );
+        $this->init();
+        flush_rewrite_rules( false );
     }
 
     /**
-	 * Fire on plugin deactivation.
-	 * If $this->flush_plugin_data is set to "true"
+     * Fire on plugin deactivation.
+     * If $this->flush_plugin_data is set to "true"
      * all plugin data will be deleted
      *
      * @return void
      */
     function plugin_deactivate() {
-		// if true all plugin data will be deleted
+        // if true all plugin data will be deleted
         //TODO: do it when unistall plugin.
         if ( false ) {
             delete_option( $this->options_name );
@@ -496,20 +498,20 @@ class DR_Core {
 
     /**
      * Loads "{$text_domain}-[xx_XX].mo" language file from the "languages" directory
-	 *
+     *
      * @return void
      */
     function load_plugin_textdomain() {
         load_plugin_textdomain( $this->text_domain, null, plugin_basename( $this->plugin_dir . 'languages' ) );
     }
 
-	/**
-	 * Redirect templates using $wp_query.
-	 */
-	function template_redirect() {
-		global $wp_query;
+    /**
+     * Redirect templates using $wp_query.
+     */
+    function template_redirect() {
+        global $wp_query;
 
-		if ( is_dr_page( 'signin' ) ) {
+        if ( is_dr_page( 'signin' ) ) {
             if ( !is_user_logged_in() ) {
                 if ( $_POST['signin_submit'] ) {
                     $args = array( 'remember'   => ( $_POST['user_rem'] ) ? true : false,
@@ -533,19 +535,19 @@ class DR_Core {
                     }
                 }
             }
-		}
+        }
 
-		// Redirect template loading to archive-listing.php rather than to archive.php
-		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
-			$wp_query->set( 'post_type', 'directory_listing' );
-		}
-	}
+        // Redirect template loading to archive-listing.php rather than to archive.php
+        if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
+            $wp_query->set( 'post_type', 'directory_listing' );
+        }
+    }
 
     /**
-	 * Output banner.
-	 *
-	 * @access public
-	 * @return void
+     * Output banner.
+     *
+     * @access public
+     * @return void
      */
     function output_banners() {
         $options = $this->get_options( 'ads_settings' );
@@ -836,7 +838,7 @@ class DR_Core {
                 </div><!-- #entry-author-info -->
             <?php endif; ?>
 
-        <?
+        <?php
             $new_content = ob_get_contents();
         ob_end_clean();
 
@@ -1083,4 +1085,3 @@ class DR_Core {
 
 /* Initiate Class */
 new DR_Core();
-
