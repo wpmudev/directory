@@ -66,17 +66,16 @@ $error       = get_query_var('checkout_error');
                             url: "<?php echo get_option( 'siteurl' );?>/wp-admin/admin-ajax.php",
                             data: "action=check_login&type=login&login=" + login,
                             success: function( html ){
-                                if ( "yes" == html ) {
+                                if ( "no" == html ) {
+                                    errorLogin = 0;
+                                    jQuery( "#login_error td" ).attr( "class", "" );
+                                    jQuery( "#status_login" ).attr( "class", "field_available" );
+                                    jQuery( "#status_login" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
+                                } else {
                                     errorLogin = 1;
                                     jQuery( "#login_error td" ).attr( "class", "error" );
                                     jQuery( "#status_login" ).attr( "class", "field_exists" );
                                     jQuery( "#status_login" ).html( "<?php _e( 'Exists!', $text_domain ); ?>" );
-
-                                } else {
-                                    errorLogin =0;
-                                    jQuery( "#login_error td" ).attr( "class", "" );
-                                    jQuery( "#status_login" ).attr( "class", "field_available" );
-                                    jQuery( "#status_login" ).html( "<?php _e( 'Available', $text_domain ); ?>" );
                                 }
                             }
                         });

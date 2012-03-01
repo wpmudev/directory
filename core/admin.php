@@ -27,6 +27,10 @@ class DR_Admin extends DR_Core {
         add_action( 'admin_init', array( &$this, 'welcome_first_time_user' ) );
         add_action( 'admin_init', array( &$this, 'handle_getting_started_redirects') );
 
+        //add user roles to all subsites
+        if ( is_multisite() )
+            add_action( 'wp', array( &$this, 'add_user_roles' ) );
+
 		add_action( 'wp_ajax_dr-get-caps', array( &$this, 'ajax_get_caps' ) );
         add_action( 'wp_ajax_dr-save', array( &$this, 'ajax_save' ) );
 
@@ -55,13 +59,13 @@ class DR_Admin extends DR_Core {
 		);
     }
 
-	/**
-	 * Initiate admin default settings.
-	 *
-	 * @return void
-	 */
-	function init_defaults() {
-		global $wp_roles;
+    /**
+     * Initiate admin default settings.
+     *
+     * @return void
+     */
+    function init_defaults( $set_option = true) {
+        global $wp_roles;
 
         //add role of directory member with full access
         $wp_roles->remove_role( "directory_member" );
@@ -83,12 +87,27 @@ class DR_Admin extends DR_Core {
             ) );
 
         //set capability for admin
-		foreach ( array_keys( $this->capability_map ) as $capability )
-			$wp_roles->add_cap( 'administrator', $capability );
+        foreach ( array_keys( $this->capability_map ) as $capability )
+            $wp_roles->add_cap( 'administrator', $capability );
 
-		// add option to the autoload list
-		add_option( $this->options_name, array() );
+        // add option to the autoload list
+        if ( $set_option )
+            add_option( $this->options_name, array() );
 
+    }
+
+
+	/**
+	 * check and add directory roles for all sites
+	 *
+	 * @return void
+	 */
+	function add_user_roles() {
+		global $wp_roles;
+
+        if ( !isset( $wp_roles->role_names['directory_member_paid'] ) || !isset( $wp_roles->role_names['directory_member_not_paid'] ) ) {
+            $this->init_defaults( false );
+        }
 	}
 
     /**
@@ -464,7 +483,7 @@ class DR_Admin extends DR_Core {
                 //for affiliate subscription
                 $affiliate_settings = $this->get_options( 'affiliate_settings' );
                 do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, 'recurring' );
-                
+
             } elseif ( "subscr_cancel" == $_POST['txn_type'] ||
                        "subscr_failed" == $_POST['txn_type'] ||
                        "subscr_eot" == $_POST['txn_type'] ) {

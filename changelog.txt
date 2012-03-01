@@ -5,6 +5,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.0.3.1 =
+* fixed problem with user roles on subsites;
+* fixed pages "Signin" and "Signup" on subsites;
+* fixed capabilities of users on subsites;
+
 = 2.0.3 =
 * fixed problem with short php tags;
 * fixed problem of using CustomPress for custom fields and taxonomies after transition from 1.0.7 version;

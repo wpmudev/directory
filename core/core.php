@@ -140,7 +140,6 @@ class DR_Core {
      * @return void
      */
     function init() {
-        global $wp_rewrite;
 
         /*
         handle_action_buttons_requests
@@ -989,7 +988,7 @@ class DR_Core {
                 $count++;
             }
         } else {
-            $content .= '<div id="dr_no_listings">' . apply_filters( 'dr_listing_list_none', __( 'No Products', DR_TEXT_DOMAIN ) ) . '</div>';
+            $content .= '<div id="dr_no_listings">' . apply_filters( 'dr_listing_list_none', __( 'No Listings', DR_TEXT_DOMAIN ) ) . '</div>';
         }
 
         $content .= '</div>';

@@ -110,15 +110,15 @@ class DR_Ratings {
      * Enqueue styles.
      */
     function enqueue_styles() {
-        wp_enqueue_style( 'jquery-ui-stars', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui-stars.css');
+        wp_enqueue_style( 'jquery-ui-stars', DR_PLUGIN_URL . 'ui-front/js/jquery-ui-stars/jquery-ui-stars.css');
     }
 
     /**
      * Enqueue scripts.
      */
     function enqueue_scripts() {
-        wp_register_script( 'jquery-ui-core-1.8', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui.custom.min.js' );
-        wp_enqueue_script( 'jquery-ui-stars-script', DR_PLUGIN_URL . 'themes/default/js/jquery-ui-stars/jquery-ui-stars.js', array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
+        wp_register_script( 'jquery-ui-core-1.8', DR_PLUGIN_URL . 'ui-front/js/jquery-ui-stars/jquery-ui.custom.min.js' );
+        wp_enqueue_script( 'jquery-ui-stars-script', DR_PLUGIN_URL . 'ui-front/js/jquery-ui-stars/jquery-ui-stars.js', array( 'jquery', 'jquery-ui-core-1.8', 'jquery-form' ) );
     }
 
     /**
