@@ -40,6 +40,30 @@ $options = $this->get_options('general_settings');
          </div>
 
          <div class="postbox">
+            <h3 class='hndle'><span><?php _e( 'Custom Field Options', $this->text_domain ) ?></span></h3>
+            <div class="inside">
+                <table class="form-table">
+                    <tr>
+                        <th>
+                            <label for="custom_fields_structure"><?php _e( 'Display Custom Fields as:', $this->text_domain ) ?></label>
+                        </th>
+                        <td>
+                            <select name="custom_fields_structure" id="custom_fields_structure">
+                                <option value="table" <?php echo ( isset( $options['custom_fields_structure'] ) && 'table' == $options['custom_fields_structure'] ) ? 'selected' : ''; ?> ><?php _e( 'table', $this->text_domain ) ?></option>
+                                <option value="ul" <?php echo ( isset( $options['custom_fields_structure'] ) && 'ul' == $options['custom_fields_structure'] ) ? 'selected' : ''; ?> ><?php _e( 'ul', $this->text_domain ) ?></option>
+                                <option value="div" <?php echo ( isset( $options['custom_fields_structure'] ) && 'div' == $options['custom_fields_structure'] ) ? 'selected' : ''; ?> ><?php _e( 'div', $this->text_domain ) ?></option>
+                            </select>
+                            <span class="description"><?php _e( 'Structure of the custom fields block.', $this->text_domain ) ?></span>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+         </div>
+
+
+         <div class="postbox">
             <h3 class='hndle'><span><?php _e( 'Display Options', $this->text_domain ) ?></span></h3>
             <div class="inside">
                 <table class="form-table">

@@ -15,3 +15,13 @@ background: #FFEBE8;
 .field_available {
     color: green;
 }
+
+.row-actions {
+    visibility: hidden;
+    padding: 2px 0 0;
+}
+
+tr:hover .row-actions,
+div.comment-item:hover .row-actions {
+    visibility: visible;
+}

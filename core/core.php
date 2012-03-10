@@ -42,9 +42,6 @@ class DR_Core {
         add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
         add_action( 'init', array( &$this, 'init' ) );
 
-        // TODO: These are not properly implemented
-        add_action( 'wp_loaded', array( &$this, 'scheduly_expiration_check' ) );
-        add_action( 'check_expiration_dates', array( &$this, 'check_expiration_dates_callback' ) );
 
         if ( is_admin() )
             return;
@@ -54,6 +51,10 @@ class DR_Core {
         add_action( 'wp_enqueue_scripts', array( &$this, 'add_js_css' ) );
 
         add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+
+        /* Handle requests for plugin pages */
+        add_action( 'template_redirect', array( &$this, 'handle_page_requests' ) );
+
 
         add_action( 'wp', array( &$this, 'load_directory_templates' ) );
 
@@ -73,28 +74,34 @@ class DR_Core {
      **/
     function filter_list_pages( $list, $args ) {
 
-        if ( current_user_can( 'publish_listings' ) ) {
+        if ( current_user_can( 'edit_published_listings' ) ) {
             $directory_page = $this->get_page_by_meta( 'listings' );
 
             if ( $args['depth'] == 1 )
                 return $list;
 
-            $settings = get_option('mp_settings');
-
-            $link = '<a href="' . $directory_page->guid . '" title="' . $directory_page->post_title . '">' . $directory_page->post_title . '</a>';
+            $link = '<a href="' . $directory_page->guid . '">' . $directory_page->post_title . '</a>';
 
             $temp_break = strpos( $list, $link );
 
-            //if we can't find the page for some reason skip
-            if ($temp_break === false)
-                return $list;
+            //if we can't find the page for some reason try with other link
+            if ( $temp_break === false ) {
+                $link = '<a href="' . $directory_page->guid . '" title="' . $directory_page->post_title . '">' . $directory_page->post_title . '</a>';
+                $temp_break = strpos( $list, $link );
+
+                //if we can't find the page for some reason skip
+                if ( $temp_break === false )
+                    return $list;
+            }
+
 
             $break = strpos( $list, '</a>', $temp_break ) + 4;
 
             $nav = substr( $list, 0, $break );
 
             $nav .= '<ul class="children">';
-            $nav .= '<li class="page_item"><a href="' . admin_url() . 'post-new.php?post_type=directory_listing' . '" title="' . __( 'Add Listing', $this->text_domain ) . '">' . __( 'Add Listing', $this->text_domain ) . '</a></li>';
+            $nav .= '<li class="page_item"><a href="' . site_url() . '/my-listings/" title="' . __( 'My Listings', $this->text_domain ) . '">' . __( 'My Listings', $this->text_domain ) . '</a></li>';
+            $nav .= '<li class="page_item"><a href="' . site_url() . '/add-listing/" title="' . __( 'Add Listing', $this->text_domain ) . '">' . __( 'Add Listing', $this->text_domain ) . '</a></li>';
             $nav .= '</ul>';
 
             $nav .= substr( $list, $break );
@@ -150,7 +157,7 @@ class DR_Core {
             exit();
         }
         elseif ( isset( $_POST['redirect_listing'] ) ) {
-            wp_redirect( admin_url() . 'post-new.php?post_type=directory_listing' );
+            wp_redirect( site_url() . '/add-listing' );
             exit();
         }
         elseif ( isset( $_POST['directory_logout'] ) ) {
@@ -166,7 +173,7 @@ class DR_Core {
             exit();
         }
 
-        register_post_type( 'directory_listing', array(
+        $directory_listing_default = array(
             'public' => ( get_option( 'dp_options' ) ) ? false : true,
             'rewrite' => array( 'slug' => 'listings', 'with_front' => false ),
             'has_archive' => true,
@@ -189,7 +196,32 @@ class DR_Core {
                 'not_found'     => __('No listings found', $this->text_domain ),
                 'not_found_in_trash'    => __('No listings found in trash', $this->text_domain ),
             )
-        ) );
+        );
+
+
+        //Register directory_listing post type
+        if ( class_exists( 'CustomPress_Core_Admin' ) ) {
+            //for CustomPress plugin
+            $ct_custom_post_types = get_option( 'ct_custom_post_types' );
+
+            if ( isset( $ct_custom_post_types['directory_listing'] ) ) {
+                //use new values for directory_listing post type
+                $ct_custom_post_types['directory_listing'] = array_merge( $directory_listing_default, $ct_custom_post_types['directory_listing'] );
+
+                //don't change position in menu
+                if ( isset( $ct_custom_post_types['directory_listing']['menu_position'] ) && 0 == $ct_custom_post_types['directory_listing']['menu_position'] )
+                    $ct_custom_post_types['directory_listing']['menu_position'] = '';
+
+                register_post_type( 'directory_listing', $ct_custom_post_types['directory_listing'] );
+            } else {
+                register_post_type( 'directory_listing', $directory_listing_default );
+                $ct_custom_post_types['directory_listing'] = $directory_listing_default;
+                update_option( 'ct_custom_post_types', $ct_custom_post_types );
+            }
+        } else {
+            //without CustomPress plugin
+            register_post_type( 'directory_listing', $directory_listing_default );
+        }
 
         register_taxonomy( 'listing_tag', 'directory_listing', array(
             'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false ),
@@ -475,6 +507,11 @@ class DR_Core {
      * @return void
      */
     function plugin_activate() {
+
+        if ( wp_next_scheduled( 'check_expiration_dates' ) ) {
+            wp_clear_scheduled_hook( 'check_expiration_dates' );
+        }
+
         $this->init();
         flush_rewrite_rules( false );
     }
@@ -559,25 +596,6 @@ class DR_Core {
 
 
     /**
-     * Schedule expiration check for twice daily.
-     *
-     * @return void
-     */
-    function scheduly_expiration_check() {
-        if ( !wp_next_scheduled( 'check_expiration_dates' ) ) {
-            wp_schedule_event( time(), 'twicedaily', 'check_expiration_dates' );
-        }
-    }
-
-    /**
-     * Check each post from the used post type and compare the expiration date/time
-     * with the current date/time. If the post is expired update it's status.
-     *
-     * @return void
-     */
-    function check_expiration_dates_callback() {}
-
-    /**
      * Get plugin options.
      *
      * @param  string|NULL $key The key for that plugin option.
@@ -591,6 +609,106 @@ class DR_Core {
             return $options[$key];
         else
             return $options;
+    }
+
+
+    /**
+     * Check if user can edit listing
+     */
+    function user_can_edit_listing( $post_id ) {
+        if ( 0 < $post_id ) {
+            $post = get_post( $post_id, ARRAY_A );
+            if ( current_user_can( 'edit_published_listings' ) && get_current_user_id() == $post['post_author']  )
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * Update or insert listiong if no ID is passed.
+     *
+     * @param array $params Array of $_POST data
+     * @param array|NULL $file Array of $_FILES data
+     * @return int $post_id
+     **/
+    function update_listing( $params ) {
+
+        /* Construct args for the new post */
+        $args = array(
+            /* If empty ID insert Listing insetad of updating it */
+            'ID'             => ( isset( $params['listing_data']['ID'] ) ) ? $params['listing_data']['ID'] : '',
+            'post_title'     => $params['listing_data']['post_title'],
+            'post_content'   => $params['listing_data']['post_content'],
+            'post_status'    => $params['listing_data']['post_status'],
+            'post_author'    => get_current_user_id(),
+            'post_type'      => 'directory_listing',
+            'ping_status'    => 'closed',
+            'comment_status' => 'closed'
+        );
+
+        /* Insert page and get the ID */
+        $post_id = wp_insert_post( $args );
+
+        if ( $post_id ) {
+            //Set object terms - category
+            if ( isset( $params['tax_input']['listing_category'] ) ) {
+                foreach ( $params['tax_input']['listing_category'] as $term_id  ) {
+                    if ( 0 < $term_id ) {
+                        $term       = get_term_by( 'term_id', $term_id, 'listing_category', ARRAY_A );
+                        $terms[]    = $term['name'];
+                    }
+                }
+                wp_set_object_terms( $post_id, $terms, 'listing_category' );
+            }
+
+            if ( class_exists( 'CustomPress_Content_Types' ) ) {
+                global $CustomPress_Content_Types;
+                $CustomPress_Content_Types->save_custom_fields( $post_id );
+            }
+
+            return $post_id;
+       }
+    }
+
+
+    /**
+     * Handle $_REQUEST for main pages.
+     *
+     * @uses set_query_var() For passing variables to pages
+     * @return void|die() if "_wpnonce" is not verified
+     **/
+    function handle_page_requests() {
+        global $wp_query;
+
+        /* Handles request for my-classifieds page */
+        if ( 'add-listing' == $wp_query->query_vars['pagename'] || 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+            if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
+                    //Update listing
+                    $this->update_listing( $_POST );
+
+                    if ( 'add-listing' == $wp_query->query_vars['pagename'] )
+                        wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'New Listing is added!', '' ) ) ), site_url() . '/my-listings' ) );
+                    else
+                        wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is updated!', '' ) ) ), site_url() . '/my-listings' ) );
+
+                    exit;
+
+            } elseif ( isset( $_POST['cancel_listing'] ) ) {
+                wp_redirect( site_url() . '/my-listings' );
+                exit;
+            }
+        }
+
+        /* Handles request for my-classifieds page */
+        if ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+            if ( isset( $_POST['action'] ) && 'delete_listing' ==  $_POST['action'] && wp_verify_nonce( $_POST['_wpnonce'], 'action_verify' ) ) {
+                if ( $this->user_can_edit_listing( $_POST['post_id'] ) ) {
+                    wp_delete_post( $_POST['post_id'] );
+                    wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is deleted!', '' ) ) ), site_url() . '/my-listings' ) );
+                    exit;
+                }
+            }
+        }
     }
 
 
@@ -725,6 +843,58 @@ class DR_Core {
             $this->is_directory_page = true;
         }
 
+        //load proper theme for single listing page display
+        elseif ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+
+            if ( !current_user_can( 'edit_published_listings' ) ) {
+                wp_redirect( 'listings/');
+                exit;
+            }
+
+            $templates = array( 'page-my-listings.php' );
+
+            //if custom template exists load it
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+            } else {
+                //otherwise load the page template and use our own theme
+                $wp_query->is_404 = false;
+                $wp_query->is_single    = null;
+                $wp_query->is_page      = 1;
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
+                add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
+                add_filter( 'the_content', array( &$this, 'my_listings_content' ), 99 );
+            }
+            $this->is_directory_page = true;
+        }
+
+        //load proper theme for single listing page display
+        elseif ( 'add-listing' == $wp_query->query_vars['pagename'] || 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+
+            if ( !current_user_can( 'edit_published_listings' ) ) {
+                wp_redirect( 'listings/');
+                exit;
+            }
+
+            $templates = array( 'page-update-listing.php' );
+
+            //if custom template exists load it
+            if ( $this->directory_template = locate_template( $templates ) ) {
+                add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+            } else {
+                //otherwise load the page template and use our own theme
+                $wp_query->is_404 = false;
+                $wp_query->is_single    = null;
+                $wp_query->is_page      = 1;
+                add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
+                add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
+                add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
+                add_filter( 'the_content', array( &$this, 'update_listing_content' ), 99 );
+            }
+            $this->is_directory_page = true;
+        }
+
         //load proper theme for signin listing page
         elseif ( is_page( 'signin' ) ) {
 
@@ -734,6 +904,9 @@ class DR_Core {
             if ( $this->directory_template = locate_template( $templates ) ) {
                 add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
             } else {
+                //fix for Infinite SEO (output buffering)
+                $GLOBALS['post']->post_excerpt = 'signin';
+
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
@@ -742,7 +915,7 @@ class DR_Core {
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
             }
-
+            $this->is_directory_page = true;
         }
 
         //load proper theme for signup listing page
@@ -754,6 +927,9 @@ class DR_Core {
             if ( $this->directory_template = locate_template( $templates ) ) {
                 add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
             } else {
+                //fix for Infinite SEO (output buffering)
+                $GLOBALS['post']->post_excerpt = 'signup';
+
                 //otherwise load the page template and use our own theme
                 $wp_query->is_single    = null;
                 $wp_query->is_page      = 1;
@@ -762,12 +938,14 @@ class DR_Core {
                 add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
                 add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
             }
-
+            $this->is_directory_page = true;
         }
 
 
         //load  specific items
         if ( $this->is_directory_page ) {
+            add_filter( 'edit_post_link', array( &$this, 'delete_edit_post_link' ), 99 );
+
             //prevents 404 for virtual pages
             status_header( 200 );
         }
@@ -820,6 +998,10 @@ class DR_Core {
                 <?php endif; ?>
             </div>
 
+            <div class="custom-fields">
+                <?php $this->display_custom_fields_values(); ?>
+            </div>
+
             <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
                 <div id="entry-author-info">
                     <div id="author-avatar">
@@ -844,6 +1026,25 @@ class DR_Core {
         return $new_content;
     }
 
+
+    //content for my-listings page
+    function my_listings_content( $content ) {
+        ob_start();
+            include( $this->plugin_dir . 'ui-front/general/page-my-listings.php' );
+            $new_content = ob_get_contents();
+        ob_end_clean();
+        return $new_content;
+    }
+
+
+    //content for add/edit listing page
+    function update_listing_content( $content ) {
+        ob_start();
+            include( $this->plugin_dir . 'ui-front/general/page-update-listing.php' );
+            $new_content = ob_get_contents();
+        ob_end_clean();
+        return $new_content;
+    }
 
     //content for signup page
     function signup_content( $content ) {
@@ -877,7 +1078,7 @@ class DR_Core {
 
     //generate listing list content
     function dr_listing_list( $echo = true, $paginate = '', $page = '', $per_page = '', $order_by = '', $order = '', $category = '', $tag = '' ) {
-        global $wp_query, $mp;
+        global $wp_query;
 
         //setup taxonomy if applicable
         if ( $category ) {
@@ -1051,6 +1252,11 @@ class DR_Core {
         return '';
     }
 
+    //filters the edit post button
+    function delete_edit_post_link( $text ) {
+        return '';
+    }
+
     //filters the titles for our custom pages
     function page_title_output( $title, $id = false ) {
         global $wp_query;
@@ -1074,11 +1280,29 @@ class DR_Core {
         if ( is_dr_page( 'archive' ) && $wp_query->post->ID == $id ) {
             return __( 'Listings', $this->text_domain );
         }
+        if ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+            return __( 'My Listings', $this->text_domain );
+        }
+
+        if ( 'add-listing' == $wp_query->query_vars['pagename'] ) {
+            return __( 'Add Listing', $this->text_domain );
+        }
+
+        if ( 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+            return __( 'Edit Listing', $this->text_domain );
+        }
 
         return $title;
     }
 
 
+    //display custom fields
+    function display_custom_fields_values( ) {
+        global $wp_query;
+
+        include( $this->plugin_dir . 'ui-front/general/display-custom-fields-values.php' );
+
+    }
 
 }
 

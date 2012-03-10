@@ -130,6 +130,13 @@ class DR_Ratings {
      */
     function print_scripts() {
         global $post;
+
+        $post_id = 0;
+        if ( isset( $post->ID ) && 0 < $post->ID )
+            $post_id = $post->ID;
+
+
+
         $ajaxurl = admin_url( 'admin-ajax.php' ); ?>
         <script type="text/javascript">
         //<![CDATA[
@@ -152,7 +159,7 @@ class DR_Ratings {
 					// Display message to the user at the begining of request
 					$("#messages").text("Saving...").stop().css("opacity", 1).fadeIn(30);
 					// Send request to the server using POST method
-					$.post("<?php echo $ajaxurl; ?>", { action: 'sr_save_vote', post_id: <?php echo $post->ID; ?>, rate: value }, function(response) {
+					$.post("<?php echo $ajaxurl; ?>", { action: 'sr_save_vote', post_id: <?php echo $post_id; ?>, rate: value }, function(response) {
                         // Select stars from "Average rating" control to match the returned average rating value
                         $("#avg").stars("select", Math.round(response.avg));
                         // Update other text controls...

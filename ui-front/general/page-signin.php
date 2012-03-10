@@ -18,18 +18,18 @@ $error = get_query_var('signin_error');
     <?php endif;?>
         <table  <?php do_action( 'login_invalid' ); ?>>
             <tr>
-                <td><label for="username"><?php _e( 'Username', $text_domain ); ?>:</label></td>
+                <td><label for="username"><?php _e( 'Username', $this->text_domain ); ?>:</label></td>
                 <td><input type="text" id="username" name="user_login" value="<?php echo $_POST['user_login']; ?>" /></td>
             </tr>
             <tr>
-                <td><label for="password"><?php _e( 'Password', $text_domain ); ?>:</label></td>
+                <td><label for="password"><?php _e( 'Password', $this->text_domain ); ?>:</label></td>
                 <td><input type="password" id="password" name="user_pass" value="" /></td>
             </tr>
             <tr>
                 <td colspan="2">
                 <label>
                     <input type="checkbox" id="user_rem" name="user_rem" value="1" <?php echo $_POST['user_rem'] ? 'checked="checked"': '' ; ?> />
-                    <?php _e( 'Remember Me', $text_domain ); ?>
+                    <?php _e( 'Remember Me', $this->text_domain ); ?>
                 </label>
                 </td>
             </tr>
@@ -38,6 +38,6 @@ $error = get_query_var('signin_error');
         <div class="clear"></div>
 
         <div class="submit">
-            <input type="submit" name="signin_submit" value="<?php _e( 'Sign in', $text_domain ); ?>" />
+            <input type="submit" name="signin_submit" value="<?php _e( 'Sign in', $this->text_domain ); ?>" />
         </div>
     </form>

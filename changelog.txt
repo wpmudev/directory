@@ -5,10 +5,18 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
-= 2.0.3.1 =
-* fixed problem with user roles on subsites;
-* fixed pages "Signin" and "Signup" on subsites;
-* fixed capabilities of users on subsites;
+= 2.0.4 =
+* Added My Listings page;
+* Added Add Listing page;
+* Added Edit Listing page;
+* Added "directory_listing" post type to CustomPress plugin;
+* Fixed compatibility problems with the Infinite SEO plugin on "Signin" and "Signup" pages;
+* Fixed problem with user roles on subsites;
+* Fixed pages "Signin" and "Signup" on subsites;
+* Fixed capabilities of users on subsites;
+* Fixed some translation for texts;
+* Display custom fields on Listing page;
+* Deleted edit post button on Directory pages;
 
 = 2.0.3 =
 * fixed problem with short php tags;
