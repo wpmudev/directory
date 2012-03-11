@@ -5,6 +5,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.0.5 =
+* Fixed problem of display pages "My Listings", "Add Listing", "Edit Listing" for some permalinks structures;  
+
 = 2.0.4 =
 * Added My Listings page;
 * Added Add Listing page;

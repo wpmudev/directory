@@ -12,7 +12,7 @@ global $wp_query;
 $listing_data   = '';
 $selected_cats  = '';
 
-if ( 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+if ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) ) {
     if ( !$this->user_can_edit_listing( $_POST['post_id'] ) ) {
         wp_redirect( site_url() . '/my-listings' );
         exit;

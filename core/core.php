@@ -681,12 +681,14 @@ class DR_Core {
         global $wp_query;
 
         /* Handles request for my-classifieds page */
-        if ( 'add-listing' == $wp_query->query_vars['pagename'] || 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+        if ( ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
+            || ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) ) ) {
+
             if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
                     //Update listing
                     $this->update_listing( $_POST );
 
-                    if ( 'add-listing' == $wp_query->query_vars['pagename'] )
+                    if ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
                         wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'New Listing is added!', '' ) ) ), site_url() . '/my-listings' ) );
                     else
                         wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is updated!', '' ) ) ), site_url() . '/my-listings' ) );
@@ -700,7 +702,7 @@ class DR_Core {
         }
 
         /* Handles request for my-classifieds page */
-        if ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+        if ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) ) {
             if ( isset( $_POST['action'] ) && 'delete_listing' ==  $_POST['action'] && wp_verify_nonce( $_POST['_wpnonce'], 'action_verify' ) ) {
                 if ( $this->user_can_edit_listing( $_POST['post_id'] ) ) {
                     wp_delete_post( $_POST['post_id'] );
@@ -844,7 +846,7 @@ class DR_Core {
         }
 
         //load proper theme for single listing page display
-        elseif ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+        elseif ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) ) {
 
             if ( !current_user_can( 'edit_published_listings' ) ) {
                 wp_redirect( 'listings/');
@@ -870,7 +872,8 @@ class DR_Core {
         }
 
         //load proper theme for single listing page display
-        elseif ( 'add-listing' == $wp_query->query_vars['pagename'] || 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+        elseif ( ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
+             || ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) ) ) {
 
             if ( !current_user_can( 'edit_published_listings' ) ) {
                 wp_redirect( 'listings/');
@@ -1277,20 +1280,17 @@ class DR_Core {
         }
 
         //title for listings page
-        if ( is_dr_page( 'archive' ) && $wp_query->post->ID == $id ) {
+        if ( is_dr_page( 'archive' ) && $wp_query->post->ID == $id )
             return __( 'Listings', $this->text_domain );
-        }
-        if ( 'my-listings' == $wp_query->query_vars['pagename'] ) {
+
+        if ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) )
             return __( 'My Listings', $this->text_domain );
-        }
 
-        if ( 'add-listing' == $wp_query->query_vars['pagename'] ) {
+        if ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
             return __( 'Add Listing', $this->text_domain );
-        }
 
-        if ( 'edit-listing' == $wp_query->query_vars['pagename'] ) {
+        if ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) )
             return __( 'Edit Listing', $this->text_domain );
-        }
 
         return $title;
     }
