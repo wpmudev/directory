@@ -76,7 +76,7 @@ class DR_ContextualHelp {
                         '<ul>' .
                             '<li>' . __( 'You can make your site available free to create lists, or to charge money for it.', $this->text_domain ) . '</li>' .
                         '</ul>' .
-                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&page=dr-get_started' ) ) . '</p>' .
+                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&amp;page=dr-get_started' ) ) . '</p>' .
                     ''
                 ),
 
@@ -112,7 +112,7 @@ class DR_ContextualHelp {
                         '<ul>' .
                             '<li>' . __( 'You can make your site available free to create lists, or to charge money for it.', $this->text_domain ) . '</li>' .
                         '</ul>' .
-                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&page=dr-get_started' ) ) . '</p>' .
+                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&amp;page=dr-get_started' ) ) . '</p>' .
                     ''
                 ),
 
@@ -148,7 +148,7 @@ class DR_ContextualHelp {
                         '<ul>' .
                             '<li>' . __( 'You can make your site available free to create lists, or to charge money for it.', $this->text_domain ) . '</li>' .
                         '</ul>' .
-                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&page=dr-get_started' ) ) . '</p>' .
+                        '<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&amp;page=dr-get_started' ) ) . '</p>' .
                     ''
                 ),
 
@@ -186,7 +186,7 @@ class DR_ContextualHelp {
 						'<ul>' .
 							'<li>' . __( 'You can make your site available free to create lists, or to charge money for it.', $this->text_domain ) . '</li>' .
 						'</ul>' .
-						'<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&page=dr-get_started' ) ) . '</p>' .
+						'<p>' . sprintf( __( 'Get up and running quickly with the <a href="%s">Getting Started Guide</a>', $this->text_domain ), admin_url( 'edit.php?post_type=directory_listing&amp;page=dr-get_started' ) ) . '</p>' .
 					''
 				),
 

@@ -6,7 +6,7 @@ jQuery(function($) {
 		$('#capabilities input').attr( 'checked', false );
 		// set data
 		var data = {
-			action: 'dr-get-caps',
+			action: 'dr_get_caps',
 			role: $('#roles option:selected').val()
 		};
 		// make the post request and process the response
@@ -23,16 +23,15 @@ jQuery(function($) {
 	populate_checkboxes();
 
 	$('#roles').change(populate_checkboxes);
-	
+
 	$('.dr-general').submit(function() {
 		$('#ajax-loader').show();
-
 		var data = $(this).serializeArray();
-
-		$.post(ajaxurl, data, function() {
+		$.post(ajaxurl, data, function(data) {
 			$('#ajax-loader').hide();
 		});
-
 		return false;
 	});
+
+
 });

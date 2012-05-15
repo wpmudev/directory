@@ -1,27 +1,96 @@
 /* Directory Style */
 
-.dp-error, .error {
-background: #FFEBE8;
+.dp_error, .error {
+	background: #FFEBE8;
 }
 
 .field_checking {
-    color: black;
+	color: black;
 }
 
 .field_exists {
-    color: red;
+	color: red;
 }
 
 .field_available {
-    color: green;
+	color: green;
 }
 
 .row-actions {
-    visibility: hidden;
-    padding: 2px 0 0;
+	visibility: hidden;
+	padding: 2px 0 0;
 }
 
 tr:hover .row-actions,
 div.comment-item:hover .row-actions {
-    visibility: visible;
+	visibility: visible;
+}
+
+.clear{
+	clear: both;
+	width:auto;
+	height: auto;
+}
+
+ul{
+	padding-left: 18px;
+}
+
+/*Categories list grid css*/
+#dr_list_categories span{
+	font-size: small;
+}
+
+.dr_list_grid h2{
+	background-color: #eee;
+	padding: .2em 1em; 
+	border-radius: .3em;
+}
+
+.dr_list_grid li{
+	float: left;
+	list-style: none outside none;
+	margin: 0;
+	min-height: 10em;
+	padding: .5em;
+	width: 20% !important;
+	border: medium solid #eee;
+	border-radius: .4em;
+}
+
+
+/*Categories list css*/
+.dr_list h2{
+	background-color: #eee;
+	padding: .2em 1em; 
+	border-radius: .3em;
+	text-shadow: 1px 1px #fff;
+}
+
+.dr_list ul{
+	min-width:50%;	
+}
+
+.dr_list li{
+	list-style: none outside none;
+	margin: .6em;
+}
+
+.dr_list div{
+	float:left;
+	margin: 0 1em;
+}
+
+.tax_panel{
+	overflow: auto;
+	height:160px;
+	font-size: .8em;
+	border:1px solid #ddd;
+}
+
+.taxonomydiv{
+	float: left;
+	display: block;
+	width:47%;
+	margin-right: 3%;
 }

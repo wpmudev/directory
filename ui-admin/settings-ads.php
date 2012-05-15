@@ -9,7 +9,7 @@
 
     <h1><?php _e( 'Advertising Settings', $this->text_domain ); ?></h1>
 
-    <form action="" method="post" class="dp-ads">
+    <form action="#" method="post" class="dp-ads">
          <div class="postbox">
             <h3 class='hndle'><span><?php _e( 'Advertising', $this->text_domain ) ?></span></h3>
             <div class="inside">

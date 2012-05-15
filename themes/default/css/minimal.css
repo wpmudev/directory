@@ -147,7 +147,7 @@ font-style: italic;
 border: 1px solid #eeeeee;
 }
 
-.dp-error, .error {
+.dp_error, .error {
 background: #FFEBE8 !important;
 }
 
@@ -455,3 +455,4 @@ cursor: help;
 }
 /********************************** widgets */
 /********************************** styles end >>> */
+

@@ -87,4 +87,4 @@ Direcrory->General->General Settings
 
 The current version also allows you to set the Content Types to apply for
 sub-sites network-wide. That option can be found under
-Directory->General->General Settings 
+Directory->General->General Settings

@@ -149,7 +149,7 @@ font-style: italic;
 border: none;
 }
 
-.dp-error, .error {
+.dp_error, .error {
 background: #FFEBE8 !important;
 }
 
@@ -460,3 +460,4 @@ cursor: help;
 }
 /********************************** widgets */
 /********************************** styles end >>> */
+

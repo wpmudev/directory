@@ -45,7 +45,7 @@ $gateways = $this->get_options('gateways');
     <div id="gateways" class="postbox">
         <h3 class='hndle'><span><?php _e( 'Gateway(s)', $this->text_domain ) ?></span></h3>
         <div class="inside">
-            <form action="" method="post" name="payment_type" id="payment_type" class="dp-payments">
+            <form action="#" method="post" name="payment_type" id="payment_type" class="dp-payments">
                 <input type="hidden"  name="save" value="save">
                 <input type="hidden" name="key" value="gateways" />
                 <?php wp_nonce_field('verify'); ?>
@@ -74,7 +74,7 @@ $gateways = $this->get_options('gateways');
     <br />
 
 <?php if ( isset( $gateways ) &&  1 != $gateways['free'] ): ?>
-    <form action="" method="post" name="paypal_" class="dp-payments">
+    <form action="#" method="post" name="paypal_" class="dp-payments">
 
         <?php if ( 1 == $gateways['paypal'] ): ?>
         <div class="postbox">

@@ -14,7 +14,7 @@
 				<p><?php _e( 'Welcome to the <b>Directory</b> Getting Started Guide.', $this->text_domain  ); ?></p>
 			</div>
 			<p><?php echo '' .
-				'<p>' . __( 'The Directory plugin transforming your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways.', $this->text_domain ) . '</p>' .
+				'<p>' . __( 'The Directory plugin transforms your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways.', $this->text_domain ) . '</p>' .
 				'<ul>' .
 					'<li>' . __( 'You can make your site available free to create lists, or to charge money for it.', $this->text_domain ) . '</li>' .
 				'</ul>' .
@@ -28,7 +28,7 @@
 					<?php if ( isset( $dr_tutorial['settings'] ) && 1 == $dr_tutorial['settings'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&dr_intent=settings" class="button"><?php _e( 'Configure your settings', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&amp;dr_intent=settings" class="button"><?php _e( 'Configure your settings', $this->text_domain ); ?></a>
 				</li>
 				<li>
 					<?php if ( isset( $dr_tutorial['category'] ) && 1 == $dr_tutorial['category'] ) { ?>
@@ -38,7 +38,7 @@
 					<?php if ( isset( $dr_tutorial['category'] ) && 1 == $dr_tutorial['category'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&dr_intent=category" class="button"><?php _e( 'Create Categories', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&amp;dr_intent=category" class="button"><?php _e( 'Create Categories', $this->text_domain ); ?></a>
 				</li>
 				<li>
 					<?php if ( isset( $dr_tutorial['listing'] ) && 1 == $dr_tutorial['listing'] ) { ?>
@@ -48,7 +48,7 @@
 					<?php if ( isset( $dr_tutorial['listing'] ) && 1 == $dr_tutorial['listing'] ) { ?>
 						</span>
 					<?php } ?>
-					<a href="admin.php?page=dr-get_started&dr_intent=listing" class="button"><?php _e( 'Create Listings', $this->text_domain ); ?></a>
+					<a href="admin.php?page=dr-get_started&amp;dr_intent=listing" class="button"><?php _e( 'Create Listings', $this->text_domain ); ?></a>
 				</li>
 			</ol>
 		</div>
