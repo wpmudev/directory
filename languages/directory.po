@@ -1,0 +1,3311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Directory v2.0.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-15 12:03-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
+"Language-Team: Arnold Bailey <arnold@incsub.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: D:\\wamp\\www\\directory\\wp-content\\plugins\\directory\n"
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/loader.php:72
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/loader.php:61
+msgid "Please install the latest version of <a href=\"http://premium.wpmudev.org/project/update-notifications/\" title=\"Download Now &raquo;\">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">More information &raquo;</a>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/loader.php:87
+msgid "<b>The Directory plugin</b><br /><b>Notice:</b> We found that you've used an older version of the plugin. To use the new version of the plugin, we recommend you  to make <b>Backup of your Database</b> and then click on <b>'Transition to new version'.</b> All your data will be migrated to the new version.<br /> If you were using the included Directory theme, you will need to <b>reactivate</b> it after the transition is complete."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:63
+msgid "View listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:64
+msgid "Add listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:65
+msgid "Edit listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:66
+msgid "Delete listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:67
+msgid "Edit others' listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:68
+msgid "Delete others' listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:69
+msgid "Upload files."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:132
+msgid "Getting Started"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:137
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:139
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:155
+msgid "Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/admin.php:572
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/core.php:368
+msgid "Security check failed!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:38
+msgid "Directory"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:40
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:75
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:111
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:147
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:185
+msgid "The Directory plugin transforming your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:43
+msgid "Project page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:44
+msgid "Installation and instructions page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:45
+msgid "Support forum"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:68
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:104
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:140
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:178
+msgid "Intro"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:69
+msgid "All existing listings are listed here."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:73
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:109
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:145
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:183
+msgid "General Info"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:77
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:113
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:149
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:187
+msgid "You can make your site available free to create lists, or to charge money for it."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:79
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:115
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:151
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:189
+#, php-format
+msgid "Get up and running quickly with the <a href=\"%s\">Getting Started Guide</a>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:85
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:121
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:157
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:195
+msgid "Tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:88
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:124
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:160
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:198
+msgid "Tutorial dialogs will guide you through the important bits."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:126
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:162
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:200
+msgid "Restart the tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:105
+msgid "This is where you can edit or create a listing."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:141
+msgid "This is the guide to get you started with <b>Directory</b> plugin"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/contextual_help.php:179
+msgid "This is where you configure <b>Directory</b> plugin for your site"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:131
+msgid "Write a Review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:132
+msgid "Post Review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:133
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a review."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:135
+msgid "Cancel review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:261
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1441
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1488
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:189
+msgid "Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:262
+msgid "Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:263
+msgid "Add New"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:264
+msgid "Add New Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:265
+msgid "Edit Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:266
+msgid "New Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:267
+msgid "View Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:268
+msgid "Search Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:269
+msgid "No listings found"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:270
+msgid "No listings found in trash"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:311
+msgid "Listing Tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:312
+msgid "Listing Tag"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:313
+msgid "Search Listing Tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:314
+msgid "Popular Listing Tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:315
+msgid "All Listing Tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:316
+msgid "Edit Listing Tag"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:317
+msgid "Update Listing Tag"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:318
+msgid "Add New Listing Tag"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:319
+msgid "New Listing Tag Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:320
+msgid "Separate listing tags with commas"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:321
+msgid "Add or remove listing tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:322
+msgid "Choose from the most used listing tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:341
+msgid "Listing Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:342
+msgid "Listing Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:343
+msgid "Search Listing Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:344
+msgid "Popular Listing Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:345
+msgid "All Listing Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:346
+msgid "Parent Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:347
+msgid "Edit Listing Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:348
+msgid "Update Listing Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:349
+msgid "Add New Listing Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:350
+msgid "New Listing Category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:351
+msgid "Parent Category:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:352
+msgid "Add or remove listing categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:767
+msgid "Advertise Here"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:883
+msgid "New Listing is added!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:885
+msgid "Listing is updated!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:901
+msgid "Listing is deleted!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1328
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1333
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1340
+msgid "Leave a review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1340
+msgid "1 Review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1340
+msgid "% Reviews"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1340
+msgid "Reviews Off"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1352
+msgid "No Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1365
+msgid "More Info &raquo;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1432
+#, php-format
+msgid "Listing Category: %s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1435
+#, php-format
+msgid "Listing Tag: %s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1508
+msgid "Add Listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1528
+msgid "My Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1548
+msgid "Go to Profile"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1568
+msgid "Signup"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1588
+msgid "Signin"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/core.php:1612
+msgid "Logout"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/payments.php:247
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/payments.php:371
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/payments.php:465
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/payments.php:524
+msgid "Login incorrect!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/ratings.php:201
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/ratings.php:291
+msgid "Rating:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:48
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:128
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:156
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:159
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:64
+msgid "View all posts in "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:171
+#, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:199
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:201
+msgid ", "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:204
+#, php-format
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:206
+#, php-format
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:208
+#, php-format
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:236
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:240
+msgid "Your review is awaiting moderation."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:246
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:247
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:266
+msgid "(Edit)"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/template-tags.php:266
+msgid "Pingback:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:19
+msgid "Setup tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:20
+msgid "Category tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:21
+msgid "Listing tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:99
+msgid "General tab"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:101
+msgid "Here you can set some settings as redirection, display options."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:111
+msgid "Capabilities tab"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:113
+msgid "Here you can change capabilities (edit, view, delete etc.) of listings for user's roles."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:123
+msgid "Payments tab"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:125
+msgid "Here you can set price and settings for Recurring and One-time payments and to change Terms of Service."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:135
+msgid "Payments Type tab"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:137
+msgid "Here you can set settings for payments gateways or set \"Free listings\" mode."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:147
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:159
+msgid "Shortcodes tab"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:149
+msgid "Here you can find useful Sortcodes for expansion opportunities."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:161
+msgid "Here you can set reward for your affiliates."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:174
+msgid "Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:176
+msgid "Here you can create new listing category or edit already exist."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/core/tutorial.php:191
+msgid "Here you can create your own listings or edit already exist."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/loader.php:18
+msgid "CustomPress - Custom Post, Taxonomy and Field Manager."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/loader.php:19
+msgid "Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/loader.php:20
+msgid "http://premium.wpmudev.org"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/loader.php:21
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:130
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:152
+msgid "CustomPress"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:133
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/admin.php:154
+msgid "Content Types"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/content-types.php:675
+msgid "Default CustomPress Fields"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/content-types.php:694
+msgid "CustomPress Fields"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/content-types.php:915
+msgid "No values"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/core/content-types.php:1174
+msgid "Invalid Taxonomy name in [tax ] shortcode"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:8
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:174
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:17
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:119
+msgid "Add Custom Field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:17
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:18
+msgid "Field Title"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:17
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:50
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:153
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:29
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:18
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:52
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:156
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:17
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:35
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:28
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:43
+msgid "required"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:21
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:22
+msgid "The title of the custom field."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:26
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:27
+msgid "Required Field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:30
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:31
+msgid "Make this a Required Field."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:35
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:36
+msgid "Allow for WP/plugins"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:35
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:36
+msgid "can't be changed"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:39
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:41
+msgid "The WP and other plugins can use this custom field."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:46
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:50
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:26
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:37
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:48
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:52
+msgid "Field Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:54
+msgid "Text Box"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:55
+msgid "Multi-line Text Box"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:56
+msgid "Radio Buttons"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:57
+msgid "Checkboxes"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:58
+msgid "Drop Down Select Box"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:59
+msgid "Multi Select Box"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:60
+msgid "Date Picker"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:62
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:64
+msgid "Select type of the custom field."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:73
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:76
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:93
+msgid "Fill in the options for this field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:76
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:79
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:253
+msgid "Select Date Format option or type your own"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:79
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:82
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:256
+msgid "Date picker sample"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:92
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:95
+msgid "Order By"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:94
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:97
+msgid "Order Entered"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:105
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:115
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:108
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:118
+msgid "Option"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:108
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:118
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:111
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:121
+msgid "Default Value"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:124
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:127
+msgid "Add another option"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:132
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:136
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:135
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:139
+msgid "Field Description"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:140
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:143
+msgid "Description for the custom field."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:149
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:153
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:10
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:25
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:29
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:152
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:156
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:17
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:31
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:35
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:19
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:32
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:39
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:43
+msgid "Post Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-custom-field.php:164
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:167
+msgid "Select one or more post types to add this custom field to."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:5
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:653
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:108
+msgid "Add Post Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:18
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:22
+msgid "The new post type system name ( max. 20 characters ). Alphanumeric characters and underscores only. Min 2 letters. Once added the post type system name cannot be changed."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:25
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:29
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:29
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:33
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:23
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:36
+msgid "Supports"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:32
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:36
+msgid "Register support of certain features for a post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:40
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:44
+msgid "Title"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:45
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:49
+msgid "Editor"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:45
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:49
+msgid "Content"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:50
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:54
+msgid "Author"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:55
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:59
+msgid "Thumbnail"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:55
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:59
+msgid "Featured Image - current theme must also support post-thumbnails."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:60
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:64
+msgid "Excerpt"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:65
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:69
+msgid "Trackbacks"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:70
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:74
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:314
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/navigation.php:9
+msgid "Custom Fields"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:75
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:79
+msgid "Comments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:75
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:79
+msgid "Also will see comment count balloon on edit screen."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:80
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:84
+msgid "Revisions"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:80
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:84
+msgid "Will store revisions."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:85
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:89
+msgid "Page Attributes"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:85
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:89
+msgid "Template and menu order - Hierarchical must be true!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:94
+msgid "Post Formats"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:94
+msgid "Add post formats."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:98
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:102
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:102
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:106
+msgid "Support Regular Taxonomies"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:105
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:109
+msgid "Assign regular taxonomies to this Post Type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:121
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:125
+msgid "Tags"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:130
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:134
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:134
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:138
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:24
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:37
+msgid "Capability Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:140
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:74
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:143
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:54
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:47
+msgid "Edit"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:140
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:143
+msgid "advanced"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:142
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:144
+msgid "The post type to use for checking read, edit, and delete capabilities. Default: \"post\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:149
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:48
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:151
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:52
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:70
+msgid "Labels"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:153
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:52
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:155
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:56
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:20
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:33
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:19
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:29
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:74
+msgid "Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:157
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:159
+msgid "General name for the post type, usually plural."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:162
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:61
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:164
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:65
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:83
+msgid "Singular Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:166
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:168
+msgid "Name for one object of this post type. Defaults to value of name."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:175
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:177
+msgid "The add new text. The default is Add New for both hierarchical and non-hierarchical types."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:180
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:70
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:182
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:74
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:92
+msgid "Add New Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:184
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:186
+msgid "The add new item text. Default is Add New Post/Add New Page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:189
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:88
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:191
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:92
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:110
+msgid "Edit Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:193
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:195
+msgid "The edit item text. Default is Edit Post/Edit Page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:198
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:200
+msgid "New Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:202
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:204
+msgid "The new item text. Default is New Post/New Page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:207
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:209
+msgid "View Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:211
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:213
+msgid "The view item text. Default is View Post/View Page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:216
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:106
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:218
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:110
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:128
+msgid "Search Items"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:220
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:222
+msgid "The search items text. Default is Search Posts/Search Pages."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:225
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:227
+msgid "Not Found"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:229
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:231
+msgid "The not found text. Default is No posts found/No pages found."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:234
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:236
+msgid "Not Found In Trash"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:238
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:240
+msgid "The not found in trash text. Default is No posts found in Trash/No pages found in Trash."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:243
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:142
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:245
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:146
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:164
+msgid "Parent Item Colon"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:247
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:249
+msgid "The parent text. This string isn't used on non-hierarchical types. In hierarchical ones the default is Parent Page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:252
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:254
+msgid "Custom Fields block"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:256
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:258
+msgid "Title of Custom Fields block."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:263
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:267
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:27
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:38
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:265
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:269
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:21
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:34
+msgid "Description"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:271
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:273
+msgid "A short descriptive summary of what the post type is."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:278
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:282
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:280
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:284
+msgid "Menu Position"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:286
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:288
+msgid "5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:293
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:297
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:295
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:299
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:22
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:35
+msgid "Menu Icon"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:301
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:303
+msgid "The url to the icon to be used for this menu."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:310
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:314
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:182
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:186
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:350
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:354
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:186
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:190
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:25
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:38
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:21
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:31
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:204
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:208
+msgid "Public"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:317
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:357
+msgid "Meta argument used to define default values for publicly_queriable, show_ui, show_in_nav_menus and exclude_from_search."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:325
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:372
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:404
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:432
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:460
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:488
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:516
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:551
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:611
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:639
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:197
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:230
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:258
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:286
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:314
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:342
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:396
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:365
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:416
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:447
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:475
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:503
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:531
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:559
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:593
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:648
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:676
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:201
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:234
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:262
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:290
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:318
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:346
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:399
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:218
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:245
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:269
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:293
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:317
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:341
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:387
+msgid "TRUE"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:328
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:369
+msgid "Display a user-interface for this \"post_type\""
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:329
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:370
+msgid "Show \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:330
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:371
+msgid "\"post_type\" queries can be performed from the front-end"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:331
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:342
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:372
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:385
+msgid "Exclude posts with this post type from search results"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:336
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:379
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:409
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:437
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:465
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:493
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:521
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:558
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:616
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:644
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:202
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:235
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:263
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:291
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:319
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:349
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:401
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:378
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:423
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:452
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:480
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:508
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:536
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:564
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:598
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:653
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:681
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:206
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:239
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:267
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:295
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:323
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:353
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:404
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:221
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:248
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:272
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:296
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:320
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:346
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:390
+msgid "FALSE"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:339
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:382
+msgid "Don not display a user-interface for this \"post_type\""
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:340
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:383
+msgid "Hide \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:341
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:384
+msgid "\"post_type\" queries cannot be performed from the front-end"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:347
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:391
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:80
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:71
+msgid "Advanced"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:350
+msgid "You can set each component manualy."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:357
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:361
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:215
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:219
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:401
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:405
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:219
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:223
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:231
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:235
+msgid "Show UI"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:364
+msgid "Whether to generate a default UI for managing this post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:375
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:418
+msgid "Display a user-interface (admin panel) for this post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:382
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:425
+msgid "Do not display a user-interface for this post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:389
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:271
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:432
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:275
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:279
+msgid "Show In Nav Menus "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:393
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:275
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:436
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:279
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:283
+msgid "Show In Nav Menus"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:396
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:439
+msgid "Whether post_type is available for selection in navigation menus."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:417
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:421
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:460
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:464
+msgid "Publicly Queryable"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:424
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:467
+msgid "Whether post_type queries can be performed from the front end."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:445
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:449
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:488
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:492
+msgid "Exclude From Search"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:452
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:495
+msgid "Whether to exclude posts with this post type from search results."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:473
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:477
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:299
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:303
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:516
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:520
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:303
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:307
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:26
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:39
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:22
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:32
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:303
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:307
+msgid "Hierarchical"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:480
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:523
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:310
+msgid "Whether the post type is hierarchical. Allows Parent to be specified."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:501
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:505
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:544
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:548
+msgid "Has Archive"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:508
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:551
+msgid "Enables post type archives. Will use string as archive slug. Will generate the proper rewrite rules if rewrite is enabled."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:524
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:564
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:355
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:567
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:601
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:359
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:352
+msgid "Custom Slug"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:529
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:571
+msgid "Custom slug for post type archive."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:536
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:540
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:327
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:331
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:578
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:582
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:331
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:335
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:27
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:40
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:23
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:33
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:327
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:331
+msgid "Rewrite"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:543
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:585
+msgid "Rewrite permalinks with this format."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:554
+msgid "Default will use post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:561
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:352
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:356
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:348
+msgid "Prevent rewrite."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:568
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:360
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:605
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:363
+msgid "Prepend posts with this slug. If empty default will be used."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:572
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:364
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:609
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:367
+msgid "Allow Front Base"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:575
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:367
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:612
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:370
+msgid "Allowing permalinks to be prepended with front base."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:579
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:616
+msgid "Feeds"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:582
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:619
+msgid "Default will use has_archive."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:586
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:623
+msgid "Pages"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:589
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:626
+msgid "Defaults to true."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:596
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:600
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:381
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:385
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:633
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:637
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:384
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:388
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:373
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:377
+msgid "Query var"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:603
+msgid "Can queries be performed on this post_type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:624
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:628
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:661
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:665
+msgid "Can Export"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-post-type.php:631
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:668
+msgid "Can this post_type be exported."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:5
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:111
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:19
+msgid "Add Taxonomy"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:10
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:15
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:19
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:18
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:28
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:24
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:28
+msgid "Taxonomy"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:18
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:32
+msgid "The system name of the taxonomy. Alphanumeric characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:41
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:63
+msgid "Select one or more post types to add this taxonomy to."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:56
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:60
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:78
+msgid "General name for the taxonomy, usually plural."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:65
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:69
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:87
+msgid "Name for one object of this taxonomy. Defaults to value of name."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:74
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:78
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:96
+msgid "The add new item text. Default is \"Add New Tag\" or \"Add New Category\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:79
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:83
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:101
+msgid "New Item Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:83
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:87
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:105
+msgid "The new item name text. Default is \"New Tag Name\" or \"New Category Name\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:92
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:96
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:114
+msgid "The edit item text. Default is \"Edit Tag\" or \"Edit Category\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:97
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:101
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:119
+msgid "Update Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:101
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:105
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:123
+msgid "The update item text. Default is \"Update Tag\" or \"Update Category\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:110
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:114
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:132
+msgid "The search items text. Default is \"Search Tags\" or \"Search Categories\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:115
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:119
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:137
+msgid "Popular Items"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:119
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:123
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:141
+msgid "The popular items text. Default is \"Popular Tags\" or null."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:124
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:128
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:146
+msgid "All Items"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:128
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:132
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:150
+msgid "The all items text. Default is \"All Tags\" or \"All Categories\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:133
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:137
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:155
+msgid "Parent Item"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:137
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:141
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:159
+msgid "The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or \"Parent Category\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:146
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:150
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:168
+msgid "The same as parent_item, but with colon : in the end null, \"Parent Category:\"."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:151
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:155
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:173
+msgid "Add Or Remove Items"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:155
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:159
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:177
+msgid "The add or remove items text is used in the meta box when JavaScript is disabled. This string isn't used on hierarchical taxonomies. Default is \"Add or remove tags\" or null."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:160
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:164
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:182
+msgid "Separate Items With Commas"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:164
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:168
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:186
+msgid "The separate item with commas text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Separate tags with commas\", or null."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:169
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:173
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:191
+msgid "Choose From Most Used"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:173
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:177
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:195
+msgid "The choose from most used text used in the taxonomy meta box. This string isn't used on hierarchical taxonomies. Default is \"Choose from the most used tags\" or null."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:189
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:193
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:211
+msgid "Should this taxonomy be exposed in the admin UI."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:207
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:211
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:224
+msgid "ADVANCED"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:222
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:226
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:238
+msgid "Whether to generate a default UI for managing this taxonomy."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:243
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:247
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:247
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:251
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:255
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:259
+msgid "Show Tagcloud"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:250
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:254
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:262
+msgid "Whether to show a tag cloud in the admin UI for this taxonomy."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:278
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:282
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:286
+msgid "Whether to make this taxonomy available for selection in navigation menus."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:306
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:310
+msgid "Is this taxonomy hierarchical (have descendants) like categories or not hierarchical like tags."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:334
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:338
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:334
+msgid "Set to false to prevent rewrite, or true to customize."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:345
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:349
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:343
+msgid "Default will use query var."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:371
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:374
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:364
+msgid "Hierarchical URLs"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:374
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:377
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:366
+msgid "Allow hierarchical urls. Applicable for hierarchical taxonomies."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:388
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:380
+msgid "False to prevent queries. Default will use the taxonomy system name as query var."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/add-taxonomy.php:411
+msgid "Add Taxonomy Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:22
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:33
+msgid "Order"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:23
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:34
+msgid "Field Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:24
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:35
+msgid "Field ID"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:25
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:36
+msgid "WP/Plugins"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:28
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:39
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/navigation.php:7
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:53
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:20
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:30
+msgid "Post Types"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:74
+msgid "Edit this custom field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:77
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:50
+msgid "Show embed code"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:77
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:50
+msgid "Embed Code"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:80
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:57
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:53
+msgid "Delete"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:86
+msgid "Field and values"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:87
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:64
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:60
+msgid "Cancel"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:88
+msgid "Only field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:92
+msgid "Allow"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:92
+msgid "Deny"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:104
+msgid "Embed code returns the values of the custom field with the specified key from the specified post. Property may be one of \"title\", \"description\" or \"value\". If property is not used \"value\" wil be returned. Use inside the loop in templates and PHP code "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/custom-fields.php:108
+msgid "Shortcode returns the values of the custom field with the specified key from the specified post. Property may be one of \"title\", \"description\" or \"value\". If property is not used \"value\" wil be returned. Use inside the loop in Posts and Widgets"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:8
+msgid "Edit Custom Field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-custom-field.php:176
+msgid "Update Custom Field"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:8
+msgid "Edit Post Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:310
+msgid "Display Custom Fields columns"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:317
+msgid "These Custom Fields will be display as columns on the custom post type screen."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:339
+msgid "This custom post type not uses any Custom Fields"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:393
+msgid "You can set each component manually."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:408
+msgid "Whether to generate a default UI for managing this post type. Note that built-in post types, such as post and page, are intentionally set to false."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-post-type.php:640
+msgid "Name of the query var to use for this post type."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:9
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:24
+msgid "The system name of the taxonomy. Alphanumeric lower case characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:45
+msgid "Select one or more post types to add this taxonomy to"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/edit-taxonomy.php:391
+msgid "False to prevent queries, or string to customize query var. Default will use $taxonomy as query var."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/message.php:3
+msgid "Settings Saved."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/navigation.php:8
+msgid "Taxonomies"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:54
+msgid "Edit the post type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:63
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:59
+msgid "Confirm"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:82
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:89
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:96
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:73
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:80
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:87
+msgid "True"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:84
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:91
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/post-types.php:98
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:75
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:82
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:89
+msgid "False"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:24
+msgid "CustomPress Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:31
+msgid "General"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:35
+msgid "Enable sub-site content types."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:39
+msgid "If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:42
+msgid "Keep the network-wide content types on sub-sites."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:45
+msgid "Remove the network-wide content types from sub-sites."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:57
+msgid "On \"Blog / Home\" page, display these post types: "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:86
+msgid "Check the custom post types you want to display on the \"Blog / Home\" page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:131
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:172
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:213
+msgid "If \"default\" is checked the list above will be disabled and only default post_types will display."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:98
+msgid "On \"Front\" page, display these post types: "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:127
+msgid "Check the custom post types you want to display on the \"Front\" static page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:139
+msgid "On \"Archive\" pages, display these post types:  "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:168
+msgid "Check the custom post types you want to display on the \"Archive\" page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:180
+msgid "On \"Search\" pages, display these post types:  "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:209
+msgid "Check the custom post types you want to display on the \"Search\" page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:221
+msgid "Date Picker Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:247
+msgid "Select Datepicker Theme."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:270
+msgid "Template Files"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:274
+msgid "Create template file for: "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:284
+msgid "No custom post types available"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:287
+msgid "This will create \"single-[post_type].php\" file inside your active theme directory by copying your current single.php template. This file will be the custom template for your custom post type. You can then edit and customize it."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:288
+msgid "In some cases you may not want to do that. For example if you don't have a template for your custom post type the default \"single.php\" will be used."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/settings.php:289
+msgid "Your active theme folder permissions have to be set to 777 for this option to work. After the file is created you can set your active theme directory permissions back to 755."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:47
+msgid "Edit this taxonomy"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:96
+msgid "Embed code returns an HTML string of taxonomy terms associated with a post and given taxonomy. <br />Terms are linked to their respective term listing pages. Use it in templates inside the Loop."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/taxonomies.php:100
+msgid "Shortcode returns an HTML string of taxonomy terms associated with a post and given taxonomy. <br />Terms are linked to their respective term listing pages. Use it inside the Loop."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/update-message.php:5
+msgid "Content Type Updated"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:356
+msgid "Prepend posts with this slug."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:359
+msgid "Disallow Front Base"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/custompress/ui-admin/wip-update-taxonomy.php:361
+msgid "Disallowing permalinks to be prepended with front base."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:421
+msgid "Next &raquo;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:436
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:458
+msgid "Dismiss"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:437
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:459
+#, php-format
+msgid "Dismiss %s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:443
+msgid "&laquo; Previous"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/libs/pointers_tutorial.php:498
+#, php-format
+msgid "%s: Step %d of %d"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:10
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:31
+msgid "<span class=\"meta-nav\">&larr;</span> Older Reviews"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:32
+msgid "Newer Reviews <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:50
+msgid "<span class=\"meta-nav\">&larr;</span> Older Review"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:51
+msgid "Newer Review <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:61
+msgid "Reviews are closed."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/comments.php:73
+#, php-format
+msgid "Write a Review to %s"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/dr_listinglist.php:87
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/dr_listinglist.php:108
+msgid "Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/footer.php:8
+msgid "Theme by WPMU DEV"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/footer.php:8
+msgid "WPMU DEV"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/footer.php:8
+msgid "Copyright"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/footer.php:8
+msgid "Y"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/footer.php:8
+msgid "Go back to top &uarr;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:16
+msgid "No Reviews &#187;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:16
+msgid "1 Review &#187;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:16
+msgid "% Reviews &#187;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:20
+msgid "Tags: "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:23
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to rate item."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:35
+msgid "Pages:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:50
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:66
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:67
+msgid "Next Entries &raquo;"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/single-listing.php:72
+msgid "Sorry, we can't find the post you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/actionbuttons.php:2
+msgid "Welcome, what would you like to do?"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/branding-header.php:4
+msgid "Home"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/headers.php:3
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/headers.php:5
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/headers.php:7
+#, php-format
+msgid "You are browsing the archive for %1$s."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/headers.php:11
+msgid "Search Results"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/headers.php:13
+msgid "Blog"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/messages.php:3
+msgid "Sorry, we can't find the category you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/messages.php:7
+msgid "Sorry, we can't find the search keyword you're looking for. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/messages.php:9
+msgid "Sorry, we can't find the author you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/messages.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/messages.php:15
+msgid "Sorry, we can't find the content you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/pagination.php:12
+msgid "number"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/components/searchcontainer.php:4
+msgid "What can we find for you today?"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:35
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:103
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:110
+msgid "Colors"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:99
+msgid "Colors Saved!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:116
+msgid "Site Title"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:119
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:128
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:137
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:146
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:155
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:164
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:173
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:182
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:191
+msgid "Select Color"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:120
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:129
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:138
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:147
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:156
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:165
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:174
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:183
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:192
+msgid "Use Default"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:125
+msgid "Navigation Bar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:134
+msgid "Content Wrapper"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:143
+msgid "Search Box"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:152
+msgid "Grid and Action Bars"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:161
+msgid "Headings Bars"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:170
+msgid "Buttons"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:179
+msgid "Buttons Text"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:188
+msgid "Global Text"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/colors.php:198
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:94
+msgid "Save Changes"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:32
+msgid "Top Menu"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:46
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:48
+msgid "The first footer widget area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:56
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:58
+msgid "The second footer widget area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:66
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:68
+msgid "The third footer widget area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:76
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:78
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/core.php:95
+msgid "{View Listing}"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:34
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:46
+msgid "Options"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:42
+msgid "Options Saved!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:56
+msgid "Presentation"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:59
+msgid "Text Shadows"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:62
+msgid "Switch text shadows OFF"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:66
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:69
+msgid "Layout"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:72
+msgid "Grid Layout"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:73
+msgid "Rows Layout"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:75
+msgid "Switch Theme Layout"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:79
+msgid "Styles"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:82
+msgid "Style Modern"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:83
+msgid "Style Minimal"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:84
+msgid "Style Boxed"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:85
+msgid "Style Gloss"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:86
+msgid "Style Skinny"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:87
+msgid "Style Wide"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/core/options.php:89
+msgid "Switch Theme Style"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-attachment.php:13
+msgid "<p class=\"serif\">Read the rest of this entry &rarr;</p>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-attachment.php:14
+msgid "<p><strong>Pages:</strong> "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-blog-page.php:11
+msgid "in"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-blog-page.php:11
+msgid "by "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-blog-page.php:16
+msgid "Permanent Link to"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/themes/default/loops/loop-page.php:10
+msgid "Edit this entry."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:5
+msgid "Getting started"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:11
+msgid "Getting Started Guide"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:14
+msgid "Welcome to the <b>Directory</b> Getting Started Guide."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:17
+msgid "The Directory plugin transforms your WordPress install from a blogging platform into a powerful online directory with loads of features and built in payment gateways."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:27
+msgid "First up, you need to configure your settings. This is where you can set the payment type, price and other settings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:31
+msgid "Configure your settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:37
+msgid "Next, create new categories."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:41
+msgid "Create Categories"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:47
+msgid "Finally, you can create your own listings."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:51
+msgid "Create Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:60
+msgid "Need More Help?"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:63
+msgid "Plugin project page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/getting-started.php:65
+msgid "Video tutorial"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:8
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:18
+msgid "Capabilities"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:10
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-ads.php:14
+msgid "Advertising"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:12
+msgid "Payments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:13
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:39
+msgid "Payments Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:14
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:26
+msgid "Affiliate"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/navigation.php:15
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:8
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:11
+msgid "Shortcodes"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-ads.php:10
+msgid "Advertising Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-ads.php:19
+msgid "Ad Code Header Banner"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-ads.php:24
+msgid "Place ad code here!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:4
+msgid "Affiliate payment credited for signed member (recurring payments):"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:5
+msgid "Affiliate payment credited for permanent member (one-time payments):"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:21
+msgid "Affiliate settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:30
+msgid "This feature will be available only after installation the <b>Affiliate plugin</b>  and activation the <b>Directory add-on</b> there."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:32
+#, php-format
+msgid "More information about the Affiliate plugin you can get <a href=\"%s\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:35
+msgid "Please activate:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:37
+msgid "1. The <b>Affiliate plugin</b>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:38
+msgid " - <i>Completed</i>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-affiliate.php:40
+msgid "2. The <b>Directory add-on</b> in the Affiliate plugin"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:14
+msgid "Capabilities Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:23
+msgid "Assign Capabilities"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:32
+msgid "Select a role to which you want to assign Directory capabilities."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:56
+msgid "Moderation"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-capabilities.php:60
+msgid "Answers are held for moderation."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:12
+msgid "General Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:16
+msgid "Redirection Options"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:18
+msgid "Here you can set the page, to which will redirected the user after registration or login."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:22
+msgid "Redirect URL (sign in):"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:26
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:35
+msgid "by default to Home page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:31
+msgid "Redirect URL (logout):"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:43
+msgid "Custom Field Options"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:48
+msgid "Display Custom Fields as:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:52
+msgid "table"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:53
+msgid "ul"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:54
+msgid "div"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:56
+msgid "Structure of the custom fields block."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:67
+msgid "Display Options"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:72
+msgid "Count of category:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:76
+msgid "a number of categories that will be displayed in the list of categories."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:81
+msgid "Count of sub-category:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:85
+msgid "a number of sub-category that will be displayed for each category in the list of categories."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:90
+msgid "Empty sub-category:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:94
+msgid "Hide empty sub-category"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:115
+msgid "Getting started page"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:117
+msgid "Show &quot;Getting started&quot; page even after all the steps are done:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:119
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:86
+msgid "Yes"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:121
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:84
+msgid "No"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-general.php:123
+msgid "By default, \"Getting started\" page will be hidden once you completed all the steps. Use this option to make it control that behavior."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:41
+msgid "Here you can set how users can pay to you for capability the creation listings on your site."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:46
+msgid "Gateway(s)"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:54
+msgid "Select Payment Gateway(s)"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:58
+msgid "Free Listings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:59
+msgid "(logged users can create listings for free)."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:64
+msgid "PayPal"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:81
+msgid "PayPal Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:84
+msgid "Express Checkout is PayPal's premier checkout solution, which streamlines the checkout process for buyers and keeps them on your site after making a purchase. Unlike PayPal Pro, there are no additional fees to use Express Checkout, though you may need to do a free upgrade to a business account."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:85
+msgid "More Info"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:90
+msgid "PayPal API Calls URL"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:94
+msgid "Sandbox"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:95
+msgid "Live"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:97
+msgid "Choose between PayPal Snadbox and PayPal Live."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:102
+msgid "PayPal Business Email"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:106
+msgid "Your PayPal business email for Recurring Payments."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:111
+msgid "PayPal API Credentials"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:115
+msgid "You must login to PayPal and create an API signature to get your credentials. "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:116
+msgid "Instructions"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:119
+msgid "API Username"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:124
+msgid "API Password"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:130
+msgid "API Signature"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:138
+msgid "Currency"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:142
+msgid "U.S. Dollar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:143
+msgid "Euro"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:144
+msgid "Pound Sterling"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:145
+msgid "Canadian Dollar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:146
+msgid "Australian Dollar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:147
+msgid "Japanese Yen"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:148
+msgid "Swiss Franc"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:149
+msgid "Singapore Dollar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:150
+msgid "New Zealand Dollar"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:151
+msgid "Swedish Krona"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:152
+msgid "Danish Krone"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:153
+msgid "Norwegian Krone"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:154
+msgid "Czech Koruna"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:155
+msgid "Hungarian Forint"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:156
+msgid "Polish Zloty"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments-type.php:158
+msgid "The currency in which you want to process payments."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:69
+msgid "Payments Settings"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:71
+msgid "Here you can set price that users should pay for capability the creation listings on your site. If you want that users can create listings for free, select \"Free Listings\" on the \"Payments Type\" page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:77
+msgid "Recurring Payments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:83
+msgid "Use the recurring payments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:90
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:158
+msgid "Cost of Service"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:94
+msgid "Amount to bill for each billing cycle."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:99
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:167
+msgid "Name of Service"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:103
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:171
+msgid "Name of the service."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:108
+msgid "Billing Period"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:112
+msgid "Day"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:113
+msgid "Week"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:114
+msgid "SemiMonth"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:115
+msgid "Month"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:116
+msgid "Year"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:118
+msgid "The unit of measure for the billing cycle."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:123
+msgid "Billing Frequency"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:127
+msgid "Number of billing periods that make up one billing cycle. The combination of billing frequency and billing period must be less than or equal to one year. If the billing period is SemiMonth, the billing frequency must be 1."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:132
+msgid "Billing Agreement"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:136
+msgid "The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at \"$9.99 per month for 2 years.\""
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:145
+msgid "One-time Payments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:151
+msgid "Use the one-time payments"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:162
+msgid "Cost of service."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:179
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:184
+msgid "Terms of Service"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-payments.php:189
+msgid "Text for \"Terms of Service\""
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:14
+msgid "Shortcodes allow you to include dynamic store content in posts and pages on your site. Simply type or paste them into your post or page content where you would like them to appear. Optional attributes can be added in a format like <em>[shortcode attr1=\"value\" attr2=\"value\"]</em>."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:17
+msgid "Attributes:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:18
+msgid "text = <em>Text to display on a button</em>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:19
+msgid "view = <em>Whether the button is visible when loggedin, loggedout, or always</em>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:20
+msgid "redirect = <em>On the Logout button, what page to go to after logout</em>"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:24
+msgid "List of Categories:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:27
+msgid "Displays a list of categories."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:31
+msgid "Listings Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:34
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:42
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:50
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:58
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:66
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:74
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:82
+msgid "someimage.jpg"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:35
+msgid "Links to the Listings Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:39
+msgid "Add Listing Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:43
+msgid "Links to the Add Listings Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:47
+msgid "My Listings Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:51
+msgid "Links to the My Listings Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:55
+msgid "Profile Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:59
+msgid "Links to the Profile Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:63
+msgid "Signin Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:67
+msgid "Links to the Signin Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:71
+msgid "Signup Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:75
+msgid "Links to the Signup Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:79
+msgid "Logout Button:"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-admin/settings-shortcodes.php:83
+msgid "Links to the Logout Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define. The \"redirect\" attribute is the url to go to after logging out."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:60
+msgid "Add new listing"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:66
+msgid "Date"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:83
+msgid "Delete? "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-my-listings.php:89
+msgid "Preview"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:20
+msgid "You have to login to view the contents of this page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:23
+msgid "Create new account"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:24
+msgid "New Account"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:28
+msgid "Existing Client"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:33
+msgid "Username"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:37
+msgid "Password"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:44
+msgid "Remember Me"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signin.php:53
+msgid "Sign in"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:61
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:91
+msgid "Checking..."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:73
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:109
+msgid "Available"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:78
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:103
+msgid "Exists!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:137
+msgid "Please write the email!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:143
+msgid "Invalid Email Address"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:149
+msgid "Please write the first name!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:155
+msgid "Please write the last name!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:161
+msgid "Please write the street!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:167
+msgid "Please write the city!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:173
+msgid "Please write the state!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:179
+msgid "Please write the ZIP!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:185
+msgid "Please select the country!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:191
+msgid "Please write the card number!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:197
+msgid "Please write the CVV2!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:209
+msgid "Please write the login!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:215
+msgid "The login already exist!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:221
+msgid "Please write the password!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:227
+msgid "Please confirm the password!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:234
+msgid "The confirm password is incorrect!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:241
+msgid "Please write the user email!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:247
+msgid "The user email already exist!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:267
+msgid "This feature is currently disabled by the system administrator."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:298
+msgid " per "
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:341
+msgid "I agree with the Terms of Service"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:348
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:406
+msgid "Continue"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:382
+msgid "Choose Payment Method"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:396
+msgid "Credit Card"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:672
+msgid "Payment Details"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:676
+msgid "Email Address"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:680
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:992
+msgid "First Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:684
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:998
+msgid "Last Name"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:688
+msgid "Street"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:692
+msgid "City"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:696
+msgid "State"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:700
+msgid "ZIP"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:704
+msgid "Country"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:714
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:852
+msgid "Total Amount"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:724
+msgid "Credit Card Type"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:727
+msgid "Visa"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:728
+msgid "MasterCard"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:729
+msgid "Amex"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:730
+msgid "Discover"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:735
+msgid "Credit Card Number"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:739
+msgid "Expiration Date"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:764
+msgid "CVV2"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:770
+msgid "Registration Details"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:774
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:820
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:909
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:970
+msgid "Login"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:785
+msgid "Confirm Pass"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:789
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:835
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:924
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:985
+msgid "User Email"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:812
+msgid "Confirm Payment"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:831
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:920
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:981
+msgid "Password Confirm"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:888
+msgid "Thank you for your business. Transaction processed successfully!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:889
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:949
+msgid "You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:906
+msgid "Registration"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:939
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:1006
+msgid "Confirm data"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:948
+msgid "The registration is completed successfully!"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-signup.php:967
+msgid "Registration details"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:72
+msgid "Enter title here."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:95
+msgid "The content of your listing."
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:161
+msgid "Status"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:164
+msgid "Published"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:165
+msgid "Draft"
+msgstr ""
+
+#: D:\wamp\www\directory\wp-content\plugins\directory/ui-front/general/page-update-listing.php:168
+msgid "Select a status for your Listing."
+msgstr ""
+
