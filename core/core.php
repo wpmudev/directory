@@ -108,7 +108,7 @@ class Directory_Core {
 
 		add_action( 'wp', array( &$this, 'load_directory_templates' ) );
 
-		add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
+		//add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
 
 		//hide some menu pages
 		add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
