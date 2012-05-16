@@ -229,7 +229,7 @@ padding: 4px 5px;
 font-size: 18px;
 }
 
-a.button, input[type=submit], input[type=button],
+a.button, input[type=submit], input[type=button], button,
 ul.button-nav li a, div.generic-button a, a.button:visited {
 font-size: 14px;
 font-weight: bold;
@@ -242,7 +242,7 @@ text-shadow: 1px 1px 0px #113b47;
 }
 	
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
-ul.button-nav li a:hover, ul.button-nav li.current a,
+ul.button-nav li a:hover, ul.button-nav li.current a, button:hover, button:focus,
 div.generic-button a:hover {
 font-size: 14px;
 font-weight: bold;
