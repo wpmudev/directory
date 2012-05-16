@@ -1,0 +1,197 @@
+=== CustomPress ===
+
+Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
+Author URI: http://premium.wpmudev.org
+
+== Changelog ==
+
+= 1.2.1.8 = 2012-05-14 Arnold Bailey
+* Fixed bad url on Taxonomy when running under Multisite.
+
+= 1.2.1.7 = 2012-05-08 Arnold Bailey
+* Fixed stripslashes problem with Gravity forms.
+* Changes datepicker translation plugin loading sequence.
+
+= 1.2.1.6 = 2012-05-06 Arnold Bailey
+* Added custom type display inclusion for Home, Front, Archive and Search pages
+
+= 1.2.1.5 = 2012-05-03 Arnold Bailey
+* extraneous spaces causing header already sent problem
+
+= 1.2.1.4 = 2012-05-03 Arnold Bailey
+* fixed improper supports tags in setup. Things like custom-fields were entered as custom_fields
+* fixed numerous xhtml validation problems.
+* Changed Custom field metabox name to CustomPress Fields so they won't be confused with Wordpress native custom fields editor
+* Refactored objects so that they properly inherit and don't initialize the same thing 2 and 3 times.
+* Blocked changes to Custom fields on Bulk Edit
+
+= 1.2.1.3 = 2012-04-30 Arnold Bailey
+* changed script inclusion so the datepicker and validation can run on the front end for Directory and classifieds.
+
+= 1.2.1.2 = 2012-04-12 Arnold Bailey
+* Fixed $_REQUEST parameter name collision of 'post_type' conflicting with wp admin.php
+* Fixes settings not being remembered for Post Type checkboxes.
+
+= 1.2.1.1 = 2012-04-11 Arnold Bailey
+* Fixed error on display of radio and selectbox shortcodes
+* Fixed debug warnings in several places. 
+
+= 1.2.1 = 2012-04-05 Arnold Bailey
+
+* Added field reordering to Custom Fields
+* Added Required fields
+* Added Date Picker
+* Added Datepicker themes
+* Added Datepicker date formats
+* Added individual date formats for each created field
+* Added shortcodes for Taxonomy [tax id="tax" before="your before text " separator=", " after=" your after text"]
+* Added shortcodes for Custom fields including metadata [ct id="field id" property=" title | description | value "] or leave out property entirely for default value.
+* Enabled shortcodes in widgets 
+* Change embed codes to <? echo do_shortcode('[]'); ?> style for better error trapping. The old style still works so old templates aren't broken.
+* Corrected CP_PLUGIN_URL for SSL
+* Fixed double display of options on Radio buttons
+* Fixed Group checkbox problem
+* Added class exists exclusions
+* Verified function as a direct sub module for Classifieds, Directory etc.
+* Added stripslashes_deep on $_POST to handle apostrophes properly.
+
+=1.2.0 =
+
+* Compatibility with the Directory plugin;
+
+=1.1.9 =
+
+* Fixed problem with "Allow for WP/plugins" when editing  Custom Fields;
+* Added feature for assign regular taxonomies to Custom Post Type;
+
+=1.1.8 =
+
+* Fixed Warning\Notice message;
+* Fixed problem with change selectbox on multiselectbox;
+* Fixed labels for Custom Fields on media page;
+* Fixed saving value of non checked checkbox(custom fields) on all pages; 
+
+=1.1.7.2 =
+
+* Fixed problem of saving the custom hierarchical taxonomy on media page;
+* Fixed saving value of non checked checkbox(custom fields) on media page; 
+
+=1.1.7 =
+
+* Fixed problem with change type on "'radio, checkbox, selectbox, multiselectbox" when edit custom fields;
+* Fixed display checkbox of "Allow for WP/plugins" on Edit Custom Field page;
+* Added feature for display Custom Fields on media page (for Attachment post type);
+* Display terms of Attachment post type like submenu of the media menu;
+
+=1.1.6 =
+
+* Display hierarchical taxonomy as tree of checkboxes for the 'attachment' post type.
+
+=1.1.5 =
+
+* Fixed problem with upper case in name of taxonomy; 
+* Fixed problem of display "An unidentified error has occurred" when click on "All ...";
+* Fixed problem with create custom template;
+* Changed style for Custom fields;
+* Changed some texts;
+
+=1.1.4 =
+
+* Added label for block of Custom Fields ("Custom Fields block" on create/edit Post Type page).
+* Added option for allow use custom fields in WP and other plugins ("Allow for WP/plugins" on  create Custom Fields page).
+* Added feature for add custom fields as columns on custome post type page ("Display Custom Fields columns" on edit Post Type page).
+* Added buttons for delete: "Field and values" for delete custom field and all its values from postmeta and "Only field " for delete only custom field.
+
+=1.1.3 =
+
+* fixed problem with navigation menu on home page. 
+
+=1.1.2 =
+
+* Major update 
+
+
+
+= 1.1.1 =
+
+* Bug fixes
+
+
+
+= 1.1.0 =
+
+* Bug fixes
+
+
+
+= 1.0.9 =
+
+* Bug fixes
+
+
+
+= 1.0.8 =
+
+* Updated for WordPress 3.1
+
+* New features added
+
+* Admin GUI improved
+
+* Bug fixes
+
+* Code improvements
+
+
+
+= 1.0.7 =
+
+* Bug fixes.
+
+
+
+= 1.0.6 =
+
+* Bug fixes.
+
+
+
+= 1.0.5 =
+
+* Bug fixes.
+
+
+= 1.0.4 =
+
+* Bug fixes.
+
+
+
+= 1.0.3 =
+
+* Improved UI.
+
+* Internal architecture improved.
+
+* Submodules added.
+
+* Localization added ( .pot files inside "cp-languages" and "ct-languages" ).
+
+* Embed codes added.
+
+* Bug fixes.
+
+
+
+= 1.0.2 =
+
+* Initial release.
+
+
+
+== Upgrade Notice ==
+
+= 1.0.3 =
+Due to the fact that the internal architecture of the current version is completly
+different from the previous one, the "v1.0.3" release is NOT backward compatible
+with the "v1.0.2" release.

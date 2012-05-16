@@ -47,7 +47,7 @@ include_once 'core/ratings.php';
 
 //If another version of CustomPress not loaded, load ours.
 if(!class_exists('CustomPress_Core')) {
-	include_once 'custompress/loader.php';
+	include_once 'core/custompress/loader.php';
 }
 
 //Decide whether to load Admin, Buddypress or Standard version
