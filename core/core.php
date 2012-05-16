@@ -80,8 +80,8 @@ class Directory_Core {
 		add_action( 'init', array( &$this, 'init' ) );
 
 		add_filter('comment_form_defaults', array($this,'review_defaults'));
-		add_filter('the_category', array($this,'filter_the_category'),10,3);
-		add_filter('the_tags', array($this,'filter_the_tags'),10,4);
+		//add_filter('the_category', array($this,'filter_the_category'),10,3);
+		//add_filter('the_tags', array($this,'filter_the_tags'),10,4);
 
 		//Shortcodes
 		add_shortcode( 'dr_list_categories', array( &$this, 'list_categories_sc' ) );

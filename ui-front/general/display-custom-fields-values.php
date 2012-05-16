@@ -43,30 +43,32 @@ $field_template['div']['close_calue'] = '';
 
 echo $field_template[$val]['open'];
 
-foreach ( $custom_fields as $custom_field ){
-	foreach ( $custom_field['object_type'] as $cstom_field_object_type ){
-		if ( $custom_field_object_type == $post->post_type ){
-			$output = true; break;
+if(is_array($custom_fields)){
+	foreach ( $custom_fields as $custom_field ){
+		foreach ( $custom_field['object_type'] as $cstom_field_object_type ){
+			if ( $custom_field_object_type == $post->post_type ){
+				$output = true; break;
+			}
 		}
+
+		if ( isset( $custom_field['field_wp_allow'] ) && 1 == $custom_field['field_wp_allow'] )
+		$prefix = 'ct_';
+		else
+		$prefix = '_ct_';
+
+		if ( $output ){
+
+			echo $field_template[$val]['open_line'];
+			echo $field_template[$val]['open_title'];
+			echo ( $custom_field['field_title'] );
+			echo $field_template[$val]['close_title'];
+			echo $field_template[$val]['open_value'];
+			echo ( get_post_meta( $post->ID, $prefix . $custom_field['field_id'], true ));
+			echo $field_template[$val]['close_value'];
+			echo $field_template[$val]['close_line'];
+
+		}
+		$output = false;
 	}
-
-	if ( isset( $custom_field['field_wp_allow'] ) && 1 == $custom_field['field_wp_allow'] )
-	$prefix = 'ct_';
-	else
-	$prefix = '_ct_';
-
-	if ( $output ){
-
-		echo $field_template[$val]['open_line'];
-		echo $field_template[$val]['open_title'];
-		echo ( $custom_field['field_title'] );
-		echo $field_template[$val]['close_title'];
-		echo $field_template[$val]['open_value'];
-		echo ( get_post_meta( $post->ID, $prefix . $custom_field['field_id'], true ));
-		echo $field_template[$val]['close_value'];
-		echo $field_template[$val]['close_line'];
-
-	}
-	$output = false;
 }
 echo $field_template[$val]['close'];

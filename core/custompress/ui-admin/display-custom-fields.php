@@ -13,6 +13,7 @@ $output = false;
 	<div class="form-field form-required ct-form-field">
 		<table class="form-table">
 
+			<?php if(is_array($custom_fields)):
 			<?php foreach ( $custom_fields as $custom_field ): ?>
 			<?php foreach ( $custom_field['object_type'] as $custom_field_object_type ): ?>
 			<?php if ( $custom_field_object_type == $post->post_type ): ?>
@@ -183,6 +184,7 @@ $output = false;
 
 				<?php endif; $output = false; ?>
 				<?php endforeach; ?>
+				<?php endif; ?>
 
 			</table>
 		</div>

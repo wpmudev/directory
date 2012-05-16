@@ -23,8 +23,10 @@ function the_dr_categories_home( $echo = true ) {
 	$hide_empty_sub_cat     = ( isset( $options['general_settings']['hide_empty_sub_cat'] ) && is_numeric( $options['general_settings']['hide_empty_sub_cat'] ) && 0 < $options['general_settings']['hide_empty_sub_cat'] ) ? $options['general_settings']['hide_empty_sub_cat'] : 0;
 
 	//get hierarchical taxonomies
-	$taxonomies = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
-
+	$taxonomies = get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') ;
+	if(!dr_supports_categories()) unset($taxonomies['category']);
+	$taxonomies = array_values($taxonomies);
+	
 	$args = array(
 	'parent'       => 0,
 	'orderby'      => 'name',
@@ -195,10 +197,26 @@ function the_dr_posted_in() {
 	//get hierarchical category taxonomies
 	$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
 
-	// Retrieves categories list of current post, separated by commas.
-	$categories_list = get_the_category_list(__(', ',DR_TEXT_DOMAIN));
+	// Retrieves categories list of current post.
+	//$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
 
-	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+	// Retrieves categories list of current post, separated by commas.
+	$categories_list = get_the_term_list($post->ID,$categories,'',', ','');
+
+	//$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+
+	//get non-hierarchical tag taxonomies
+	$tags = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => false	), 'names') );
+
+	// Retrieves tag list of current post, separated by commas.
+	$tag_list = array();
+	foreach($tags as $tag){
+		
+		$tag_list[] = get_the_term_list( $post->ID, $tag, '',', ', '' );
+		
+	}
+	$tag_list = array_filter($tag_list);
+	$tag_list = implode(', ',$tag_list);
 
 	if ( $tag_list ) {
 		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );

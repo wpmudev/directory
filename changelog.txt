@@ -6,7 +6,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 == Changelog ==
 
 = 2.0.6 =
-
+* Widget area replaces Advertising area in theme
+* Fully integrated customPress
+* Custom fields foreach error when no custom fields defined.
+* Many new shortcodes
+* Many new automatically added Directory management pages
+* Full blown front end editor for Listings
+* Feature image support
 
 
 = 2.0.5 =
