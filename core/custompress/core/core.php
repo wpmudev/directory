@@ -419,7 +419,7 @@ class CustomPress_Core {
 	function filter_the_category($thelist='', $separator='', $parents=''){
 		global $post;
 
-		if(! defined('WP_ADMIN')){
+		if(! defined('WP_ADMIN') && !empty($separator)){
 			//get hierarchical category taxonomies
 			$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
 

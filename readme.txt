@@ -1,9 +1,9 @@
 === Directory ===
 Contributors: ivanshaovchev
 Tags: directory, paypal, post types, taxonomies, custom fields,
-Requires at least: 3.0.0
-Tested up to: 3.1.2
-Stable tag: 1.0.8
+Requires at least: 3.3.0
+Tested up to: 3.3.2
+Stable tag: 2.1
 
 The Directory plugin lets you create full blown directory website.
 
@@ -34,27 +34,6 @@ URL structure.
 
 == Frequently Asked Questions ==
 
-== Changelog ==
-
-= 1.0.8 =
-* Change plugin architecture
-* Bug fixes 
-
-= 1.0.7 =
-* Bug fixes  
-
-= 1.0.6 =
-* New default theme 
-* New theme options and features
-* Recurring billing added
-* Per site content types added
-* Reviews and Ratings added 
-* Internal architecture improved
-* Bug fixes
-
-= 1.0.5 =
-* Initial release.
-
 == Upgrade Notice ==
 
 == Usage Guides ==
@@ -75,8 +54,7 @@ comes with a paypal one time payments, direct credit card payments and recurring
 billing payments integrated. For the recurring billing payments you can set the
 billing period and billing frequency for the payments.
 
-The plugin also offer a header banner space which can be managed from the
-back-end from Directory->General->Advertising.
+The plugin also offer a header banner space which can be managed as a Advertising widget
 
 For the novice users, the plugin comes with 16 base preconfigured taxonomies
 which you can import at will. You can also import an example Custom Field. Using
