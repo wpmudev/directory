@@ -5,8 +5,12 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.2.1.9 = 2012-05-17 Arnold Bailey
+* filter the_category and the_tags to properly combine custom and standard taxonomies if selected in post_types.
+
 = 1.2.1.8 = 2012-05-14 Arnold Bailey
 * Fixed bad url on Taxonomy when running under Multisite.
+* filter the_category and the_tags to properly combine custom and standard taxonomies if selected.
 
 = 1.2.1.7 = 2012-05-08 Arnold Bailey
 * Fixed stripslashes problem with Gravity forms.

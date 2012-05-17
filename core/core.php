@@ -80,8 +80,6 @@ class Directory_Core {
 		add_action( 'init', array( &$this, 'init' ) );
 
 		add_filter('comment_form_defaults', array($this,'review_defaults'));
-		//add_filter('the_category', array($this,'filter_the_category'),10,3);
-		//add_filter('the_tags', array($this,'filter_the_tags'),10,4);
 
 		//Shortcodes
 		add_shortcode( 'dr_list_categories', array( &$this, 'list_categories_sc' ) );
@@ -107,8 +105,6 @@ class Directory_Core {
 
 
 		add_action( 'wp', array( &$this, 'load_directory_templates' ) );
-
-		//add_action( 'custom_banner_header', array( &$this, 'output_banners' ) );
 
 		//hide some menu pages
 		add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
@@ -750,21 +746,6 @@ class Directory_Core {
 		// Redirect template loading to archive-listing.php rather than to archive.php
 		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
 			$wp_query->set( 'post_type', 'directory_listing' );
-		}
-	}
-
-	/**
-	* Output banner.
-	*
-	* @access public
-	* @return void
-	*/
-	function output_banners() {
-		$options = $this->get_options( 'ads_settings' );
-		if ( !empty( $options['header_ad_code'] ) ) {
-			echo stripslashes( $options['header_ad_code'] );
-		} else {
-			echo '<span>' .  __( 'Advertise Here', $this->text_domain ) . '</span>';
 		}
 	}
 
@@ -1659,44 +1640,6 @@ class Directory_Core {
 		return $result;
 	}
 
-	/**
-	* If it's a directory_listing then combine custom taxonomies with categories
-	*
-	*/
-	function filter_the_category($thelist='', $separator='', $parents=''){
-		global $post;
-
-		if ($post->post_type == 'directory_listing'){
-			//get hierarchical category taxonomies
-			$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
-
-			// Retrieves categories list of current post.
-			$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
-		}
-		return $thelist;
-	}
-
-	/**
-	* If it's a directory_listing then combine custom taxonomies with tags
-	*
-	*/
-	function filter_the_tags($tag_list='', $before='', $sep='', $after=''){
-		global $post;
-
-		if ($post->post_type == 'directory_listing'){
-			//get non-hierarchical tag taxonomies
-			$tags = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => false	), 'names') );
-
-			// Retrieves tag list of current post, separated by commas.
-			$tag_list = array();
-			foreach($tags as $tag){
-				$tag_list[] = get_the_term_list( $post->ID, $tag, '', $sep, '' );
-			}
-			$tag_list = array_filter($tag_list);
-			$tag_list = $before . implode($sep,$tag_list) . $after;
-		}
-		return $tag_list;
-	}
 }
 
 /* Initiate Class */

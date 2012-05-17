@@ -44,6 +44,8 @@ class CustomPress_Core {
 
 		add_filter( "plugin_action_links_$plugin", array( &$this, 'plugin_settings_link' ) );
 		add_filter( 'enable_subsite_content_types', array( &$this, 'enable_subsite_content_types' ) );
+		add_filter('the_category', array($this,'filter_the_category'),10,3);
+		add_filter('the_tags', array($this,'filter_the_tags'),10,4);
 
 	}
 
@@ -408,6 +410,45 @@ class CustomPress_Core {
 	function jquery_ui_css($theme = ''){
 		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : $theme;
 		echo '<script type="text/javascript">update_stylesheet( "' . $this->plugin_url . "datepicker/css/$theme/datepicker.css\" ); </script>\n";
+	}
+
+	/**
+	* Combine custom taxonomies with categories
+	*
+	*/
+	function filter_the_category($thelist='', $separator='', $parents=''){
+		global $post;
+
+		if(! defined('WP_ADMIN')){
+			//get hierarchical category taxonomies
+			$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
+
+			// Retrieves categories list of current post.
+			$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
+		}
+		return $thelist;
+	}
+
+	/**
+	* Combine custom taxonomies with tags
+	*
+	*/
+	function filter_the_tags($tag_list='', $before='', $sep='', $after=''){
+		global $post;
+
+		if(! defined('WP_ADMIN')){
+			//get non-hierarchical tag taxonomies
+			$tags = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => false	), 'names') );
+
+			// Retrieves tag list of current post, separated by commas.
+			$tag_list = array();
+			foreach($tags as $tag){
+				$tag_list[] = get_the_term_list( $post->ID, $tag, '', $sep, '' );
+			}
+			$tag_list = array_filter($tag_list);
+			$tag_list = $before . implode($sep,$tag_list) . $after;
+		}
+		return $tag_list;
 	}
 
 

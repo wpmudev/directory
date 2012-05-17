@@ -195,16 +195,18 @@ function the_dr_posted_in() {
 	global $post;
 
 	//get hierarchical category taxonomies
-	$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
+	//$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
 
 	// Retrieves categories list of current post.
 	//$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
 
 	// Retrieves categories list of current post, separated by commas.
-	$categories_list = get_the_term_list($post->ID,$categories,'',', ','');
+	//$categories_list = get_the_term_list($post->ID,$categories,'',', ','');
 
-	//$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+	$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN));
 
+	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+/*
 	//get non-hierarchical tag taxonomies
 	$tags = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => false	), 'names') );
 
@@ -217,6 +219,7 @@ function the_dr_posted_in() {
 	}
 	$tag_list = array_filter($tag_list);
 	$tag_list = implode(', ',$tag_list);
+*/
 
 	if ( $tag_list ) {
 		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );

@@ -928,9 +928,15 @@ $error       = get_query_var('checkout_error');
 					</td>
 				</tr>
 				<tr>
-					<td><label for="first_name"><?php _e( 'Name', $text_domain ); ?>:</label></td>
+					<td><label for="first_name"><?php _e( 'First Name', $text_domain ); ?>:</label></td>
 					<td>
 						<input type="text" name="first_name" id="first_name" value="<?php echo $transaction_details['first_name']; ?>" size="50"/>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="last_name"><?php _e( 'Last Name', $text_domain ); ?>:</label></td>
+					<td>
+						<input type="text" name="last_name" id="last_name" value="<?php echo $transaction_details['last_name']; ?>" size="50"/>
 					</td>
 				</tr>
 			</table>
