@@ -131,7 +131,7 @@ class DR_Theme_Core {
 		if (is_active_sidebar('advertise-widget')) {
 			?>
 			<div id="advertise" class="widget-area">
-					<ul class="xoxo">
+				<ul class="xoxo">
 					<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Advertisement') ) : ?><?php endif; ?>
 				</ul>
 			</div>
