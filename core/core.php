@@ -75,6 +75,7 @@ class Directory_Core {
 		/* Create neccessary pages */
 		add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
 		add_action( 'parse_request', array( &$this, 'on_parse_request' ) );
+		add_action( 'parse_query', array( &$this, 'on_parse_query' ) );
 
 		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( &$this, 'init' ) );
@@ -203,9 +204,36 @@ class Directory_Core {
 		return $args;
 	}
 
+	function on_parse_query(){
+		
+		//Handle any security redirects
+		if( is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id) || is_page($this->my_listings_page_id)){
+			if (! is_user_logged_in()) {
+				wp_redirect( get_permalink($this->signin_page_id) );
+				exit;
+			}
+		}
 
-	function on_parse_request(){
+		//Are we adding a Listing?
+		if (is_page($this->add_listing_page_id)) {
+			if(! current_user_can('publish_listings')){
+				wp_redirect( get_permalink($this->my_listings_page_id) );
+				exit;
+			}
+		}
 
+		//Or are we editing a listing?
+		if(is_page($this->edit_listing_page_id)){
+			//Can the user edit listings?
+			if ( ! $this->user_can_edit_listing( $_POST['post_id'] ) ) {
+				wp_redirect( get_permalink($this->my_listings_page_id) );
+				exit;
+			}
+		}
+
+	}
+
+	function on_parse_request($wp){
 
 		/*
 		handle_action_buttons_requests
@@ -232,8 +260,6 @@ class Directory_Core {
 			exit();
 		}
 	}
-
-
 
 	/**
 	* Intiate plugin.
@@ -712,7 +738,6 @@ class Directory_Core {
 		global $wp_query;
 
 		if(is_page($this->signin_page_id)){
-			//if ( is_dr_page( 'signin' ) ) {
 			if ( !is_user_logged_in() ) {
 				if ( $_POST['signin_submit'] ) {
 					$args = array( 'remember'   => ( $_POST['user_rem'] ) ? true : false,
@@ -726,12 +751,12 @@ class Directory_Core {
 						set_query_var( 'signin_error', $signin->get_error_message() );
 					} else {
 						$options = $this->get_options( 'general_settings' );
-						
+
 						if(! empty($_GET['redirect_to'])){
-							 wp_redirect($_GET['redirect_to']);
-							 exit;
+							wp_redirect($_GET['redirect_to']);
+							exit;
 						}
-						
+
 						if ( empty($options['signin_url']) )
 						wp_redirect( home_url() );
 						else
@@ -811,7 +836,6 @@ class Directory_Core {
 		if (! empty( $post_id ) ) {
 
 			//Save custom tags
-			//print_r($params['tag_input']); exit;
 			if(is_array($params['tag_input'])){
 				foreach($params['tag_input'] as $key => $tags){
 					wp_set_post_terms($post_id, $params['tag_input'][$key], $key);
@@ -849,6 +873,7 @@ class Directory_Core {
 	**/
 	function handle_page_requests() {
 		global $wp_query;
+
 
 		/* Handles request for update-listing page */
 		if(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)){
@@ -890,7 +915,6 @@ class Directory_Core {
 	//scans post type at template_redirect to apply custom themeing to listings
 	function load_directory_templates() {
 		global $wp_query;
-
 
 		//load proper theme for home listing page
 		if ( $wp_query->is_home ) {
@@ -959,7 +983,6 @@ class Directory_Core {
 
 		//load proper theme for listing category or tag
 		elseif(is_page($this->directory_page_id)){
-			//elseif ( 'listing_category' == $wp_query->query_vars['taxonomy'] || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
 			$templates = array();
 			if ( 'listing_category' == $wp_query->query_vars['taxonomy'] ) {
 
@@ -1023,11 +1046,6 @@ class Directory_Core {
 
 		elseif(is_page($this->my_listings_page_id)){
 
-			if (! is_user_logged_in()) {
-				wp_redirect( get_permalink($this->signin_page_id) );
-				exit;
-			}
-
 			if ( !current_user_can( 'edit_published_listings' ) ) {
 				wp_redirect( get_permalink($this->directory_page_id));
 				exit;
@@ -1054,13 +1072,6 @@ class Directory_Core {
 		//load proper theme for single listing page display
 
 		elseif(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)){
-			//		elseif ( ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
-			//		|| ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) ) ) {
-
-			if (! is_user_logged_in()) {
-				wp_redirect( get_permalink($this->signin_page_id) );
-				exit;
-			}
 
 			if ( !current_user_can( 'edit_published_listings' ) ) {
 				wp_redirect( get_permalink($this->directory_page_id));
@@ -1088,7 +1099,6 @@ class Directory_Core {
 
 		//load proper theme for signin listing page
 		elseif(is_page($this->signin_page_id)){
-			//elseif ( is_page( 'signin' ) ) {
 
 			$templates = array( 'page-signin.php' );
 
@@ -1112,7 +1122,6 @@ class Directory_Core {
 
 		//load proper theme for signup listing page
 		elseif(is_page($this->signup_page_id)){
-			//elseif ( is_page( 'signup' ) ) {
 
 			$templates = array( 'page-signup.php' );
 

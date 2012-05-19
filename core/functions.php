@@ -75,25 +75,7 @@ function get_dr_title( $id = 0 ) {
 }
 
 /**
-* Does a Directory listing support standard categories
-* @return bool
-*/
-function dr_supports_categories(){
-	global $wp_taxonomies;
-	return (is_array($wp_taxonomies['category']->object_type)) ? in_array('directory_listing', $wp_taxonomies['category']->object_type) : false;
-}
-
-/**
-* Does a Directory listing support standard tags
-* @return bool
-*/
-function dr_supports_tags(){
-	global $wp_taxonomies;
-	return (is_array($wp_taxonomies['post_tag']->object_type)) ? in_array('directory_listing', $wp_taxonomies['post_tag']->object_type) : false;
-}
-
-/**
-* Does a Directory listing support standard tags
+* Does a Directory listing support a given taxonomy
 * @return bool
 */
 function dr_supports_taxonomy($taxonomy=''){

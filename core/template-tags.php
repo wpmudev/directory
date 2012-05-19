@@ -24,9 +24,15 @@ function the_dr_categories_home( $echo = true ) {
 
 	//get hierarchical taxonomies
 	$taxonomies = get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') ;
-	if(!dr_supports_categories()) unset($taxonomies['category']);
-	$taxonomies = array_values($taxonomies);
 	
+	//Does Directory support them
+	if(is_array( $taxonomies )){
+		foreach($taxonomies as $tax_name => $taxonomy){
+			if( ! dr_supports_taxonomy($tax_name)) unset($taxonomies[$tax_name]);
+		}
+	}
+	$taxonomies = array_values($taxonomies);
+
 	$args = array(
 	'parent'       => 0,
 	'orderby'      => 'name',

@@ -87,7 +87,7 @@ class Directory_Core_Admin extends Directory_Core {
 		'edit_published_listings'   => true,
 		'delete_published_listings' => true,
 		'upload_files'              => true,
-		'read'                      => true
+		'read'                      => true,
 		) );
 
 		//add role of directory member with limit access
