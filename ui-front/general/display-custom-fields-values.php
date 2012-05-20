@@ -43,9 +43,9 @@ $field_template['div']['close_calue'] = '';
 
 echo $field_template[$val]['open'];
 
-if(is_array($custom_fields)){
+//if(is_array($custom_fields)){
 	foreach ( $custom_fields as $custom_field ){
-		foreach ( $custom_field['object_type'] as $cstom_field_object_type ){
+		foreach ( $custom_field['object_type'] as $custom_field_object_type ){
 			if ( $custom_field_object_type == $post->post_type ){
 				$output = true; break;
 			}
@@ -70,5 +70,5 @@ if(is_array($custom_fields)){
 		}
 		$output = false;
 	}
-}
+//}
 echo $field_template[$val]['close'];

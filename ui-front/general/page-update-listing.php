@@ -7,8 +7,8 @@
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 
-global $wp_query, $post_ID, $wp_taxonomies, $_wp_post_type_features,$wp_post_types;
-//print_r($wp_post_types);
+global $wp_query, $post_ID, $wp_taxonomies, $_wp_post_type_features,$wp_post_types, $current_user;
+//print_r($wp_taxonomies);
 
 $listing_data   = '';
 $selected_cats  = '';
@@ -111,70 +111,70 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 					<?php wp_terms_checklist( 0, array( 'taxonomy' => $tax_name, 'selected_cats' => $selected_cats, 'checked_ontop' => false ) ) ?>
 				</ul>
 			</div>
-			<p />
-			</div>
-			<?php endforeach; ?>
-
-			<div style="clear: both;width:100%"></div>
-
-			<?php
-			//get related non-hierarchical taxonomies
-			$tags = get_taxonomies(array( 'public' => true, 'hierarchical' => false ), 'objects');
-
-			//Loop through the taxonomies that apply
-			foreach($tags as $tag):
-
-			$tag_name = $tag->name;
-			$labels = $tag->labels;
-
-			//Get this Taxonomies terms
-			$tag_list = strip_tags(get_the_term_list( $listing_data['ID'], $tag_name, '', ',', '' ));
-
-			if(! dr_supports_taxonomy($tag_name)) continue;
-			?>
-
-			<div class="editfield">
-				<div id="<?php echo $tag_name; ?>-checklist" class="tagchecklist">
-					<label><?php echo $labels->name . ': ' . $labels->add_or_remove_items; ?>
-						<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
-					</label>
-				</div>
-				<p />
-				</div>
-				<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto'}); </script>
-				<?php endforeach; ?>
-
-
-				<div class="editfield" >
-					<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
-					<div id="status-box">
-						<select name="listing_data[post_status]" id="listing_data[post_status]">
-							<option value="publish" <?php echo ( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Published', $this->text_domain ); ?></option>
-							<option value="draft" <?php echo ( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
-						</select>
-					</div>
-					<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
-				</div>
-
-				<?php if ( class_exists( 'CustomPress_Content_Types' ) ) : ?>
-				<div class="editfield">
-					<?php
-					global $post, $CustomPress_Content_Types, $CustomPress_Core;
-					$post->post_type    = 'directory_listing';
-					$post->ID           = $listing_data['ID'];
-
-					$CustomPress_Content_Types->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
-					?>
-				</div>
-				<?php endif; ?>
-
-
-				<div class="submit">
-					<?php wp_nonce_field( 'verify' ); ?>
-					<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
-					<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php get_permalink($this->my_listings_page_id); ?>'">
-				</div>
-			</form>
-
-			<script type="text/javascript">jQuery('#dr_update_form').validate();</script>
+			<br />
 		</div>
+		<?php endforeach; ?>
+
+		<div style="clear: both;width:100%"></div>
+
+		<?php
+		//get related non-hierarchical taxonomies
+		$tags = get_taxonomies(array( 'public' => true, 'hierarchical' => false ), 'objects');
+
+		//Loop through the taxonomies that apply
+		foreach($tags as $tag):
+
+		$tag_name = $tag->name;
+		$labels = $tag->labels;
+
+		//Get this Taxonomies terms
+		$tag_list = strip_tags(get_the_term_list( $listing_data['ID'], $tag_name, '', ',', '' ));
+
+		if(! dr_supports_taxonomy($tag_name)) continue;
+		?>
+
+		<div class="editfield">
+			<div id="<?php echo $tag_name; ?>-checklist" class="tagchecklist">
+				<label><?php echo $labels->name . ': ' . $labels->add_or_remove_items; ?>
+					<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
+				</label>
+			</div>
+			<br />
+		</div>
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto'}); </script>
+		<?php endforeach; ?>
+
+
+		<div class="editfield" >
+			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
+			<div id="status-box">
+				<select name="listing_data[post_status]" id="listing_data[post_status]">
+					<option value="publish" <?php echo ( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Published', $this->text_domain ); ?></option>
+					<option value="draft" <?php echo ( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
+				</select>
+			</div>
+			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
+		</div>
+
+		<?php if ( class_exists( 'CustomPress_Content_Types' ) ) : ?>
+		<div class="editfield">
+			<?php
+			global $post, $CustomPress_Content_Types, $CustomPress_Core;
+			$post->post_type    = 'directory_listing';
+			$post->ID           = $listing_data['ID'];
+
+			$CustomPress_Content_Types->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
+			?>
+		</div>
+		<?php endif; ?>
+
+
+		<div class="submit">
+			<?php wp_nonce_field( 'verify' ); ?>
+			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
+			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php get_permalink($this->my_listings_page_id); ?>'">
+		</div>
+	</form>
+
+	<script type="text/javascript">jQuery('#dr_update_form').validate();</script>
+</div>
