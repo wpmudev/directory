@@ -1,0 +1,103 @@
+=== Directory ===
+Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub)   
+Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
+
+ 
+== Changelog ==
+
+= 2.1.1.2 =
+* Update customPress
+* Changed enqueue order
+
+= 2.1.1.1 =
+* Typo preventing display of customfields on single listing page.
+
+= 2.1.1 =
+* Better filter for taxonomy supports list in functions
+* Moved security redirects to parse_query to avoid header sent error.
+
+
+= 2.1 =
+* Widget area replaces Advertising area in theme
+* Fully integrated customPress
+* Custom fields foreach error when no custom fields defined.
+* Many new shortcodes
+* Many new automatically added Directory management pages
+* Full blown front end editor for Listings
+* Feature image support
+* Lots of bug fixes.
+
+
+= 2.0.5 =
+* Fixed problem of display pages "My Listings", "Add Listing", "Edit Listing" for some permalinks structures;  
+
+= 2.0.4 =
+* Added My Listings page;
+* Added Add Listing page;
+* Added Edit Listing page;
+* Added "directory_listing" post type to CustomPress plugin;
+* Fixed compatibility problems with the Infinite SEO plugin on "Signin" and "Signup" pages;
+* Fixed problem with user roles on subsites;
+* Fixed pages "Signin" and "Signup" on subsites;
+* Fixed capabilities of users on subsites;
+* Fixed some translation for texts;
+* Display custom fields on Listing page;
+* Deleted edit post button on Directory pages;
+
+= 2.0.3 =
+* fixed problem with short php tags;
+* fixed problem of using CustomPress for custom fields and taxonomies after transition from 1.0.7 version;
+
+= 2.0.2 =
+* Fixed problem with permalink of Tags and Categories;
+* Added feature use the Affiliate plugin;
+* Changed validation of signup forms;
+* Added submenu "Add Listing";
+
+
+= 2.0.1 =
+* Released;
+
+= 2.0.0 Beta 8 =
+* Added feature use the plugin with any theme;
+
+= 2.0.0 Beta 7 =
+* (ratings) Fixed problem with multiple votings;
+* (ratings) Not logged users can't vote;
+* (ratings) Fixed problem with display your vote;
+* (ratings) Added avg. ratings on category page (page of listings);
+
+= 2.0.0 Beta 6.1 =
+* Added feature for set count of Categories on Homepage (General Settings);
+* Added feature for set count of Sub-categories on Homepage (General Settings);
+* Added feature for display Listings on Homepage (General Settings);
+* Added feature for hide empty Sub-categories on Homepage (General Settings);
+* Fixed problem of recurring payments - changed format of cost;
+
+= 2.0.0 Beta 6 =
+* Added notification for transition from v1.x to v2.x
+* Fixed problem with choice the PayPal Live mode
+* Added feature for Enable/Disable of Recurring/One-time payments
+* Fixed problem with Permalink
+
+= 2.0.0 Beta 5.1 =
+* Added transition from v1.x to v2.x
+
+= 2.0.0 Beta 5 =
+* fixed button text on sign in page
+
+= 2.0.0 Beta 4 =
+* fixed JS problem for rating script
+
+= 2.0.0 Beta 3 =
+* fixed file upload 
+
+= 2.0.0 Beta 2 =
+* Added page of Sign in
+* Added Logout button
+* Some changes on Settings page
+
+= 2.0.0 Beta 1 =
+* Release new version;
+
+

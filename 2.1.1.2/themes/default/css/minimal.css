@@ -1,0 +1,458 @@
+/********************************** adverts */
+/********************************** comments */
+/********************************** default formatting */
+/********************************** directory */
+/********************************** footer */
+/********************************** forms */
+/********************************** header */
+/********************************** layout */
+/********************************** navigation */
+/********************************** typography */
+/********************************** widgets */
+
+/********************************** styles start >>> */
+/********************************** adverts */
+.h-ads {
+background: #eeeeee;
+}
+/********************************** comments */
+#comments .title {
+font-size: 16px;
+}
+
+#comments h3, #trackbacks h3, #respond h3 {
+font-size: 20px;
+font-weight: normal;
+}
+
+div.comment-meta h5 {
+font-weight: normal;
+}
+
+ol.commentlist li {
+margin-bottom: 10px;
+padding: 10px;
+}
+
+.fn, .says {
+padding-top: 10px;
+font-size: 24px;
+}
+
+.entry-meta .fn {
+font-size: 12px;
+}
+
+h3#comments, h3#comments-title {
+padding-top: 10px;
+}
+
+.comment-body {
+padding: 10px;
+}
+
+ul.children {
+margin-top: 10px;
+}
+
+.author-box img.avatar {
+margin-bottom: 10px;
+}
+
+.comment-author img {
+padding: 5px;
+border: 1px solid #EEEEEE;
+margin-bottom: 10px;
+float: right;
+}
+/********************************** default formatting */
+#content .wp-caption {
+background: #f1f1f1;
+}
+
+#content .wp-caption p.wp-caption-text {
+color: #888;
+}
+
+#content .gallery img {
+border: 2px solid #cfcfcf;
+}
+
+#content .gallery .gallery-caption {
+color: #888;
+}
+
+#content .gallery img {
+border: 10px solid #f1f1f1;
+}
+
+#wp-calendar caption {
+color: #222;
+}
+
+#wp-calendar tbody {
+color: #aaa;
+}
+
+#wp-calendar tbody td {
+background: #f5f5f5;
+border: 1px solid #fff;
+}
+
+#wp-calendar tbody .pad {
+background: none;
+}
+/********************************** directory */
+.archive #content h2, .dp-top-level #content h2 {
+color: #0000cc;
+font-size: 18px;
+font-weight: normal;
+padding: 5px 10px 5px 0px;
+border-bottom: 1px solid #0000cc;
+}
+.archive #content .current-cat a {
+color: #0000cc;
+font-size: 24px;
+text-decoration: none;
+}
+
+.archive #content .current-cat a:hover {
+text-decoration: underline;
+}
+
+.archive #content .current-cat ul li a {
+color: #0000cc;
+text-decoration: none;
+font-style: italic;
+font-size: 16px;
+}
+
+.dp-taxonomy-name {
+color: #0000cc;
+font-size: 24px;
+text-decoration: none;
+font-weight: normal;
+}
+
+.directory_listing {
+border: none;
+}
+
+.dp-submit-txt {
+font-size: 14px;
+font-style: italic;
+}
+
+.wp-post-image {
+border: 1px solid #eeeeee;
+}
+
+.dp_error, .error {
+background: #FFEBE8 !important;
+}
+
+#action-bar {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border-bottom: 1px solid #666666;
+font-size: 18px;
+color: #666666;
+text-shadow: 1px 1px 0px #ffffff;
+}
+
+.entry-meta {
+border-left: none;
+float: none;
+width: 960px;
+padding: 10px 0px;
+margin: 0px;
+}
+
+.excerptpost, .post, #checkout-page {
+border: none;
+padding: 10px;
+}
+
+.entry-post {
+clear: both;
+margin: 0px;
+width: 920px;
+}
+
+#respond, .breadcrumbtrail {
+background: #ffffff;
+padding: 10px;
+}
+
+.home #content li ul li a, .archive #content li ul li a, .dp-top-level #content ul li a {
+color: #0000cc;
+text-decoration: none;
+font-size: 14px;
+}
+.home #content li ul li a:hover, .archive #content li ul li a:hover, .dp-top-level #content ul li a:hover {
+color: #666666;
+text-decoration: underline;
+}
+.home #content h2 a, .dp-top-level #content h2 a, .archive #content h1 a {
+color: #0000cc;
+text-decoration: none;
+}
+
+.home #content h2 a:hover, .dp-top-level #content h2 a:hover, .archive #content h1 a:hover {
+text-decoration: underline;
+}
+
+.home #content li {
+border: none;
+padding: 0px;
+}
+
+.home #content li ul, .archive #content li ul {
+border: none;
+}
+
+.home #content h2 {
+color: #0000cc;
+text-shadow: 1px 1px 0px #ffffff;
+font-size: 18px;
+font-weight: normal;
+}
+/********************************** footer */
+#footer-widget-area {
+border-top: 3px solid #eeeeee;
+}
+/********************************** forms */
+#searchbox {
+background: #eeeeee;
+border: 1px solid #eeeeee;
+}
+
+#searchbox label {
+color: #0000cc;
+font-size: 24px;
+text-shadow: 1px 1px 0px #eeeeee;
+}
+
+#searchbox input[type="text"] {
+padding: 4px 10px;
+font-size: 18px;
+}
+
+a.button, input[type=submit], input[type=button], button,
+ul.button-nav li a, div.generic-button a, a.button:visited {
+font-size: 14px;
+font-weight: bold;
+padding: 5px 10px;
+color: #ffffff;
+text-decoration: none;
+background: #669911;
+border: 1px solid #669911;
+text-shadow: 1px 1px 0px #669911;
+}
+	
+a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover,
+ul.button-nav li a:hover, ul.button-nav li.current a,  button:hover, button:focus,
+div.generic-button a:hover {
+font-size: 14px;
+font-weight: bold;
+padding: 5px 10px;
+color: #ffffff;
+text-decoration: none;
+background: #111111;
+border: 1px solid #ffffff;
+text-shadow: 1px 1px 0px #669911;
+}
+
+input[type="text"], input[type="password"] {
+background: #ffffff;
+border: 1px solid #EEEEEE;
+color: #111111;
+padding: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+textarea {
+background: #ffffff;
+border: 1px solid #EEEEEE;
+color: #111111;
+padding: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+width: 95%;
+}
+/********************************** header */
+#site-logo {
+font-size: 40px;
+}
+
+#site-logo a {
+text-decoration: none;
+}
+/********************************** layout */
+body {
+background: #FFFFFF;
+}
+#site-wrapper {
+background: #ffffff;
+}
+/********************************** navigation */
+#navigation {
+/*	background: #0000cc url('../images/modern-images/nav-background.jpg') repeat-x;*/
+}
+
+#navigation-wrapper {
+/*	background: #0000cc url('../images/modern-images/nav-background.jpg') repeat-x;*/
+}
+
+#navigation .menu-header,
+div.menu {
+font-size: 14px;
+}
+
+#navigation a {
+color: #111111;
+font-size: 14px;
+font-weight: bold;
+line-height: 38px;
+text-decoration: none;
+}
+
+#navigation ul ul {
+box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+}
+
+#navigation ul ul a {
+background: #cccccc;
+line-height: 1em;
+}
+
+#navigation li:hover > a,
+#navigation ul ul :hover > a {
+color: #0000cc;
+}
+
+#navigation ul li.current_page_item > a,
+#navigation ul li.current-menu-ancestor > a,
+#navigation ul li.current-menu-item > a,
+#navigation ul li.current-menu-parent > a {
+color: #0000cc;
+}
+* html #navigation ul li.current_page_item a,
+* html #navigation ul li.current-menu-ancestor a,
+* html #navigation ul li.current-menu-item a,
+* html #navigation ul li.current-menu-parent a,
+* html #navigation ul li a:hover {
+color: #0000cc;
+}
+
+.current_page_item {
+background: #fff;
+}
+
+/********************************** typography */
+h1, h2, h3, h4, h5, h6 {
+color: #0000cc;
+}
+
+
+a:link {
+color: #0000cc;
+}
+
+a:visited {
+color: #0000cc;
+}
+
+a:active,
+a:hover {
+color: #222222;
+}
+
+body {
+font-size: 13px;
+line-height: 22px;
+color: #111111;
+font-family: arial,helvetica,verdana,sans-serif;
+}
+
+h1 {
+font-size: 30px;
+font-weight: normal;
+}
+
+h2 {
+font-size: 24px;
+font-weight: normal;
+}
+
+h3 {
+font-size: 20px;
+font-weight: normal;
+}
+
+h4 {
+font-size: 18px;
+font-weight: normal;
+}
+
+h5 {
+font-size: 14px;
+font-weight: normal;
+}
+
+h6 {
+font-size: 12px;
+font-weight: normal;
+}
+
+.headerpad, h3#comments-title {
+color: #111111;
+text-shadow: 1px 1px 0px #ffffff;
+font-size: 18px;
+font-weight: normal;
+background: #ffffff;
+padding: 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+#content blockquote {
+margin: 10px;
+padding: 10px;
+font-style: italic;
+}
+
+code {
+font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+pre {
+font-family: "Courier 10 Pitch", Courier, monospace;
+}
+ins {
+background: #ffc;
+text-decoration: none;
+}
+
+pre {
+background: #f7f7f7;
+color: #222;
+}
+
+abbr,
+acronym {
+border-bottom: 1px dotted #666;
+cursor: help;
+}
+/********************************** widgets */
+/********************************** styles end >>> */
+
