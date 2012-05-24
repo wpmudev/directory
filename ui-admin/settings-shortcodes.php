@@ -63,7 +63,7 @@
 					<th scope="row"><?php _e( 'Signin Button:', $this->text_domain ) ?></th>
 					<td>
 						<code><strong>[dr_signin_btn text="<?php _e('Go to Profile', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
-						<br /><code><strong>[dr_signin_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signin', $this->text_domain);?>[/dr_profile_btn]</strong></code>
+						<br /><code><strong>[dr_signin_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signin', $this->text_domain);?>[/dr_signin_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links to the Signin Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
@@ -71,7 +71,7 @@
 					<th scope="row"><?php _e( 'Signup Button:', $this->text_domain ) ?></th>
 					<td>
 						<code><strong>[dr_signup_btn text="<?php _e('Go to Profile', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
-						<br /><code><strong>[dr_signup_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signup', $this->text_domain);?>[/dr_profile_btn]</strong></code>
+						<br /><code><strong>[dr_signup_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signup', $this->text_domain);?>[/dr_signup_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links to the Signup Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define.', $this->text_domain ) ?></span>
 					</td>
 				</tr>

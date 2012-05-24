@@ -5,6 +5,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.1.1.2 =
+* Update customPress
+* Changed enqueue order
+
 = 2.1.1.1 =
 * Typo preventing display of customfields on single listing page.
 

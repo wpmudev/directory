@@ -5,6 +5,15 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.2.2.2 = 2012-05-24 Arnold Bailey
+* Ensured that on custom Archive pages that the post_type query_var would be passed as a string if only one custom post_type. 
+	Multiple post_type pages pass as an array which will confuse some parts of WordPress. This is a Wordpress bug work around.
+* Out of order script queuing	
+	
+
+= 1.2.2.1 = 2012-05-20 Arnold Bailey
+* Changed datepicker load order
+
 = 1.2.2 = 2012-05-17 Arnold Bailey
 * filter the_category and the_tags to properly combine custom and standard taxonomies if selected in post_types.
 

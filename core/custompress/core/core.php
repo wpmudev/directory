@@ -61,17 +61,17 @@ class CustomPress_Core {
 	function on_enqueue_scripts(){
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-datepicker');
-		wp_enqueue_script('jquery-ui-widget');
 
 		$lang = (WPLANG == '') ? '' : substr(WPLANG, 0, 2);
 
 		//language exceptions
 		$lang = (in_array(WPLANG, array('ar_DZ', 'cy_GB', 'en_AU', 'en_GB', 'en_NZ', 'fr_CH', 'nl_BE', 'pt_BR', 'sr_SR', 'zh_CN', 'zh_HK', 'zh_TW') ) )  ?  str_replace('_', '-', WPLANG) : $lang;
-
-		// If it can't find one too bad.
-		wp_register_script('jquery-ui-datepicker-lang', $this->plugin_url . "datepicker/js/i18n/jquery.ui.datepicker-$lang.js", array('jquery','jquery-ui-datepicker'), '1.8.18');
-		wp_enqueue_script('jquery-ui-datepicker-lang');
-
+		if(!empty($lang))
+		{
+			// If it can't find one too bad.
+			wp_register_script('jquery-ui-datepicker-lang', $this->plugin_url . "datepicker/js/i18n/jquery.ui.datepicker-$lang.js", array('jquery','jquery-ui-datepicker'), '1.8.18');
+			wp_enqueue_script('jquery-ui-datepicker-lang');
+		}
 
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
 		wp_enqueue_script('jquery-validate');
@@ -234,29 +234,37 @@ class CustomPress_Core {
 
 		//Home Page
 		if ( isset($options['display_post_types']['home']['post_type']) && is_array( $options['display_post_types']['home']['post_type'] ) ) {
-			if ( is_home() && !in_array( 'default', $options['display_post_types']['home']['post_type'] ) ){
-				$wp_query->query_vars['post_type'] = $options['display_post_types']['home']['post_type'];
+			$post_types = $options['display_post_types']['home']['post_type'];
+			if ( is_archive() && !in_array( 'default', $post_types ) ){
+				if(count($post_types) == 1) $post_types = $post_types[0];
+				$wp_query->query_vars['post_type'] = $post_types;
 			}
 		}
 
 		//Archive Page
 		if (isset($options['display_post_types']['archive']['post_type']) && is_array( $options['display_post_types']['archive']['post_type'] ) ) {
-			if ( is_archive() && !in_array( 'default', $options['display_post_types']['archive']['post_type'] ) ){
-				$wp_query->query_vars['post_type'] = $options['display_post_types']['archive']['post_type'];
+			$post_types = $options['display_post_types']['archive']['post_type'];
+			if ( is_archive() && !in_array( 'default', $post_types ) ){
+				if(count($post_types) == 1) $post_types = $post_types[0];
+				$wp_query->query_vars['post_type'] = $post_types;
 			}
 		}
 
 		//Front Page
 		if ( isset($options['display_post_types']['front_page']['post_type']) && is_array( $options['display_post_types']['front_page']['post_type'] ) ) {
-			if ( is_front_page() && !in_array( 'default', $options['display_post_types']['front_page']['post_type'] ) ){
-				$wp_query->query_vars['post_type'] = $options['display_post_types']['front_page']['post_type'];
+			$post_types = $options['display_post_types']['front_page']['post_type'];
+			if ( is_archive() && !in_array( 'default', $post_types ) ){
+				if(count($post_types) == 1) $post_types = $post_types[0];
+				$wp_query->query_vars['post_type'] = $post_types;
 			}
 		}
 
 		//Search Page
 		if ( isset($options['display_post_types']['search']['post_type']) && is_array( $options['display_post_types']['search']['post_type'] ) ) {
-			if ( is_search() && !in_array( 'default', $options['display_post_types']['search']['post_type'] ) ){
-				$wp_query->query_vars['post_type'] = $options['display_post_types']['search']['post_type'];
+			$post_types = $options['display_post_types']['search']['post_type'];
+			if ( is_archive() && !in_array( 'default', $post_types ) ){
+				if(count($post_types) == 1) $post_types = $post_types[0];
+				$wp_query->query_vars['post_type'] = $post_types;
 			}
 		}
 

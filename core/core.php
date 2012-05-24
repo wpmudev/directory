@@ -205,32 +205,35 @@ class Directory_Core {
 	}
 
 	function on_parse_query(){
-		
-		//Handle any security redirects
-		if( is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id) || is_page($this->my_listings_page_id)){
-			if (! is_user_logged_in()) {
-				wp_redirect( get_permalink($this->signin_page_id) );
-				exit;
-			}
-		}
+		global $wp_query;
 
-		//Are we adding a Listing?
-		if (is_page($this->add_listing_page_id)) {
-			if(! current_user_can('publish_listings')){
-				wp_redirect( get_permalink($this->my_listings_page_id) );
-				exit;
+		if ( ! isset( $wp_query ) ) {
+			//Handle any security redirects
+			if( is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id) || is_page($this->my_listings_page_id)){
+				if (! is_user_logged_in()) {
+					wp_redirect( get_permalink($this->signin_page_id) );
+					exit;
+				}
 			}
-		}
 
-		//Or are we editing a listing?
-		if(is_page($this->edit_listing_page_id)){
-			//Can the user edit listings?
-			if ( ! $this->user_can_edit_listing( $_POST['post_id'] ) ) {
-				wp_redirect( get_permalink($this->my_listings_page_id) );
-				exit;
+			//Are we adding a Listing?
+			if (is_page($this->add_listing_page_id)) {
+				if(! current_user_can('publish_listings')){
+					wp_redirect( get_permalink($this->my_listings_page_id) );
+					exit;
+				}
 			}
-		}
 
+			//Or are we editing a listing?
+			if(is_page($this->edit_listing_page_id)){
+				//Can the user edit listings?
+				if ( ! $this->user_can_edit_listing( $_POST['post_id'] ) ) {
+					wp_redirect( get_permalink($this->my_listings_page_id) );
+					exit;
+				}
+			}
+
+		}
 	}
 
 	function on_parse_request($wp){
@@ -899,7 +902,7 @@ class Directory_Core {
 		}
 
 		/* Handles request for my-listings page */
-		if(is_page($this->my_listing_page_id)){
+		if(is_page($this->my_listings_page_id)){
 			//		if ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) ) {
 			if ( isset( $_POST['action'] ) && 'delete_listing' ==  $_POST['action'] && wp_verify_nonce( $_POST['_wpnonce'], 'action_verify' ) ) {
 				if ( $this->user_can_edit_listing( $_POST['post_id'] ) ) {
@@ -1266,77 +1269,68 @@ class Directory_Core {
 
 		if ( $last = count( $custom_query->posts ) ) {
 			$count = 1;
+			if(is_array($custom_query->post)){
+				foreach ( $custom_query->posts as $post ) {
 
-			foreach ( $custom_query->posts as $post ) {
+					// Retrieves categories list of current post, separated by commas.
+					$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN));
 
-				// Retrieves categories list of current post, separated by commas.
-				$categories = wp_get_post_terms( $post->ID, "listing_category", "" );
+					// Retrieves tag list of current post, separated by commas.
+					$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
 
-				foreach ( $categories as $category )
-				$categories_list[] = '<a href="' . get_term_link( $category ) . '" title="' . $category->name . '" >' . $category->name . '</a>';
+					//add last css class for styling grids
+					if ( $count == $last )
+					$class = 'dr_listing last-listing';
+					else
+					$class = 'dr_listing';
 
-				$categories_list = implode( ", ", ( array ) $categories_list );
+					$content .= '<div class="' . $class . '">';
 
-				// Retrieves tag list of current post, separated by commas.
-				$tags = wp_get_post_terms( $post->ID, "listing_tag", "" );
-				foreach ( $tags as $tag )
-				$tags_list[] = '<a href="' . get_term_link( $tag ) . '" title="' . $tag->name . '" >' . $tag->name . '</a>';
-
-				$tags_list = implode( ", ", ( array ) $tags_list );
-
-
-				//add last css class for styling grids
-				if ( $count == $last )
-				$class = 'dr_listing last-listing';
-				else
-				$class = 'dr_listing';
-
-				$content .= '<div class="' . $class . '">';
-
-				$content .= '   <div class="entry-post">';
-				$content .= '       <h2 class="entry-title">';
-				$content .= '           <a href="' . get_permalink( $post->ID ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $post->post_title ) . '" rel="bookmark">' . $post->post_title . '</a>';
-				$content .= '       </h2>';
-				$content .= '       <div class="entry-summary">';
-				$content .=         get_the_post_thumbnail( $post->ID, array( 50, 50 ), array( 'class' => 'alignleft dr_listing_image_lising', 'title' => $post->post_title  ) );
-				$content .=         $this->listing_excerpt( $post->post_excerpt, $post->post_content, $post->ID );
-				$content .= '       </div>';
-				$content .= '       <div class="clear"></div>';
-				$content .= '   </div>';
+					$content .= '   <div class="entry-post">';
+					$content .= '       <h2 class="entry-title">';
+					$content .= '           <a href="' . get_permalink( $post->ID ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $post->post_title ) . '" rel="bookmark">' . $post->post_title . '</a>';
+					$content .= '       </h2>';
+					$content .= '       <div class="entry-summary">';
+					$content .=         get_the_post_thumbnail( $post->ID, array( 50, 50 ), array( 'class' => 'alignleft dr_listing_image_lising', 'title' => $post->post_title  ) );
+					$content .=         $this->listing_excerpt( $post->post_excerpt, $post->post_content, $post->ID );
+					$content .= '       </div>';
+					$content .= '       <div class="clear"></div>';
+					$content .= '   </div>';
 
 
-				$content .= '   <div class="entry-meta">';
+					$content .= '   <div class="entry-meta">';
 
-				ob_start();
-				the_dr_posted_on();
-				$content .= ob_get_contents();
-				ob_end_clean();
+					ob_start();
+					the_dr_posted_on();
+					$content .= ob_get_contents();
+					ob_end_clean();
 
-				$content .= '       <div class="entry-utility">';
+					$content .= '       <div class="entry-utility">';
 
-				if ( $categories_list ) {
-					$content .= '           <span class="cat-links">' . sprintf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ) . '</span><br />';
-					unset( $categories_list );
+					if ( $categories_list ) {
+						$content .= '           <span class="cat-links">' . sprintf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ) . '</span><br />';
+						unset( $categories_list );
+					}
+
+					if ( $tags_list ) {
+						$content .= '           <span class="tag-links">' . sprintf( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ) . '</span><br />';
+						unset( $tags_list );
+					}
+
+					ob_start();
+					?>
+					<?php do_action( 'sr_avg_ratings_of_listings', $post->ID ); ?>
+					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
+					<?php
+					$content .= ob_get_contents();
+					ob_end_clean();
+
+					$content .= '       </div>';
+					$content .= '   </div>';
+					$content .= '</div>';
+
+					$count++;
 				}
-
-				if ( $tags_list ) {
-					$content .= '           <span class="tag-links">' . sprintf( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ) . '</span><br />';
-					unset( $tags_list );
-				}
-
-				ob_start();
-				?>
-				<?php do_action( 'sr_avg_ratings_of_listings', $post->ID ); ?>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
-				<?php
-				$content .= ob_get_contents();
-				ob_end_clean();
-
-				$content .= '       </div>';
-				$content .= '   </div>';
-				$content .= '</div>';
-
-				$count++;
 			}
 		} else {
 			$content .= '<div id="dr_no_listings">' . apply_filters( 'dr_listing_list_none', __( 'No Listings', DR_TEXT_DOMAIN ) ) . '</div>';

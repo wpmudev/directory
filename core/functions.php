@@ -20,7 +20,12 @@ function is_dr_page( $type = '' ) {
 	if ( is_404() )
 	return false;
 	
-	$is_dr = (is_array($wp_query->post_type)) ? in_array('directory_listing', $wp_query->post_type) : 'directory_listing' == $wp_query->post_type;
+	if(property_exists($wp_query, 'post_type')){
+	  $is_dr = (is_array($wp_query->post_type)) ? in_array('directory_listing', $wp_query->post_type) : 'directory_listing' == $wp_query->post_type;
+	} else {
+		$is_dr = false;
+	}
+	
 	
 	if ( !$flags ) {
 		$flags = array(

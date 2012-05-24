@@ -271,7 +271,8 @@ $error       = get_query_var('checkout_error');
 		<form action="#" method="post"  class="cf-checkout">
 			<strong><?php _e( 'Cost of Service', $text_domain ); ?></strong>
 			<table id="billing-type" >
-				<?php /*
+				<?php 
+				/*
 				<tr>
 				<td><label for="billing"><?php _e( 'Buy Credits', $text_domain ) ?></label></td>
 				<td>
@@ -285,7 +286,8 @@ $error       = get_query_var('checkout_error');
 				</select>
 				</td>
 				</tr>
-				*/ ?>
+				*/ 
+				?>
 				<?php if ( isset( $opset['enable_recurring'] ) && '1' == $opset['enable_recurring'] ) : ?>
 				<tr>
 					<td <?php do_action( 'billing_invalid' ); ?>>

@@ -72,7 +72,7 @@
 	</p>
 
 	<br />
-	<form method="post" class="dp-payments" id="payment_settings">
+	<form method="post" class="dp-payments" id="payment_settings" action="#">
 		<div class="postbox">
 			<h3 class='hndle'><span><?php _e( 'Recurring Payments', $this->text_domain ) ?></span></h3>
 			<div class="inside">
@@ -174,7 +174,52 @@
 				</table>
 			</div>
 		</div>
+<!--	
+				<div class="postbox">
+			<h3 class='hndle'><span><?php _e( 'Use Credits', $this->text_domain ) ?></span></h3>
+			<div class="inside">
+				<table class="form-table">
+					<tr>
+						<th><label for="enable_credits"><?php _e( 'Enable Credits', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="checkbox" id="enable_credits" name="enable_credits" value="1" <?php if ( isset( $options['enable_credits'] ) ) echo 'checked="checked"';  ?> />
+							<span class="description"><?php _e( 'Enable credits for publishing a listing.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="cost_credit"><?php _e( 'Cost Per Credit', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="text" id="cost_credit" name="cost_credit" value="<?php if ( isset( $options['cost_credit'] ) ) echo $options['cost_credit']; ?>" class="small-text" />
+							<span class="description"><?php _e( 'How much a credit should cost.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="credits_per_week"><?php _e( 'Credits Per Listing', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="text" id="credits_per_week" name="credits_per_listing" value="<?php if ( isset( $options['credits_per_listing'] ) ) echo $options['credits_per_listing']; ?>" class="small-text" />
+							<span class="description"><?php _e( 'How many credits you need to publish a listing.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="signup_credits"><?php _e( 'Signup Credits', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="text" id="signup_credits" name="signup_credits" value="<?php if ( isset( $options['signup_credits'] ) ) echo $options['signup_credits']; ?>" class="small-text" />
+							<span class="description"><?php _e( 'How many credits a user should receive for signing up.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="description"><?php _e( 'Description', $this->text_domain ); ?></label></th>
+						<td>
+							<textarea id="description" name="description" rows="1" cols="55"><?php if ( isset( $options['description'] ) ) echo $options['description']; ?></textarea>
+							<br />
+							<span class="description"><?php _e( 'Description of the costs and durations associated with publishing a listing. Will be displayed in the admin area.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+				</table>
 
+			</div>
+		</div>
+-->
 		<div class="postbox">
 			<h3 class='hndle'><span><?php _e( 'Terms of Service', $this->text_domain ) ?></span></h3>
 			<div class="inside">

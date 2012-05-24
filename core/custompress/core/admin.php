@@ -13,14 +13,14 @@ if (!class_exists('CustomPress_Core_Admin')):
 
 class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
-	/** @var array Avilable Post Types */
+	/** @var array Available Post Types */
 	var $post_types;
-	/** @var array Avilable Taxonomies */
+	/** @var array Available Taxonomies */
 	var $taxonomies;
-	/** @var array Avilable Custom Fields */
+	/** @var array Available Custom Fields */
 	var $custom_fields;
 	/** @var boolean Flag whether the users have the ability to declair post type for their own blogs */
-	var $enable_subsite_content_types = false;
+	var $enable_subsite_content_types = true;
 
 	function CustomPress_Core_Admin() { __construct(); }
 

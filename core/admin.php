@@ -20,17 +20,18 @@ class Directory_Core_Admin extends Directory_Core {
 	* Constructor.
 	*/
 	function Directory_Core_Admin() { __construct(); }
-	
+
 	function __construct(){
-		
+
 		parent::__construct();
-		
+
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_defaults' ) );
 
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
 
 		add_action( 'admin_print_scripts', array( &$this, 'js_print_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
 
 		add_action( 'admin_init', array( &$this, 'welcome_first_time_user' ) );
 		add_action( 'admin_init', array( &$this, 'handle_getting_started_redirects') );
@@ -51,13 +52,6 @@ class Directory_Core_Admin extends Directory_Core {
 
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
-
-		//including JS scripts
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_enqueue_script( 'jquery-form' );
-		
-
 
 		$this->capability_map = array(
 		'read_listings'             => __( 'View listings.', $this->text_domain ),
@@ -131,14 +125,11 @@ class Directory_Core_Admin extends Directory_Core {
 		if ( ( isset( $opts['general_settings']['show_getting_started'] ) && '1' == $opts['general_settings']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
 			$menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
 			// Hook styles
-			add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
+			//add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
 		}
 
 		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
 
-		// Hook styles and scripts
-		add_action( 'admin_print_styles-' .  $settings_page, array( &$this, 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $settings_page, array( &$this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -236,26 +227,24 @@ class Directory_Core_Admin extends Directory_Core {
 		return false;
 	}
 
-
-
-
-
-	/**
-	* Load styles on plugin admin pages only.
-	*
-	* @return void
-	*/
-	function enqueue_styles() {
-		wp_enqueue_style( 'dr-admin-styles',
-		$this->plugin_url . 'ui-admin/css/ui-styles.css');
-	}
-
 	/**
 	* Load scripts on plugin specific admin pages only.
 	*
 	* @return void
 	*/
-	function enqueue_scripts() {
+	function on_enqueue_scripts() {
+
+		wp_enqueue_style( 'dr-admin-styles', $this->plugin_url . 'ui-admin/css/ui-styles.css');
+
+		//including JS scripts
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_script( 'jquery-form' );
+
+		if ( isset( $_GET['post_type'] ) &&  'directory_listing' == $_GET['post_type'] ) {
+			wp_enqueue_script( 'dr_editor', $this->plugin_url . 'ui-admin/js/admin.js', array('jquery') );
+		}
+
 		wp_enqueue_script( 'dr-admin-scripts', $this->plugin_url . 'ui-admin/js/ui-scripts.js', array( 'jquery' ) );
 	}
 
@@ -264,9 +253,6 @@ class Directory_Core_Admin extends Directory_Core {
 	* Inject basic javascript dataset, for consistency.
 	*/
 	function js_print_scripts () {
-		if ( isset( $_GET['post_type'] ) &&  'directory_listing' == $_GET['post_type'] ) {
-			wp_enqueue_script( 'dr_editor', $this->plugin_url . 'ui-admin/js/admin.js', array('jquery') );
-		}
 		printf(
 		'<script type="text/javascript">
 		var _dr_data = {
@@ -276,7 +262,6 @@ class Directory_Core_Admin extends Directory_Core {
 		$this->plugin_url
 		);
 	}
-
 
 	/**
 	* Handles $_GET and $_POST requests for the settings page.

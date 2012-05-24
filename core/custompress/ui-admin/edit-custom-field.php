@@ -80,12 +80,6 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 									<br />
 									<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
 									<span class="description"><?php _e('Date picker sample', $this->text_domain) ?></span>
-
-									<script type="text/javascript">
-										jQuery('#datepicker').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
-										jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
-									</script>
-
 								</p>
 
 							</div>
@@ -179,3 +173,11 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 	</form>
 
 </div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#datepicker').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
+		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
+	});
+</script>
+

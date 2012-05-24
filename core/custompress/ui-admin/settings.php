@@ -21,7 +21,7 @@ $cp_post_type = $options['display_post_types'];
 
 <div class="wrap">
 	<?php screen_icon('options-general'); ?>
-	<h2><?php _e('CustomPress Settings', $this->text_domain); ?></h2>
+	<h2><?php _e('CustomPress Settings', $this->text_domain); echo CP_VERSION;?></h2>
 
 	<?php $this->render_admin('message'); ?>
 
@@ -35,7 +35,7 @@ $cp_post_type = $options['display_post_types'];
 					<label for="enable_subsite_content_types"><?php _e('Enable sub-site content types.', $this->text_domain) ?></label>
 				</th>
 				<td>
-					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked(empty( $enable_subsite_content_types ), false ); ?>  />
+					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( empty( $enable_subsite_content_types )); ?>  />
 					<span class="description"><?php _e('If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="radio" name="keep_network_content_types" value="1" <?php checked(empty( $keep_network_content_types ), false ); ?> />
@@ -254,13 +254,6 @@ $cp_post_type = $options['display_post_types'];
 					<br /><br />
 					<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
 					<span class="description"><?php _e('Date picker sample', $this->text_domain) ?></span>
-					<script type="text/javascript">
-						//Make em pickers
-						jQuery('.pickdate').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
-						//Default date for display
-						jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
-					</script>
-
 				</td>
 			</tr>
 		</table>
@@ -300,3 +293,12 @@ $cp_post_type = $options['display_post_types'];
 
 	</form>
 </div>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		//Make em pickers
+		jQuery('.pickdate').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
+		//Default date for display
+		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
+	});
+</script>
+

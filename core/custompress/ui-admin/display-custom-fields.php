@@ -176,7 +176,11 @@ $output = false;
 						$fid = $prefix . $custom_field['field_id'];
 						?>
 						<input type="text" class="pickdate <?php echo $required; ?>" name="<?php echo $fid; ?>" id="<?php echo $fid; ?>" value="<?php echo ( get_post_meta( $post->ID, $prefix . $custom_field['field_id'], true )); ?>" />
-						<script type="text/javascript">jQuery('#<?php echo $fid; ?>').datepicker({ dateFormat : '<?php echo $custom_field['field_date_format']; ?>' });</script>
+						<script type="text/javascript">
+							jQuery(document).ready(function(){
+								jQuery('#<?php echo $fid; ?>').datepicker({ dateFormat : '<?php echo $custom_field['field_date_format']; ?>' });
+							});
+							</script>
 						<p><?php echo ( $custom_field['field_description'] ); ?></p>
 					</td>
 				</tr>
