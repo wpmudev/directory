@@ -1458,13 +1458,14 @@ class Directory_Core {
 		'style' => '', //list, grid
 		), $atts ) );
 
-		if($style == 'grid') echo '<div class="dr_list_grid">' .PHP_EOL;
-		elseif($style == 'list') echo '<div class="dr_list">' .PHP_EOL;
-		else echo "<div>\n";
+		if($style == 'grid') $result = '<div class="dr_list_grid">' .PHP_EOL;
+		elseif($style == 'list') $result = '<div class="dr_list">' .PHP_EOL;
+		else $result = "<div>\n";
 
-		return the_dr_categories_home( false, $atts );
+		$result .= the_dr_categories_home( false, $atts );
 
-		echo "</div>\n";
+		$result .= "</div><!--.dr_list-->\n";
+		return $result;
 	}
 
 	function listings_btn_sc( $atts, $content = null ) {
