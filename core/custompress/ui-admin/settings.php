@@ -35,7 +35,7 @@ $cp_post_type = $options['display_post_types'];
 					<label for="enable_subsite_content_types"><?php _e('Enable sub-site content types.', $this->text_domain) ?></label>
 				</th>
 				<td>
-					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( empty( $enable_subsite_content_types )); ?>  />
+					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( ! empty( $enable_subsite_content_types )); ?>  />
 					<span class="description"><?php _e('If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="radio" name="keep_network_content_types" value="1" <?php checked(empty( $keep_network_content_types ), false ); ?> />
