@@ -53,6 +53,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		add_shortcode('ct', array($this,'ct_shortcode'));
 		add_shortcode('tax', array($this,'tax_shortcode'));
+	
+		add_filter('the_content', array($this,'run_custom_shortcodes'), 6 ); //Early priority so that other shortcodes can use custom values
 
 		$this->init_vars();
 	}
@@ -1175,6 +1177,44 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		return $result;
 	}
+	
+		/**
+	 * Process the [ct] and [tax] shortcodes.
+	 *
+	 * Since the [ct] and [tax] shortcodes needs to be run earlier than all other shortcodes 
+	 * so the values may be used by other shortcodes, media [embed] is the earliest with an 8 priority so we need an earlier priority.
+	 * this function removes all existing shortcodes, registers the [ct] and [tax] shortcode,
+	 * calls {@link do_shortcode()}, and then re-registers the old shortcodes.
+	 *
+	 * @uses $shortcode_tags
+	 * @uses remove_all_shortcodes()
+	 * @uses add_shortcode()
+	 * @uses do_shortcode()
+	 *
+	 * @param string $content Content to parse
+	 * @return string Content with shortcode parsed
+	 */
+	function run_custom_shortcodes($content){
+		global $shortcode_tags;
+
+		// Back up current registered shortcodes and clear them all out
+		$orig_shortcode_tags = $shortcode_tags;
+		remove_all_shortcodes();
+
+		add_shortcode( 'ct', array(&$this, 'ct_shortcode') );
+
+		add_shortcode( 'tax', array(&$this, 'tax_shortcode') );
+
+		// Do the shortcode (only the [ct] and [tax] are registered)
+		$content = do_shortcode( $content );
+
+		// Put the original shortcodes back
+		$shortcode_tags = $orig_shortcode_tags;
+
+		return $content;
+	}
+	
+	
 
 }
 

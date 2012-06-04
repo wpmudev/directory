@@ -9,14 +9,15 @@
 		$content = get_the_content( null, 0 );
 		$content = str_replace( ']]>', ']]&gt;', $content );
 		echo $content;
+		
 		?>
-
+[embed][ct id="ct_Video_text_f2ed" property="value"][/embed]
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 	<div class="clear"></div>
-<div class="custom-fields">
-	<?php $this->display_custom_fields_values(); ?>
-</div>
+	<div class="custom-fields">
+		<?php $this->display_custom_fields_values(); ?>
+	</div>
 </div>
 
 <div class="entry-meta">

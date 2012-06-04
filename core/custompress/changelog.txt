@@ -5,7 +5,15 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
-= 1.2.2.3 = 2012-05-31 Arnold Bailey
+= 1.2.2.4 = 2012-06-01 Arnold Bailey
+* Changed priority of when custom field shortcodes are expanded so they will occur first. 
+This allows other shortcodes to use the custom values for example 
+
+[embed][ct id="ct_Video_text_f2ed" property="value"][/embed]
+
+will now properly expand.
+
+== 1.2.2.3 = 2012-05-31 Arnold Bailey
 * Fixed settings not saving from Network menu
 
 = 1.2.2.2 = 2012-05-24 Arnold Bailey

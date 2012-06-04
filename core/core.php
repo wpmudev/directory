@@ -946,11 +946,11 @@ class Directory_Core {
 
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99, 2 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 , 2 );
 				$this->dr_first_thumbnail = true;
 				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 99 );
-				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 99 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 4 );
+				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 4 );
 			}
 
 			$this->is_directory_page = true;
@@ -977,8 +977,8 @@ class Directory_Core {
 				//otherwise load the page template and use our own theme
 				$wp_query->is_single    = null;
 				$wp_query->is_page      = 1;
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
-				add_filter( 'the_content', array( &$this, 'listing_content' ), 99 );
+				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 10 );
+				add_filter( 'the_content', array( &$this, 'listing_content' ), 4 );
 			}
 
 			$this->is_directory_page = true;
@@ -1035,11 +1035,11 @@ class Directory_Core {
 
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99, 2 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 , 2 );
 				$this->dr_first_thumbnail = true;
 				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 99 );
-				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 99 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 4 );
+				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 4 );
 			}
 
 			$this->is_directory_page = true;
@@ -1066,8 +1066,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
-				add_filter( 'the_content', array( &$this, 'my_listings_content' ), 99 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 );
+				add_filter( 'the_content', array( &$this, 'my_listings_content' ), 4 );
 			}
 			$this->is_directory_page = true;
 		}
@@ -1093,8 +1093,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
-				add_filter( 'the_content', array( &$this, 'update_listing_content' ), 99 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 );
+				add_filter( 'the_content', array( &$this, 'update_listing_content' ), 4 );
 			}
 			$this->is_directory_page = true;
 
@@ -1117,8 +1117,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
-				add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
+				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 4 );
+				add_filter( 'the_content', array( &$this, 'signin_content' ), 4 );
 			}
 			$this->is_directory_page = true;
 		}
@@ -1140,8 +1140,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
-				add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
+				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 4 );
+				add_filter( 'the_content', array( &$this, 'signup_content' ), 4 );
 			}
 			$this->is_directory_page = true;
 		}

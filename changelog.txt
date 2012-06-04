@@ -5,6 +5,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.1.1.4 =
+* Fixed template parts loading order so shortcodes would work in Listings.
+* Changed priorities on the_content filter to allow embeds to work with custom fields.
+
 = 2.1.1.3 =
 * Fixed unclosed <div>
 * CustomPress 1.2.2.3
