@@ -238,7 +238,6 @@ class Directory_Core_Admin extends Directory_Core {
 
 		//including JS scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-form' );
 
 		if ( isset( $_GET['post_type'] ) &&  'directory_listing' == $_GET['post_type'] ) {
@@ -293,8 +292,8 @@ class Directory_Core_Admin extends Directory_Core {
 	* @return JSON Encoded string
 	*/
 	function ajax_get_caps() {
-		if ( !current_user_can( 'manage_options' ) )
-		die(-1);
+		if ( !current_user_can( 'manage_options' ) ) die(-1);
+		if(empty($_POST['role'])) die(-1);
 
 		global $wp_roles;
 

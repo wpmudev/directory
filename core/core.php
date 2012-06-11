@@ -79,6 +79,7 @@ class Directory_Core {
 
 		add_action( 'plugins_loaded', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( &$this, 'init' ) );
+		add_action('after_setup_theme', array(&$this, 'thumbnail_support') );
 
 		add_filter('comment_form_defaults', array($this,'review_defaults'));
 
@@ -99,13 +100,13 @@ class Directory_Core {
 		/* Enqueue styles */
 		add_action( 'wp_enqueue_scripts', array( &$this, 'add_js_css' ) );
 
-		add_action( 'template_redirect', array( &$this, 'template_redirect' ), 12 );
+		add_action( 'template_redirect', array( &$this, 'template_redirect' ),12 );
 
 		/* Handle requests for plugin pages */
 		add_action( 'template_redirect', array( &$this, 'handle_page_requests' ) );
 
 
-		add_action( 'wp', array( &$this, 'load_directory_templates' ) );
+		add_action( 'template_redirect', array( &$this, 'load_directory_templates' ),14 );
 
 		//hide some menu pages
 		add_filter( 'wp_page_menu_args', array( &$this, 'hide_menu_pages' ), 99 );
@@ -207,7 +208,7 @@ class Directory_Core {
 	function on_parse_query(){
 		global $wp_query;
 
-		if ( ! isset( $wp_query ) ) {
+		if ( isset( $wp_query ) ) {
 			//Handle any security redirects
 			if( is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id) || is_page($this->my_listings_page_id)){
 				if (! is_user_logged_in()) {
@@ -233,6 +234,12 @@ class Directory_Core {
 				}
 			}
 
+			//Or are we editing a listing?
+			if(is_page($this->directory_page_id)){
+				wp_redirect( get_post_type_archive_link('directory_listing') );
+				exit;
+
+			}
 		}
 	}
 
@@ -298,27 +305,19 @@ class Directory_Core {
 
 
 		//Register directory_listing post type
-		if ( class_exists( 'CustomPress_Core_Admin' ) ) {
-			//for CustomPress plugin
-			$ct_custom_post_types = get_option( 'ct_custom_post_types' );
+		$ct_custom_post_types = get_option( 'ct_custom_post_types' );
 
-			if ( isset( $ct_custom_post_types['directory_listing'] ) ) {
-				//use new values for directory_listing post type
-				$ct_custom_post_types['directory_listing'] = array_merge( $directory_listing_default, $ct_custom_post_types['directory_listing'] );
+		if ( isset( $ct_custom_post_types['directory_listing'] ) ) {
 
-				//don't change position in menu
-				if ( isset( $ct_custom_post_types['directory_listing']['menu_position'] ) && 0 == $ct_custom_post_types['directory_listing']['menu_position'] )
-				$ct_custom_post_types['directory_listing']['menu_position'] = '';
+			//don't change position in menu
+			if ( isset( $ct_custom_post_types['directory_listing']['menu_position'] ) && 0 == $ct_custom_post_types['directory_listing']['menu_position'] )
+			$ct_custom_post_types['directory_listing']['menu_position'] = '';
 
-				register_post_type( 'directory_listing', $ct_custom_post_types['directory_listing'] );
-			} else {
-				register_post_type( 'directory_listing', $directory_listing_default );
-				$ct_custom_post_types['directory_listing'] = $directory_listing_default;
-				update_option( 'ct_custom_post_types', $ct_custom_post_types );
-			}
+			register_post_type( 'directory_listing', $ct_custom_post_types['directory_listing'] );
 		} else {
-			//without CustomPress plugin
 			register_post_type( 'directory_listing', $directory_listing_default );
+			$ct_custom_post_types['directory_listing'] = $directory_listing_default;
+			update_option( 'ct_custom_post_types', $ct_custom_post_types );
 		}
 
 		$ct_custom_taxonomies = get_option('ct_custom_taxonomies');
@@ -771,10 +770,6 @@ class Directory_Core {
 			}
 		}
 
-		// Redirect template loading to archive-listing.php rather than to archive.php
-		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
-			$wp_query->set( 'post_type', 'directory_listing' );
-		}
 	}
 
 	/**
@@ -821,6 +816,7 @@ class Directory_Core {
 		'ID'             => ( isset( $params['listing_data']['ID'] ) ) ? $params['listing_data']['ID'] : '',
 		'post_title'     => wp_strip_all_tags($params['listing_data']['post_title']),
 		'post_content'   => $params['listing_data']['post_content'],
+		'post_excerpt'   => (isset($params['listing_data']['post_excerpt'])) ? $params['listing_data']['post_excerpt'] : '',
 		'post_status'    => $params['listing_data']['post_status'],
 		'post_author'    => get_current_user_id(),
 		'post_type'      => 'directory_listing',
@@ -833,8 +829,6 @@ class Directory_Core {
 		$post_id = wp_insert_post( $args );
 		else
 		$post_id = wp_update_post( $args );
-
-
 
 		if (! empty( $post_id ) ) {
 
@@ -866,7 +860,6 @@ class Directory_Core {
 			return $post_id;
 		}
 	}
-
 
 	/**
 	* Handle $_REQUEST for main pages.
@@ -919,10 +912,17 @@ class Directory_Core {
 	function load_directory_templates() {
 		global $wp_query;
 
+		// Redirect template loading to archive-listing.php rather than to archive.php
+		if ( is_dr_page( 'tag' ) || is_dr_page( 'category' ) ) {
+			$wp_query->set( 'post_type', 'directory_listing' );
+		}
+
+		$templates = array();
+
 		//load proper theme for home listing page
 		if ( $wp_query->is_home ) {
 
-			$templates = array( 'home-listing.php' );
+			$templates[] = 'home-listing.php';
 
 			//if custom template exists load it
 			if ( $this->directory_template = locate_template( $templates ) ) {
@@ -932,8 +932,10 @@ class Directory_Core {
 
 		//load proper theme for archive listings page
 		elseif ( is_dr_page( 'archive' ) ) {
+
 			//defaults
-			$templates = array( 'dr_listings.php' );
+			$templates[] = 'dr_listings.php';
+			$templates[] = 'archive-listings.php';
 
 			//if custom template exists load it
 			if ( $this->directory_template = locate_template( $templates ) ) {
@@ -946,11 +948,11 @@ class Directory_Core {
 
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 , 2 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 , 2 );
 				$this->dr_first_thumbnail = true;
 				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 4 );
-				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 4 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 11 );
+				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 11 );
 			}
 
 			$this->is_directory_page = true;
@@ -975,18 +977,19 @@ class Directory_Core {
 				add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 			} else {
 				//otherwise load the page template and use our own theme
-				$wp_query->is_single    = null;
+				$wp_query->is_single    = 0;
 				$wp_query->is_page      = 1;
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 10 );
-				add_filter( 'the_content', array( &$this, 'listing_content' ), 4 );
+
+				//add_filter( 'the_title', array( &$this, 'delete_post_title' ), 11 ); //after wpautop
+				add_filter( 'the_content', array( &$this, 'listing_content' ), 99 ); //after wpautop
 			}
 
 			$this->is_directory_page = true;
 		}
 
+
 		//load proper theme for listing category or tag
-		elseif(is_page($this->directory_page_id)){
-			$templates = array();
+		elseif ( 'listing_category' == $wp_query->query_vars['taxonomy'] || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
 			if ( 'listing_category' == $wp_query->query_vars['taxonomy'] ) {
 
 				$cat_name = get_query_var( 'listing_category' );
@@ -1035,18 +1038,16 @@ class Directory_Core {
 
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 , 2 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 , 2 );
 				$this->dr_first_thumbnail = true;
 				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 4 );
-				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 4 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 99 );
+				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 99 );
 			}
 
 			$this->is_directory_page = true;
 		}
-
-		//load proper theme for single listing page display
-
+		//load proper theme for my-listing listing page display
 		elseif(is_page($this->my_listings_page_id)){
 
 			if ( !current_user_can( 'edit_published_listings' ) ) {
@@ -1066,8 +1067,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 );
-				add_filter( 'the_content', array( &$this, 'my_listings_content' ), 4 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
+				add_filter( 'the_content', array( &$this, 'my_listings_content' ), 99 );
 			}
 			$this->is_directory_page = true;
 		}
@@ -1093,8 +1094,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'page_title_output' ), 4 );
-				add_filter( 'the_content', array( &$this, 'update_listing_content' ), 4 );
+				add_filter( 'the_title', array( &$this, 'page_title_output' ), 99 );
+				add_filter( 'the_content', array( &$this, 'update_listing_content' ), 99 );
 			}
 			$this->is_directory_page = true;
 
@@ -1117,8 +1118,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 4 );
-				add_filter( 'the_content', array( &$this, 'signin_content' ), 4 );
+				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
+				add_filter( 'the_content', array( &$this, 'signin_content' ), 99 );
 			}
 			$this->is_directory_page = true;
 		}
@@ -1140,8 +1141,8 @@ class Directory_Core {
 				$wp_query->is_page      = 1;
 				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
 				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
-				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 4 );
-				add_filter( 'the_content', array( &$this, 'signup_content' ), 4 );
+				add_filter( 'the_title', array( &$this, 'delete_post_title' ), 99 );
+				add_filter( 'the_content', array( &$this, 'signup_content' ), 99 );
 			}
 			$this->is_directory_page = true;
 		}
@@ -1171,9 +1172,7 @@ class Directory_Core {
 		return $content;
 
 		ob_start();
-
 		include_once($this->plugin_dir . '/ui-front/general/single-listing.php');
-
 		$new_content = ob_get_contents();
 		ob_end_clean();
 		return $new_content;
@@ -1223,146 +1222,24 @@ class Directory_Core {
 		if ( !in_the_loop() )
 		return $content;
 
-		$content = $this->dr_listing_list( false );
-		$content .= get_posts_nav_link();
+		ob_start();
+		include( $this->plugin_dir . 'ui-front/general/page-listings.php' );
+		$new_content = ob_get_contents();
+		ob_end_clean();
 
-		return $content;
-	}
-
-	//generate listing list content
-	function dr_listing_list( $echo = true, $paginate = '', $page = '', $per_page = '', $order_by = '', $order = '', $category = '', $tag = '' ) {
-		global $wp_query;
-
-		//setup taxonomy if applicable
-		if ( $category ) {
-			$taxonomy_query = '&listing_category=' . sanitize_title($category);
-		} elseif ( $tag ) {
-			$taxonomy_query = '&listing_tag=' . sanitize_title($tag);
-		} elseif ( $wp_query->query_vars['taxonomy'] == 'listing_category' || $wp_query->query_vars['taxonomy'] == 'listing_tag' ) {
-			$taxonomy_query = '&' . $wp_query->query_vars['taxonomy'] . '=' . get_query_var( $wp_query->query_vars['taxonomy'] );
-		}
-
-		//The Query
-		$custom_query = new WP_Query( 'post_type=directory_listing&post_status=publish' . $taxonomy_query );
-
-		//allows pagination links to work get_posts_nav_link()
-		if ( $wp_query->max_num_pages == 0 || $taxonomy_query )
-		$wp_query->max_num_pages = $custom_query->max_num_pages;
-
-
-		//breadcrumbs
-		if ( !is_dr_page( 'archive' ) ) {
-			$content = '<div class="breadcrumbtrail">';
-			$content .= '   <p class="page-title dp-taxonomy-name">';
-
-			ob_start();
-			the_dr_breadcrumbs();
-			$content .= ob_get_contents();
-			ob_end_clean();
-
-			$content .= '   </p>';
-			$content .= '   <div class="clear"></div>';
-			$content .= '</div> ';
-		}
-
-		$content .= '<div id="dr_listing_list">';
-
-		if ( $last = count( $custom_query->posts ) ) {
-			$count = 1;
-			if(is_array($custom_query->post)){
-				foreach ( $custom_query->posts as $post ) {
-
-					// Retrieves categories list of current post, separated by commas.
-					$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN));
-
-					// Retrieves tag list of current post, separated by commas.
-					$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
-
-					//add last css class for styling grids
-					if ( $count == $last )
-					$class = 'dr_listing last-listing';
-					else
-					$class = 'dr_listing';
-
-					$content .= '<div class="' . $class . '">';
-
-					$content .= '   <div class="entry-post">';
-					$content .= '       <h2 class="entry-title">';
-					$content .= '           <a href="' . get_permalink( $post->ID ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $post->post_title ) . '" rel="bookmark">' . $post->post_title . '</a>';
-					$content .= '       </h2>';
-					$content .= '       <div class="entry-summary">';
-					$content .=         get_the_post_thumbnail( $post->ID, array( 50, 50 ), array( 'class' => 'alignleft dr_listing_image_lising', 'title' => $post->post_title  ) );
-					$content .=         $this->listing_excerpt( $post->post_excerpt, $post->post_content, $post->ID );
-					$content .= '       </div>';
-					$content .= '       <div class="clear"></div>';
-					$content .= '   </div>';
-
-
-					$content .= '   <div class="entry-meta">';
-
-					ob_start();
-					the_dr_posted_on();
-					$content .= ob_get_contents();
-					ob_end_clean();
-
-					$content .= '       <div class="entry-utility">';
-
-					if ( $categories_list ) {
-						$content .= '           <span class="cat-links">' . sprintf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ) . '</span><br />';
-						unset( $categories_list );
-					}
-
-					if ( $tags_list ) {
-						$content .= '           <span class="tag-links">' . sprintf( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ) . '</span><br />';
-						unset( $tags_list );
-					}
-
-					ob_start();
-					?>
-					<?php do_action( 'sr_avg_ratings_of_listings', $post->ID ); ?>
-					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
-					<?php
-					$content .= ob_get_contents();
-					ob_end_clean();
-
-					$content .= '       </div>';
-					$content .= '   </div>';
-					$content .= '</div>';
-
-					$count++;
-				}
-			}
-		} else {
-			$content .= '<div id="dr_no_listings">' . apply_filters( 'dr_listing_list_none', __( 'No Listings', DR_TEXT_DOMAIN ) ) . '</div>';
-		}
-
-		$content .= '</div>';
-
-		if ( $echo )
-		echo $content;
-		else
-		return $content;
+		return $new_content;
 	}
 
 	//replaces wp_trim_excerpt in our custom loops
 	function listing_excerpt( $excerpt, $content, $post_id ) {
-		$excerpt_more = ' <a class="dr_listing_more_link" href="' . get_permalink( $post_id ) . '">' .  __( 'More Info &raquo;', $this->text_domain ) . '</a>';
+
+		$excerpt_more = apply_filters('wp_trim_excerpt', ' <a class="dr_listing_more_link" href="' . get_permalink( $post_id ) . '">' .  __( 'More Info &raquo;', $this->text_domain ) . "</a>\n");
 		if ( $excerpt ) {
 			return $excerpt . $excerpt_more;
 		} else {
 			$text = strip_shortcodes( $content );
-			//$text = apply_filters('the_content', $text);
-			$text = str_replace( ']]>', ']]&gt;', $text );
-			$text = strip_tags( $text );
 			$excerpt_length = apply_filters( 'excerpt_length', 55 );
-			$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
-			if ( count( $words ) > $excerpt_length ) {
-				array_pop( $words );
-				$text = implode(' ', $words);
-				$text = $text . $excerpt_more;
-			} else {
-				$text = implode( ' ', $words );
-			}
+			$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 		}
 		return $text;
 	}
@@ -1618,7 +1495,9 @@ class Directory_Core {
 
 	function get_post_image_link($post_id = 0){
 
-		if(! current_user_can('upload_files')) return '';
+		if ( ! ( post_type_supports( 'directory_listing', 'thumbnail' )
+		&& current_theme_supports( 'post-thumbnails', 'directory_listing' ) ) )
+		return '';
 
 		ob_start();
 		?>
@@ -1641,7 +1520,26 @@ class Directory_Core {
 		<?php
 		$result = ob_get_contents();
 		ob_end_clean();
+
 		return $result;
+	}
+
+	/**
+	* Add directory_listing to the post_types supporting thumbnails. CustomPress' post_type support thumbnail must also be on.
+	*
+	*/
+	function thumbnail_support(){
+
+		$supported_types = get_theme_support( 'post-thumbnails' );
+
+		if( $supported_types === false ) {
+			add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );
+		}
+		elseif( is_array( $supported_types ) )
+		{
+			$supported_types[0][] = 'directory_listing';
+			add_theme_support( 'post-thumbnails', $supported_types[0] );
+		}
 	}
 
 }

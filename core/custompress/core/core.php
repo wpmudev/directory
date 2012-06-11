@@ -33,7 +33,7 @@ class CustomPress_Core {
 		add_action('admin_enqueue_scripts', array($this, 'on_enqueue_scripts'));
 		add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'));
 
-		add_action('admin_print_scripts', array($this, 'on_print_scripts'));
+		//		add_action('admin_print_scripts', array($this, 'on_print_scripts'));
 		add_action('wp_print_scripts', array($this, 'on_print_scripts'));
 
 		add_action('admin_print_footer_scripts', array($this, 'on_admin_print_footer_scripts'));
@@ -86,19 +86,19 @@ class CustomPress_Core {
 		// Load the dynamic jQuery-UI theme loader for DatePicker
 		?>
 
-		<script type="text/javascript">
+		<script type="text/javascript">//<![CDATA[
 
 			function update_stylesheet(url) {
 				new_stylesheet=url;
 				if(jQuery("#cp_dynamic_css").length==0){
-					jQuery("head").append("<link>");
+					jQuery("head").append("<link/>");
 					css=jQuery("head").children(":last");
 					css.attr({id:"cp_dynamic_css",rel:"stylesheet",type:"text/css",href:new_stylesheet})
 				}else{
 					jQuery("#cp_dynamic_css").attr("href",new_stylesheet)
 				}
 			}
-
+			//]]>
 		</script>
 		<?php
 	}
@@ -235,7 +235,7 @@ class CustomPress_Core {
 		//Home Page
 		if ( isset($options['display_post_types']['home']['post_type']) && is_array( $options['display_post_types']['home']['post_type'] ) ) {
 			$post_types = $options['display_post_types']['home']['post_type'];
-			if ( is_archive() && !in_array( 'default', $post_types ) ){
+			if ( is_home() && !in_array( 'default', $post_types ) ){
 				if(count($post_types) == 1) $post_types = $post_types[0];
 				$wp_query->query_vars['post_type'] = $post_types;
 			}
@@ -253,7 +253,7 @@ class CustomPress_Core {
 		//Front Page
 		if ( isset($options['display_post_types']['front_page']['post_type']) && is_array( $options['display_post_types']['front_page']['post_type'] ) ) {
 			$post_types = $options['display_post_types']['front_page']['post_type'];
-			if ( is_archive() && !in_array( 'default', $post_types ) ){
+			if ( is_front_page() && !in_array( 'default', $post_types ) ){
 				if(count($post_types) == 1) $post_types = $post_types[0];
 				$wp_query->query_vars['post_type'] = $post_types;
 			}
@@ -262,7 +262,7 @@ class CustomPress_Core {
 		//Search Page
 		if ( isset($options['display_post_types']['search']['post_type']) && is_array( $options['display_post_types']['search']['post_type'] ) ) {
 			$post_types = $options['display_post_types']['search']['post_type'];
-			if ( is_archive() && !in_array( 'default', $post_types ) ){
+			if ( is_search() && !in_array( 'default', $post_types ) ){
 				if(count($post_types) == 1) $post_types = $post_types[0];
 				$wp_query->query_vars['post_type'] = $post_types;
 			}

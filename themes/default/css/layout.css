@@ -245,6 +245,11 @@ div.menu {
     margin: 4px 5px 0 5px;
 }
 
+#log-out {
+    float: right;
+    margin: 4px 5px 0 5px;
+}
+
 #add-listing {
     float: right;
     margin: 4px 5px 0 5px;

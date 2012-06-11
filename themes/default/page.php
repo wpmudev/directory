@@ -11,6 +11,6 @@
 			<?php endif; ?>
 
 		</div><!-- end #blog-page -->
-	</div>
+	</div><!-- end .padder -->
 </div><!-- end #content -->
 <?php get_footer(); ?>

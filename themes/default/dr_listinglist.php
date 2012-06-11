@@ -66,7 +66,7 @@
 
                         <?php do_action('sr_avg_ratings_of_listings', $post->ID ); ?>
 
-						<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
+						<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), '',  __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>;
 						<?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 
 					</div><!-- .entry-utility -->

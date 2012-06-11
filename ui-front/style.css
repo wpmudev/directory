@@ -4,6 +4,7 @@
 	background: #FFEBE8;
 }
 
+
 .field_checking {
 	color: black;
 }
@@ -32,6 +33,14 @@ div.comment-item:hover .row-actions {
 	height: auto;
 }
 
+.clear_left{
+	clear: left;
+}
+
+.clear_right{
+	clear: right;
+}
+
 .tax_panel{
 	overflow: auto;
 	height:160px;
@@ -49,6 +58,37 @@ div.comment-item:hover .row-actions {
 	width:47%;
 	margin-right: 3%;
 }
+
+.editfield input, 
+.editfield textarea {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:100%;
+}
+
+/* #dr_listing_list */
+
+#dr_listing_list .entry-title{
+  float: left;	
+}
+
+#dr_listing_list .entry-meta{
+	clear: none;
+	float: right !important;
+	width: 240px;
+}
+
+#dr_listing_list .entry-post{
+	border: 1px solid #ddd;
+	margin-bottom: 1em;
+	padding: 1em;
+}
+
+#dr_listing_list .entry-summary{
+	margin-right: 250px;
+}
+
 
 /*Categories list grid css*/
 #dr_list_categories span{
@@ -100,3 +140,4 @@ div.comment-item:hover .row-actions {
 	margin: 0 1em;
 }
 
+/* */

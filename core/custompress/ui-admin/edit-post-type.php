@@ -394,7 +394,7 @@ $post_type = $this->post_types[$_GET['ct_edit_post_type']];
 
 					</td>
 				</tr>
-			</table>!
+			</table>
 		</div>
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
@@ -415,14 +415,14 @@ $post_type = $this->post_types[$_GET['ct_edit_post_type']];
 							<input type="radio" name="show_ui" value="1" <?php checked( isset( $post_type['show_ui'] ) && $post_type['show_ui'] === true); ?> />
 							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong></span>
 						</label>
-						<span class="description"><strong>TRUE</strong>- <?php _e('Display a user-interface (admin panel) for this post type.', $this->text_domain); ?></span>
+						<span class="description"> - <?php _e('Display a user-interface (admin panel) for this post type.', $this->text_domain); ?></span>
 
 						<br />
 						<label>
 							<input type="radio" name="show_ui" value="0" <?php checked( isset( $post_type['show_ui'] ) && $post_type['show_ui'] === false); ?> />
 							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong></span>
 						</label>
-						<span class="description"><strong>TRUE</strong>- <?php _e('Do not display a user-interface for this post type.', $this->text_domain); ?></span>
+						<span class="description"> - <?php _e('Do not display a user-interface for this post type.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 			</table>

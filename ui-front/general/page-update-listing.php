@@ -69,19 +69,25 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		</div>
 
 		<div class="editfield alt">
-			<label for="listing_content"><?php _e( 'Content', $this->text_domain ); ?></label><br />
+			<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
 
-			<?php if(strpos(get_bloginfo('version'), '3.3') === 0): ?>
+			<?php if(intval(get_bloginfo('version') >= 3.3)): ?>
 
 			<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
 
 			<?php else: ?>
 
-			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo $listing_content; ?></textarea>
+			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($listing_content); ?></textarea>
 
 			<?php endif; ?>
 
 			<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
+		</div>
+
+		<div class="editfield alt">
+			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label><br />
+			<textarea id="excerpt" name="listing_data[post_excerpt]" rows="2" ><?php echo (isset( $listing_data['post_excerpt'] ) ) ? esc_textarea($listing_data['post_excerpt']) : ''; ?></textarea>
+			<p class="description"><?php _e( 'A short excerpt of your listing.', $this->text_domain ); ?></p>
 		</div>
 
 		<?php
@@ -115,7 +121,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		</div>
 		<?php endforeach; ?>
 
-		<div style="clear: both;width:100%"></div>
+		<div class="clear"></div>
 
 		<?php
 		//get related non-hierarchical taxonomies
@@ -149,8 +155,8 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
 			<div id="status-box">
 				<select name="listing_data[post_status]" id="listing_data[post_status]">
-					<option value="publish" <?php echo ( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Published', $this->text_domain ); ?></option>
-					<option value="draft" <?php echo ( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
+					<option value="publish" <?php selected( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ); ?>><?php _e( 'Published', $this->text_domain ); ?></option>
+					<option value="draft" <?php selected( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ); ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
 				</select>
 			</div>
 			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>

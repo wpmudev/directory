@@ -8,6 +8,8 @@
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 class DR_Theme_Core {
+	
+	public text_domain = THEME_TEXT_DOMAIN;
 
 	/**
 	* Class constructor.

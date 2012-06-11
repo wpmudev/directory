@@ -1,7 +1,5 @@
 <?php
 
-add_theme_support('post-thumbnails', array('directory-listing'));
-
 /**
 * The following functions abstract away various implementation details of the plugin.
 * They never echo anything.
@@ -14,33 +12,28 @@ add_theme_support('post-thumbnails', array('directory-listing'));
 * @return bool
 */
 function is_dr_page( $type = '' ) {
-	global $wp_query;
 	static $flags;
+	global $directory_core;
 
 	if ( is_404() )
-	return false;
-	
-	if(property_exists($wp_query, 'post_type')){
-	  $is_dr = (is_array($wp_query->post_type)) ? in_array('directory_listing', $wp_query->post_type) : 'directory_listing' == $wp_query->post_type;
-	} else {
-		$is_dr = false;
-	}
-	
-	
+		return false;
+
 	if ( !$flags ) {
+		
+		
 		$flags = array(
-		'single'   => is_singular( 'directory_listing' ),
-		'archive'  => is_post_type_archive() && $is_dr,
-		'tag'      => is_tax( 'listing_tag' ),
-		'category' => is_tax( 'listing_category' ),
-		'signin'   => is_page( 'signin'),
-		'signup'   => is_page( 'signup')
+			'single'   => is_singular( 'directory_listing' ),
+			'archive'  => is_post_type_archive( 'directory_listing' ),
+			'tag'      => is_tax( 'listing_tag' ),
+			'category' => is_tax( 'listing_category' ),
+            'signin'   => is_page( $directory_core->signin_page_id),
+            'signup'   => is_page( $directory_core->signup_page_id)
 		);
 	}
 
 	// Check if any flags are true
 	if ( empty( $type ) )
-	return in_array( true, $flags );
+		return in_array( true, $flags );
 
 	return isset( $flags[ $type ] ) && $flags[ $type ];
 }

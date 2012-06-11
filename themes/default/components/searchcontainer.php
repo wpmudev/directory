@@ -1,5 +1,5 @@
 <div id="searchbox">
-	<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+	<form method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
 		<div>
 			<label class="screen-reader-text" for="s"><?php _e( 'What can we find for you today?', THEME_TEXT_DOMAIN ); ?></label>
 			<input type="text" value="" name="s" id="s" size="32"/>

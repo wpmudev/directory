@@ -22,7 +22,7 @@ while ( have_posts() ) : the_post(); ?>
 				</span>
 			<?php endif; ?>
 
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', THEME_TEXT_DOMAIN ), __( '1 Review', THEME_TEXT_DOMAIN ), __( '% Reviews', THEME_TEXT_DOMAIN ), __( 'Reviews Off', THEME_TEXT_DOMAIN ) ); ?></span>;
+			<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', THEME_TEXT_DOMAIN ), __( '1 Review', THEME_TEXT_DOMAIN ), __( '% Reviews', THEME_TEXT_DOMAIN ), '',  __( 'Reviews Off', THEME_TEXT_DOMAIN ) ); ?></span>;
 			<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 
 		</div><!-- .entry-utility -->

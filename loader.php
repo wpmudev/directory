@@ -3,9 +3,11 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.1.1.4
+Version: 2.1.2
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
+Text Domain: dr_text_domain
+Domain Path: /languages
 WDP ID: 164
 License: GNU General Public License (Version 2 - GPLv2)
 */
@@ -28,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.1.1.4' );
+define( 'DR_VERSION', '2.1.2' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir
@@ -39,6 +41,8 @@ define( 'DR_TEXT_DOMAIN', 'dr_text_domain' );
 define( 'DR_OPTIONS_NAME', 'dr_options' );
 
 // include core files
+include_once 'core/wpmudev-dash-notification.php';
+
 include_once 'core/core.php';
 include_once 'core/functions.php';
 include_once 'core/template-tags.php';
@@ -61,18 +65,6 @@ function dr_on_plugins_loaded(){
 	}
 
 }
-
-///////////////////////////////////////////////////////////////////////////
-/* -------------------- Update Notifications Notice ---------------------*/
-if ( !function_exists( 'wdp_un_check' ) ) {
-	add_action( 'admin_notices', 'wdp_un_check', 5 );
-	add_action( 'network_admin_notices', 'wdp_un_check', 5 );
-	function wdp_un_check() {
-		if ( !class_exists( 'WPMUDEV_Update_Notifications' ) && current_user_can( 'install_plugins' ) )
-		echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</p></div>';
-	}
-}
-/* --------------------------------------------------------------------- */
 
 // Notification for Transition from old version 1.x to new version 2.x of the plugin
 if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) ) {

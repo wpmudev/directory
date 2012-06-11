@@ -53,7 +53,7 @@ function the_dr_categories_home( $echo = true ) {
 		$count_items = 0;
 
 		$output .= "<li>\n";
-		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in %s', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
+		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
 
 		$args = array(
 		'parent'       => $category->term_id,
@@ -154,7 +154,6 @@ function the_dr_categories_archive() {
 */
 function the_dr_breadcrumbs() {
 	$category = get_queried_object();
-
 	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
 	$category_parent_ids = array_reverse( $category_parent_ids );
 
@@ -176,6 +175,7 @@ function the_dr_breadcrumbs() {
 * @return void
 */
 function the_dr_posted_on() {
+
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
 	'meta-prep meta-prep-author',
 	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',

@@ -200,10 +200,8 @@ class DR_Ratings {
 			?>
 			<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
 				<span>(<?php echo $this->quality[$rating] ?>)</span>
-				<form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
-					<?php foreach ( $this->quality as $scale => $text ):
-
-					?>
+				<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
+					<?php foreach ( $this->quality as $scale => $text ): ?>
 					<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
 					<?php endforeach; ?>
 				</form>
@@ -220,7 +218,7 @@ class DR_Ratings {
 			*/ ?>
 			<div class="clear-left"></div>
 			<div class="sr-avg-rating"><strong>Rate this:</strong> <span id="caption"></span>
-				<form id="rat" action="#" method="post">
+				<form id="rat" action="#" method="post" action="#">
 					<select name="rate">
 						<?php foreach ( $this->quality as $scale => $text ): ?>
 						<option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
@@ -242,8 +240,8 @@ class DR_Ratings {
 		global $post;
 		$rating = $this->get_rating( $post->ID ); ?>
 		<div class="sr-rate-this"><strong>Average rating</strong>
-			<span>(<span id="all_votes"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg"><?php echo $rating['avg'] ?></span>)</span>
-			<form id="avg" style="float: left; padding: 3px 8px 0 0;">
+			<span>(<span id="all_votes-<?php echo $post->ID; ?>"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg<?php echo $post->ID; ?>"><?php echo $rating['avg'] ?></span>)</span>
+			<form id="avg" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ): ?>
 				<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
 				<?php endforeach; ?>
@@ -266,8 +264,8 @@ class DR_Ratings {
 
 		$rating = $this->get_rating( $post_id ); ?>
 		<div class="sr-rate-this"><strong>Average rating</strong>
-			<span>(<span id="all_votes"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg"><?php echo $rating['avg'] ?></span>)</span>
-			<form class="avg_of_listings" style="float: left; padding: 3px 8px 0 0;">
+			<span>(<span id="all_votes<?php echo $post_id; ?>"><?php echo $rating['votes']; ?></span> votes; <span id="all_avg<?php echo $post_id; ?>"><?php echo $rating['avg'] ?></span>)</span>
+			<form class="avg_of_listings" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ): ?>
 				<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
 				<?php endforeach; ?>
@@ -290,7 +288,7 @@ class DR_Ratings {
 		?>
 		<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
 			<span>(<?php echo $this->quality[$rating] ?>)</span>
-			<form class="user_votes" style="float: left; padding: 3px 8px 0 0;">
+			<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ):
 
 				?>

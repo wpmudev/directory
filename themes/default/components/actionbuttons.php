@@ -5,7 +5,7 @@
         <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/signup/'; ?>" class="button">Sign Up</a></div>
         <div id="submit-site"><a href="<?php echo get_bloginfo('url') . '/signin/'; ?>" class="button">Sign In</a></div>
     <?php else: ?>
-        <form id="go-to-profile" action="#" method="post">
+        <form id="log-out" action="#" method="post">
             <input type="submit" name="directory_logout" value="Log out" />
         </form>
         <form id="add-listing" action="#" method="post">

@@ -5,6 +5,16 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.1.2 =
+* Various fixes for version 3.4
+* Added Excerpt field to front end Listing edit
+* Redesigned generic archive template page-listings.php to display better in standard themes.
+
+
+= 2.1.1.5 =
+* Fixed double load of css script.
+* Remove no longer used tabs script
+
 = 2.1.1.4 =
 * Fixed template parts loading order so shortcodes would work in Listings.
 * Changed priorities on the_content filter to allow embeds to work with custom fields.
@@ -23,7 +33,6 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 = 2.1.1 =
 * Better filter for taxonomy supports list in functions
 * Moved security redirects to parse_query to avoid header sent error.
-
 
 = 2.1 =
 * Widget area replaces Advertising area in theme

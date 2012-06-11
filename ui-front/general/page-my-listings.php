@@ -51,7 +51,7 @@ global $directory_core;
 	//]]>
 </script>
 
-<form method="post" id="action-form" class="action-form">
+<form method="post" id="action-form" class="action-form" action="#">
 	<?php wp_nonce_field( 'action_verify' ); ?>
 	<input type="hidden" name="action" />
 	<input type="hidden" name="post_id" />
@@ -65,12 +65,16 @@ global $directory_core;
 		<th><?php _e( 'Title', DR_TEXT_DOMAIN ); ?></th>
 		<th><?php _e( 'Date', DR_TEXT_DOMAIN ); ?></th>
 	</tr>
-	<?php foreach ( $custom_query->posts as $listing ) { ?>
+
+	<?php foreach ( $custom_query->posts as $listing ) :?>
+
 	<tr>
 		<td>
 			<a href="<?php echo get_permalink( $listing->ID ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $listing->post_title ); ?>" rel="bookmark"><?php echo $listing->post_title; ?></a> - <?php echo $listing->post_status; ?>
+
 			<div class="listing-rating">
 				<?php do_action('sr_avg_ratings_of_listings', $listing->ID ); ?>
+
 			</div>
 			<div class="row-actions">
 				<span class="edit">
@@ -92,12 +96,12 @@ global $directory_core;
 		</td>
 		<td><?php echo $listing->post_modified ?></td>
 	</tr>
-	<?php } ?>
-</table>
 
+	<?php endforeach; ?>
+</table>
 
 <?php else : ?>
 
 <h3><?php _e( 'No Listings', DR_TEXT_DOMAIN ); ?></h3>
 
-<?php endif; ?>
+<?php endif;

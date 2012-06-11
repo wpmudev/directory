@@ -254,6 +254,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		}
 
 		$post_types = $this->post_types;
+		
 		// Register each post type if array of data is returned
 		if ( is_array( $post_types ) ) {
 			foreach ( $post_types as $post_type => $args ) {
