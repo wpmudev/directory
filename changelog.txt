@@ -9,6 +9,8 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Various fixes for version 3.4
 * Added Excerpt field to front end Listing edit
 * Redesigned generic archive template page-listings.php to display better in standard themes.
+* Changes the star rating tag ids to classes so you can have more than one rating control on the page.
+
 
 
 = 2.1.1.5 =
