@@ -30,13 +30,7 @@ class CustomPress_Core {
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
-		add_action('admin_enqueue_scripts', array($this, 'on_enqueue_scripts'));
-		add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'));
-
-		//		add_action('admin_print_scripts', array($this, 'on_print_scripts'));
-		add_action('wp_print_scripts', array($this, 'on_print_scripts'));
-
-		add_action('admin_print_footer_scripts', array($this, 'on_admin_print_footer_scripts'));
+		add_action('wp_enqueue_scripts', array($this, 'on_wp_enqueue_scripts'));
 
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
 		register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
@@ -46,7 +40,6 @@ class CustomPress_Core {
 		add_filter( 'enable_subsite_content_types', array( &$this, 'enable_subsite_content_types' ) );
 		add_filter('the_category', array($this,'filter_the_category'),10,3);
 		add_filter('the_tags', array($this,'filter_the_tags'),10,4);
-
 	}
 
 	/**
@@ -57,15 +50,19 @@ class CustomPress_Core {
 	function load_plugin_textdomain() {
 		load_plugin_textdomain( $this->text_domain, false, 'custompress/languages' );
 	}
+	
+	function enqueue_datepicker(){
 
-	function on_enqueue_scripts(){
-		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-datepicker');
 
-		$lang = (WPLANG == '') ? '' : substr(WPLANG, 0, 2);
+		// People use both "_" and "-" versions for lacale IDs en_GB en-GB
+		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
+		$wplang = str_replace('_', '-', WPLANG);
+		$lang = ($wplang == '') ? '' : substr($wplang, 0, 2); // Non specific locale
 
-		//language exceptions
-		$lang = (in_array(WPLANG, array('ar_DZ', 'cy_GB', 'en_AU', 'en_GB', 'en_NZ', 'fr_CH', 'nl_BE', 'pt_BR', 'sr_SR', 'zh_CN', 'zh_HK', 'zh_TW') ) )  ?  str_replace('_', '-', WPLANG) : $lang;
+		// Specific locale exceptions
+		$lang = (in_array($wplang, array('ar-DZ', 'cy-GB', 'en-AU', 'en-GB', 'en-NZ', 'fr-CH', 'nl-BE', 'pt-BR', 'sr-SR', 'zh-CN', 'zh-HK', 'zh-TW') ) )  ?  $wplang : $lang;
+
 		if(!empty($lang))
 		{
 			// If it can't find one too bad.
@@ -73,99 +70,33 @@ class CustomPress_Core {
 			wp_enqueue_script('jquery-ui-datepicker-lang');
 		}
 
+		// Dynamic CSS switching for date picker
+		wp_register_script('dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), '1.8.18');
+		wp_enqueue_script('dynamic-css');
+
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
 		wp_enqueue_script('jquery-validate');
-
+		
 		wp_register_script('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array('jquery'), '1.8.18');
 		wp_enqueue_script('jquery-combobox');
+
 		wp_register_style('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/style.css", array(), '0.5');
 		wp_enqueue_style('jquery-combobox');
+
+	}
+	
+	function on_wp_enqueue_scripts(){
+		
+		$this->enqueue_datepicker();
+	
 	}
 
-	function on_print_scripts(){
-		// Load the dynamic jQuery-UI theme loader for DatePicker
-		?>
-
-		<script type="text/javascript">//<![CDATA[
-
-			function update_stylesheet(url) {
-				new_stylesheet=url;
-				if(jQuery("#cp_dynamic_css").length==0){
-					jQuery("head").append("<link/>");
-					css=jQuery("head").children(":last");
-					css.attr({id:"cp_dynamic_css",rel:"stylesheet",type:"text/css",href:new_stylesheet})
-				}else{
-					jQuery("#cp_dynamic_css").attr("href",new_stylesheet)
-				}
-			}
-			//]]>
-		</script>
-		<?php
-	}
-
-	function on_admin_print_footer_scripts(){
-		?>
-
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				jQuery("#post").validate();
-
-			});
-		</script>
-		<?php
-	}
 	/**
 	* Plugin activation.
 	*
 	* @return void
 	*/
 	function plugin_activate() {
-
-
-		/*
-		TODO:
-		This block was added in version 1.1.5
-		For fix problem with Upper case of name in Taxonomies which were created by memeber in oldest versions.
-		You can remove this block in future. After several version.
-		*/
-
-		$enable_subsite_content_types = apply_filters( 'enable_subsite_content_types', false );
-
-		if ( $enable_subsite_content_types )
-		$taxonomies = get_option( 'ct_custom_taxonomies' );
-		else
-		$taxonomies = get_site_option( 'ct_custom_taxonomies' );
-
-		if ( is_network_admin() )
-		$taxonomies = get_site_option( 'ct_custom_taxonomies' );
-
-		if ( isset( $taxonomies ) && is_array( $taxonomies ) ) {
-			$update_flag = 0;
-			foreach( $taxonomies as $taxonom_name => $value ) {
-				if ( $taxonom_name != strtolower( $taxonom_name ) ) {
-					global $wpdb;
-					$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET taxonomy= '%s' WHERE taxonomy= '%s'", strtolower( $taxonom_name ), $taxonom_name ) );
-					$new_tax[strtolower( $taxonom_name )] = $value;
-					$update_flag = 1;
-				} else {
-					$new_tax[$taxonom_name] = $value;
-				}
-			}
-
-
-			if ( 1 == $update_flag ) {
-				if ( $enable_subsite_content_types )
-				update_option( 'ct_custom_taxonomies', $new_tax );
-				else
-				update_site_option( 'ct_custom_taxonomies', $new_tax );
-
-				if ( is_network_admin() )
-				update_site_option( 'ct_custom_taxonomies', $new_tax );
-			}
-		}
-
-		/* END block */
-
 
 	}
 
@@ -222,8 +153,6 @@ class CustomPress_Core {
 	/**
 	* Display custom post types on home page.
 	*
-	* @todo Display custom post types on any page set by the user.
-	*
 	* @param object $query
 	* @return object $query
 	*/
@@ -268,14 +197,6 @@ class CustomPress_Core {
 			}
 		}
 
-		/** @todo Display custom post types on any page set by the user.
-		global $post;
-		wp_reset_query();
-		if ( is_home() && !in_array( 'default', $settings['home']['post_type'] ))
-		query_posts( array( 'post_type' => $settings['home']['post_type'] ));
-		elseif ( $settings[$post->post_name]['page'] == $post->post_name )
-		query_posts( array( 'post_type' => $settings[$post->post_name]['post_type'] ));
-		*/
 	}
 
 	/**
@@ -403,8 +324,9 @@ class CustomPress_Core {
 	* @return void
 	*/
 	function render_admin( $name, $vars = array() ) {
-		foreach ( $vars as $key => $val )
-		$$key = $val;
+		foreach ( $vars as $key => $val ){
+			$$key = $val;
+		}
 		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
 		include "{$this->plugin_dir}ui-admin/{$name}.php";
 		else

@@ -73,7 +73,7 @@ var content_types = {
 
 
 		});
-		
+
 		//Make the combo box for date formats
 		$('#field_date_format').combobox([
 		'mm/dd/yy',
@@ -200,20 +200,23 @@ var content_types = {
 
 	// public field values initiation
 	function field_type_options() {
-		if ( $('.ct-custom-fields select option:selected').val() === 'radio' ||
-		$('.ct-custom-fields select option:selected').val() === 'selectbox' ||
-		$('.ct-custom-fields select option:selected').val() === 'multiselectbox' ||
-		$('.ct-custom-fields select option:selected').val() === 'checkbox' ) {
+		if ( $('.ct-custom-fields select option:selected').val() === 'radio' 
+		|| $('.ct-custom-fields select option:selected').val() === 'selectbox' 
+		|| $('.ct-custom-fields select option:selected').val() === 'multiselectbox' 
+		|| $('.ct-custom-fields select option:selected').val() === 'checkbox' ) {
 			$('.ct-date-type-options').hide();
+			$('.ct-text-type-options').hide();
 			$('.ct-field-type-options').show();
 		}
-		else if ( $('.ct-custom-fields select option:selected').val() === 'text' ||
-			$('.ct-custom-fields select option:selected').val() === 'textarea' ) {
+		else if ( $('.ct-custom-fields select option:selected').val() === 'text' 
+			|| $('.ct-custom-fields select option:selected').val() === 'textarea' ) {
 				$('.ct-field-type-options').hide();
 				$('.ct-date-type-options').hide();
+				$('.ct-text-type-options').show();
 			}
 			else if ( $('.ct-custom-fields select option:selected').val() === 'datepicker'){
 				$('.ct-field-type-options').hide();
+				$('.ct-text-type-options').hide();
 				$('.ct-date-type-options').show();
 			}
 		}

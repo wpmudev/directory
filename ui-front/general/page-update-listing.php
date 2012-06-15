@@ -57,7 +57,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 
 		<div class="editfield">
 			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />
-			<input type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
+			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
 			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
 		</div>
 
@@ -162,23 +162,22 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
 		</div>
 
-		<?php if ( class_exists( 'CustomPress_Content_Types' ) ) : ?>
+		<?php if ( class_exists( 'CustomPress_Core' ) ) : ?>
 		<div class="editfield">
 			<?php
-			global $post, $CustomPress_Content_Types, $CustomPress_Core;
+			global $post, $CustomPress_Core;
 			$post->post_type    = 'directory_listing';
 			$post->ID           = $listing_data['ID'];
-
-			$CustomPress_Content_Types->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
+			$CustomPress_Core->display_custom_fields();
 			?>
 		</div>
 		<?php endif; ?>
 
-
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
 			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
-			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php get_permalink($this->my_listings_page_id); ?>'">
+			
+			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 	</form>
 

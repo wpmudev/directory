@@ -21,6 +21,7 @@ class Directory_Core {
 	/** @public string Name of options DB entry */
 	public $options_name = DR_OPTIONS_NAME;
 
+	public $capability_map = null;
 	public $is_directory_page = false;
 	public $directory_template;
 	public $dr_first_thumbnail;
@@ -63,8 +64,19 @@ class Directory_Core {
 
 	function __construct(){
 
-		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
-		register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
+		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'on_activate' ) );
+		register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'on_deactivate' ) );
+
+		//Default capability map for Listings
+		$this->capability_map = array(
+		'read_listings'             => __( 'View listings.', $this->text_domain ),
+		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
+		'edit_published_listings'   => __( 'Edit listings.', $this->text_domain ),
+		'delete_published_listings' => __( 'Delete listings.', $this->text_domain ),
+		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
+		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
+		'upload_files'              => __( 'Upload files.', $this->text_domain ),
+		);
 
 		//show "Directory Theme" only for old installation
 		if ( 'Directory Theme' == get_current_theme() )
@@ -104,8 +116,6 @@ class Directory_Core {
 
 		/* Handle requests for plugin pages */
 		add_action( 'template_redirect', array( &$this, 'handle_page_requests' ) );
-
-
 		add_action( 'template_redirect', array( &$this, 'load_directory_templates' ),14 );
 
 		//hide some menu pages
@@ -161,17 +171,11 @@ class Directory_Core {
 				return $list;
 			}
 
-
 			$break = strpos( $list, '</a>', $temp_break ) + 4;
 
 			$nav = substr( $list, 0, $break );
-			/*
-			$nav .= '<ul class="children">';
-			$nav .= '<li class="page_item"><a href="' . site_url() . '/my-listings/" title="' . __( 'My Listings', $this->text_domain ) . '">' . __( 'My Listings', $this->text_domain ) . '</a></li>';
-			$nav .= '<li class="page_item"><a href="' . site_url() . '/add-listing/" title="' . __( 'Add Listing', $this->text_domain ) . '">' . __( 'Add Listing', $this->text_domain ) . '</a></li>';
-			$nav .= '</ul>';
-			*/
 			$nav .= substr( $list, $break );
+
 			return $nav;
 		}
 		return $list;
@@ -692,13 +696,56 @@ class Directory_Core {
 
 	}
 
+	/**
+	* Create the default Directory member roles and capabilities.
+	*
+	* @return void
+	*/
+	function create_default_directory_roles() {
+
+		//add role of directory member with full access
+		remove_role( "directory_member" );
+		remove_role( "directory_member_paid" );
+
+		add_role( "directory_member_paid",
+		'Directory Member Paid',
+		array(
+		'read_listings'             => true,
+		'publish_listings'          => true,
+		'edit_published_listings'   => true,
+		'delete_published_listings' => true,
+		'upload_files'              => true,
+		'read'                      => true,
+		)
+		);
+
+		//add role of directory member with limit access
+		remove_role( "directory_member_deny" );
+		remove_role( "directory_member_not_paid" );
+
+		add_role( "directory_member_not_paid",
+		'Directory Member Not Paid',
+		array('read' => true )
+		);
+
+		//set capability for admin
+		$admin = get_role('administrator');
+		foreach ( array_keys( $this->capability_map ) as $capability )
+		$admin->add_cap($capability );
+	}
 
 	/**
 	* Fire on plugin activation.
 	*
 	* @return void
 	*/
-	function plugin_activate() {
+	function on_activate() {
+
+		add_option( $this->options_name, array() );
+
+		if( ! get_role('directory_member_paid') || ! get_role('directory_member_not_paid') ){
+			$this->create_default_directory_roles();
+		}
 
 		if ( wp_next_scheduled( 'check_expiration_dates' ) ) {
 			wp_clear_scheduled_hook( 'check_expiration_dates' );
@@ -715,7 +762,7 @@ class Directory_Core {
 	*
 	* @return void
 	*/
-	function plugin_deactivate() {
+	function on_deactivate() {
 		// if true all plugin data will be deleted
 		//TODO: do it when unistall plugin.
 		if ( false ) {
@@ -1289,11 +1336,13 @@ class Directory_Core {
 		//taxonomy pages
 		if (  ( 'listing_category' == $wp_query->query_vars['taxonomy']  || 'listing_tag' == $wp_query->query_vars['taxonomy'] ) && $wp_query->post->ID == $id ) {
 			if ( 'listing_category' == $wp_query->query_vars['taxonomy'] ) {
+				$category = get_taxonomy( 'listing_category' );
 				$term = get_term_by( 'slug', get_query_var( 'listing_category' ), 'listing_category' );
-				return sprintf( __( 'Listing Category: %s', $this->text_domain ), $term->name );
+				return $category->labels->singular_name . ': ' . $term->name;
 			} elseif ( 'listing_tag' == $wp_query->query_vars['taxonomy'] ) {
+				$tag = get_taxonomy( 'listing_tag' );
 				$term = get_term_by( 'slug', get_query_var( 'listing_tag' ), 'listing_tag' );
-				return sprintf( __( 'Listing Tag: %s', $this->text_domain ), $term->name );
+				return $tag->labels->singular_name . ': ' . $term->name;
 			}
 		}
 
@@ -1301,29 +1350,13 @@ class Directory_Core {
 		if ( is_dr_page( 'archive' ) && $wp_query->post->ID == $id )
 		return __( 'Listings', $this->text_domain );
 
-		/*
-
-		if(is_page($this->my_listings_page_id))
-		//if ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) )
-		return __( 'My Listings', $this->text_domain );
-
-		if(is_page($this->add_listings_page_id))
-		//if ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
-		return __( 'Add Listing', $this->text_domain );
-		if(is_page($this->edit_listings_page_id))
-		//if ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) )
-		return __( 'Edit Listing', $this->text_domain );
-		*/
 		return $title;
 	}
 
 
 	//display custom fields
 	function display_custom_fields_values( ) {
-		global $wp_query;
-
 		include( $this->plugin_dir . 'ui-front/general/display-custom-fields-values.php' );
-
 	}
 
 	/**
@@ -1542,13 +1575,30 @@ class Directory_Core {
 		}
 	}
 
+	/**
+	* return fancy pagination links.
+	* @uses $wp_query
+	*
+	*/
+	function pagination(){
+		ob_start();
+
+		include($this->plugin_dir . 'ui-front/general/pagination.php');
+
+		$result = apply_filters( 'dr_pagination', ob_get_contents());
+		ob_end_clean();
+
+		return $result;
+	}
+
 }
 
 /* Initiate Class */
 
 if (!is_admin())
-$directory_core = new Directory_Core();
 
+global $Directory_Core;
+$Directory_Core = new Directory_Core();
 
 endif;
 ?>

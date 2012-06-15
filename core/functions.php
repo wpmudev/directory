@@ -13,27 +13,27 @@
 */
 function is_dr_page( $type = '' ) {
 	static $flags;
-	global $directory_core;
+	global $Directory_Core;
 
 	if ( is_404() )
-		return false;
+	return false;
 
 	if ( !$flags ) {
-		
-		
+
+
 		$flags = array(
-			'single'   => is_singular( 'directory_listing' ),
-			'archive'  => is_post_type_archive( 'directory_listing' ),
-			'tag'      => is_tax( 'listing_tag' ),
-			'category' => is_tax( 'listing_category' ),
-            'signin'   => is_page( $directory_core->signin_page_id),
-            'signup'   => is_page( $directory_core->signup_page_id)
+		'single'   => is_singular( 'directory_listing' ),
+		'archive'  => is_post_type_archive( 'directory_listing' ),
+		'tag'      => is_tax( 'listing_tag' ),
+		'category' => is_tax( 'listing_category' ),
+		'signin'   => is_page( $Directory_Core->signin_page_id),
+		'signup'   => is_page( $Directory_Core->signup_page_id)
 		);
 	}
 
 	// Check if any flags are true
 	if ( empty( $type ) )
-		return in_array( true, $flags );
+	return in_array( true, $flags );
 
 	return isset( $flags[ $type ] ) && $flags[ $type ];
 }

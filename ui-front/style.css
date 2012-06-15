@@ -140,4 +140,36 @@ div.comment-item:hover .row-actions {
 	margin: 0 1em;
 }
 
-/* */
+/* Pagination styles */
+.navigation{
+	float:right;
+}
+
+.pagination {
+	clear:both;
+	padding:20px 0;
+	position: relative;
+	font-size:11px;
+	line-height:13px;
+	z-index:99;
+}
+
+.pagination span, .pagination a {
+	display:block;
+	float:left;
+	margin: 2px 2px 2px 0;
+	padding:6px 9px 5px 9px;
+	text-decoration:none;
+	width:auto;
+	color:#fff;
+	background: #999;
+}
+.pagination a:hover{
+	color:#fff;
+	background: #3279BB;
+}
+.pagination .current{
+	padding:6px 9px 5px 9px;
+	background: #3279BB;
+	color:#fff;
+}

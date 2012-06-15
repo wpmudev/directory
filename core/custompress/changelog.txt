@@ -5,6 +5,24 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.2.3.2 = 2012-06-15 Arnold Bailey
+* Backup Buddy uses it's own version of Datepicker (timepicker) which was interfering with standard Wordpress Datepicker causing downstream thickbox to fail.
+* More fiddling with the language translation file loading.
+* Changed dynamic stylesheet loader.
+
+= 1.2.3.1 = 2012-06-14 Arnold Bailey
+* Removed duplicate init_vars() overiding the object inheritance
+
+= 1.2.3 = 2012-06-14 Arnold Bailey
+* Added new update notification
+* Tested against WP 3.4
+* Added custom required error messages for custom fields
+* Added regular expression validation for custom text and textarea fields
+* Added custom required error messages for regex validation
+* Reworked Network and Local custom field handling.
+* Added regex options flags
+
+
 = 1.2.2.5 = 2012-06-01 Arnold Bailey
 * Fixed double label on Show UI
 * Fixed display_custom_post_types() to handle multiple post_types.

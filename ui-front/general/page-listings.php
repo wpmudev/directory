@@ -1,13 +1,19 @@
 <?php
 global $wp_query, $post;
 
-$page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
 
 $query_args = array(
 'post_type' => 'directory_listing',
 'post_status' => 'publish',
-'paged' => $page,
+'paged' => $paged,
 );
+
+//setup taxonomy if applicable
+if ( $wp_query->query_vars['taxonomy'] == 'listing_category' || $wp_query->query_vars['taxonomy'] == 'listing_tag' ) {
+	$query_args[$wp_query->query_vars['taxonomy']] = get_query_var( $wp_query->query_vars['taxonomy']);
+}
 
 //The Query
 $custom_query = new WP_Query( $query_args );
@@ -21,8 +27,6 @@ if ( $wp_query->max_num_pages == 0 || $taxonomy_query ){
 //breadcrumbs
 if ( !is_dr_page( 'archive' ) ): ?>
 
-
-
 <div class="breadcrumbtrail">
 	<p class="page-title dp-taxonomy-name"><?php the_dr_breadcrumbs(); ?></p>
 	<div class="clear"></div>
@@ -31,11 +35,14 @@ if ( !is_dr_page( 'archive' ) ): ?>
 
 <div id="dr_listing_list">
 	<?php
+	
 	//Hijack the loop
 	if(is_array($custom_query->posts)) :
 	$last = count( $custom_query->posts );
 	$count = 1;
+	
 	foreach ( $custom_query->posts as $the_post ) :
+	
 	//Set Global post
 	$post = $the_post;
 	setup_postdata($post);
@@ -83,18 +90,16 @@ if ( !is_dr_page( 'archive' ) ): ?>
 				<?php echo get_the_post_thumbnail( $post->ID, array( 50, 50 ), array( 'class' => 'alignleft dr_listing_image_listing', 'title' => $post->post_title  ) ); ?>
 				<?php echo $this->listing_excerpt( $post->post_excerpt, $post->post_content, $post->ID ); ?>
 			</div>
-		<div class="clear"></div>
+			<div class="clear"></div>
 		</div>
-
 
 	</div>
 	<?php $count++;
 	endforeach;
-	posts_nav_link();
-
+	
+	//posts_nav_link();
+	echo $this->pagination();
 	else:?>
 	<div id="dr_no_listings"><?php echo apply_filters( 'dr_listing_list_none', __( 'No Listings', DR_TEXT_DOMAIN ) ); ?></div>
 	<?php endif; ?>
 </div>
-
-

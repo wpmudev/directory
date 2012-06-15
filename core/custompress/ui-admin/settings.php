@@ -2,7 +2,7 @@
 
 <?php
 $enable_subsite_content_types = get_site_option('allow_per_site_content_types');
-$keep_network_content_types   = get_site_option('keep_network_content_types');
+$keep_network_content_types   = get_site_option('keep_network_content_types') == 1;
 
 if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');

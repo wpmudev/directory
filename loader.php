@@ -54,7 +54,7 @@ if(!class_exists('CustomPress_Core')) {
 	include_once 'core/custompress/loader.php';
 }
 
-//Decide whether to load Admin, Buddypress or Standard version
+//Decide whether to load Admin or Standard version
 add_action('plugins_loaded', 'dr_on_plugins_loaded');
 function dr_on_plugins_loaded(){
 
@@ -63,7 +63,6 @@ function dr_on_plugins_loaded(){
 		include_once 'core/tutorial.php';
 		require_once 'core/contextual_help.php';
 	}
-
 }
 
 // Notification for Transition from old version 1.x to new version 2.x of the plugin

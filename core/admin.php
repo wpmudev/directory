@@ -13,9 +13,6 @@ if(!class_exists('Directory_Core_Admin')):
 
 class Directory_Core_Admin extends Directory_Core {
 
-	/** @var array Holds all capability names, along with descriptions. */
-	var $capability_map;
-
 	/**
 	* Constructor.
 	*/
@@ -24,8 +21,6 @@ class Directory_Core_Admin extends Directory_Core {
 	function __construct(){
 
 		parent::__construct();
-
-		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_defaults' ) );
 
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
@@ -53,65 +48,17 @@ class Directory_Core_Admin extends Directory_Core {
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
 
-		$this->capability_map = array(
-		'read_listings'             => __( 'View listings.', $this->text_domain ),
-		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
-		'edit_published_listings'   => __( 'Edit listings.', $this->text_domain ),
-		'delete_published_listings' => __( 'Delete listings.', $this->text_domain ),
-		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
-		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
-		'upload_files'              => __( 'Upload files.', $this->text_domain ),
-		);
 	}
 
-	/**
-	* Initiate admin default settings.
-	*
-	* @return void
-	*/
-	function init_defaults( $set_option = true) {
-		global $wp_roles;
-
-		//add role of directory member with full access
-		$wp_roles->remove_role( "directory_member" );
-		$wp_roles->remove_role( "directory_member_paid" );
-		$wp_roles->add_role( "directory_member_paid", 'Directory Member Paid', array(
-		'read_listings'             => true,
-		'publish_listings'          => true,
-		'edit_published_listings'   => true,
-		'delete_published_listings' => true,
-		'upload_files'              => true,
-		'read'                      => true,
-		) );
-
-		//add role of directory member with limit access
-		$wp_roles->remove_role( "directory_member_deny" );
-		$wp_roles->remove_role( "directory_member_not_paid" );
-		$wp_roles->add_role( "directory_member_not_paid", 'Directory Member Not Paid', array(
-		'read'                      => true
-		) );
-
-		//set capability for admin
-		foreach ( array_keys( $this->capability_map ) as $capability )
-		$wp_roles->add_cap( 'administrator', $capability );
-
-		// add option to the autoload list
-		if ( $set_option )
-		add_option( $this->options_name, array() );
-
-	}
-
-
-	/**
+/**
 	* check and add directory roles for all sites
 	*
 	* @return void
 	*/
 	function add_user_roles() {
-		global $wp_roles;
 
-		if ( !isset( $wp_roles->role_names['directory_member_paid'] ) || !isset( $wp_roles->role_names['directory_member_not_paid'] ) ) {
-			$this->init_defaults( false );
+		if( ! get_role('directory_member_paid') || ! get_role('directory_member_not_paid') ){
+			$this->create_default_directory_roles();
 		}
 	}
 
@@ -559,6 +506,8 @@ class Directory_Core_Admin extends Directory_Core {
 }
 
 /* Initiate Admin */
-$directory_core = new Directory_Core_Admin();
+
+global $Directory_Core;
+$Directory_Core = new Directory_Core_Admin();
 
 endif;

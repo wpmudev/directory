@@ -14,7 +14,7 @@ $custom_query = new WP_Query( 'post_type=directory_listing&post_status=publish,d
 if ( isset( $_GET['updated'] ) ) {
 	?><div id="message" class="updated fade"><p><?php echo urldecode( $_GET['dmsg'] ); ?></p></div><?php
 }
-global $directory_core;
+global $Directory_Core;
 
 ?>
 

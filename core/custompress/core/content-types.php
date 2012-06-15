@@ -27,6 +27,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	var $flush_rewrite_rules = false;
 	/** @var boolean Flag whether the users have the ability to declare post types for their own blogs */
 	var $enable_subsite_content_types = false;
+	/** @var bool  keep_network_content_type for site_options */
+	var $network_content = true;
 
 	/**
 	* Constructor
@@ -47,13 +49,14 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		add_filter( 'attachment_fields_to_edit', array( &$this, 'add_custom_for_attachment' ), 111, 2 );
 		add_filter( 'attachment_fields_to_save', array( &$this, 'save_custom_for_attachment' ), 111, 2 );
 
+		add_action( 'add_meta_boxes', array( &$this, 'on_add_meta_boxes' ), 2 );
 		add_action( 'admin_menu', array( &$this, 'create_custom_fields' ), 2 );
 		add_action( 'save_post', array( &$this, 'save_custom_fields' ), 1, 1 );
 		add_action( 'user_register', array( &$this, 'set_user_registration_rewrite_rules' ) );
 
 		add_shortcode('ct', array($this,'ct_shortcode'));
 		add_shortcode('tax', array($this,'tax_shortcode'));
-	
+
 		add_filter('the_content', array($this,'run_custom_shortcodes'), 6 ); //Early priority so that other shortcodes can use custom values
 
 		$this->init_vars();
@@ -65,6 +68,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* @return void
 	*/
 	function init_vars() {
+
+		$this->network_content = get_site_option('keep_network_content_types');
 		$this->enable_subsite_content_types = apply_filters( 'enable_subsite_content_types', false );
 
 		if ( $this->enable_subsite_content_types == 1 ) {
@@ -240,10 +245,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function register_post_types() {
 
-		// TODO This sucks, think of a better way
-		$keep_network_content_types = get_site_option('keep_network_content_types');
-
-		if ( $keep_network_content_types == 1 ) {
+		if ( $this->network_content == 1 ) {
 			$post_types = get_site_option('ct_custom_post_types');
 			// Register each post type if array of data is returned
 			if ( is_array( $post_types ) ) {
@@ -254,14 +256,14 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		}
 
 		$post_types = $this->post_types;
-		
+
 		// Register each post type if array of data is returned
 		if ( is_array( $post_types ) ) {
 			foreach ( $post_types as $post_type => $args ) {
 
 				//register post type
 				register_post_type( $post_type, $args );
-			//assign post type with regular taxanomies
+				//assign post type with regular taxanomies
 				if ( isset( $args['supports_reg_tax'] ) ) {
 					foreach ( $args['supports_reg_tax'] as $key => $value ) {
 						if ( taxonomy_exists( $key ) && '1' == $value ) {
@@ -420,10 +422,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* @return void
 	*/
 	function register_taxonomies() {
-		// TODO This sucks, think of a better way
-		$keep_network_content_types = get_site_option('keep_network_content_types');
 
-		if ( $keep_network_content_types == 1 ) {
+		if ( $this->network_content == 1 ) {
 			$taxonomies = get_site_option('ct_custom_taxonomies');
 			// If custom taxonomies are present, register them
 			if ( is_array( $taxonomies ) ) {
@@ -494,17 +494,27 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			'field_sort_order'     => $params['field_sort_order'],
 			'field_options'        => $params['field_options'],
 			'field_date_format'    => $params['field_date_format'],
+			'field_regex'          => trim($params['field_regex']),
+			'field_regex_options'  => trim($params['field_regex_options']),
+			'field_regex_message'  => trim($params['field_regex_message']),
+			'field_message'        => trim($params['field_message']),
 			'field_default_option' => ( isset( $params['field_default_option'] ) ) ? $params['field_default_option'] : NULL,
 			'field_description'    => $params['field_description'],
 			'object_type'          => $params['object_type'],
 			'field_required'       => (2 == $params['field_required'] ) ? 1 : 0,
-			'field_id'             => $field_id
+			'field_id'             => $field_id,
 			);
 
 
 			// Unset if there are no options to be stored in the db
-			if ( $args['field_type'] == 'text' || $args['field_type'] == 'textarea')
-			unset( $args['field_options'] );
+			if ( $args['field_type'] == 'text' || $args['field_type'] == 'textarea'){
+				unset( $args['field_options'] );
+			} else {
+				//regex on text only
+				unset( $args['field_regex'] );
+				unset( $args['field_regex_message'] );
+				unset( $args['field_regex_options'] );
+			}
 
 			// Set new custom fields
 			$custom_fields = ( $this->custom_fields )
@@ -664,44 +674,59 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 			}
 		}
+	}
 
-		// TODO This sucks, think of a better way
-		$keep_network_content_types = get_site_option('keep_network_content_types');
+	/**
+	* Add Custom field edit metaboxes
+	*
+	* @return void
+	*/
+	function on_add_meta_boxes() {
 
-		if ( $keep_network_content_types == 1 ) {
-			$custom_fields = get_site_option('ct_custom_fields');
+		$current_post_type = $this->get_current_post_type();
 
-			if ( !empty( $custom_fields ) ) {
-				foreach ( $custom_fields as $custom_field ) {
-					foreach ( $custom_field['object_type'] as $object_type ) {
+		$net_custom_fields = get_site_option('ct_custom_fields');
+		
+		if ( $this->network_content && !empty($net_custom_fields)) {
+			//get the network fields
+			$net_post_types = get_site_option('ct_custom_post_types');
+			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
 
-						$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
+			//If we have this post type rename the metabox
+			if($current_post_type) {
+				if ( ! empty( $net_post_types[$current_post_type]['labels']['custom_fields_block'] ) )
+				$meta_box_label = $net_post_types[$current_post_type]['labels']['custom_fields_block'];
 
-						if ( $this->post_types[$object_type] ) {
-							if ( 0 < strlen( $this->post_types[$object_type]['labels']['custom_fields_block'] ) )
-							$meta_box_label = $this->post_types[$object_type]['labels']['custom_fields_block'];
-						}
-
-						add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $object_type, 'normal', 'high' );
-					}
+			}
+			//Do we even need the metabox
+			$has_fields = false;
+			foreach ( $net_custom_fields as $custom_field ) {
+				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
+				if ($has_fields){
+					add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $current_post_type, 'normal', 'high' );
+					break;
 				}
 			}
 		}
 
 		$custom_fields = $this->custom_fields;
 
-		if ( !empty( $custom_fields ) ) {
+		if ( ! empty($custom_fields)) {
+			//get the local fields
+			$meta_box_label = __('CustomPress Fields', $this->text_domain);
+
+			//If we have this post type rename the metabox
+			if($current_post_type) {
+				if ( ! empty( $this->post_types[$current_post_type]['labels']['custom_fields_block'] ) )
+				$meta_box_label = $this->post_types[$current_post_type]['labels']['custom_fields_block'];
+			}
+			//Do we even need the metabox
+			$has_fields = false;
 			foreach ( $custom_fields as $custom_field ) {
-				foreach ( $custom_field['object_type'] as $object_type ) {
-
-					$meta_box_label = __('CustomPress Fields', $this->text_domain);
-
-					if ( isset( $this->post_types[$object_type] ) ) {
-						if ( ! empty( $this->post_types[$object_type]['labels']['custom_fields_block'] ) )
-						$meta_box_label = $this->post_types[$object_type]['labels']['custom_fields_block'];
-					}
-
-					add_meta_box( 'ct-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields' ), $object_type, 'normal', 'high' );
+				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
+				if ($has_fields){
+					add_meta_box( 'ct-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields' ), $current_post_type, 'normal', 'high' );
+					break;
 				}
 			}
 		}
@@ -1178,23 +1203,23 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		return $result;
 	}
-	
-		/**
-	 * Process the [ct] and [tax] shortcodes.
-	 *
-	 * Since the [ct] and [tax] shortcodes needs to be run earlier than all other shortcodes 
-	 * so the values may be used by other shortcodes, media [embed] is the earliest with an 8 priority so we need an earlier priority.
-	 * this function removes all existing shortcodes, registers the [ct] and [tax] shortcode,
-	 * calls {@link do_shortcode()}, and then re-registers the old shortcodes.
-	 *
-	 * @uses $shortcode_tags
-	 * @uses remove_all_shortcodes()
-	 * @uses add_shortcode()
-	 * @uses do_shortcode()
-	 *
-	 * @param string $content Content to parse
-	 * @return string Content with shortcode parsed
-	 */
+
+	/**
+	* Process the [ct] and [tax] shortcodes.
+	*
+	* Since the [ct] and [tax] shortcodes needs to be run earlier than all other shortcodes
+	* so the values may be used by other shortcodes, media [embed] is the earliest with an 8 priority so we need an earlier priority.
+	* this function removes all existing shortcodes, registers the [ct] and [tax] shortcode,
+	* calls {@link do_shortcode()}, and then re-registers the old shortcodes.
+	*
+	* @uses $shortcode_tags
+	* @uses remove_all_shortcodes()
+	* @uses add_shortcode()
+	* @uses do_shortcode()
+	*
+	* @param string $content Content to parse
+	* @return string Content with shortcode parsed
+	*/
 	function run_custom_shortcodes($content){
 		global $shortcode_tags;
 
@@ -1214,14 +1239,94 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		return $content;
 	}
-	
-	
 
+	/**
+	* gets the current post type in the WordPress Admin
+	*/
+	function get_current_post_type() {
+		global $post, $typenow, $current_screen;
+
+		//we have a post so we can just get the post type from that
+		if ( $post && $post->post_type )
+		return $post->post_type;
+
+		//check the global $typenow - set in admin.php
+		elseif( $typenow )
+		return $typenow;
+
+		//check the global $current_screen object - set in sceen.php
+		elseif( $current_screen && $current_screen->post_type )
+		return $current_screen->post_type;
+
+		//lastly check the post_type querystring
+		elseif( isset( $_REQUEST['post_type'] ) )
+		return sanitize_key( $_REQUEST['post_type'] );
+
+		//we do not know the post type!
+		return null;
+	}
+
+	/**
+	* Return JQuery script to validate an array of custom fields
+	* @$custom_fields array of custom field definition to generate rules for.
+	*
+	*/
+	function validation_rules($custom_fields = null ){ //
+
+		if(empty($custom_fields)) return '';
+
+		$rules = array();
+		$messages = array();
+
+		$validation = array();
+		$validation[] = "jQuery('#ct_custom_fields_form').closest('form').validate();"; //find the form we're validating
+
+		foreach($custom_fields as $custom_field) {
+
+			$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
+
+			$fid = $prefix . $custom_field['field_id'];
+			if ( in_array( $custom_field['field_type'], array('checkbox', 'multiselectbox') ) )
+			$fid = '"' . $fid . '[]"'; //Multichoice version
+			else
+			$fid = '"' . $fid . '"' ;
+
+			// collect messages
+			$msgs = array();
+
+			$message = ( empty( $custom_field['field_message']) ) ? '' : trim($custom_field['field_message']);
+			if( ! empty( $message ) ) $msgs[] = "required: '{$message}'";
+			
+			$regex_options = ( empty( $custom_field['field_regex_options']) ) ? '' : trim($custom_field['field_regex_options']);
+
+			$regex_message = ( empty( $custom_field['field_regex_message']) ) ? '' : trim($custom_field['field_regex_message']);
+			if( ! empty( $regex_message ) ) $msgs[] = "regex: '{$regex_message}'";
+
+
+			if( ! empty($msgs) )	$validation[] = "jQuery('[name={$fid}]').rules('add', { messages: {" . implode(", ", $msgs ) . " } });";
+
+			//Collect rules
+			$rls = array();
+			if ($custom_field['field_required'] || ! empty($custom_field['field_regex'])) { //we have validation rules
+				if( ! empty($custom_field['field_required']) ) $rls[] = 'required: true';
+				if( ! empty($custom_field['field_regex'])) $rls[] = "regex: /{$custom_field['field_regex']}/{$regex_options}";
+				//Add more in the future
+			}
+
+			if( ! empty($rls) ) $validation[] = "jQuery('[name={$fid}]').rules('add', { " . implode(", ", $rls ) . " } );";
+		}
+
+		$validation = implode("\n", $validation);
+
+		return $validation;
+	}
 }
 
 // Initiate Content Types Module
 
 
-if(!is_admin()) $CustomPress_Content_Types = new CustomPress_Content_Types();
+if(!is_admin()) {
+	$CustomPress_Core = new CustomPress_Content_Types();
+}
 
 endif;
