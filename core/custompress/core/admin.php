@@ -35,6 +35,9 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		add_action( 'admin_print_styles-post.php', array( &$this, 'enqueue_custom_field_scripts') );
 		add_action( 'admin_print_styles-post-new.php', array( &$this, 'enqueue_custom_field_scripts') );
 
+		add_action( 'wp_ajax_ct_get_caps', array( &$this, 'ajax_get_caps' ) );
+		add_action( 'wp_ajax_ct_save', array( &$this, 'ajax_save' ) );
+
 	}
 
 	/**
@@ -180,11 +183,11 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
 				if ( !empty( $params['enable_subsite_content_types'] ) ) {
 					update_site_option( 'allow_per_site_content_types', true );
-					update_site_option( 'keep_network_content_types', (bool) $params['keep_network_content_types'] );
+					update_site_option( 'display_network_content_types', (bool) $params['display_network_content_types'] );
 				}
 				else {
 					update_site_option( 'allow_per_site_content_types', false );
-					update_site_option( 'keep_network_content_types', false );
+					update_site_option( 'display_network_content_types', false );
 				}
 			}
 
@@ -254,6 +257,76 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		}
 	}
 
+	/**
+	* Ajax callback which gets the post types associated with each page.
+	*
+	* @return JSON Encoded string
+	*/
+	function ajax_get_caps() {
+		global $wp_roles;
+
+		if ( !current_user_can( 'manage_options' ) ) die(-1);
+	
+		if(empty($_POST['role'])) die(-1);
+		if(empty($_POST['post_type'])) die(-1);
+	
+		$role = $_POST['role'];
+		$post_type = $_POST['post_type'];
+
+		if ( !$wp_roles->is_role( $role ) )
+		die(-1);
+
+		if ( !post_type_exists( $post_type ) )
+		die(-1);
+
+		$role_obj = $wp_roles->get_role( $role );
+		$post_type_obj = get_post_type_object($post_type);
+		
+		$caps = get_object_vars($post_type_obj->cap);
+
+		$response = array_intersect( array_keys( $role_obj->capabilities ), $caps );
+		$response = array_flip( $response );
+
+		// response output
+		header( "Content-Type: application/json" );
+		echo json_encode( $response );
+		die();
+	}
+	
+		/**
+	* Save admin options.
+	*
+	* @return void die() if _wpnonce is not verified
+	*/
+	function ajax_save() {
+
+		check_admin_referer( 'submit_post_type' );
+
+		if ( !current_user_can( 'manage_options' ) )
+		die(-1);
+
+		// add/remove capabilities
+		global $wp_roles;
+
+		$role = $_POST['roles'];
+		$post_type = $_POST['post_type'];
+
+		$post_type_obj = get_post_type_object($post_type);
+		$all_caps = get_object_vars($post_type_obj->cap);
+
+		$to_add = array_keys( $_POST['capabilities'] );
+		$to_remove = array_diff( $all_caps, $to_add );
+
+		foreach ( $to_remove as $capability ) {
+			$wp_roles->remove_cap( $role, $capability );
+		}
+
+		foreach ( $to_add as $capability ) {
+			$wp_roles->add_cap( $role, $capability );
+		}
+
+		die(1);
+	}
 }
 
 /* Initiate Admin Class */

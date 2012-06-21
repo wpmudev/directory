@@ -18,11 +18,20 @@ add_filter( 'widget_text', 'do_shortcode' );
 class CustomPress_Content_Types extends CustomPress_Core {
 
 	/** @var array Available Post Types */
-	var $post_types;
+	var $post_types = array();
+	/** @var array Available Network Post Types */
+	var $network_post_types = array();
+
 	/** @var array Available Taxonomies */
-	var $taxonomies;
-	/** @var array Available Custom Fields */
-	var $custom_fields;
+	var $taxonomies = array();
+	/** @var array Available Network Taxonomies */
+	var $network_taxonomies = array();
+
+	/** @var array Available Custom fields */
+	var $custom_fields = array();
+	/** @var array Available Network Custom fields */
+	var $network_custom_fields = array();
+
 	/** @var boolean Flag whether to flush the rewrite rules or not */
 	var $flush_rewrite_rules = false;
 	/** @var boolean Flag whether the users have the ability to declare post types for their own blogs */
@@ -56,6 +65,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		add_shortcode('ct', array($this,'ct_shortcode'));
 		add_shortcode('tax', array($this,'tax_shortcode'));
+		add_shortcode('custom_fields_block', array($this,'fields_shortcode'));
 
 		add_filter('the_content', array($this,'run_custom_shortcodes'), 6 ); //Early priority so that other shortcodes can use custom values
 
@@ -69,8 +79,15 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function init_vars() {
 
-		$this->network_content = get_site_option('keep_network_content_types');
+		$this->display_network_content = get_site_option('display_network_content_types');
+
 		$this->enable_subsite_content_types = apply_filters( 'enable_subsite_content_types', false );
+
+		if ( is_network_admin() ) {
+			$this->network_post_types    = get_site_option( 'ct_custom_post_types' );
+			$this->network_taxonomies    = get_site_option( 'ct_custom_taxonomies' );
+			$this->network_custom_fields = get_site_option( 'ct_custom_fields' );
+		}
 
 		if ( $this->enable_subsite_content_types == 1 ) {
 			$this->post_types    = get_option( 'ct_custom_post_types' );
@@ -82,11 +99,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			$this->custom_fields = get_site_option( 'ct_custom_fields' );
 		}
 
-		if ( is_network_admin() ) {
-			$this->post_types    = get_site_option( 'ct_custom_post_types' );
-			$this->taxonomies    = get_site_option( 'ct_custom_taxonomies' );
-			$this->custom_fields = get_site_option( 'ct_custom_fields' );
-		}
 	}
 
 	/**
@@ -134,6 +146,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				'supports'            => $params['supports'],
 				'supports_reg_tax'    => $supports_reg_tax,
 				'capability_type'     => ( isset( $params['capability_type'] ) ) ? $params['capability_type'] : 'post',
+				'map_meta_cap'        => (bool) $params['map_meta_cap'],
 				'description'         => $params['description'],
 				'menu_position'       => (int)  $params['menu_position'],
 				'public'              => (bool) $params['public'] ,
@@ -239,13 +252,14 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* Get available custom post types and register them.
 	* The function attach itself to the init hook and uses priority of 2. It loads
 	* after the register_taxonomies() function which hooks itself to the init
-	* hook with priority of 1 ( that's kinda improtant ) .
+	* hook with priority of 1 ( that's kinda important ) .
 	*
 	* @return void
 	*/
 	function register_post_types() {
 
-		if ( $this->network_content == 1 ) {
+		//if ( $this->display_network_content == 1 )
+		{
 			$post_types = get_site_option('ct_custom_post_types');
 			// Register each post type if array of data is returned
 			if ( is_array( $post_types ) ) {
@@ -423,7 +437,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function register_taxonomies() {
 
-		if ( $this->network_content == 1 ) {
+		//if ( $this->display_network_content == 1 )
+		{
 			$taxonomies = get_site_option('ct_custom_taxonomies');
 			// If custom taxonomies are present, register them
 			if ( is_array( $taxonomies ) ) {
@@ -686,8 +701,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$current_post_type = $this->get_current_post_type();
 
 		$net_custom_fields = get_site_option('ct_custom_fields');
-		
-		if ( $this->network_content && !empty($net_custom_fields)) {
+
+		if ( $this->display_network_content && !empty($net_custom_fields)) {
 			//get the network fields
 			$net_post_types = get_site_option('ct_custom_post_types');
 			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
@@ -785,6 +800,37 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	}
 
 	/**
+	* Makes sure the admin always has all rights to all custom post types.
+	*
+	* @return void
+	*/
+	function add_admin_capabilities(){
+		global $wp_roles;
+
+		//if ( $this->display_network_content == 1 )
+		{
+			$post_types = $this->network_post_types;
+			if(is_array($post_types)){
+				foreach($post_types as $key => $pt){
+					$post_type = get_post_type_object($key);
+					foreach($post_type->cap as $capability){
+						$wp_roles->add_cap('administrator', $capability);
+					}
+				}
+			}
+		}
+
+		$post_types = $this->post_types;
+		if(is_array($post_types)){
+			foreach($post_types as $key => $pt){
+				$post_type = get_post_type_object($key);
+				foreach($post_type->cap as $cap){
+					$wp_roles->add_cap('administrator', $cap);
+				}
+			}
+		}
+	}
+	/**
 	* Flush rewrite rules based on boolean check
 	*
 	* @return void
@@ -797,6 +843,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			if ( $global_frr_id != $local_frr_id ) {
 				$this->flush_rewrite_rules = true;
 				update_option('ct_frr_id', $global_frr_id );
+				$this->add_admin_capabilities();
 			}
 		}
 
@@ -804,6 +851,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		if ( $this->flush_rewrite_rules || !empty( $_GET['frr'] ) ) {
 			flush_rewrite_rules(false);
 			$this->flush_rewrite_rules = false;
+			$this->add_admin_capabilities();
 		}
 	}
 
@@ -1131,6 +1179,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* Creates shortcodes for fields which may be used for shortened embed codes.
 	*
 	* @return string
+	* @uses appy_filters()
 	*/
 	function ct_shortcode($atts, $content=null){
 		global $post;
@@ -1179,6 +1228,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 			}
 		}
+		$result = apply_filters('ct_shortcode', $result, $atts, $content);
 		return $result;
 	}
 
@@ -1186,6 +1236,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* Creates shortcodes for fields which may be used for shortened embed codes.
 	*
 	* @string
+	* @uses appy_filters()
 	*/
 	function tax_shortcode($atts, $content = null){
 		global $post;
@@ -1200,6 +1251,124 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$result = get_the_term_list( $post->ID, $id, $before, $separator, $after );
 
 		$result = (is_wp_error($result)) ? __('Invalid Taxonomy name in [tax ] shortcode', $this->text_domain) : $result;
+
+		$result = apply_filters('tax_shortcode', $result, $atts, $content);
+		return $result;
+	}
+
+	/**
+	* Creates shortcodes for fields which may be used for shortened embed codes.
+	*
+	* @string
+	* @uses appy_filters()
+	*/
+	function fields_shortcode($atts, $content = null){
+		global $post;
+
+		extract( shortcode_atts( array(
+		'wrap' => 'ul',
+		'open' => null,
+		'close' => null,
+		'open_line' => null,
+		'close_line' => null,
+		'open_title' => null,
+		'close_title' => null,
+		'open_value' => null,
+		'close_value' => null,
+		), $atts ) );
+
+		// Setup the various structures table, ul, div
+		$structures = array (
+		"none" =>
+		array (
+		"open" => "",
+		"close" => "",
+		"open_line" => "",
+		"close_line" => "",
+		"open_title" => "",
+		"close_title" => "",
+		"open_value" => "",
+		"close_value" => "",
+		),
+		"table" =>
+		array (
+		"open" => "<table>\n",
+		"close" => "</table>\n",
+		"open_line" => "<tr>\n",
+		"close_line" => "</tr>\n",
+		"open_title" => "<th>\n",
+		"close_title" => "</th>\n",
+		"open_value" => "<td>\n",
+		"close_value" => "</td>\n",
+		),
+		"ul" =>
+		array (
+		"open" => "<ul>\n",
+		"close" => "</ul>\n",
+		"open_line" => "<li>\n",
+		"close_line" => "</li>\n",
+		"open_title" => "<span>",
+		"close_title" => "</span>",
+		"open_value" => " ",
+		"close_value" => "",
+		),
+		"div" =>
+		array (
+		"open" => "<div>",
+		"close" => "</div>\n",
+		"open_line" => "<p>",
+		"close_line" => "</p>\n",
+		"open_title" => "<span>",
+		"close_title" => "</span>",
+		"open_value" => " ",
+		"close_value" => "",
+		),
+		);
+
+		//Initialize with blanks
+		$fmt = $structures['none'];
+
+		// If its' predefined
+		if(in_array($wrap, array('table','ul','div'))){
+			$fmt = $structures[$wrap];
+		}
+
+		//Override any defined in $atts
+		foreach($fmt as $key => $item){
+			$fmt[$key] = ($$key === null) ? $fmt[$key] : $$key;
+		}
+
+		$custom_fields = get_option( 'ct_custom_fields' );
+		if (empty($custom_fields)) $custom_fields = array();
+
+		$result = $fmt['open'];
+		foreach ( $custom_fields as $custom_field ){
+			$output = in_array($post->post_type, $custom_field['object_type']);
+			if ( $output ){
+
+
+				$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
+				$fid = $prefix . $custom_field['field_id'];
+
+				$result .= $fmt['open_line'];
+				$result .= $fmt['open_title'];
+				$result .= ( $custom_field['field_title'] );
+				$result .= $fmt['close_title'];
+				$result .= $fmt['open_value'];
+
+				$result .= do_shortcode('[ct id="' . $fid . '"]');
+
+				$result .= $fmt['close_value'];
+				$result .= $fmt['close_line'];
+
+			}
+		}
+		$result .= $fmt['close'];
+
+		$result = apply_filters('custom_fields_shortcode', $result, $atts, $content);
+
+		// Wrap of for CSS after filtering
+		$result = '<div class="ct-custom-field-block">' . "\n{$result}</div>\n";
 
 		return $result;
 	}
@@ -1296,7 +1465,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 			$message = ( empty( $custom_field['field_message']) ) ? '' : trim($custom_field['field_message']);
 			if( ! empty( $message ) ) $msgs[] = "required: '{$message}'";
-			
+
 			$regex_options = ( empty( $custom_field['field_regex_options']) ) ? '' : trim($custom_field['field_regex_options']);
 
 			$regex_message = ( empty( $custom_field['field_regex_message']) ) ? '' : trim($custom_field['field_regex_message']);

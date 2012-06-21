@@ -2,7 +2,7 @@
 
 <?php
 $enable_subsite_content_types = get_site_option('allow_per_site_content_types');
-$keep_network_content_types   = get_site_option('keep_network_content_types') == 1;
+$display_network_content_types   = get_site_option('display_network_content_types') == 1;
 
 if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');
@@ -10,7 +10,7 @@ else
 $post_types = $this->post_types;
 
 
-if ( $enable_subsite_content_types && $keep_network_content_types )
+if ( $enable_subsite_content_types && $display_network_content_types )
 $network_post_types = get_site_option('ct_custom_post_types');
 
 $options = $this->get_options();
@@ -38,11 +38,11 @@ $cp_post_type = $options['display_post_types'];
 					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( ! empty( $enable_subsite_content_types )); ?>  />
 					<span class="description"><?php _e('If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin.', $this->text_domain); ?></span>
 					<br /><br />
-					<input type="radio" name="keep_network_content_types" value="1" <?php checked(empty( $keep_network_content_types ), false ); ?> />
-					<span class="description"><?php _e('Keep the network-wide content types on sub-sites.', $this->text_domain); ?></span>
+					<input type="radio" name="display_network_content_types" value="1" <?php checked(empty( $display_network_content_types ), false ); ?> />
+					<span class="description"><?php _e('Display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
 					<br />
-					<input type="radio" name="keep_network_content_types" value="0" <?php checked( empty($keep_network_content_types ), true ); ?> />
-					<span class="description"><?php _e('Remove the network-wide content types from sub-sites.', $this->text_domain); ?></span>
+					<input type="radio" name="display_network_content_types" value="0" <?php checked( empty($display_network_content_types ), true ); ?> />
+					<span class="description"><?php _e('Do not display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -73,7 +73,7 @@ $cp_post_type = $options['display_post_types'];
 					<br />
 					<?php endforeach; ?>
 					<?php endif; ?>
-					<?php if ( $enable_subsite_content_types && $keep_network_content_types ): ?>
+					<?php if ( $enable_subsite_content_types && $display_network_content_types ): ?>
 					<?php if ( !empty( $network_post_types ) ): ?>
 					<?php foreach ( $network_post_types as $post_type => $args ): ?>
 					<input type="checkbox" name="cp_post_type[home][]" value="<?php echo( $post_type ); ?>" <?php checked(is_array($cp_post_type['home']['post_type']) && in_array($post_type,$cp_post_type['home']['post_type'])); ?> />
@@ -114,7 +114,7 @@ $cp_post_type = $options['display_post_types'];
 					<br />
 					<?php endforeach; ?>
 					<?php endif; ?>
-					<?php if ( $enable_subsite_content_types && $keep_network_content_types ): ?>
+					<?php if ( $enable_subsite_content_types && $display_network_content_types ): ?>
 					<?php if ( !empty( $network_post_types ) ): ?>
 					<?php foreach ( $network_post_types as $post_type => $args ): ?>
 					<input type="checkbox" name="cp_post_type[front_page][]" value="<?php echo( $post_type ); ?>" <?php checked(empty($cp_post_type['front_page']['post_type']) || (is_array($cp_post_type['front_page']['post_type']) && in_array($post_type,$cp_post_type['front_page']['post_type']))); ?> />
@@ -155,7 +155,7 @@ $cp_post_type = $options['display_post_types'];
 					<br />
 					<?php endforeach; ?>
 					<?php endif; ?>
-					<?php if ( $enable_subsite_content_types && $keep_network_content_types ): ?>
+					<?php if ( $enable_subsite_content_types && $display_network_content_types ): ?>
 					<?php if ( !empty( $network_post_types ) ): ?>
 					<?php foreach ( $network_post_types as $post_type => $args ): ?>
 					<input type="checkbox" name="cp_post_type[archive][]" value="<?php echo( $post_type ); ?>" <?php checked(is_array($cp_post_type['archive']['post_type']) && in_array($post_type,$cp_post_type['archive']['post_type'])); ?> />
@@ -196,7 +196,7 @@ $cp_post_type = $options['display_post_types'];
 					<br />
 					<?php endforeach; ?>
 					<?php endif; ?>
-					<?php if ( $enable_subsite_content_types && $keep_network_content_types ): ?>
+					<?php if ( $enable_subsite_content_types && $display_network_content_types ): ?>
 					<?php if ( !empty( $network_post_types ) ): ?>
 					<?php foreach ( $network_post_types as $post_type => $args ): ?>
 					<input type="checkbox" name="cp_post_type[search][]" value="<?php echo( $post_type ); ?>" <?php checked(is_array($cp_post_type['search']['post_type']) && in_array($post_type,$cp_post_type['search']['post_type'])); ?> />

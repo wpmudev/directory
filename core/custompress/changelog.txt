@@ -5,6 +5,12 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.2.4 = 2012-06-18 Arnold Bailey
+* Added Map Meta Capability to Post Types editor. It was being overwritten when the custom post type was saved even if it was set by another program.
+* New custom post types automatically grant all capabilities to administrator role
+* Added Role Capabilities editor to post types. Roles can now be assigned capabilities where the capability type is not equal to "post"
+* Added [custom_field_block] shortcode to display a post's custom fields from a shortcode.
+
 = 1.2.3.2 = 2012-06-15 Arnold Bailey
 * Backup Buddy uses it's own version of Datepicker (timepicker) which was interfering with standard Wordpress Datepicker causing downstream thickbox to fail.
 * More fiddling with the language translation file loading.

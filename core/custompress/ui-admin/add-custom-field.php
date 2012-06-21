@@ -18,7 +18,7 @@ $post_types = get_post_types('','names');
 						</th>
 						<td>
 							<input type="text" name="field_title" value="<?php if ( isset( $_POST['field_title'] ) ) echo $_POST['field_title']; ?>" />
-							<span class="description"><?php _e('The title of the custom field.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('The title of the custom field.', $this->text_domain); ?></span>
 						</td>
 					</tr>
 					<tr>
@@ -32,16 +32,17 @@ $post_types = get_post_types('','names');
 					</tr>
 					<tr>
 						<th>
-							<label for="field_message"><?php _e('Reguired Field Error Prompt', $this->text_domain) ?></label><br />
+							<label for="field_message"><?php _e('Required Field Error Prompt', $this->text_domain) ?></label><br />
 						</th>
 						<td>
-							<input type="text" id="field_message" name="field_message" size="55" value="<?php if ( isset( $_POST['field_message'] ) ) echo $_POST['field_message']; ?>" /><br />
-							<span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
+							<input type="text" id="field_message" name="field_message" size="55" value="<?php if ( isset( $_POST['field_message'] ) ) echo $_POST['field_message']; ?>" />
+							<br /><span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="field_wp_allow"><?php _e('Allow for WP/plugins', $this->text_domain) ?> <br /><span class="ct-required">(<?php _e("can't be changed", $this->text_domain) ?>)</span></label>
+							<label for="field_wp_allow"><?php _e('Allow for WP/plugins', $this->text_domain) ?> 
+							<br /><span class="ct-required">(<?php _e("can't be changed", $this->text_domain) ?>)</span></label>
 						</th>
 						<td>
 							<input type="checkbox" name="field_wp_allow" value="2" <?php checked( isset( $_POST['field_wp_allow'] ) ); ?> />
@@ -68,20 +69,20 @@ $post_types = get_post_types('','names');
 								<option value="multiselectbox" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'multiselectbox' ); ?>><?php _e('Multi Select Box', $this->text_domain); ?></option>
 								<option value="datepicker" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'datepicker' ); ?>><?php _e('Date Picker', $this->text_domain); ?></option>
 							</select>
-							<span class="description"><?php _e('Select type of the custom field.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Select type of the custom field.', $this->text_domain); ?></span>
 
 							<div class="ct-text-type-options">
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>
 								<p>
 									<label for="field_regex"><?php _e('Regular Expression Validation', $this->text_domain) ?></label>
+									<br />
 									<textarea name="field_regex" rows="2" cols="50" ><?php if ( isset( $_POST['field_regex'] ) ) echo esc_textarea($_POST['field_regex']); ?></textarea>
-
+<br />
 									<label for="field_regex_options"><?php _e('Options:', $this->text_domain) ?></label>
 									<input type="text" id="field_regex_options" name="field_regex_options" size="3" value="<?php if ( isset( $_POST['field_regex_options'] ) ) echo $_POST['field_regex_options']; ?>" />
-									<span class="description"><?php _e('i = ignore case, g = global, m = multiline', $this->text_domain) ?></span><br />
-
-									<span class="description"><?php _e('Enter a regular expression to validate against or leave blank. Example for Email:', $this->text_domain) ?></span>
-									<span class="description"><?php _e('<code>^[\w.%+-]+@[\w.-]+\.[A-Z]{2,4}$</code> <code>i</code>', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('i = ignore case, g = global, m = multiline', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('Enter a regular expression to validate against or leave blank. Example for Email:', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('<code>^[\w.%+-]+@[\w.-]+\.[A-Z]{2,4}$</code> <code>i</code>', $this->text_domain) ?></span>
 								</p>
 								<p>
 									<label for="field_regex_message"><?php _e('Regular Expression Validation Error Message', $this->text_domain) ?></label><br />
@@ -102,8 +103,9 @@ $post_types = get_post_types('','names');
 								?>
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>
 								<p>
-									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/><br />
-									<span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
+									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/>
+									<br /><span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
+									<br />
 									<br />
 									<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
 									<span class="description"><?php _e('Date picker sample', $this->text_domain) ?></span>

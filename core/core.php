@@ -68,6 +68,7 @@ class Directory_Core {
 		register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'on_deactivate' ) );
 
 		//Default capability map for Listings
+/*
 		$this->capability_map = array(
 		'read_listings'             => __( 'View listings.', $this->text_domain ),
 		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
@@ -75,6 +76,27 @@ class Directory_Core {
 		'delete_published_listings' => __( 'Delete listings.', $this->text_domain ),
 		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
 		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
+		'upload_files'              => __( 'Upload files.', $this->text_domain ),
+		);
+*/
+
+		$this->capability_map = array(
+		'read_listings'             => __( 'View listings.', $this->text_domain ),
+		'read_private_listings'     => __( 'View private listings.', $this->text_domain ),
+
+		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
+
+		'edit_listings'             => __( 'Edit listings.', $this->text_domain ),
+		'edit_published_listings'   => __( 'Edit published listings.', $this->text_domain ),
+		'edit_private_listings'     => __( 'Edit private listings.', $this->text_domain ),
+
+		'delete_listings'           => __( 'Delete listings', $this->text_domain ),
+		'delete_published_listings' => __( 'Delete published listings.', $this->text_domain ),
+		'delete_private_listings'   => __( 'Delete private listings.', $this->text_domain ),
+
+		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
+		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
+
 		'upload_files'              => __( 'Upload files.', $this->text_domain ),
 		);
 
@@ -104,7 +126,7 @@ class Directory_Core {
 		add_shortcode( 'dr_logout_btn', array( &$this, 'logout_btn_sc' ) );
 		add_shortcode( 'dr_signin_btn', array( &$this, 'signin_btn_sc' ) );
 		add_shortcode( 'dr_signup_btn', array( &$this, 'signup_btn_sc' ) );
-
+		add_shortcode( 'dr_custom_fields', array( &$this, 'custom_fields_sc' ) );
 
 		if ( is_admin() )	return;
 
@@ -288,7 +310,7 @@ class Directory_Core {
 		'has_archive' => true,
 
 		'capability_type' => 'listing',
-		'capabilities' => array( 'edit_posts' => 'edit_published_listings' ),
+		//'capabilities' => array( 'edit_posts' => 'edit_published_listings' ),
 		'map_meta_cap' => true,
 
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', /*'post-formats'*/ ),
@@ -712,6 +734,7 @@ class Directory_Core {
 		array(
 		'read_listings'             => true,
 		'publish_listings'          => true,
+		'edit_listings'             => true,
 		'edit_published_listings'   => true,
 		'delete_published_listings' => true,
 		'upload_files'              => true,
@@ -899,9 +922,9 @@ class Directory_Core {
 				}
 			}
 
-			if ( class_exists( 'CustomPress_Content_Types' ) ) {
-				global $CustomPress_Content_Types;
-				$CustomPress_Content_Types->save_custom_fields( $post_id );
+			if ( class_exists( 'CustomPress_Core' ) ) {
+				global $CustomPress_Core;
+				$CustomPress_Core->save_custom_fields( $post_id );
 			}
 
 			return $post_id;
@@ -920,8 +943,6 @@ class Directory_Core {
 
 		/* Handles request for update-listing page */
 		if(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)){
-			//		if ( ( 'add-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'add-listing' == $wp_query->query_vars['name'] ) )
-			//		|| ( 'edit-listing' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'edit-listing' == $wp_query->query_vars['name'] ) ) ) {
 
 			if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
 				//Update listing
@@ -943,7 +964,6 @@ class Directory_Core {
 
 		/* Handles request for my-listings page */
 		if(is_page($this->my_listings_page_id)){
-			//		if ( 'my-listings' == $wp_query->query_vars['pagename'] || ( '' == $wp_query->query_vars['pagename'] && 'my-listings' == $wp_query->query_vars['name'] ) ) {
 			if ( isset( $_POST['action'] ) && 'delete_listing' ==  $_POST['action'] && wp_verify_nonce( $_POST['_wpnonce'], 'action_verify' ) ) {
 				if ( $this->user_can_edit_listing( $_POST['post_id'] ) ) {
 					wp_delete_post( $_POST['post_id'] );
@@ -1521,6 +1541,22 @@ class Directory_Core {
 		?>
 		<button class="dr_button logout_btn" type="button" onclick="window.location.href='<?php echo wp_logout_url($redirect); ?>';" ><?php echo $content; ?></button>
 		<?php
+		$result = ob_get_contents();
+		ob_end_clean();
+		return $result;
+	}
+
+	function custom_fields_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('Logout', $this->text_domain),
+		'redirect' => '',
+		'view' => 'loggedin', //loggedin, loggedout, both
+		), $atts ) );
+
+		$options = get_option( $this->options_name );
+		$content = (empty($content)) ? $text : $content;
+		ob_start();
+		$this->display_custom_fields_values();
 		$result = ob_get_contents();
 		ob_end_clean();
 		return $result;

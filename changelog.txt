@@ -10,11 +10,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Added Excerpt field to front end Listing edit
 * Redesigned generic archive template page-listings.php to display better in standard themes.
 * Changes the star rating tag ids to classes so you can have more than one rating control on the page.
-
+* Rearranged registration hook so it actually works.
 
 
 = 2.1.1.5 =
-* Fixed double load of css script.
+* Fixed double loading of css script.
 * Remove no longer used tabs script
 
 = 2.1.1.4 =

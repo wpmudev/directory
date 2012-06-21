@@ -5,7 +5,25 @@ if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');
 else
 $post_types = $this->post_types;
+
+$post_types = array();
+if(is_multisite()) {
+
+	if($this->display_network_content || is_network_admin() ){
+		$cf = get_site_option('ct_custom_post_types');
+		$post_types['net'] = (empty($cf)) ? array() : $cf;
+	}
+	if($this->enable_subsite_content_types && ! is_network_admin() ){
+		$cf = get_option('ct_custom_post_types');
+		$post_types['local'] = (empty($cf)) ? array() : $cf;
+	}
+} else {
+	$cf = get_option('ct_custom_post_types');
+	$post_types['local'] = (empty($cf)) ? array() : $cf;
+}
+
 $this->render_admin('update-message');
+
 
 ?>
 
@@ -41,21 +59,35 @@ $this->render_admin('update-message');
 		</tr>
 	</tfoot>
 	<tbody>
-		<?php if ( !empty( $post_types )): ?>
-		<?php $i = 0; foreach ( $post_types as $name => $post_type ): ?>
-		<?php $class = ( $i % 2) ? 'ct-edit-row alternate' : 'ct-edit-row'; $i++; ?>
+		<?php
+		$i = 0;
+		foreach ( $post_types as $source => $pt ):
+		$flag = ($source == 'net') && ! is_network_admin();
+		foreach ( $pt as $name => $post_type ):
+		$class = ( $i % 2) ? 'ct-edit-row alternate' : 'ct-edit-row'; $i++;
+		?>
 		<tr class="<?php echo $class; ?>">
 			<td style="min-width:8em;">
 				<strong>
+					<?php
+					if($flag):
+					echo $name;
+					else:
+					?>
 					<a href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ) ); ?>"><?php echo $name; ?></a>
+					<?php endif; ?>
 				</strong>
 				<div class="row-actions" id="row-actions-<?php echo $name; ?>">
+					<?php if($flag): ?>
+					<span class="description"><?php _e('Edit in Network Admin.', $this->text_domain); ?></span>
+					<?php else: ?>
 					<span class="edit">
 						<a title="<?php _e('Edit the post type', $this->text_domain); ?>" href="<?php echo self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ); ?>"><?php _e('Edit', $this->text_domain); ?></a> |
 					</span>
 					<span class="trash">
 						<a class="submitdelete" href="#" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>
 					</span>
+					<?php endif; ?>
 				</div>
 				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_post_type'); ?>
@@ -99,8 +131,10 @@ $this->render_admin('update-message');
 				<?php endif; ?>
 			</td>
 		</tr>
-		<?php endforeach; ?>
-		<?php endif; ?>
+		<?php
+		endforeach;
+		endforeach;
+		?>
 	</tbody>
 </table>
 

@@ -29,14 +29,13 @@ $options = $this->get_options('general_settings');
 								<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
 								<?php endforeach; ?>
 							</select>
-							<span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
 
 							<br /><br />
 
 							<div id="capabilities">
-								<?php 
-								foreach ( $this->capability_map as $capability => $description ): 
-								
+								<?php
+								foreach ( $this->capability_map as $capability => $description ):
 								?>
 								<input type="checkbox" name="capabilities[<?php echo $capability; ?>]" id="<?php echo $capability; ?>" value="1" />
 								<label for="<?php echo $capability; ?>"><span class="description"><?php echo $description; ?></span></label>
@@ -66,7 +65,7 @@ $options = $this->get_options('general_settings');
 			<?php wp_nonce_field('verify'); ?>
 			<input type="hidden" name="action" value="dr_save" />
 			<input type="hidden" name="key" value="general_settings" />
-			<input type="submit" class="button-primary" name="save" value="Save Changes">
+			<input type="submit" class="button-primary" name="save" value="Save this Roles Changes">
 		</p>
 
 	</form>

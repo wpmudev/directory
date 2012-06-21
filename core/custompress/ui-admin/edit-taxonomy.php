@@ -3,7 +3,6 @@
 <?php
 $post_types = get_post_types('','names');
 $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
-//print_r($taxonomy);
 ?>
 
 <h3><?php _e('Edit Taxonomy', $this->text_domain); ?></h3>
@@ -21,7 +20,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					<td>
 						<input type="text" value="<?php echo ( $_GET['ct_edit_taxonomy'] ); ?>" disabled="disabled">
 						<input type="hidden" name="taxonomy" value="<?php echo ( $_GET['ct_edit_taxonomy'] ); ?>" />
-						<span class="description"><?php _e('The system name of the taxonomy. Alphanumeric lower case characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The system name of the taxonomy. Alphanumeric lower case characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 			</table>
@@ -42,7 +41,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 							<?php endforeach; ?>
 							<?php endif; ?>
 						</select>
-						<span class="description"><?php _e('Select one or more post types to add this taxonomy to', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('Select one or more post types to add this taxonomy to', $this->text_domain); ?></span>
 					</td>
 				</tr>
 			</table>
@@ -57,7 +56,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[name]" value="<?php if ( isset( $taxonomy['labels']['name'] ) ) echo ( $taxonomy['labels']['name'] ); ?>" />
-						<span class="description"><?php _e('General name for the taxonomy, usually plural.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('General name for the taxonomy, usually plural.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -66,7 +65,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $taxonomy['labels']['singular_name'] ) ) echo ( $taxonomy['labels']['singular_name'] ); ?>" />
-						<span class="description"><?php _e('Name for one object of this taxonomy. Defaults to value of name.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('Name for one object of this taxonomy. Defaults to value of name.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +74,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $taxonomy['labels']['add_new_item'] ) ) echo ( $taxonomy['labels']['add_new_item'] ); ?>" />
-						<span class="description"><?php _e('The add new item text. Default is "Add New Tag" or "Add New Category".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The add new item text. Default is "Add New Tag" or "Add New Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -84,7 +83,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[new_item_name]" value="<?php if ( isset( $taxonomy['labels']['new_item_name'] ) ) echo ( $taxonomy['labels']['new_item_name'] ); ?>" />
-						<span class="description"><?php _e('The new item name text. Default is "New Tag Name" or "New Category Name".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The new item name text. Default is "New Tag Name" or "New Category Name".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -93,7 +92,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $taxonomy['labels']['edit_item'] ) ) echo ( $taxonomy['labels']['edit_item'] ); ?>" />
-						<span class="description"><?php _e('The edit item text. Default is "Edit Tag" or "Edit Category".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The edit item text. Default is "Edit Tag" or "Edit Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -102,7 +101,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[update_item]" value="<?php if ( isset( $taxonomy['labels']['update_item'] ) ) echo ( $taxonomy['labels']['update_item'] ); ?>" />
-						<span class="description"><?php _e('The update item text. Default is "Update Tag" or "Update Category".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The update item text. Default is "Update Tag" or "Update Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -111,7 +110,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[search_items]" value="<?php if ( isset( $taxonomy['labels']['search_items'] ) ) echo ( $taxonomy['labels']['search_items'] ); ?>" />
-						<span class="description"><?php _e('The search items text. Default is "Search Tags" or "Search Categories".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The search items text. Default is "Search Tags" or "Search Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -120,7 +119,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[popular_items]" value="<?php if ( isset( $taxonomy['labels']['popular_items']  ) ) echo ( $taxonomy['labels']['popular_items'] ); ?>" />
-						<span class="description"><?php _e('The popular items text. Default is "Popular Tags" or null.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The popular items text. Default is "Popular Tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -129,7 +128,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[all_items]" value="<?php if ( isset( $taxonomy['labels']['all_items'] ) ) echo ( $taxonomy['labels']['all_items'] ); ?>" />
-						<span class="description"><?php _e('The all items text. Default is "All Tags" or "All Categories".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The all items text. Default is "All Tags" or "All Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -138,7 +137,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[parent_item]" value="<?php if ( isset( $taxonomy['labels']['parent_item'] ) ) echo ( $taxonomy['labels']['parent_item'] ); ?>" />
-						<span class="description"><?php _e('The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or "Parent Category".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or "Parent Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -147,7 +146,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $taxonomy['labels']['parent_item_colon'] ) ) echo ( $taxonomy['labels']['parent_item_colon'] ); ?>" />
-						<span class="description"><?php _e('The same as parent_item, but with colon : in the end null, "Parent Category:".', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The same as parent_item, but with colon : in the end null, "Parent Category:".', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -156,7 +155,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[add_or_remove_items]" value="<?php if ( isset( $taxonomy['labels']['add_or_remove_items'] ) ) echo ( $taxonomy['labels']['add_or_remove_items'] ); ?>" />
-						<span class="description"><?php _e('The add or remove items text is used in the meta box when JavaScript is disabled. This string isn\'t used on hierarchical taxonomies. Default is "Add or remove tags" or null.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The add or remove items text is used in the meta box when JavaScript is disabled. This string isn\'t used on hierarchical taxonomies. Default is "Add or remove tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -165,7 +164,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[separate_items_with_commas]" value="<?php if ( isset( $taxonomy['labels']['separate_items_with_commas'] ) ) echo ( $taxonomy['labels']['separate_items_with_commas'] ); ?>" />
-						<span class="description"><?php _e('The separate item with commas text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Separate tags with commas", or null.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The separate item with commas text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Separate tags with commas", or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -174,7 +173,7 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 					</th>
 					<td>
 						<input type="text" name="labels[choose_from_most_used]" value="<?php if ( isset( $taxonomy['labels']['choose_from_most_used'] ) ) echo ( $taxonomy['labels']['choose_from_most_used'] ); ?>" />
-						<span class="description"><?php _e('The choose from most used text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Choose from the most used tags" or null.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The choose from most used text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Choose from the most used tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 			</table>

@@ -8,7 +8,6 @@
 */
 
 global $wp_query, $post_ID, $wp_taxonomies, $_wp_post_type_features,$wp_post_types, $current_user;
-//print_r($wp_taxonomies);
 
 $listing_data   = '';
 $selected_cats  = '';
@@ -54,6 +53,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 
 	<form class="standard-form base" method="post" action="#" enctype="multipart/form-data" id="dr_update_form" >
 		<input type="hidden" id="post_id" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
+		<input type="hidden" name="post_id" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 
 		<div class="editfield">
 			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />

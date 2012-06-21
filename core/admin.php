@@ -88,14 +88,18 @@ class Directory_Core_Admin extends Directory_Core {
 		if ( ( !isset( $opts['general_settings']['show_getting_started'] ) || '0' == $opts['general_settings']['show_getting_started'] ) && $this->_getting_started_complete() )
 		return;
 
-		global $menu, $submenu;
+		global $submenu;
+		
+		$mkey = 'edit.php?post_type=directory_listing'; 
 
-		foreach ( $submenu as $idx => $item ) {
-			if ( 'edit.php?post_type=directory_listing' != $idx ) continue;
-			$tmp = $item[17];
-			unset( $item[17] );
-			array_unshift( $item, $tmp );
-			$submenu[$idx] = $item;
+		$submenus = (empty($submenu[$mkey]) ) ? array() : $submenu[$mkey];
+
+		foreach ( $submenus as $idx => $item ) {
+			if ( ! in_array('dr-get_started', $item) ) continue;
+			$tmp = $submenus[$idx];
+			unset( $submenus[$idx] );
+			array_unshift( $submenus, $tmp );
+			$submenu[$mkey] = $submenus;
 		}
 	}
 

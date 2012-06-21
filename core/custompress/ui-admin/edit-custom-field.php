@@ -1,8 +1,15 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
+
 $post_types = get_post_types('','names');
+
+if(is_network_admin()){
+$custom_field = $this->network_custom_fields[$_GET['ct_edit_custom_field']];
+} else {
 $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
+}
+
 ?>
 <div class="wrap">
 	<h3><?php _e('Edit Custom Field', $this->text_domain); ?></h3>
@@ -19,7 +26,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 						</th>
 						<td>
 							<input type="text" name="field_title" value="<?php echo ( $custom_field['field_title'] ); ?>" />
-							<span class="description"><?php _e('The title of the custom field.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('The title of the custom field.', $this->text_domain); ?></span>
 						</td>
 					</tr>
 					<tr>
@@ -27,16 +34,17 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<label for="field_required"><?php _e('Required Field', $this->text_domain) ?></label>
 						</th>
 						<td>
-							<input type="checkbox" name="field_required" value="2" <?php checked( isset( $custom_field['field_required'] ) && ! empty($custom_field['field_required']) ); ?> ><span class="description"><?php _e('Make this a Required Field.', $this->text_domain); ?></span>
+							<input type="checkbox" name="field_required" value="2" <?php checked( isset( $custom_field['field_required'] ) && ! empty($custom_field['field_required']) ); ?> >
+							<span class="description"><?php _e('Make this a Required Field.', $this->text_domain); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="field_message"><?php _e('Reguired Field Error Prompt', $this->text_domain) ?></label><br />
+							<label for="field_message"><?php _e('Required Field Error Prompt', $this->text_domain) ?></label><br />
 						</th>
 						<td>
-							<input type="text" id="field_message" name="field_message" size="55" value="<?php if ( isset( $custom_field['field_message'] ) ) echo $custom_field['field_message']; ?>" /><br />
-							<span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
+							<input type="text" id="field_message" name="field_message" size="55" value="<?php if ( isset( $custom_field['field_message'] ) ) echo $custom_field['field_message']; ?>" />
+							<br /><span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
 						</td>
 					</tr>
 					<tr>
@@ -69,25 +77,24 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								<option value="multiselectbox" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'multiselectbox' ); ?>>Multi Select Box</option>
 								<option value="datepicker" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'datepicker' ); ?>>Date Picker</option>
 							</select>
-							<span class="description"><?php _e('Select type of the custom field.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Select type of the custom field.', $this->text_domain); ?></span>
 
 							<div class="ct-text-type-options">
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>
 								<p>
 									<label for="field_regex"><?php _e('Regular Expression Validation', $this->text_domain) ?></label><br />
 									<textarea name="field_regex" rows="2" cols="50" ><?php if ( isset( $custom_field['field_regex'] ) ) echo esc_textarea($custom_field['field_regex']); ?></textarea>
-
+									<br />
 									<label for="field_regex_options"><?php _e('Options:', $this->text_domain) ?></label>
 									<input type="text" id="field_regex_options" name="field_regex_options" size="3" value="<?php if ( isset( $custom_field['field_regex_options'] ) ) echo $custom_field['field_regex_options']; ?>" />
-									<span class="description"><?php _e('i = ignore case, g = global, m = multiline', $this->text_domain) ?></span><br />
-
-									<span class="description"><?php _e('Enter a regular expression to validate against or leave blank. Example for Email:', $this->text_domain) ?></span>
-									<span class="description"><?php _e('<code>^[\w.%+-]+@[\w.-]+\.[A-Z]{2,4}$</code> <code>i</code>', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('i = ignore case, g = global, m = multiline', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('Enter a regular expression to validate against or leave blank. Example for Email:', $this->text_domain) ?></span>
+									<br /><span class="description"><?php _e('<code>^[\w.%+-]+@[\w.-]+\.[A-Z]{2,4}$</code> <code>i</code>', $this->text_domain) ?></span>
 								</p>
 								<p>
 									<label for="field_regex_message"><?php _e('Regular Expression Validation Error Message', $this->text_domain) ?></label><br />
-									<input type="text" id="field_message" name="field_regex_message" size="55" value="<?php if ( isset( $custom_field['field_regex_message'] ) ) echo $custom_field['field_regex_message']; ?>" /><br />
-									<span class="description"><?php _e('Custom Regular Expression Validation Error message for this field or leave blank for default.', $this->text_domain) ?></span><br />
+									<input type="text" id="field_message" name="field_regex_message" size="55" value="<?php if ( isset( $custom_field['field_regex_message'] ) ) echo $custom_field['field_regex_message']; ?>" />
+									<br /><span class="description"><?php _e('Custom Regular Expression Validation Error message for this field or leave blank for default.', $this->text_domain) ?></span><br />
 								</p>
 							</div>
 
@@ -104,9 +111,9 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								?>
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>
 								<p>
-									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/><br />
-									<span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
-									<br />
+									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/>
+									<br /><span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
+									<br /><br />
 									<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
 									<span class="description"><?php _e('Date picker sample', $this->text_domain) ?></span>
 								</p>
@@ -163,7 +170,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 						</th>
 						<td>
 							<textarea name="field_description" cols="52" rows="3" ><?php echo esc_textarea( $custom_field['field_description'] ); ?></textarea>
-							<span class="description"><?php _e('Description for the custom field.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Description for the custom field.', $this->text_domain); ?></span>
 						</td>
 					</tr>
 				</table>

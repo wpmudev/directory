@@ -20,7 +20,8 @@ echo $content;
 			__( 'No Reviews &#187;', DR_TEXT_DOMAIN ), 
 			__( '1 Review &#187;', DR_TEXT_DOMAIN ), 
 			__( '% Reviews &#187;', DR_TEXT_DOMAIN ), 
-			'', __( 'Reviews Off;', DR_TEXT_DOMAIN ) 
+			'', 
+			__( 'Reviews Off;', DR_TEXT_DOMAIN ) 
 			); ?>
 		</span>
 	</p>
@@ -33,6 +34,22 @@ echo $content;
 	<?php endif; ?>
 </div>
 <div class="clear"></div>
+
+<?php
+
+$maddress[] = do_shortcode('[ct id="ct_Map_Street_text_c7aa"]');
+$maddress[] = do_shortcode('[ct id="ct_Map_City_text_57af"]');
+$maddress[] = do_shortcode('[ct id="ct_Map_StateP_text_3882"]');
+$maddress[] = do_shortcode('[ct id="ct_Map_StateP_text_3882"]');
+
+$map = new Mappress_Map(array('width' => 500));
+
+$poi = new Mappress_Poi(array('address' => implode(',',$maddress) ));
+$poi->geocode();
+
+$map->pois = array($poi);
+echo $map->display();
+?>
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 
@@ -50,5 +67,4 @@ echo $content;
 		</div><!-- #author-link    -->
 	</div><!-- #author-description -->
 </div><!-- #entry-author-info -->
-
 <?php endif; ?>

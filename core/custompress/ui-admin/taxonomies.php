@@ -1,10 +1,23 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
-if ( is_network_admin() )
-$taxonomies = get_site_option('ct_custom_taxonomies');
-else
-$taxonomies = $this->taxonomies;
+
+$taxonomies = array();
+if(is_multisite()) {
+
+	if($this->display_network_content || is_network_admin() ){
+		$cf = get_site_option('ct_custom_taxonomies');
+		$taxonomies['net'] = (empty($cf)) ? array() : $cf;
+	}
+	if($this->enable_subsite_content_types && ! is_network_admin() ){
+		$cf = get_option('ct_custom_taxonomies');
+		$taxonomies['local'] = (empty($cf)) ? array() : $cf;
+	}
+} else {
+	$cf = get_option('ct_custom_taxonomies');
+	$taxonomies['local'] = (empty($cf)) ? array() : $cf;
+}
+
 ?>
 
 <?php $this->render_admin('update-message'); ?>
@@ -34,24 +47,47 @@ $taxonomies = $this->taxonomies;
 		</tr>
 	</tfoot>
 	<tbody>
-		<?php if ( !empty( $taxonomies )): ?>
-		<?php $i = 0; foreach ( $taxonomies as $name => $taxonomy ): ?>
+
+		<?php
+		foreach($taxonomies as $source => $tax):
+		$flag = ($source == 'net') && ! is_network_admin();
+		?>
+		<?php $i = 0; foreach ( $tax as $name => $taxonomy ): ?>
 		<?php $class = ( $i % 2) ? 'ct-edit-row alternate' : 'ct-edit-row'; $i++; ?>
 		<tr class="<?php echo ( $class ); ?>">
 			<td>
 				<strong>
+					<?php
+					if($flag):
+					echo $name;
+					else:
+					?>
+
 					<a href="<?php echo self_admin_url('admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name); ?>"><?php echo( $name ); ?></a>
+					<?php endif; ?>
+
 				</strong>
 				<div class="row-actions" id="row-actions-<?php echo $name; ?>">
+					<?php if(! $flag): ?>
+
 					<span class="edit">
 						<a title="<?php _e('Edit this taxonomy', $this->text_domain); ?>" href="<?php echo self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ); ?>" ><?php _e('Edit', $this->text_domain); ?></a> |
 					</span>
+					<?php endif; ?>
+
 					<span>
-						<a title="<?php _e('Show embed code', $this->text_domain); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo( $name ); ?>'); return false;"><?php _e('Embed Code', $this->text_domain); ?></a> |
+						<a title="<?php _e('Show embed code', $this->text_domain); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo( $name ); ?>'); return false;"><?php _e('Embed Code', $this->text_domain); ?></a>
 					</span>
+
+					<?php if($flag): ?>
+					<span class="description"><?php _e('Edit in Network Admin.', $this->text_domain); ?></span>
+					<?php endif; ?>
+
+					<?php if(! $flag): ?>
 					<span class="trash">
-						<a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>
+						| <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>
 					</span>
+					<?php endif; ?>
 				</div>
 				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_taxonomy'); ?>
@@ -104,7 +140,7 @@ $taxonomies = $this->taxonomies;
 			</td>
 		</tr>
 		<?php endforeach; ?>
-		<?php endif; ?>
+		<?php endforeach; ?>
 	</tbody>
 </table>
 <form action="#" method="post" class="ct-form-single-btn">

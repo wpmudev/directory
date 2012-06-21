@@ -10,18 +10,16 @@
 	height: auto !important;
 }
 .ct-wrap-left {
-	width: 48%;
+	width: 47%;
 	float: left;
 	margin-right: 2em;
 }
-.ct-wrap-left .description {
-	display: block;
-}
+
 .ct-wrap-left .supports .description {
 	display:  inline;
 }
 .ct-wrap-right {
-	width: 48%;
+	width: 47%;
 	float: left;
 }
 .ct-table-wrap {
@@ -35,6 +33,11 @@
 	border-color:#DFDFDF;
 	margin:0 0 2em 0;
 }
+
+.ct-table-wrap .form-table th{
+  width:30%;
+}
+
 .ct-toggle {
 	padding:.7em .9em;
 	background:url("../images/gray-grad.png") repeat-x left top #DFDFDF;
