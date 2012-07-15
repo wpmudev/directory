@@ -81,7 +81,7 @@ global $Directory_Core;
 					<a title="Edit this listing" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Edit', DR_TEXT_DOMAIN ); ?></a>
 				| </span>
 				<span class="delete" id="delete-<?php echo $listing->ID; ?>">
-					<a title="Delite this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
+					<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
 				| </span>
 				<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;">
 					<?php _e( 'Delete? ', DR_TEXT_DOMAIN ); ?>

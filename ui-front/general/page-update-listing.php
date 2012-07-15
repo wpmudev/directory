@@ -21,7 +21,7 @@ if (is_page($this->add_listing_page_id)) {
 
 //Or are we editing a listing?
 if(is_page($this->edit_listing_page_id)){
-	$listing_data = get_post(  $_POST['post_id'], ARRAY_A );
+	$listing_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
 	$post_ID = $listing_data['ID'];
 }
 
@@ -46,8 +46,8 @@ $editor_settings =   array(
 $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['post_content'] : '';
 
 ?>
-<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" >
-</script>
+<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
+<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
 
 <div class="dr_update_form">
 
@@ -92,17 +92,18 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 
 		<?php
 		//get related hierarchical taxonomies
-		$taxonomies = get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'objects');
+		$taxonomies = get_object_taxonomies('directory_listing', 'objects');
+		$taxonomies = empty($taxonomies) ? array() : $taxonomies;
 
 		//Loop through the taxonomies that apply
 		foreach($taxonomies as $taxonomy):
-
+		if( ! $taxonomy->hierarchical) continue;
 		$tax_name = $taxonomy->name;
 		$labels = $taxonomy->labels;
 		//Get this Taxonomies terms
 		$selected_cats = array_values( wp_get_post_terms($listing_data['ID'], $tax_name, array('fields' => 'ids') ) );
 
-		if( ! dr_supports_taxonomy($tax_name)) continue;
+
 		?>
 
 		<div id="taxonomy-<?php echo $tax_name; ?>" class="taxonomydiv">
@@ -125,10 +126,10 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 
 		<?php
 		//get related non-hierarchical taxonomies
-		$tags = get_taxonomies(array( 'public' => true, 'hierarchical' => false ), 'objects');
 
 		//Loop through the taxonomies that apply
-		foreach($tags as $tag):
+		foreach($taxonomies as $tag):
+		if( $tag->hierarchical) continue;
 
 		$tag_name = $tag->name;
 		$labels = $tag->labels;
@@ -136,7 +137,6 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		//Get this Taxonomies terms
 		$tag_list = strip_tags(get_the_term_list( $listing_data['ID'], $tag_name, '', ',', '' ));
 
-		if(! dr_supports_taxonomy($tag_name)) continue;
 		?>
 
 		<div class="editfield">
@@ -176,7 +176,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
 			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
-			
+
 			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 	</form>

@@ -2,13 +2,13 @@
 
 <div class="wrap">
 
-	<?php $this->render_admin( 'navigation', array( 'page' => 'settings', 'tab' => 'shortcodes' ) ); ?>
+	<?php $this->render_admin( 'navigation', array( 'page' => 'directory_settings', 'tab' => 'shortcodes' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
 
-	<h1><?php _e( 'Shortcodes', $this->text_domain ); ?></h1>
+	<h1><?php _e( 'Listings Shortcodes', $this->text_domain ); ?></h1>
 
 	<div class="postbox">
-		<h3 class='hndle'><span><?php _e( 'Shortcodes', $this->text_domain ) ?></span></h3>
+		<h3 class='hndle'><span><?php _e( 'Listing Shortcodes', $this->text_domain ) ?></span></h3>
 		<div class="inside">
 			<p>
 				<?php _e( 'Shortcodes allow you to include dynamic store content in posts and pages on your site. Simply type or paste them into your post or page content where you would like them to appear. Optional attributes can be added in a format like <em>[shortcode attr1="value" attr2="value"]</em>.', $this->text_domain ) ?>
@@ -62,7 +62,7 @@
 				<tr>
 					<th scope="row"><?php _e( 'Signin Button:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[dr_signin_btn text="<?php _e('Go to Profile', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
+						<code><strong>[dr_signin_btn text="<?php _e('Signin', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
 						<br /><code><strong>[dr_signin_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signin', $this->text_domain);?>[/dr_signin_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links to the Signin Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define.', $this->text_domain ) ?></span>
 					</td>
@@ -70,7 +70,7 @@
 				<tr>
 					<th scope="row"><?php _e( 'Signup Button:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[dr_signup_btn text="<?php _e('Go to Profile', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
+						<code><strong>[dr_signup_btn text="<?php _e('Signup', $this->text_domain);?>" view="loggedin | loggedout | always"]</strong></code> or
 						<br /><code><strong>[dr_signup_btn view="loggedin | loggedout | always"]&lt;img src="<?php _e('someimage.jpg', $this->text_domain); ?>" /&gt;<?php _e('Signup', $this->text_domain);?>[/dr_signup_btn]</strong></code>
 						<br /><span class="description"><?php _e( 'Links to the Signup Page. Generates a &lt;button&gt; &lt;/button&gt; with the contents you define.', $this->text_domain ) ?></span>
 					</td>

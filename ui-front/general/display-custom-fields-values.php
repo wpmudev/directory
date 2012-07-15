@@ -10,7 +10,7 @@ $dr_options = get_option( 'dr_options' );
 
 
 $val = 'div';
-if ( isset( $dr_options['general_settings']['custom_fields_structure'] ) )
-$val = $dr_options['general_settings']['custom_fields_structure'];
+if ( isset( $dr_options['general']['custom_fields_structure'] ) )
+$val = $dr_options['general']['custom_fields_structure'];
 
 echo do_shortcode("[custom_fields_block wrap='{$val}']");

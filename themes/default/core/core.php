@@ -9,7 +9,7 @@
 */
 class DR_Theme_Core {
 
-	public text_domain = THEME_TEXT_DOMAIN;
+	public $text_domain = THEME_TEXT_DOMAIN;
 
 	/**
 	* Class constructor.
@@ -30,6 +30,9 @@ class DR_Theme_Core {
 	* @return void
 	**/
 	function theme_setup() {
+		
+		load_theme_textdomain(THEME_TEXT_DOMAIN, get_template_directory() . '/languages');
+
 		add_theme_support( 'post-thumbnails', array( 'directory_listing' ) );
 		add_theme_support( 'automatic-feed-links', array( 'directory_listing' ) );
 

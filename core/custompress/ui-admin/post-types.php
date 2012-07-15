@@ -24,7 +24,6 @@ if(is_multisite()) {
 
 $this->render_admin('update-message');
 
-
 ?>
 
 <form action="#" method="post" class="ct-form-single-btn">

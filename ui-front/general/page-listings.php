@@ -11,18 +11,31 @@ $query_args = array(
 );
 
 //setup taxonomy if applicable
-if ( $wp_query->query_vars['taxonomy'] == 'listing_category' || $wp_query->query_vars['taxonomy'] == 'listing_tag' ) {
-	$query_args[$wp_query->query_vars['taxonomy']] = get_query_var( $wp_query->query_vars['taxonomy']);
+$tax_key = (empty($wp_query->query_vars['taxonomy'])) ? '' : $wp_query->query_vars['taxonomy'];
+$taxonomies = array_values(get_object_taxonomies($query_args['post_type'], 'names') );
+
+if ( in_array($tax_key, $taxonomies) ) {
+	$query_args['tax_query'] = array(
+	array(
+	'taxonomy' => $tax_key,
+	'field' => 'slug',
+	'terms' => get_query_var( $tax_key),
+	)
+	);
 }
 
 //The Query
-$custom_query = new WP_Query( $query_args );
+$dr_query = new WP_Query( $query_args );
+$dr_query->set('type_title', true);
 
 //allows pagination links to work get_posts_nav_link()
-if ( $wp_query->max_num_pages == 0 || $taxonomy_query ){
-	$wp_query->max_num_pages = $custom_query->max_num_pages;
+if ( $wp_query->max_num_pages == 0){
+	$wp_query->max_num_pages = $dr_query->max_num_pages;
 	$wp_query->is_singular = 0;
 }
+
+//Remove the archive title filter for the individual listings
+remove_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
 
 //breadcrumbs
 if ( !is_dr_page( 'archive' ) ): ?>
@@ -35,23 +48,19 @@ if ( !is_dr_page( 'archive' ) ): ?>
 
 <div id="dr_listing_list">
 	<?php
-	
+
 	//Hijack the loop
-	if(is_array($custom_query->posts)) :
-	$last = count( $custom_query->posts );
+	if($dr_query->have_posts()):
+	$last = $dr_query->post_count;
 	$count = 1;
-	
-	foreach ( $custom_query->posts as $the_post ) :
-	
-	//Set Global post
-	$post = $the_post;
-	setup_postdata($post);
+
+	while( $dr_query->have_posts() ): $dr_query->the_post();
 
 	// Retrieves categories list of current post, separated by commas.
-	$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN));
+	$categories_list = get_the_category_list( __(', ',$this->text_domain),'');
 
 	// Retrieves tag list of current post, separated by commas.
-	$tags_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+	$tags_list = get_the_tag_list('', __(', ',$this->text_domain), '');
 
 	//add last css class for styling grids
 	if ( $count == $last )
@@ -64,42 +73,55 @@ if ( !is_dr_page( 'archive' ) ): ?>
 
 		<div class="entry-post">
 			<h2 class="entry-title">
-				<a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php sprintf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $post->post_title ); ?>" rel="bookmark"><?php echo $post->post_title;?></a>
+				<a href="<?php echo the_permalink(); ?>" title="<?php echo sprintf( esc_attr__( 'Permalink to %s', $this->text_domain ), get_the_title() ); ?>" rel="bookmark"><?php the_title();?></a>
 			</h2>
 
 			<div class="entry-meta">
 				<?php the_dr_posted_on(); ?>
 				<div class="entry-utility">
 					<?php if ( $categories_list ): ?>
-					<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Posted in</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
+					<span class="cat-links"><?php echo sprintf( __( '<span class="%1$s">Posted in</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?></span><br />
 					<?php
 					unset( $categories_list );
 					endif;
 					if ( $tags_list ): ?>
-					<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Tagged</span> %2$s', DR_TEXT_DOMAIN ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
+					<span class="tag-links"><?php echo sprintf ( __( '<span class="%1$s">Tagged</span> %2$s', $this->text_domain ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?></span><br />
 					<?php
 					unset( $tags_list );
 					endif;
-					do_action( 'sr_avg_ratings_of_listings', $post->ID); ?>
-					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', DR_TEXT_DOMAIN ), __( '1 Review', DR_TEXT_DOMAIN ), __( '% Reviews', DR_TEXT_DOMAIN ), '', __( 'Reviews Off', DR_TEXT_DOMAIN ) ); ?></span>
+					do_action( 'sr_avg_ratings_of_listings', get_the_ID() ); ?>
+					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', $this->text_domain ), __( '1 Review', $this->text_domain ), esc_attr__( '% Reviews', $this->text_domain ), '', __( 'Reviews Off', $this->text_domain ) ); ?></span>
 				</div>
 			</div>
 			<div class="clear_left"></div>
 
 			<div class="entry-summary">
-				<?php echo get_the_post_thumbnail( $post->ID, array( 50, 50 ), array( 'class' => 'alignleft dr_listing_image_listing', 'title' => $post->post_title  ) ); ?>
-				<?php echo $this->listing_excerpt( $post->post_excerpt, $post->post_content, $post->ID ); ?>
+
+				<?php
+				if (has_post_thumbnail()){
+					the_post_thumbnail( array(50,50),
+					array(
+					'class' => 'alignleft dr_listing_image_listing',
+					'title' => get_the_title(),
+					)
+					);
+				}
+				//the_excerpt();
+				?>
+
+				<?php echo $this->listing_excerpt( $post->excerpt, $post->post_content, get_the_ID() );
+				?>
 			</div>
 			<div class="clear"></div>
 		</div>
 
 	</div>
 	<?php $count++;
-	endforeach;
-	
+	endwhile;
 	//posts_nav_link();
 	echo $this->pagination();
+	wp_reset_postdata();
 	else:?>
-	<div id="dr_no_listings"><?php echo apply_filters( 'dr_listing_list_none', __( 'No Listings', DR_TEXT_DOMAIN ) ); ?></div>
+	<div id="dr_no_listings"><?php echo apply_filters( 'dr_listing_list_none', __( 'No Listings', $this->text_domain ) ); ?></div>
 	<?php endif; ?>
 </div>

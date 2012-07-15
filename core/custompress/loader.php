@@ -50,5 +50,6 @@ include_once 'core/wpmudev-dash-notification.php';
 
 include_once 'core/core.php';
 include_once 'core/content-types.php';
+include_once 'core/functions.php';
 
 if ( is_admin() ) include_once 'core/admin.php';

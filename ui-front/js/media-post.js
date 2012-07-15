@@ -1,5 +1,4 @@
 
-
 var WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail;
 
 (function($){

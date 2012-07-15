@@ -43,7 +43,7 @@ class DR_Theme_Options {
 
 		<div class="wrap">
 			<?php screen_icon(); ?>
-			<h2><?php echo get_current_theme() . ' ' . __('Options', 'directory') ?></h2>
+			<h2><?php echo wp_get_theme()->Name . ' ' . __('Options', 'directory') ?></h2>
 
 			<?php if ( isset( $msg ) ) : ?>
 			<div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>

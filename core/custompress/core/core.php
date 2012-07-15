@@ -26,7 +26,8 @@ class CustomPress_Core {
 	function CustomPress_Core() {__construct(); }
 
 	function __construct(){
-		add_action( 'init', array( &$this, 'load_plugin_textdomain' ), 0 );
+		add_action( 'plugins_loaded', array( &$this, 'on_plugins_loaded' ), 0 );
+	
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
@@ -47,8 +48,8 @@ class CustomPress_Core {
 	*
 	* @return void
 	*/
-	function load_plugin_textdomain() {
-		load_plugin_textdomain( $this->text_domain, false, 'custompress/languages' );
+	function on_plugins_loaded() {
+		load_plugin_textdomain( $this->text_domain, false, plugin_basename($this->plugin_dir . 'languages' ) );
 	}
 	
 	function enqueue_datepicker(){
@@ -85,6 +86,10 @@ class CustomPress_Core {
 
 	}
 	
+	function on_init(){
+		
+	}
+
 	function on_wp_enqueue_scripts(){
 		
 		$this->enqueue_datepicker();

@@ -12,6 +12,13 @@ WDP ID: 164
 License: GNU General Public License (Version 2 - GPLv2)
 */
 
+$plugin_header_translate = array(    
+__('Directory - Create full blown directory site.', 'dr_text_domain'),    
+__('Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)', 'dr_text_domain'),    
+__('http://premium.wpmudev.org', 'dr_text_domain'),    
+__('Directory', 'dr_text_domain'),
+);
+
 /*
 Copyright 2012 Incsub, (http://incsub.com)
 
@@ -42,28 +49,14 @@ define( 'DR_OPTIONS_NAME', 'dr_options' );
 
 // include core files
 include_once 'core/wpmudev-dash-notification.php';
+//If another version of CustomPress not loaded, load ours.
+if(!class_exists('CustomPress_Core')) include_once 'core/custompress/loader.php';
 
 include_once 'core/core.php';
 include_once 'core/functions.php';
 include_once 'core/template-tags.php';
 include_once 'core/payments.php';
 include_once 'core/ratings.php';
-
-//If another version of CustomPress not loaded, load ours.
-if(!class_exists('CustomPress_Core')) {
-	include_once 'core/custompress/loader.php';
-}
-
-//Decide whether to load Admin or Standard version
-add_action('plugins_loaded', 'dr_on_plugins_loaded');
-function dr_on_plugins_loaded(){
-
-	if(is_admin()){ 	//Are we admin
-		include_once 'core/admin.php';
-		include_once 'core/tutorial.php';
-		require_once 'core/contextual_help.php';
-	}
-}
 
 // Notification for Transition from old version 1.x to new version 2.x of the plugin
 if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) ) {
