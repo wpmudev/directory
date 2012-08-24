@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.2.4.1 = 2012-07-24 Arnold Bailey
+* Removed pass by reference that caused error in PHP 5.4
+
 = 1.2.4 = 2012-06-18 Arnold Bailey
 * Added Map Meta Capability to Post Types editor. It was being overwritten when the custom post type was saved even if it was set by another program.
 * New custom post types automatically grant all capabilities to administrator role

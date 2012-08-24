@@ -18,11 +18,20 @@ function the_dr_categories_home( $echo = true ) {
 	//get plugin options
 	$options  = get_option( DR_OPTIONS_NAME );
 
-	$cat_num                = ( isset( $options['general']['count_cat'] ) && is_numeric( $options['general']['count_cat'] ) && 0 < $options['general']['count_cat'] ) ? $options['general']['count_cat'] : 10;
-	$sub_cat_num            = ( isset( $options['general']['count_sub_cat'] ) && is_numeric( $options['general']['count_sub_cat'] ) && 0 < $options['general']['count_sub_cat'] ) ? $options['general']['count_sub_cat'] : 5;
-	$hide_empty_sub_cat     = ( isset( $options['general']['hide_empty_sub_cat'] ) && is_numeric( $options['general']['hide_empty_sub_cat'] ) && 0 < $options['general']['hide_empty_sub_cat'] ) ? $options['general']['hide_empty_sub_cat'] : 0;
+	$cat_num                = ( isset( $options['general_settings']['count_cat'] ) && is_numeric( $options['general_settings']['count_cat'] ) && 0 < $options['general_settings']['count_cat'] ) ? $options['general_settings']['count_cat'] : 10;
+	$sub_cat_num            = ( isset( $options['general_settings']['count_sub_cat'] ) && is_numeric( $options['general_settings']['count_sub_cat'] ) && 0 < $options['general_settings']['count_sub_cat'] ) ? $options['general_settings']['count_sub_cat'] : 5;
+	$hide_empty_sub_cat     = ( isset( $options['general_settings']['hide_empty_sub_cat'] ) && is_numeric( $options['general_settings']['hide_empty_sub_cat'] ) && 0 < $options['general_settings']['hide_empty_sub_cat'] ) ? $options['general_settings']['hide_empty_sub_cat'] : 0;
 
-	$taxonomies = array_values(get_object_taxonomies('directory_listing', 'names')) ;
+	//get hierarchical taxonomies
+	$taxonomies = get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') ;
+	
+	//Does Directory support them
+	if(is_array( $taxonomies )){
+		foreach($taxonomies as $tax_name => $taxonomy){
+			if( ! dr_supports_taxonomy($tax_name)) unset($taxonomies[$tax_name]);
+		}
+	}
+	$taxonomies = array_values($taxonomies);
 
 	$args = array(
 	'parent'       => 0,
@@ -44,7 +53,7 @@ function the_dr_categories_home( $echo = true ) {
 		$count_items = 0;
 
 		$output .= "<li>\n";
-		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
+		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in %s', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
 
 		$args = array(
 		'parent'       => $category->term_id,
@@ -64,7 +73,7 @@ function the_dr_categories_home( $echo = true ) {
 			$count_items++;
 		}
 
-		if ( isset( $options['general']['display_listing'] ) && '1' == $options['general']['display_listing']  )
+		if ( isset( $options['general_settings']['display_listing'] ) && '1' == $options['general_settings']['display_listing']  )
 		{
 			if ( $sub_cat_num > $count_items ) {
 				$args = array(
@@ -104,7 +113,7 @@ function the_dr_categories_home( $echo = true ) {
 function the_dr_categories_archive() {
 
 	//get related taxonomies
-	$taxonomies = array_values( get_object_taxonomies('directory_listing', 'names') );
+	$taxonomies = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => true ), 'names') );
 
 	$args = array(
 	'parent'       => get_queried_object_id(),
@@ -145,6 +154,7 @@ function the_dr_categories_archive() {
 */
 function the_dr_breadcrumbs() {
 	$category = get_queried_object();
+
 	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
 	$category_parent_ids = array_reverse( $category_parent_ids );
 
@@ -166,7 +176,6 @@ function the_dr_breadcrumbs() {
 * @return void
 */
 function the_dr_posted_on() {
-
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
 	'meta-prep meta-prep-author',
 	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
@@ -191,9 +200,32 @@ function the_dr_posted_on() {
 function the_dr_posted_in() {
 	global $post;
 
+	//get hierarchical category taxonomies
+	//$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
+
+	// Retrieves categories list of current post.
+	//$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
+
+	// Retrieves categories list of current post, separated by commas.
+	//$categories_list = get_the_term_list($post->ID,$categories,'',', ','');
+
 	$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN));
 
 	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+/*
+	//get non-hierarchical tag taxonomies
+	$tags = array_values( get_taxonomies(array(	'public' => true, 'hierarchical' => false	), 'names') );
+
+	// Retrieves tag list of current post, separated by commas.
+	$tag_list = array();
+	foreach($tags as $tag){
+		
+		$tag_list[] = get_the_term_list( $post->ID, $tag, '',', ', '' );
+		
+	}
+	$tag_list = array_filter($tag_list);
+	$tag_list = implode(', ',$tag_list);
+*/
 
 	if ( $tag_list ) {
 		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );

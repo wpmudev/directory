@@ -4,11 +4,10 @@
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="entry-meta">
-		<?php dp_posted_on(); ?>
+
 		<?php do_action('sr_avg_rating'); ?><br />
 		<span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', THEME_TEXT_DOMAIN ), __( '1 Review &#187;', THEME_TEXT_DOMAIN ), __( '% Reviews &#187;', THEME_TEXT_DOMAIN ), '',  __( 'Reviews Off', THEME_TEXT_DOMAIN) ); ?></span>
 		<br />
-		<?php dp_posted_in(); ?>
 		<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 		<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span> 	
 

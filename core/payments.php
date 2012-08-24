@@ -9,16 +9,11 @@
 * @author Ivan Shaovchev (Incsub)
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
-class DR_Payments{
+class DR_Payments extends Directory_Core {
 
 	/** @var object The PayPal API Module object */
 	var $paypal_express_gateway;
-	/** @var object The PayPal API Module object */
-	var $text_domain = DR_TEXT_DOMAIN;
-	var $options_name = DR_OPTIONS_NAME;
-	var $plugin_dir = DR_PLUGIN_DIR;
-	var $plugin_url = DR_PLUGIN_URL;
-	
+	// var $options_name = 'module_payments';
 
 	/**
 	* Constructor.
@@ -62,29 +57,13 @@ class DR_Payments{
 			'currency'      => 'USD',
 			'key'           => 'paypal'
 			),
-			'general' => array(
+			'general_settings' => array(
 			'welcome_redirect'  => 'true',
-			'key'               => 'general'
+			'key'               => 'general_settings'
 			));
 
 			update_option( $this->options_name, $defaults );
 		}
-	}
-
-	/**
-	* Get plugin options.
-	*
-	* @param  string|NULL $key The key for that plugin option.
-	* @return array $options Plugin options or empty array if no options are found
-	*/
-	function get_options( $key = null ) {
-		$options = get_option( $this->options_name );
-		$options = is_array( $options ) ? $options : array();
-		/* Check if specific plugin option is requested and return it */
-		if ( isset( $key ) && array_key_exists( $key, $options ) )
-		return $options[$key];
-		else
-		return $options;
 	}
 
 	/**

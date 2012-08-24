@@ -8,6 +8,7 @@
 */
 
 global $wp_query, $post_ID, $wp_taxonomies, $_wp_post_type_features,$wp_post_types, $current_user;
+//print_r($wp_taxonomies);
 
 $listing_data   = '';
 $selected_cats  = '';
@@ -21,7 +22,7 @@ if (is_page($this->add_listing_page_id)) {
 
 //Or are we editing a listing?
 if(is_page($this->edit_listing_page_id)){
-	$listing_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
+	$listing_data = get_post(  $_POST['post_id'], ARRAY_A );
 	$post_ID = $listing_data['ID'];
 }
 
@@ -46,18 +47,17 @@ $editor_settings =   array(
 $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['post_content'] : '';
 
 ?>
-<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
-<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
+<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" >
+</script>
 
 <div class="dr_update_form">
 
 	<form class="standard-form base" method="post" action="#" enctype="multipart/form-data" id="dr_update_form" >
 		<input type="hidden" id="post_id" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
-		<input type="hidden" name="post_id" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 
 		<div class="editfield">
 			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />
-			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
+			<input type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
 			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
 		</div>
 
@@ -68,42 +68,35 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 			?>
 		</div>
 
-		<div class="editfield alt">
-			<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
+		<div>
+			<label for="listing_content"><?php _e( 'Content', $this->text_domain ); ?></label><br />
 
-			<?php if(intval(get_bloginfo('version') >= 3.3)): ?>
+			<?php if(version_compare(get_bloginfo('version'), '3.3', '>=') ): ?>
 
 			<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
 
 			<?php else: ?>
 
-			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($listing_content); ?></textarea>
+			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo $listing_content; ?></textarea>
 
 			<?php endif; ?>
 
 			<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
 		</div>
 
-		<div class="editfield alt">
-			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label><br />
-			<textarea id="excerpt" name="listing_data[post_excerpt]" rows="2" ><?php echo (isset( $listing_data['post_excerpt'] ) ) ? esc_textarea($listing_data['post_excerpt']) : ''; ?></textarea>
-			<p class="description"><?php _e( 'A short excerpt of your listing.', $this->text_domain ); ?></p>
-		</div>
-
 		<?php
 		//get related hierarchical taxonomies
-		$taxonomies = get_object_taxonomies('directory_listing', 'objects');
-		$taxonomies = empty($taxonomies) ? array() : $taxonomies;
+		$taxonomies = get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'objects');
 
 		//Loop through the taxonomies that apply
 		foreach($taxonomies as $taxonomy):
-		if( ! $taxonomy->hierarchical) continue;
+
 		$tax_name = $taxonomy->name;
 		$labels = $taxonomy->labels;
 		//Get this Taxonomies terms
 		$selected_cats = array_values( wp_get_post_terms($listing_data['ID'], $tax_name, array('fields' => 'ids') ) );
 
-
+		if( ! dr_supports_taxonomy($tax_name)) continue;
 		?>
 
 		<div id="taxonomy-<?php echo $tax_name; ?>" class="taxonomydiv">
@@ -122,14 +115,14 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		</div>
 		<?php endforeach; ?>
 
-		<div class="clear"></div>
+		<div style="clear: both;width:100%"></div>
 
 		<?php
 		//get related non-hierarchical taxonomies
+		$tags = get_taxonomies(array( 'public' => true, 'hierarchical' => false ), 'objects');
 
 		//Loop through the taxonomies that apply
-		foreach($taxonomies as $tag):
-		if( $tag->hierarchical) continue;
+		foreach($tags as $tag):
 
 		$tag_name = $tag->name;
 		$labels = $tag->labels;
@@ -137,6 +130,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		//Get this Taxonomies terms
 		$tag_list = strip_tags(get_the_term_list( $listing_data['ID'], $tag_name, '', ',', '' ));
 
+		if(! dr_supports_taxonomy($tag_name)) continue;
 		?>
 
 		<div class="editfield">
@@ -155,29 +149,31 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
 			<div id="status-box">
 				<select name="listing_data[post_status]" id="listing_data[post_status]">
-					<option value="publish" <?php selected( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ); ?>><?php _e( 'Published', $this->text_domain ); ?></option>
-					<option value="draft" <?php selected( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ); ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
+					<option value="publish" <?php echo ( isset( $listing_data['post_status'] ) && 'publish' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Published', $this->text_domain ); ?></option>
+					<option value="draft" <?php echo ( isset( $listing_data['post_status'] ) && 'draft' == $listing_data['post_status'] ) ? 'checked' : ''; ?>><?php _e( 'Draft', $this->text_domain ); ?></option>
 				</select>
 			</div>
 			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
 		</div>
 
-		<?php if ( class_exists( 'CustomPress_Core' ) ) : ?>
+		<?php 
+		global $post, $CustomPress_Content_Types, $CustomPress_Core;
+	
+		if ( isset( $CustomPress_Content_Types ) ): ?>
 		<div class="editfield">
 			<?php
-			global $post, $CustomPress_Core;
 			$post->post_type    = 'directory_listing';
 			$post->ID           = $listing_data['ID'];
-			$CustomPress_Core->display_custom_fields();
+			$CustomPress_Content_Types->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
 			?>
 		</div>
 		<?php endif; ?>
 
+
 		<div class="submit">
 			<?php wp_nonce_field( 'verify' ); ?>
 			<input type="submit" value="<?php _e( 'Save Changes', $this->text_domain ); ?>" name="update_listing">
-
-			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
+			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 	</form>
 

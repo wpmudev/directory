@@ -4,8 +4,9 @@
 *
 */
 ?>
-	<?php if ( post_password_required() ) : ?>
+
 <div id="comments">
+	<?php if ( post_password_required() ) : ?>
 	<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', THEME_TEXT_DOMAIN ); ?></p>
 </div><!-- #comments -->
 <?php
@@ -14,21 +15,16 @@
 * to fully load the template.
 */
 return;
-endif; ?>
+endif;
+?>
 
 <?php // You can start editing here -- including this comment! ?>
 
-<div id="comments">
-
-<?php
-if ( have_comments() ) {
-	?>
-	<h3 id="comments-title">
-		<?php
+<?php if ( have_comments() ) : ?>
+<h3 id="comments-title"><?php
 	printf( _n( 'One Review for %2$s', '%1$s Reviews for %2$s', get_comments_number(), THEME_TEXT_DOMAIN ),
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-		?>
-	</h3>
+?></h3>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 <div class="navigation">
@@ -58,20 +54,17 @@ if ( have_comments() ) {
 
 <?php endif; // check for comment navigation ?>
 
-	<?php
-} else { // or, if we don't have comments:
-
+<?php else : // or, if we don't have comments:
 /* If there are no comments and comments are closed,
 * let's leave a little note, shall we?
 */
 if ( ! comments_open() ) :
 ?>
 <p class="nocomments"><?php echo apply_filters( 'comments_close_text', __( 'Reviews are closed.', THEME_TEXT_DOMAIN ) ); ?></p>
-	<?php
-	endif; // end ! comments_open()
 
-} // end have_comments()
-?>
+<?php endif; // end ! comments_open() ?>
+
+<?php endif; // end have_comments() ?>
 
 <?php comment_form( array(
 //'comment_field'        => '<p class="comment-form-comment"><label for="comment">' . _x( 'Review', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',

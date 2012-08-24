@@ -4,7 +4,6 @@
 	background: #FFEBE8;
 }
 
-
 .field_checking {
 	color: black;
 }
@@ -33,14 +32,6 @@ div.comment-item:hover .row-actions {
 	height: auto;
 }
 
-.clear_left{
-	clear: left;
-}
-
-.clear_right{
-	clear: right;
-}
-
 .tax_panel{
 	overflow: auto;
 	height:160px;
@@ -58,37 +49,6 @@ div.comment-item:hover .row-actions {
 	width:47%;
 	margin-right: 3%;
 }
-
-.editfield input, 
-.editfield textarea {
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-  width:100%;
-}
-
-/* #dr_listing_list */
-
-#dr_listing_list .entry-title{
-  float: left;	
-}
-
-#dr_listing_list .entry-meta{
-	clear: none;
-	float: right !important;
-	width: 240px;
-}
-
-#dr_listing_list .entry-post{
-	border: 1px solid #ddd;
-	margin-bottom: 1em;
-	padding: 1em;
-}
-
-#dr_listing_list .entry-summary{
-	margin-right: 250px;
-}
-
 
 /*Categories list grid css*/
 #dr_list_categories span{
@@ -140,155 +100,3 @@ div.comment-item:hover .row-actions {
 	margin: 0 1em;
 }
 
-/* Pagination styles */
-.navigation{
-	float:right;
-}
-
-.pagination {
-	clear:both;
-	padding:20px 0;
-	position: relative;
-	font-size:11px;
-	line-height:13px;
-	z-index:99;
-}
-
-.pagination span, .pagination a {
-	display:block;
-	float:left;
-	margin: 2px 2px 2px 0;
-	padding:6px 9px 5px 9px;
-	text-decoration:none;
-	width:auto;
-	color:#fff;
-	background: #999;
-}
-.pagination a:hover{
-	color:#fff;
-	background: #3279BB;
-}
-.pagination .current{
-	padding:6px 9px 5px 9px;
-	background: #3279BB;
-	color:#fff;
-}
-
-/** Sigin Form **/
-/* tabbed list */
-#login-register-password ul.dr_tabs {
-	padding-bottom: 0;
-	margin: 0;
-	position: relative;
-	list-style: none;
-	z-index: 1000;
-	float: left;
-}
-ul.dr_tabs li {
-	background: #fff;
-	border: 1px solid #E7E9F6;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	line-height: 2em;
-	padding: 0;
-	margin-right: 5px;
-	overflow: hidden;
-	float: left;
-}
-ul.dr_tabs li a {
-	text-decoration: none;
-	padding: 0 10px;
-	display: block;
-}
-
-ul.dr_tabs li.dr_active {
-	border-bottom: 1px solid #fff;
-}
-ul.dr_tabs li.dr_active a {
-	font-weight: bold;
-	color: #333;
-}
-
-.dr_tab_container {
-	background: #fff;
-	position: relative;
-	margin: 0;
-	border: 1px solid #E7E9F6;
-	z-index: 999;
-	float: left;
-	width: 100%;
-	top: -1px;
-}
-.dr_tab_content {
-	padding: 15px;
-}
-.dr_tab_content ul {
-	padding: 0;
-	margin: 0 0 0 15px;
-}
-.dr_tab_content li {
-	margin: 5px 0;
-}
-
-/* global styles */
-#login-register-password {}
-#login-register-password h3 {
-	border: 0 none;
-	margin: 10px 0;
-	padding: 0;
-}
-#login-register-password p {
-	margin: 0 0 15px 0;
-	padding: 0;
-}
-/* form elements */
-.wp-user-form {}
-.username,
-.password,
-.login_fields {
-	margin: 7px 0 0 0;
-	overflow: hidden;
-	width: 100%;
-}
-.username label,
-.password label {
-	float: left;
-	width: 25%;
-}
-.username input,
-.password input {
-	float: left;
-	width: 200px;
-	padding: 2px 3px;
-	color: #777;
-}
-.rememberme {
-	overflow: hidden;
-	width: 100%;
-	margin-bottom: 7px;
-}
-#rememberme {
-	float: left;
-	margin: 4px 4px -4px 0;
-}
-.user-submit {
-	padding: 5px 10px;
-	margin: 5px 0;
-}
-.userinfo { 
-	float: left;
-	width: 75%;
-margin-bottom: 10px; 
-}
-.userinfo p {
-	margin-left: 10px;
-}
-.usericon {
-	float: left;
-	width: 15%;
-	margin: 0 0 10px 22px;
-}
-.usericon img {
-	border: 1px solid #F4950E;
-	padding: 1px;
-}

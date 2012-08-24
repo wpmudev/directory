@@ -6,7 +6,7 @@ global $post;
 if ( $type == 'local' )
 $custom_fields = $this->custom_fields;
 elseif ( $type == 'network' )
-$custom_fields = $this->network_custom_fields;
+$custom_fields = get_site_option('ct_custom_fields');
 
 $output = false;
 
