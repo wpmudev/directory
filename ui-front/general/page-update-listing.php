@@ -158,14 +158,14 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		</div>
 
 		<?php 
-		global $post, $CustomPress_Content_Types, $CustomPress_Core;
+		global $post, $CustomPress_Core;
 	
-		if ( isset( $CustomPress_Content_Types ) ): ?>
+		if ( isset( $CustomPress_Core ) ): ?>
 		<div class="editfield">
 			<?php
 			$post->post_type    = 'directory_listing';
 			$post->ID           = $listing_data['ID'];
-			$CustomPress_Content_Types->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
+			$CustomPress_Core->display_custom_fields();//( 'display-custom-fields', array( 'type' => 'local' ) );
 			?>
 		</div>
 		<?php endif; ?>

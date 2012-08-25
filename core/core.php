@@ -926,9 +926,9 @@ class Directory_Core {
 				}
 			}
 
-			if ( class_exists( 'CustomPress_Content_Types' ) ) {
-				global $CustomPress_Content_Types;
-				$CustomPress_Content_Types->save_custom_fields( $post_id );
+			global $CustomPress_Core;
+			if ( isset($CustomPress_Core) ) {
+				$CustomPress_Core->save_custom_fields( $post_id );
 			}
 
 			return $post_id;

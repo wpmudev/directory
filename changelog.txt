@@ -5,6 +5,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.1.2.1 =
+* Fixed custom field save problem.
+
 = 2.1.2 =
 * Fixed problem with Feature image support on default theme.
 * Changed method of creating the directory members which wasn't always happening on activation.
