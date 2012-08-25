@@ -5,9 +5,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.1.2 =
+* Fixed problem with Feature image support on default theme.
+* Changed method of creating the directory members which wasn't always happening on activation.
+
 = 2.1.1.8 =
 * fixed version comparison in page-update-listing.php
-* Fixed PHP 5.4 problem in cstompress
+* Fixed PHP 5.4 problem in custompress
 * removed old functions no longer used in the default theme.
 
 = 2.1.1.5 =

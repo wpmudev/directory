@@ -24,6 +24,8 @@ class Directory_Core {
 	public $is_directory_page = false;
 	public $directory_template;
 	public $dr_first_thumbnail;
+	
+	public $post_type = 'directory_listing';
 
 	//** @public string post_name of Listing Page
 	public $directory_page_id = 0;
@@ -91,6 +93,26 @@ class Directory_Core {
 		add_shortcode( 'dr_logout_btn', array( &$this, 'logout_btn_sc' ) );
 		add_shortcode( 'dr_signin_btn', array( &$this, 'signin_btn_sc' ) );
 		add_shortcode( 'dr_signup_btn', array( &$this, 'signup_btn_sc' ) );
+
+		$this->capability_map = array(
+		'read_listings'             => __( 'View listings.', $this->text_domain ),
+		'read_private_listings'     => __( 'View private listings.', $this->text_domain ),
+
+		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
+
+		'edit_listings'             => __( 'Edit listings.', $this->text_domain ),
+		'edit_published_listings'   => __( 'Edit published listings.', $this->text_domain ),
+		'edit_private_listings'     => __( 'Edit private listings.', $this->text_domain ),
+
+		'delete_listings'           => __( 'Delete listings', $this->text_domain ),
+		'delete_published_listings' => __( 'Delete published listings.', $this->text_domain ),
+		'delete_private_listings'   => __( 'Delete private listings.', $this->text_domain ),
+
+		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
+		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
+
+		'upload_files'              => __( 'Upload files.', $this->text_domain ),
+		);
 
 
 		if ( is_admin() )	return;
@@ -270,6 +292,12 @@ class Directory_Core {
 	* @return void
 	*/
 	function init() {
+		
+		
+		if( ! get_role('directory_member_paid') || ! get_role('directory_member_not_paid') ){
+			$this->create_default_directory_roles();
+		}
+
 
 		$directory_listing_default = array(
 		'public' => ( get_option( 'dp_options' ) ) ? false : true,
@@ -691,6 +719,45 @@ class Directory_Core {
 			exit;
 		}
 
+	}
+
+	/**
+	* Create the default Directory member roles and capabilities.
+	*
+	* @return void
+	*/
+	function create_default_directory_roles() {
+
+		//add role of directory member with full access
+		remove_role( "directory_member" );
+		remove_role( "directory_member_paid" );
+
+		add_role( "directory_member_paid",
+		'Directory Member Paid',
+		array(
+		'read_listings'             => true,
+		'publish_listings'          => true,
+		'edit_listings'             => true,
+		'edit_published_listings'   => true,
+		'delete_published_listings' => true,
+		'upload_files'              => true,
+		'read'                      => true,
+		)
+		);
+
+		//add role of directory member with limit access
+		remove_role( "directory_member_deny" );
+		remove_role( "directory_member_not_paid" );
+
+		add_role( "directory_member_not_paid",
+		'Directory Member Not Paid',
+		array('read' => true )
+		);
+
+		//set capability for admin
+		$admin = get_role('administrator');
+		foreach ( array_keys( $this->capability_map ) as $capability )
+		$admin->add_cap($capability );
 	}
 
 

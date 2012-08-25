@@ -7,7 +7,7 @@
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 
-global $wp_query, $post_ID, $wp_taxonomies, $_wp_post_type_features,$wp_post_types, $current_user;
+global $wp_query, $post_id, $wp_taxonomies, $_wp_post_type_features,$wp_post_types, $current_user;
 //print_r($wp_taxonomies);
 
 $listing_data   = '';
@@ -15,15 +15,16 @@ $selected_cats  = '';
 
 //Are we adding a Listing?
 if (is_page($this->add_listing_page_id)) {
-	//Make an auto-draft so we have a post id to connect attachemnts to. Set global $post_ID so media editor can hook up.
-	$post_ID = wp_insert_post( array( 'post_title' => '', 'post_type' => $post_type, 'post_status' => 'auto-draft' ) );
-	$listing_data = get_object_vars(get_post( $post_ID ));
+	//Make an auto-draft so we have a post id to connect attachemnts to. Set global $post_id so media editor can hook up.
+	$post_id = wp_insert_post( array( 'post_title' => __( 'Auto Draft' ), 'post_type' => $this->post_type, 'post_status' => 'auto-draft' ) );
+	$listing_data = get_object_vars(get_post( $post_id ));
+	$listing_data['post_title'] = ''; //Have to have a title to insert the auto-save but we don't want it as final.
 }
 
 //Or are we editing a listing?
 if(is_page($this->edit_listing_page_id)){
-	$listing_data = get_post(  $_POST['post_id'], ARRAY_A );
-	$post_ID = $listing_data['ID'];
+	$listing_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
+	$post_id = $listing_data['ID'];
 }
 
 if ( isset( $_POST['listing_data'] ) ) $listing_data = $_POST['listing_data'];
@@ -64,7 +65,7 @@ $listing_content = (isset( $listing_data['post_content'] ) ) ? $listing_data['po
 		<div class="editfield">
 
 			<?php
-			echo $this->get_post_image_link($post_ID);
+			echo $this->get_post_image_link($post_id);
 			?>
 		</div>
 
