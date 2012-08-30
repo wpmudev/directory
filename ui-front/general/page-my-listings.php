@@ -7,57 +7,45 @@
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
 
+global $Directory_Core;
+
+$post_statuses = get_post_statuses();
+
 //The Query
-$custom_query = new WP_Query( 'post_type=directory_listing&post_status=publish,draft&posts_per_page=1000&author=' . get_current_user_id() );
+$query_args = array(
+'post_type' => 'directory_listing',
+'post_status' => array('publish','pending','draft'),
+'posts_per_page' => 1000,
+'author' => get_current_user_id(),
+);
+ 
+$custom_query = new WP_Query( $query_args);
 
 //Display status message
 if ( isset( $_GET['updated'] ) ) {
 	?><div id="message" class="updated fade"><p><?php echo urldecode( $_GET['dmsg'] ); ?></p></div><?php
 }
-global $directory_core;
 
 ?>
-
-<script type="text/javascript">
-	//<![CDATA[
-	var dr_listings = {
-		add: function() {
-			jQuery( '#action-form' ).attr( 'action', '<?php echo get_permalink($this->add_listing_page_id); ?>');
-			jQuery( '#action-form input[name="action"]' ).val( 'add_listing' );
-			jQuery( '#action-form' ).submit();
-		},
-		edit: function( key ) {
-			jQuery( '#action-form' ).attr( 'action', '<?php echo get_permalink($this->edit_listing_page_id); ?>' );
-			jQuery( '#action-form input[name="action"]' ).val( 'edit_listing' );
-			jQuery( '#action-form input[name="post_id"]' ).val( key );
-			jQuery( '#action-form' ).submit();
-		},
-		toggle_delete: function( key ) {
-			jQuery( '#delete-confirm-' + key ).parent().find( 'span' ).hide();
-			jQuery( '#delete-confirm-' + key ).show();
-		},
-		toggle_delete_yes: function( key ) {
-			jQuery( '#action-form input[name="action"]' ).val( 'delete_listing' );
-			jQuery( '#action-form input[name="post_id"]' ).val( key );
-			jQuery( '#action-form' ).submit();
-
-		},
-		toggle_delete_no: function( key ) {
-			jQuery( '#delete-confirm-' + key ).parent().find( 'span' ).show();
-			jQuery( '#delete-confirm-' + key ).hide();
-
-		}
-	};
-	//]]>
+<script type="text/javascript" src="<?php echo $this->plugin_url .'ui-front/js/ui-front.js'; ?>">
 </script>
 
-<form method="post" id="action-form" class="action-form">
+<form method="post" id="action-form" class="action-form" action="#">
 	<?php wp_nonce_field( 'action_verify' ); ?>
 	<input type="hidden" name="action" />
 	<input type="hidden" name="post_id" />
 </form>
 
-<span class="add"><a title="Add new listing" href="javascript:;" onclick="dr_listings.add();" ><?php _e( 'Add new listing', DR_TEXT_DOMAIN ); ?></a></span>
+<?php if ( $this->is_full_access() ): ?>
+<div class="av-credits"><?php _e( 'You have access to create new ads', $this->text_domain ); ?></div>
+<?php elseif($this->use_credits): ?>
+<div class="av-credits"><?php _e( 'Available Credits:', $this->text_domain ); ?> <?php echo $this->transactions->credits; ?></div>
+<?php endif; ?>
+
+<div>
+	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $this->text_domain ) .  '[/dr_add_listing_btn]'); ?>
+	<?php echo do_shortcode('[dr_my_credits_btn text="My Credits" view="loggedin"]'); ?>
+</div>
 
 <?php if ( count( $custom_query->posts ) ) : ?>
 <table class="wp-list-table widefat fixed posts">
@@ -65,19 +53,23 @@ global $directory_core;
 		<th><?php _e( 'Title', DR_TEXT_DOMAIN ); ?></th>
 		<th><?php _e( 'Date', DR_TEXT_DOMAIN ); ?></th>
 	</tr>
-	<?php foreach ( $custom_query->posts as $listing ) { ?>
+
+	<?php foreach ( $custom_query->posts as $listing ) :?>
+
 	<tr>
 		<td>
-			<a href="<?php echo get_permalink( $listing->ID ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $listing->post_title ); ?>" rel="bookmark"><?php echo $listing->post_title; ?></a> - <?php echo $listing->post_status; ?>
+			<a href="<?php echo get_permalink( $listing->ID ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', DR_TEXT_DOMAIN ), $listing->post_title ); ?>" rel="bookmark"><?php echo $listing->post_title; ?></a> - <?php echo $post_statuses[$listing->post_status]; ?>
+
 			<div class="listing-rating">
 				<?php do_action('sr_avg_ratings_of_listings', $listing->ID ); ?>
+
 			</div>
 			<div class="row-actions">
 				<span class="edit">
 					<a title="Edit this listing" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Edit', DR_TEXT_DOMAIN ); ?></a>
 				| </span>
 				<span class="delete" id="delete-<?php echo $listing->ID; ?>">
-					<a title="Delite this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
+					<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
 				| </span>
 				<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;">
 					<?php _e( 'Delete? ', DR_TEXT_DOMAIN ); ?>
@@ -92,12 +84,12 @@ global $directory_core;
 		</td>
 		<td><?php echo $listing->post_modified ?></td>
 	</tr>
-	<?php } ?>
-</table>
 
+	<?php endforeach; ?>
+</table>
 
 <?php else : ?>
 
 <h3><?php _e( 'No Listings', DR_TEXT_DOMAIN ); ?></h3>
 
-<?php endif; ?>
+<?php endif;

@@ -29,7 +29,7 @@ div.tagsinput span.tag a {
 	/* font-size: 11px; */
 }
 div.tagsinput input { 
-	width:80px;
+	width:8em;
 	margin:0px;
 	font-family: helvetica;
 	/*font-size: 13px;*/

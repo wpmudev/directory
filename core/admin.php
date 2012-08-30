@@ -13,9 +13,6 @@ if(!class_exists('Directory_Core_Admin')):
 
 class Directory_Core_Admin extends Directory_Core {
 
-	/** @var array Holds all capability names, along with descriptions. */
-	var $capability_map;
-
 	/**
 	* Constructor.
 	*/
@@ -25,8 +22,6 @@ class Directory_Core_Admin extends Directory_Core {
 
 		parent::__construct();
 
-		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'init_defaults' ) );
-
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
 
@@ -35,10 +30,6 @@ class Directory_Core_Admin extends Directory_Core {
 
 		add_action( 'admin_init', array( &$this, 'welcome_first_time_user' ) );
 		add_action( 'admin_init', array( &$this, 'handle_getting_started_redirects') );
-
-		//add user roles to all subsites
-		if ( is_multisite() )
-		add_action( 'wp', array( &$this, 'add_user_roles' ) );
 
 		add_action( 'wp_ajax_dr_get_caps', array( &$this, 'ajax_get_caps' ) );
 		add_action( 'wp_ajax_dr_save', array( &$this, 'ajax_save' ) );
@@ -50,69 +41,13 @@ class Directory_Core_Admin extends Directory_Core {
 		add_action( 'wp_ajax_nopriv_directory_ipn', array( &$this, 'ajax_directory_ipn' ) );
 		add_action( 'wp_ajax_directory_ipn', array( &$this, 'ajax_directory_ipn' ) );
 
+		//Silent Post script for Authorizenet
+		add_action( 'wp_ajax_nopriv_classifieds_sp', array( &$this, 'ajax_directory_silent_post' ) );
+		add_action( 'wp_ajax_classifieds_sp', array( &$this, 'ajax_directory_silent_post' ) );
+
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );
 
-		$this->capability_map = array(
-		'read_listings'             => __( 'View listings.', $this->text_domain ),
-		'publish_listings'          => __( 'Add listings.', $this->text_domain ),
-		'edit_published_listings'   => __( 'Edit listings.', $this->text_domain ),
-		'delete_published_listings' => __( 'Delete listings.', $this->text_domain ),
-		'edit_others_listings'      => __( 'Edit others\' listings.', $this->text_domain ),
-		'delete_others_listings'    => __( 'Delete others\' listings.', $this->text_domain ),
-		'upload_files'              => __( 'Upload files.', $this->text_domain ),
-		);
-	}
-
-	/**
-	* Initiate admin default settings.
-	*
-	* @return void
-	*/
-	function init_defaults( $set_option = true) {
-		global $wp_roles;
-
-		//add role of directory member with full access
-		$wp_roles->remove_role( "directory_member" );
-		$wp_roles->remove_role( "directory_member_paid" );
-		$wp_roles->add_role( "directory_member_paid", 'Directory Member Paid', array(
-		'read_listings'             => true,
-		'publish_listings'          => true,
-		'edit_published_listings'   => true,
-		'delete_published_listings' => true,
-		'upload_files'              => true,
-		'read'                      => true,
-		) );
-
-		//add role of directory member with limit access
-		$wp_roles->remove_role( "directory_member_deny" );
-		$wp_roles->remove_role( "directory_member_not_paid" );
-		$wp_roles->add_role( "directory_member_not_paid", 'Directory Member Not Paid', array(
-		'read'                      => true
-		) );
-
-		//set capability for admin
-		foreach ( array_keys( $this->capability_map ) as $capability )
-		$wp_roles->add_cap( 'administrator', $capability );
-
-		// add option to the autoload list
-		if ( $set_option )
-		add_option( $this->options_name, array() );
-
-	}
-
-
-	/**
-	* check and add directory roles for all sites
-	*
-	* @return void
-	*/
-	function add_user_roles() {
-		global $wp_roles;
-
-		if ( !isset( $wp_roles->role_names['directory_member_paid'] ) || !isset( $wp_roles->role_names['directory_member_not_paid'] ) ) {
-			$this->init_defaults( false );
-		}
 	}
 
 	/**
@@ -122,15 +57,33 @@ class Directory_Core_Admin extends Directory_Core {
 	*/
 	function admin_menu() {
 		$opts = get_option( $this->options_name );
-		if ( ( isset( $opts['general_settings']['show_getting_started'] ) && '1' == $opts['general_settings']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
+		
+		if ( ! current_user_can('unfiltered_html') ) {
+			remove_submenu_page('edit.php?post_type=directory_listing', 'post-new.php?post_type=directory_listing' );
+			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Add New', $this->text_domain ), __( 'Add New', $this->text_domain ), 'create_listings', 'listings_add', array( &$this, 'redirect_add' ) );
+		}
+
+
+		if ( ( isset( $opts['general']['show_getting_started'] ) && '1' == $opts['general']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
 			$menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
 			// Hook styles
 			//add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
 		}
 
-		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'settings', array( &$this, 'handle_settings_page_requests' ) );
+		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'directory_settings', array( &$this, 'handle_settings_page_requests' ) );
 
+		add_action( 'admin_print_scripts-' .  $settings_page, array( &$this, 'on_enqueue_scripts' ) );
+		//@todo striaghten out style and script loads.
+
+		if($this->use_credits){
+			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Credits', $this->text_domain ), __( 'Credits', $this->text_domain ), 'read', 'directory_credits' , array( &$this, 'handle_credits_page_requests' ) );
+		}
 	}
+	
+	function redirect_add(){
+		echo '<script>window.location = "' . get_permalink($this->add_listing_page_id) . '";</script>';
+	}
+	
 
 	/**
 	* Quick hack to reorder CPT menu items
@@ -138,17 +91,21 @@ class Directory_Core_Admin extends Directory_Core {
 	*/
 	function reorder_menu () {
 		$opts = get_option( $this->options_name );
-		if ( ( !isset( $opts['general_settings']['show_getting_started'] ) || '0' == $opts['general_settings']['show_getting_started'] ) && $this->_getting_started_complete() )
+		if ( ( !isset( $opts['general']['show_getting_started'] ) || '0' == $opts['general']['show_getting_started'] ) && $this->_getting_started_complete() )
 		return;
 
-		global $menu, $submenu;
+		global $submenu;
 
-		foreach ( $submenu as $idx => $item ) {
-			if ( 'edit.php?post_type=directory_listing' != $idx ) continue;
-			$tmp = $item[17];
-			unset( $item[17] );
-			array_unshift( $item, $tmp );
-			$submenu[$idx] = $item;
+		$mkey = 'edit.php?post_type=directory_listing';
+
+		$submenus = (empty($submenu[$mkey]) ) ? array() : $submenu[$mkey];
+
+		foreach ( $submenus as $idx => $item ) {
+			if ( ! in_array('dr-get_started', $item) ) continue;
+			$tmp = $submenus[$idx];
+			unset( $submenus[$idx] );
+			array_unshift( $submenus, $tmp );
+			$submenu[$mkey] = $submenus;
 		}
 	}
 
@@ -162,7 +119,6 @@ class Directory_Core_Admin extends Directory_Core {
 		include( $this->plugin_dir . 'ui-admin/getting-started.php' );
 	}
 
-
 	/**
 	* Redirect to Getting started page on first load.
 	*/
@@ -170,19 +126,18 @@ class Directory_Core_Admin extends Directory_Core {
 		if ( is_network_admin() ) return false; // Not applicable on network pages.
 		if ( $this->_getting_started_complete() ) return false; // User already saw this.
 
-		$opts = get_option( $this->options_name );
-		if ( isset( $opts['general_settings']['welcome_redirect'] ) and !$opts['general_settings']['welcome_redirect'] ) return false; // Not a first time user, move on.
+		$opts = maybe_unserialize(get_option( $this->options_name ) );
+		if ( isset( $opts['general']['welcome_redirect'] ) and !$opts['general']['welcome_redirect'] ) return false; // Not a first time user, move on.
 
 		//if old version < 2
 		if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) )
 		return false;
 
-		$opts['general_settings']['welcome_redirect'] = false;
+		$opts['general']['welcome_redirect'] = false;
 		update_option( $this->options_name, $opts );
 		wp_redirect( admin_url( 'admin.php?page=dr-get_started' ) );
 		die;
 	}
-
 
 	/**
 	* Handle calls from welcome page and record progress.
@@ -197,7 +152,7 @@ class Directory_Core_Admin extends Directory_Core {
 			case "settings":
 			$dr_tutorial['settings'] = 1;
 			update_user_meta( $current_user->ID, 'dr_tutorial', $dr_tutorial );
-			wp_redirect( admin_url( 'edit.php?post_type=directory_listing&page=settings' ) );
+			wp_redirect( admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ) );
 			exit;
 			case "category":
 			$dr_tutorial['category'] = 1;
@@ -211,7 +166,6 @@ class Directory_Core_Admin extends Directory_Core {
 			exit;
 		}
 	}
-
 
 	/**
 	* Quick "are we done yet" check for welcome page.
@@ -238,7 +192,6 @@ class Directory_Core_Admin extends Directory_Core {
 
 		//including JS scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-form' );
 
 		if ( isset( $_GET['post_type'] ) &&  'directory_listing' == $_GET['post_type'] ) {
@@ -264,27 +217,109 @@ class Directory_Core_Admin extends Directory_Core {
 	}
 
 	/**
+	* Save plugin options.
+	*
+	* @param  array $params The $_POST array
+	* @return die() if _wpnonce is not verified
+	*/
+	function save_admin_options( $params ) {
+		check_admin_referer('verify');
+		//change format for cost to .00
+		if ( 'payments' ==  $params['key'] ) {
+			if ( isset( $params['recurring_cost'] ) )
+			$params['recurring_cost'] = sprintf( "%01.2f", $params['recurring_cost'] );
+			if ( isset( $params['one_time_cost'] ) )
+			$params['one_time_cost'] = sprintf( "%01.2f", $params['one_time_cost'] );
+			if ( isset( $params['cost_credit'] ) )
+			$params['cost_credit'] = sprintf( "%01.2f", $params['cost_credit'] );
+		}
+
+		/* Remove unwanted parameters */
+		unset( $params['_wpnonce'],
+		$params['_wp_http_referer'],
+		$params['save'],
+		$params['add_role'],
+		$params['delete_role'],
+		$params['new_role']
+		);
+
+		/* Update options by merging the old ones */
+		$options = $this->get_options();
+		$options = array_merge( $options, array( $params['key'] => $params ) );
+		update_option( $this->options_name, $options );
+
+		$this->message = __( 'Settings Saved.', $this->text_domain );
+	}
+
+	/**
 	* Handles $_GET and $_POST requests for the settings page.
 	*
 	* @return void
 	*/
 	function handle_settings_page_requests() {
-		$valid_tabs = array( 'general', 'capabilities', 'ads', 'payments', 'payments-type', 'affiliate', 'shortcodes' );
+		$valid_tabs = array(
+		'general',
+		'capabilities',
+		'ads',
+		'payments',
+		'payment-types',
+		'affiliate',
+		'shortcodes',
+		);
 
-		if ( isset( $_GET['tab'] ) && in_array( $_GET['tab'], $valid_tabs ) ) {
-			if ( isset( $_POST['save'] ) ) {
-				$this->save_admin_options( $_POST );
+		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
+		$tab = (empty($_GET['tab'])) ? 'general' : $_GET['tab']; //default tab
+
+		if($page == 'directory_settings' && in_array($tab, $valid_tabs) ) {
+
+			if ( isset( $_POST['add_role'] ) ) {
+				check_admin_referer('verify');
+				$name = sanitize_user($_POST['new_role']);
+				$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
+				$result = add_role($slug, $name, array('read' => true) );
+				if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
+				else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
 			}
-			$this->render_admin( 'settings-'.$_GET['tab'] );
-		} else {
-			if ( isset( $_POST['save'] ) ) {
-				$this->save_admin_options( $_POST );
+
+			if ( isset( $_POST['remove_role'] ) ) {
+				check_admin_referer('verify');
+				$name = $_POST['delete_role'];
+				remove_role($name);
+				$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
 			}
-			$this->render_admin( 'settings-general' );
+
+			if(isset($_POST['save']) ) $this->save_admin_options( $_POST );
 		}
 
-		do_action( 'dr_handle_settings_page_requests' );
+		$this->render_admin( "settings-{$tab}" );
 
+		do_action( 'dr_handle_settings_page_requests' );
+	}
+
+	/**
+	* Handles $_GET and $_POST requests for the credits page.
+	*
+	* @return void
+	*/
+	function handle_credits_page_requests(){
+		$valid_tabs = array(
+		'my-credits',
+		'shortcodes',
+		);
+
+		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
+		$tab = (empty($_GET['tab'])) ? 'my-credits' : $_GET['tab']; //default tab
+
+		if($page == 'directory_settings' && in_array($tab, $valid_tabs) ) {
+
+
+			if(isset($_POST['save']) ) $this->save_admin_options( $_POST );
+
+		}
+
+		$this->render_admin( "credits-{$tab}" );
+
+		do_action( 'dr_handle_credits_page_requests' );
 	}
 
 	/**
@@ -293,8 +328,8 @@ class Directory_Core_Admin extends Directory_Core {
 	* @return JSON Encoded string
 	*/
 	function ajax_get_caps() {
-		if ( !current_user_can( 'manage_options' ) )
-		die(-1);
+		if ( !current_user_can( 'manage_options' ) ) die(-1);
+		if(empty($_POST['role'])) die(-1);
 
 		global $wp_roles;
 
@@ -368,6 +403,18 @@ class Directory_Core_Admin extends Directory_Core {
 		die("yes");
 	}
 
+	function write_to_log($error, $log = 'error') {
+
+		//create filename for each month
+		$filename = $this->plugin_dir . "{$log}_" . date('Y_m') . '.log';
+
+		//add timestamp to error
+		$message = gmdate('[Y-m-d H:i:s] ') . $error;
+
+		//write to file
+		file_put_contents($filename, $message . "\n", FILE_APPEND);
+	}
+
 
 	/**
 	* IPN script for change user role when Recurring Payment changed status
@@ -375,25 +422,21 @@ class Directory_Core_Admin extends Directory_Core {
 	* @return void
 	*/
 	function ajax_directory_ipn() {
-		// debug mode for IPN script (please open plugin dir (directory) for writing)
-		$debug_ipn = 0;
-		if ( 1 == $debug_ipn ) {
-			$File = $this->plugin_dir ."debug_ipn.log";
-			$Handle = fopen( $File, 'a+' );
-			ob_start();
-			print_r( date( "H:i:s m.d.y" ) . ' - 01 -' . " POST\r\n" );
-			print_r( $_POST );
-			$a = ob_get_contents();
-			ob_end_clean();
-			fwrite($Handle, $a );
+		// debug mode for IPN script (please open plugin dir (classifieds) for writing)
+		$debug_ipn = 1;
+		if ( 1 == $debug_sp ) {
+			$this->write_to_log(
+			' - 01 -' . " POST\r\n" .
+			print_r( $_SERVER, true ) . "\r\n" .
+			print_r( $_POST, true ),
+			'debug_ipn' );
 		}
 
-		$postdata = "";
-		foreach ( $_POST as $key=>$value )
-		$postdata .= $key."=".urlencode( $value )."&";
+		$postdata = http_build_query($_POST);
+		$postdata .= "&cmd=_notify-validate";
 
-		$postdata .= "cmd=_notify-validate";
-		$options = $this->get_options( 'paypal' );
+		$options = $this->get_options( 'payment_types' );
+		$options = $options['paypal'];
 
 		if ( 'live' == $options['api_url'] )
 		$url = "https://www.paypal.com/cgi-bin/webscr";
@@ -408,14 +451,12 @@ class Directory_Core_Admin extends Directory_Core {
 		$response = wp_remote_get( $url . "?" . $postdata, $args );
 
 		if( is_wp_error( $response ) ) {
-			if ( 1 == $debug_ipn ) {
-				ob_start();
-				print_r( date( "H:i:s m.d.y" ) . ' - 02 -' . " error with send post\r\n" );
-				print_r( "url: " . $url . "\r\n" );
-				print_r( $response );
-				$a = ob_get_contents();
-				ob_end_clean();
-				fwrite($Handle, $a );
+			if ( 1 == $debug_sp ) {
+				$this->write_to_log(
+				' - 02 -' . " error with send post\r\n" .
+				print_r( "url: " . $url . "\r\n", true ) .
+				print_r( $response, true ),
+				'debug_ipn' );
 			}
 			die('error with send post');
 		} else {
@@ -424,95 +465,117 @@ class Directory_Core_Admin extends Directory_Core {
 
 
 		if ( $response != "VERIFIED" ) {
-			if ( 1 == $debug_ipn ) {
-				ob_start();
-				print_r( date( "H:i:s m.d.y" ) . ' - 03 -' . " not VERIFIED\r\n" );
-				print_r( $response );
-				$a = ob_get_contents();
-				ob_end_clean();
-				fwrite($Handle, $a );
+			if ( 1 == $debug_sp ) {
+				$this->write_to_log(
+				' - 03 -' . " not VERIFIED\r\n" .
+				print_r( $response, true ),
+				'debug_ipn' );
 			}
 			die( 'not VERIFIED' );
 		}
 
 		if ( $_POST['subscr_id'] ) {
-			$user_id = $_POST['custom'];
 
-			$dr_options = get_usermeta( $user_id, 'dr_options' );
+			if( is_numeric($_POST['custom']) ) { //old style
+				$user_id = $_POST['custom'];
+			} else {
+				parse_str($_POST['custom'], $custom);
+				$user_id = $custom['uid'];
+				$blogid = $custom['bid'];
+			}
+
+
+			$transactions = new DR_Transactions($user_id, $blogid);
 
 			if ( "subscr_payment" == $_POST['txn_type'] ) {
 
-				$key = md5( $_POST['mc_currency'] . "directory_123" . $_POST['mc_gross'] );
+				$key = md5( $_POST['mc_currency'] . "classifieds_123" . $_POST['mc_gross'] );
 
 				//checking hash keys
-				if ( $key != $dr_options['paypal']['key'] ) {
-					if ( 1 == $debug_ipn ) {
-						ob_start();
-						print_r( date( "H:i:s m.d.y" ) . ' - 04 -' . " Conflict Keys:\r\n" );
-						print_r( " key from site: " . $dr_options['paypal']['key'] );
-						print_r( "key from Paypal: " . $key );
-						$a = ob_get_contents();
-						ob_end_clean();
-						fwrite( $Handle, $a );
+				if ( $key != $transactions->paypal['key']) {
+					if ( 1 == $debug_sp ) {
+						$this->write_to_log(
+						' - 04 -' . " Conflict Keys:\r\n" .
+						print_r( " key from site: " . $transactions->paypal['key'], true ) .
+						print_r( "key from Paypal: " . $key, true ),
+						print_r($transactions->paypal, true),
+						'debug_ipn' );
 					}
 					die("conflict key");
 				}
 
-				if ( 1 == $debug_ipn ) {
-					ob_start();
-					print_r( date( "H:i:s m.d.y" ) . ' - 05 -' . " subscr_payment OK\r\n" );
-					$a = ob_get_contents();
-					ob_end_clean();
-					fwrite( $Handle, $a );
+				if ( 1 == $debug_sp ) {
+					$this->write_to_log(
+					' - 05 -' . " subscr_payment OK\r\n",
+					'debug_ipn' );
 				}
-
 				//write subscr_id (profile_id) to user meta
-				$dr_options['paypal']['profile_id'] = $_POST['subscr_id'];
-				update_user_meta( $user_id, 'dr_options', $dr_options );
-
-				//set role with with access of directory plugin
-				wp_update_user( array(  'ID'    => $user_id,
-				'role'  => "directory_member_paid" ) );
+				$transactions->paypal = $_POST;
 
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, 'recurring' );
+				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, 'recurring' );
 
-			} elseif ( "subscr_cancel" == $_POST['txn_type'] ||
-			"subscr_failed" == $_POST['txn_type'] ||
-			"subscr_eot" == $_POST['txn_type'] ) {
 
-				if ( 1 == $debug_ipn ) {
-					ob_start();
-					print_r( date( "H:i:s m.d.y" ) . ' - 06 -' . " other payment status:\r\n" );
-					print_r( $_POST['txn_type'] );
-					$a = ob_get_contents();
-					ob_end_clean();
-					fwrite( $Handle, $a );
+			} elseif( in_array( $_POST['txn_type'], array("subscr_cancel", "subscr_failed", "subscr_eot") ) ) {
+
+				if ( 1 == $debug_sp ) {
+					$this->write_to_log(
+					' - 05 -' . " subscr_payment OK\r\n",
+					'debug_ipn' );
 				}
 
-				//checking profile_id
-				if  ( $_POST['subscr_id']  == $dr_options['paypal']['profile_id'] ) {
-					//set role with with limeted access of directory plugin
-					wp_update_user( array(  'ID'    => $user_id,
-					'role'  => "directory_member_not_paid" ) );
+				$transactions->paypal = $_POST;
 
-				} else {
-					if ( 1 == $debug_ipn ) {
-						ob_start();
-						print_r( date( "H:i:s m.d.y" ) . ' - 07 -' . " wrong profile_id:\r\n" );
-						print_r( " profile_id from site: " . $dr_options['paypal']['profile_id'] );
-						print_r( "profile_id from Paypal: " . $_POST['subscr_id'] );
-						$a = ob_get_contents();
-						ob_end_clean();
-						fwrite( $Handle, $a );
-					}
-				}
 			}
 		}
-
 		die("ok");
 	}
+
+	/**
+	* Script for change user role when Authorizenet Recurring Payment changed status
+	*
+	* @return void
+	*/
+	function ajax_directory_silent_post() {
+
+		// debug mode for Silent Post script (please open plugin dir (classifieds) for writing)
+		$debug_sp = 1;
+		if ( 1 == $debug_sp ) {
+			$this->write_to_log(
+			print_r( date( "H:i:s m.d.y" ) . ' - 01 -' . " POST\r\n", true ) .
+			print_r( $_POST, true ),
+			'debug_sp' );
+		}
+
+		//silent doesn't do any handshaking
+		if ( ! empty($_POST['x_invoice_num']) ) {
+			$blogid = explode('-', $_POST['x_invoice_num']); //Format CLS-4-87sd8si222ldff
+			if($blogid[0] == 'CLS' && is_numeric($blogid[1])){
+				$blogid = intval($blogid[1]);
+				$user_id = $_POST['x_cust_id'];
+
+				$transactions = new DR_Transactions($user_id, $blogid);
+
+				$this->write_to_log(print_r($transactions->transactions, true), 'debug_sp');
+
+				if(! empty($_POST['x_subscription_id'])
+				&& $_POST['x_subscription_id'] == $transactions->authorizenet['profile_id'] ){
+
+					$transactions->authorizenet = $_POST;
+				} else {
+
+					if ( 1 == $debug_sp ) $this->write_to_log('Subscription ID mismatch Post: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['profile_id'] , 'debug_sp');
+
+				}
+			} else{
+				if ( 1 == $debug_sp ) $this->write_to_log('Bad x-invoice_num Post: ' . $_POST['x_subscription_id'] . ' Key: ' . $transactions->authorizenet['key'], 'debug_sp' );
+			}
+
+		}
+		die("ok");
+	}
+
 
 	/**
 	* Renders an admin section of display code.
@@ -530,36 +593,15 @@ class Directory_Core_Admin extends Directory_Core {
 		echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
 	}
 
-	/**
-	* Save plugin options.
-	*
-	* @param  array $params The $_POST array
-	* @return die() if _wpnonce is not verified
-	*/
-	function save_admin_options( $params ) {
-		if ( wp_verify_nonce( $params['_wpnonce'], 'verify' ) ) {
-			/* Remove unwanted parameters */
-			unset( $params['_wpnonce'], $params['_wp_http_referer'], $params['save'] );
-
-			//change format for cost to .00
-			if ( 'payment_settings' ==  $params['key'] ) {
-				if ( isset( $params['recurring_cost'] ) )
-				$params['recurring_cost'] = sprintf( "%01.2f", $params['recurring_cost'] );
-				if ( isset( $params['one_time_cost'] ) )
-				$params['one_time_cost'] = sprintf( "%01.2f", $params['one_time_cost'] );
-			}
-
-			/* Update options by merging the old ones */
-			$options = $this->get_options();
-			$options = array_merge( $options, array( $params['key'] => $params ) );
-			update_option( $this->options_name, $options );
-		} else {
-			die( __( 'Security check failed!', $this->text_domain ) );
-		}
-	}
 }
 
 /* Initiate Admin */
-$directory_core = new Directory_Core_Admin();
+if(is_admin()){
+	global $Directory_Core;
+	$Directory_Core = new Directory_Core_Admin();
+}
 
 endif;
+
+
+

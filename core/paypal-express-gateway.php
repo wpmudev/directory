@@ -51,7 +51,9 @@ class Paypal_Express_Gateway {
 	/**
 	* Constructor.
 	*/
-	function Paypal_Express_Gateway( $options ) {
+	function Paypal_Express_Gateway( $options = null ) { __construct($options); }
+
+	function __construct($options = null) {
 		$this->init_vars( $options );
 	}
 
@@ -60,7 +62,8 @@ class Paypal_Express_Gateway {
 	*
 	* @return void
 	*/
-	function init_vars( $options ) {
+	function init_vars( $options= null ) {
+
 		/* Get PayPal options defined in the admin area */
 
 		if ( !empty( $options ) ) {
@@ -69,6 +72,34 @@ class Paypal_Express_Gateway {
 			$this->api_username  = $options['api_username'];
 			$this->api_password  = $options['api_password'];
 			$this->api_signature = $options['api_signature'];
+
+			/*
+			* The currencyCodeType and paymentType are set to the selections
+			* made on the Integration Assistant.
+			*/
+
+			$this->currency_code_type = $options['currency'];
+
+			/*
+			* The returnURL is the location where buyers return to when a payment
+			* has been succesfully authorized.
+			* This is set to the value entered on the Integration Assistant.
+			*/
+
+			$this->return_url = $options['return_url'];
+
+			/*
+			* After payment is complete redirect to payment url which could be user defined
+			*/
+
+			$this->payment_url = (empty($options['payment_url']) ) ? $options['return_url'] : $options['payment_url'];
+
+			/*
+			* The cancelURL is the location buyers are sent to when they hit the
+			* cancel button during authorization of payment during the PayPal flow.
+			* This is set to the value entered on the Integration Assistant
+			*/
+			$this->cancel_url = (empty($options['cancel_url']) ) ? get_bloginfo('url') : $options['cancel_url'];
 
 			/*
 			* Define the PayPal Redirect URLs.
@@ -88,25 +119,6 @@ class Paypal_Express_Gateway {
 				$this->paypal_url   = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=';
 			}
 
-			/*
-			* The currencyCodeType and paymentType are set to the selections
-			* made on the Integration Assistant.
-			*/
-			$this->currency_code_type = $options['currency'];
-
-			/*
-			* The returnURL is the location where buyers return to when a payment
-			* has been succesfully authorized.
-			* This is set to the value entered on the Integration Assistant.
-			*/
-			$this->return_url =  get_bloginfo('url') . '/signup/';
-
-			/*
-			* The cancelURL is the location buyers are sent to when they hit the
-			* cancel button during authorization of payment during the PayPal flow.
-			* This is set to the value entered on the Integration Assistant
-			*/
-			$this->cancel_url = get_bloginfo('url') . '/';
 		}
 	}
 
@@ -140,7 +152,8 @@ class Paypal_Express_Gateway {
 
 		if ( $ack == 'SUCCESS' || $ack == 'SUCCESSWITHWARNING' ) {
 			$token = urldecode( $result['TOKEN'] );
-			//Construct URL and redirect to PayPal
+			$_SESSION['token'] = $token;
+			// Construct URL and redirect to PayPal
 			$paypal_url = $this->paypal_url . $result['TOKEN'];
 			wp_redirect( $paypal_url );
 			exit;
@@ -236,32 +249,36 @@ class Paypal_Express_Gateway {
 		*/
 		$result = $this->hash_call( 'GetExpressCheckoutDetails', $nvpstr );
 		$ack    = strtoupper( $result['ACK'] );
+
 		if ( $ack == 'SUCCESS' || $ack == 'SUCCESSWITHWARNING' ) {
 			$_SESSION['payer_id'] =	$result['PAYERID'];
+
 			/*
 			* The information that is returned by the GetExpressCheckoutDetails
 			* call should be integrated by the partner into his Order Review page
 			*/
-			//$email                = $result["EMAIL"]; // ' Email address of payer.
-			//$payer_id             = $result["PAYERID"]; // ' Unique PayPal customer account identification number.
-			//$payer_status         = $result["PAYERSTATUS"]; // ' Status of payer. Character length and limitations: 10 single-byte alphabetic characters.
-			//$salutation           = $result["SALUTATION"]; // ' Payer's salutation.
-			//$first_name           = $result["FIRSTNAME"]; // ' Payer's first name.
-			//$middle_name          = $result["MIDDLENAME"]; // ' Payer's middle name.
-			//$last_name            = $result["LASTNAME"]; // ' Payer's last name.
-			//$suffix               = $result["SUFFIX"]; // ' Payer's suffix.
-			//$country_code         = $result["COUNTRYCODE"]; // ' Payer's country of residence in the form of ISO standard 3166 two-character country codes.
-			//$business             = $result["BUSINESS"]; // ' Payer's business name.
-			//$ship_to_name         = $result["SHIPTONAME"]; // ' Person's name associated with this address.
-			//$ship_to_street       = $result["SHIPTOSTREET"]; // ' First street address.
-			//$ship_to_street2      = $result["SHIPTOSTREET2"]; // ' Second street address.
-			//$ship_to_city         = $result["SHIPTOCITY"]; // ' Name of city.
-			//$ship_to_state        = $result["SHIPTOSTATE"]; // ' State or province
-			//$ship_to_country_code = $result["SHIPTOCOUNTRYCODE"]; // ' Country code.
-			//$ship_to_zip          = $result["SHIPTOZIP"]; // ' U.S. Zip code or other country-specific postal code.
-			//$address_status       = $result["ADDRESSSTATUS"]; // ' Status of street address on file with PayPal
-			//$invoice_number       = $result["INVNUM"]; // ' Your own invoice or tracking number, as set by you in the element of the same name in SetExpressCheckout request .
-			//$phone_number         = $result["PHONENUM"]; // ' Payer's contact telephone number. Note:  PayPal returns a contact telephone number only if your Merchant account profile settings require that the buyer enter one.
+			/*
+			$email                = ( empty( $result["EMAIL"] ) )           ? '' : $result["EMAIL"]; // ' Email address of payer.
+			$payer_id             = ( empty( $result["PAYERID"] ) )         ? '' : $result["PAYERID"]; // ' Unique PayPal customer account identification number.
+			$payer_status         = ( empty( $result["PAYERSTATUS"] ) )     ? '' : $result["PAYERSTATUS"]; // ' Status of payer. Character length and limitations: 10 single-byte alphabetic characters.
+			$salutation           = ( empty( $result["SALUTATION"] ) )      ? '' : $result["SALUTATION"]; // ' Payer's salutation.
+			$first_name           = ( empty( $result["FIRSTNAME"] ) )       ? '' : $result["FIRSTNAME"]; // ' Payer's first name.
+			$middle_name          = ( empty( $result["MIDDLENAME"] ) )      ? '' : $result["MIDDLENAME"]; // ' Payer's middle name.
+			$last_name            = ( empty( $result["LASTNAME"] ) )        ? '' : $result["LASTNAME"]; // ' Payer's last name.
+			$suffix               = ( empty( $result["SUFFIX"] ) )          ? '' : $result["SUFFIX"]; // ' Payer's suffix.
+			$country_code         = ( empty( $result["COUNTRYCODE"] ) )     ? '' : $result["COUNTRYCODE"]; // ' Payer's country of residence in the form of ISO standard 3166 two-character country codes.
+			$business             = ( empty( $result["BUSINESS"] ) )        ? '' : $result["BUSINESS"]; // ' Payer's business name.
+			$ship_to_name         = ( empty( $result["SHIPTONAME"] ) )      ? '' : $result["SHIPTONAME"]; // ' Person's name associated with this address.
+			$ship_to_street       = ( empty( $result["SHIPTOSTREET"] ) )    ? '' : $result["SHIPTOSTREET"]; // ' First street address.
+			$ship_to_street2      = ( empty( $result["SHIPTOSTREET2"] ) )   ? '' : $result["SHIPTOSTREET2"]; // ' Second street address.
+			$ship_to_city         = ( empty( $result["SHIPTOCITY"] ) )      ? '' : $result["SHIPTOCITY"]; // ' Name of city.
+			$ship_to_state        = ( empty( $result["SHIPTOSTATE"] ) )     ? '' : $result["SHIPTOSTATE"]; // ' State or province
+			$ship_to_country_code = ( empty( $result["SHIPTOCOUNTRYCODE"])) ? '' : $result["SHIPTOCOUNTRYCODE"]; // ' Country code.
+			$ship_to_zip          = ( empty( $result["SHIPTOZIP"] ) )       ? '' : $result["SHIPTOZIP"]; // ' U.S. Zip code or other country-specific postal code.
+			$address_status       = ( empty( $result["ADDRESSSTATUS"] ) )   ? '' : $result["ADDRESSSTATUS"]; // ' Status of street address on file with PayPal
+			$invoice_number       = ( empty( $result["INVNUM"] ) )          ? '' : $result["INVNUM"]; // ' Your own invoice or tracking number, as set by you in the element of the same name in SetExpressCheckout request .
+			$phone_number         = ( empty( $result["PHONENUM"] ) )        ? '' : $result["PHONENUM"]; // ' Payer's contact telephone number. Note:  PayPal returns a contact telephone number only if your Merchant account profile settings require that the buyer enter one.
+			*/
 
 			$result['status'] = 'success';
 			return $result;
@@ -296,6 +313,7 @@ class Paypal_Express_Gateway {
 		* If an error occured, show the resulting errors
 		*/
 		$result = $this->hash_call( 'DoExpressCheckoutPayment', $nvpstr );
+
 		/*
 		* Display the API response back to the browser.
 		* If the response from PayPal was a success, display the response parameters.
@@ -383,8 +401,18 @@ class Paypal_Express_Gateway {
 	* @return array $result The NVP Collection object of the DoDirectPayment Call Response.
 	*/
 	function direct_payment(
-	$payment_amount , $credit_card_type , $credit_card_number , $exp_date , $cvv2  ,
-	$first_name     , $last_name        , $street             , $city     , $state , $zip , $country_code ) {
+	$payment_amount,
+	$credit_card_type,
+	$credit_card_number,
+	$exp_date,
+	$cvv2 ,
+	$first_name,
+	$last_name,
+	$street,
+	$city,
+	$state,
+	$zip,
+	$country_code ) {
 
 		//Construct the parameter string that describes DoDirectPayment
 		$nvpstr  = '&AMT='            . urlencode( $payment_amount );
@@ -412,6 +440,7 @@ class Paypal_Express_Gateway {
 			/* Set status and return result */
 			$result['status'] = 'success';
 			return $result;
+
 		} else {
 			/* Display a user friendly Error on the page using any of the following error information returned by PayPal */
 			return $this->error( 'DoDirectPayment', $result );
@@ -426,7 +455,12 @@ class Paypal_Express_Gateway {
 	* @access public
 	* @return array Success|Error
 	*/
-	function create_recurring_payments_profile( $amount, $billing_period, $billing_frequency, $billing_agreement ) {
+	function create_recurring_payments_profile(
+	$amount,
+	$billing_period,
+	$billing_frequency,
+	$billing_agreement ) {
+
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
 		$nvpstr  = '&TOKEN='            . urlencode( $_SESSION['token'] );
 		$nvpstr .= '&AMT='              . urlencode( $amount );
@@ -516,24 +550,24 @@ class Paypal_Express_Gateway {
 	* @return array $nvp_array
 	*/
 	function deformat_nvp( $nvpstr ) {
-		$intial = 0;
 		$nvp_array = array();
+		parse_str($nvpstr, $nvp_array);
 
-		while( strlen( $nvpstr ) ) {
-			/* postion of Key */
-			$keypos = strpos( $nvpstr, '=' );
+		//Make a tag along array of data we want to keep in Wordpress profile so we don't have to check in 50 places
+		$cc =array();
 
-			/* position of value */
-			$valuepos = strpos( $nvpstr, '&' ) ? strpos( $nvpstr, '&' ) : strlen( $nvpstr );
-
-			/* Getting the Key and Value values and storing in a Associative Array */
-			$keyval = substr( $nvpstr, $intial, $keypos );
-			$valval = substr( $nvpstr, $keypos + 1, $valuepos - $keypos - 1 );
-
-			/* decoding the respose */
-			$nvp_array[urldecode( $keyval )] = urldecode( $valval );
-			$nvpstr = substr( $nvpstr, $valuepos + 1, strlen( $nvpstr ));
-		}
+		$cc['cc_email']        = (empty($nvp_array['EMAIL']) ) ? '' : $nvp_array['EMAIL'];
+		$cc['cc_firstname']    = (empty($nvp_array['FIRSTNAME']) ) ? '' : $nvp_array['FIRSTNAME'];
+		$cc['cc_lastname']     = (empty($nvp_array['LASTNAME']) ) ? '' : $nvp_array['LASTNAME'];
+		$cc['cc_street']       = (empty($nvp_array['SHIPTOSTREET']) ) ? '' : $nvp_array['SHIPTOSTREET'];
+		$cc['cc_city']         = (empty($nvp_array['SHIPTOCITY']) ) ? '' : $nvp_array['SHIPTOCITY'];
+		$cc['cc_state']        = (empty($nvp_array['SHIPTOSTATE']) ) ? '' : $nvp_array['SHIPTOSTATE'];
+		$cc['cc_zip']          = (empty($nvp_array['SHIPTOZIP']) ) ? '' : $nvp_array['SHIPTOZIP'];
+		$cc['cc_country_code'] = (empty($nvp_array['SHIPTOCOUNTRYNAME']) ) ? '' : $nvp_array['SHIPTOCOUNTRYNAME'];
+		$cc['total_amount']    = (empty($nvp_array['AMT']) ) ? 0 : $nvp_array['AMT'];
+		$cc['currancy_code']   = (empty($nvp_array['CURRENCYCODE']) ) ? '' : $nvp_array['CURRENCYCODE'];
+		
+		$nvp_array['CC'] = $cc;
 		return $nvp_array;
 	}
 

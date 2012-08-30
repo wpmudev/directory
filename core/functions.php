@@ -1,7 +1,5 @@
 <?php
 
-add_theme_support('post-thumbnails', array('directory-listing'));
-
 /**
 * The following functions abstract away various implementation details of the plugin.
 * They never echo anything.
@@ -14,27 +12,22 @@ add_theme_support('post-thumbnails', array('directory-listing'));
 * @return bool
 */
 function is_dr_page( $type = '' ) {
-	global $wp_query;
 	static $flags;
+	global $Directory_Core;
 
 	if ( is_404() )
 	return false;
-	
-	if(property_exists($wp_query, 'post_type')){
-	  $is_dr = (is_array($wp_query->post_type)) ? in_array('directory_listing', $wp_query->post_type) : 'directory_listing' == $wp_query->post_type;
-	} else {
-		$is_dr = false;
-	}
-	
-	
+
 	if ( !$flags ) {
+
+
 		$flags = array(
 		'single'   => is_singular( 'directory_listing' ),
-		'archive'  => is_post_type_archive() && $is_dr,
+		'archive'  => is_post_type_archive( 'directory_listing' ),
 		'tag'      => is_tax( 'listing_tag' ),
 		'category' => is_tax( 'listing_category' ),
-		'signin'   => is_page( 'signin'),
-		'signup'   => is_page( 'signup')
+		'signin'   => is_page( $Directory_Core->signin_page_id),
+		'signup'   => is_page( $Directory_Core->signup_page_id)
 		);
 	}
 
@@ -85,6 +78,9 @@ function get_dr_title( $id = 0 ) {
 */
 function dr_supports_taxonomy($taxonomy=''){
 	global $wp_taxonomies;
+	
 	if(empty($taxonomy)) return false;
+	
 	return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('directory_listing', $wp_taxonomies[$taxonomy]->object_type) : false;
 }
+

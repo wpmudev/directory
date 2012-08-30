@@ -1,6 +1,5 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+<?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
 
-<?php
 if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');
 else
@@ -23,7 +22,13 @@ if(is_multisite()) {
 }
 
 $this->render_admin('update-message');
-
+/*
+global $wp_post_types;
+echo '<pre>';
+print_r($wp_post_types['classifieds']);
+print_r($wp_post_types['directory_listing']);
+echo '</pre>.';
+*/
 
 ?>
 
@@ -96,10 +101,10 @@ $this->render_admin('update-message');
 					<input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
 				</form>
 			</td>
-			<td><?php if ( isset( $post_type['labels']['name'] ) ) echo $post_type['labels']['name']; ?></td>
-			<td><?php if ( isset( $post_type['description'] ) ) echo $post_type['description']; ?></td>
+			<td><?php echo ( empty( $post_type['labels']['name'] ) ) ? '' : $post_type['labels']['name']; ?></td>
+			<td><?php echo ( empty( $post_type['description'] ) ) ? '' : $post_type['description']; ?></td>
 			<td>
-				<img src="<?php if ( isset( $post_type['menu_icon'] ) ) echo $post_type['menu_icon']; else echo $this->plugin_url . 'ui-admin/images/default-menu-icon.png'; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
+				<img src="<?php echo(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
 			</td>
 			<td class="ct-supports">
 				<?php foreach ( $post_type['supports'] as $value ): ?>

@@ -83,6 +83,10 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 		<div id="pane_paypal" class="postbox" >
 			<h3 class='hndle'><span><?php _e( 'PayPal Settings', $this->text_domain ) ?></span></h3>
 			<div class="inside">
+				<p class="description">
+					<?php _e( "Express Checkout is PayPal's premier checkout solution, which streamlines the checkout process for buyers and keeps them on your site after making a purchase. Unlike PayPal Pro, there are no additional fees to use Express Checkout, though you may need to do a free upgrade to a business account.", $this->text_domain ) ?>
+					<a href="https://cms.paypal.com/us/cgi-bin/?&amp;cmd=_render-content&amp;content_ID=developer/e_howto_api_ECGettingStarted" target="_blank"><?php _e( 'More Info', $this->text_domain ) ?></a>
+				</p>
 
 				<table class="form-table">
 					<tr>
@@ -100,9 +104,24 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 					</tr>
 					<tr>
 						<th>
+							<label for="business_email"><?php _e( 'PayPal Business Email', $this->text_domain ) ?></label>
+						</th>
+						<td>
+							<input type="text" id="business_email" name="paypal[business_email]" value="<?php echo ( empty( $paypal['business_email'] ) ) ? '' : $paypal['business_email']; ?>" size="50" />
+							<br /><span class="description"><?php _e( 'Your PayPal business email for Recurring Payments.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th>
 							<label for="api_username"><?php _e( 'API Username', $this->text_domain ) ?></label>
 						</th>
 						<td>
+							<p>
+								<span class="description">
+									<?php _e( 'You must login to PayPal and create an API signature to get your credentials. ', $this->text_domain ) ?>
+									<a href="https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_ECAPICredentials" target="_blank"><?php _e( 'Instructions', $this->text_domain ) ?></a>
+								</span>
+							</p>
 							<input type="text" id="api_username" name="paypal[api_username]" value="<?php echo (empty($paypal['api_username']) ) ? '' : $paypal['api_username']; ?>" size="50"/>
 							<br /><span class="description"><?php _e( 'Your PayPal API Username.', $this->text_domain ); ?></span>
 						</td>
@@ -149,6 +168,24 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 								<option value="PLN" <?php selected( $currency == 'PLN' ); ?>><?php _e( 'Polish Zloty', $this->text_domain ) ?></option>
 							</select>
 							<br /><span class="description"><?php _e( 'The currency in which you want to process payments.', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="pp_payment_url"><?php _e( 'Redirect URL on Success:', $this->text_domain ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="payapl[payment_url]" id="pp_payment_url" value="<?php echo (empty($paypal['payment_url']) ) ? '' : $paypal['payment_url']; ?>" size="50" />
+							<br /><span class="description"><?php _e( 'by default to internal success page', $this->text_domain ) ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="pp_cancel_url"><?php _e( 'Redirect URL on Cancel:', $this->text_domain ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="paypal[cancel_url]" id="pp_cancel_url" value="<?php echo (empty($paypal['cancel_url']) ) ? '' : $paypal['cancel_url']; ?>" size="50" />
+							<br /><span class="description"><?php _e( 'by default to Home page', $this->text_domain ) ?></span>
 						</td>
 					</tr>
 				</table>
@@ -199,21 +236,40 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 						</td>
 					</tr>
 					<tr>
+						<th>
+							<label for="an_payment_url"><?php _e( 'Redirect URL on Success:', $this->text_domain ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="authorizenet[payment_url]" id="an_payment_url" value="<?php echo (empty($authorizenet['payment_url']) ) ? '' : $authorizenet['payment_url']; ?>" size="50" />
+							<br /><span class="description"><?php _e( 'by default to internal success page', $this->text_domain ) ?></span>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="an_cancel_url"><?php _e( 'Redirect URL on Cancel:', $this->text_domain ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="authorizenet[cancel_url]" id="an_cancel_url" value="<?php echo (empty($authorizenet['cancel_url']) ) ? '' : $authorizenet['cancel_url']; ?>" size="50" />
+							<br /><span class="description"><?php _e( 'by default to Home page', $this->text_domain ) ?></span>
+						</td>
+					</tr>
+					<tr>
 						<th scope="row"><?php _e('Advanced Settings', $this->text_domain) ?></th>
 						<td>
 							<span class="description"><?php _e('Optional settings to control advanced options', $this->text_domain) ?></span>
+							<!--
 							<p>
-								<label><a title="<?php _e('Authorize.net default is \',\'. Otherwise, get this from your credit card processor. If the transactions are not going through, this character is most likely wrong.', $this->text_domain); ?>"><?php _e('Delimiter Character', $this->text_domain); ?></a><br />
-									<input value="<?php echo (empty($authorizenet['delim_char']))?",":esc_attr($authorizenet['delim_char']); ?>" size="2" name="authorizenet[delim_char]" type="text" />
-								</label>
+							<label><a title="<?php _e('Authorize.net default is \',\'. Otherwise, get this from your credit card processor. If the transactions are not going through, this character is most likely wrong.', $this->text_domain); ?>"><?php _e('Delimiter Character', $this->text_domain); ?></a><br />
+							<input value="<?php echo (empty($authorizenet['delim_char']))?",":esc_attr($authorizenet['delim_char']); ?>" size="2" name="authorizenet[delim_char]" type="text" />
+							</label>
 							</p>
 
 							<p>
-								<label><a title="<?php _e('Authorize.net default is blank. Otherwise, get this from your credit card processor. If the transactions are going through, but getting strange responses, this character is most likely wrong.', $this->text_domain); ?>"><?php _e('Encapsulation Character', $this->text_domain); ?></a><br />
-									<input value="<?php echo (empty($authorizenet['encap_char']) ) ? '' : esc_attr($authorizenet['encap_char']); ?>" size="2" name="authorizenet[encap_char]" type="text" />
-								</label>
+							<label><a title="<?php _e('Authorize.net default is blank. Otherwise, get this from your credit card processor. If the transactions are going through, but getting strange responses, this character is most likely wrong.', $this->text_domain); ?>"><?php _e('Encapsulation Character', $this->text_domain); ?></a><br />
+							<input value="<?php echo (empty($authorizenet['encap_char']) ) ? '' : esc_attr($authorizenet['encap_char']); ?>" size="2" name="authorizenet[encap_char]" type="text" />
+							</label>
 							</p>
-
+							-->
 							<p>
 								<label><?php _e('Email Customer (on success):', $this->text_domain); ?><br />
 									<?php $email_customer = (empty($authorizenet['email_customer']) ? '' : $authorizenet['email_customer']); ?>
@@ -251,12 +307,13 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 									</select>
 								</label>
 							</p>
+							<!--
 							<p>
-								<label><a title="<?php _e('Many other gateways have Authorize.net API emulators. To use one of these gateways input their API post url here.', $this->text_domain); ?>"><?php _e('Custom API URL', $this->text_domain) ?></a><br />
-									<input value="<?php echo (empty($authorizenet['custom_api']) ) ? '' : esc_attr($authorizenet['custom_api']); ?>" size="50" name="authorizenet[custom_api]" type="text" />
-								</label>
+							<label><a title="<?php _e('Many other gateways have Authorize.net API emulators. To use one of these gateways input their API post url here.', $this->text_domain); ?>"><?php _e('Custom API URL', $this->text_domain) ?></a><br />
+							<input value="<?php echo (empty($authorizenet['custom_api']) ) ? '' : esc_attr($authorizenet['custom_api']); ?>" size="50" name="authorizenet[custom_api]" type="text" />
+							</label>
 							</p>
-
+							-->
 						</td>
 					</tr>
 				</table>

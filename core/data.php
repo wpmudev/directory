@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Load core DB data.
+* Load core DB data. Only loaded during Activation
 */
 if ( !class_exists('Directory_Core_Data') ):
 
@@ -12,11 +12,20 @@ class Directory_Core_Data {
 	*
 	* @return void
 	*/
+	function Directory_Core_Data() { $this->__construct(); }
+
+
 	function __construct() {
 		//Load default data if object instatiated. Set to only happen during plugin Activate
 		add_action( 'init', array( &$this, 'load_data' ) );
+		add_action( 'init', array( &$this, 'load_payment_data' ) );
 	}
 
+	/**
+	* Load initial Content Types data for plugin
+	*
+	* @return void
+	*/
 	function load_data() {
 		/* Get setting options. If empty return an array */
 		$options = ( get_site_option( DR_OPTIONS_NAME ) ) ? get_site_option( DR_OPTIONS_NAME ) : array();
@@ -67,7 +76,6 @@ class Directory_Core_Data {
 
 			// Update post types and delete tmp options
 			flush_network_rewrite_rules();
-
 		}
 
 		/* Check whether taxonomies data is loaded */
@@ -77,11 +85,12 @@ class Directory_Core_Data {
 			$listing_tags_default = array();
 			$listing_tags_default['object_type'] = array ( 'directory_listing');
 			$listing_tags_default['args'] = array(
-			'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false, 'hierarchical' => false ),
-			'capabilities'  => array( 'assign_terms' => 'assign_terms' ),
-			'hierarchical' => false,
-			'query_var' => true,
 			'public' => true,
+			'hierarchical' => false,
+			'rewrite'       => array( 'slug' => 'listings-tag', 'with_front' => false, 'hierarchical' => false ),
+			'query_var' => true,
+			'capabilities'  => array( 'assign_terms' => 'edit_listings' ),
+
 			'labels'        => array(
 			'name'          => __( 'Listing Tags', DR_TEXT_DOMAIN ),
 			'singular_name' => __( 'Listing Tag', DR_TEXT_DOMAIN ),
@@ -92,9 +101,9 @@ class Directory_Core_Data {
 			'update_item'   => __( 'Update Listing Tag', DR_TEXT_DOMAIN ),
 			'add_new_item'  => __( 'Add New Listing Tag', DR_TEXT_DOMAIN ),
 			'new_item_name' => __( 'New Listing Tag Name', DR_TEXT_DOMAIN ),
+			'add_or_remove_items' => __( 'Add or remove listing tags', DR_TEXT_DOMAIN ),
+			'choose_from_most_used' => __( 'Choose from the most used listing tags', DR_TEXT_DOMAIN ),
 			'separate_items_with_commas' => __( 'Separate listing tags with commas', DR_TEXT_DOMAIN ),
-			'add_or_remove_items'        => __( 'Add or remove listing tags', DR_TEXT_DOMAIN ),
-			'choose_from_most_used'      => __( 'Choose from the most used listing tags', DR_TEXT_DOMAIN ),
 			)
 			);
 
@@ -110,6 +119,7 @@ class Directory_Core_Data {
 
 			// Update post types and delete tmp options
 			flush_network_rewrite_rules();
+
 		}
 
 		if ( ! taxonomy_exists('listing_category')){
@@ -117,11 +127,12 @@ class Directory_Core_Data {
 			$listing_category_default = array();
 			$listing_category_default['object_type'] = array ('directory_listing');
 			$listing_category_default['args'] = array(
-			'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
-			'capabilities'  => array( 'assign_terms' => 'edit_published_listings' ),
-			'hierarchical'  => true,
-			'query_var' => true,
 			'public' => true,
+			'hierarchical'  => true,
+			'rewrite'       => array( 'slug' => 'listings-category', 'with_front' => false, 'hierarchical' => true ),
+			'query_var' => true,
+			'capabilities'  => array( 'assign_terms' => 'edit_listings' ),
+
 			'labels' => array(
 			'name'          => __( 'Listing Categories', DR_TEXT_DOMAIN ),
 			'singular_name' => __( 'Listing Category', DR_TEXT_DOMAIN ),
@@ -133,7 +144,7 @@ class Directory_Core_Data {
 			'update_item'   => __( 'Update Listing Category', DR_TEXT_DOMAIN ),
 			'add_new_item'  => __( 'Add New Listing Category', DR_TEXT_DOMAIN ),
 			'new_item_name' => __( 'New Listing Category', DR_TEXT_DOMAIN ),
-			'parent_item_colon'        => __( 'Parent Category:', DR_TEXT_DOMAIN ),
+			'parent_item_colon'   => __( 'Parent Category:', DR_TEXT_DOMAIN ),
 			'add_or_remove_items' => __( 'Add or remove listing categories', DR_TEXT_DOMAIN ),
 			)
 			);
@@ -148,7 +159,6 @@ class Directory_Core_Data {
 				update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			}
 
-			// Update post types and delete tmp options
 			flush_network_rewrite_rules();
 		}
 
@@ -160,12 +170,12 @@ class Directory_Core_Data {
 			$wp->add_query_var( 'dr_current_component' );
 			$result = add_query_arg(  array(
 			'dr_author_page'        => '$matches[3]',
-			'dr_current_component'  => 'classifieds'
+			'dr_current_component'  => 'listings'
 			), 'index.php' );
 			//            add_rewrite_rule( 'members/admin/classifieds(/page/(.+?))?/?$', $result, 'top' );
-			add_rewrite_rule( 'members/(.+?)/classifieds(/page/(.+?))?/?$', $result, 'top' );
+			add_rewrite_rule( 'members/(.+?)/listings(/page/(.+?))?/?$', $result, 'top' );
 			$rules = get_option( 'rewrite_rules' );
-			if ( ! isset( $rules['members/(.+?)/classifieds(/page/(.+?))?/?$'] ) )
+			if ( ! isset( $rules['members/(.+?)/listings(/page/(.+?))?/?$'] ) )
 			//            if ( ! isset( $rules['members/admin/classifieds(/page/(.+?))?/?$'] ) )
 			$wp_rewrite->flush_rules();
 		} else {
@@ -180,6 +190,80 @@ class Directory_Core_Data {
 			if ( ! isset( $rules['dr-author/(.+?)(/page/(.+?))?/?$'] ) )
 			$wp_rewrite->flush_rules();
 		}
+
+		//Custompress specfic
+		if(is_multisite()){
+			update_site_option( 'allow_per_site_content_types', true );
+			update_site_option( 'display_network_content_types', true );
+
+		}
+	}
+
+	function load_payment_data() {
+
+		$options = get_option( DR_OPTIONS_NAME );
+		$options = ( is_array($options) ) ? $options : array();
+
+		//General default
+		if(empty($options['general']) ){
+			$options['general'] = array(
+			'member_role'             => 'subscriber',
+			'moderation'              => array('publish' => 1, 'pending' => 1, 'draft' => 1 ),
+			'custom_fields_structure' => 'table',
+			'welcome_redirect'        => 'true',
+			'key'                     => 'general'
+			);
+		}
+
+		//Update from older version
+		if (! empty($options['general_settings']) ) {
+			$options['general'] = array_replace($options['general_settings']);
+			unset($options['general_settings']);
+		}
+
+		//Default Payments settings
+		if ( empty( $options['payments'] ) ) {
+			$options['payments'] = array(
+			'enable_recurring'    => '1',
+			'recurring_cost'      => '9.99',
+			'recurring_name'      => 'Subscription',
+			'billing_period'      => 'Month',
+			'billing_frequency'   => '1',
+			'billing_agreement'   => 'Customer will be billed at “9.99 per month for 2 years”',
+			'enable_one_time'     => '1',
+			'one_time_cost'       => '99.99',
+			'one_time_name'       => 'One Time Only',
+			'enable_credits'      => '1',
+			'cost_credit'         => '.99',
+			'credits_per_listing' => 1,
+			'signup_credits'      => 0,
+			'credits_description' => '',
+			'tos_content'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at sem libero. Pellentesque accumsan consequat porttitor. Curabitur ut lorem sed ipsum laoreet tempus at vel erat. In sed tempus arcu. Quisque ut luctus leo. Nulla facilisi. Sed sodales lectus ut tellus venenatis ac convallis metus suscipit. Vestibulum nec orci ut erat ultrices ullamcorper nec in lorem. Vivamus mauris velit, vulputate eget adipiscing elementum, mollis ac sem. Aliquam faucibus scelerisque orci, ut venenatis massa lacinia nec. Phasellus hendrerit lorem ornare orci congue elementum. Nam faucibus urna a purus hendrerit sit amet pulvinar sapien suscipit. Phasellus adipiscing molestie imperdiet. Mauris sit amet justo massa, in pellentesque nibh. Sed congue, dolor eleifend egestas egestas, erat ligula malesuada nulla, sit amet venenatis massa libero ac lacus. Vestibulum interdum vehicula leo et iaculis.',
+			'key'               => 'payments'
+			);
+		}
+
+		if (! empty($options['payment_settings']) ) {
+			$options['payments'] = array_replace($options['payment_settings']);
+			unset($options['payment_settings']);
+		}
+
+		if(empty($options['payment_types']) ) {
+			$options['payment_types'] = array(
+			'use_free'         => 1,
+			'use_paypal'       => 0,
+			'use_authorizenet' => 0,
+			'paypal'           => array('api_url' => 'sandbox', 'api_username' => '', 'api_password' => '', 'api_signature' => '', 'currency' => 'USD'),
+			'authorizenet'     => array('mode' => 'sandbox', 'delim_char' => ',', 'encap_char' => '', 'email_customer' => 'yes', 'header_email_receipt' => 'Thanks for your payment!', 'delim_data' => 'yes'),
+			);
+		}
+
+		if ( ! empty($options['paypal']) ){
+			$options['payment_types']['paypal'] = array_replace($options['paypal']);
+			unset($options['paypal']);
+		}
+
+		update_option( DR_OPTIONS_NAME, $options );
 	}
 }
 

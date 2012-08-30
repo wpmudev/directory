@@ -1,12 +1,13 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
-<?php 
-$send_to = ( empty($_POST['manage_credits'])) ? '' : $_POST['manage_credits']; 
+<?php
+$send_to = ( empty($_POST['manage_credits'])) ? '' : $_POST['manage_credits'];
 $send_to_user = ( empty($_POST['manage_credits_user'])) ? '' : $_POST['manage_credits_user'];
 $send_to_count = ( empty($_POST['manage_credits_count'])) ? '' : $_POST['manage_credits_count'];
 ?>
 
 <div class="wrap">
+	<?php screen_icon('options-general'); ?>
 
 	<?php $this->render_admin( 'navigation', array( 'page' => 'directory_credits','tab' => 'send-credits' ) ); ?>
 	<?php $this->render_admin( 'message' ); ?>
@@ -17,13 +18,13 @@ $send_to_count = ( empty($_POST['manage_credits_count'])) ? '' : $_POST['manage_
 			<tr>
 				<th><label for="manage_credits"><?php _e( 'Send Credits To Directory members', $this->text_domain ); ?></label></th>
 				<td>
-					<label><input type="radio" id="manage_credits" name="manage_credits" value="send_single" 
-						<?php checked( $send_to == 'send_single' );  ?>
-						onchange="if(this.checked) jQuery('#username').css('display',''); else jQuery('#username').css('display','none');" />Send Credits to a single Directory Member</label>
+					<label><input type="radio" id="manage_credits" name="manage_credits" value="send_single"
+						<?php if ( $send_to == 'send_single' ) echo 'checked="checked"';  ?>
+					onchange="if(this.checked) jQuery('#username').css('display',''); else jQuery('#username').css('display','none');" />Send Credits to a single Directory Member</label>
 					<br />
-					<label><input type="radio" name="manage_credits" value="send_all" 
-						<?php checked( $send_to == 'send_all' );  ?>
-						onchange="if(this.checked) jQuery('#username').css('display','none'); else jQuery('#username').css('display','');" />Send Credits to all Directory Members</label>
+					<label><input type="radio" name="manage_credits" value="send_all"
+						<?php if ( $send_to == 'send_all' ) echo 'checked="checked"';  ?>
+					onchange="if(this.checked) jQuery('#username').css('display','none'); else jQuery('#username').css('display','');" />Send Credits to all Directory Members</label>
 				</td>
 			</tr>
 			<tr>

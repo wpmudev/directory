@@ -648,14 +648,14 @@ if(is_network_admin()){
 						<span class="description"><?php _e('Allowing permalinks to be prepended with front base.', $this->text_domain); ?></span>
 						<br /><br />
 						<label>
-							<input type="checkbox" name="rewrite_feeds" value="1" <?php checked( ! empty( $post_type['rewrite']['rewrite_feeds'] ) ); ?> />
+							<input type="checkbox" name="rewrite_feeds" value="1" <?php checked( ! empty( $post_type['rewrite']['feeds'] ) ); ?> />
 							<span class="description"><strong><?php _e('Feeds', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<span class="description"><?php _e('Default will use has_archive.', $this->text_domain); ?></span>
 						<br />
 						<label>
-							<input type="checkbox" name="rewrite_pages" value="1" <?php checked( ! isset($post_type['rewrite_pages']) || ! empty( $post_type['rewrite']['rewrite_pages'] ) ); ?> />
+							<input type="checkbox" name="rewrite_pages" value="1" <?php checked( ! empty( $post_type['rewrite']['pages'] ) ); ?> />
 							<span class="description"><strong><?php _e('Pages', $this->text_domain); ?></strong></span>
 						</label>
 						<br />

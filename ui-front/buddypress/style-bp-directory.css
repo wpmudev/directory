@@ -1,0 +1,232 @@
+/*
+Styleshteet Name: Classifieds UI Front Main
+Description: You can override this file in your active theme.
+*/
+
+/* =Styles for Classifieds Main component.
+-------------------------------------------------------------- */
+.error {
+	background: #FFEBE8;
+}
+.submit {
+	margin: 10px 0;
+}
+.invalid-login {
+	margin-top: 10px;
+}
+.description {
+	color:#888888;
+	font-size:12px;
+}
+
+ul.button-nav li {
+	float: left;
+	list-style: none;
+	padding-right: 15px;
+}
+#content .classifieds ul {
+	overflow: hidden;
+	margin: 0;
+	padding-bottom: 15px;
+}
+
+
+.editfield .wp-post-image {
+	border: 1px solid #ddd;
+	padding: 15px;
+}
+.single-classifieds #content img.wp-post-image {
+	border: 1px solid #ddd;
+	padding: 15px;
+	margin: 0 15px 10px 0;
+}
+.dr-custom-fields .alt {
+	background: #F6F6F6;
+}
+#content .dr-custom-fields tr th {
+	border-top:1px solid #E7E7E7;
+}
+.action-form, .confirm-form {
+	margin-top: 10px;
+}
+.dr-padder {
+	-moz-border-radius-bottomleft: 6px;
+	-moz-border-radius-topleft: 6px;
+	border-right: 1px solid #DDDDDD;
+	margin-right: 225px;
+	overflow: hidden;
+	padding: 19px;
+}
+
+
+/* =Styles for BuddyPress profile pages and taxonomy pages
+-------------------------------------------------------------- */
+.dr-ad {
+	border: 1px solid #ddd;
+	padding: 10px;
+	display: block;
+	overflow: hidden;
+	/*    float: left; */
+	margin: 0 15px 15px 0;
+	width: 445px;
+}
+.dr-ad table {
+	margin: 0 0 0 15px;
+	width: 280px;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+}
+.dr-ad table th {
+	text-align: right;
+	width: 50px;
+}
+.dr-ad table th, .bp-dr-ad table td {
+	border-width: 1px;
+	border-style: inset;
+	border-color: #ddd;
+}
+.dr-ad form {
+	float: right;
+	overflow: hidden;
+}
+.dr-image {
+	float: left;
+}
+.dr-info {
+	float: left;
+}
+
+
+/* =Styles for BuddyPress normal pages
+-------------------------------------------------------------- */
+.dr-ad-info {
+	float: left;
+	width: 500px;
+	border:1px solid #EAEAEA;
+}
+.dr-ad-info th {
+	width: 100px;
+	vertical-align: top;
+	text-align: right;
+	border:1px solid #EAEAEA;
+}
+.dr-description {
+	text-align: left;
+	border:1px solid #EAEAEA;
+}
+.dr-description thead tr {
+	background: none;
+}
+.dr-description td {
+	border-top:1px solid #EAEAEA;
+}
+.dr-custom-fields {
+	text-align: left;
+	margin-top: 20px;
+	border:1px solid #EAEAEA;
+}
+.dr-custom-fields td {
+	border:1px solid #EAEAEA;
+}
+.contact-user-btn {
+	padding-top: 165px;
+	margin-left: 10px;
+}
+.dr-contact-form {
+	width: 500px;
+	float: left;
+	margin-top: -20px;
+	margin-left: 15px;
+}
+
+
+/* =Styles for BuddyPress checkout page
+-------------------------------------------------------------- */
+.terms {
+	height:100px;
+	overflow-x: hidden;
+	color:#888888;
+	font-size:12px;
+	font-family:"Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+}
+.dr-terms {
+	width: inherit;
+}
+.dr-terms td {
+	vertical-align: top;
+}
+.dr-checkout {
+	width: 48%;
+	float: left;
+	margin-right: 15px;
+}
+.dr-checkout img {
+	margin-bottom: 0 !important;
+}
+.dr-login {
+	width: 48%;
+	float: left;
+}
+
+#dr-message,
+#dr-message-error {
+	background-color: #8FF57A;
+	color: #1A6A00;
+	-moz-border-radius: 3px 3px 3px 3px;
+	border: 1px solid #80CF70;
+	font-weight: normal;
+	margin: 3px 0px 10px 0px;
+	text-decoration: none;
+	display: block;
+	font-size: 12px;
+	padding: 5px 50px;
+	float: left;
+}
+
+#dr-message-error {
+	background-color: #EF0E0E;
+	color: #000;
+	border: 1px solid #4C0000;
+}
+
+.my-credits h3 {
+	margin: 15px 0px 15px 0px;
+}
+
+.my-credits table {
+	width: inherit;
+}
+
+/* Pagination styles */
+.navigation{
+
+}
+
+.pagination {
+	clear:both;
+	padding:20px 0;
+	position: relative;
+	font-size:11px;
+	line-height:13px;
+	z-index:99;
+}
+
+.pagination span, .pagination a {
+	display:block;
+	float:left;
+	margin: 2px 2px 2px 0;
+	padding:6px 9px 5px 9px;
+	text-decoration:none;
+	width:auto;
+	color:#fff;
+	background: #bbb;
+}
+.pagination a:hover{
+	color:#fff;
+	background: #3279BB;
+}
+.pagination .current{
+	padding:6px 9px 5px 9px;
+	background: #3279BB;
+	color:#fff;
+}

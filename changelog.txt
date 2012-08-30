@@ -5,22 +5,17 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
-= 2.1.2.1 =
-* Fixed custom field save problem.
-
 = 2.1.2 =
-* Fixed problem with Feature image support on default theme.
-* Changed method of creating the directory members which wasn't always happening on activation.
+* Various fixes for version 3.4
+* Added Excerpt field to front end Listing edit
+* Redesigned generic archive template page-listings.php to display better in standard themes.
+* Changes the star rating tag ids to classes so you can have more than one rating control on the page.
+* Rearranged registration hook so it actually works.
 
-= 2.1.1.8 =
-* fixed version comparison in page-update-listing.php
-* Fixed PHP 5.4 problem in custompress
-* removed old functions no longer used in the default theme.
 
 = 2.1.1.5 =
-* Numerous translation fixes
-* Fixed bad comment_popup calls so Review Off will display properly.
-
+* Fixed double loading of css script.
+* Remove no longer used tabs script
 
 = 2.1.1.4 =
 * Fixed template parts loading order so shortcodes would work in Listings.

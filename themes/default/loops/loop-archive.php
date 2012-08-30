@@ -5,6 +5,7 @@ while ( have_posts() ) : the_post(); ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <div class="entry-meta">
+		<?php the_dr_posted_on(); ?>
 
 		<div class="entry-utility">
 

@@ -8,16 +8,15 @@
 */
 
 global $wp_query, $wp_taxonomies, $post, $CustomPress_Core;
-
 $listing_data   = '';
 $selected_cats  = '';
-$error = get_query_var('dr_error');
+$error = $dr_error; // get_query_var('dr_error');
 $post_statuses = get_post_statuses(); // get the wp post status list
 $allowed_statuses = $this->get_options('general'); // Get the ones we allow
 $allowed_statuses = array_reverse(array_intersect_key($post_statuses, $allowed_statuses['moderation']) ); //return the reduced list
 
 //Are we adding a Listing?
-if (is_page($this->add_listing_page_id)) {
+if(! isset($_REQUEST['post_id']) ){
 	//Make an auto-draft so we have a post id to connect attachemnts to. Set global $post_id so media editor can hook up.
 	$post_id = wp_insert_post( array( 'post_title' => __( 'Auto Draft' ), 'post_type' => $this->post_type, 'post_status' => 'auto-draft' ) );
 	$listing_data = get_post($post_id, ARRAY_A );
@@ -26,7 +25,7 @@ if (is_page($this->add_listing_page_id)) {
 }
 
 //Or are we editing a listing?
-if(is_page($this->edit_listing_page_id)){
+if( isset($_REQUEST['post_id']) ){
 	$listing_data = get_post(  $_REQUEST['post_id'], ARRAY_A );
 	$post_id = $listing_data['ID'];
 	$editing = true;
