@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: WPMU Assist
 Plugin URI: http://premium.wpmudev.org/project/classifieds

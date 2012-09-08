@@ -57,23 +57,29 @@ div.comment-item:hover .row-actions {
 	clear: right;
 }
 
-.tax_panel{
+.dr_tax_panel{
 	overflow: auto;
 	height:160px;
-	font-size: .8em;
 	border:1px solid #ddd;
 }
 
-.tax_panel ul{
-	padding: 0;
+.dr_tax_panel ul{
 	list-style: none outside none;
+	padding: 0;
+	margin: 0;
 }
-.taxonomydiv{
+.dr_tax_panel ul.children{
+	font-size: .8em;
+	margin-left: 1.6em;
+}
+
+.dr_taxonomydiv{
 	float: left;
 	display: block;
 	width:47%;
 	margin-right: 3%;
 }
+
 
 .editfield input, 
 .editfield textarea,
@@ -94,7 +100,9 @@ div.comment-item:hover .row-actions {
 #dr_listing_list .entry-meta{
 	clear: none;
 	float: right !important;
-	width: 240px;
+	width: 230px;
+	border-left: 1px solid #ddd;
+	padding: 0 5px;
 }
 
 #dr_listing_list .entry-post{
@@ -127,10 +135,10 @@ div.comment-item:hover .row-actions {
 .dr_list_grid li{
 	float: left;
 	list-style: none outside none;
-	min-height: 10em;
+	min-height: 11em;
 	padding: .5em;
 	width: 19%;
-	margin-right: 2%;
+	margin: 0 2% 2% 0;
 	border: medium solid #eee;
 	border-radius: .4em;
 }
@@ -194,14 +202,15 @@ div.comment-item:hover .row-actions {
 
 /** Sigin Form **/
 /* tabbed list */
-#login-register-password ul.dr_tabs {
+#login-register-password, ul.dr_tabs {
 	padding-bottom: 0;
-	margin: 0;
+	margin: 0 !important;
 	position: relative;
 	list-style: none;
 	z-index: 1000;
 	float: left;
 }
+
 ul.dr_tabs li {
 	background: #fff;
 	border: 1px solid #E7E9F6;
@@ -213,6 +222,7 @@ ul.dr_tabs li {
 	overflow: hidden;
 	float: left;
 }
+
 ul.dr_tabs li a {
 	text-decoration: none;
 	padding: 0 10px;
@@ -249,7 +259,9 @@ ul.dr_tabs li.dr_active a {
 }
 
 /* global styles */
-#login-register-password {}
+#login-register-password {
+		width: 100%;
+}
 #login-register-password h3 {
 	border: 0 none;
 	margin: 10px 0;
@@ -309,4 +321,34 @@ margin-bottom: 10px;
 .usericon img {
 	border: 1px solid #F4950E;
 	padding: 1px;
+}
+
+/* Custom Fields onput */
+.dr-custom-block table {
+	border-collapse: collapse;
+	width:100%;
+}
+
+.dr-custom-block th,
+.dr-custom-block td {
+	border: 1px solid #ddd;
+	padding: 0 4px;
+}
+
+/* custom input field styles */
+.ct-form-field table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.ct-form-field label{
+	border:none;
+	font-family: inherit;
+}
+.ct-form-field td{
+	border:none;
+}
+
+.ct-form-field p{
+	font-size: .8em;
 }

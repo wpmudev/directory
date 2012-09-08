@@ -62,7 +62,7 @@ $transactions = new DR_Transactions;
 				<span class="description"><?php _e( 'Directory Credits spent.', $this->text_domain ); ?></span>
 				<?php else: ?>
 				<span class="description"><?php _e( 'Directory Credits purchased.', $this->text_domain ); ?></span>
-				<?php endif;>
+				<?php endif; ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>

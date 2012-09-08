@@ -1,9 +1,9 @@
 /*
-Styleshteet Name: Classifieds UI Front Main
+Styleshteet Name: Directory UI Front Main
 Description: You can override this file in your active theme.
 */
 
-/* =Styles for Classifieds Main component.
+/* =Styles for Directory Main component.
 -------------------------------------------------------------- */
 .error {
 	background: #FFEBE8;
@@ -17,6 +17,10 @@ Description: You can override this file in your active theme.
 .description {
 	color:#888888;
 	font-size:12px;
+}
+
+.clear{
+	clear: both;
 }
 
 ul.button-nav li {
@@ -128,10 +132,7 @@ ul.button-nav li {
 .dr-custom-fields td {
 	border:1px solid #EAEAEA;
 }
-.contact-user-btn {
-	padding-top: 165px;
-	margin-left: 10px;
-}
+
 .dr-contact-form {
 	width: 500px;
 	float: left;
@@ -197,6 +198,62 @@ ul.button-nav li {
 	width: inherit;
 }
 
+/*Categories list grid css*/
+#dr_list_categories span{
+	font-size: small;
+}
+
+.dr_list_categories ul{
+	padding:0;
+	margin:0;
+}
+
+.dr_list_grid h2{
+	background-color: #eee;
+	padding: .2em 1em;
+	border-radius: .3em;
+}
+
+.dr_list_grid li{
+	float: left;
+	list-style: none outside none;
+	min-height: 10em;
+	padding: .5em;
+	width: 19%;
+	margin: 0 2% 2% 0;
+	border: medium solid #eee;
+	border-radius: .4em;
+}
+
+
+/*Categories list css*/
+.dr_list h2{
+	background-color: #eee;
+	padding: .2em 1em;
+	border-radius: .3em;
+	text-shadow: 1px 1px #fff;
+}
+
+.dr_list ul{
+	min-width:50%;
+}
+
+.dr_list li{
+	list-style: none outside none;
+	margin: .6em;
+}
+
+.dr_list div{
+	float:left;
+	margin: 0 1em;
+}
+
+/* Pagination styles */
+.navigation{
+	float:right;
+}
+
+
 /* Pagination styles */
 .navigation{
 
@@ -229,4 +286,206 @@ ul.button-nav li {
 	padding:6px 9px 5px 9px;
 	background: #3279BB;
 	color:#fff;
+}
+
+/** Sigin Form **/
+/* tabbed list */
+#login-register-password, ul.dr_tabs {
+	padding-bottom: 0;
+	margin: 0 !important;
+	position: relative;
+	list-style: none;
+	z-index: 1000;
+	float: left;
+}
+
+ul.dr_tabs li {
+	background: #fff;
+	border: 1px solid #E7E9F6;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	line-height: 2em;
+	padding: 0;
+	margin-right: 5px;
+	overflow: hidden;
+	float: left;
+}
+
+ul.dr_tabs li a {
+	text-decoration: none;
+	padding: 0 10px;
+	display: block;
+}
+
+ul.dr_tabs li.dr_active {
+	border-bottom: 1px solid #fff;
+}
+ul.dr_tabs li.dr_active a {
+	font-weight: bold;
+	color: #333;
+}
+
+.dr_tab_container {
+	background: #fff;
+	position: relative;
+	margin: 0;
+	border: 1px solid #E7E9F6;
+	z-index: 999;
+	float: left;
+	width: 100%;
+	top: -1px;
+}
+.dr_tab_content {
+	padding: 15px;
+}
+.dr_tab_content ul {
+	padding: 0;
+	margin: 0 0 0 15px;
+}
+.dr_tab_content li {
+	margin: 5px 0;
+}
+
+/* global styles */
+#login-register-password {
+		width: 100%;
+}
+#login-register-password h3 {
+	border: 0 none;
+	margin: 10px 0;
+	padding: 0;
+}
+#login-register-password p {
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+/* form elements */
+.wp-user-form {}
+.username,
+.password,
+.login_fields {
+	margin: 7px 0 0 0;
+	overflow: hidden;
+	width: 100%;
+}
+.username label,
+.password label {
+	float: left;
+	width: 25%;
+}
+.username input,
+.password input {
+	float: left;
+	width: 200px;
+	padding: 2px 3px;
+	color: #777;
+}
+.rememberme {
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 7px;
+}
+#rememberme {
+	float: left;
+	margin: 4px 4px -4px 0;
+}
+.user-submit {
+	padding: 5px 10px;
+	margin: 5px 0;
+}
+.userinfo { 
+	float: left;
+	width: 75%;
+margin-bottom: 10px; 
+}
+.userinfo p {
+	margin-left: 10px;
+}
+.usericon {
+	float: left;
+	width: 15%;
+	margin: 0 0 10px 22px;
+}
+.usericon img {
+	border: 1px solid #F4950E;
+	padding: 1px;
+}
+
+/* Custom Fields onput */
+.dr-custom-block table {
+	border-collapse: collapse;
+	width:100%;
+}
+
+.dr-custom-block th,
+.dr-custom-block td {
+	border: 1px solid #ddd;
+	padding: 0 4px;
+}
+
+/* custom input field styles */
+.ct-form-field table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.ct-form-field label{
+	border:none;
+	font-family: inherit;
+}
+.ct-form-field td{
+	border:none;
+}
+
+.ct-form-field p{
+	font-size: .8em;
+}
+
+/* Update page*/
+.dr_tax_panel{
+	overflow: auto;
+	height:160px;
+	border:1px solid #ddd;
+}
+
+.dr_tax_panel label{
+	margin: 0;
+	padding:0;
+	
+}
+.dr_tax_panel ul{
+	list-style: none outside none;
+	padding: 0;
+	margin: 0;
+}
+
+.dr_tax_panel ul.children{
+	font-size: .8em;
+	margin-left: 1.6em;
+}
+
+.dr_taxonomydiv{
+	float: left;
+	display: block;
+	width:47%;
+	margin-right: 3%;
+}
+
+.entry-meta{
+	float: right;
+	width: 230px;
+	padding: 0 10px;
+	border-left: 1px solid #dddddd;
+	margin-bottom: 1em;
+}
+
+.entry-title{
+	border-bottom: medium solid #1fb3dd;
+}
+.entry-title a{
+	text-decoration : none;
+}
+
+.entry-post{
+	margin-bottom: 1em;
 }

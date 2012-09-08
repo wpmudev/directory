@@ -31,6 +31,9 @@
 						<div class="entry-content">
 							<?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 							<?php the_content(); ?>
+	<div class="dr-custom-block">
+		<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
+	</div>
 
 							<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
 						</div><!-- .entry-content -->

@@ -123,7 +123,6 @@ class Directory_Core_Main extends Directory_Core {
 
 		//load proper theme for home listing page
 		if ( is_home() ) {
-
 			$templates[] = 'home-listing.php';
 
 			//if custom template exists load it
@@ -143,13 +142,8 @@ class Directory_Core_Main extends Directory_Core {
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
 				$this->directory_template = $page_template;
 				$wp_query->post_count = 1;
-				//				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
-				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
 				add_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
-				$this->dr_first_thumbnail = true;
-				//				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 11 );
-				//				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 11 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ) );
 			}
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 
@@ -168,6 +162,8 @@ class Directory_Core_Main extends Directory_Core {
 			if ( $listing_id ) $templates[] = "single-listing-$listing_id.php";
 
 			$templates[] = 'single-listing.php';
+			
+			
 
 			//if custom template exists load it
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
@@ -422,9 +418,9 @@ class Directory_Core_Main extends Directory_Core {
 	function on_enqueue_scripts() {
 		//including CSS
 		if ( file_exists( get_template_directory() . '/style-directory.css' ) )
-		wp_enqueue_style( 'style-classifieds', get_template_directory() . '/style-directory.css' );
+		wp_enqueue_style( 'style-directory', get_bloginfo('template_url') . '/style-directory.css' );
 		elseif ( file_exists( $this->plugin_dir . 'ui-front/general/style-directory.css' ) )
-		wp_enqueue_style( 'style-classifieds', $this->plugin_url . 'ui-front/general/style-directory.css' );
+		wp_enqueue_style( 'style-directory', $this->plugin_url . 'ui-front/general/style-directory.css' );
 	}
 
 	/**

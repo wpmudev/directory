@@ -279,6 +279,9 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				else
 				$this->render_admin('custom-fields');
 			}
+			elseif ( $_GET['ct_content_type'] == 'shortcodes' ) {
+				$this->render_admin('shortcodes');
+			}
 		}
 
 		/**

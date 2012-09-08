@@ -60,7 +60,7 @@ $error       = get_query_var('checkout_error');
 
 <form action="#" method="post"  class="dr-checkout">
 	<strong><?php _e( 'Cost of Service', $this->text_domain ); ?></strong>
-	<table id="billing-type" >
+	<table id="billing-type" class="form-table">
 		<?php if($this->use_credits && ! $this->is_full_access() ): ?>
 		<tr>
 			<th <?php do_action( 'billing_invalid' ); ?>><label for="billing"><?php _e( 'Buy Credits', $this->text_domain ) ?></label></th>

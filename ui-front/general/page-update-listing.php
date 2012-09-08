@@ -67,7 +67,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
 		<div class="editfield">
-			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />
+			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label>
 			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
 			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
 		</div>
@@ -95,7 +95,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		<?php if(post_type_supports('directory_listing','excerpt') ): ?>
 		<div class="editfield alt">
-			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label><br />
+			<label for="excerpt"><?php _e( 'Excerpt', $this->text_domain ); ?></label>
 			<textarea id="excerpt" name="listing_data[post_excerpt]" rows="2" ><?php echo (isset( $listing_data['post_excerpt'] ) ) ? esc_textarea($listing_data['post_excerpt']) : ''; ?></textarea>
 			<p class="description"><?php _e( 'A short excerpt of your listing.', $this->text_domain ); ?></p>
 		</div>
@@ -117,10 +117,10 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		?>
 
-		<div id="taxonomy-<?php echo $tax_name; ?>" class="taxonomydiv">
+		<div id="taxonomy-<?php echo $tax_name; ?>" class="dr_taxonomydiv">
 			<label><?php echo $labels->all_items; ?></label>
 
-			<div id="<?php echo $tax_name; ?>_all" class="tax_panel">
+			<div id="<?php echo $tax_name; ?>_all" class="dr_tax_panel">
 				<?php
 				$name = ( $tax_name == 'category' ) ? 'post_category' : 'tax_input[' . $tax_name . ']';
 				echo "<input type='hidden' name='{$name}[]' value='0' />"; 		// Allows for an empty term set to be sent. 0 is an invalid Term ID and will be ignored by empty() checks.
@@ -129,11 +129,10 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 					<?php wp_terms_checklist( 0, array( 'taxonomy' => $tax_name, 'selected_cats' => $selected_cats, 'checked_ontop' => false ) ) ?>
 				</ul>
 			</div>
-			<br />
+			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
 		<?php endforeach; ?>
 
-		<div class="clear"></div>
 
 		<?php
 		//get related non-hierarchical taxonomies
@@ -150,17 +149,19 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		?>
 
-		<div class="editfield">
+		<div class="dr_taxonomydiv">
 			<div id="<?php echo $tag_name; ?>-checklist" class="tagchecklist">
-				<label><?php echo $labels->name . ': ' . $labels->add_or_remove_items; ?>
+				<label><?php echo $labels->name; ?>
 					<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
 				</label>
 			</div>
-			<br />
+			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
-		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto'}); </script>
+
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px'}); </script>
 		<?php endforeach; ?>
 
+		<div class="clear"><br /></div>
 
 		<div class="editfield" >
 			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
@@ -180,9 +181,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<?php if( isset( $CustomPress_Core) ) : ?>
 		<div class="editfield">
 			<?php
-			$post->post_type    = 'directory_listing';
-			$post->ID           = $listing_data['ID'];
-			$CustomPress_Core->display_custom_fields();
+			echo do_shortcode('[custom_fields_input id="' . $listing_data['ID'] . '"][/custom_fields_input]');
 			?>
 		</div>
 		<?php endif; ?>

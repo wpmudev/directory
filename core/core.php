@@ -333,7 +333,7 @@ class Directory_Core {
 	* @return void
 	*/
 	function init() {
-
+		global $blog_id;
 
 		// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
 		register_post_status( 'virtual', array(
@@ -383,7 +383,7 @@ class Directory_Core {
 		}
 
 		//Set a user capability based on users purchases
-		if(is_blog_user() ) {
+		if(! is_multisite() || is_user_member_of_blog(get_current_user_id(), $blog_id) ) {
 			if($this->use_free
 			|| ($this->use_credits && $this->user_credits > 0)
 			|| $this->is_full_access() ){
@@ -392,6 +392,17 @@ class Directory_Core {
 				$this->current_user->remove_cap('create_listings');
 			}
 		}
+		
+				// Rewrite rules
+		add_rewrite_rule( 'listings/author/(.+?)(/page/(.+?))?/?$', 'index.php?post_type=directory_listing&author_name=$matches[1]&paged=$matches[3]', 'top' );
+
+		//add_rewrite_rule( 'listings/page/([0-9]{1,})/?$', 'index.php?post_type=directory_listing&paged=$matches[1]', 'top' );
+
+		//add_rewrite_rule( 'listings/rating/page/([0-9]{1,})/?$', 'index.php?post_type=directory_listing&rating&paged=$matches[1]', 'top' );
+
+		flush_rewrite_rules();
+
+
 	}
 
 	/**
@@ -897,13 +908,14 @@ class Directory_Core {
 		'style' => '', //list, grid
 		), $atts ) );
 
-		if($style == 'grid') $result = '<div class="dr_list_grid">' .PHP_EOL;
-		elseif($style == 'list') $result = '<div class="dr_list">' .PHP_EOL;
-		else $result = "<div>\n";
+		if($style == 'grid') $result = '<div class="dr_list_grid">';
+		elseif($style == 'list') $result = '<div class="dr_list">';
+		else $result = "<div>";
 
 		$result .= the_dr_categories_home( false, $atts );
 
-		$result .= "</div><!--.dr_list-->\n";
+		$result .= "</div><!--.dr_list-->";
+		
 		return $result;
 	}
 

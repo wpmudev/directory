@@ -5,6 +5,14 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2 =
+* Added Directory Category Samples
+* Added BuddyPress support
+* Added numerous fixes for Multisite
+* Added credits support.
+* Added Authorize net support
+* Cleaned up default theme
+
 = 2.1.2 =
 * Various fixes for version 3.4
 * Added Excerpt field to front end Listing edit

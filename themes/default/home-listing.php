@@ -2,7 +2,7 @@
 
 <div id="content"><!-- start #content -->
     <div class="padder">
-    <?php echo do_shortcode( '[dr_list_categories style="grid"]' ); ?>
+    <?php echo do_shortcode( '[dr_list_categories style="grid"]' ); ?>x
     </div>
 </div><!-- end #content -->
 

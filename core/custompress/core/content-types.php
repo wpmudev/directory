@@ -74,6 +74,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		add_shortcode('ct', array($this,'ct_shortcode'));
 		add_shortcode('tax', array($this,'tax_shortcode'));
+		add_shortcode('ct_filter', array($this,'filter_shortcode'));
+
+		add_shortcode('custom_fields_input', array($this,'inputs_shortcode'));
 		add_shortcode('custom_fields_block', array($this,'fields_shortcode'));
 
 		add_filter('the_content', array($this,'run_custom_shortcodes'), 6 ); //Early priority so that other shortcodes can use custom values
@@ -766,8 +769,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*
 	* @return void
 	*/
-	function display_custom_fields() {
-		$this->render_admin('display-custom-fields', array( 'type' => 'local' ) );
+	function display_custom_fields($fields = '') {
+		$this->render_admin('display-custom-fields', array( 'type' => 'local', 'fields' => $fields ) );
 	}
 
 	/**
@@ -775,8 +778,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*
 	* @return void
 	*/
-	function display_custom_fields_network() {
-		$this->render_admin('display-custom-fields', array( 'type' => 'network' ) );
+	function display_custom_fields_network($fields = '') {
+		$this->render_admin('display-custom-fields', array( 'type' => 'network', 'fields' => $fields  ) );
 	}
 
 	/**
@@ -819,7 +822,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		global $wp_roles;
 
 		if ( ! is_object($wp_roles) ) return;
- 		{
+		{
 			$post_types = $this->network_post_types;
 			if(is_array($post_types)){
 				foreach($post_types as $key => $pt){
@@ -1273,6 +1276,26 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$result = apply_filters('tax_shortcode', $result, $atts, $content);
 		return $result;
 	}
+	
+	/**
+	*
+	*
+	*
+	*/
+	function inputs_shortcode($atts, $content=null){
+		global $post;
+		
+		extract( shortcode_atts( array(
+		'id' => 0,
+		), $atts ) );
+
+    if ( ! empty($id) ) $post = get_post($id);
+		ob_start();
+  	$this->display_custom_fields( do_shortcode($content) );
+		$result = ob_get_contents();
+		ob_end_clean();
+		return $result;
+	}
 
 	/**
 	* Creates shortcodes for fields which may be used for shortened embed codes.
@@ -1356,7 +1379,22 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			$fmt[$key] = ($$key === null) ? $fmt[$key] : $$key;
 		}
 
-		$custom_fields = $this->all_custom_fields;
+		//See if a filter is defined
+		$field_ids = array_filter( array_map('trim',( array)explode(',', do_shortcode($content) ) ) );
+
+		$custom_fields = array();
+
+		if(empty($field_ids)){
+			$custom_fields = $this->all_custom_fields;
+		} else {
+			foreach($field_ids as $field_id){
+				$cid = str_replace(array('_ct_', 'ct_'), '', $field_id);
+				if(array_key_exists($cid, $this->all_custom_fields)) {
+					$custom_fields[$cid] = $this->all_custom_fields[$cid];
+				}
+			}
+		}
+
 		if (empty($custom_fields)) $custom_fields = array();
 
 		$result = $fmt['open'];
@@ -1387,7 +1425,55 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		// Wrap of for CSS after filtering
 		$result = '<div class="ct-custom-field-block">' . "\n{$result}</div>\n";
+		return $result;
+	}
 
+	/**
+	* returns list of a comma delimited field names matching the custom term supplied
+	*
+	* @terms Comma separated list of terms.
+	* @content Comma separated list of custom field ids.
+	*
+	* @return Comma separated list of field IDs filtered by terms
+	*/
+
+	function filter_shortcode($atts, $content=null){
+		global $post
+		;
+		extract( shortcode_atts( array(
+		'terms' => '',
+		), $atts ) );
+
+		$post_type = get_post_type($post->ID);
+		$fields = array_map('trim', (array)explode(',', $content) );
+
+		if( ! empty($terms) ){
+			$belongs = false;
+			$taxonomies = array_values( get_object_taxonomies($post_type, 'object') );
+
+			$term_names = array_map('trim', (array)explode(',',$terms) );
+
+
+			foreach($taxonomies as $taxonomy){
+				if($taxonomy->hierarchical){ //Only the category like
+					foreach($term_names as $name){
+						$term = get_term_by('slug', $name, $taxonomy->name);
+						if( empty($term->parent) ) {
+							$children = get_term_children($term->term_id, $taxonomy->name);
+							if(is_object_in_term($post->ID, $taxonomy->name, $children) ) $belongs = true;
+						}
+
+						if(is_object_in_term($post->ID, $taxonomy->name, $name) ) $belongs = true;
+					}
+				}
+			}
+			if(! $belongs) $fields = array();
+		}
+
+		$result = implode(',', array_filter($fields) );  //filter blanks
+		if($result) $result .= ',';
+
+		$result = apply_filters('custom_fields_filter_shortcode', $result, $atts, $content);
 		return $result;
 	}
 

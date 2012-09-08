@@ -25,36 +25,16 @@ $nonce = wp_create_nonce('reorder_custom_fields');
 
 <?php $this->render_admin('update-message'); ?>
 
-<div class="ct-wrap-left">
-
-	<div class="embed-code-wrap">
-		<h3><?php _e('Embedding Custom Fields', $this->text_domain); ?></h3>
-		<span class="description"><?php _e( '<b>Embed codes</b> are used in templates to return the value of the custom fields of the current post. Codes may be for individual fields using the Embed code links below for each field <br />or you can display the entire block of custom fields for a listing using the embed code:', $this->text_domain ); ?></span>
-		<br />
-		<code><span style="color:red">&lt;?php</span> echo <strong>do_shortcode('[custom_fields_block]')</strong>; <span style="color:red">?&gt;</span></code>
-		<br /><br />
-		<span class="description"><?php _e( '<b>Shortcodes</b> are used in post, pages and widgets to return the value of the custom fields of the current post. Use inside the loop in Posts and Widgets', $this->text_domain ); ?></span>
-		<br />
-		<code><strong>[custom_fields_block]</strong></code>
-	</div>
+<div class="embed-code-wrap">
+	<h3><?php _e('Embedding Custom Fields', $this->text_domain); ?></h3>
+	<span class="description"><?php _e( '<b>Embed codes</b> are used in templates to return the value of the custom fields of the current post. Codes may be for individual fields using the Embed code links below for each field <br />or you can display the entire block of custom fields for a listing using the embed code:', $this->text_domain ); ?></span>
+	<br />
+	<code><span style="color:red">&lt;?php</span> echo <strong>do_shortcode('[custom_fields_block]')</strong>; <span style="color:red">?&gt;</span></code>
+	<br /><br />
+	<span class="description"><?php _e( '<b>Shortcodes</b> are used in post, pages and widgets to return the value of the custom fields of the current post. Use inside the loop in Posts and Widgets', $this->text_domain ); ?></span>
+	<br />
+	<code><strong>[custom_fields_block]</strong></code>
 </div>
-
-<div class="ct-wrap-right">
-
-	<h3><?php _e('Attributes for the [custom_fields_block]', $this->text_domain); ?></h3>
-	<strong><?php _e( 'Attributes which may be used for the block embed and shortcode:', $this->text_domain); ?></strong>
-	<br /><span class="description"><?php _e( 'wrap        = Wrap the fields in either a "table", a "ul" or a "div" structure.', $this->text_domain ) ?></span>
-	<br /><strong><?php _e( 'The default wrap attributes may be overriden using the following individual attributes:', $this->text_domain); ?></strong>
-	<br /><span class="description"><?php _e( 'open = HTML to begin the block with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'close = HTML to end the block with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'open_line = HTML to begin a line with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'close_line = HTML to end a line with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'open_title = HTML to begin the title with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'close_title = HTML to end the title with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'open_value = HTML to begin the value with', $this->text_domain ) ?></span>
-	<br /><span class="description"><?php _e( 'close_value = HTML to end the value with', $this->text_domain ) ?></span>
-</div>
-<div class="ct-clear"></div>
 
 <form action="#" method="post" class="ct-form-single-btn">
 	<input type="submit" class="button-secondary" name="redirect_add_custom_field" value="<?php _e('Add Custom Field', $this->text_domain); ?>" />

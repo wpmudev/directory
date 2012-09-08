@@ -37,7 +37,7 @@ function the_dr_categories_home( $echo = true ) {
 
 	$categories = get_categories( $args );
 
-	$output = '<div id="dr_list_categories" class="dr_list_categories" >' . PHP_EOL;
+	$output = '<div id="dr_list_categories" class="dr_list_categories" >' . "\n";
 	$output .= "<ul>\n";
 
 	foreach( $categories as $category ) {
@@ -87,7 +87,7 @@ function the_dr_categories_home( $echo = true ) {
 
 	$output .= "</ul>\n";
 	$output .= "</div>\n";
-	$output .= '<div class="clear"></div>' . PHP_EOL;
+	$output .= '<div class="clear"></div>' . "\n";
 
 	if ( $echo )
 	echo $output;

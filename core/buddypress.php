@@ -298,13 +298,12 @@ class Directory_Core_Buddypress extends Directory_Core {
 			$templates = array( 'page-listing.php' );
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
 				$this->directory_template = $page_template;
-				$wp_query->is_page = 1;
 				$wp_query->post_count = 1;
 				add_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
-				//add_filter( 'the_title', array( &$this, 'no_title' ) );
 				add_filter('the_content', array(&$this, 'listing_list_theme'));
 			}
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+			$this->is_directory_page = true;
 		}
 		elseif( is_page($this->my_listings_page_id ) ){
 			/* Set the proper step which will be loaded by "page-my-listings.php" */
@@ -426,6 +425,14 @@ class Directory_Core_Buddypress extends Directory_Core {
 			/* Set the proper step which will be loaded by "page-my-listings.php" */
 			set_query_var( 'cf_action', 'my-listings' );
 		}
+		//load  specific items
+		if ( $this->is_directory_page ) {
+			add_filter( 'edit_post_link', array( &$this, 'delete_edit_post_link' ), 99 );
+
+			//prevents 404 for virtual pages
+			status_header( 200 );
+		}
+		
 	}
 
 	/**

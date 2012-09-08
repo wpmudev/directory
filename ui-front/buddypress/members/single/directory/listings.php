@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 global $bp, $wp_query, $post;
 
 
@@ -61,6 +61,7 @@ if ( ! is_post_type_archive('directory_listing') ): ?>
 <?php endif; ?>
 
 <?php echo $this->pagination( $this->pagination_top ); ?>
+<div class="clear"></div>
 
 <?php
 

@@ -8,7 +8,7 @@ class DR_ContextualHelp {
 	private $_help;
 
 	private $_pages = array(
-		'list', 'edit', 'get_started', 'settings',
+		'list', 'edit', 'get_started', 'directory_settings',
 	);
 
 	private $_dr_sidebar = '';
@@ -169,9 +169,9 @@ class DR_ContextualHelp {
 
 
 
-	private function _add_settings_page_help () {
+	private function _add_directory_settings_page_help () {
 		$this->_help->add_page(
-			'directory_listing_page_settings',
+			'directory_listing_page_directory_settings',
 			array(
 				array(
 					'id' => 'dr-intro',

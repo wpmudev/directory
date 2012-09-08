@@ -391,8 +391,13 @@ h1.entry-title{
 #tos-agree, #payment-method, #confirm-payment {
 	margin-bottom: 10px;
 }
+#tos-agree th, #billing-type th, #payment-method th, #confirm-payment th {
+	padding: 0 10px;
+}
+
+
 #tos-agree td, #billing-type td, #payment-method td, #confirm-payment td {
-	width: 200px;
+	width: 300px;
 	background: #EEE;
 	padding-left: 10px;
 	font-weight: bold;
@@ -438,6 +443,49 @@ h1.entry-title{
 	font-weight: bold;
 	border: 1px solid #ddd;
 }
+
+/* Custom Fields onput */
+.dr-custom-block table {
+	border-collapse: collapse;
+	width:100%;
+}
+
+.dr-custom-block th,
+.dr-custom-block td {
+	border: 1px solid #ddd;
+	padding: 0 1em;
+}
+
+.dr-custom-block th{
+	width: 30%;
+	text-align: right;
+}
+
+.dr_tax_panel{
+	overflow: auto;
+	height:160px;
+	border:1px solid #ddd;
+}
+
+.dr_tax_panel ul{
+	list-style: none outside none !important;
+	padding: 0;
+	margin: .5em !important;
+	line-height:1em
+}
+
+.dr_tax_panel ul.children{
+	font-size: .8em;
+	margin-left: 1.6em !important;
+}
+
+.dr_taxonomydiv{
+	float: left;
+	display: block;
+	width:47%;
+	margin-right: 3%;
+}
+
 /********************************** footer */
 #footer {
     clear: both;
@@ -714,5 +762,129 @@ text-align: right;
     font-size: 12px;
 }
 
+/********************************** signin-page */
+/** Sigin Form **/
+/* tabbed list */
+#login-register-password, ul.dr_tabs {
+	padding-bottom: 0;
+	margin: 0 !important;
+	position: relative;
+	list-style: none;
+	z-index: 1000;
+	float: left;
+}
+
+ul.dr_tabs li {
+	background: #fff;
+	border: 1px solid #E7E9F6;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	line-height: 2em;
+	padding: 0;
+	margin-right: 5px;
+	overflow: hidden;
+	float: left;
+}
+
+ul.dr_tabs li a {
+	text-decoration: none;
+	padding: 0 10px;
+	display: block;
+}
+
+ul.dr_tabs li.dr_active {
+	border-bottom: 1px solid #fff;
+}
+ul.dr_tabs li.dr_active a {
+	font-weight: bold;
+	color: #333;
+}
+
+.dr_tab_container {
+	background: #fff;
+	position: relative;
+	margin: 0;
+	border: 1px solid #E7E9F6;
+	z-index: 999;
+	float: left;
+	width: 100%;
+	top: -1px;
+}
+.dr_tab_content {
+	padding: 15px;
+}
+.dr_tab_content ul {
+	padding: 0;
+	margin: 0 0 0 15px;
+}
+.dr_tab_content li {
+	margin: 5px 0;
+}
+
+/* global styles */
+#login-register-password {
+	width: 100%;
+}
+
+#login-register-password h3 {
+	border: 0 none;
+	margin: 10px 0;
+	padding: 0;
+}
+#login-register-password p {
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+/* form elements */
+.wp-user-form {}
+.username,
+.password,
+.login_fields {
+	margin: 7px 0 0 0;
+	overflow: hidden;
+	width: 100%;
+}
+.username label,
+.password label {
+	float: left;
+	width: 25%;
+}
+.username input,
+.password input {
+	float: left;
+	width: 200px;
+	padding: 2px 3px;
+	color: #777;
+}
+.rememberme {
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 7px;
+}
+#rememberme {
+	float: left;
+	margin: 4px 4px -4px 0;
+}
+.user-submit {
+	padding: 5px 10px;
+	margin: 5px 0;
+}
+.userinfo { 
+	float: left;
+	width: 75%;
+margin-bottom: 10px; 
+}
+.userinfo p {
+	margin-left: 10px;
+}
+.usericon {
+	float: left;
+	width: 15%;
+	margin: 0 0 10px 22px;
+}
+.usericon img {
+	border: 1px solid #F4950E;
+	padding: 1px;
+}
 
 /********************************** styles end <<< */

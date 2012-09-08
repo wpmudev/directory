@@ -3,10 +3,27 @@
 <?php
 global $post;
 
-if ( $type == 'local' )
-$custom_fields = $this->custom_fields;
-elseif ( $type == 'network' )
-$custom_fields = $this->network_custom_fields;
+//See if a filter is defined
+if(is_string($fields) ) $field_ids = array_filter( array_map('trim',( array)explode(',', $fields ) ) );
+
+
+$custom_fields = array();
+
+if(empty($field_ids)){
+	if ( $type == 'local' )
+	$custom_fields = $this->custom_fields;
+	elseif ( $type == 'network' )
+	$custom_fields = $this->network_custom_fields;
+} else {
+	foreach($field_ids as $field_id){
+		$cid = str_replace(array('_ct_', 'ct_'), '', $field_id);
+		if(array_key_exists($cid, $this->all_custom_fields)) {
+			$custom_fields[$cid] = $this->all_custom_fields[$cid];
+		}
+	}
+}
+
+if (empty($custom_fields)) $custom_fields = array();
 
 $output = false;
 
@@ -48,7 +65,7 @@ $output = false;
 						case 'text' : { // text fields
 							?>
 							<input type="text" name="<?php echo $fid; ?>" id="<?php echo $fid; ?>" value="<?php echo esc_attr( get_post_meta( $post->ID, $fid, true )); ?>" />
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -56,7 +73,7 @@ $output = false;
 						case 'textarea' : {	//textarea fields
 							?>
 							<textarea name="<?php echo $fid; ?>" id="<?php echo $fid; ?>" rows="5" cols="40"   ><?php echo esc_textarea( get_post_meta( $post->ID, $fid, true )); ?></textarea>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -78,7 +95,7 @@ $output = false;
 								</label>
 								<?php endforeach;
 							} ?>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -103,7 +120,7 @@ $output = false;
 								</label>
 								<?php endforeach;
 							} ?>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -124,7 +141,7 @@ $output = false;
 									endforeach;
 								} ?>
 							</select>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -148,7 +165,7 @@ $output = false;
 								}
 								?>
 							</select>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}
@@ -162,7 +179,7 @@ $output = false;
 									jQuery('#<?php echo $fid; ?>').datepicker({ dateFormat : '<?php echo $custom_field['field_date_format']; ?>' });
 								});
 							</script>
-							<p><?php echo ( $custom_field['field_description'] ); ?></p>
+							<br /><span class="description"><?php echo ( $custom_field['field_description'] ); ?></span>
 							<?php
 							break;
 						}

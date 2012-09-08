@@ -29,7 +29,7 @@ array(
 
 <div class="wrap">
 	<?php screen_icon('options-general'); ?>
-	<h2><?php _e('CustomPress Settings', $this->text_domain); echo CP_VERSION;?></h2>
+	<h2><?php echo sprintf(__('CustomPress Settings %s', $this->text_domain), CP_VERSION);?></h2>
 
 	<?php $this->render_admin('message'); ?>
 

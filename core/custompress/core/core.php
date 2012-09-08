@@ -332,6 +332,7 @@ class CustomPress_Core {
 		foreach ( $vars as $key => $val ){
 			$$key = $val;
 		}
+		
 		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
 		include "{$this->plugin_dir}ui-admin/{$name}.php";
 		else

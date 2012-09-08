@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: Gateway Relay
 Plugin URI: http://premium.wpmudev.org/project/classifieds

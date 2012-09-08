@@ -1,6 +1,5 @@
 <?php
-global $bp, $wp_query, $post;
-
+global $bp, $wp_query, $post,$paged;
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -25,16 +24,16 @@ if ( in_array($tax_key, $taxonomies) ) {
 	)
 	);
 }
+/*
+$query_args['meta_key'] = '_sr_post_rating';
+$query_args['orderby'] = 'meta_value_num';
+$query_args['order'] = 'DESC';
+*/
+
 
 //The Query
 $dr_query = new WP_Query( $query_args );
 $dr_query->set('type_title', true);
-
-//allows pagination links to work get_posts_nav_link()
-if ( $wp_query->max_num_pages == 0){
-	$wp_query->max_num_pages = $dr_query->max_num_pages;
-	$wp_query->is_singular = 0;
-}
 
 //Remove the archive title filter for the individual listings
 remove_filter( 'the_title', array( &$this, 'no_title' ) );
@@ -55,7 +54,7 @@ if ( ! is_post_type_archive('directory_listing') ): ?>
 <?php endif; ?>
 
 <?php echo $this->pagination( $this->pagination_top ); ?>
-
+<div class="clear"></div>
 <?php
 
 //Hijack the loop
@@ -100,7 +99,7 @@ $class = 'dr_listing';
 					unset( $tags_list );
 					endif;
 					do_action( 'sr_avg_ratings_of_listings', get_the_ID() ); ?>
-					<span class="comments-link"><?php comments_popup_link( __( 'Leave a review', $this->text_domain ), __( '1 Review', $this->text_domain ), esc_attr__( '% Reviews', $this->text_domain ), '', __( 'Reviews Off', $this->text_domain ) ); ?></span>
+					<br /><span class="comments-link"><?php comments_popup_link( __( 'Leave a review', $this->text_domain ), __( '1 Review', $this->text_domain ), esc_attr__( '% Reviews', $this->text_domain ), '', __( 'Reviews Off', $this->text_domain ) ); ?></span>
 				</div>
 			</div>
 
@@ -108,6 +107,7 @@ $class = 'dr_listing';
 
 				<?php
 				if (has_post_thumbnail()){
+
 					the_post_thumbnail( array(50,50),
 					array(
 					'class' => 'alignleft dr_listing_image_listing',
@@ -133,5 +133,6 @@ $class = 'dr_listing';
 	//	wp_reset_postdata();
 	endif;
 	?>
+	<div class="clear"></div>
 	<?php echo $this->pagination( $this->pagination_bottom ); ?>
 </div>

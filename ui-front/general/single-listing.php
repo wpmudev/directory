@@ -7,8 +7,9 @@ echo $content;
 ?>
 <div class="clear"></div>
 
-<div class="custom-fields">
-	<?php $this->display_custom_fields_values(); ?>
+<div class="clear"></div>
+<div class="dr-custom-block">
+	<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
 </div>
 
 <div class="entry-meta">
@@ -16,12 +17,12 @@ echo $content;
 	<?php do_action('sr_avg_rating'); ?><br />
 	<p>
 		<span class="comments">
-			<?php comments_popup_link( 
-			__( 'No Reviews &#187;', DR_TEXT_DOMAIN ), 
-			__( '1 Review &#187;', DR_TEXT_DOMAIN ), 
-			__( '% Reviews &#187;', DR_TEXT_DOMAIN ), 
-			'', 
-			__( 'Reviews Off;', DR_TEXT_DOMAIN ) 
+			<?php comments_popup_link(
+			__( 'No Reviews &#187;', DR_TEXT_DOMAIN ),
+			__( '1 Review &#187;', DR_TEXT_DOMAIN ),
+			__( '% Reviews &#187;', DR_TEXT_DOMAIN ),
+			'',
+			__( 'Reviews Off;', DR_TEXT_DOMAIN )
 			); ?>
 		</span>
 	</p>
@@ -33,8 +34,6 @@ echo $content;
 	<?php do_action('sr_rate_this'); ?>
 	<?php endif; ?>
 </div>
-<div class="clear"></div>
-
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 
 <div id="entry-author-info">

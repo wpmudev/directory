@@ -23,16 +23,16 @@ if(is_multisite() ){
 
 	<?php if (! $user_ID): ?>
 
-	<ul class="cf_tabs">
-		<li class="cf_active"><a href="#tab1_login"><?php _e('Login', $this->text_domain); ?></a></li>
+	<ul class="dr_tabs">
+		<li class="dr_active"><a href="#tab1_login"><?php _e('Login', $this->text_domain); ?></a></li>
 		<?php if($can_register): ?>
 		<li><a href="#tab2_login"><?php _e('New Account', $this->text_domain); ?></a></li>
 		<?php endif; ?>
 		<li><a href="#tab3_login"><?php _e('Forgot?', $this->text_domain); ?></a></li>
 	</ul>
-	<div class="cf_tab_container">
+	<div class="dr_tab_container">
 
-		<div id="tab1_login" class="cf_tab_content">
+		<div id="tab1_login" class="dr_tab_content">
 			<?php if ($register == true): ?>
 
 			<h3><?php _e('Success!', $this->text_domain); ?></h3>
@@ -74,7 +74,7 @@ if(is_multisite() ){
 			</form>
 		</div>
 
-		<div id="tab2_login" class="cf_tab_content" style="display:none;">
+		<div id="tab2_login" class="dr_tab_content" style="display:none;">
 			<h3><?php _e('Register for this site!', $this->text_domain); ?></h3>
 			<p><?php _e('Sign up now for the good stuff.', $this->text_domain); ?></p>
 
@@ -124,7 +124,7 @@ if(is_multisite() ){
 				</form>
 			</div>
 
-			<div id="tab3_login" class="cf_tab_content" style="display:none;">
+			<div id="tab3_login" class="dr_tab_content" style="display:none;">
 				<h3>Lose something?</h3>
 				<p>Enter your username or email to reset your password.</p>
 				<form method="post" action="<?php echo site_url('wp-login.php?action=lostpassword', 'login_post') ?>" class="wp-user-form">
@@ -170,13 +170,13 @@ if(is_multisite() ){
 
 			$(document).ready(function() {
 
-				$(".cf_tab_content").hide();
-				$("ul.cf_tabs li:first").addClass("cf_active").show();
-				$(".cf_tab_content:first").show();
-				$("ul.cf_tabs li").click(function() {
-					$("ul.cf_tabs li").removeClass("cf_active");
-					$(this).addClass("cf_active");
-					$(".cf_tab_content").hide();
+				$(".dr_tab_content").hide();
+				$("ul.dr_tabs li:first").addClass("dr_active").show();
+				$(".dr_tab_content:first").show();
+				$("ul.dr_tabs li").click(function() {
+					$("ul.dr_tabs li").removeClass("dr_active");
+					$(this).addClass("dr_active");
+					$(".dr_tab_content").hide();
 					var activeTab = $(this).find("a").attr("href");
 					$(activeTab).show();
 					return false;

@@ -57,7 +57,7 @@ class Directory_Core_Admin extends Directory_Core {
 	*/
 	function admin_menu() {
 		$opts = get_option( $this->options_name );
-		
+
 		if ( ! current_user_can('unfiltered_html') ) {
 			remove_submenu_page('edit.php?post_type=directory_listing', 'post-new.php?post_type=directory_listing' );
 			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Add New', $this->text_domain ), __( 'Add New', $this->text_domain ), 'create_listings', 'listings_add', array( &$this, 'redirect_add' ) );
@@ -79,11 +79,11 @@ class Directory_Core_Admin extends Directory_Core {
 			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Credits', $this->text_domain ), __( 'Credits', $this->text_domain ), 'read', 'directory_credits' , array( &$this, 'handle_credits_page_requests' ) );
 		}
 	}
-	
+
 	function redirect_add(){
 		echo '<script>window.location = "' . get_permalink($this->add_listing_page_id) . '";</script>';
 	}
-	
+
 
 	/**
 	* Quick hack to reorder CPT menu items
@@ -127,7 +127,7 @@ class Directory_Core_Admin extends Directory_Core {
 		if ( $this->_getting_started_complete() ) return false; // User already saw this.
 
 		$opts = maybe_unserialize(get_option( $this->options_name ) );
-		if ( isset( $opts['general']['welcome_redirect'] ) and !$opts['general']['welcome_redirect'] ) return false; // Not a first time user, move on.
+		if(empty($opts['general']['welcome_redirect']) ) return false; // Not a first time user, move on.
 
 		//if old version < 2
 		if ( get_option( 'dp_options' ) && ! isset( $_POST['install_dir2'] ) )

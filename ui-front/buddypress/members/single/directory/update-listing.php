@@ -64,7 +64,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<input type="hidden" id="post_id" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 		<input type="hidden" name="post_id" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 
-		<?php if(post_type_supports('directory_listing','editor') ): ?>
+		<?php if(post_type_supports('directory_listing','title') ): ?>
 		<div class="editfield">
 			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label><br />
 			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
@@ -75,21 +75,19 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<div class="editfield"><?php echo $this->get_post_image_link($post_id); ?></div>
 
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
-		<div>
-			<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
+		<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
 
-			<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
+		<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
 
-			<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
+		<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
 
-			<?php else: ?>
+		<?php else: ?>
 
-			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($listing_content); ?></textarea>
+		<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($listing_content); ?></textarea>
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-			<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
-		</div>
+		<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
 		<?php endif; ?>
 
 		<?php if(post_type_supports('directory_listing','excerpt') ): ?>
@@ -116,10 +114,10 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		?>
 
-		<div id="taxonomy-<?php echo $tax_name; ?>" class="taxonomydiv">
+		<div id="taxonomy-<?php echo $tax_name; ?>" class="dr_taxonomydiv">
 			<label><?php echo $labels->all_items; ?></label>
 
-			<div id="<?php echo $tax_name; ?>_all" class="tax_panel">
+			<div id="<?php echo $tax_name; ?>_all" class="dr_tax_panel">
 				<?php
 				$name = ( $tax_name == 'category' ) ? 'post_category' : 'tax_input[' . $tax_name . ']';
 				echo "<input type='hidden' name='{$name}[]' value='0' />"; 		// Allows for an empty term set to be sent. 0 is an invalid Term ID and will be ignored by empty() checks.
@@ -128,11 +126,9 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 					<?php wp_terms_checklist( 0, array( 'taxonomy' => $tax_name, 'selected_cats' => $selected_cats, 'checked_ontop' => false ) ) ?>
 				</ul>
 			</div>
-			<br />
+			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
 		<?php endforeach; ?>
-
-		<div class="clear"></div>
 
 		<?php
 		//get related non-hierarchical taxonomies
@@ -149,17 +145,18 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		?>
 
-		<div class="editfield">
+		<div class="dr_taxonomydiv">
 			<div id="<?php echo $tag_name; ?>-checklist" class="tagchecklist">
-				<label><?php echo $labels->name . ': ' . $labels->add_or_remove_items; ?>
-					<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
-				</label>
+				<label><?php echo $labels->name; ?></label>
+				<input id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="text" value="<?php echo $tag_list?>" />
+
 			</div>
-			<br />
+			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
-		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto'}); </script>
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px'}); </script>
 		<?php endforeach; ?>
 
+		<div class="clear"><br /></div>
 
 		<div class="editfield" >
 			<label for="title"><?php _e( 'Status', $this->text_domain ); ?></label>
@@ -179,12 +176,11 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<?php if( isset( $CustomPress_Core) ) : ?>
 		<div class="editfield">
 			<?php
-			$post->post_type    = 'directory_listing';
-			$post->ID           = $listing_data['ID'];
-			$CustomPress_Core->display_custom_fields();
+			echo do_shortcode('[custom_fields_input id="' . $listing_data['ID'] . '"][/custom_fields_input]');
 			?>
 		</div>
 		<?php endif; ?>
+
 		<?php if ( !empty( $error ) ): ?>
 		<br /><div class="error"><?php echo $error . '<br />'; ?></div>
 		<?php endif; ?>
