@@ -170,7 +170,7 @@ function the_dr_posted_on() {
   global $bp;
 
 	// For BuddyPress compatibility
-	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . 'listings/' : get_author_posts_url( get_the_author_meta( 'ID' ) );
+	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . 'listings/' : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
 
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
 	'meta-prep meta-prep-author',

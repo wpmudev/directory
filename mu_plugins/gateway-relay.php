@@ -184,7 +184,6 @@ class Gateway_Relay{
 
 }
 
-new Gateway_Relay;
 
 function register_gateway_relay($prefix = '', $url='', $password=''){
 	$settings = get_site_option(GATEWAY_RELAY_SETTINGS_NAME);
@@ -212,5 +211,7 @@ function unregister_gateway_relay($prefix = '', $url='', $password=''){
 	}
 	return false;
 }
+
+new Gateway_Relay;
 
 endif;

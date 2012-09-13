@@ -115,9 +115,10 @@ class Directory_Core {
 
 		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
-		add_filter('comment_form_defaults', array($this,'review_defaults'));
+		add_filter( 'comment_form_defaults', array($this,'review_defaults'));
 		add_filter( 'user_contactmethods', array( &$this, 'contact_fields' ), 10, 2 );
-
+		add_filter( 'excerpt_more', array(&$this, 'on_excerpt_more'));
+		add_filter( 'author_link', array(&$this, 'on_author_link'));
 
 
 		//Shortcodes
@@ -808,6 +809,10 @@ class Directory_Core {
 		return $new_content;
 	}
 
+	function on_excerpt_more($more = ''){
+		return ' <a href="' . get_permalink() .'">More Info &raquo;</a>';
+	}
+	
 	//replaces wp_trim_excerpt in our custom loops
 	function listing_excerpt( $excerpt, $content, $post_id ) {
 
@@ -1141,7 +1146,7 @@ class Directory_Core {
 				$html = '<p><a class="thickbox" href="' . esc_attr(admin_url() . "/media-upload.php?post_id={$post_id}&type=image&TB_iframe=1&width=640&height=510") . '" id="set-post-thumbnail" >' . esc_html__( 'Set Featured Image') . '</a></p>';
 
 				if(has_post_thumbnail($post_id)){
-					$html = get_the_post_thumbnail($post_id, array(226,100));
+					$html = get_the_post_thumbnail($post_id, array(200,150));
 					$ajax_nonce = wp_create_nonce( "set_post_thumbnail-{$post_id}" );
 					$html .= '<p class="hide-if-no-js"><a href="#" id="remove-post-thumbnail" onclick="WPRemoveThumbnail(\'' . $ajax_nonce . '\');return false;">' . esc_html__( 'Remove featured image' ) . '</a></p>';
 				}
@@ -1196,6 +1201,14 @@ class Directory_Core {
 	function no_title($content = ''){
 		if(! in_the_loop()) return $content;
 		return '';
+	}
+	
+	function on_author_link($link=''){
+		global $post;
+		if($post->post_type == 'directory_listing'){
+			$link = str_replace('/author/', '/dr-author/', $link );
+		}
+		return $link;
 	}
 
 }

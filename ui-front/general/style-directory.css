@@ -18,7 +18,7 @@ label.error {
 	padding: 0 1em;
 	margin: 0 1.2em 0 0;
 	border: 0;
-  box-sizing:border-box;
+	box-sizing:border-box;
 }
 
 .field_checking {
@@ -81,20 +81,19 @@ div.comment-item:hover .row-actions {
 }
 
 
-.editfield input, 
+.editfield input,
 .editfield textarea,
 .editfield select {
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-  width: 100%;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	width: 100%;
 }
 
 /* #dr_listing_list */
 
 #dr_listing_list .entry-title{
-  float: left;
-  width: 100%;	
+	float: left;
 }
 
 #dr_listing_list .entry-meta{
@@ -103,6 +102,7 @@ div.comment-item:hover .row-actions {
 	width: 230px;
 	border-left: 1px solid #ddd;
 	padding: 0 5px;
+	margin-left: 5px;
 }
 
 #dr_listing_list .entry-post{
@@ -112,9 +112,9 @@ div.comment-item:hover .row-actions {
 }
 
 #dr_listing_list .entry-summary{
-	margin-right: 250px;
+	clear: left;
+	padding:0;
 }
-
 
 /*Categories list grid css*/
 #dr_list_categories span{
@@ -260,7 +260,7 @@ ul.dr_tabs li.dr_active a {
 
 /* global styles */
 #login-register-password {
-		width: 100%;
+	width: 100%;
 }
 #login-register-password h3 {
 	border: 0 none;
@@ -305,10 +305,10 @@ ul.dr_tabs li.dr_active a {
 	padding: 5px 10px;
 	margin: 5px 0;
 }
-.userinfo { 
+.userinfo {
 	float: left;
 	width: 75%;
-margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 .userinfo p {
 	margin-left: 10px;
@@ -333,6 +333,10 @@ margin-bottom: 10px;
 .dr-custom-block td {
 	border: 1px solid #ddd;
 	padding: 0 4px;
+}
+
+.dr-custom-block th{
+	width: 30%;
 }
 
 /* custom input field styles */

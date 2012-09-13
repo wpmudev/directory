@@ -18,7 +18,11 @@ class Directory_Core_Main extends Directory_Core {
 
 		parent::__construct(); //Get the inheritance right
 
+		add_action( 'init', array(&$this, 'init'));
 		add_action( 'wp_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
+
+		add_action( 'template_redirect', array( &$this, 'get_author_template' ));
+
 		add_action( 'template_redirect', array( &$this, 'process_page_requests' ));
 		add_action( 'template_redirect', array( &$this, 'handle_page_requests' ));
 		add_action( 'wp_print_scripts', array( &$this, 'on_print_scripts' ) );
@@ -28,6 +32,25 @@ class Directory_Core_Main extends Directory_Core {
 
 		//add menu items
 		add_filter( 'wp_list_pages', array( &$this, 'filter_list_pages' ), 10, 2 );
+
+	}
+
+	function init(){
+		global $wp, $wp_rewrite;
+
+		parent::init();
+
+		//Listing author rewrite rule
+		$wp->add_query_var( 'dr_author_name' );
+		$wp->add_query_var( 'dr_author_page' );
+		$result = add_query_arg(  array(
+		'dr_author_name' => '$matches[1]',
+		'dr_author_page' => '$matches[3]',
+		), 'index.php' );
+		add_rewrite_rule( 'dr-author/(.+?)(/page/(.+?))?/?$', $result, 'top' );
+		$rules = get_option( 'rewrite_rules' );
+		if ( ! isset( $rules['dr-author/(.+?)(/page/(.+?))?/?$'] ) )
+		$wp_rewrite->flush_rules();
 
 	}
 
@@ -117,9 +140,14 @@ class Directory_Core_Main extends Directory_Core {
 		global $wp_query;
 
 		$templates = array();
-		$page_template = locate_template( array('page.php' ) );
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
 
+		//Check if a custom template is selected, if not or not a page, default to the one selected for the directory_listing virtual page. 
+		$id = get_queried_object_id();
+		if(empty($id) ) $id = $this->directory_page_id;
+		$slug = get_page_template_slug($id);
+		if(empty($slug) ) $page_template = get_page_template();
+		else $page_template = locate_template(array($slug, 'page.php') );
 
 		//load proper theme for home listing page
 		if ( is_home() ) {
@@ -162,8 +190,8 @@ class Directory_Core_Main extends Directory_Core {
 			if ( $listing_id ) $templates[] = "single-listing-$listing_id.php";
 
 			$templates[] = 'single-listing.php';
-			
-			
+
+
 
 			//if custom template exists load it
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
@@ -326,7 +354,7 @@ class Directory_Core_Main extends Directory_Core {
 
 		//load proper theme for signup listing page
 		elseif(is_page($this->signup_page_id)){
-	
+
 			$templates = array( 'page-signup.php' );
 			//if custom template exists load it
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
@@ -340,7 +368,7 @@ class Directory_Core_Main extends Directory_Core {
 				add_filter( 'the_title', array( &$this, 'delete_post_title' ) );
 				add_filter( 'the_content', array( &$this, 'signup_content' ) );
 			}
-			
+
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 			$this->is_directory_page = true;
 		}
@@ -440,6 +468,22 @@ class Directory_Core_Main extends Directory_Core {
 		echo "</script>\n";
 	}
 
+	function get_author_template(){
+
+		$author_slug = get_query_var( 'dr_author_name' );
+
+		if(empty($author_slug) && empty($_REQUEST['dr-author']) ) return;
+
+		$templates = array( 'author-listings.php' );
+		//if custom template exists load it
+		if ( ! $this->directory_template = locate_template( $templates ) ) {
+			//otherwise load the page template and use our own theme
+			$this->directory_template = $this->plugin_dir . 'ui-front/general/author.php';
+		}
+		load_template( $this->directory_template );
+		exit;
+
+	}
 
 
 }

@@ -44,6 +44,53 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	var $enable_subsite_content_types = false;
 	/** @var bool  keep_network_content_type for site_options */
 	var $network_content = true;
+	// Setup the various structures table, ul, div
+	public 	$structures = array (
+		"none" =>
+		array (
+		"open" => "",
+		"close" => "",
+		"open_line" => "",
+		"close_line" => "",
+		"open_title" => "",
+		"close_title" => "",
+		"open_value" => "",
+		"close_value" => "",
+		),
+		"table" =>
+		array (
+		"open" => "<table>\n",
+		"close" => "</table>\n",
+		"open_line" => "<tr>\n",
+		"close_line" => "</tr>\n",
+		"open_title" => "<th>\n",
+		"close_title" => "</th>\n",
+		"open_value" => "<td>\n",
+		"close_value" => "</td>\n",
+		),
+		"ul" =>
+		array (
+		"open" => "<ul>\n",
+		"close" => "</ul>\n",
+		"open_line" => "<li>\n",
+		"close_line" => "</li>\n",
+		"open_title" => "<span>",
+		"close_title" => "</span>",
+		"open_value" => " ",
+		"close_value" => "",
+		),
+		"div" =>
+		array (
+		"open" => "<div>",
+		"close" => "</div>\n",
+		"open_line" => "<p>",
+		"close_line" => "</p>\n",
+		"open_title" => "<span>",
+		"close_title" => "</span>",
+		"open_value" => " ",
+		"close_value" => "",
+		),
+		);
 
 	/**
 	* Constructor
@@ -281,8 +328,16 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* @return void
 	*/
 	function register_post_types() {
+		
+		$post_type = array();
+		if($this->display_network_content){
+			if($this->enable_subsite_content_types) $post_types = $this->all_post_types;
+			else $post_types = $this->network_post_types;
+		} 
+		elseif($this->enable_subsite_content_types){
+			$post_types = $this->post_types;
+		}
 
-		$post_types = $this->all_post_types;
 		// Register each post type if array of data is returned
 		if ( is_array( $post_types ) ) {
 			foreach ( $post_types as $post_type => $args ) {
@@ -450,7 +505,15 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function register_taxonomies() {
 
-		$taxonomies = $this->all_taxonomies;
+		$taxonomies = array();
+		if($this->display_network_content){
+			if($this->enable_subsite_content_types) $taxonomies = $this->all_taxonomies;
+			else $taxonomies = $this->network_taxonomies;
+		} 
+		elseif($this->enable_subsite_content_types){
+			$taxonomies = $this->taxonomies;
+		}
+
 		// Plugins can filter this value and sort taxonomies
 		$sort = null;
 		$sort = apply_filters( 'sort_custom_taxonomies', $sort );
@@ -1276,7 +1339,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$result = apply_filters('tax_shortcode', $result, $atts, $content);
 		return $result;
 	}
-	
+
 	/**
 	*
 	*
@@ -1284,14 +1347,23 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function inputs_shortcode($atts, $content=null){
 		global $post;
-		
 		extract( shortcode_atts( array(
 		'id' => 0,
+		'wrap' => 'ul',
+		'open' => null,
+		'close' => null,
+		'open_line' => null,
+		'close_line' => null,
+		'open_title' => null,
+		'close_title' => null,
+		'open_value' => null,
+		'close_value' => null,
 		), $atts ) );
 
-    if ( ! empty($id) ) $post = get_post($id);
+		if ( ! empty($id) ) $post = get_post($id);
 		ob_start();
-  	$this->display_custom_fields( do_shortcode($content) );
+		//include $this->plugin_dir . 'ui-admin/display-custom-fields.php';
+		$this->display_custom_fields( do_shortcode($content) );
 		$result = ob_get_contents();
 		ob_end_clean();
 		return $result;
@@ -1301,7 +1373,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* Creates shortcodes for fields which may be used for shortened embed codes.
 	*
 	* @string
-	* @uses appy_filters()
+	* @uses apply_filters()
 	*/
 	function fields_shortcode($atts, $content = null){
 		global $post;
@@ -1318,60 +1390,12 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		'close_value' => null,
 		), $atts ) );
 
-		// Setup the various structures table, ul, div
-		$structures = array (
-		"none" =>
-		array (
-		"open" => "",
-		"close" => "",
-		"open_line" => "",
-		"close_line" => "",
-		"open_title" => "",
-		"close_title" => "",
-		"open_value" => "",
-		"close_value" => "",
-		),
-		"table" =>
-		array (
-		"open" => "<table>\n",
-		"close" => "</table>\n",
-		"open_line" => "<tr>\n",
-		"close_line" => "</tr>\n",
-		"open_title" => "<th>\n",
-		"close_title" => "</th>\n",
-		"open_value" => "<td>\n",
-		"close_value" => "</td>\n",
-		),
-		"ul" =>
-		array (
-		"open" => "<ul>\n",
-		"close" => "</ul>\n",
-		"open_line" => "<li>\n",
-		"close_line" => "</li>\n",
-		"open_title" => "<span>",
-		"close_title" => "</span>",
-		"open_value" => " ",
-		"close_value" => "",
-		),
-		"div" =>
-		array (
-		"open" => "<div>",
-		"close" => "</div>\n",
-		"open_line" => "<p>",
-		"close_line" => "</p>\n",
-		"open_title" => "<span>",
-		"close_title" => "</span>",
-		"open_value" => " ",
-		"close_value" => "",
-		),
-		);
-
 		//Initialize with blanks
-		$fmt = $structures['none'];
+		$fmt = $this->structures['none'];
 
 		// If its' predefined
 		if(in_array($wrap, array('table','ul','div'))){
-			$fmt = $structures[$wrap];
+			$fmt = $this->structures[$wrap];
 		}
 
 		//Override any defined in $atts
@@ -1402,26 +1426,27 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			$output = in_array($post->post_type, $custom_field['object_type']);
 			if ( $output ){
 
-
 				$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
 				$fid = $prefix . $custom_field['field_id'];
+				$value = do_shortcode('[ct id="' . $fid . '"]');
+				if($value != ''){
 
-				$result .= $fmt['open_line'];
-				$result .= $fmt['open_title'];
-				$result .= ( $custom_field['field_title'] );
-				$result .= $fmt['close_title'];
-				$result .= $fmt['open_value'];
+					$result .= $fmt['open_line'];
+					$result .= $fmt['open_title'];
+					$result .= ( $custom_field['field_title'] );
+					$result .= $fmt['close_title'];
+					$result .= $fmt['open_value'];
 
-				$result .= do_shortcode('[ct id="' . $fid . '"]');
+					$result .= $value;
 
-				$result .= $fmt['close_value'];
-				$result .= $fmt['close_line'];
-
+					$result .= $fmt['close_value'];
+					$result .= $fmt['close_line'];
+				}
 			}
 		}
 		$result .= $fmt['close'];
 
-		$result = apply_filters('custom_fields_shortcode', $result, $atts, $content);
+		$result = apply_filters('custom_fields', $result, $atts, $content);
 
 		// Wrap of for CSS after filtering
 		$result = '<div class="ct-custom-field-block">' . "\n{$result}</div>\n";
@@ -1445,6 +1470,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		), $atts ) );
 
 		$post_type = get_post_type($post->ID);
+		$content = do_shortcode($content);
+		$content = preg_replace('/\s/','', $content);
 		$fields = array_map('trim', (array)explode(',', $content) );
 
 		if( ! empty($terms) ){
@@ -1473,7 +1500,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$result = implode(',', array_filter($fields) );  //filter blanks
 		if($result) $result .= ',';
 
-		$result = apply_filters('custom_fields_filter_shortcode', $result, $atts, $content);
+		$result = apply_filters('custom_fields_filter', $result, $atts, $content);
 		return $result;
 	}
 

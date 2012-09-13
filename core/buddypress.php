@@ -21,7 +21,8 @@ class Directory_Core_Buddypress extends Directory_Core {
 	}
 
 	function init(){
-
+		global $wp, $wp_rewrite;
+		
 		parent::init(); //Inheritance
 
 		/* Set BuddyPress active state */
@@ -412,7 +413,9 @@ class Directory_Core_Buddypress extends Directory_Core {
 
 		//Classifieds update pages
 		elseif(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)){
-			wp_redirect($logged_url . 'add-listing'); exit;
+			
+			wp_redirect($logged_url . 'add-listing/?' . http_build_query($_GET)); 
+			exit;
 		}
 		/* If user wants to go to My Classifieds main page  */
 		elseif ( isset( $_POST['go_my_listings'] ) ) {
@@ -432,7 +435,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 			//prevents 404 for virtual pages
 			status_header( 200 );
 		}
-		
+
 	}
 
 	/**

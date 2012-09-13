@@ -37,7 +37,6 @@ if ( isset( $_GET['updated'] ) ) {
 </script>
 
 <div class="profile">
-
 <form method="post" id="action-form" class="action-form" action="#">
 	<?php wp_nonce_field( 'action_verify' ); ?>
 	<input type="hidden" name="action" />
@@ -45,10 +44,11 @@ if ( isset( $_GET['updated'] ) ) {
 </form>
 
 <?php if ( $this->is_full_access() ): ?>
-<div class="av-credits"><?php _e( 'You have access to create new ads', $this->text_domain ); ?></div>
+<div class="av-credits"><?php _e( 'You have access to create new listings', $this->text_domain ); ?></div>
 <?php elseif($this->use_credits): ?>
 <div class="av-credits"><?php _e( 'Available Credits:', $this->text_domain ); ?> <?php echo $this->transactions->credits; ?></div>
 <?php endif; ?>
+<div class="clear"></div>
 
 <?php if ( count( $custom_query->posts ) ) : ?>
 <table class="wp-list-table widefat fixed posts">

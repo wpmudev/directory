@@ -162,35 +162,6 @@ class Directory_Core_Data {
 			flush_network_rewrite_rules();
 		}
 
-		//add rule for show dr-author page
-		global $wp, $wp_rewrite;
-
-		if ( class_exists( 'BP_Core' ) ) {
-			$wp->add_query_var( 'dr_author_page' );
-			$wp->add_query_var( 'dr_current_component' );
-			$result = add_query_arg(  array(
-			'dr_author_page'        => '$matches[3]',
-			'dr_current_component'  => 'listings'
-			), 'index.php' );
-			//            add_rewrite_rule( 'members/admin/classifieds(/page/(.+?))?/?$', $result, 'top' );
-			add_rewrite_rule( 'members/(.+?)/listings(/page/(.+?))?/?$', $result, 'top' );
-			$rules = get_option( 'rewrite_rules' );
-			if ( ! isset( $rules['members/(.+?)/listings(/page/(.+?))?/?$'] ) )
-			//            if ( ! isset( $rules['members/admin/classifieds(/page/(.+?))?/?$'] ) )
-			$wp_rewrite->flush_rules();
-		} else {
-			$wp->add_query_var( 'dr_author_name' );
-			$wp->add_query_var( 'dr_author_page' );
-			$result = add_query_arg(  array(
-			'dr_author_name' => '$matches[1]',
-			'dr_author_page' => '$matches[3]',
-			), 'index.php' );
-			add_rewrite_rule( 'dr-author/(.+?)(/page/(.+?))?/?$', $result, 'top' );
-			$rules = get_option( 'rewrite_rules' );
-			if ( ! isset( $rules['dr-author/(.+?)(/page/(.+?))?/?$'] ) )
-			$wp_rewrite->flush_rules();
-		}
-
 		//Custompress specfic
 		if(is_multisite()){
 			update_site_option( 'allow_per_site_content_types', true );

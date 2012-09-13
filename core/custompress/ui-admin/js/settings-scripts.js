@@ -31,6 +31,7 @@
 		if ( $('.cp-main input[name="enable_subsite_content_types"]:checked').val() === '1' ) {
 			$('.cp-main input[name="display_network_content_types"]').attr( 'disabled', false );
 		} else {
+			$('.cp-main input[name="display_network_content_types"]').attr( 'checked', true );
 			$('.cp-main input[name="display_network_content_types"]').attr( 'disabled', true );
 		}
 	}

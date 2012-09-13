@@ -65,10 +65,10 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<input type="hidden" id="post_id" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 		<input type="hidden" name="post_id" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 
-		<?php if(post_type_supports('directory_listing','editor') ): ?>
+		<?php if(post_type_supports('directory_listing','title') ): ?>
 		<div class="editfield">
 			<label for="title"><?php _e( 'Title', $this->text_domain ); ?></label>
-			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? $listing_data['post_title'] : ''; ?>" />
+			<input class="required" type="text" id="title" name="listing_data[post_title]" value="<?php echo ( isset( $listing_data['post_title'] ) ) ? esc_attr($listing_data['post_title']) : ''; ?>" />
 			<p class="description"><?php _e( 'Enter title here.', $this->text_domain ); ?></p>
 		</div>
 		<?php endif; ?>
@@ -79,15 +79,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		<div>
 			<label for="listingcontent"><?php _e( 'Content', $this->text_domain ); ?></label><br />
 
-			<?php if(version_compare(get_bloginfo('version'), 3.3, '>=') ): ?>
-
 			<?php wp_editor( $listing_content, 'listingcontent', $editor_settings); ?>
-
-			<?php else: ?>
-
-			<textarea id="listingcontent" name="listing_data[post_content]" cols="40" rows="5"><?php echo esc_textarea($listing_content); ?></textarea>
-
-			<?php endif; ?>
 
 			<p class="description"><?php _e( 'The content of your listing.', $this->text_domain ); ?></p>
 		</div>
