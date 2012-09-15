@@ -110,7 +110,7 @@ class DR_Theme_Colors {
 						<h3><?php _e( 'Colors', 'directory'  ); ?></h3>
 						<?php settings_fields('dir_colors_group'); ?>
 						<?php $colors = get_option('dir_colors'); ?>
-						<input type="hidden" name="dir_colors[enable]" value="1" />
+						<label><input type="checkbox" name="dir_colors[enable]" value="1" <?php checked(! empty($colors['enable'] ) ); ?> /> <?php _e('Allow color overrides below.', 'directory'); ?>S</label>
 						<table class="form-table">
 							<tr>
 								<th><?php _e('Site Title', 'directory'); ?></th>

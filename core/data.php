@@ -19,6 +19,7 @@ class Directory_Core_Data {
 		//Load default data if object instatiated. Set to only happen during plugin Activate
 		add_action( 'init', array( &$this, 'load_data' ) );
 		add_action( 'init', array( &$this, 'load_payment_data' ) );
+		add_action( 'init', array( &$this, 'load_mu_plugins' ) );
 	}
 
 	/**
@@ -236,6 +237,18 @@ class Directory_Core_Data {
 
 		update_option( DR_OPTIONS_NAME, $options );
 	}
+	
+	function load_mu_plugins(){
+
+	if(!is_dir(WPMU_PLUGIN_DIR . '/logs')):
+		mkdir(WPMU_PLUGIN_DIR . '/logs', 0755, true);
+	endif;
+		
+	copy(	DR_PLUGIN_DIR . 'mu-plugins/gateway-relay.php', WPMU_PLUGIN_DIR .'/gateway-relay.php');
+	copy(	DR_PLUGIN_DIR . 'mu-plugins/wpmu-assist.php', WPMU_PLUGIN_DIR .'/wpmu-assist.php');
+		
+	}
+	
 }
 
 endif;
