@@ -19,11 +19,11 @@ class DR_Ratings {
 	/**
 	* Class constructor.
 	*/
-	
+
 	function __construct(){
 		$this->init();
 	}
-	
+
 	function DR_Ratings() {
 		$this->__construct();
 	}
@@ -81,13 +81,19 @@ class DR_Ratings {
 	* @return void
 	*/
 	function save_rating( $post_id, $rating ) {
-		if ( is_user_logged_in() ) {
-			$user_id = get_current_user_id();
-			update_user_meta( $user_id, '_sr_post_vote', array( $post_id => $rating ) );
-		}
+
+		if ( ! is_user_logged_in() ) return; //Not logged in nowhere to store a vote.
+
 		$votes          = get_post_meta( $post_id, '_sr_post_votes', true );
 		$current_rating = get_post_meta( $post_id, '_sr_post_rating', true );
-		$votes++;
+
+		$user_id = get_current_user_id();
+		$voted = get_user_meta($user_id, '_sr_post_vote', true);
+		$vote = empty($voted[$post_id]) ? 1 : 0;
+		$current_rating = empty($voted[$post_id]) ? $current_rating : $current_rating - $voted[$post_id]; //Remove any previous rating
+		$voted[$post_id] = $rating;
+		update_user_meta( $user_id, '_sr_post_vote', $voted );
+		$votes += $vote;
 		$rating = $current_rating + $rating;
 		update_post_meta( $post_id, '_sr_post_votes', $votes  );
 		update_post_meta( $post_id, '_sr_post_rating', $rating  );
@@ -155,11 +161,11 @@ class DR_Ratings {
 				// Create stars for: Rate this
 				$(".rat").stars({
 					inputType: "select",
-					cancelShow: false,
+					cancelShow: true,
 					captionEl: $(".caption"),
 					callback: function(ui, type, value) {
 						// Disable Stars for exclude the next vote
-						ui.disable();
+						//ui.disable();
 						// Display message to the user at the begining of request
 						$(".messages").text("Saving...").stop().css("opacity", 1).fadeIn(30);
 						// Send request to the server using POST method
@@ -179,7 +185,7 @@ class DR_Ratings {
 				}
 			});
 			// Since the <option value="3"> was selected by default, we must remove selection from Stars.
-			$(".rat").stars("selectID", -1);
+			//$(".rat").stars("selectID", -1);
 			// Create element to use for confirmation messages
 			$('<div class="messages"/>').appendTo(".rat");
 		});
@@ -199,22 +205,25 @@ class DR_Ratings {
 
 		$user_id    = get_current_user_id();
 		$rating     = $this->get_rating( $post->ID, $user_id );
-
+		/*
 		if ( 'no_rate' != $rating ) {
-			?>
-			<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
-				<span>(<?php echo $this->quality[$rating] ?>)</span>
-				<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
-					<?php foreach ( $this->quality as $scale => $text ): ?>
-					<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
-					<?php endforeach; ?>
-				</form>
-			</div>
+		?>
+		<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
+		<span>(<?php echo $this->quality[$rating] ?>)</span>
+		<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
+		<?php foreach ( $this->quality as $scale => $text ): ?>
+		<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
+		<?php endforeach; ?>
+		</form>
+		</div>
 
-			<?php
+		<?php
 
-		} else {
-			$rating = $this->get_rating( $post->ID ); ?>
+		}
+		else
+		*/
+		{
+			//$rating = $this->get_rating( $post->ID ); ?>
 			<?php /*
 			<?php if (isset($post_message)): ?>
 			<div class="message-box ok">Thanks, vote saved: <?php echo $post_message ?></div>
@@ -225,7 +234,7 @@ class DR_Ratings {
 				<form class="rat" action="#" method="post">
 					<select name="rate">
 						<?php foreach ( $this->quality as $scale => $text ): ?>
-						<option <?php echo $scale == 3 ? 'selected="selected"' : '' ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
+						<option <?php selected($scale == $rating); ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
 						<?php endforeach; ?>
 					</select>
 					<input type="submit" value="Rate it!" />
