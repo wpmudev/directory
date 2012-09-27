@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: WPMU Assist
 Plugin URI: http://premium.wpmudev.org/project/classifieds
@@ -69,9 +69,10 @@ class WPMU_Assist{
 	}
 
 	function on_activate_user($user_id, $password, $meta){
+		$default_role = get_option('default_role');
 		$blogid = empty($meta['register_blog_id']) ? 1 : intval($meta['register_blog_id']);
-		add_user_to_blog( 1, $user_id, 'subscriber');
-		add_user_to_blog($blogid, $user_id, 'subscriber');
+		add_user_to_blog( 1, $user_id, $default_role);
+		add_user_to_blog($blogid, $user_id, $default_role);
 	}
 
 	function on_activate_blog($blog_id, $user_id, $password, $title, $meta){

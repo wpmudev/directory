@@ -489,3 +489,7 @@ margin-bottom: 10px;
 .entry-post{
 	margin-bottom: 1em;
 }
+
+.directory_listing .comments{
+	float: none;
+}

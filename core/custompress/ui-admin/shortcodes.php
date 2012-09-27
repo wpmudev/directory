@@ -23,15 +23,15 @@
 						<div class="embed-code-wrap">
 							<?php _e('Basic shortcode', $this->text_domain); ?>
 							<br /><code>[custom_fields_input id="post_id"]</code>
-							<br /><span class="description"><?php _e('Returns a full set of input fields based on the post type of the post id provided.', $this-text_domain); ?></span>
+							<br /><span class="description"><?php _e('Returns a full set of input fields based on the post type of the post id provided.', $this->text_domain); ?></span>
 
 							<br /><br /><?php _e('or with field list', $this->text_domain); ?><br />
 							<code>[custom_fields_input id="post_id"] _ct_selectbox_4cf582bd61fa4, _ct_text_4cfeb3eac6f1f,... [/custom_fields_input]</code>
-							<br /><span class="description"><?php _e('Returns a set of input fields as supplied by the field id list in the shortcode. Any ids not associate with the post type will be ignored.', $this-text_domain); ?></span>
+							<br /><span class="description"><?php _e('Returns a set of input fields as supplied by the field id list in the shortcode. Any ids not associate with the post type will be ignored.', $this->text_domain); ?></span>
 
 							<br /><br /><?php _e('or with field list filtered by category', $this->text_domain);?><br />
 							<code>[custom_fields_input id="post_id"] [ct_filter terms="cat1, cat2,.."] _ct_selectbox_4cf582bd61fa4, _ct_text_4cfeb3eac6f1f,... [/ct_filter] [/custom_fields_input]</code>
-							<br /><span class="description"><?php _e('Multiple filters may be used in one input block.', $this->text_doamin); ?></span>
+							<br /><span class="description"><?php _e('Multiple filters may be used in one input block.', $this->text_domain); ?></span>
 						</div>
 
 					</td>
@@ -48,15 +48,15 @@
 							<div class="embed-code-wrap">
 								<?php _e('Basic shortcode', $this->text_domain); ?>
 								<br /><code>[custom_fields_block]</code>
-								<br /><span class="description"><?php _e('Returns a full set of input fields based on the post type of the post id provided.', $this-text_domain); ?></span>
+								<br /><span class="description"><?php _e('Returns a full set of input fields based on the post type of the post id provided.', $this->text_domain); ?></span>
 
 								<br /><br /><?php _e('or with field list', $this->text_domain); ?><br />
 								<code>[custom_fields_block] _ct_selectbox_4cf582bd61fa4, _ct_text_4cfeb3eac6f1f,... [/custom_fields_block]</code>
-								<br /><span class="description"><?php _e('Returns a set of input fields as supplied by the field id list in the shortcode. Any ids not associate with the post type will be ignored.', $this-text_domain); ?></span>
+								<br /><span class="description"><?php _e('Returns a set of input fields as supplied by the field id list in the shortcode. Any ids not associate with the post type will be ignored.', $this->text_domain); ?></span>
 
 								<br /><br /><?php _e('or with field list filtered by category', $this->text_domain);?>
 								<br /><code>[custom_fields_block] [ct_filter terms="cat1, cat2,.."] _ct_selectbox_4cf582bd61fa4, _ct_text_4cfeb3eac6f1f,... [/ct_filter] [/custom_fields_block]</code>
-								<br /><span class="description"><?php _e('Multiple filters may be used in one input block.', $this->text_doamin); ?></span>
+								<br /><span class="description"><?php _e('Multiple filters may be used in one input block.', $this->text_domain); ?></span>
 							</div>
 
 
@@ -83,8 +83,8 @@
 					<td>
 						<p><?php _e('Used to restrict the list of fields returned depending on the categories of the post. Multiple [ct_filter] shortcodes may be added to a [custom_field_input] or [custom_field_block] shortcode.', $this->text_domain); ?></p>
 						<code>[ct_filter terms="cat1, cat2,.."] _ct_selectbox_4cf582bd61fa4, _ct_text_4cfeb3eac6f1f,... [/ct_filter]</code>
-						<br /><span class="description"><?php _e('terms= Comma separated category list to filter on. Categories not associated with the post type of the current post will be ignored.', $this-text_domain); ?></span>
-						<br /><span class="description"><?php _e('The comma separated list of fields between the opening and closing tags will be returned if the categories match. Fields not associated with the post type of the current post will be ignored.', $this-text_domain); ?></span>
+						<br /><span class="description"><?php _e('terms= Comma separated category list to filter on. Categories not associated with the post type of the current post will be ignored.', $this->text_domain); ?></span>
+						<br /><span class="description"><?php _e('The comma separated list of fields between the opening and closing tags will be returned if the categories match. Fields not associated with the post type of the current post will be ignored.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 

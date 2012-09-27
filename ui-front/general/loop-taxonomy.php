@@ -66,21 +66,23 @@ if ( ! is_post_type_archive('directory_listing') ): ?>
 $last = $wp_query->post_count;
 $count = 1;
 
-// Retrieves categories list of current post, separated by commas.
-$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN),'');
-
-// Retrieves tag list of current post, separated by commas.
-$tags_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
-
-//add last css class for styling grids
-if ( $count == $last )
-$class = 'dr_listing last-listing';
-else
-$class = 'dr_listing';
 ?>
 <div id="dr_listing_list">
 
-	<?php while ( have_posts() ) : the_post(); ?>
+	<?php while ( have_posts() ) : the_post();
+	// Retrieves categories list of current post, separated by commas.
+	$categories_list = get_the_category_list( __(', ',DR_TEXT_DOMAIN),'');
+
+	// Retrieves tag list of current post, separated by commas.
+	$tags_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
+
+	//add last css class for styling grids
+	if ( $count == $last )
+	$class = 'dr_listing last-listing';
+	else
+	$class = 'dr_listing';
+
+	?>
 	<div class="<?php echo $class ?>">
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 

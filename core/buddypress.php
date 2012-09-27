@@ -198,12 +198,12 @@ class Directory_Core_Buddypress extends Directory_Core {
 				$meta = new DR_Meta($post_id);
 
 				// The credits required to renew the classified for the selected period
-				$credits_required = $options['credits_per_listing'];
+				$credits_required = ($this->use_free) ? 0 : $options['credits_per_listing'];
 				if( ! ($draft || $meta->status == 'paid') ) {
 
 
 					// If user have more credits of the required credits proceed with renewing the ad
-					if ($this->is_full_access() || ($credits_required && $this->user_credits >= $credits_required ) ){
+					if ($this->is_full_access() || ( $this->user_credits >= $credits_required ) ){
 						if ( ! $this->is_full_access() ) {
 							// Update new credits amount
 							$this->transactions->credits -= $credits_required;
@@ -322,6 +322,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 				add_filter('the_content', array(&$this, 'listing_content'));
 			}
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
+			$this->is_directory_page = true;
 		}
 
 		elseif(is_page($this->my_credits_page_id) ){
@@ -355,7 +356,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 		}
 		//load proper theme for listing category or tag
-		elseif ( in_array($taxonomy, array('listing_category','listing_tag') ) ) {
+		elseif ( is_archive() && in_array($taxonomy, array('listing_category','listing_tag') ) ) {
 			if ( 'listing_category' == $taxonomy ) {
 
 				$cat_name = get_query_var( 'listing_category' );
@@ -395,16 +396,9 @@ class Directory_Core_Buddypress extends Directory_Core {
 			//if custom template exists load it
 			if ( ! $this->directory_template = locate_template( $templates ) ) {
 				$this->directory_template = $page_template;
-
 				$wp_query->post_count = 1;
-
-				//				add_filter( 'comments_open', array( &$this, 'close_comments' ), 99 );
-				add_filter( 'comments_close_text', array( &$this, 'comments_closed_text' ), 99 );
 				add_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
-				$this->dr_first_thumbnail = true;
-				//				add_filter( 'post_thumbnail_html', array( &$this, 'delete_first_thumbnail' ) );
-				add_filter( 'the_content', array( &$this, 'listing_list_theme' ), 99 );
-				//				add_filter( 'the_excerpt', array( &$this, 'listing_list_theme' ), 99 );
+				add_filter( 'the_content', array( &$this, 'listing_list_theme' ) );
 			}
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 

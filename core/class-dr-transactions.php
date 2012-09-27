@@ -218,6 +218,11 @@ class DR_Transactions{
 			if($this->_transactions['order']['status'] == 'success') {
 				$this->_transactions['order']['order_info'] = $value;
 				$this->_transactions['order']['payment_method'] = 'paypal';
+
+				//for affiliate subscription
+				$affiliate_settings = $this->get_options( 'affiliate_settings' );
+				do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
+
 			}
 
 			if(! empty($value['txn_type']) && in_array( $value['txn_type'], array("subscr_cancel", "subscr_failed", "subscr_eot") ) ) {
@@ -239,8 +244,12 @@ class DR_Transactions{
 						$expiration_date = $this->get_expiration_date($this->_transactions['order']['billing_period'], $this->_transactions['order']['billing_frequency'] );
 						$this->_transactions['order']['expires'] = $expiration_date->getTimestamp();
 
-//						print_r($this->_transactions['order']['expires']);
+						//						print_r($this->_transactions['order']['expires']);
 					}
+					//for affiliate subscription
+					$affiliate_settings = $this->get_options( 'affiliate_settings' );
+					do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
+
 				}
 			}
 
@@ -259,6 +268,9 @@ class DR_Transactions{
 						$this->_transactions['authorizenet']['transactions'][] = (string)$value->transactionResponse->transId;
 						$this->_transactions['authorizenet']['key'] = (string)$value->refId; //Invoice number
 
+						//for affiliate subscription
+						$affiliate_settings = $this->get_options( 'affiliate_settings' );
+						do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
 					}
 
 					foreach($value->transactionResponse->userFields->userField as $userField){
@@ -283,7 +295,7 @@ class DR_Transactions{
 				}
 			}
 
-//			print_r($value.'');
+			//			print_r($value.'');
 
 			break;
 

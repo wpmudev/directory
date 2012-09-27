@@ -86,13 +86,13 @@ class Directory_Core_Main extends Directory_Core {
 				$meta = new DR_Meta($post_id);
 
 				// The credits required to renew the classified for the selected period
-				$credits_required = $options['credits_per_listing'];
+				$credits_required = ($this->use_free) ? 0 : $options['credits_per_listing'];
 
 				if( ! ($draft || $meta->status == 'paid') ) {
 
 
 					// If user have more credits of the required credits proceed with renewing the ad
-					if ($this->is_full_access() || ($credits_required && $this->user_credits >= $credits_required ) ){
+					if ($this->is_full_access() || ($this->user_credits >= $credits_required ) ){
 						if ( ! $this->is_full_access() ) {
 							// Update new credits amount
 							$this->transactions->credits -= $credits_required;

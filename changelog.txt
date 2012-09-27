@@ -1,5 +1,5 @@
 === Directory ===
-Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub)   
+Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub) 
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
  
@@ -12,6 +12,16 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Added credits support.
 * Added Authorize net support
 * Cleaned up default theme
+* Made ratings editable by the voter.
+* MU plugins to handle recurring payments on Multisite.
+* Added uninstall to remove directory custom types if plugin is deleted.
+* CustomPress v1.3
+* WYSIWYG editor for front end input of listings.
+* Separated member signup from purchase of listings.
+* Plugin to automatically join member with the subsite they signup on in Multisite.
+* Member role and capabilities editor.
+* Limit set of post statuses available to member. Allows Admin moderating.
+
 
 = 2.1.2 =
 * Various fixes for version 3.4

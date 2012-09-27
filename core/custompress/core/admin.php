@@ -13,14 +13,14 @@ if (!class_exists('CustomPress_Core_Admin')):
 
 class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
-	/** @var array Available Post Types */
-	var $post_types;
-	/** @var array Available Taxonomies */
-	var $taxonomies;
-	/** @var array Available Custom Fields */
-	var $custom_fields;
-	/** @var boolean Flag whether the users have the ability to declair post type for their own blogs */
-	var $enable_subsite_content_types = true;
+	/** @public array Available Post Types */
+	public $post_types;
+	/** @public array Available Taxonomies */
+	public $taxonomies;
+	/** @public array Available Custom Fields */
+	public $custom_fields;
+	/** @public boolean Flag whether the users have the ability to declair post type for their own blogs */
+	public $enable_subsite_content_types = true;
 
 	function CustomPress_Core_Admin() { __construct(); }
 

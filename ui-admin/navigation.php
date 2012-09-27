@@ -12,7 +12,7 @@
 	<a id="dr-settings_payments" class="nav-tab <?php if ( $tab == 'payments' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_attr('admin.php?page=directory_settings&tab=payments');?>"><?php _e( 'Payments', $this->text_domain ); ?></a>
 	<a id="dr-settings_payments_type" class="nav-tab <?php if ( $tab == 'payment-types' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_attr('admin.php?page=directory_settings&tab=payment-types');?>"><?php _e( 'Payment Types', $this->text_domain ); ?></a>
 
-	<?php if ( class_exists( 'affiliate' ) ):?>
+	<?php if ( class_exists( 'affiliateadmin' ) ):?>
 	<a id="dr-settings_affiliate" class="nav-tab <?php if ( $tab == 'affiliate' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_attr('admin.php?page=directory_settings&tab=affiliate');?>"><?php _e( 'Affiliate', $this->text_domain ); ?></a>
 	<?php endif; ?>
 

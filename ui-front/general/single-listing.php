@@ -1,17 +1,6 @@
 
 <?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 
-<?php
-//Note that $content is prefilled with the usual expanded the_content from WP by the plugin, we're just wrapping it with extra meta.
-echo $content;
-?>
-<div class="clear"></div>
-
-<div class="clear"></div>
-<div class="dr-custom-block">
-	<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
-</div>
-
 <div class="entry-meta">
 	<?php the_dr_posted_on(); ?>
 	<?php do_action('sr_avg_rating'); ?><br />
@@ -34,6 +23,16 @@ echo $content;
 	<?php do_action('sr_rate_this'); ?>
 	<?php endif; ?>
 </div>
+
+<?php
+//Note that $content is prefilled with the usual expanded the_content from WP by the plugin, we're just wrapping it with extra meta.
+echo $content;
+?>
+<div class="clear"></div>
+<div class="dr-custom-block">
+	<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
+</div>
+
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 
 <div id="entry-author-info">

@@ -25,7 +25,7 @@ $affiliate_settings['cost']                                 = $this->get_options
 	<div class="postbox">
 		<h3 class='hndle'><span><?php _e( 'Affiliate', $this->text_domain ) ?></span></h3>
 		<div class="inside">
-			<?php if ( !class_exists( 'affiliate' ) || !defined( 'AFF_DIRECTORY_ADDON' ) ): ?>
+			<?php if ( !class_exists( 'affiliateadmin' ) || !defined( 'AFF_DIRECTORY_ADDON' ) ): ?>
 			<p>
 				<?php _e( 'This feature will be available only after installation the <b>Affiliate plugin</b>  and activation the <b>Directory add-on</b> there.', $this->text_domain ) ?>
 				<br />

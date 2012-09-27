@@ -22,7 +22,7 @@ function the_dr_categories_home( $echo = true ) {
 	$sub_cat_num            = ( isset( $options['general']['count_sub_cat'] ) && is_numeric( $options['general']['count_sub_cat'] ) && 0 < $options['general']['count_sub_cat'] ) ? $options['general']['count_sub_cat'] : 5;
 	$hide_empty_sub_cat     = ( isset( $options['general']['hide_empty_sub_cat'] ) && is_numeric( $options['general']['hide_empty_sub_cat'] ) && 0 < $options['general']['hide_empty_sub_cat'] ) ? $options['general']['hide_empty_sub_cat'] : 0;
 
-	$taxonomies = array_values(get_object_taxonomies('directory_listing', 'names')) ;
+	$taxonomies = array_values(get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1)));
 
 	$args = array(
 	'parent'       => 0,
@@ -104,8 +104,7 @@ function the_dr_categories_home( $echo = true ) {
 function the_dr_categories_archive() {
 
 	//get related taxonomies
-	$taxonomies = array_values( get_object_taxonomies('directory_listing', 'names') );
-
+	$taxonomies = array_values( get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1 ) ) );
 	$args = array(
 	'parent'       => get_queried_object_id(),
 	'orderby'      => 'name',

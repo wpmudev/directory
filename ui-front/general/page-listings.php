@@ -40,6 +40,6 @@ query_posts($query_args);
 if ( file_exists( get_template_directory() . "/loop-author.php" ) )
 get_template_part( 'loop', 'author' );
 else
-include DR_PLUGIN_DIR . 'ui-front/general/loop-taxonomy.php';
+load_template( DR_PLUGIN_DIR . 'ui-front/general/loop-taxonomy.php' );
 
 wp_reset_query();

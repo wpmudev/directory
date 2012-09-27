@@ -17,33 +17,33 @@ add_filter( 'widget_text', 'do_shortcode' );
 
 class CustomPress_Content_Types extends CustomPress_Core {
 
-	/** @var Array Available Post Types */
-	var $post_types = array();
-	/** @var array Available Network Post Types */
-	var $network_post_types = array();
-	/** @var Array All Available Post Types */
-	var $all_post_types = array();
+	/** @public Array Available Post Types */
+	public $post_types = array();
+	/** @public array Available Network Post Types */
+	public $network_post_types = array();
+	/** @public Array All Available Post Types */
+	public $all_post_types = array();
 
-	/** @var array Available Taxonomies */
-	var $taxonomies = array();
-	/** @var array Available Network Taxonomies */
-	var $network_taxonomies = array();
-	/** @var array All Available Taxonomies */
-	var $all_taxonomies = array();
+	/** @public array Available Taxonomies */
+	public $taxonomies = array();
+	/** @public array Available Network Taxonomies */
+	public $network_taxonomies = array();
+	/** @public array All Available Taxonomies */
+	public $all_taxonomies = array();
 
-	/** @var array Available Custom fields */
-	var $custom_fields = array();
-	/** @var array Available Network Custom fields */
-	var $network_custom_fields = array();
-	/** @var array All Available Custom fields */
-	var $all_custom_fields = array();
+	/** @public array Available Custom fields */
+	public $custom_fields = array();
+	/** @public array Available Network Custom fields */
+	public $network_custom_fields = array();
+	/** @public array All Available Custom fields */
+	public $all_custom_fields = array();
 
-	/** @var boolean Flag whether to flush the rewrite rules or not */
-	var $flush_rewrite_rules = false;
-	/** @var boolean Flag whether the users have the ability to declare post types for their own blogs */
-	var $enable_subsite_content_types = false;
-	/** @var bool  keep_network_content_type for site_options */
-	var $network_content = true;
+	/** @public boolean Flag whether to flush the rewrite rules or not */
+	public $flush_rewrite_rules = false;
+	/** @public boolean Flag whether the users have the ability to declare post types for their own blogs */
+	public $enable_subsite_content_types = false;
+	/** @public bool  keep_network_content_type for site_options */
+	public $network_content = true;
 	// Setup the various structures table, ul, div
 	public 	$structures = array (
 	"none" =>
@@ -899,9 +899,12 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			$post_types = $this->network_post_types;
 			if(is_array($post_types)){
 				foreach($post_types as $key => $pt){
+
 					$post_type = get_post_type_object($key);
-					foreach($post_type->cap as $capability){
-						$wp_roles->add_cap('administrator', $capability);
+					if($post_type !== null ) {
+						foreach($post_type->cap as $capability){
+							$wp_roles->add_cap('administrator', $capability);
+						}
 					}
 				}
 			}
@@ -911,8 +914,10 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		if(is_array($post_types)){
 			foreach($post_types as $key => $pt){
 				$post_type = get_post_type_object($key);
-				foreach($post_type->cap as $cap){
-					$wp_roles->add_cap('administrator', $cap);
+				if($post_type !== null ) {
+					foreach($post_type->cap as $cap){
+						$wp_roles->add_cap('administrator', $cap);
+					}
 				}
 			}
 		}
@@ -1087,7 +1092,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 			}
 
-			//add JavaScript to meadia page for save terms
+			//add JavaScript to media page for save terms
 			if ( isset( $add_script ) ) {
 				$form_fields['script_for_terms']['input'] = 'html';
 				$form_fields['script_for_terms']['label'] = '';

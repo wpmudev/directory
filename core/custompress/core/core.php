@@ -12,16 +12,16 @@ if(! class_exists('CustomPress_Core')):
 
 class CustomPress_Core {
 
-	/** @var string $plugin_version Plugin version */
-	var $plugin_version = CP_VERSION;
-	/** @var string $plugin_url Plugin URL */
-	var $plugin_url = CP_PLUGIN_URL;
-	/** @var string $plugin_dir Path to plugin directory */
-	var $plugin_dir = CP_PLUGIN_DIR;
-	/** @var string $text_domain The text domain for strings localization */
-	var $text_domain = CP_TEXT_DOMAIN;
-	/** @var string $options_name The options name */
-	var $options_name = 'cp_options';
+	/** @public string $plugin_version Plugin version */
+	public $plugin_version = CP_VERSION;
+	/** @public string $plugin_url Plugin URL */
+	public $plugin_url = CP_PLUGIN_URL;
+	/** @public string $plugin_dir Path to plugin directory */
+	public $plugin_dir = CP_PLUGIN_DIR;
+	/** @public string $text_domain The text domain for strings localization */
+	public $text_domain = CP_TEXT_DOMAIN;
+	/** @public string $options_name The options name */
+	public $options_name = 'cp_options';
 
 	function CustomPress_Core() {__construct(); }
 
@@ -360,7 +360,12 @@ class CustomPress_Core {
 			$categories = array_values( get_taxonomies(array( 'public' => true, 'hierarchical' => true ), 'names') );
 
 			// Retrieves categories list of current post.
-			$thelist = get_the_term_list( $post->ID, $categories, '',$separator, '' );
+			$list = array();
+			foreach($categories as $category) {
+				$list[] = get_the_term_list( $post->ID, $category, '',$separator, '' );
+			}
+			$list = array_filter($list);
+			$thelist = implode($separator, $list);
 		}
 		return $thelist;
 	}

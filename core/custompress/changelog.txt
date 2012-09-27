@@ -13,6 +13,8 @@ Author URI: http://premium.wpmudev.org
 * Added [custom_fields_input] shortcode to provide input of custom fields.
 * Added [ct_filter] shortcode to provide control of field order and usage by category.
 * Remove empty fields in block output.
+* Added Shortcodes instruction page to Content Types pages.
+* Changed Setting in the Network Admin settings to Enabled subsites content types and Network wide content types.
 
 = 1.2.3.2 = 2012-06-15 Arnold Bailey
 * Backup Buddy uses it's own version of Datepicker (timepicker) which was interfering with standard Wordpress Datepicker causing downstream thickbox to fail.

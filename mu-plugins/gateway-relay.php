@@ -105,11 +105,7 @@ class Gateway_Relay{
 		for($i=0;$i <= count($this->queue); $i++){
 			$this->process_queue();
 		}
-		/*
-		echo '<pre>';
-		print_r($this->queue);
-		echo '</pre>';
-		*/
+
 		exit;
 
 	}
