@@ -75,6 +75,23 @@ class DR_Transactions{
 		}
 	}
 
+	/**
+	* Get plugin options.
+	*
+	* @param  string|NULL $key The key for that plugin option.
+	* @return array $options Plugin options or empty array if no options are found
+	*/
+	function get_options( $key = null ) {
+		$options = get_option( $this->options_name );
+		$options = is_array( $options ) ? $options : array();
+		/* Check if specific plugin option is requested and return it */
+		if ( isset( $key ) && array_key_exists( $key, $options ) )
+		return $options[$key];
+		else
+		return $options;
+	}
+
+
 	function __get( $property = '' ){
 
 		$this->_transactions = $this->get_transactions();
@@ -219,15 +236,24 @@ class DR_Transactions{
 				$this->_transactions['order']['order_info'] = $value;
 				$this->_transactions['order']['payment_method'] = 'paypal';
 
-				//for affiliate subscription
-				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
-
 			}
 
 			if(! empty($value['txn_type']) && in_array( $value['txn_type'], array("subscr_cancel", "subscr_failed", "subscr_eot") ) ) {
 				if  ( $value['subscr_id'] == $this->_transactions['paypal']['profile_id'] ) $this->_transactions['order']['status'] = $value['txn_type'];
 			}
+
+			if($this->_transactions['order']['status'] == 'success') {
+
+				//for affiliate subscription
+				$affiliate_settings = $this->get_options( 'affiliate_settings' );
+				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+
+				$member_role = $this->get_options('general');
+				$member_role = $member_role['member_role'];
+				$user = get_userdata($this->user_id);
+				$user->set_role($member_role);
+			}
+
 			break;
 
 			//AUTHORIZENET
@@ -246,9 +272,6 @@ class DR_Transactions{
 
 						//						print_r($this->_transactions['order']['expires']);
 					}
-					//for affiliate subscription
-					$affiliate_settings = $this->get_options( 'affiliate_settings' );
-					do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
 
 				}
 			}
@@ -268,9 +291,6 @@ class DR_Transactions{
 						$this->_transactions['authorizenet']['transactions'][] = (string)$value->transactionResponse->transId;
 						$this->_transactions['authorizenet']['key'] = (string)$value->refId; //Invoice number
 
-						//for affiliate subscription
-						$affiliate_settings = $this->get_options( 'affiliate_settings' );
-						do_action( 'directory_set_paid_member', $affiliate_settings, $this->user_id, $this->_transactions['order']['billing_type'] );
 					}
 
 					foreach($value->transactionResponse->userFields->userField as $userField){
@@ -293,6 +313,18 @@ class DR_Transactions{
 					}
 
 				}
+			}
+
+			if($this->_transactions['order']['status'] == 'success') {
+
+				//for affiliate subscription
+				$affiliate_settings = $this->get_options( 'affiliate_settings' );
+				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+
+				$member_role = $this->get_options('general');
+				$member_role = $member_role['member_role'];
+				$user = get_userdata($this->user_id);
+				$user->set_role($member_role);
 			}
 
 			//			print_r($value.'');

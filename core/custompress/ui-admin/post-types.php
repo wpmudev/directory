@@ -22,13 +22,6 @@ if(is_multisite()) {
 }
 
 $this->render_admin('update-message');
-/*
-global $wp_post_types;
-echo '<pre>';
-print_r($wp_post_types['classifieds']);
-print_r($wp_post_types['directory_listing']);
-echo '</pre>.';
-*/
 
 ?>
 

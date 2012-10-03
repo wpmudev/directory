@@ -265,6 +265,7 @@ class Directory_Core {
 
 			//Or are we editing a listing?
 			if(! @is_post_type_archive('directory_listing') && @is_page($this->directory_page_id) ){
+
 				wp_redirect( get_post_type_archive_link('directory_listing') );
 				exit;
 			}
@@ -275,7 +276,12 @@ class Directory_Core {
 				|| @is_page($this->edit_listing_page_id)
 				|| @is_page($this->my_listings_page_id)
 				|| @is_page($this->signup_page_id) ) {
-					wp_redirect( get_permalink($this->signin_page_id).'?redirect_to=' . urlencode(get_permalink($query->queried_object_id)) );
+
+					$args = array('redirect_to' => urlencode(get_permalink($query->queried_object_id)));
+					if(!empty($_REQUEST['register'])) $args['register'] = $_REQUEST['register'];
+					if(!empty($_REQUEST['reset'])) $args['reset'] = $_REQUEST['reset'];
+					
+					wp_redirect( add_query_arg($args, get_permalink($this->signin_page_id) )  );
 					exit;
 				}
 			}

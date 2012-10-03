@@ -85,7 +85,7 @@ class Directory_Core_Main extends Directory_Core {
 				$post_id = $this->update_listing( $_POST );
 				$meta = new DR_Meta($post_id);
 
-				// The credits required to renew the classified for the selected period
+				// The credits required to renew the directory for the selected period
 				$credits_required = ($this->use_free) ? 0 : $options['credits_per_listing'];
 
 				if( ! ($draft || $meta->status == 'paid') ) {
