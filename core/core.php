@@ -112,6 +112,8 @@ class Directory_Core {
 		/* Create neccessary pages */
 		add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
 		add_action( 'parse_request', array( &$this, 'on_parse_request' ) );
+		add_action('pre_get_posts', array(&$this, 'on_pre_get_posts') );
+
 
 		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
@@ -119,6 +121,8 @@ class Directory_Core {
 		add_filter( 'user_contactmethods', array( &$this, 'contact_fields' ), 10, 2 );
 		add_filter( 'excerpt_more', array(&$this, 'on_excerpt_more'));
 		add_filter( 'author_link', array(&$this, 'on_author_link'));
+		add_filter( 'login_redirect', array(&$this, 'on_login_redirect'), 10, 3);
+		add_filter( 'logout_url', array(&$this, 'on_logout_url'), 10, 2);
 
 
 		//Shortcodes
@@ -258,6 +262,29 @@ class Directory_Core {
 		return false;
 	}
 
+	/**
+	* Redirect signin to home or user defined url
+	*
+	*/
+	function on_login_redirect($redirect = '', $request = '', $user = '') {
+		$options = $this->get_options('general');
+		$redirect = (empty($options['signin_url']) )? home_url() : $options['signin_url'];
+
+		return $redirect;
+	}
+
+	/**
+	* Redirect signout to home or user defined url
+	*
+	*/
+	function on_logout_url($logout_url = '', $redirect = '') {
+		$options = $this->get_options('general');
+		$redirect = (empty($options['logout_url']) ) ? home_url() : $options['logout_url'];
+		$logout_url = add_query_arg(array('redirect_to' => $redirect), $logout_url );
+
+		return $logout_url;
+	}
+
 	function on_parse_query($query){
 
 		if ( isset( $query ) ) {
@@ -280,8 +307,9 @@ class Directory_Core {
 					$args = array('redirect_to' => urlencode(get_permalink($query->queried_object_id)));
 					if(!empty($_REQUEST['register'])) $args['register'] = $_REQUEST['register'];
 					if(!empty($_REQUEST['reset'])) $args['reset'] = $_REQUEST['reset'];
-					
-					wp_redirect( add_query_arg($args, get_permalink($this->signin_page_id) )  );
+
+					$redirect = add_query_arg($args, get_permalink($this->signin_page_id) );
+					wp_redirect( $redirect );
 					exit;
 				}
 			}
@@ -333,6 +361,24 @@ class Directory_Core {
 		}
 		return $wp;
 	}
+
+	/**
+	* Restrict Media library to current user's files
+	*
+	*/
+	function on_pre_get_posts($wp_query_obj) {
+
+		global $current_user, $pagenow;
+
+		if( !is_a( $current_user, 'WP_User') ) return;
+
+		if( 'media-upload.php' != $pagenow ) return;
+
+		if( !current_user_can('administrator') &&  !current_user_can('edit_others_listings') ) $wp_query_obj->set('author', $current_user->id );
+
+		return;
+	}
+
 
 	/**
 	* Intiate plugin.
@@ -399,8 +445,8 @@ class Directory_Core {
 				$this->current_user->remove_cap('create_listings');
 			}
 		}
-		
-				// Rewrite rules
+
+		// Rewrite rules
 		add_rewrite_rule( 'listings/author/(.+?)(/page/(.+?))?/?$', 'index.php?post_type=directory_listing&author_name=$matches[1]&paged=$matches[3]', 'top' );
 
 		//add_rewrite_rule( 'listings/page/([0-9]{1,})/?$', 'index.php?post_type=directory_listing&paged=$matches[1]', 'top' );
@@ -818,7 +864,7 @@ class Directory_Core {
 	function on_excerpt_more($more = ''){
 		return ' <a href="' . get_permalink() .'">More Info &raquo;</a>';
 	}
-	
+
 	//replaces wp_trim_excerpt in our custom loops
 	function listing_excerpt( $excerpt, $content, $post_id ) {
 
@@ -926,7 +972,7 @@ class Directory_Core {
 		$result .= the_dr_categories_home( false, $atts );
 
 		$result .= "</div><!--.dr_list-->";
-		
+
 		return $result;
 	}
 
@@ -1208,7 +1254,7 @@ class Directory_Core {
 		if(! in_the_loop()) return $content;
 		return '';
 	}
-	
+
 	function on_author_link($link=''){
 		global $post;
 		if($post->post_type == 'directory_listing'){

@@ -548,9 +548,8 @@ class DR_Payments{
 								case 'Year' : $length = (12 * $_SESSION['billing_frequency']);  $unit = 'months'; break;
 							}
 
-							$period = 'P' . $_SESSION['billing_frequency'] . substr($_SESSION['billing_period'], 0, 1 ); //ISO interval
 							$date = new DateTime;
-							$date->add(new DateInterval($period) );
+							$date->modify("+{$_SESSION['billing_frequency']} {$_SESSION['billing_period']}");
 							$start_date = $date->format('Y-m-d');
 						}
 

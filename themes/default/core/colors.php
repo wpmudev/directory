@@ -110,7 +110,7 @@ class DR_Theme_Colors {
 						<h3><?php _e( 'Colors', 'directory'  ); ?></h3>
 						<?php settings_fields('dir_colors_group'); ?>
 						<?php $colors = get_option('dir_colors'); ?>
-						<label><input type="checkbox" name="dir_colors[enable]" value="1" <?php checked(! empty($colors['enable'] ) ); ?> /> <?php _e('Allow color overrides below.', 'directory'); ?>S</label>
+						<label><input type="checkbox" name="dir_colors[enable]" value="1" <?php checked(! empty($colors['enable'] ) ); ?> /> <?php _e('Allow color overrides below.', 'directory'); ?></label>
 						<table class="form-table">
 							<tr>
 								<th><?php _e('Site Title', 'directory'); ?></th>
@@ -265,7 +265,7 @@ class DR_Theme_Colors {
 						<?php if ( empty( $colors['btns_ud'] ) && isset( $colors['btns'] ) ): ?>
 						/* Btns Custom Colors */
 						a.button, a.button:visited, ul.button-nav li a, div.generic-button a,
-						input[type="submit"], input[type="button"] {
+						input[type="submit"], input[type="button"], button {
 							background: <?php echo $colors['btns']; ?> !important;
 							border: none !important;
 						}
@@ -274,7 +274,7 @@ class DR_Theme_Colors {
 						<?php if ( empty( $colors['btns_txt_ud'] ) && isset( $colors['btns_txt'] ) ): ?>
 						/* Btns Text Custom Colors */
 						a.button, a.button:visited, ul.button-nav li a, div.generic-button a,
-						input[type="submit"], input[type="button"] {
+						input[type="submit"], input[type="button"], button {
 							color: <?php echo $colors['btns_txt']; ?> !important;
 						}
 						<?php endif; ?>

@@ -189,7 +189,7 @@ class Directory_Core_Data {
 
 		//Update from older version
 		if (! empty($options['general_settings']) ) {
-			$options['general'] = array_replace($options['general_settings']);
+			$options['general'] = array_merge($options['general'], $options['general_settings']);
 			unset($options['general_settings']);
 		}
 
@@ -216,7 +216,7 @@ class Directory_Core_Data {
 		}
 
 		if (! empty($options['payment_settings']) ) {
-			$options['payments'] = array_replace($options['payment_settings']);
+			$options['payments'] = array_merge($options['payments'], $options['payment_settings'] );
 			unset($options['payment_settings']);
 		}
 
@@ -231,7 +231,7 @@ class Directory_Core_Data {
 		}
 
 		if ( ! empty($options['paypal']) ){
-			$options['payment_types']['paypal'] = array_replace($options['paypal']);
+			$options['payment_types']['paypal'] = array_merge($options['payment_types']['paypal'], $options['paypal']);
 			unset($options['paypal']);
 		}
 

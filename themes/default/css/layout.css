@@ -22,58 +22,58 @@
 }
 
 .h-ads span {
-    line-height: 85px;
+	line-height: 85px;
 }
 /********************************** comments */
 #comments .title {
-padding-bottom: 10px;
-padding-left: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
 }
 
 #comments h3, #trackbacks h3, #respond h3 {
-margin: 10px 0px;
+	margin: 10px 0px;
 }
 
 .comment-body {
-padding-bottom: 10px;
+	padding-bottom: 10px;
 }
 
 ol.commentlist li {
-margin: 0 0 30px 0;
+	margin: 0 0 30px 0;
 }
 
 .comment-content p {
-padding: 0px 10px;
+	padding: 0px 10px;
 }
 
 ol.commentlist .children {
-margin-left: 20px;
+	margin-left: 20px;
 }
 
 div.comment-meta em {
-float: right;
+	float: right;
 }
 
 div.comment-options {
-border-bottom: none;
+	border-bottom: none;
 }
 
 .comment-options a {
-margin-right: 10px;
+	margin-right: 10px;
 }
 
 .commentmetadata {
-clear: both;
-margin-top: 20px;
+	clear: both;
+	margin-top: 20px;
 }
 
 #trackbacks {
-margin-top: 30px;
+	margin-top: 30px;
 }
 
 ol.commentlist, ul.children {
-list-style: none !important;
-margin: 0px !important;
+	list-style: none !important;
+	margin: 0px !important;
 }
 
 .fn, .says{
@@ -92,96 +92,96 @@ margin: 0px !important;
 
 /********************************** default formatting */
 .alignright {
-float: right;
-margin-left: 15px;
+	float: right;
+	margin-left: 15px;
 }
 
 .alignleft {
-float: left;
-margin-right: 15px;
+	float: left;
+	margin-right: 15px;
 }
 
 #content img {
-margin: 0;
-max-width: 640px;
+	margin: 0;
+	max-width: 640px;
 }
 
 #content .attachment img {
-max-width: 900px;
+	max-width: 900px;
 }
 
 #content .alignleft,
 #content img.alignleft {
-display: inline;
-float: left;
-margin-right: 24px;
-margin-top: 4px;
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
 }
 
 #content .alignright,
 #content img.alignright {
-display: inline;
-float: right;
-margin-left: 24px;
-margin-top: 4px;
+	display: inline;
+	float: right;
+	margin-left: 24px;
+	margin-top: 4px;
 }
 
 #content .aligncenter,
 #content img.aligncenter {
-clear: both;
-display: block;
-margin-left: auto;
-margin-right: auto;
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #content img.alignleft,
 #content img.alignright,
 #content img.aligncenter {
-margin-bottom: 12px;
+	margin-bottom: 12px;
 }
 
 #content .wp-caption {
-line-height: 18px;
-text-align: center;
-margin-bottom: 20px;
-padding: 4px;
+	line-height: 18px;
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 4px;
 }
 
 #content .wp-caption img {
-margin: 5px 5px 0;
+	margin: 5px 5px 0;
 }
 
 #content .wp-caption p.wp-caption-text {
-margin: 5px;
-font-size: 12px;
+	margin: 5px;
+	font-size: 12px;
 }
 
 #content .wp-smiley {
-margin: 0;
+	margin: 0;
 }
 
 #content .gallery {
-margin: auto;
+	margin: auto;
 }
 
 #content .gallery .gallery-item {
-float: left;
-margin-top: 0;
-text-align: center;
-width: 33%;
+	float: left;
+	margin-top: 0;
+	text-align: center;
+	width: 33%;
 }
 
 #content .gallery .gallery-caption {
-font-size: 12px;
-margin: 0 0 12px;
+	font-size: 12px;
+	margin: 0 0 12px;
 }
 
 #content .gallery dl {
-margin: 0;
+	margin: 0;
 }
 
 #content .gallery br+br {
-display: none;
+	display: none;
 }
 /********************************** directory */
 .cf-checkout table, .checkout-login table, .checkout table{
@@ -198,7 +198,7 @@ display: none;
 }
 
 .home #content, .archive #content, .dp-top-level #content {
-    margin: 0px;
+	margin: 0px;
 }
 
 .archive #content h2, .dp-top-level #content h2 {
@@ -206,148 +206,149 @@ display: none;
 }
 
 .archive #content li {
-    float: left;
-    margin: 0 0 25px 0;
-    list-style: none;
+	float: left;
+	margin: 0 0 25px 0;
+	list-style: none;
 }
 
 .archive #content .current-cat ul li, .dp-top-level #content ul li {
-    float: left;
+	float: left;
 }
 
 .dp-taxonomy-name {
-    float: left;
+	float: left;
 }
 
 .single .directory_listing {
-    min-height: inherit;
+	min-height: inherit;
 }
 .directory_listing {
-    margin: 10px 0px;
-    padding: 10px;
+	margin: 10px 0px;
+	padding: 10px;
 }
 
 .dp-top-level #content li {
-    list-style: none;
-    padding-bottom: 20px;
+	list-style: none;
+	padding-bottom: 20px;
 }
 
 div.menu {
-    margin-top: 50px;
+	margin-top: 50px;
 }
 
 #masthead {
-    position: relative;
+	position: relative;
 }
 
 #submit-site {
 	float: right;
-    margin: 4px 5px 0 5px;
+	margin: 0 5px 0 5px;
 }
 
+
 #log-out {
-    float: right;
-    margin: 4px 5px 0 5px;
+	float: right;
+	margin: 0 5px 0 5px;
 }
 
 #add-listing {
-    float: right;
-    margin: 4px 5px 0 5px;
+	float: right;
+	margin: 0 5px 0 5px;
 }
 
 #go-to-profile {
-    float: right;
-    margin: 4px 0 0 5px;
+	float: right;
+	margin: 0 0 0 5px;
 }
 .page-template #content {
-    margin: 0;
+	margin: 0;
 }
 
 .page-template #content .dp-sys-info {
-    width: 450px;
-    float: left;
-    margin: 0 0 24px 0;
+	width: 450px;
+	float: left;
+	margin: 0 0 24px 0;
 }
 
 .page-template #content .dp-prs-info {
-    width: 450px;
-    float: right;
-    margin: 0 0 24px 0;
+	width: 450px;
+	float: right;
+	margin: 0 0 24px 0;
 }
 
 .page-template .entry-title {
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 #signup-submit {
-    display: block;
+	display: block;
 }
 
 .dp-submit-txt {
-    color: 666;
-    font-size: 14px;
-    font-style: italic;
+	color: 666;
+	font-size: 14px;
+	font-style: italic;
 }
 
 .dp-terms {
-    float: left;
-    max-height: 200px;
-    overflow-x: hidden;
+	float: left;
+	max-height: 200px;
+	overflow-x: hidden;
 }
 
 .dp-top-level .cat-item {
-    display: inherit;
+	display: inherit;
 }
 .cat-item {
-    display: none;
+	display: none;
 }
 .current-cat {
-    display: inherit;
+	display: inherit;
 }
 .current-cat .children .cat-item {
-    display: inherit;
+	display: inherit;
 }
 .home .cat-item {
-    display: inherit;
+	display: inherit;
 }
 .archive #content .entry-summary p:last-child  {
-    text-align: justify;
+	text-align: justify;
 }
 
 .wp-post-image {
-    padding: 5px;
-    margin-right: 15px !important;
-    margin-bottom: 0 !important;
+	padding: 5px;
+	margin-right: 15px !important;
+	margin-bottom: 0 !important;
 }
 
 .dp_error {
-    background: #FFEBE8 !important;
+	background: #FFEBE8 !important;
 }
 
 .dp-invalid-login {
-    padding-left: 40px;
-    float: left;
-    display: block;
+	padding-left: 40px;
+	float: left;
+	display: block;
 }
 
 #branding {
-    max-height: 200px;
+	max-height: 200px;
 }
 
 .single #content {
-    margin: 0px;
+	margin: 0px;
 }
 
 .archive .wp-post-image {
-    width: 50px !important;
-    height: 50px !important;
+	width: 50px !important;
+	height: 50px !important;
 }
 
 .menu-header {
-    height: 38px;
-    margin-left: 0 !important;
-    padding-left: 8px;
-    width: 932px !important;
+	height: 38px;
+	margin-left: 0 !important;
+	padding-left: 8px;
+	width: 932px !important;
 }
 
 #action-bar{
@@ -370,13 +371,13 @@ div.menu {
 	padding: 10px;
 }
 .checkout-login {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 .cf-checkout div.submit, .checkout-login div.submit, .checkout div.submit {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 .checkout table tr {
-     min-width: 200px;
+	min-width: 200px;
 }
 .archive #content .breadcrumbtrail li{
 	margin: 0px;
@@ -388,6 +389,12 @@ h1.entry-title{
 	padding-bottom: 20px;
 	padding-top: 10px;
 }
+
+h2.entry-title{
+	padding: 10px;
+}
+
+
 #tos-agree, #payment-method, #confirm-payment {
 	margin-bottom: 10px;
 }
@@ -420,22 +427,22 @@ h1.entry-title{
 	border: 1px solid #ddd;
 }
 #add-listing-su {
-    float: left;
-    margin: 4px 5px 0 5px;
+	float: left;
+	margin: 4px 5px 0 5px;
 }
 #go-to-profile-su {
-    float: left;
-    margin: 4px 0 0 5px;
+	float: left;
+	margin: 4px 0 0 5px;
 }
 #cc-user-details {
 	margin: 10px 20px 10px 0;
-    float: left;
-    width: 48%;
+	float: left;
+	width: 48%;
 }
 #cc-card-details {
 	margin-top: 10px;
-    float: left;
-    width: 48%;
+	float: left;
+	width: 48%;
 }
 #cc-user-details td, #cc-card-details td {
 	background: #EEE;
@@ -488,13 +495,13 @@ h1.entry-title{
 
 /********************************** footer */
 #footer {
-    clear: both;
-    padding: 10px 0px 15px;
-    width: 100%;
+	clear: both;
+	padding: 10px 0px 15px;
+	width: 100%;
 }
 
 #footer a {
-margin-right: 10px;
+	margin-right: 10px;
 }
 
 /********************************** forms */
@@ -518,17 +525,17 @@ margin-right: 10px;
 }
 /********************************** header */
 #header {
-padding: 10px 0 0 0;
+	padding: 10px 0 0 0;
 }
 
 #site-logo {
-margin: 0px;
-padding: 25px 0px;
-float: left;
+	margin: 0px;
+	padding: 25px 0px;
+	float: left;
 }
 
 #site-logo a {
-text-decoration: none;
+	text-decoration: none;
 }
 
 #container{
@@ -536,19 +543,19 @@ text-decoration: none;
 	padding: 10px 0px;
 }
 #banner-header {
-    width: 468px;
-    height: 60px;
-    background: #ddd;
-    float: right;
+	width: 468px;
+	height: 60px;
+	background: #ddd;
+	float: right;
 }
 #banner-header span {
-    padding: 10px;
-    color: #999;
+	padding: 10px;
+	color: #999;
 }
 /********************************** layout */
 body {
-margin: 0px;
-padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 .entry{
@@ -556,9 +563,9 @@ padding: 0px;
 }
 
 #site-wrapper {
-margin: 0px auto;
-width: 940px;
-padding: 12px;
+	margin: 0px auto;
+	width: 940px;
+	padding: 12px;
 }
 /********************************** navigation */
 #navigation {
@@ -632,85 +639,85 @@ div.menu li {
 	margin-bottom: 10px;
 }
 .pagetitle{
-	padding-top: 10px;
+	padding: 10px;
 }
 
 p {
-margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 #content ul {
-list-style: square;
-margin: 10px;
+	list-style: square;
+	margin: 10px;
 }
 
 #content ol {
-list-style: decimal;
-margin: 10px;
+	list-style: decimal;
+	margin: 10px;
 }
 
 #content ol ol {
-list-style: upper-alpha;
+	list-style: upper-alpha;
 }
 
 #content ol ol ol {
-list-style: lower-roman;
+	list-style: lower-roman;
 }
 
 #content ol ol ol ol {
-list-style: lower-alpha;
+	list-style: lower-alpha;
 }
 
 #content dl {
-margin: 0 0 24px 0;
+	margin: 0 0 24px 0;
 }
 
 #content dt {
-font-weight: bold;
+	font-weight: bold;
 }
 
 #content dd {
-margin-bottom: 18px;
+	margin-bottom: 18px;
 }
 
 strong {
-font-weight: bold;
+	font-weight: bold;
 }
 
 cite,
 em,
 i {
-font-style: italic;
+	font-style: italic;
 }
 
 big {
-font-size: 131.25%;
+	font-size: 131.25%;
 }
 
 blockquote cite,
 blockquote em,
 blockquote i {
-font-style: normal;
+	font-style: normal;
 }
 
 pre {
-line-height: 18px;
-margin-bottom: 18px;
-padding: 1.5em;
+	line-height: 18px;
+	margin-bottom: 18px;
+	padding: 1.5em;
 }
 
 sup,
 sub {
-height: 0;
-line-height: 1;
-vertical-align: baseline;
-position: relative;
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	position: relative;
 }
 sup {
-bottom: 1ex;
+	bottom: 1ex;
 }
 sub {
-top: .5ex;
+	top: .5ex;
 }
 /********************************** widgets */
 #footer-widget-area {
@@ -727,39 +734,39 @@ top: .5ex;
 }
 
 #wp_tag_cloud div {
-line-height: 1.6em;
+	line-height: 1.6em;
 }
 
 #wp-calendar {
-width: 100%;
+	width: 100%;
 }
 
 #wp-calendar caption {
-font-weight: bold;
-text-align: left;
-font-size: 14px;
-padding-bottom: 4px;
+	font-weight: bold;
+	text-align: left;
+	font-size: 14px;
+	padding-bottom: 4px;
 }
 
 #wp-calendar thead {
-font-size: 11px;
+	font-size: 11px;
 }
 
 #wp-calendar tbody td {
-padding: 3px 0 2px;
-text-align: center;
+	padding: 3px 0 2px;
+	text-align: center;
 }
 
 #wp-calendar tfoot #next {
-text-align: right;
+	text-align: right;
 }
 
 #signin-page table {
-    width: 200px;
+	width: 200px;
 }
 
 #signin-page #error strong {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 /********************************** signin-page */
@@ -869,10 +876,10 @@ ul.dr_tabs li.dr_active a {
 	padding: 5px 10px;
 	margin: 5px 0;
 }
-.userinfo { 
+.userinfo {
 	float: left;
 	width: 75%;
-margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 .userinfo p {
 	margin-left: 10px;

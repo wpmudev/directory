@@ -216,12 +216,12 @@ class DR_Transactions{
 					//recurring calculate the expiration
 					if(! empty($custom['billing_period']) && ! empty($custom['billing_frequency'])) {
 
-						$period = 'P' . $custom['billing_frequency'] . substr($custom['billing_period'], 0, 1 ); //ISO interval
 						$date = new DateTime;
 						if(! empty($value['subscr_date']) ) $date = $date->setTimestamp(strtotime($value['subscr_date']) );
-						$date->add(new DateInterval($period) );
-						$date->add(new DateInterval('P3D') ); // 3 day grace period
-						$this->_transactions['order']['expires'] = $date->getTimestamp();
+
+						$expiration_date = $this->get_expiration_date($this->_transactions['order']['billing_period'], $this->_transactions['order']['billing_frequency'], $date );
+						$this->_transactions['order']['expires'] = $expiration_date->getTimestamp();
+
 					}
 				}
 			}
@@ -337,10 +337,12 @@ class DR_Transactions{
 
 	function get_expiration_date($billing_period, $billing_frequency, $from_date = null){
 		if(empty($from_date) ) $from_date = new DateTime(); // assume now.
+		
+		$from_date->modify("+{$billing_frequency} {$billing_period}" );
 
-		$period = 'P' . $billing_frequency . substr($billing_period, 0, 1 ); //ISO interval
-		$from_date->add(new DateInterval($period) );
-		$from_date->add(new DateInterval('P3D') ); // 3 day grace period
+		//$period = 'P' . $billing_frequency . substr($billing_period, 0, 1 ); //ISO interval
+		//$from_date->add(new DateInterval($period) );
+		//$from_date->add(new DateInterval('P3D') ); // 3 day grace period
 		return $from_date;
 	}
 

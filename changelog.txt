@@ -21,7 +21,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Plugin to automatically join member with the subsite they signup on in Multisite.
 * Member role and capabilities editor.
 * Limit set of post statuses available to member. Allows Admin moderating.
-
+* Media editor only displays current users uploaded files.
 
 = 2.1.2 =
 * Various fixes for version 3.4

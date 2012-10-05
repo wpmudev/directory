@@ -3,8 +3,10 @@
 <?php
 if(is_network_admin()){
 	$post_type = $this->network_post_types[$_GET['ct_edit_post_type']];
+	$custom_fields = get_site_option( 'ct_custom_fields' );
 } else {
 	$post_type = $this->post_types[$_GET['ct_edit_post_type']];
+	$custom_fields = get_option( 'ct_custom_fields' );
 }
 
 ?>
@@ -397,9 +399,10 @@ if(is_network_admin()){
 					<td>
 						<p><span class="description"><?php _e('These Custom Fields will be display as columns on the custom post type screen.', $this->text_domain); ?></span></p>
 						<?php
-						$custom_fields = get_site_option( 'ct_custom_fields' );
+//						$custom_fields = get_site_option( 'ct_custom_fields' );
 						if ( ! empty( $custom_fields ) ) {
 							foreach ( $custom_fields as $custom_field ) {
+								//print_r($custom_field['object_type']);
 								if ( false !== array_search( $_GET['ct_edit_post_type'], $custom_field['object_type'] ) ) {
 									if ( isset( $post_type['cf_columns'][$custom_field['field_id']] ) && 1 == $post_type['cf_columns'][$custom_field['field_id']] )
 									$checked = 'checked';
