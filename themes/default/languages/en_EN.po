@@ -1,0 +1,503 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Directory Theme 1.1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-18 10:57-0500\n"
+"PO-Revision-Date: 2012-10-18 11:00-0500\n"
+"Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
+"Language-Team: Arnold Bailey <arnold@incsub.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../comments.php:9
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../comments.php:28
+#, php-format
+msgid "One Review for %2$s"
+msgstr ""
+
+#: ../comments.php:35
+msgid "<span class=\"meta-nav\">&larr;</span> Older Reviews"
+msgstr ""
+
+#: ../comments.php:36
+msgid "Newer Reviews <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../comments.php:55
+msgid "<span class=\"meta-nav\">&larr;</span> Older Review"
+msgstr ""
+
+#: ../comments.php:56
+msgid "Newer Review <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../comments.php:69
+msgid "Reviews are closed."
+msgstr ""
+
+#: ../comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a review."
+msgstr ""
+
+#: ../comments.php:81
+msgid "Write a Review"
+msgstr ""
+
+#: ../comments.php:82
+#, php-format
+msgid "Write a Review to %s"
+msgstr ""
+
+#: ../comments.php:83
+msgid "Cancel review"
+msgstr ""
+
+#: ../comments.php:84
+msgid "Post Review"
+msgstr ""
+
+#: ../comments.php:85
+msgid "Review"
+msgstr ""
+
+#: ../comments.php:86
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+
+#: ../comments.php:87
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+
+#: ../dr_listinglist.php:44 ../loops/loop-archive.php:14
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr ""
+
+#: ../dr_listinglist.php:61 ../loops/loop-archive.php:21
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr ""
+
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
+msgid "Leave a review"
+msgstr ""
+
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
+msgid "1 Review"
+msgstr ""
+
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
+msgid "% Reviews"
+msgstr ""
+
+#: ../dr_listinglist.php:69 ../single-listing.php:16
+#: ../loops/loop-archive.php:25 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
+msgid "Reviews Off"
+msgstr ""
+
+#: ../dr_listinglist.php:70 ../single-listing.php:19
+#: ../loops/loop-archive.php:26 ../loops/loop-single.php:12
+msgid "Edit"
+msgstr ""
+
+#: ../dr_listinglist.php:77 ../loops/loop-archive.php:33
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../dr_listinglist.php:87 ../loops/loop-archive.php:43
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../dr_listinglist.php:108 ../components/messages.php:5
+msgid ""
+"Sorry, we can't find the archive you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../footer.php:8
+msgid "Theme by WPMU DEV"
+msgstr ""
+
+#: ../footer.php:8
+msgid "WPMU DEV"
+msgstr ""
+
+#: ../footer.php:8
+msgid "Copyright"
+msgstr ""
+
+#: ../footer.php:8
+msgid "Y"
+msgstr ""
+
+#: ../footer.php:8
+msgid "Go back to top &uarr;"
+msgstr ""
+
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
+msgid "No Reviews &#187;"
+msgstr ""
+
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
+msgid "1 Review &#187;"
+msgstr ""
+
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
+msgid "% Reviews &#187;"
+msgstr ""
+
+#: ../single-listing.php:20 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:13
+msgid "Tags: "
+msgstr ""
+
+#: ../single-listing.php:23 ../loops/loop-single.php:16
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to rate item."
+msgstr ""
+
+#: ../single-listing.php:38 ../loops/loop-single.php:28
+msgid "Pages:"
+msgstr ""
+
+#: ../single-listing.php:49 ../loops/loop-single.php:39
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: ../single-listing.php:53 ../loops/loop-single.php:43
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../single-listing.php:69 ../components/pagination.php:18
+#: ../components/pagination.php:25 ../components/pagination.php:32
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+#: ../single-listing.php:70 ../components/pagination.php:19
+#: ../components/pagination.php:26 ../components/pagination.php:33
+msgid "Next Entries &raquo;"
+msgstr ""
+
+#: ../single-listing.php:75 ../components/messages.php:11
+msgid ""
+"Sorry, we can't find the post you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../components/actionbuttons.php:2
+msgid "Welcome, what would you like to do?"
+msgstr ""
+
+#: ../components/actionbuttons.php:5 ../components/actionbuttons.php:18
+msgid "Sign Up"
+msgstr ""
+
+#: ../components/actionbuttons.php:6
+msgid "Sign In"
+msgstr ""
+
+#: ../components/actionbuttons.php:9
+msgid "Log Out"
+msgstr ""
+
+#: ../components/actionbuttons.php:15
+msgid "Add Listing"
+msgstr ""
+
+#: ../components/actionbuttons.php:22
+msgid "Go to Profile"
+msgstr ""
+
+#: ../components/branding-header.php:4
+msgid "Home"
+msgstr ""
+
+#: ../components/headers.php:3 ../components/headers.php:5
+#: ../components/headers.php:7
+#, php-format
+msgid "You are browsing the archive for %1$s."
+msgstr ""
+
+#: ../components/headers.php:11
+msgid "Search Results"
+msgstr ""
+
+#: ../components/headers.php:13
+msgid "Blog"
+msgstr ""
+
+#: ../components/messages.php:3
+msgid ""
+"Sorry, we can't find the category you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../components/messages.php:7
+msgid ""
+"Sorry, we can't find the search keyword you're looking for. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../components/messages.php:9
+msgid ""
+"Sorry, we can't find the author you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../components/messages.php:13 ../components/messages.php:15
+msgid ""
+"Sorry, we can't find the content you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../components/pagination.php:12
+msgid "Pages"
+msgstr ""
+
+#: ../components/pagination.php:12
+msgid "number"
+msgstr ""
+
+#: ../components/searchcontainer.php:4
+msgid "What can we find for you today?"
+msgstr ""
+
+#: ../components/searchcontainer.php:6
+msgid "Find it now!"
+msgstr ""
+
+#: ../core/colors.php:35 ../core/colors.php:103 ../core/colors.php:110
+msgid "Colors"
+msgstr ""
+
+#: ../core/colors.php:99
+msgid "Colors Saved!"
+msgstr ""
+
+#: ../core/colors.php:113
+msgid "Allow color overrides below."
+msgstr ""
+
+#: ../core/colors.php:116
+msgid "Site Title"
+msgstr ""
+
+#: ../core/colors.php:119 ../core/colors.php:128 ../core/colors.php:137
+#: ../core/colors.php:146 ../core/colors.php:155 ../core/colors.php:164
+#: ../core/colors.php:173 ../core/colors.php:182 ../core/colors.php:191
+msgid "Select Color"
+msgstr ""
+
+#: ../core/colors.php:120 ../core/colors.php:129 ../core/colors.php:138
+#: ../core/colors.php:147 ../core/colors.php:156 ../core/colors.php:165
+#: ../core/colors.php:174 ../core/colors.php:183 ../core/colors.php:192
+msgid "Use Default"
+msgstr ""
+
+#: ../core/colors.php:125
+msgid "Navigation Bar"
+msgstr ""
+
+#: ../core/colors.php:134
+msgid "Content Wrapper"
+msgstr ""
+
+#: ../core/colors.php:143
+msgid "Search Box"
+msgstr ""
+
+#: ../core/colors.php:152
+msgid "Grid and Action Bars"
+msgstr ""
+
+#: ../core/colors.php:161
+msgid "Headings Bars"
+msgstr ""
+
+#: ../core/colors.php:170
+msgid "Buttons"
+msgstr ""
+
+#: ../core/colors.php:179
+msgid "Buttons Text"
+msgstr ""
+
+#: ../core/colors.php:188
+msgid "Global Text"
+msgstr ""
+
+#: ../core/colors.php:198 ../core/options.php:94
+msgid "Save Changes"
+msgstr ""
+
+#: ../core/core.php:40
+msgid "Top Menu"
+msgstr ""
+
+#: ../core/core.php:57
+msgid "The header advertisement widget area"
+msgstr ""
+
+#: ../core/core.php:65
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: ../core/core.php:67
+msgid "The first footer widget area"
+msgstr ""
+
+#: ../core/core.php:75
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: ../core/core.php:77
+msgid "The second footer widget area"
+msgstr ""
+
+#: ../core/core.php:85
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: ../core/core.php:87
+msgid "The third footer widget area"
+msgstr ""
+
+#: ../core/core.php:95
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: ../core/core.php:97
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: ../core/core.php:116
+msgid "{View Listing}"
+msgstr ""
+
+#: ../core/core.php:145
+msgid "Advertise Here"
+msgstr ""
+
+#: ../core/options.php:34 ../core/options.php:46
+msgid "Options"
+msgstr ""
+
+#: ../core/options.php:42
+msgid "Options Saved!"
+msgstr ""
+
+#: ../core/options.php:56
+msgid "Presentation"
+msgstr ""
+
+#: ../core/options.php:59
+msgid "Text Shadows"
+msgstr ""
+
+#: ../core/options.php:62
+msgid "Switch text shadows OFF"
+msgstr ""
+
+#: ../core/options.php:66 ../core/options.php:69
+msgid "Layout"
+msgstr ""
+
+#: ../core/options.php:72
+msgid "Grid Layout"
+msgstr ""
+
+#: ../core/options.php:73
+msgid "Rows Layout"
+msgstr ""
+
+#: ../core/options.php:75
+msgid "Switch Theme Layout"
+msgstr ""
+
+#: ../core/options.php:79
+msgid "Styles"
+msgstr ""
+
+#: ../core/options.php:82
+msgid "Style Modern"
+msgstr ""
+
+#: ../core/options.php:83
+msgid "Style Minimal"
+msgstr ""
+
+#: ../core/options.php:84
+msgid "Style Boxed"
+msgstr ""
+
+#: ../core/options.php:85
+msgid "Style Gloss"
+msgstr ""
+
+#: ../core/options.php:86
+msgid "Style Skinny"
+msgstr ""
+
+#: ../core/options.php:87
+msgid "Style Wide"
+msgstr ""
+
+#: ../core/options.php:89
+msgid "Switch Theme Style"
+msgstr ""
+
+#: ../loops/loop-attachment.php:13
+msgid "<p class=\"serif\">Read the rest of this entry &rarr;</p>"
+msgstr ""
+
+#: ../loops/loop-attachment.php:14 ../loops/loop-page.php:10
+msgid "<p><strong>Pages:</strong> "
+msgstr ""
+
+#: ../loops/loop-blog-page.php:11 ../loops/loop-excerpt.php:8
+msgid "in"
+msgstr ""
+
+#: ../loops/loop-blog-page.php:11 ../loops/loop-excerpt.php:8
+msgid "by "
+msgstr ""
+
+#: ../loops/loop-blog-page.php:16 ../loops/loop-excerpt.php:14
+msgid "Permanent Link to"
+msgstr ""
+
+#: ../loops/loop-page.php:11
+msgid "Edit this entry."
+msgstr ""

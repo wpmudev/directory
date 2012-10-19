@@ -22,6 +22,8 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Member role and capabilities editor.
 * Limit set of post statuses available to member. Allows Admin moderating.
 * Media editor only displays current users uploaded files.
+* Added Contact Form to single Page
+* Fixed rating display in Comments
 
 = 2.1.2 =
 * Various fixes for version 3.4

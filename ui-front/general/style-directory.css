@@ -80,6 +80,36 @@ div.comment-item:hover .row-actions {
 	margin-right: 3%;
 }
 
+.action-form, .confirm-form {
+	margin-top: 10px;
+}
+
+.dr-contact-form {
+	width: 300px;
+	float: left;
+}
+
+#dr-message,
+#dr-message-error {
+	background-color: #8FF57A;
+	color: #1A6A00;
+	-moz-border-radius: 3px 3px 3px 3px;
+	border: 1px solid #80CF70;
+	font-weight: normal;
+	margin: 3px 0px 10px 0px;
+	text-decoration: none;
+	display: block;
+	font-size: 12px;
+	padding: 5px 50px;
+	float: left;
+}
+
+#dr-message-error {
+	background-color: #FFEBE8;
+	color: #000;
+	border: 1px solid #CC0000;
+}
+
 
 .editfield input,
 .editfield textarea,
@@ -355,4 +385,21 @@ ul.dr_tabs li.dr_active a {
 
 .ct-form-field p{
 	font-size: .8em;
+}
+
+/** Thickbox layer adjustment to get on top of 2011 images*/
+#TB_overlay {
+	z-index:10000;
+}
+
+#TB_window {
+	z-index: 10002;
+}
+
+#TB_load{
+	z-index:10003;
+}
+
+#TB_HideSelect{
+	z-index:9999;
 }

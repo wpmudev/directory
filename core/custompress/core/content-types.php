@@ -1292,7 +1292,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$cid = str_replace('_ct_','',$id);
 		$cid = str_replace('ct_','',$cid);
 
-		$custom_field = (isset($this->custom_fields[$cid])) ? $this->all_custom_fields[$cid] : null;
+		$custom_field = (isset($this->all_custom_fields[$cid])) ? $this->all_custom_fields[$cid] : null;
 
 		$property = strtolower($property);
 		$result = '';

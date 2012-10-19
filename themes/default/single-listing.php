@@ -13,11 +13,11 @@
 					<div class="entry-meta">
 						<?php the_dr_posted_on(); ?>
 						<?php do_action('sr_avg_rating'); ?><br />
-						<span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', DR_TEXT_DOMAIN ), __( '1 Review &#187;', DR_TEXT_DOMAIN ), __( '% Reviews &#187;', DR_TEXT_DOMAIN ), '',  __( 'Reviews Off', DR_TEXT_DOMAIN) ); ?></span>
+						<span class="comments"><?php comments_popup_link( __( 'No Reviews &#187;', THEME_TEXT_DOMAIN ), __( '1 Review &#187;', THEME_TEXT_DOMAIN ), __( '% Reviews &#187;', THEME_TEXT_DOMAIN ), '',  __( 'Reviews Off', THEME_TEXT_DOMAIN) ); ?></span>
 						<br />
 						<?php the_dr_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', DR_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
-						<span class="tags"><?php the_tags( __( 'Tags: ', DR_TEXT_DOMAIN ), ', ', ''); ?></span>
+						<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+						<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span>
 
 						<?php if ( !is_user_logged_in() ) : ?>
 							<?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>
@@ -35,7 +35,7 @@
 		<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
 	</div>
 
-							<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', DR_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
+							<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', THEME_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>
 						</div><!-- .entry-content -->
 						<div class="clear"></div>
 					</div>
@@ -46,11 +46,11 @@
 								<?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ); ?>
 							</div><!-- #author-avatar -->
 							<div id="author-description">
-								<h2><?php printf( esc_attr__( 'About %s', DR_TEXT_DOMAIN ), get_the_author() ); ?></h2>
+								<h2><?php printf( esc_attr__( 'About %s', THEME_TEXT_DOMAIN ), get_the_author() ); ?></h2>
 								<?php the_author_meta( 'description' ); ?>
 								<div id="author-link">
 									<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-										<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), get_the_author() ); ?>
+										<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', THEME_TEXT_DOMAIN ), get_the_author() ); ?>
 									</a>
 								</div><!-- #author-link	-->
 							</div><!-- #author-description -->
@@ -66,13 +66,13 @@
 				<?php endwhile; ?>
 
 				<div id="post-navigator">
-					<div class="alignleft"><?php next_posts_link( __( '&laquo; Previous Entries', DR_TEXT_DOMAIN ) ) ?></div>
-					<div class="alignright"><?php previous_posts_link( __( 'Next Entries &raquo;', DR_TEXT_DOMAIN ) ) ?></div>
+					<div class="alignleft"><?php next_posts_link( __( '&laquo; Previous Entries', THEME_TEXT_DOMAIN ) ) ?></div>
+					<div class="alignright"><?php previous_posts_link( __( 'Next Entries &raquo;', THEME_TEXT_DOMAIN ) ) ?></div>
 				</div>
 
 			<?php else : ?>
 
-				<h3><?php _e("Sorry, we can't find the post you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", DR_TEXT_DOMAIN); ?></h3>
+				<h3><?php _e("Sorry, we can't find the post you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go.", THEME_TEXT_DOMAIN); ?></h3>
 
 			<?php endif; ?>
 

@@ -169,6 +169,9 @@ class Directory_Core_Data {
 			update_site_option( 'display_network_content_types', true );
 
 		}
+
+		flush_network_rewrite_rules();
+
 	}
 
 	function load_payment_data() {

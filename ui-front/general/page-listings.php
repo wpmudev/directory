@@ -1,6 +1,6 @@
 <?php
 
-global $bp, $wp_query, $post,$paged;
+global $bp, $wp_query, $post, $paged;
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
@@ -25,11 +25,6 @@ if ( in_array($tax_key, $taxonomies) ) {
 	)
 	);
 }
-/*
-$query_args['meta_key'] = '_sr_post_rating';
-$query_args['orderby'] = 'meta_value_num';
-$query_args['order'] = 'DESC';
-*/
 
 //Remove the archive title filter for the individual listings
 remove_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
@@ -37,8 +32,8 @@ remove_filter( 'the_content', array( &$this, 'listing_list_theme' ) );
 
 query_posts($query_args);
 
-if ( file_exists( get_template_directory() . "/loop-author.php" ) )
-get_template_part( 'loop', 'author' );
+if ( file_exists( get_template_directory() . "/loop-taxonomy.php" ) )
+get_template_part( 'loop', 'taxonomy' );
 else
 load_template( DR_PLUGIN_DIR . 'ui-front/general/loop-taxonomy.php' );
 

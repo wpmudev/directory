@@ -1,3 +1,8 @@
+jQuery(document).ready(function($) {
+	$('form.confirm-form').hide();
+	$('form.dr-contact-form').hide();
+});
+
 var dr_listings = {
 	edit: function( key ) {
 		jQuery( '#action-form' ).attr( 'action', dr_edit );
@@ -19,5 +24,20 @@ var dr_listings = {
 		jQuery( '#delete-confirm-' + key ).parent().find( 'span' ).show();
 		jQuery( '#delete-confirm-' + key ).hide();
 
+	},
+	toggle_contact_form: function() {
+		jQuery('.dr-ad-info').hide();
+		jQuery('#action-form').hide();
+		jQuery('#confirm-form').show();
+	},
+	cancel_contact_form: function() {
+		jQuery('#confirm-form').hide();
+		jQuery('.dr-ad-info').show();
+		jQuery('#action-form').show();
+	},
+	cancel: function(key) {
+		jQuery('#confirm-form-'+key).hide();
+		jQuery('#action-form-'+key).show();
 	}
+	
 };

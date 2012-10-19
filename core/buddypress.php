@@ -35,7 +35,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 		add_action( 'admin_menu', array( &$this, 'add_navigation' ), 2 );
 
 		/* Enqueue styles */
-		add_action( 'wp_print_styles', array( &$this, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 		add_action( 'wp_print_scripts', array( &$this, 'on_print_scripts' ) );
 		add_action( 'wp_head', array( &$this, 'print_scripts' ) );
 		add_action( 'bp_template_content', array( &$this, 'process_page_requests' ) );
@@ -437,7 +437,12 @@ class Directory_Core_Buddypress extends Directory_Core {
 	*
 	* @return void
 	**/
-	function enqueue_styles() {
+	function enqueue_scripts() {
+		if(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)) {
+			wp_enqueue_script('thickbox');
+			wp_enqueue_style('thickbox');
+		}
+
 		if ( file_exists( get_template_directory() . '/style-bp-directory.css' ) )
 		wp_enqueue_style( 'style-directory', get_template_directory() . '/style-bp-directory.css' );
 		elseif ( file_exists( $this->plugin_dir . 'ui-front/buddypress/style-bp-directory.css' ) )

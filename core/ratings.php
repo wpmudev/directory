@@ -40,7 +40,7 @@ class DR_Ratings {
 		add_action( 'wp_head', array( &$this, 'print_scripts' ) );
 		add_action( 'sr_avg_rating', array( &$this, 'render_avg_rating' ) );
 		add_action( 'sr_avg_ratings_of_listings', array( &$this, 'render_avg_ratings_of_listings' ) );
-		add_action( 'sr_user_rating', array( &$this, 'render_user_rating' ) );
+		add_action( 'sr_user_rating', array( &$this, 'render_user_rating') );
 		add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
 		add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
 		add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
@@ -208,7 +208,7 @@ class DR_Ratings {
 		/*
 		if ( 'no_rate' != $rating ) {
 		?>
-		<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
+		<div class="sr-user-rating"><strong><?php _e( 'Rating:', DR_TEXT_DOMAIN ); ?></strong>
 		<span>(<?php echo $this->quality[$rating] ?>)</span>
 		<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
 		<?php foreach ( $this->quality as $scale => $text ): ?>
@@ -292,14 +292,15 @@ class DR_Ratings {
 	* @access public
 	* @return void
 	*/
-	function render_user_rating() {
+	function render_user_rating($user_id = 0) {
 		global $post;
 
-		$user_id = get_current_user_id();
+		$user_id = (empty($user_id) ) ? get_current_user_id() : $user_id;
+		
 		$rating = $this->get_rating( $post->ID, $user_id );
 
 		?>
-		<div class="sr-user-rating"><strong><?php _e( 'Rating:', 'directory' ); ?></strong>
+		<div class="sr-user-rating"><strong><?php _e( 'Rating:', DR_TEXT_DOMAIN ); ?></strong>
 			<span>(<?php echo $this->quality[$rating] ?>)</span>
 			<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ):

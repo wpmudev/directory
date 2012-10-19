@@ -54,7 +54,7 @@ class DR_Theme_Core {
 		register_sidebar(array(
 		'name'	=>	'Advertisement',
 		'id' => 'advertise-widget',
-		'description' => __( 'The header advertisement widget area', 'directory' ),
+		'description' => __( 'The header advertisement widget area', THEME_TEXT_DOMAIN ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -62,9 +62,9 @@ class DR_Theme_Core {
 		));
 		// Area 1, located in the footer. Empty by default.
 		register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'directory' ),
+		'name' => __( 'First Footer Widget Area', THEME_TEXT_DOMAIN ),
 		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'directory' ),
+		'description' => __( 'The first footer widget area', THEME_TEXT_DOMAIN ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -72,9 +72,9 @@ class DR_Theme_Core {
 		) );
 		// Area 2, located in the footer. Empty by default.
 		register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'directory' ),
+		'name' => __( 'Second Footer Widget Area', THEME_TEXT_DOMAIN ),
 		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'directory' ),
+		'description' => __( 'The second footer widget area', THEME_TEXT_DOMAIN ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -82,9 +82,9 @@ class DR_Theme_Core {
 		) );
 		// Area 3, located in the footer. Empty by default.
 		register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'directory' ),
+		'name' => __( 'Third Footer Widget Area', THEME_TEXT_DOMAIN ),
 		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'directory' ),
+		'description' => __( 'The third footer widget area', THEME_TEXT_DOMAIN ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -92,9 +92,9 @@ class DR_Theme_Core {
 		) );
 		// Area 4, located in the footer. Empty by default.
 		register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'directory' ),
+		'name' => __( 'Fourth Footer Widget Area', THEME_TEXT_DOMAIN ),
 		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'directory' ),
+		'description' => __( 'The fourth footer widget area', THEME_TEXT_DOMAIN ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -113,7 +113,7 @@ class DR_Theme_Core {
 	*/
 	function new_excerpt_more( $more ) {
 		global $post;
-		return ' ... <br /><a class="view-listing" href="'. get_permalink( $post->ID ) . '">' . __( '{View Listing}', 'directory' ) . '</a>';
+		return ' ... <br /><a class="view-listing" href="'. get_permalink( $post->ID ) . '">' . __( '{View Listing}', THEME_TEXT_DOMAIN ) . '</a>';
 	}
 
 	/**

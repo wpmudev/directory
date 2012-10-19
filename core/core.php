@@ -114,6 +114,8 @@ class Directory_Core {
 		add_action( 'parse_request', array( &$this, 'on_parse_request' ) );
 		add_action('pre_get_posts', array(&$this, 'on_pre_get_posts') );
 
+		add_action( 'template_redirect', array( &$this, 'handle_contact_form_requests' ) );
+
 
 		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
@@ -1262,6 +1264,61 @@ class Directory_Core {
 		}
 		return $link;
 	}
+
+	/**
+	* Handles the request for the contact form on the single{}.php template
+	**/
+	function handle_contact_form_requests() {
+
+		/* Only handle request if on single{}.php template and our post type */
+		if ( get_post_type() == $this->post_type && is_single($_SESSION['dr_random_value']) ) {
+
+			if(! session_id() ) session_start();
+			
+			//print_r($_POST['dr_random_value']); print_r(' ' . md5(strtoupper( $_POST['dr_random_value']) ) ); print_r(' ' . $_SESSION['dr_random_value']);
+
+			if (isset( $_POST['contact_form_send'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'send_message' ) ){
+				
+				if ( isset( $_POST['name'] ) && '' != $_POST['name']
+				&& isset( $_POST['email'] ) && '' != $_POST['email']
+				&& isset( $_POST['subject'] ) && '' != $_POST['subject']
+				&& isset( $_POST['message'] ) && '' != $_POST['message']
+				&& isset( $_POST['dr_random_value'] ) && (md5(strtoupper($_POST['dr_random_value']) )  == $_SESSION['dr_random_value'] )
+
+				) {
+					global $post;
+
+					$user_info  = get_userdata( $post->post_author );
+
+					$body       = 'Hi %s, you have received message from:<br />
+					<br />
+					Name: %s <br />
+					Email: %s <br />
+					Subject: %s <br />
+					Message: <br />
+					%s
+					<br />
+					<br />
+					<br />
+					Directory link: %s
+					';
+
+					$tm_subject =  'Contact Request: %s [ %s ]';
+
+					$to         = $user_info->user_email;
+					$subject    = sprintf( __( $tm_subject, $this->text_domain ), $_POST['subject'], $post->post_title );
+					$message    = sprintf( __( $body, $this->text_domain ), $user_info->user_nicename, $_POST['name'], $_POST['email'], $_POST['subject'], $_POST['message'], get_permalink( $post->ID ) );
+					$headers    = "MIME-Version: 1.0\n" . "From: " . $_POST['name'] .  " <{$_POST['email']}>\n" . "Content-Type: text/html; charset=\"" . get_option( 'blog_charset' ) . "\"\n";
+
+					$sent = (wp_mail( $to, $subject, $message, $headers ) ) ? '1' : '0';
+					wp_redirect( get_permalink( $post->ID ) . '?sent=' . $sent );
+					exit;
+				}
+			}
+		}
+	}
+
+
 
 }
 

@@ -178,7 +178,7 @@ $options = $this->get_options('payments');
 					<tr>
 						<th><label for="credits_per_week"><?php _e( 'Credits Per Listing', $this->text_domain ); ?></label></th>
 						<td>
-							<input type="text" id="credits_per_week" name="credits_per_listing" value="<?php echo ( empty( $options['credits_per_listing'] ) ) ? '0' : $options['credits_per_listing']; ?>" class="small-text" />
+							<input type="text" id="credits_per_listing" name="credits_per_listing" value="<?php echo ( empty( $options['credits_per_listing'] ) ) ? '0' : $options['credits_per_listing']; ?>" class="small-text" />
 							<span class="description"><?php _e( 'How many credits you need to publish a Listing.', $this->text_domain ); ?></span>
 						</td>
 					</tr>

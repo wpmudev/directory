@@ -50,9 +50,6 @@ ul.button-nav li {
 #content .dr-custom-fields tr th {
 	border-top:1px solid #E7E7E7;
 }
-.action-form, .confirm-form {
-	margin-top: 10px;
-}
 .dr-padder {
 	-moz-border-radius-bottomleft: 6px;
 	-moz-border-radius-topleft: 6px;
@@ -169,6 +166,10 @@ ul.button-nav li {
 	float: left;
 }
 
+.action-form, .confirm-form {
+	margin-top: 10px;
+}
+
 #dr-message,
 #dr-message-error {
 	background-color: #8FF57A;
@@ -185,9 +186,9 @@ ul.button-nav li {
 }
 
 #dr-message-error {
-	background-color: #EF0E0E;
+	background-color: #FFEBE8;
 	color: #000;
-	border: 1px solid #4C0000;
+	border: 1px solid #CC0000;
 }
 
 .my-credits h3 {

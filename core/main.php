@@ -444,6 +444,11 @@ class Directory_Core_Main extends Directory_Core {
 	* including JS/CSS
 	**/
 	function on_enqueue_scripts() {
+		
+		if(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)) {
+			wp_enqueue_script('thickbox');
+			wp_enqueue_style('thickbox');
+		}
 		//including CSS
 		if ( file_exists( get_template_directory() . '/style-directory.css' ) )
 		wp_enqueue_style( 'style-directory', get_bloginfo('template_url') . '/style-directory.css' );

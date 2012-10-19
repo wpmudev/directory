@@ -56,6 +56,8 @@ class DR_Transactions{
 
 		if(! $dr_transactions ){
 			$dr_transactions = $this->struc;
+			$options = $this->get_options('payments');
+			$dr_transactions['credits'] = (empty($options['credits_per_listing']) ) ? 0 : $options['credits_per_listing'];
 			update_user_option($this->user_id, 'dr_transactions', $dr_transactions);
 		}
 

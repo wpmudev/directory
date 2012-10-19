@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: CustomPress v1.2.1\n"
+"Project-Id-Version: CustomPress v1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-16 13:20-0500\n"
-"PO-Revision-Date: 2012-09-16 13:23-0500\n"
+"POT-Creation-Date: 2012-10-18 11:06-0500\n"
+"PO-Revision-Date: 2012-10-18 11:07-0500\n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
 "Language: en\n"
@@ -14,59 +14,54 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.3\n"
-"X-Poedit-SearchPath-0: D:\\wamp\\www\\custompress\\wp-content\\plugins"
-"\\custompress\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/loader.php:17
+#: ../loader.php:17
 msgid "CustomPress - Custom Post, Taxonomy and Field Manager."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/loader.php:18
+#: ../loader.php:18
 msgid "Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/loader.php:19
+#: ../loader.php:19
 msgid "http://premium.wpmudev.org"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/loader.php:20
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:130
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:151
+#: ../loader.php:20 ../core/admin.php:130 ../core/admin.php:151
 msgid "CustomPress"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:133
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:153
+#: ../core/admin.php:133 ../core/admin.php:153
 msgid "Content Types"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:138
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/admin.php:154
+#: ../core/admin.php:138 ../core/admin.php:154
 msgid "Settings"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/content-types.php:795
+#: ../core/content-types.php:795
 msgid "Default CustomPress Fields"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/content-types.php:818
+#: ../core/content-types.php:818
 msgid "CustomPress Fields"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/content-types.php:1085
+#: ../core/content-types.php:1090
 msgid "No values"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/content-types.php:1347
+#: ../core/content-types.php:1352
 msgid "Invalid Taxonomy name in [tax ] shortcode"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/core.php:304
+#: ../core/core.php:304
 msgid "Security check failed!"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/wpmudev-dash-notification.php:57
+#: ../core/wpmudev-dash-notification.php:57
 #, php-format
 msgid ""
 "Easily get updates, support, and one-click WPMU DEV plugin/theme "
@@ -76,7 +71,7 @@ msgid ""
 "dev/update-notifications-plugin-information/\">(find out more)</a></small>"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/core/wpmudev-dash-notification.php:61
+#: ../core/wpmudev-dash-notification.php:61
 #, php-format
 msgid ""
 "Updates, Support, Premium Plugins, Community - <strong><a href=\"%s\" title="
@@ -84,1279 +79,990 @@ msgid ""
 "strong>."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:8
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:200
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:40
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:164
+#: ../ui-admin/add-custom-field.php:8 ../ui-admin/add-custom-field.php:200
+#: ../ui-admin/custom-fields.php:40 ../ui-admin/custom-fields.php:164
 msgid "Add Custom Field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:13
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:17
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:21
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:25
+#: ../ui-admin/add-custom-field.php:13 ../ui-admin/add-custom-field.php:17
+#: ../ui-admin/edit-custom-field.php:21 ../ui-admin/edit-custom-field.php:25
 msgid "Field Title"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:17
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:60
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:179
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:12
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:14
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:29
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:25
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:68
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:186
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:22
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:34
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:28
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:43
+#: ../ui-admin/add-custom-field.php:17 ../ui-admin/add-custom-field.php:60
+#: ../ui-admin/add-custom-field.php:179 ../ui-admin/add-post-type.php:12
+#: ../ui-admin/add-taxonomy.php:14 ../ui-admin/add-taxonomy.php:29
+#: ../ui-admin/edit-custom-field.php:25 ../ui-admin/edit-custom-field.php:68
+#: ../ui-admin/edit-custom-field.php:186 ../ui-admin/edit-post-type.php:24
+#: ../ui-admin/edit-taxonomy.php:34 ../ui-admin/wip-update-taxonomy.php:28
+#: ../ui-admin/wip-update-taxonomy.php:43
 msgid "required"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:21
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:29
+#: ../ui-admin/add-custom-field.php:21 ../ui-admin/edit-custom-field.php:29
 msgid "The title of the custom field."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:26
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:34
+#: ../ui-admin/add-custom-field.php:26 ../ui-admin/edit-custom-field.php:34
 msgid "Required Field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:30
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:38
+#: ../ui-admin/add-custom-field.php:30 ../ui-admin/edit-custom-field.php:38
 msgid "Make this a Required Field."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:35
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:43
+#: ../ui-admin/add-custom-field.php:35 ../ui-admin/edit-custom-field.php:43
 msgid "Required Field Error Prompt"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:39
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:47
+#: ../ui-admin/add-custom-field.php:39 ../ui-admin/edit-custom-field.php:47
 msgid ""
 "Custom Required Field Error prompt for this field or leave blank for default."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:44
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:52
+#: ../ui-admin/add-custom-field.php:44 ../ui-admin/edit-custom-field.php:52
 msgid "Allow for WP/plugins"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:45
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:52
+#: ../ui-admin/add-custom-field.php:45 ../ui-admin/edit-custom-field.php:52
 msgid "can't be changed"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:49
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:57
+#: ../ui-admin/add-custom-field.php:49 ../ui-admin/edit-custom-field.php:57
 msgid "The WP and other plugins can use this custom field."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:56
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:60
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:49
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:60
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:64
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:68
+#: ../ui-admin/add-custom-field.php:56 ../ui-admin/add-custom-field.php:60
+#: ../ui-admin/custom-fields.php:49 ../ui-admin/custom-fields.php:60
+#: ../ui-admin/edit-custom-field.php:64 ../ui-admin/edit-custom-field.php:68
 msgid "Field Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:64
+#: ../ui-admin/add-custom-field.php:64
 msgid "Text Box"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:65
+#: ../ui-admin/add-custom-field.php:65
 msgid "Multi-line Text Box"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:66
+#: ../ui-admin/add-custom-field.php:66
 msgid "Radio Buttons"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:67
+#: ../ui-admin/add-custom-field.php:67
 msgid "Checkboxes"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:68
+#: ../ui-admin/add-custom-field.php:68
 msgid "Drop Down Select Box"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:69
+#: ../ui-admin/add-custom-field.php:69
 msgid "Multi Select Box"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:70
+#: ../ui-admin/add-custom-field.php:70
 msgid "Date Picker"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:72
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:80
+#: ../ui-admin/add-custom-field.php:72 ../ui-admin/edit-custom-field.php:80
 msgid "Select type of the custom field."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:75
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:104
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:116
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:83
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:112
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:123
+#: ../ui-admin/add-custom-field.php:75 ../ui-admin/add-custom-field.php:104
+#: ../ui-admin/add-custom-field.php:116 ../ui-admin/edit-custom-field.php:83
+#: ../ui-admin/edit-custom-field.php:112 ../ui-admin/edit-custom-field.php:123
 msgid "Fill in the options for this field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:77
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:85
+#: ../ui-admin/add-custom-field.php:77 ../ui-admin/edit-custom-field.php:85
 msgid "Regular Expression Validation"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:81
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:88
+#: ../ui-admin/add-custom-field.php:81 ../ui-admin/edit-custom-field.php:88
 msgid "Options:"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:83
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:90
+#: ../ui-admin/add-custom-field.php:83 ../ui-admin/edit-custom-field.php:90
 msgid "i = ignore case, g = global, m = multiline"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:84
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:91
+#: ../ui-admin/add-custom-field.php:84 ../ui-admin/edit-custom-field.php:91
 msgid ""
 "Enter a regular expression to validate against or leave blank. Example for "
 "Email:"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:85
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:92
+#: ../ui-admin/add-custom-field.php:85 ../ui-admin/edit-custom-field.php:92
 msgid "<code>^[\\w.%+-]+@[\\w.-]+\\.[A-Z]{2,4}$</code> <code>i</code>"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:88
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:95
+#: ../ui-admin/add-custom-field.php:88 ../ui-admin/edit-custom-field.php:95
 msgid "Regular Expression Validation Error Message"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:90
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:97
+#: ../ui-admin/add-custom-field.php:90 ../ui-admin/edit-custom-field.php:97
 msgid ""
 "Custom Regular Expression Validation Error message for this field or leave "
 "blank for default."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:107
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:115
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:267
+#: ../ui-admin/add-custom-field.php:107 ../ui-admin/edit-custom-field.php:115
+#: ../ui-admin/settings.php:267
 msgid "Select Date Format option or type your own"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:111
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:118
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:270
+#: ../ui-admin/add-custom-field.php:111 ../ui-admin/edit-custom-field.php:118
+#: ../ui-admin/settings.php:270
 msgid "Date picker sample"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:118
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:125
+#: ../ui-admin/add-custom-field.php:118 ../ui-admin/edit-custom-field.php:125
 msgid "Order By"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:120
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:127
+#: ../ui-admin/add-custom-field.php:120 ../ui-admin/edit-custom-field.php:127
 msgid "Order Entered"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:131
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:141
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:138
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:148
+#: ../ui-admin/add-custom-field.php:131 ../ui-admin/add-custom-field.php:141
+#: ../ui-admin/edit-custom-field.php:138 ../ui-admin/edit-custom-field.php:148
 msgid "Option"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:134
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:144
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:141
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:151
+#: ../ui-admin/add-custom-field.php:134 ../ui-admin/add-custom-field.php:144
+#: ../ui-admin/edit-custom-field.php:141 ../ui-admin/edit-custom-field.php:151
 msgid "Default Value"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:150
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:157
+#: ../ui-admin/add-custom-field.php:150 ../ui-admin/edit-custom-field.php:157
 msgid "Add another option"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:158
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:162
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:165
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:169
+#: ../ui-admin/add-custom-field.php:158 ../ui-admin/add-custom-field.php:162
+#: ../ui-admin/edit-custom-field.php:165 ../ui-admin/edit-custom-field.php:169
 msgid "Field Description"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:166
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:173
+#: ../ui-admin/add-custom-field.php:166 ../ui-admin/edit-custom-field.php:173
 msgid "Description for the custom field."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:175
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:179
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:8
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:12
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:25
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:29
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:182
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:186
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:18
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:22
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:30
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:34
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:42
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:55
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:39
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:43
+#: ../ui-admin/add-custom-field.php:175 ../ui-admin/add-custom-field.php:179
+#: ../ui-admin/add-post-type.php:8 ../ui-admin/add-post-type.php:12
+#: ../ui-admin/add-taxonomy.php:25 ../ui-admin/add-taxonomy.php:29
+#: ../ui-admin/edit-custom-field.php:182 ../ui-admin/edit-custom-field.php:186
+#: ../ui-admin/edit-post-type.php:20 ../ui-admin/edit-post-type.php:24
+#: ../ui-admin/edit-taxonomy.php:30 ../ui-admin/edit-taxonomy.php:34
+#: ../ui-admin/post-types.php:35 ../ui-admin/post-types.php:48
+#: ../ui-admin/wip-update-taxonomy.php:39
+#: ../ui-admin/wip-update-taxonomy.php:43
 msgid "Post Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-custom-field.php:190
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:197
+#: ../ui-admin/add-custom-field.php:190 ../ui-admin/edit-custom-field.php:197
 msgid "Select one or more post types to add this custom field to."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:3
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:669
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:36
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:147
+#: ../ui-admin/add-post-type.php:3 ../ui-admin/add-post-type.php:669
+#: ../ui-admin/post-types.php:29 ../ui-admin/post-types.php:140
 msgid "Add Post Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:16
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:27
+#: ../ui-admin/add-post-type.php:16 ../ui-admin/edit-post-type.php:29
 msgid ""
 "The new post type system name ( max. 20 characters ). Alphanumeric lower-"
 "case characters and underscores only. Min 2 letters. Once added the post "
 "type system name cannot be changed."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:23
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:27
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:34
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:38
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:46
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:59
+#: ../ui-admin/add-post-type.php:23 ../ui-admin/add-post-type.php:27
+#: ../ui-admin/edit-post-type.php:36 ../ui-admin/edit-post-type.php:40
+#: ../ui-admin/post-types.php:39 ../ui-admin/post-types.php:52
 msgid "Supports"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:30
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:41
+#: ../ui-admin/add-post-type.php:30 ../ui-admin/edit-post-type.php:43
 msgid "Register support of certain features for a post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:33
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:44
+#: ../ui-admin/add-post-type.php:33 ../ui-admin/edit-post-type.php:46
 msgid "Title"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:38
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:49
+#: ../ui-admin/add-post-type.php:38 ../ui-admin/edit-post-type.php:51
 msgid "Editor"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:38
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:49
+#: ../ui-admin/add-post-type.php:38 ../ui-admin/edit-post-type.php:51
 msgid "Content"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:43
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:54
+#: ../ui-admin/add-post-type.php:43 ../ui-admin/edit-post-type.php:56
 msgid "Author"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:48
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:59
+#: ../ui-admin/add-post-type.php:48 ../ui-admin/edit-post-type.php:61
 msgid "Thumbnail"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:48
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:59
+#: ../ui-admin/add-post-type.php:48 ../ui-admin/edit-post-type.php:61
 msgid "Featured Image - current theme must also support post-thumbnails."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:53
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:64
+#: ../ui-admin/add-post-type.php:53 ../ui-admin/edit-post-type.php:66
 msgid "Excerpt"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:58
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:69
+#: ../ui-admin/add-post-type.php:58 ../ui-admin/edit-post-type.php:71
 msgid "Trackbacks"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:63
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:74
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:395
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/navigation.php:9
+#: ../ui-admin/add-post-type.php:63 ../ui-admin/edit-post-type.php:76
+#: ../ui-admin/edit-post-type.php:397 ../ui-admin/navigation.php:9
 msgid "Custom Fields"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:68
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:79
+#: ../ui-admin/add-post-type.php:68 ../ui-admin/edit-post-type.php:81
 msgid "Comments"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:68
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:79
+#: ../ui-admin/add-post-type.php:68 ../ui-admin/edit-post-type.php:81
 msgid "Also will see comment count balloon on edit screen."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:73
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:84
+#: ../ui-admin/add-post-type.php:73 ../ui-admin/edit-post-type.php:86
 msgid "Revisions"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:73
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:84
+#: ../ui-admin/add-post-type.php:73 ../ui-admin/edit-post-type.php:86
 msgid "Will store revisions."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:78
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:89
+#: ../ui-admin/add-post-type.php:78 ../ui-admin/edit-post-type.php:91
 msgid "Page Attributes"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:78
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:89
+#: ../ui-admin/add-post-type.php:78 ../ui-admin/edit-post-type.php:91
 msgid "Template and menu order - Hierarchical must be true!"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:83
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:94
+#: ../ui-admin/add-post-type.php:83 ../ui-admin/edit-post-type.php:96
 msgid "Post Formats"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:83
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:94
+#: ../ui-admin/add-post-type.php:83 ../ui-admin/edit-post-type.php:96
 msgid "Add post formats."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:91
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:95
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:102
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:106
+#: ../ui-admin/add-post-type.php:91 ../ui-admin/add-post-type.php:95
+#: ../ui-admin/edit-post-type.php:104 ../ui-admin/edit-post-type.php:108
 msgid "Support Regular Taxonomies"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:98
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:109
+#: ../ui-admin/add-post-type.php:98 ../ui-admin/edit-post-type.php:111
 msgid "Assign regular taxonomies to this Post Type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:102
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:113
+#: ../ui-admin/add-post-type.php:102 ../ui-admin/edit-post-type.php:115
 msgid "Categories"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:109
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:120
+#: ../ui-admin/add-post-type.php:109 ../ui-admin/edit-post-type.php:122
 msgid "Tags"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:118
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:122
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:130
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:134
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:47
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:60
+#: ../ui-admin/add-post-type.php:118 ../ui-admin/add-post-type.php:122
+#: ../ui-admin/edit-post-type.php:132 ../ui-admin/edit-post-type.php:136
+#: ../ui-admin/post-types.php:40 ../ui-admin/post-types.php:53
 msgid "Capability Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:128
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:109
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:142
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:90
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:74
+#: ../ui-admin/add-post-type.php:128 ../ui-admin/custom-fields.php:109
+#: ../ui-admin/edit-post-type.php:144 ../ui-admin/post-types.php:83
+#: ../ui-admin/taxonomies.php:74
 msgid "Edit"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:128
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:142
+#: ../ui-admin/add-post-type.php:128 ../ui-admin/edit-post-type.php:144
 msgid "advanced"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:130
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:143
+#: ../ui-admin/add-post-type.php:130 ../ui-admin/edit-post-type.php:145
 msgid ""
 "The post type to use for checking read, edit, and delete capabilities. "
 "Default: \"post\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:138
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:142
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:151
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:155
+#: ../ui-admin/add-post-type.php:138 ../ui-admin/add-post-type.php:142
+#: ../ui-admin/edit-post-type.php:153 ../ui-admin/edit-post-type.php:157
 msgid "Map Meta Capabilities"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:145
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:158
+#: ../ui-admin/add-post-type.php:145 ../ui-admin/edit-post-type.php:160
 msgid "Use the internal default meta capability handling."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:148
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:341
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:388
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:420
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:448
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:476
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:504
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:532
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:567
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:627
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:655
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:197
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:230
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:258
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:286
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:314
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:342
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:396
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:161
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:436
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:482
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:508
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:531
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:554
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:577
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:600
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:629
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:679
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:702
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:200
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:233
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:261
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:289
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:317
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:345
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:398
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:218
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:245
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:269
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:293
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:317
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:341
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:387
+#: ../ui-admin/add-post-type.php:148 ../ui-admin/add-post-type.php:341
+#: ../ui-admin/add-post-type.php:388 ../ui-admin/add-post-type.php:420
+#: ../ui-admin/add-post-type.php:448 ../ui-admin/add-post-type.php:476
+#: ../ui-admin/add-post-type.php:504 ../ui-admin/add-post-type.php:532
+#: ../ui-admin/add-post-type.php:567 ../ui-admin/add-post-type.php:627
+#: ../ui-admin/add-post-type.php:655 ../ui-admin/add-taxonomy.php:197
+#: ../ui-admin/add-taxonomy.php:230 ../ui-admin/add-taxonomy.php:258
+#: ../ui-admin/add-taxonomy.php:286 ../ui-admin/add-taxonomy.php:314
+#: ../ui-admin/add-taxonomy.php:342 ../ui-admin/add-taxonomy.php:396
+#: ../ui-admin/edit-post-type.php:163 ../ui-admin/edit-post-type.php:439
+#: ../ui-admin/edit-post-type.php:485 ../ui-admin/edit-post-type.php:511
+#: ../ui-admin/edit-post-type.php:534 ../ui-admin/edit-post-type.php:557
+#: ../ui-admin/edit-post-type.php:580 ../ui-admin/edit-post-type.php:603
+#: ../ui-admin/edit-post-type.php:632 ../ui-admin/edit-post-type.php:682
+#: ../ui-admin/edit-post-type.php:705 ../ui-admin/edit-taxonomy.php:200
+#: ../ui-admin/edit-taxonomy.php:233 ../ui-admin/edit-taxonomy.php:261
+#: ../ui-admin/edit-taxonomy.php:289 ../ui-admin/edit-taxonomy.php:317
+#: ../ui-admin/edit-taxonomy.php:345 ../ui-admin/edit-taxonomy.php:398
+#: ../ui-admin/wip-update-taxonomy.php:218
+#: ../ui-admin/wip-update-taxonomy.php:245
+#: ../ui-admin/wip-update-taxonomy.php:269
+#: ../ui-admin/wip-update-taxonomy.php:293
+#: ../ui-admin/wip-update-taxonomy.php:317
+#: ../ui-admin/wip-update-taxonomy.php:341
+#: ../ui-admin/wip-update-taxonomy.php:387
 msgid "TRUE"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:153
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:352
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:395
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:425
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:453
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:481
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:509
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:537
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:574
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:632
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:660
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:202
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:235
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:263
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:291
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:319
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:349
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:401
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:166
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:449
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:489
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:513
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:536
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:559
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:582
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:605
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:634
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:684
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:707
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:205
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:238
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:266
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:294
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:322
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:352
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:403
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:221
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:248
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:272
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:296
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:320
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:346
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:390
+#: ../ui-admin/add-post-type.php:153 ../ui-admin/add-post-type.php:352
+#: ../ui-admin/add-post-type.php:395 ../ui-admin/add-post-type.php:425
+#: ../ui-admin/add-post-type.php:453 ../ui-admin/add-post-type.php:481
+#: ../ui-admin/add-post-type.php:509 ../ui-admin/add-post-type.php:537
+#: ../ui-admin/add-post-type.php:574 ../ui-admin/add-post-type.php:632
+#: ../ui-admin/add-post-type.php:660 ../ui-admin/add-taxonomy.php:202
+#: ../ui-admin/add-taxonomy.php:235 ../ui-admin/add-taxonomy.php:263
+#: ../ui-admin/add-taxonomy.php:291 ../ui-admin/add-taxonomy.php:319
+#: ../ui-admin/add-taxonomy.php:349 ../ui-admin/add-taxonomy.php:401
+#: ../ui-admin/edit-post-type.php:168 ../ui-admin/edit-post-type.php:452
+#: ../ui-admin/edit-post-type.php:492 ../ui-admin/edit-post-type.php:516
+#: ../ui-admin/edit-post-type.php:539 ../ui-admin/edit-post-type.php:562
+#: ../ui-admin/edit-post-type.php:585 ../ui-admin/edit-post-type.php:608
+#: ../ui-admin/edit-post-type.php:637 ../ui-admin/edit-post-type.php:687
+#: ../ui-admin/edit-post-type.php:710 ../ui-admin/edit-taxonomy.php:205
+#: ../ui-admin/edit-taxonomy.php:238 ../ui-admin/edit-taxonomy.php:266
+#: ../ui-admin/edit-taxonomy.php:294 ../ui-admin/edit-taxonomy.php:322
+#: ../ui-admin/edit-taxonomy.php:352 ../ui-admin/edit-taxonomy.php:403
+#: ../ui-admin/wip-update-taxonomy.php:221
+#: ../ui-admin/wip-update-taxonomy.php:248
+#: ../ui-admin/wip-update-taxonomy.php:272
+#: ../ui-admin/wip-update-taxonomy.php:296
+#: ../ui-admin/wip-update-taxonomy.php:320
+#: ../ui-admin/wip-update-taxonomy.php:346
+#: ../ui-admin/wip-update-taxonomy.php:390
 msgid "FALSE"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:165
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:48
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:232
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:51
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:70
+#: ../ui-admin/add-post-type.php:165 ../ui-admin/add-taxonomy.php:48
+#: ../ui-admin/edit-post-type.php:234 ../ui-admin/edit-taxonomy.php:51
+#: ../ui-admin/wip-update-taxonomy.php:70
 msgid "Labels"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:169
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:52
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:236
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:55
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:43
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:56
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:32
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:42
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:74
+#: ../ui-admin/add-post-type.php:169 ../ui-admin/add-taxonomy.php:52
+#: ../ui-admin/edit-post-type.php:238 ../ui-admin/edit-taxonomy.php:55
+#: ../ui-admin/post-types.php:36 ../ui-admin/post-types.php:49
+#: ../ui-admin/taxonomies.php:32 ../ui-admin/taxonomies.php:42
+#: ../ui-admin/wip-update-taxonomy.php:74
 msgid "Name"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:173
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:240
+#: ../ui-admin/add-post-type.php:173 ../ui-admin/edit-post-type.php:242
 msgid "General name for the post type, usually plural."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:178
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:61
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:245
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:64
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:83
+#: ../ui-admin/add-post-type.php:178 ../ui-admin/add-taxonomy.php:61
+#: ../ui-admin/edit-post-type.php:247 ../ui-admin/edit-taxonomy.php:64
+#: ../ui-admin/wip-update-taxonomy.php:83
 msgid "Singular Name"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:182
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:249
+#: ../ui-admin/add-post-type.php:182 ../ui-admin/edit-post-type.php:251
 msgid "Name for one object of this post type. Defaults to value of name."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:187
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:254
+#: ../ui-admin/add-post-type.php:187 ../ui-admin/edit-post-type.php:256
 msgid "Add New"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:191
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:258
+#: ../ui-admin/add-post-type.php:191 ../ui-admin/edit-post-type.php:260
 msgid ""
 "The add new text. The default is Add New for both hierarchical and non-"
 "hierarchical types."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:196
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:70
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:263
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:73
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:92
+#: ../ui-admin/add-post-type.php:196 ../ui-admin/add-taxonomy.php:70
+#: ../ui-admin/edit-post-type.php:265 ../ui-admin/edit-taxonomy.php:73
+#: ../ui-admin/wip-update-taxonomy.php:92
 msgid "Add New Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:200
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:267
+#: ../ui-admin/add-post-type.php:200 ../ui-admin/edit-post-type.php:269
 msgid "The add new item text. Default is Add New Post/Add New Page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:205
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:88
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:272
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:91
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:110
+#: ../ui-admin/add-post-type.php:205 ../ui-admin/add-taxonomy.php:88
+#: ../ui-admin/edit-post-type.php:274 ../ui-admin/edit-taxonomy.php:91
+#: ../ui-admin/wip-update-taxonomy.php:110
 msgid "Edit Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:209
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:276
+#: ../ui-admin/add-post-type.php:209 ../ui-admin/edit-post-type.php:278
 msgid "The edit item text. Default is Edit Post/Edit Page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:214
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:281
+#: ../ui-admin/add-post-type.php:214 ../ui-admin/edit-post-type.php:283
 msgid "New Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:218
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:285
+#: ../ui-admin/add-post-type.php:218 ../ui-admin/edit-post-type.php:287
 msgid "The new item text. Default is New Post/New Page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:223
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:290
+#: ../ui-admin/add-post-type.php:223 ../ui-admin/edit-post-type.php:292
 msgid "View Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:227
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:294
+#: ../ui-admin/add-post-type.php:227 ../ui-admin/edit-post-type.php:296
 msgid "The view item text. Default is View Post/View Page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:232
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:106
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:299
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:109
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:128
+#: ../ui-admin/add-post-type.php:232 ../ui-admin/add-taxonomy.php:106
+#: ../ui-admin/edit-post-type.php:301 ../ui-admin/edit-taxonomy.php:109
+#: ../ui-admin/wip-update-taxonomy.php:128
 msgid "Search Items"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:236
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:303
+#: ../ui-admin/add-post-type.php:236 ../ui-admin/edit-post-type.php:305
 msgid "The search items text. Default is Search Posts/Search Pages."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:241
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:308
+#: ../ui-admin/add-post-type.php:241 ../ui-admin/edit-post-type.php:310
 msgid "Not Found"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:245
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:312
+#: ../ui-admin/add-post-type.php:245 ../ui-admin/edit-post-type.php:314
 msgid "The not found text. Default is No posts found/No pages found."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:250
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:317
+#: ../ui-admin/add-post-type.php:250 ../ui-admin/edit-post-type.php:319
 msgid "Not Found In Trash"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:254
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:321
+#: ../ui-admin/add-post-type.php:254 ../ui-admin/edit-post-type.php:323
 msgid ""
 "The not found in trash text. Default is No posts found in Trash/No pages "
 "found in Trash."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:259
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:142
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:326
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:145
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:164
+#: ../ui-admin/add-post-type.php:259 ../ui-admin/add-taxonomy.php:142
+#: ../ui-admin/edit-post-type.php:328 ../ui-admin/edit-taxonomy.php:145
+#: ../ui-admin/wip-update-taxonomy.php:164
 msgid "Parent Item Colon"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:263
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:330
+#: ../ui-admin/add-post-type.php:263 ../ui-admin/edit-post-type.php:332
 msgid ""
 "The parent text. This string isn't used on non-hierarchical types. In "
 "hierarchical ones the default is Parent Page"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:268
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:335
+#: ../ui-admin/add-post-type.php:268 ../ui-admin/edit-post-type.php:337
 msgid "Custom Fields block"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:272
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:339
+#: ../ui-admin/add-post-type.php:272 ../ui-admin/edit-post-type.php:341
 msgid "Title of Custom Fields block."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:279
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:283
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:50
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:61
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:346
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:350
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:44
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:57
+#: ../ui-admin/add-post-type.php:279 ../ui-admin/add-post-type.php:283
+#: ../ui-admin/custom-fields.php:50 ../ui-admin/custom-fields.php:61
+#: ../ui-admin/edit-post-type.php:348 ../ui-admin/edit-post-type.php:352
+#: ../ui-admin/post-types.php:37 ../ui-admin/post-types.php:50
 msgid "Description"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:287
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:354
+#: ../ui-admin/add-post-type.php:287 ../ui-admin/edit-post-type.php:356
 msgid "A short descriptive summary of what the post type is."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:294
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:298
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:361
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:365
+#: ../ui-admin/add-post-type.php:294 ../ui-admin/add-post-type.php:298
+#: ../ui-admin/edit-post-type.php:363 ../ui-admin/edit-post-type.php:367
 msgid "Menu Position"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:302
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:369
+#: ../ui-admin/add-post-type.php:302 ../ui-admin/edit-post-type.php:371
 msgid ""
 "5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first "
 "separator; 100 - below second separator"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:309
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:313
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:376
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:380
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:45
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:58
+#: ../ui-admin/add-post-type.php:309 ../ui-admin/add-post-type.php:313
+#: ../ui-admin/edit-post-type.php:378 ../ui-admin/edit-post-type.php:382
+#: ../ui-admin/post-types.php:38 ../ui-admin/post-types.php:51
 msgid "Menu Icon"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:317
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:384
+#: ../ui-admin/add-post-type.php:317 ../ui-admin/edit-post-type.php:386
 msgid "The url to the icon to be used for this menu."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:326
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:330
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:182
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:186
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:426
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:430
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:185
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:189
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:48
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:61
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:34
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:44
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:204
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:208
+#: ../ui-admin/add-post-type.php:326 ../ui-admin/add-post-type.php:330
+#: ../ui-admin/add-taxonomy.php:182 ../ui-admin/add-taxonomy.php:186
+#: ../ui-admin/edit-post-type.php:429 ../ui-admin/edit-post-type.php:433
+#: ../ui-admin/edit-taxonomy.php:185 ../ui-admin/edit-taxonomy.php:189
+#: ../ui-admin/post-types.php:41 ../ui-admin/post-types.php:54
+#: ../ui-admin/taxonomies.php:34 ../ui-admin/taxonomies.php:44
+#: ../ui-admin/wip-update-taxonomy.php:204
+#: ../ui-admin/wip-update-taxonomy.php:208
 msgid "Public"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:333
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:433
+#: ../ui-admin/add-post-type.php:333 ../ui-admin/edit-post-type.php:436
 msgid ""
 "Meta argument used to define default values for publicly_queriable, show_ui, "
 "show_in_nav_menus and exclude_from_search."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:344
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:440
+#: ../ui-admin/add-post-type.php:344 ../ui-admin/edit-post-type.php:443
 msgid "Display a user-interface for this \"post_type\""
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:345
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:441
+#: ../ui-admin/add-post-type.php:345 ../ui-admin/edit-post-type.php:444
 msgid "Show \"post_type\" for selection in navigation menus"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:346
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:442
+#: ../ui-admin/add-post-type.php:346 ../ui-admin/edit-post-type.php:445
 msgid "\"post_type\" queries can be performed from the front-end"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:347
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:358
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:443
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:456
+#: ../ui-admin/add-post-type.php:347 ../ui-admin/add-post-type.php:358
+#: ../ui-admin/edit-post-type.php:446 ../ui-admin/edit-post-type.php:459
 msgid "Exclude posts with this post type from search results"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:355
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:453
+#: ../ui-admin/add-post-type.php:355 ../ui-admin/edit-post-type.php:456
 msgid "Don not display a user-interface for this \"post_type\""
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:356
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:454
+#: ../ui-admin/add-post-type.php:356 ../ui-admin/edit-post-type.php:457
 msgid "Hide \"post_type\" for selection in navigation menus"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:357
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:455
+#: ../ui-admin/add-post-type.php:357 ../ui-admin/edit-post-type.php:458
 msgid "\"post_type\" queries cannot be performed from the front-end"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:363
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:462
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:117
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:107
+#: ../ui-admin/add-post-type.php:363 ../ui-admin/edit-post-type.php:465
+#: ../ui-admin/post-types.php:110 ../ui-admin/taxonomies.php:107
 msgid "Advanced"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:366
+#: ../ui-admin/add-post-type.php:366
 msgid "You can set each component manualy."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:373
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:377
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:215
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:219
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:472
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:476
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:218
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:222
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:231
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:235
+#: ../ui-admin/add-post-type.php:373 ../ui-admin/add-post-type.php:377
+#: ../ui-admin/add-taxonomy.php:215 ../ui-admin/add-taxonomy.php:219
+#: ../ui-admin/edit-post-type.php:475 ../ui-admin/edit-post-type.php:479
+#: ../ui-admin/edit-taxonomy.php:218 ../ui-admin/edit-taxonomy.php:222
+#: ../ui-admin/wip-update-taxonomy.php:231
+#: ../ui-admin/wip-update-taxonomy.php:235
 msgid "Show UI"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:380
+#: ../ui-admin/add-post-type.php:380
 msgid "Whether to generate a default UI for managing this post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:391
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:484
+#: ../ui-admin/add-post-type.php:391 ../ui-admin/edit-post-type.php:487
 msgid "Display a user-interface (admin panel) for this post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:398
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:491
+#: ../ui-admin/add-post-type.php:398 ../ui-admin/edit-post-type.php:494
 msgid "Do not display a user-interface for this post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:405
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:271
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:498
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:274
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:279
+#: ../ui-admin/add-post-type.php:405 ../ui-admin/add-taxonomy.php:271
+#: ../ui-admin/edit-post-type.php:501 ../ui-admin/edit-taxonomy.php:274
+#: ../ui-admin/wip-update-taxonomy.php:279
 msgid "Show In Nav Menus "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:409
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:275
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:502
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:278
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:283
+#: ../ui-admin/add-post-type.php:409 ../ui-admin/add-taxonomy.php:275
+#: ../ui-admin/edit-post-type.php:505 ../ui-admin/edit-taxonomy.php:278
+#: ../ui-admin/wip-update-taxonomy.php:283
 msgid "Show In Nav Menus"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:412
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:505
+#: ../ui-admin/add-post-type.php:412 ../ui-admin/edit-post-type.php:508
 msgid "Whether post_type is available for selection in navigation menus."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:433
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:437
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:521
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:525
+#: ../ui-admin/add-post-type.php:433 ../ui-admin/add-post-type.php:437
+#: ../ui-admin/edit-post-type.php:524 ../ui-admin/edit-post-type.php:528
 msgid "Publicly Queryable"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:440
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:528
+#: ../ui-admin/add-post-type.php:440 ../ui-admin/edit-post-type.php:531
 msgid "Whether post_type queries can be performed from the front end."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:461
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:465
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:544
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:548
+#: ../ui-admin/add-post-type.php:461 ../ui-admin/add-post-type.php:465
+#: ../ui-admin/edit-post-type.php:547 ../ui-admin/edit-post-type.php:551
 msgid "Exclude From Search"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:468
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:551
+#: ../ui-admin/add-post-type.php:468 ../ui-admin/edit-post-type.php:554
 msgid "Whether to exclude posts with this post type from search results."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:489
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:493
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:299
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:303
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:567
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:571
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:302
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:306
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:49
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:62
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:35
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:45
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:303
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:307
+#: ../ui-admin/add-post-type.php:489 ../ui-admin/add-post-type.php:493
+#: ../ui-admin/add-taxonomy.php:299 ../ui-admin/add-taxonomy.php:303
+#: ../ui-admin/edit-post-type.php:570 ../ui-admin/edit-post-type.php:574
+#: ../ui-admin/edit-taxonomy.php:302 ../ui-admin/edit-taxonomy.php:306
+#: ../ui-admin/post-types.php:42 ../ui-admin/post-types.php:55
+#: ../ui-admin/taxonomies.php:35 ../ui-admin/taxonomies.php:45
+#: ../ui-admin/wip-update-taxonomy.php:303
+#: ../ui-admin/wip-update-taxonomy.php:307
 msgid "Hierarchical"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:496
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:574
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:310
+#: ../ui-admin/add-post-type.php:496 ../ui-admin/edit-post-type.php:577
+#: ../ui-admin/wip-update-taxonomy.php:310
 msgid "Whether the post type is hierarchical. Allows Parent to be specified."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:517
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:521
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:590
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:594
+#: ../ui-admin/add-post-type.php:517 ../ui-admin/add-post-type.php:521
+#: ../ui-admin/edit-post-type.php:593 ../ui-admin/edit-post-type.php:597
 msgid "Has Archive"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:524
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:597
+#: ../ui-admin/add-post-type.php:524 ../ui-admin/edit-post-type.php:600
 msgid ""
 "Enables post type archives. Will use string as archive slug. Will generate "
 "the proper rewrite rules if rewrite is enabled."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:540
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:580
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:355
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:608
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:637
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:358
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:352
+#: ../ui-admin/add-post-type.php:540 ../ui-admin/add-post-type.php:580
+#: ../ui-admin/add-taxonomy.php:355 ../ui-admin/edit-post-type.php:611
+#: ../ui-admin/edit-post-type.php:640 ../ui-admin/edit-taxonomy.php:358
+#: ../ui-admin/wip-update-taxonomy.php:352
 msgid "Custom Slug"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:545
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:612
+#: ../ui-admin/add-post-type.php:545 ../ui-admin/edit-post-type.php:615
 msgid "Custom slug for post type archive."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:552
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:556
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:327
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:331
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:619
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:623
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:330
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:334
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:50
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:63
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:36
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:46
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:327
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:331
+#: ../ui-admin/add-post-type.php:552 ../ui-admin/add-post-type.php:556
+#: ../ui-admin/add-taxonomy.php:327 ../ui-admin/add-taxonomy.php:331
+#: ../ui-admin/edit-post-type.php:622 ../ui-admin/edit-post-type.php:626
+#: ../ui-admin/edit-taxonomy.php:330 ../ui-admin/edit-taxonomy.php:334
+#: ../ui-admin/post-types.php:43 ../ui-admin/post-types.php:56
+#: ../ui-admin/taxonomies.php:36 ../ui-admin/taxonomies.php:46
+#: ../ui-admin/wip-update-taxonomy.php:327
+#: ../ui-admin/wip-update-taxonomy.php:331
 msgid "Rewrite"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:559
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:626
+#: ../ui-admin/add-post-type.php:559 ../ui-admin/edit-post-type.php:629
 msgid "Rewrite permalinks with this format."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:570
+#: ../ui-admin/add-post-type.php:570
 msgid "Default will use post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:577
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:352
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:355
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:348
+#: ../ui-admin/add-post-type.php:577 ../ui-admin/add-taxonomy.php:352
+#: ../ui-admin/edit-taxonomy.php:355 ../ui-admin/wip-update-taxonomy.php:348
 msgid "Prevent rewrite."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:584
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:360
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:641
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:362
+#: ../ui-admin/add-post-type.php:584 ../ui-admin/add-taxonomy.php:360
+#: ../ui-admin/edit-post-type.php:644 ../ui-admin/edit-taxonomy.php:362
 msgid "Prepend posts with this slug. If empty default will be used."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:588
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:364
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:645
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:366
+#: ../ui-admin/add-post-type.php:588 ../ui-admin/add-taxonomy.php:364
+#: ../ui-admin/edit-post-type.php:648 ../ui-admin/edit-taxonomy.php:366
 msgid "Allow Front Base"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:591
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:367
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:648
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:369
+#: ../ui-admin/add-post-type.php:591 ../ui-admin/add-taxonomy.php:367
+#: ../ui-admin/edit-post-type.php:651 ../ui-admin/edit-taxonomy.php:369
 msgid "Allowing permalinks to be prepended with front base."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:595
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:652
+#: ../ui-admin/add-post-type.php:595 ../ui-admin/edit-post-type.php:655
 msgid "Feeds"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:598
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:655
+#: ../ui-admin/add-post-type.php:598 ../ui-admin/edit-post-type.php:658
 msgid "Default will use has_archive."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:602
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:659
+#: ../ui-admin/add-post-type.php:602 ../ui-admin/edit-post-type.php:662
 msgid "Pages"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:605
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:662
+#: ../ui-admin/add-post-type.php:605 ../ui-admin/edit-post-type.php:665
 msgid "Defaults to true."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:612
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:616
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:381
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:385
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:669
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:673
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:383
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:387
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:373
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:377
+#: ../ui-admin/add-post-type.php:612 ../ui-admin/add-post-type.php:616
+#: ../ui-admin/add-taxonomy.php:381 ../ui-admin/add-taxonomy.php:385
+#: ../ui-admin/edit-post-type.php:672 ../ui-admin/edit-post-type.php:676
+#: ../ui-admin/edit-taxonomy.php:383 ../ui-admin/edit-taxonomy.php:387
+#: ../ui-admin/wip-update-taxonomy.php:373
+#: ../ui-admin/wip-update-taxonomy.php:377
 msgid "Query var"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:619
+#: ../ui-admin/add-post-type.php:619
 msgid "Can queries be performed on this post_type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:640
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:644
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:692
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:696
+#: ../ui-admin/add-post-type.php:640 ../ui-admin/add-post-type.php:644
+#: ../ui-admin/edit-post-type.php:695 ../ui-admin/edit-post-type.php:699
 msgid "Can Export"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-post-type.php:647
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:699
+#: ../ui-admin/add-post-type.php:647 ../ui-admin/edit-post-type.php:702
 msgid "Can this post_type be exported."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:5
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:26
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:147
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:19
+#: ../ui-admin/add-taxonomy.php:5 ../ui-admin/taxonomies.php:26
+#: ../ui-admin/taxonomies.php:147 ../ui-admin/wip-update-taxonomy.php:19
 msgid "Add Taxonomy"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:10
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:14
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:14
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:18
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:31
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:41
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:24
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:28
+#: ../ui-admin/add-taxonomy.php:10 ../ui-admin/add-taxonomy.php:14
+#: ../ui-admin/edit-taxonomy.php:14 ../ui-admin/edit-taxonomy.php:18
+#: ../ui-admin/taxonomies.php:31 ../ui-admin/taxonomies.php:41
+#: ../ui-admin/wip-update-taxonomy.php:24
+#: ../ui-admin/wip-update-taxonomy.php:28
 msgid "Taxonomy"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:18
+#: ../ui-admin/add-taxonomy.php:18
 msgid ""
 "The system name of the taxonomy. Alphanumeric lower-case characters and "
 "underscores only. Min 2 letters. Once added the taxonomy system name cannot "
 "be changed."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:41
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:63
+#: ../ui-admin/add-taxonomy.php:41 ../ui-admin/wip-update-taxonomy.php:63
 msgid "Select one or more post types to add this taxonomy to."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:56
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:59
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:78
+#: ../ui-admin/add-taxonomy.php:56 ../ui-admin/edit-taxonomy.php:59
+#: ../ui-admin/wip-update-taxonomy.php:78
 msgid "General name for the taxonomy, usually plural."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:65
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:68
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:87
+#: ../ui-admin/add-taxonomy.php:65 ../ui-admin/edit-taxonomy.php:68
+#: ../ui-admin/wip-update-taxonomy.php:87
 msgid "Name for one object of this taxonomy. Defaults to value of name."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:74
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:77
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:96
+#: ../ui-admin/add-taxonomy.php:74 ../ui-admin/edit-taxonomy.php:77
+#: ../ui-admin/wip-update-taxonomy.php:96
 msgid ""
 "The add new item text. Default is \"Add New Tag\" or \"Add New Category\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:79
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:82
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:101
+#: ../ui-admin/add-taxonomy.php:79 ../ui-admin/edit-taxonomy.php:82
+#: ../ui-admin/wip-update-taxonomy.php:101
 msgid "New Item Name"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:83
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:86
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:105
+#: ../ui-admin/add-taxonomy.php:83 ../ui-admin/edit-taxonomy.php:86
+#: ../ui-admin/wip-update-taxonomy.php:105
 msgid ""
 "The new item name text. Default is \"New Tag Name\" or \"New Category Name\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:92
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:95
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:114
+#: ../ui-admin/add-taxonomy.php:92 ../ui-admin/edit-taxonomy.php:95
+#: ../ui-admin/wip-update-taxonomy.php:114
 msgid "The edit item text. Default is \"Edit Tag\" or \"Edit Category\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:97
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:100
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:119
+#: ../ui-admin/add-taxonomy.php:97 ../ui-admin/edit-taxonomy.php:100
+#: ../ui-admin/wip-update-taxonomy.php:119
 msgid "Update Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:101
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:104
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:123
+#: ../ui-admin/add-taxonomy.php:101 ../ui-admin/edit-taxonomy.php:104
+#: ../ui-admin/wip-update-taxonomy.php:123
 msgid "The update item text. Default is \"Update Tag\" or \"Update Category\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:110
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:113
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:132
+#: ../ui-admin/add-taxonomy.php:110 ../ui-admin/edit-taxonomy.php:113
+#: ../ui-admin/wip-update-taxonomy.php:132
 msgid ""
 "The search items text. Default is \"Search Tags\" or \"Search Categories\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:115
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:118
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:137
+#: ../ui-admin/add-taxonomy.php:115 ../ui-admin/edit-taxonomy.php:118
+#: ../ui-admin/wip-update-taxonomy.php:137
 msgid "Popular Items"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:119
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:122
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:141
+#: ../ui-admin/add-taxonomy.php:119 ../ui-admin/edit-taxonomy.php:122
+#: ../ui-admin/wip-update-taxonomy.php:141
 msgid "The popular items text. Default is \"Popular Tags\" or null."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:124
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:127
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:146
+#: ../ui-admin/add-taxonomy.php:124 ../ui-admin/edit-taxonomy.php:127
+#: ../ui-admin/wip-update-taxonomy.php:146
 msgid "All Items"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:128
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:131
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:150
+#: ../ui-admin/add-taxonomy.php:128 ../ui-admin/edit-taxonomy.php:131
+#: ../ui-admin/wip-update-taxonomy.php:150
 msgid "The all items text. Default is \"All Tags\" or \"All Categories\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:133
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:136
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:155
+#: ../ui-admin/add-taxonomy.php:133 ../ui-admin/edit-taxonomy.php:136
+#: ../ui-admin/wip-update-taxonomy.php:155
 msgid "Parent Item"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:137
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:140
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:159
+#: ../ui-admin/add-taxonomy.php:137 ../ui-admin/edit-taxonomy.php:140
+#: ../ui-admin/wip-update-taxonomy.php:159
 msgid ""
 "The parent item text. This string is not used on non-hierarchical taxonomies "
 "such as post tags. Default is null or \"Parent Category\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:146
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:149
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:168
+#: ../ui-admin/add-taxonomy.php:146 ../ui-admin/edit-taxonomy.php:149
+#: ../ui-admin/wip-update-taxonomy.php:168
 msgid ""
 "The same as parent_item, but with colon : in the end null, \"Parent Category:"
 "\"."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:151
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:154
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:173
+#: ../ui-admin/add-taxonomy.php:151 ../ui-admin/edit-taxonomy.php:154
+#: ../ui-admin/wip-update-taxonomy.php:173
 msgid "Add Or Remove Items"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:155
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:158
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:177
+#: ../ui-admin/add-taxonomy.php:155 ../ui-admin/edit-taxonomy.php:158
+#: ../ui-admin/wip-update-taxonomy.php:177
 msgid ""
 "The add or remove items text is used in the meta box when JavaScript is "
 "disabled. This string isn't used on hierarchical taxonomies. Default is "
 "\"Add or remove tags\" or null."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:160
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:163
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:182
+#: ../ui-admin/add-taxonomy.php:160 ../ui-admin/edit-taxonomy.php:163
+#: ../ui-admin/wip-update-taxonomy.php:182
 msgid "Separate Items With Commas"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:164
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:167
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:186
+#: ../ui-admin/add-taxonomy.php:164 ../ui-admin/edit-taxonomy.php:167
+#: ../ui-admin/wip-update-taxonomy.php:186
 msgid ""
 "The separate item with commas text used in the taxonomy meta box. This "
 "string isn't used on hierarchical taxonomies. Default is \"Separate tags "
 "with commas\", or null."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:169
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:172
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:191
+#: ../ui-admin/add-taxonomy.php:169 ../ui-admin/edit-taxonomy.php:172
+#: ../ui-admin/wip-update-taxonomy.php:191
 msgid "Choose From Most Used"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:173
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:176
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:195
+#: ../ui-admin/add-taxonomy.php:173 ../ui-admin/edit-taxonomy.php:176
+#: ../ui-admin/wip-update-taxonomy.php:195
 msgid ""
 "The choose from most used text used in the taxonomy meta box. This string "
 "isn't used on hierarchical taxonomies. Default is \"Choose from the most "
 "used tags\" or null."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:189
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:192
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:211
+#: ../ui-admin/add-taxonomy.php:189 ../ui-admin/edit-taxonomy.php:192
+#: ../ui-admin/wip-update-taxonomy.php:211
 msgid "Should this taxonomy be exposed in the admin UI."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:207
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:210
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:224
+#: ../ui-admin/add-taxonomy.php:207 ../ui-admin/edit-taxonomy.php:210
+#: ../ui-admin/wip-update-taxonomy.php:224
 msgid "ADVANCED"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:222
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:225
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:238
+#: ../ui-admin/add-taxonomy.php:222 ../ui-admin/edit-taxonomy.php:225
+#: ../ui-admin/wip-update-taxonomy.php:238
 msgid "Whether to generate a default UI for managing this taxonomy."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:243
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:247
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:246
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:250
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:255
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:259
+#: ../ui-admin/add-taxonomy.php:243 ../ui-admin/add-taxonomy.php:247
+#: ../ui-admin/edit-taxonomy.php:246 ../ui-admin/edit-taxonomy.php:250
+#: ../ui-admin/wip-update-taxonomy.php:255
+#: ../ui-admin/wip-update-taxonomy.php:259
 msgid "Show Tagcloud"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:250
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:253
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:262
+#: ../ui-admin/add-taxonomy.php:250 ../ui-admin/edit-taxonomy.php:253
+#: ../ui-admin/wip-update-taxonomy.php:262
 msgid "Whether to show a tag cloud in the admin UI for this taxonomy."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:278
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:281
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:286
+#: ../ui-admin/add-taxonomy.php:278 ../ui-admin/edit-taxonomy.php:281
+#: ../ui-admin/wip-update-taxonomy.php:286
 msgid ""
 "Whether to make this taxonomy available for selection in navigation menus."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:306
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:309
+#: ../ui-admin/add-taxonomy.php:306 ../ui-admin/edit-taxonomy.php:309
 msgid ""
 "Is this taxonomy hierarchical (have descendants) like categories or not "
 "hierarchical like tags."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:334
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:337
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:334
+#: ../ui-admin/add-taxonomy.php:334 ../ui-admin/edit-taxonomy.php:337
+#: ../ui-admin/wip-update-taxonomy.php:334
 msgid "Set to false to prevent rewrite, or true to customize."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:345
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:348
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:343
+#: ../ui-admin/add-taxonomy.php:345 ../ui-admin/edit-taxonomy.php:348
+#: ../ui-admin/wip-update-taxonomy.php:343
 msgid "Default will use query var."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:371
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:373
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:364
+#: ../ui-admin/add-taxonomy.php:371 ../ui-admin/edit-taxonomy.php:373
+#: ../ui-admin/wip-update-taxonomy.php:364
 msgid "Hierarchical URLs"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:374
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:376
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:366
+#: ../ui-admin/add-taxonomy.php:374 ../ui-admin/edit-taxonomy.php:376
+#: ../ui-admin/wip-update-taxonomy.php:366
 msgid "Allow hierarchical urls. Applicable for hierarchical taxonomies."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:388
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:380
+#: ../ui-admin/add-taxonomy.php:388 ../ui-admin/wip-update-taxonomy.php:380
 msgid ""
 "False to prevent queries. Default will use the taxonomy system name as query "
 "var."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/add-taxonomy.php:411
+#: ../ui-admin/add-taxonomy.php:411
 msgid "Add Taxonomy Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:29
+#: ../ui-admin/custom-fields.php:29
 msgid "Embedding Custom Fields"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:30
+#: ../ui-admin/custom-fields.php:30
 msgid ""
 "<b>Embed codes</b> are used in templates to return the value of the custom "
 "fields of the current post. Codes may be for individual fields using the "
@@ -1364,95 +1070,83 @@ msgid ""
 "block of custom fields for a listing using the embed code:"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:34
+#: ../ui-admin/custom-fields.php:34
 msgid ""
 "<b>Shortcodes</b> are used in post, pages and widgets to return the value of "
 "the custom fields of the current post. Use inside the loop in Posts and "
 "Widgets"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:45
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:56
+#: ../ui-admin/custom-fields.php:45 ../ui-admin/custom-fields.php:56
 msgid "Order"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:46
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:57
+#: ../ui-admin/custom-fields.php:46 ../ui-admin/custom-fields.php:57
 msgid "Field Name"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:47
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:58
+#: ../ui-admin/custom-fields.php:47 ../ui-admin/custom-fields.php:58
 msgid "Field ID"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:48
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:59
+#: ../ui-admin/custom-fields.php:48 ../ui-admin/custom-fields.php:59
 msgid "WP/Plugins"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:51
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:62
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/navigation.php:7
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:67
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:33
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:43
+#: ../ui-admin/custom-fields.php:51 ../ui-admin/custom-fields.php:62
+#: ../ui-admin/navigation.php:7 ../ui-admin/settings.php:67
+#: ../ui-admin/taxonomies.php:33 ../ui-admin/taxonomies.php:43
 msgid "Post Types"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:86
+#: ../ui-admin/custom-fields.php:86
 msgid "network"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:109
+#: ../ui-admin/custom-fields.php:109
 msgid "Edit this custom field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:113
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:79
+#: ../ui-admin/custom-fields.php:113 ../ui-admin/taxonomies.php:79
 msgid "Show embed code"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:113
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:79
+#: ../ui-admin/custom-fields.php:113 ../ui-admin/taxonomies.php:79
 msgid "Embed Code"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:117
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:87
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:83
+#: ../ui-admin/custom-fields.php:117 ../ui-admin/post-types.php:80
+#: ../ui-admin/taxonomies.php:83
 msgid "Edit in Network Admin."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:122
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:93
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:88
+#: ../ui-admin/custom-fields.php:122 ../ui-admin/post-types.php:86
+#: ../ui-admin/taxonomies.php:88
 msgid "Delete"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:130
+#: ../ui-admin/custom-fields.php:130
 msgid "Field and values"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:131
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:101
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:96
+#: ../ui-admin/custom-fields.php:131 ../ui-admin/post-types.php:94
+#: ../ui-admin/taxonomies.php:96
 msgid "Cancel"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:132
+#: ../ui-admin/custom-fields.php:132
 msgid "Only field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:136
+#: ../ui-admin/custom-fields.php:136
 msgid "Allow"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:136
+#: ../ui-admin/custom-fields.php:136
 msgid "Deny"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:148
+#: ../ui-admin/custom-fields.php:148
 msgid ""
 "Embed code returns the values of the custom field with the specified key "
 "from the specified post. Property may be one of \"title\", \"description\" "
@@ -1460,7 +1154,7 @@ msgid ""
 "the loop in templates and PHP code "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/custom-fields.php:152
+#: ../ui-admin/custom-fields.php:152
 msgid ""
 "Shortcode returns the values of the custom field with the specified key from "
 "the specified post. Property may be one of \"title\", \"description\" or "
@@ -1468,133 +1162,126 @@ msgid ""
 "loop in Posts and Widgets"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:15
+#: ../ui-admin/edit-custom-field.php:15
 msgid "Edit Custom Field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-custom-field.php:206
+#: ../ui-admin/edit-custom-field.php:206
 msgid "Update Custom Field"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:12
+#: ../ui-admin/edit-post-type.php:14
 msgid "Edit Post Type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:175
+#: ../ui-admin/edit-post-type.php:177
 msgid "Role Capabilities Settings"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:179
+#: ../ui-admin/edit-post-type.php:181
 msgid "Assign Capabilities"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:192
+#: ../ui-admin/edit-post-type.php:194
 #, php-format
 msgid "Select a role to which you want to assign %s capabilities."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:391
+#: ../ui-admin/edit-post-type.php:393
 msgid "Display Custom Fields columns"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:398
+#: ../ui-admin/edit-post-type.php:400
 msgid ""
 "These Custom Fields will be display as columns on the custom post type "
 "screen."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:415
+#: ../ui-admin/edit-post-type.php:418
 msgid "This custom post type does not use any Custom Fields"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:464
+#: ../ui-admin/edit-post-type.php:467
 msgid "You can set each component manually."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:479
+#: ../ui-admin/edit-post-type.php:482
 msgid ""
 "Whether to generate a default UI for managing this post type. Note that "
 "built-in post types, such as post and page, are intentionally set to false."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-post-type.php:676
+#: ../ui-admin/edit-post-type.php:679
 msgid "Name of the query var to use for this post type."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:8
+#: ../ui-admin/edit-taxonomy.php:8
 msgid "Edit Taxonomy"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:23
+#: ../ui-admin/edit-taxonomy.php:23
 msgid ""
 "The system name of the taxonomy. Alphanumeric lower case characters and "
 "underscores only. Min 2 letters. Once added the taxonomy system name cannot "
 "be changed."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:44
+#: ../ui-admin/edit-taxonomy.php:44
 msgid "Select one or more post types to add this taxonomy to"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/edit-taxonomy.php:390
+#: ../ui-admin/edit-taxonomy.php:390
 msgid ""
 "False to prevent queries, or string to customize query var. Default will use "
 "$taxonomy as query var."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/message.php:3
+#: ../ui-admin/message.php:3
 msgid "Settings Saved."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/navigation.php:8
+#: ../ui-admin/navigation.php:8
 msgid "Taxonomies"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/navigation.php:10
+#: ../ui-admin/navigation.php:10
 msgid "Shortcodes"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:90
+#: ../ui-admin/post-types.php:83
 msgid "Edit the post type"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:100
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:95
+#: ../ui-admin/post-types.php:93 ../ui-admin/taxonomies.php:95
 msgid "Confirm"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:119
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:126
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:133
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:109
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:116
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:123
+#: ../ui-admin/post-types.php:112 ../ui-admin/post-types.php:119
+#: ../ui-admin/post-types.php:126 ../ui-admin/taxonomies.php:109
+#: ../ui-admin/taxonomies.php:116 ../ui-admin/taxonomies.php:123
 msgid "True"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:121
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:128
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/post-types.php:135
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:111
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:118
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:125
+#: ../ui-admin/post-types.php:114 ../ui-admin/post-types.php:121
+#: ../ui-admin/post-types.php:128 ../ui-admin/taxonomies.php:111
+#: ../ui-admin/taxonomies.php:118 ../ui-admin/taxonomies.php:125
 msgid "False"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:32
+#: ../ui-admin/settings.php:32
 #, php-format
 msgid "CustomPress Settings %s"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:39
+#: ../ui-admin/settings.php:39
 msgid "General"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:43
+#: ../ui-admin/settings.php:43
 msgid "Enable sub-site content types."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:47
+#: ../ui-admin/settings.php:47
 msgid ""
 "If you enable this option, sub-sites on your network will be able to define "
 "their own content types. If this option is not enabled ( default ) all sites "
@@ -1602,85 +1289,83 @@ msgid ""
 "by you, the Super Admin."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:50
+#: ../ui-admin/settings.php:50
 msgid ""
 "If you enable this option, all subsites will use and display the content "
 "types defined at the network level. "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:55
+#: ../ui-admin/settings.php:55
 msgid "Display the network-wide content types on sub-sites."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:58
+#: ../ui-admin/settings.php:58
 msgid "Do not display the network-wide content types on sub-sites."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:71
+#: ../ui-admin/settings.php:71
 msgid "On \"Blog / Home\" page, display these post types: "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:100
+#: ../ui-admin/settings.php:100
 msgid ""
 "Check the custom post types you want to display on the \"Blog / Home\" page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:104
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:145
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:186
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:227
+#: ../ui-admin/settings.php:104 ../ui-admin/settings.php:145
+#: ../ui-admin/settings.php:186 ../ui-admin/settings.php:227
 msgid ""
 "If \"default\" is checked the list above will be disabled and only default "
 "post_types will display."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:112
+#: ../ui-admin/settings.php:112
 msgid "On \"Front\" page, display these post types: "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:141
+#: ../ui-admin/settings.php:141
 msgid ""
 "Check the custom post types you want to display on the \"Front\" static page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:153
+#: ../ui-admin/settings.php:153
 msgid "On \"Archive\" pages, display these post types:  "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:182
+#: ../ui-admin/settings.php:182
 msgid ""
 "Check the custom post types you want to display on the \"Archive\" page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:194
+#: ../ui-admin/settings.php:194
 msgid "On \"Search\" pages, display these post types:  "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:223
+#: ../ui-admin/settings.php:223
 msgid "Check the custom post types you want to display on the \"Search\" page."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:235
+#: ../ui-admin/settings.php:235
 msgid "Date Picker Settings"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:261
+#: ../ui-admin/settings.php:261
 msgid "Select Datepicker Theme."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:277
+#: ../ui-admin/settings.php:277
 msgid "Template Files"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:281
+#: ../ui-admin/settings.php:281
 msgid "Create template file for: "
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:291
+#: ../ui-admin/settings.php:291
 msgid "No custom post types available"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:294
+#: ../ui-admin/settings.php:294
 msgid ""
 "This will create \"single-[post_type].php\" file inside your active theme "
 "directory by copying your current single.php template. This file will be the "
@@ -1688,162 +1373,155 @@ msgid ""
 "it."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:295
+#: ../ui-admin/settings.php:295
 msgid ""
 "In some cases you may not want to do that. For example if you don't have a "
 "template for your custom post type the default \"single.php\" will be used."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/settings.php:296
+#: ../ui-admin/settings.php:296
 msgid ""
 "Your active theme folder permissions have to be set to 777 for this option "
 "to work. After the file is created you can set your active theme directory "
 "permissions back to 755."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:7
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:11
+#: ../ui-admin/shortcodes.php:7 ../ui-admin/shortcodes.php:11
 msgid "CustomPress Shortcodes"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:24
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:49
+#: ../ui-admin/shortcodes.php:24 ../ui-admin/shortcodes.php:49
 msgid "Basic shortcode"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:26
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:51
+#: ../ui-admin/shortcodes.php:26 ../ui-admin/shortcodes.php:51
 msgid ""
 "Returns a full set of input fields based on the post type of the post id "
 "provided."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:28
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:53
+#: ../ui-admin/shortcodes.php:28 ../ui-admin/shortcodes.php:53
 msgid "or with field list"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:30
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:55
+#: ../ui-admin/shortcodes.php:30 ../ui-admin/shortcodes.php:55
 msgid ""
 "Returns a set of input fields as supplied by the field id list in the "
 "shortcode. Any ids not associate with the post type will be ignored."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:32
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:57
+#: ../ui-admin/shortcodes.php:32 ../ui-admin/shortcodes.php:57
 msgid "or with field list filtered by category"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:34
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:59
+#: ../ui-admin/shortcodes.php:34 ../ui-admin/shortcodes.php:59
 msgid "Multiple filters may be used in one input block."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:64
+#: ../ui-admin/shortcodes.php:64
 msgid "Attributes for the [custom_fields_block]"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:65
+#: ../ui-admin/shortcodes.php:65
 msgid ""
 "wrap        = Wrap the fields in either a \"table\", a \"ul\" or a \"div\" "
 "structure."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:66
+#: ../ui-admin/shortcodes.php:66
 msgid ""
 "The default wrap attributes may be overriden using the following individual "
 "attributes:"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:67
+#: ../ui-admin/shortcodes.php:67
 msgid "open = HTML to begin the block with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:68
+#: ../ui-admin/shortcodes.php:68
 msgid "close = HTML to end the block with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:69
+#: ../ui-admin/shortcodes.php:69
 msgid "open_line = HTML to begin a line with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:70
+#: ../ui-admin/shortcodes.php:70
 msgid "close_line = HTML to end a line with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:71
+#: ../ui-admin/shortcodes.php:71
 msgid "open_title = HTML to begin the title with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:72
+#: ../ui-admin/shortcodes.php:72
 msgid "close_title = HTML to end the title with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:73
+#: ../ui-admin/shortcodes.php:73
 msgid "open_value = HTML to begin the value with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:74
+#: ../ui-admin/shortcodes.php:74
 msgid "close_value = HTML to end the value with"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:84
+#: ../ui-admin/shortcodes.php:84
 msgid ""
 "Used to restrict the list of fields returned depending on the categories of "
 "the post. Multiple [ct_filter] shortcodes may be added to a "
 "[custom_field_input] or [custom_field_block] shortcode."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:86
+#: ../ui-admin/shortcodes.php:86
 msgid ""
 "terms= Comma separated category list to filter on. Categories not associated "
 "with the post type of the current post will be ignored."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/shortcodes.php:87
+#: ../ui-admin/shortcodes.php:87
 msgid ""
 "The comma separated list of fields between the opening and closing tags will "
 "be returned if the categories match. Fields not associated with the post "
 "type of the current post will be ignored."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:74
+#: ../ui-admin/taxonomies.php:74
 msgid "Edit this taxonomy"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:132
+#: ../ui-admin/taxonomies.php:132
 msgid ""
 "Embed code returns an HTML string of taxonomy terms associated with a post "
 "and given taxonomy. <br />Terms are linked to their respective term listing "
 "pages. Use it in templates inside the Loop."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/taxonomies.php:136
+#: ../ui-admin/taxonomies.php:136
 msgid ""
 "Shortcode returns an HTML string of taxonomy terms associated with a post "
 "and given taxonomy. <br />Terms are linked to their respective term listing "
 "pages. Use it inside the Loop."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/update-message.php:5
+#: ../ui-admin/update-message.php:5
 msgid "Content Type Updated"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:32
+#: ../ui-admin/wip-update-taxonomy.php:32
 msgid ""
 "The system name of the taxonomy. Alphanumeric characters and underscores "
 "only. Min 2 letters. Once added the taxonomy system name cannot be changed."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:356
+#: ../ui-admin/wip-update-taxonomy.php:356
 msgid "Prepend posts with this slug."
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:359
+#: ../ui-admin/wip-update-taxonomy.php:359
 msgid "Disallow Front Base"
 msgstr ""
 
-#: D:\wamp\www\custompress\wp-content\plugins\custompress/ui-admin/wip-update-taxonomy.php:361
+#: ../ui-admin/wip-update-taxonomy.php:361
 msgid "Disallowing permalinks to be prepended with front base."
 msgstr ""

@@ -1,7 +1,5 @@
 <?php
-/*
 
-*/
 global $wp_query;
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;

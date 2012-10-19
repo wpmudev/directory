@@ -31,7 +31,7 @@ class DR_Theme_Options {
 	* Load up the menu page.
 	*/
 	function add_page() {
-		add_theme_page( __('Options', 'directory'), __('Options', 'directory'), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
+		add_theme_page( __('Options', THEME_TEXT_DOMAIN), __('Options', THEME_TEXT_DOMAIN), 'edit_theme_options', 'options', array( &$this, 'output_admin_page' ) );
 	}
 
 	/**
@@ -39,11 +39,11 @@ class DR_Theme_Options {
 	*/
 	function output_admin_page() {
 		if ( isset( $_REQUEST['updated'] ) )
-		$msg = __( 'Options Saved!', 'directory' ); ?>
+		$msg = __( 'Options Saved!', THEME_TEXT_DOMAIN ); ?>
 
 		<div class="wrap">
 			<?php screen_icon(); ?>
-			<h2><?php echo wp_get_theme()->Name . ' ' . __('Options', 'directory') ?></h2>
+			<h2><?php echo wp_get_theme()->Name . ' ' . __('Options', THEME_TEXT_DOMAIN) ?></h2>
 
 			<?php if ( isset( $msg ) ) : ?>
 			<div class="updated fade"><p><strong><?php echo $msg; ?></strong></p></div>
@@ -53,45 +53,45 @@ class DR_Theme_Options {
 				<?php settings_fields('dir_options_group'); ?>
 				<?php $options = get_option('dir_options'); ?>
 				<input type="hidden" name="dir_colors[enable]" value="1" />
-				<h3><?php _e( 'Presentation', 'directory'  ); ?></h3>
+				<h3><?php _e( 'Presentation', THEME_TEXT_DOMAIN  ); ?></h3>
 				<table class="form-table">
 					<tr>
-						<th><label for="text_shadows"><?php _e('Text Shadows', 'directory'); ?></label></th>
+						<th><label for="text_shadows"><?php _e('Text Shadows', THEME_TEXT_DOMAIN); ?></label></th>
 						<td>
 							<input id="text_shadows" type="checkbox" name="dir_options[text_shadows]" value="1" <?php if ( !empty( $options['text_shadows'] ) ) echo 'checked="checked"'; ?> />
-							<span class="description"><?php _e('Switch text shadows OFF', 'directory'); ?></span>
+							<span class="description"><?php _e('Switch text shadows OFF', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 				</table>
-				<h3><?php _e( 'Layout', 'directory'  ); ?></h3>
+				<h3><?php _e( 'Layout', THEME_TEXT_DOMAIN  ); ?></h3>
 				<table class="form-table">
 					<tr>
-						<th><label for="layout"><?php _e('Layout', 'directory'); ?></label></th>
+						<th><label for="layout"><?php _e('Layout', THEME_TEXT_DOMAIN); ?></label></th>
 						<td>
 							<select id="layout" name="dir_options[layout]">;
-								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'grid' ) echo 'selected="selected"'; ?> value="grid"><?php _e( 'Grid Layout', 'directory' ); ?></option>;
-								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'row' ) echo 'selected="selected"'; ?> value="row"><?php _e( 'Rows Layout', 'directory' ); ?></option>
+								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'grid' ) echo 'selected="selected"'; ?> value="grid"><?php _e( 'Grid Layout', THEME_TEXT_DOMAIN ); ?></option>;
+								<option <?php if ( isset( $options['layout'] ) && $options['layout'] == 'row' ) echo 'selected="selected"'; ?> value="row"><?php _e( 'Rows Layout', THEME_TEXT_DOMAIN ); ?></option>
 							</select>
-							<span class="description"><?php _e('Switch Theme Layout', 'directory'); ?></span>
+							<span class="description"><?php _e('Switch Theme Layout', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 					<tr>
-						<th><label for="style"><?php _e('Styles', 'directory'); ?></label></th>
+						<th><label for="style"><?php _e('Styles', THEME_TEXT_DOMAIN); ?></label></th>
 						<td>
 							<select id="style" name="dir_options[style]">
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'modern' ) echo 'selected="selected"'; ?> value="modern"><?php _e( 'Style Modern', 'directory' ); ?></option>
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'minimal' ) echo 'selected="selected"'; ?> value="minimal"><?php _e( 'Style Minimal', 'directory' ); ?></option>
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'boxed' ) echo 'selected="selected"'; ?> value="boxed"><?php _e( 'Style Boxed', 'directory' ); ?></option>
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'gloss' ) echo 'selected="selected"'; ?> value="gloss"><?php _e( 'Style Gloss', 'directory' ); ?></option>
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'skinny' ) echo 'selected="selected"'; ?> value="skinny"><?php _e( 'Style Skinny', 'directory' ); ?></option>
-								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'wide' ) echo 'selected="selected"'; ?> value="wide"><?php _e( 'Style Wide', 'directory' ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'modern' ) echo 'selected="selected"'; ?> value="modern"><?php _e( 'Style Modern', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'minimal' ) echo 'selected="selected"'; ?> value="minimal"><?php _e( 'Style Minimal', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'boxed' ) echo 'selected="selected"'; ?> value="boxed"><?php _e( 'Style Boxed', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'gloss' ) echo 'selected="selected"'; ?> value="gloss"><?php _e( 'Style Gloss', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'skinny' ) echo 'selected="selected"'; ?> value="skinny"><?php _e( 'Style Skinny', THEME_TEXT_DOMAIN ); ?></option>
+								<option <?php if ( isset( $options['style'] ) && $options['style'] == 'wide' ) echo 'selected="selected"'; ?> value="wide"><?php _e( 'Style Wide', THEME_TEXT_DOMAIN ); ?></option>
 							</select>
-							<span class="description"><?php _e('Switch Theme Style', 'directory'); ?></span>
+							<span class="description"><?php _e('Switch Theme Style', THEME_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
 				</table>
 				<p class="submit">
-					<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Save Changes', 'directory'); ?>" />
+					<input type="submit" class="button-primary" name="save_colors" value="<?php _e('Save Changes', THEME_TEXT_DOMAIN); ?>" />
 				</p>
 			</form>
 		</div> <?php

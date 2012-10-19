@@ -171,7 +171,7 @@ function the_dr_posted_on() {
 	// For BuddyPress compatibility
 	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . 'listings/' : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
 
-	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'directory' ),
+	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
 	'meta-prep meta-prep-author',
 	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
 	get_permalink(),
@@ -180,7 +180,7 @@ function the_dr_posted_on() {
 	),
 	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 	$alink,
-	sprintf( esc_attr__( 'View all posts by %s', 'directory' ), get_the_author() ),
+	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
 	get_the_author()
 	)
 	);
@@ -200,11 +200,11 @@ function the_dr_posted_in() {
 	$tag_list = get_the_tag_list('', __(', ',DR_TEXT_DOMAIN), '');
 
 	if ( $tag_list ) {
-		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
+		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
 	} elseif ( $categories_list ) {
-		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
+		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
 	} else {
-		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'directory' );
+		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', DR_TEXT_DOMAIN );
 	}
 
 	// Prints the string, replacing the placeholders.
@@ -232,21 +232,21 @@ function the_dr_comment( $comment, $args, $depth ) {
 
 			<div class="comment-author vcard">
 				<?php echo get_avatar( $comment, 40 ); ?>
-				<?php printf( __( '%s <span class="says">says:</span>', 'directory' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+				<?php printf( __( '%s <span class="says">says:</span>', DR_TEXT_DOMAIN ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 			</div><!-- .comment-author .vcard -->
 
 			<?php if ( $comment->comment_approved == '0' ) : ?>
-			<em><?php _e( 'Your review is awaiting moderation.', 'directory' ); ?></em>
+			<em><?php _e( 'Your review is awaiting moderation.', DR_TEXT_DOMAIN ); ?></em>
 			<br />
 			<?php endif; ?>
 
 			<div class="comment-meta commentmetadata">
 				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<?php printf( __( '%1$s at %2$s', 'directory' ), get_comment_date(),  get_comment_time() ); ?>
-				</a><?php edit_comment_link( __( '(Edit)', 'directory' ), ' ' ); ?>
+					<?php printf( __( '%1$s at %2$s', DR_TEXT_DOMAIN ), get_comment_date(),  get_comment_time() ); ?>
+				</a><?php edit_comment_link( __( '(Edit)', DR_TEXT_DOMAIN ), ' ' ); ?>
 			</div><!-- .comment-meta .commentmetadata -->
 
-			<?php do_action('sr_user_rating'); ?>
+			<?php do_action('sr_user_rating', $comment->user_id); ?>
 
 			<div class="comment-body"><?php comment_text(); ?></div>
 
@@ -262,7 +262,7 @@ function the_dr_comment( $comment, $args, $depth ) {
 	case 'pingback'  :
 	case 'trackback' : ?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'directory' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'directory'), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', DR_TEXT_DOMAIN ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', DR_TEXT_DOMAIN), ' ' ); ?></p>
 	</li>
 	<?php
 	break;

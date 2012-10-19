@@ -1,462 +1,503 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Directory Theme\n"
+"Project-Id-Version: Directory Theme 1.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-25 13:45-0500\n"
-"PO-Revision-Date: 2012-06-25 13:45-0500\n"
+"POT-Creation-Date: 2012-10-18 10:57-0500\n"
+"PO-Revision-Date: 2012-10-18 11:00-0500\n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: D:\\wamp\\www\\dir\\wp-content\\plugins\\directory\\themes\\default\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:10
-msgid "This post is password protected. Enter the password to view any comments."
+#: ../comments.php:9
+msgid ""
+"This post is password protected. Enter the password to view any comments."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:31
+#: ../comments.php:28
+#, php-format
+msgid "One Review for %2$s"
+msgstr ""
+
+#: ../comments.php:35
 msgid "<span class=\"meta-nav\">&larr;</span> Older Reviews"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:32
+#: ../comments.php:36
 msgid "Newer Reviews <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:50
+#: ../comments.php:55
 msgid "<span class=\"meta-nav\">&larr;</span> Older Review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:51
+#: ../comments.php:56
 msgid "Newer Review <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:61
+#: ../comments.php:69
 msgid "Reviews are closed."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:69
+#: ../comments.php:78
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a review."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:72
+#: ../comments.php:81
 msgid "Write a Review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:73
+#: ../comments.php:82
 #, php-format
 msgid "Write a Review to %s"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:74
+#: ../comments.php:83
 msgid "Cancel review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:75
+#: ../comments.php:84
 msgid "Post Review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:77
-#, php-format
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+#: ../comments.php:85
+msgid "Review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/comments.php:78
+#: ../comments.php:86
 #, php-format
-msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes: %s"
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:44
+#: ../comments.php:87
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+
+#: ../dr_listinglist.php:44 ../loops/loop-archive.php:14
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:61
+#: ../dr_listinglist.php:61 ../loops/loop-archive.php:21
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:69
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
 msgid "Leave a review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:69
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
 msgid "1 Review"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:69
+#: ../dr_listinglist.php:69 ../loops/loop-archive.php:25
 msgid "% Reviews"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:69
+#: ../dr_listinglist.php:69 ../single-listing.php:16
+#: ../loops/loop-archive.php:25 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
 msgid "Reviews Off"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:70
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:19
+#: ../dr_listinglist.php:70 ../single-listing.php:19
+#: ../loops/loop-archive.php:26 ../loops/loop-single.php:12
 msgid "Edit"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:87
+#: ../dr_listinglist.php:77 ../loops/loop-archive.php:33
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../dr_listinglist.php:87 ../loops/loop-archive.php:43
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/dr_listinglist.php:108
-msgid "Sorry, we can't find the archive you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../dr_listinglist.php:108 ../components/messages.php:5
+msgid ""
+"Sorry, we can't find the archive you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/footer.php:8
+#: ../footer.php:8
 msgid "Theme by WPMU DEV"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/footer.php:8
+#: ../footer.php:8
 msgid "WPMU DEV"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/footer.php:8
+#: ../footer.php:8
 msgid "Copyright"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/footer.php:8
+#: ../footer.php:8
 msgid "Y"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/footer.php:8
+#: ../footer.php:8
 msgid "Go back to top &uarr;"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:16
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
 msgid "No Reviews &#187;"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:16
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
 msgid "1 Review &#187;"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:16
+#: ../single-listing.php:16 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:9
 msgid "% Reviews &#187;"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:20
+#: ../single-listing.php:20 ../loops/loop-blog-page.php:12
+#: ../loops/loop-excerpt.php:9 ../loops/loop-single.php:13
 msgid "Tags: "
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:23
+#: ../single-listing.php:23 ../loops/loop-single.php:16
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:35
+#: ../single-listing.php:38 ../loops/loop-single.php:28
 msgid "Pages:"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:50
+#: ../single-listing.php:49 ../loops/loop-single.php:39
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: ../single-listing.php:53 ../loops/loop-single.php:43
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:66
+#: ../single-listing.php:69 ../components/pagination.php:18
+#: ../components/pagination.php:25 ../components/pagination.php:32
 msgid "&laquo; Previous Entries"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:67
+#: ../single-listing.php:70 ../components/pagination.php:19
+#: ../components/pagination.php:26 ../components/pagination.php:33
 msgid "Next Entries &raquo;"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/single-listing.php:72
-msgid "Sorry, we can't find the post you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../single-listing.php:75 ../components/messages.php:11
+msgid ""
+"Sorry, we can't find the post you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/actionbuttons.php:2
+#: ../components/actionbuttons.php:2
 msgid "Welcome, what would you like to do?"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/actionbuttons.php:9
+#: ../components/actionbuttons.php:5 ../components/actionbuttons.php:18
+msgid "Sign Up"
+msgstr ""
+
+#: ../components/actionbuttons.php:6
+msgid "Sign In"
+msgstr ""
+
+#: ../components/actionbuttons.php:9
 msgid "Log Out"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/actionbuttons.php:12
+#: ../components/actionbuttons.php:15
 msgid "Add Listing"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/actionbuttons.php:15
+#: ../components/actionbuttons.php:22
 msgid "Go to Profile"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/branding-header.php:4
+#: ../components/branding-header.php:4
 msgid "Home"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/headers.php:3
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/headers.php:5
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/headers.php:7
+#: ../components/headers.php:3 ../components/headers.php:5
+#: ../components/headers.php:7
 #, php-format
 msgid "You are browsing the archive for %1$s."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/headers.php:11
+#: ../components/headers.php:11
 msgid "Search Results"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/headers.php:13
+#: ../components/headers.php:13
 msgid "Blog"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/messages.php:3
-msgid "Sorry, we can't find the category you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../components/messages.php:3
+msgid ""
+"Sorry, we can't find the category you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/messages.php:7
-msgid "Sorry, we can't find the search keyword you're looking for. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../components/messages.php:7
+msgid ""
+"Sorry, we can't find the search keyword you're looking for. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/messages.php:9
-msgid "Sorry, we can't find the author you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../components/messages.php:9
+msgid ""
+"Sorry, we can't find the author you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/messages.php:13
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/messages.php:15
-msgid "Sorry, we can't find the content you're looking for at this URL. Please try selecting a menu item from above or to the side of this message to get where you'd like to go."
+#: ../components/messages.php:13 ../components/messages.php:15
+msgid ""
+"Sorry, we can't find the content you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/pagination.php:12
+#: ../components/pagination.php:12
 msgid "Pages"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/pagination.php:12
+#: ../components/pagination.php:12
 msgid "number"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/searchcontainer.php:4
+#: ../components/searchcontainer.php:4
 msgid "What can we find for you today?"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/components/searchcontainer.php:6
+#: ../components/searchcontainer.php:6
 msgid "Find it now!"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:35
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:103
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:110
+#: ../core/colors.php:35 ../core/colors.php:103 ../core/colors.php:110
 msgid "Colors"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:99
+#: ../core/colors.php:99
 msgid "Colors Saved!"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:116
+#: ../core/colors.php:113
+msgid "Allow color overrides below."
+msgstr ""
+
+#: ../core/colors.php:116
 msgid "Site Title"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:119
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:128
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:137
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:146
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:155
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:164
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:173
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:182
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:191
+#: ../core/colors.php:119 ../core/colors.php:128 ../core/colors.php:137
+#: ../core/colors.php:146 ../core/colors.php:155 ../core/colors.php:164
+#: ../core/colors.php:173 ../core/colors.php:182 ../core/colors.php:191
 msgid "Select Color"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:120
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:129
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:138
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:147
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:156
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:165
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:174
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:183
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:192
+#: ../core/colors.php:120 ../core/colors.php:129 ../core/colors.php:138
+#: ../core/colors.php:147 ../core/colors.php:156 ../core/colors.php:165
+#: ../core/colors.php:174 ../core/colors.php:183 ../core/colors.php:192
 msgid "Use Default"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:125
+#: ../core/colors.php:125
 msgid "Navigation Bar"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:134
+#: ../core/colors.php:134
 msgid "Content Wrapper"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:143
+#: ../core/colors.php:143
 msgid "Search Box"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:152
+#: ../core/colors.php:152
 msgid "Grid and Action Bars"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:161
+#: ../core/colors.php:161
 msgid "Headings Bars"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:170
+#: ../core/colors.php:170
 msgid "Buttons"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:179
+#: ../core/colors.php:179
 msgid "Buttons Text"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:188
+#: ../core/colors.php:188
 msgid "Global Text"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/colors.php:198
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:94
+#: ../core/colors.php:198 ../core/options.php:94
 msgid "Save Changes"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:39
+#: ../core/core.php:40
 msgid "Top Menu"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:56
+#: ../core/core.php:57
 msgid "The header advertisement widget area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:64
+#: ../core/core.php:65
 msgid "First Footer Widget Area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:66
+#: ../core/core.php:67
 msgid "The first footer widget area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:74
+#: ../core/core.php:75
 msgid "Second Footer Widget Area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:76
+#: ../core/core.php:77
 msgid "The second footer widget area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:84
+#: ../core/core.php:85
 msgid "Third Footer Widget Area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:86
+#: ../core/core.php:87
 msgid "The third footer widget area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:94
+#: ../core/core.php:95
 msgid "Fourth Footer Widget Area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:96
+#: ../core/core.php:97
 msgid "The fourth footer widget area"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:115
+#: ../core/core.php:116
 msgid "{View Listing}"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/core.php:144
+#: ../core/core.php:145
 msgid "Advertise Here"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:34
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:46
+#: ../core/options.php:34 ../core/options.php:46
 msgid "Options"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:42
+#: ../core/options.php:42
 msgid "Options Saved!"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:56
+#: ../core/options.php:56
 msgid "Presentation"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:59
+#: ../core/options.php:59
 msgid "Text Shadows"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:62
+#: ../core/options.php:62
 msgid "Switch text shadows OFF"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:66
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:69
+#: ../core/options.php:66 ../core/options.php:69
 msgid "Layout"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:72
+#: ../core/options.php:72
 msgid "Grid Layout"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:73
+#: ../core/options.php:73
 msgid "Rows Layout"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:75
+#: ../core/options.php:75
 msgid "Switch Theme Layout"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:79
+#: ../core/options.php:79
 msgid "Styles"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:82
+#: ../core/options.php:82
 msgid "Style Modern"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:83
+#: ../core/options.php:83
 msgid "Style Minimal"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:84
+#: ../core/options.php:84
 msgid "Style Boxed"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:85
+#: ../core/options.php:85
 msgid "Style Gloss"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:86
+#: ../core/options.php:86
 msgid "Style Skinny"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:87
+#: ../core/options.php:87
 msgid "Style Wide"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/core/options.php:89
+#: ../core/options.php:89
 msgid "Switch Theme Style"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-attachment.php:13
+#: ../loops/loop-attachment.php:13
 msgid "<p class=\"serif\">Read the rest of this entry &rarr;</p>"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-attachment.php:14
+#: ../loops/loop-attachment.php:14 ../loops/loop-page.php:10
 msgid "<p><strong>Pages:</strong> "
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-blog-page.php:11
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-excerpt.php:8
+#: ../loops/loop-blog-page.php:11 ../loops/loop-excerpt.php:8
 msgid "in"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-blog-page.php:11
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-excerpt.php:8
+#: ../loops/loop-blog-page.php:11 ../loops/loop-excerpt.php:8
 msgid "by "
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-blog-page.php:16
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-excerpt.php:14
+#: ../loops/loop-blog-page.php:16 ../loops/loop-excerpt.php:14
 msgid "Permanent Link to"
 msgstr ""
 
-#: D:\wamp\www\dir\wp-content\plugins\directory\themes\default/loops/loop-page.php:10
+#: ../loops/loop-page.php:11
 msgid "Edit this entry."
 msgstr ""
-
