@@ -27,7 +27,7 @@ class CustomPress_Core {
 
 	function __construct(){
 		add_action( 'plugins_loaded', array( &$this, 'on_plugins_loaded' ), 0 );
-	
+
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
@@ -51,7 +51,7 @@ class CustomPress_Core {
 	function on_plugins_loaded() {
 		load_plugin_textdomain( $this->text_domain, false, plugin_basename($this->plugin_dir . 'languages' ) );
 	}
-	
+
 	function enqueue_datepicker(){
 
 		wp_enqueue_script('jquery-ui-datepicker');
@@ -77,7 +77,7 @@ class CustomPress_Core {
 
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
 		wp_enqueue_script('jquery-validate');
-		
+
 		wp_register_script('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array('jquery'), '1.8.18');
 		wp_enqueue_script('jquery-combobox');
 
@@ -85,15 +85,15 @@ class CustomPress_Core {
 		wp_enqueue_style('jquery-combobox');
 
 	}
-	
+
 	function on_init(){
-		
+
 	}
 
 	function on_wp_enqueue_scripts(){
-		
+
 		$this->enqueue_datepicker();
-	
+
 	}
 
 	/**
@@ -332,7 +332,7 @@ class CustomPress_Core {
 		foreach ( $vars as $key => $val ){
 			$$key = $val;
 		}
-		
+
 		if ( file_exists( "{$this->plugin_dir}ui-admin/{$name}.php" ) )
 		include "{$this->plugin_dir}ui-admin/{$name}.php";
 		else
@@ -394,8 +394,5 @@ class CustomPress_Core {
 
 
 }
-
-//$CustomPress_Core =
-//new CustomPress_Core();
 
 endif;

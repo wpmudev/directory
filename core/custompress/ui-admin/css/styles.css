@@ -37,12 +37,21 @@
 .ct-table-wrap .form-table th{
   width:30%;
 }
-
 .ct-toggle {
 	padding:.7em .9em;
 	background:url("../images/gray-grad.png") repeat-x left top #DFDFDF;
 	cursor: pointer;
 	margin: 0;
+	text-shadow:1px 1px #eee;
+}
+.ct-list{
+	float: left;
+  width:30%;
+}
+
+.ct-list-cf{
+	float: left;
+  width:50%;
 }
 .form-table {
 	margin-bottom: 0;
@@ -59,13 +68,13 @@
 	padding-bottom: .8em;
 }
 .ct-arrow {
-	background: url("../images/menu-bits.gif") no-repeat left -10.9em;
+	background: url("../images/menu-bits.gif") no-repeat left -109px;
 	float:right;
 	height:2.7em;
 	width:23px
 }
 .ct-arrow:hover {
-	background: url('../images/menu-bits.gif') no-repeat left -20.6em;
+	background: url('../images/menu-bits.gif') no-repeat left -206px;
 }
 .ct-form-single-btn {
 	padding: 1em 0;

@@ -45,6 +45,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	/** @public bool  keep_network_content_type for site_options */
 	public $network_content = true;
 	// Setup the various structures table, ul, div
+
+	public $display_network_content = false;
+
 	public 	$structures = array (
 	"none" =>
 	array (
@@ -1635,6 +1638,59 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		return $validation;
 	}
+
+	function __set($name, $value){
+
+		switch ($name) {
+			case 'import': $this->_import($value); break;
+
+		}
+	}
+
+	function _import($types = array()){
+
+		if(! (is_array($types) && defined( 'CT_ALLOW_IMPORT' ) ) ) return;
+
+		if ( is_network_admin() ) {
+			$post_types = get_site_option('ct_custom_post_types');
+			$taxonomies = get_site_option('ct_custom_taxonomies');
+			$custom_fields = get_site_option('ct_custom_fields');
+		} else {
+			$post_types = get_option('ct_custom_post_types');
+			$taxonomies = get_option('ct_custom_taxonomies');
+			$custom_fields = get_option('ct_custom_fields');
+		}
+
+		if(! empty($types['post_types']) && is_array($types['post_types'])) {
+			foreach($types['post_types'] as $key => $value) {
+				$post_types[$key] = $value;
+			}
+		}
+
+		if(! empty($types['taxonomies']) && is_array($types['taxonomies'])) {
+			foreach($types['taxonomies'] as $key => $value) {
+				$taxonomies[$key] = $value;
+			}
+		}
+
+		if(! empty($types['custom_fields']) && is_array($types['custom_fields'])) {
+			foreach($types['custom_fields'] as $key => $value) {
+				$custom_fields[$key] = $value;
+			}
+		}
+
+		if ( is_network_admin() ) {
+			update_site_option('ct_custom_post_types', $post_types);
+			update_site_option('ct_custom_taxonomies', $taxonomies);
+			update_site_option('ct_custom_fields', $custom_fields);
+		} else {
+			update_option('ct_custom_post_types', $post_types);
+			update_option('ct_custom_taxonomies', $taxonomies);
+			update_option('ct_custom_fields', $custom_fields);
+		}
+
+	}
+
 }
 
 // Initiate Content Types Module
