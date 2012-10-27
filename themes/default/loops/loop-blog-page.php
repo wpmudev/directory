@@ -15,7 +15,9 @@ while ( have_posts() ) : the_post();?>
 	<div class="entry-post">
 		<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e( 'Permanent Link to', THEME_TEXT_DOMAIN ) ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 		<div class="entry">
+			<?php if( has_post_thumbnail() ): ?> 
 			<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?></a>
+			<?php endif; ?>
 			<?php the_excerpt(); ?>
 			<div class="clear-left"></div>
 		</div>

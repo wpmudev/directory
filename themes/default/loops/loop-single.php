@@ -22,7 +22,7 @@
 	<div class="entry-post">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<div class="entry-content">
-			<?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+			<?php if(has_post_thumbnail() ) the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 			<?php the_content(); ?>
 
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', THEME_TEXT_DOMAIN ), 'after' => '</div>' ) ); ?>

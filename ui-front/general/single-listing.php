@@ -1,5 +1,3 @@
-
-<?php the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/ui-front.js'; ?>" >
 </script>
 
@@ -28,6 +26,8 @@ endif;
 
 endif; ?>
 
+<?php if(has_post_thumbnail() ) the_post_thumbnail( array( 275, 100 ), array( 'class' => 'alignleft' ) ); ?>
+
 <div class="entry-meta">
 	<?php the_dr_posted_on(); ?>
 	<?php do_action('sr_avg_rating'); ?><br />
@@ -52,9 +52,11 @@ endif; ?>
 </div>
 
 <div class="clear"></div>
+
 <form method="post" action="#" class="contact-user-btn action-form" id="action-form">
 	<input type="submit" name="contact_user" value="<?php _e('Contact User', $this->text_domain ); ?>" onclick="dr_listings.toggle_contact_form(); return false;" />
 </form>
+
 <div class="clear"></div>
 
 <form method="post" action="#" class="standard-form base dr-contact-form" id="confirm-form">
@@ -88,7 +90,7 @@ endif; ?>
 
 	<div class="editfield">
 		<label for="dr_random_value"><?php _e( 'Security image', $this->text_domain ); ?> (<?php _e( 'required', $this->text_domain ); ?>)</label>
-		<br /><img src="<?php echo $this->plugin_url; ?>ui-front/general/dr-captcha-image.php" />
+		<img class="captcha" src="<?php echo $this->plugin_url; ?>ui-front/general/dr-captcha-image.php" />
 		<input type="text" id="dr_random_value" name ="dr_random_value" value="" size="8" />
 		<p class="description"><?php _e( 'Enter the characters from the image.', $this->text_domain ); ?></p>
 	</div>
@@ -102,6 +104,7 @@ endif; ?>
 	</div>
 
 </form>
+<div class="clear"></div>
 
 
 <?php

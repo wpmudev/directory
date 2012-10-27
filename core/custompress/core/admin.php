@@ -136,7 +136,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			}
 
 			$page_settings = add_submenu_page( $menu_slug, __('Settings', $this->text_domain), __('Settings', $this->text_domain), 'activate_plugins', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
-			$export_settings = add_submenu_page( 'ct_content_types', __('Export', $this->text_domain), __('Export', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
+			$export_settings = add_submenu_page( 'ct_content_types', __('Export / Import', $this->text_domain), __('Export / Import', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
 
 			add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );
 			add_action( 'admin_print_scripts-' . $export_settings, array( &$this, 'enqueue_scripts' ) );
@@ -155,7 +155,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			$page_content_types = add_submenu_page( 'ct_content_types' , __( 'Content Types', $this->text_domain ), __( 'Content Types', $this->text_domain ), 'manage_network', 'ct_content_types', array( &$this, 'handle_content_types_page_requests' ) );
 			$page_settings      = add_submenu_page( 'ct_content_types', __('Settings', $this->text_domain), __('Settings', $this->text_domain), 'manage_network', 'cp_main', array( &$this, 'handle_settings_page_requests' ) );
 			
-			$export_settings = add_submenu_page( 'ct_content_types', __('Export', $this->text_domain), __('Export', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
+			$export_settings = add_submenu_page( 'ct_content_types', __('Export / Import', $this->text_domain), __('Export / Import', $this->text_domain), 'manage_network', 'ct_export', array( &$this, 'handle_export' ) );
 
 			add_action( 'admin_print_scripts-' . $page_content_types, array( &$this, 'enqueue_scripts' ) );
 			add_action( 'admin_print_scripts-' . $page_settings, array( &$this, 'enqueue_settings_scripts' ) );

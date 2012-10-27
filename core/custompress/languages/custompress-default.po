@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CustomPress v1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-18 11:06-0500\n"
-"PO-Revision-Date: 2012-10-18 11:07-0500\n"
+"POT-Creation-Date: 2012-10-22 08:50-0500\n"
+"PO-Revision-Date: 2012-10-22 08:51-0500\n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
 "Language: en\n"
@@ -29,31 +29,35 @@ msgstr ""
 msgid "http://premium.wpmudev.org"
 msgstr ""
 
-#: ../loader.php:20 ../core/admin.php:130 ../core/admin.php:151
+#: ../loader.php:20 ../core/admin.php:130 ../core/admin.php:153
 msgid "CustomPress"
 msgstr ""
 
-#: ../core/admin.php:133 ../core/admin.php:153
+#: ../core/admin.php:133 ../core/admin.php:155
 msgid "Content Types"
 msgstr ""
 
-#: ../core/admin.php:138 ../core/admin.php:154
+#: ../core/admin.php:138 ../core/admin.php:156
 msgid "Settings"
 msgstr ""
 
-#: ../core/content-types.php:795
+#: ../core/admin.php:139 ../core/admin.php:158
+msgid "Export / Import"
+msgstr ""
+
+#: ../core/content-types.php:798
 msgid "Default CustomPress Fields"
 msgstr ""
 
-#: ../core/content-types.php:818
+#: ../core/content-types.php:821
 msgid "CustomPress Fields"
 msgstr ""
 
-#: ../core/content-types.php:1090
+#: ../core/content-types.php:1093
 msgid "No values"
 msgstr ""
 
-#: ../core/content-types.php:1352
+#: ../core/content-types.php:1355
 msgid "Invalid Taxonomy name in [tax ] shortcode"
 msgstr ""
 
@@ -1234,6 +1238,73 @@ msgstr ""
 msgid ""
 "False to prevent queries, or string to customize query var. Default will use "
 "$taxonomy as query var."
+msgstr ""
+
+#: ../ui-admin/export.php:26
+msgid "CustomPress Custom Types Export"
+msgstr ""
+
+#: ../ui-admin/export.php:31
+msgid "Post Types Export"
+msgstr ""
+
+#: ../ui-admin/export.php:36
+msgid "Check the Post Types you wish to export."
+msgstr ""
+
+#: ../ui-admin/export.php:55
+msgid "Create Post Type Export"
+msgstr ""
+
+#: ../ui-admin/export.php:64
+msgid "Taxonomies Export"
+msgstr ""
+
+#: ../ui-admin/export.php:69
+msgid "Check the Taxonomies you wish to export."
+msgstr ""
+
+#: ../ui-admin/export.php:88
+msgid "Create Taxonomies Export"
+msgstr ""
+
+#: ../ui-admin/export.php:97
+msgid "Custom Fields Export"
+msgstr ""
+
+#: ../ui-admin/export.php:102
+msgid "Check the Custom Fields you wish to export."
+msgstr ""
+
+#: ../ui-admin/export.php:122
+msgid "Create Custom Fields Export"
+msgstr ""
+
+#: ../ui-admin/export.php:135
+msgid "Custom Types Import"
+msgstr ""
+
+#: ../ui-admin/export.php:140
+msgid ""
+"Paste your Export code here and press Import to add the custom type to "
+"CustomPress"
+msgstr ""
+
+#: ../ui-admin/export.php:147
+msgid ""
+"Import is currently disabled on this site. To enable add the line<br /"
+"><code>define('CT_ALLOW_IMPORT', true);</code><br />to the wp-config.php "
+"file."
+msgstr ""
+
+#: ../ui-admin/export.php:148
+msgid ""
+"Remove the line when it is no longer needed to prevent possible security "
+"problems."
+msgstr ""
+
+#: ../ui-admin/export.php:157
+msgid "Import"
 msgstr ""
 
 #: ../ui-admin/message.php:3

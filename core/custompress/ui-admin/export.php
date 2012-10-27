@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 $import = '';
 
@@ -21,20 +21,19 @@ if ( is_network_admin() ) {
 
 ?>
 
-
 <div class="wrap">
 
-	<h2>Custom Types Export</h2>
+	<h2><?php _e('CustomPress Custom Types Export', $this->text_domain); ?></h2>
 	<form action="#" method="post">
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><b>Post Types Export</b></span></h3>
+			<h3 class="ct-toggle"><span><?php _e('Post Types Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							Check the Post Types you wish to export.
+							<?php _e('Check the Post Types you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($post_types as $key => $post_type): ?>
@@ -62,12 +61,12 @@ if ( is_network_admin() ) {
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><b>Taxonomies Export</b></span></h3>
+			<h3 class="ct-toggle"><span><?php _e('Taxonomies Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							Check the Taxonomies you wish to export.
+							<?php _e('Check the Taxonomies you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($taxonomies as $key => $taxonomy): ?>
@@ -95,12 +94,12 @@ if ( is_network_admin() ) {
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><b>Custom Fields Export</b></span></h3>
+			<h3 class="ct-toggle"><span><?php _e('Custom Fields Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							Check the Custom Fields you wish to export.
+							<?php _e('Check the Custom Fields you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($custom_fields as $key => $custom_field): ?>
@@ -133,7 +132,7 @@ if ( is_network_admin() ) {
 	<form action="#" method="post">
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><b>Custom Types Import</b></span></h3>
+			<h3 class="ct-toggle"><span><?php _e('Custom Types Import', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>

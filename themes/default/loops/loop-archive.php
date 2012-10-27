@@ -34,8 +34,10 @@ while ( have_posts() ) : the_post(); ?>
 		</h2>
 
 		<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
-			<div class="entry-summary">
+			<div class="entry-summary">			
+				<?php if( has_post_thumbnail() ): ?> 
 				<?php the_post_thumbnail( array( 50, 50 ), array( 'class' => 'alignleft' )); ?>
+				<?php endif; ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 		<?php else : ?>
