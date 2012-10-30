@@ -53,7 +53,7 @@ query_posts( $query_args );
 <div id="post-0" class="post error404 not-found">
 	<h1 class="entry-title"><?php _e( 'Not Found', DR_TEXT_DOMAIN ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Apologies, but no results were found for the requested classifieds. Perhaps searching will help find a related classified.', DR_TEXT_DOMAIN ); ?></p>
+		<p><?php _e( 'Apologies, but no results were found for the requested listings. Perhaps searching will help find a related listing.', DR_TEXT_DOMAIN ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->

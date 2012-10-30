@@ -3,7 +3,7 @@
 Plugin Name: CustomPress
 Plugin URI: http://premium.wpmudev.org/project/custompress
 Description: CustomPress - Custom Post, Taxonomy and Field Manager.
-Version: 1.3
+Version: 1.3.0.2
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
 Text Domain: custompress
@@ -37,13 +37,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Define plugin version */
-define ( 'CP_VERSION', '1.3' );
+define ( 'CP_VERSION', '1.3.0.2' );
 /* define the plugin folder url */
 define ( 'CP_PLUGIN_URL', plugin_dir_url(__FILE__) );
 /* define the plugin folder dir */
 define ( 'CP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 /* define the text domain for CustomPress */
 define ( 'CP_TEXT_DOMAIN', 'custompress' );
+
+//define('CT_ALLOW_IMPORT', true);
+
 
 /* include CustomPress files */
 include_once 'core/wpmudev-dash-notification.php';

@@ -5,7 +5,14 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
-= 1.3 = 2012-10-20 Arnold Bailey
+= 1.3.0.2 = 2012-10-29 Arnold Bailey
+* Fixed mixed local and network custom fields.
+* Display network custom types switch fix.
+
+= 1.3.0.1 = 2012-10-28 Arnold Bailey
+* Fixed problem with Export menu not showing on non-multisite.
+
+= 1.3 = 2012-10-27 Arnold Bailey
 * Added Map Meta Capability to Post Types editor. It was being overwritten when the custom post type was saved even if it was set by another program.
 * New custom post types automatically grant all capabilities to administrator role
 * Added Role Capabilities editor to post types. Roles can now be assigned capabilities where the capability type is not equal to "post"

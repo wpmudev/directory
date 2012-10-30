@@ -3,9 +3,9 @@
 * The template for displaying Author Archive pages.
 * You can override this file in your active theme.
 *
-* @package Classifieds
+* @package Directory
 * @subpackage UI Front
-* @since Classifieds 2.0
+* @since Directory 2.0
 */
 global $query_string;
 

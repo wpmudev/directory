@@ -2,12 +2,12 @@
 
 <?php
 /**
-* The template for displaying BuddyPress Classifieds component include - custom fields.
+* The template for displaying BuddyPress Directory component include - custom fields.
 * You can override this file in your active theme ( not very advisable if you don't know what you are doing ).
 *
-* @package Classifieds
+* @package Directory
 * @subpackage UI Front BuddyPress
-* @since Classifieds 2.0
+* @since Directory 2.0
 */
 ?>
 
@@ -26,7 +26,7 @@ $output = false;
 
 if (is_array($custom_field['object_type'])){
 	foreach ( $custom_field['object_type'] as $custom_field_object_type ){
-		if ( $custom_field_object_type == 'classifieds' ){
+		if ( $custom_field_object_type == 'directory_listing' ){
 			$output = true; break;
 		}
 	}

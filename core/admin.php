@@ -42,8 +42,8 @@ class Directory_Core_Admin extends Directory_Core {
 		add_action( 'wp_ajax_directory_ipn', array( &$this, 'ajax_directory_ipn' ) );
 
 		//Silent Post script for Authorizenet
-		add_action( 'wp_ajax_nopriv_classifieds_sp', array( &$this, 'ajax_directory_silent_post' ) );
-		add_action( 'wp_ajax_classifieds_sp', array( &$this, 'ajax_directory_silent_post' ) );
+		add_action( 'wp_ajax_nopriv_directory_sp', array( &$this, 'ajax_directory_silent_post' ) );
+		add_action( 'wp_ajax_directory_sp', array( &$this, 'ajax_directory_silent_post' ) );
 
 		// Render admin via action hook. Used mainly by modules.
 		add_action( 'render_admin', array( &$this, 'render_admin' ), 10, 2 );

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WPMU Assist
-Plugin URI: http://premium.wpmudev.org/project/classifieds
+Plugin URI: http://premium.wpmudev.org/project/directory
 Description: Allows single blog registration on Multisite. On registering from a blog other than the main site it saves the blog_id and sends the emails as the originating blog and on activation adds the user to the originating blog as well as the main blog.
 Version: 1.0
 Author: Arnold Bailey (Incsub)

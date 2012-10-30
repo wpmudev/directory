@@ -792,29 +792,30 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		$net_custom_fields = get_site_option('ct_custom_fields');
 
-		if ( $this->display_network_content && !empty($net_custom_fields)) {
-			//get the network fields
-			$net_post_types = get_site_option('ct_custom_post_types');
-			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
+//		if ( $this->display_network_content && !empty($net_custom_fields)) {
+//			//get the network fields
+//			$net_post_types = get_site_option('ct_custom_post_types');
+//			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
+//
+//			//If we have this post type rename the metabox
+//			if($current_post_type) {
+//				if ( ! empty( $net_post_types[$current_post_type]['labels']['custom_fields_block'] ) )
+//				$meta_box_label = $net_post_types[$current_post_type]['labels']['custom_fields_block'];
+//
+//			}
+//			//Do we even need the metabox
+//			$has_fields = false;
+//			foreach ( $net_custom_fields as $custom_field ) {
+//				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
+//				if ($has_fields){
+//					add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $current_post_type, 'normal', 'high' );
+//					break;
+//				}
+//			}
+//		}
 
-			//If we have this post type rename the metabox
-			if($current_post_type) {
-				if ( ! empty( $net_post_types[$current_post_type]['labels']['custom_fields_block'] ) )
-				$meta_box_label = $net_post_types[$current_post_type]['labels']['custom_fields_block'];
-
-			}
-			//Do we even need the metabox
-			$has_fields = false;
-			foreach ( $net_custom_fields as $custom_field ) {
-				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
-				if ($has_fields){
-					add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $current_post_type, 'normal', 'high' );
-					break;
-				}
-			}
-		}
-
-		$custom_fields = $this->custom_fields;
+		if($this->display_network_content) $custom_fields = $this->all_custom_fields;
+		else $custom_fields = $this->custom_fields;
 
 		if ( ! empty($custom_fields)) {
 			//get the local fields

@@ -245,23 +245,25 @@ class Directory_Core {
 	* @return void
 	*/
 	function is_full_access(){
-		if(current_user_can('manage_options') ) return true;
+		
+		$result = false;
+		
+		if(current_user_can('manage_options') ) $result = true;
 
 		//for paid users
 		if ( $this->transactions->billing_type ) {
 			if ( 'one_time' == $this->transactions->billing_type && 'success' == $this->transactions->status ) {
-				return true;
-			}
-
-			if ( 'recurring' == $this->transactions->billing_type && 'success' == $this->transactions->status) {
+				$result = true;
+			} elseif ( 'recurring' == $this->transactions->billing_type && 'success' == $this->transactions->status) {
 				if(time() < $this->transactions->expires ) {
-					return true;
+					$result = true;
 				} else {
 					$this->transactions->status = 'expired';
 				}
 			}
 		}
-		return false;
+		
+		return apply_filters('directory_full_access', $result);
 	}
 
 	/**

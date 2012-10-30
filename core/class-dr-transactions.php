@@ -57,7 +57,7 @@ class DR_Transactions{
 		if(! $dr_transactions ){
 			$dr_transactions = $this->struc;
 			$options = $this->get_options('payments');
-			$dr_transactions['credits'] = (empty($options['credits_per_listing']) ) ? 0 : $options['credits_per_listing'];
+			$dr_transactions['credits'] = (empty($options['signup_credits']) ) ? 0 : $options['signup_credits'];
 			update_user_option($this->user_id, 'dr_transactions', $dr_transactions);
 		}
 
@@ -248,7 +248,7 @@ class DR_Transactions{
 
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+				do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
 
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];
@@ -321,7 +321,7 @@ class DR_Transactions{
 
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
-				do_action( 'classifieds_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
+				do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
 
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];

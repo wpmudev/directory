@@ -19,6 +19,10 @@ if ( is_network_admin() ) {
 	$custom_fields = get_option('ct_custom_fields');
 }
 
+$post_types = (empty($post_types))? array() : $post_types;
+$taxonomies = (empty($taxonomies))? array() : $taxonomies;
+$custom_fields = (empty($custom_fields))? array() : $custom_fields;
+
 ?>
 
 <div class="wrap">

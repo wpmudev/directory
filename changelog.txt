@@ -5,6 +5,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.0.2 Arnold Bailey =
+* Fixes in CustomPress
+
+= 2.2.0.1 Arnold Bailey =
+* Added default directory statuses if left blank.
+* Added 'directory_full_access' filter. If the filter returns true it gives the user the right to enter listings without further payment.
+
 = 2.2 Arnold Bailey 2012-10-27 =
 * Added Directory Category Samples
 * Added BuddyPress support

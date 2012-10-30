@@ -10,10 +10,11 @@ if(is_string($fields) ) $field_ids = array_filter( array_map('trim',( array)expl
 $custom_fields = array();
 
 if(empty($field_ids)){
-	if ( $type == 'local' )
-	$custom_fields = $this->custom_fields;
-	elseif ( $type == 'network' )
-	$custom_fields = $this->network_custom_fields;
+//	if ( $type == 'local' )
+//	$custom_fields = $this->custom_fields;
+//	elseif ( $type == 'network' )
+//	$custom_fields = $this->network_custom_fields;
+	$custom_fields = $this->all_custom_fields;
 } else {
 	foreach($field_ids as $field_id){
 		$cid = str_replace(array('_ct_', 'ct_'), '', $field_id);

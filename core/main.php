@@ -116,7 +116,7 @@ class Directory_Core_Main extends Directory_Core {
 						wp_update_post(array('ID' => $post_id, 'post_status' => 'draft') );
 						$_POST['listing_data']['post_status'] = 'draft';
 						set_query_var( 'dr_post_id', $post_id );
-						/* Set the proper step which will be loaded by "page-my-classifieds.php" */
+						/* Set the proper step which will be loaded by "page-my-listigns.php" */
 						set_query_var( 'dr_action', 'edit' );
 						$error = __( 'You do not have enough credits to publish your listing. Please purchase more credits. Your Listing has been saved as a Draft.', $this->text_domain );
 						set_query_var( 'dr_error', $error );
