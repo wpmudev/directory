@@ -275,20 +275,19 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					$this->flush_rewrite_rules = true;
 				}
 
-				// Set post type
+				// Set new post types
 				$post_type = ( $params['post_type'] ) ? strtolower( $params['post_type'] ) : $_GET['ct_edit_post_type'];
 
-				// Set new post types
-				$post_types = ( $this->post_types ) ? array_merge( $this->post_types, array( $post_type => $args ) ) : array( $post_type => $args );
-
 				// Check whether we have a new post type and set flag which will later be used in register_post_types()
-				if ( !is_array( $this->post_types ) || !array_key_exists( $post_type, $this->post_types ) )
+				if ( !is_array( $this->all_post_types ) || !array_key_exists( $post_type, $this->all_post_types ) )
 				$this->flush_rewrite_rules = true;
 
 				// Update options with the post type options
 				if ( $this->enable_subsite_content_types == 1 && !is_network_admin() ) {
+					$post_types = ( $this->post_types ) ? array_merge( $this->post_types, array( $post_type => $args ) ) : array( $post_type => $args );
 					update_option( 'ct_custom_post_types', $post_types );
 				} else {
+					$post_types = ( $this->network_post_types ) ? array_merge( $this->network_post_types, array( $post_type => $args ) ) : array( $post_type => $args );
 					update_site_option( 'ct_custom_post_types', $post_types );
 				}
 
@@ -458,20 +457,26 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				: array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) );
 
 				// Check whether we have a new post type and set flush rewrite rules
-				if ( !is_array( $this->taxonomies ) || !array_key_exists( $taxonomy, $this->taxonomies ) )
+				if ( !is_array( $this->all_taxonomies ) || !array_key_exists( $taxonomy, $this->all_taxonomies ) )
 				$this->flush_rewrite_rules = true;
 
 				// Update wp_options with the taxonomies options
 				if ( $this->enable_subsite_content_types == 1 && !is_network_admin() ) {
+					$taxonomies = ( $this->taxonomies )
+					? array_merge( $this->taxonomies, array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) ) )
+					: array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) );
 					update_option( 'ct_custom_taxonomies', $taxonomies );
 				} else {
+					$taxonomies = ( $this->network_taxonomies )
+					? array_merge( $this->network_taxonomies, array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) ) )
+					: array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) );
 					update_site_option( 'ct_custom_taxonomies', $taxonomies );
-
-					// Set flag for flush rewrite rules network-wide
-					if ( $this->flush_rewrite_rules == true ) {
-						flush_network_rewrite_rules();
-					}
 				}
+				// Set flag for flush rewrite rules network-wide
+				if ( $this->flush_rewrite_rules == true ) {
+					flush_network_rewrite_rules();
+				}
+
 
 				// Redirect back to the taxonomies page
 				wp_redirect( self_admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated&frr' . $this->flush_rewrite_rules ) );
@@ -610,21 +615,27 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			}
 
 			// Set new custom fields
-			$custom_fields = ( $this->custom_fields )
-			? array_merge( $this->custom_fields, array( $field_id => $args ) )
-			: array( $field_id => $args );
 
-			//Set the field_order of the fields to the current default order
-			$i = 0;
-			foreach($custom_fields as &$custom_field){
-				$custom_field['field_order'] = $i++;
+			if ( $this->enable_subsite_content_types == 1 && !is_network_admin() ) {
+				$custom_fields = ( $this->custom_fields )
+				? array_merge( $this->custom_fields, array( $field_id => $args ) )
+				: array( $field_id => $args );
+				$i = 0;
+				foreach($custom_fields as &$custom_field){
+					$custom_field['field_order'] = $i++;
+				}
+				update_option( 'ct_custom_fields', $custom_fields );
+			} else {
+				$custom_fields = ( $this->network_custom_fields )
+				? array_merge( $this->network_custom_fields, array( $field_id => $args ) )
+				: array( $field_id => $args );
+				$i = 0;
+				foreach($custom_fields as &$custom_field){
+					$custom_field['field_order'] = $i++;
+				}
+				update_site_option( 'ct_custom_fields', $custom_fields );
 			}
-
-			if ( $this->enable_subsite_content_types == 1 && !is_network_admin() )
-			update_option( 'ct_custom_fields', $custom_fields );
-			else
-			update_site_option( 'ct_custom_fields', $custom_fields );
-
+			
 			wp_redirect( self_admin_url( 'admin.php?page=ct_content_types&ct_content_type=custom_field&updated' ) );
 		}
 		elseif ( ( isset( $params['submit'] ) || isset( $params['delete_cf_values'] ) )
@@ -792,27 +803,27 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		$net_custom_fields = get_site_option('ct_custom_fields');
 
-//		if ( $this->display_network_content && !empty($net_custom_fields)) {
-//			//get the network fields
-//			$net_post_types = get_site_option('ct_custom_post_types');
-//			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
-//
-//			//If we have this post type rename the metabox
-//			if($current_post_type) {
-//				if ( ! empty( $net_post_types[$current_post_type]['labels']['custom_fields_block'] ) )
-//				$meta_box_label = $net_post_types[$current_post_type]['labels']['custom_fields_block'];
-//
-//			}
-//			//Do we even need the metabox
-//			$has_fields = false;
-//			foreach ( $net_custom_fields as $custom_field ) {
-//				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
-//				if ($has_fields){
-//					add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $current_post_type, 'normal', 'high' );
-//					break;
-//				}
-//			}
-//		}
+		//		if ( $this->display_network_content && !empty($net_custom_fields)) {
+		//			//get the network fields
+		//			$net_post_types = get_site_option('ct_custom_post_types');
+		//			$meta_box_label = __('Default CustomPress Fields', $this->text_domain);
+		//
+		//			//If we have this post type rename the metabox
+		//			if($current_post_type) {
+		//				if ( ! empty( $net_post_types[$current_post_type]['labels']['custom_fields_block'] ) )
+		//				$meta_box_label = $net_post_types[$current_post_type]['labels']['custom_fields_block'];
+		//
+		//			}
+		//			//Do we even need the metabox
+		//			$has_fields = false;
+		//			foreach ( $net_custom_fields as $custom_field ) {
+		//				$has_fields = (is_array($custom_field['object_type']) ) ? in_array($current_post_type, $custom_field['object_type']) : false;
+		//				if ($has_fields){
+		//					add_meta_box( 'ct-network-custom-fields', $meta_box_label, array( &$this, 'display_custom_fields_network' ), $current_post_type, 'normal', 'high' );
+		//					break;
+		//				}
+		//			}
+		//		}
 
 		if($this->display_network_content) $custom_fields = $this->all_custom_fields;
 		else $custom_fields = $this->custom_fields;

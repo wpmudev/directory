@@ -191,6 +191,13 @@ class Directory_Core_Buddypress extends Directory_Core {
 		//Component add-listing page
 		elseif ( $bp->current_component == $this->directory_page_slug && $bp->current_action == 'add-listing' ) {
 
+			//Are we adding a Listing?
+			if(! $this->use_free 
+			&& ! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
+				wp_redirect( get_permalink($this->signup_page_id) );
+				exit;
+			}
+
 			if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
 
 				$draft = $_POST['listing_data']['post_status'] == 'draft';

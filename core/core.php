@@ -317,7 +317,7 @@ class Directory_Core {
 					exit;
 				}
 			}
-
+			
 			//Are we adding a Listing?
 			if (@is_page($this->add_listing_page_id) && (! $this->use_free) ) {
 				if(! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
@@ -442,7 +442,7 @@ class Directory_Core {
 		//Set a user capability based on users purchases
 		if(! is_multisite() || is_user_member_of_blog(get_current_user_id(), $blog_id) ) {
 			if($this->use_free
-			|| ($this->use_credits && $this->user_credits > 0)
+			|| ($this->use_credits && $this->user_credits >= $options['credits_per_listing'])
 			|| $this->is_full_access() ){
 				$this->current_user->add_cap('create_listings');
 			} else {
