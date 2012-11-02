@@ -292,7 +292,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 
 				// Set flag for flush rewrite rules network-wide
-				if ( $this->flush_rewrite_rules ) flush_network_rewrite_rules();
+				flush_network_rewrite_rules();
 
 				// Redirect to post types page
 				wp_redirect( self_admin_url( 'admin.php?page=ct_content_types&ct_content_type=post_type&updated&frr=' . $this->flush_rewrite_rules ) );
@@ -472,11 +472,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					: array( $taxonomy => array( 'object_type' => $object_type, 'args' => $args ) );
 					update_site_option( 'ct_custom_taxonomies', $taxonomies );
 				}
-				// Set flag for flush rewrite rules network-wide
-				if ( $this->flush_rewrite_rules == true ) {
-					flush_network_rewrite_rules();
-				}
 
+				// Set flag for flush rewrite rules network-wide
+				flush_network_rewrite_rules();
 
 				// Redirect back to the taxonomies page
 				wp_redirect( self_admin_url( 'admin.php?page=ct_content_types&ct_content_type=taxonomy&updated&frr' . $this->flush_rewrite_rules ) );

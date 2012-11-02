@@ -149,7 +149,7 @@ class CustomPress_Core {
 	function enable_subsite_content_types( $bool ) {
 		$option = get_site_option('allow_per_site_content_types');
 
-		if ( !empty( $option ) )
+		if ( !is_multisite() || !empty( $option ) )
 		return true;
 		else
 		return $bool;

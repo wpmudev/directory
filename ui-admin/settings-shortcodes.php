@@ -14,7 +14,7 @@
 				<?php _e( 'Shortcodes allow you to include dynamic store content in posts and pages on your site. Simply type or paste them into your post or page content where you would like them to appear. Optional attributes can be added in a format like <em>[shortcode attr1="value" attr2="value"]</em>.', $this->text_domain ) ?>
 			</p>
 			<p>
-				<?php _e( 'Attributes:', $this->text_domain); ?>
+				<?php _e( 'Attributes: ("|" means use one OR the other. ie style="grid" or style="list" not style="grid | list")', $this->text_domain); ?>
 				<br /><?php _e( 'text = <em>Text to display on a button</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'view = <em>Whether the button is visible when loggedin, loggedout, or always</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'redirect = <em>On the Logout button, what page to go to after logout</em>', $this->text_domain ) ?>

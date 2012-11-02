@@ -1,201 +1,67 @@
 <?php
-
-class DR_Tutorial {
-
-	private $_setup_tutorial;
-	private $_category_tutorial;
-	private $_listing_tutorial;
-	private $text_domain = DR_TEXT_DOMAIN;
-
-	function DR_Tutorial() {
-		__construct();
-	}
-
-	/**
-	* PHP 5 constructor
-	**/
-	function __construct () {
-		if ( !class_exists( 'Pointer_Tutorial' ) ) require_once DR_PLUGIN_DIR . 'libs/pointers_tutorial.php';
-		$this->_setup_tutorial  = new Pointer_Tutorial( 'dr-setup', __( 'Setup tutorial', $this->text_domain ), false, false );
-		$this->_category_tutorial   = new Pointer_Tutorial( 'dr-category', __( 'Category tutorial', $this->text_domain ), false, false );
-		$this->_listing_tutorial = new Pointer_Tutorial( 'dr-listing', __( 'Listing tutorial', $this->text_domain ), false, false );
-
-		add_action( 'admin_init', array( $this, 'process_tutorial' ) );
-		add_action( 'wp_ajax_dr_restart_tutorial', array( $this, 'json_restart_tutorial' ) );
-	}
-
-	private $_setup_steps = array(
-	'general',
-	'capabilities',
-	'payments',
-	'payments_type',
-	'affiliate',
-	'shortcodes',
-	);
-
-	private $_category_steps = array(
-	'category',
-	);
-
-	private $_listing_steps = array(
-	'listing',
-	);
-
-	function process_tutorial () {
-		global $pagenow;
-		if ( isset( $_GET['page'] ) && 'settings' == $_GET['page'] && isset( $_GET['post_type'] ) && 'directory_listing' == $_GET['post_type'] )
-		$this->_init_tutorial( $this->_setup_steps );
-
-		if ( isset( $_GET['post_type'] ) && 'directory_listing' == $_GET['post_type'] && isset( $_GET['taxonomy'] ) && 'listing_category' == $_GET['taxonomy'] && 'edit-tags.php' == $pagenow )
-		$this->_init_tutorial( $this->_category_steps );
-
-		if ( 'edit.php' == $pagenow && isset( $_GET['post_type'] ) && 'directory_listing' == $_GET['post_type'] )
-		$this->_init_tutorial( $this->_listing_steps );
-
-		if ( defined( 'DOING_AJAX' ) ) {
-			$this->_init_tutorial( $this->_setup_steps );
-			$this->_init_tutorial( $this->_category_steps );
-			$this->_init_tutorial( $this->_listing_steps );
+///////////////////////////////////////////////////////////////////////////
+/* -------------------- WPMU DEV Dashboard Notice -------------------- */
+if ( !class_exists('WPMUDEV_Dashboard_Notice') ) {
+	class WPMUDEV_Dashboard_Notice {
+		
+		var $version = '2.0';
+		
+		function WPMUDEV_Dashboard_Notice() {
+			add_action( 'plugins_loaded', array( &$this, 'init' ) ); 
 		}
-
-		$this->_setup_tutorial->initialize();
-		$this->_category_tutorial->initialize();
-		$this->_listing_tutorial->initialize();
-	}
-
-	function json_restart_tutorial () {
-		$tutorial = @$_POST['tutorial'];
-		$this->restart($tutorial);
-		die;
-	}
-
-	public function restart ( $part=false ) {
-		$tutorial = "_{$part}_tutorial";
-		if ( $part && isset( $this->$tutorial ) ) return $this->$tutorial->restart();
-		else if ( !$part ) {
-			$this->_category_tutorial->restart();
-			$this->_setup_tutorial->restart();
+		
+		function init() {
+			if ( !class_exists( 'WPMUDEV_Update_Notifications' ) && current_user_can( 'install_plugins' ) && is_admin() ) {
+				remove_action( 'admin_notices', 'wdp_un_check', 5 );
+				remove_action( 'network_admin_notices', 'wdp_un_check', 5 );
+				if ( file_exists(WP_PLUGIN_DIR . '/wpmudev-updates/update-notifications.php') ) {
+					add_action( 'all_admin_notices', array( &$this, 'activate_notice' ), 5 );
+				} else {
+					add_action( 'all_admin_notices', array( &$this, 'install_notice' ), 5 );
+					add_filter( 'plugins_api', array( &$this, 'filter_plugin_info' ), 10, 3 );
+				}
+			}
 		}
-	}
-
-	private function _init_tutorial ( $steps ) {
-		$this->_category_tutorial->set_textdomain( $this->text_domain );
-		$this->_setup_tutorial->set_capability( 'manage_options' );
-
-		foreach ( $steps as $step ) {
-			$call_step = "add_{$step}_step";
-			if ( method_exists( $this, $call_step ) ) $this->$call_step();
+		
+		function filter_plugin_info($res, $action, $args) {
+			global $wp_version;
+			$cur_wp_version = preg_replace('/-.*$/', '', $wp_version);
+		
+			if ( $action == 'plugin_information' && strpos($args->slug, 'install_wpmudev_dash') !== false ) {
+				$res = new stdClass;
+				$res->name = 'WPMU DEV Dashboard';
+				$res->slug = 'wpmu-dev-dashboard';
+				$res->version = '';
+				$res->rating = 100;
+				$res->homepage = 'http://premium.wpmudev.org/project/wpmu-dev-dashboard/';
+				$res->download_link = "http://premium.wpmudev.org/wdp-un.php?action=install_wpmudev_dash";
+				$res->tested = $cur_wp_version;
+				
+				return $res;
+			}
+	
+			return false;
 		}
+	
+		function auto_install_url() {
+			$function = is_multisite() ? 'network_admin_url' : 'admin_url';
+			return wp_nonce_url($function("update.php?action=install-plugin&plugin=install_wpmudev_dash"), "install-plugin_install_wpmudev_dash");
+		}
+		
+		function activate_url() {
+			$function = is_multisite() ? 'network_admin_url' : 'admin_url';
+			return wp_nonce_url($function('plugins.php?action=activate&plugin=wpmudev-updates%2Fupdate-notifications.php'), 'activate-plugin_wpmudev-updates/update-notifications.php');
+		}
+		
+		function install_notice() {
+			echo '<div class="error fade"><p>' . sprintf(__('Easily get updates, support, and one-click WPMU DEV plugin/theme installations right from in your dashboard - <strong><a href="%s" title="Install Now &raquo;">install the free WPMU DEV Dashboard plugin</a></strong>. &nbsp;&nbsp;&nbsp;<small><a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">(find out more)</a></small>', 'wpmudev'), $this->auto_install_url()) . '</a></p></div>';
+		}
+		
+		function activate_notice() {
+			echo '<div class="updated fade"><p>' . sprintf(__('Updates, Support, Premium Plugins, Community - <strong><a href="%s" title="Activate Now &raquo;">activate the WPMU DEV Dashboard plugin now</a></strong>.', 'wpmudev'), $this->activate_url()) . '</a></p></div>';
+		}
+	
 	}
-
-
-
-	/* ----- Setup Steps ----- */
-
-	function add_general_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_general',
-		__( 'General tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can set some settings as redirection, display options.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-	function add_capabilities_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_capabilities',
-		__( 'Capabilities tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( "Here you can change capabilities (edit, view, delete etc.) of listings for user's roles.", $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-	function add_payments_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_payments',
-		__( 'Payments tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can set price and settings for Recurring and One-time payments and to change Terms of Service.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-	function add_payments_type_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_payments_type',
-		__( 'Payments Type tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can set settings for payments gateways or set "Free listings" mode.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-	function add_shortcodes_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_shortcodes',
-		__( 'Shortcodes tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can find useful Sortcodes for expansion opportunities.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-	function add_affiliate_step () {
-		$this->_setup_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing&page=directory_settings' ), 'directory_listing_page_settings',
-		'#dr-settings_affiliate',
-		__( 'Shortcodes tab', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can set reward for your affiliates.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-
-	/* ----- Edit Steps ----- */
-
-	function add_category_step () {
-		$this->_category_tutorial->add_step(
-		admin_url( 'edit-tags.php?taxonomy=listing_category&post_type=directory_listing' ), 'edit-tags.php',
-		'#icon-edit',
-		__( 'Categories', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can create new listing category or edit already exist.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-
-	}
-
-	/* ----- Insert ----- */
-
-	function add_listing_step () {
-		$this->_listing_tutorial->add_step(
-		admin_url( 'edit.php?post_type=directory_listing' ), 'edit.php',
-		'#icon-edit',
-		__( 'Listings', $this->text_domain ),
-		array(
-		'content' => '<p>' . esc_js( __( 'Here you can create your own listings or edit already exist.', $this->text_domain ) ) . '</p>',
-		'position' => array( 'edge' => 'top', 'align' => 'left' ),
-		)
-		);
-	}
-
-
+	new WPMUDEV_Dashboard_Notice();
 }
-
-/* Initiate Admin */
-new DR_Tutorial();
+?>
