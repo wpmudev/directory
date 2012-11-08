@@ -367,7 +367,7 @@ class Directory_Core_Admin extends Directory_Core {
 		$role = $_POST['roles'];
 
 		$all_caps = array_keys( $this->capability_map );
-		$to_add = array_keys( $_POST['capabilities'] );
+		$to_add = array_keys( (array)$_POST['capabilities'] );
 		$to_remove = array_diff( $all_caps, $to_add );
 
 		foreach ( $to_remove as $capability ) {

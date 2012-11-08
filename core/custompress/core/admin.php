@@ -342,7 +342,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		$post_type_obj = get_post_type_object($post_type);
 		$all_caps = get_object_vars($post_type_obj->cap);
 
-		$to_add = array_keys( $_POST['capabilities'] );
+		$to_add = array_keys( (array)$_POST['capabilities'] );
 		$to_remove = array_diff( $all_caps, $to_add );
 
 		foreach ( $to_remove as $capability ) {
@@ -352,7 +352,6 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		foreach ( $to_add as $capability ) {
 			$wp_roles->add_cap( $role, $capability );
 		}
-
 		die(1);
 	}
 }

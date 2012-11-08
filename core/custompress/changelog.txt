@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.0.5 = 2012-11-01 Arnold Bailey
+* Fixed  problem when trying to erase all capabilities for a role.
+
 = 1.3.0.4 = 2012-11-01 Arnold Bailey
 * Fixed problem with 'allow_per_site_content_types'.
 
@@ -29,8 +32,6 @@ Author URI: http://premium.wpmudev.org
 * Added Shortcodes instruction page to Content Types menu pages.
 * Changed Setting in the Network Admin settings to Enabled subsites content types and Network wide content types.
 * Added Export / Import for Custom types
-
-
 
 = 1.2.3.2 = 2012-06-15 Arnold Bailey
 * Backup Buddy uses it's own version of Datepicker (timepicker) which was interfering with standard Wordpress Datepicker causing downstream thickbox to fail.

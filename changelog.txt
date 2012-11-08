@@ -5,6 +5,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.0.5 Arnold Bailey =
+* Changed the class name for the pagination section to avoid clash with some sliders.
+* Hide the Add Listing link in BP profile screen if the user cannot create_listing.
+
 = 2.2.0.4 Arnold Bailey =
 * Fixes in CustomPress
 

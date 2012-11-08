@@ -10,11 +10,11 @@ $range = 4;
 $showitems = ($range * 2) + 1;
 
 ?>
-<div class="navigation"><!--begin .navigation-->
+<div class="navigation"><!--begin .dr-navigation-->
 
 	<?php if ( $pages > 1 ) : ?>
 
-	<div class="pagination"><!--begin .pagination-->
+	<div class="dr-pagination"><!--begin .dr-pagination-->
 
 		<span><?php echo sprintf( __('Page %1$d of %2$d',$this->text_domain), $paged, $pages); ?></span>
 
@@ -40,8 +40,8 @@ $showitems = ($range * 2) + 1;
 		<a href="<?php echo get_pagenum_link($pages); ?>"><?php _e('Last', $this->text_domain); ?>&raquo;</a>
 		<?php endif; ?>
 
-	</div> <!--end .pagination-->
+	</div> <!--end .dr-pagination-->
 
 	<?php endif; ?>
 
-</div><!--end .navigation-->
+</div><!--end .dr-navigation-->

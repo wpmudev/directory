@@ -200,7 +200,7 @@ ul.button-nav li {
 }
 
 /*Categories list grid css*/
-#dr_list_categories span{
+#dr_list_categories {
 	font-size: small;
 }
 
@@ -213,12 +213,14 @@ ul.button-nav li {
 	background-color: #eee;
 	padding: .2em 1em;
 	border-radius: .3em;
+	font-size: small;
+	margin:.2em;
 }
 
 .dr_list_grid li{
 	float: left;
 	list-style: none outside none;
-	min-height: 10em;
+	min-height: 11em;
 	padding: .5em;
 	width: 19%;
 	margin: 0 2% 2% 0;
@@ -250,17 +252,10 @@ ul.button-nav li {
 }
 
 /* Pagination styles */
-.navigation{
+.dr-navigation{
 	float:right;
 }
-
-
-/* Pagination styles */
-.navigation{
-
-}
-
-.pagination {
+.dr-pagination {
 	clear:both;
 	padding:20px 0;
 	position: relative;
@@ -269,7 +264,7 @@ ul.button-nav li {
 	z-index:99;
 }
 
-.pagination span, .pagination a {
+.dr-pagination span, .dr-pagination a {
 	display:block;
 	float:left;
 	margin: 2px 2px 2px 0;
@@ -279,11 +274,11 @@ ul.button-nav li {
 	color:#fff;
 	background: #bbb;
 }
-.pagination a:hover{
+.dr-pagination a:hover{
 	color:#fff;
 	background: #3279BB;
 }
-.pagination .current{
+.dr-pagination .current{
 	padding:6px 9px 5px 9px;
 	background: #3279BB;
 	color:#fff;

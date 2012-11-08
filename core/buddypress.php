@@ -22,7 +22,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 
 	function init(){
 		global $wp, $wp_rewrite;
-		
+
 		parent::init(); //Inheritance
 
 		/* Set BuddyPress active state */
@@ -112,15 +112,17 @@ class Directory_Core_Buddypress extends Directory_Core {
 				));
 			}
 
-			bp_core_new_subnav_item( array(
-			'name'            => __( 'Add Listing', $this->text_domain ),
-			'slug'            => 'add-listing',
-			'parent_url'      => $parent_url,
-			'parent_slug'     => $bp->directory->slug,
-			'screen_function' => array( &$this, 'load_template' ),
-			'position'        => 10,
-			'user_has_access' => true
-			));
+			if( current_user_can('create_listings') ){
+				bp_core_new_subnav_item( array(
+				'name'            => __( 'Add Listing', $this->text_domain ),
+				'slug'            => 'add-listing',
+				'parent_url'      => $parent_url,
+				'parent_slug'     => $bp->directory->slug,
+				'screen_function' => array( &$this, 'load_template' ),
+				'position'        => 10,
+				'user_has_access' => true
+				));
+			}
 
 		} else {
 			//display author classifids page
@@ -191,12 +193,12 @@ class Directory_Core_Buddypress extends Directory_Core {
 		//Component add-listing page
 		elseif ( $bp->current_component == $this->directory_page_slug && $bp->current_action == 'add-listing' ) {
 
-			//Are we adding a Listing?
-			if(! $this->use_free 
-			&& ! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
-				wp_redirect( get_permalink($this->signup_page_id) );
-				exit;
-			}
+//			//Are we adding a Listing?
+//			if(! $this->use_free
+//			&& ! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
+//				wp_redirect( get_permalink($this->signup_page_id) );
+//				exit;
+//			}
 
 			if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
 
@@ -414,8 +416,8 @@ class Directory_Core_Buddypress extends Directory_Core {
 
 		//Listings update pages
 		elseif(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)){
-			
-			wp_redirect($logged_url . 'add-listing/?' . http_build_query($_GET)); 
+
+			wp_redirect($logged_url . 'add-listing/?' . http_build_query($_GET));
 			exit;
 		}
 		/* If user wants to go to My Lisytings main page  */
