@@ -84,11 +84,11 @@ function dr_supports_taxonomy($taxonomy=''){
 	return (is_array($wp_taxonomies[$taxonomy]->object_type)) ? in_array('directory_listing', $wp_taxonomies[$taxonomy]->object_type) : false;
 }
 
-function allow_directory_filter($allow = false){
-
-  //Whatever logic to decide whether they should have access.
-  if(false ) $allow = true;
-
-  return $allow;
-}
+//function allow_directory_filter($allow = false){
+//
+//  //Whatever logic to decide whether they should have access.
+//  if(false ) $allow = true;
+//
+//  return $allow;
+//}
 //add_filter('directory_full_access', 'allow_directory_filter');

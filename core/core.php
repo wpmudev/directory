@@ -245,9 +245,9 @@ class Directory_Core {
 	* @return void
 	*/
 	function is_full_access(){
-		
+
 		$result = false;
-		
+
 		if(current_user_can('manage_options') ) $result = true;
 
 		//for paid users
@@ -262,7 +262,7 @@ class Directory_Core {
 				}
 			}
 		}
-		
+
 		return apply_filters('directory_full_access', $result);
 	}
 
@@ -317,7 +317,7 @@ class Directory_Core {
 					exit;
 				}
 			}
-			
+
 			//Are we adding a Listing?
 			if (@is_page($this->add_listing_page_id) && (! $this->use_free) ) {
 				if(! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
@@ -994,10 +994,10 @@ class Directory_Core {
 		ob_start();
 		?>
 		<button class="dr_button listings_btn" type="button" onclick="window.location.href='<?php echo get_permalink($this->directory_page_id); ?>';" ><?php echo $content; ?></button>
+		<?php
 		$result = ob_get_contents();
 		ob_end_clean();
 		return $result;
-		<?php
 	}
 
 	function add_listing_btn_sc( $atts, $content = null ) {
@@ -1276,11 +1276,11 @@ class Directory_Core {
 		if ( get_post_type() == $this->post_type && is_single($_SESSION['dr_random_value']) ) {
 
 			if(! session_id() ) session_start();
-			
+
 			//print_r($_POST['dr_random_value']); print_r(' ' . md5(strtoupper( $_POST['dr_random_value']) ) ); print_r(' ' . $_SESSION['dr_random_value']);
 
 			if (isset( $_POST['contact_form_send'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'send_message' ) ){
-				
+
 				if ( isset( $_POST['name'] ) && '' != $_POST['name']
 				&& isset( $_POST['email'] ) && '' != $_POST['email']
 				&& isset( $_POST['subject'] ) && '' != $_POST['subject']

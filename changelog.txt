@@ -5,6 +5,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.0.6 Arnold Bailey =
+* Fixed old data conversion problem.
+* Fixed duplicate signup emails on BuddyPress.
+* Fixed [dr_listings_btn]
+
 = 2.2.0.5 Arnold Bailey =
 * Changed the class name for the pagination section to avoid clash with some sliders.
 * Hide the Add Listing link in BP profile screen if the user cannot create_listing.

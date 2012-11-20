@@ -147,7 +147,7 @@ class Directory_Core_Main extends Directory_Core {
 		if(empty($id) ) $id = $this->directory_page_id;
 		$slug = get_page_template_slug($id);
 		if(empty($slug) ) $page_template = get_page_template();
-		else $page_template = locate_template(array($slug, 'page.php') );
+		else $page_template = locate_template(array($slug, 'page.php', 'index.php') );
 
 		//load proper theme for home listing page
 		if ( is_home() ) {

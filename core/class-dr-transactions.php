@@ -54,6 +54,23 @@ class DR_Transactions{
 		//Blog specfic version
 		$dr_transactions = get_user_option( 'dr_transactions', $this->user_id );
 
+		// $dr_blog has entire transaction array
+		if(! empty($dr_order) || ! empty($dr_credits) || ! empty($dr_credits_log) ) { // Need to convert
+			$dr_transactions = $dr_struc;
+			$dr_transactions['credits'] = (empty($dr_credits) ) ? 0 : $dr_credits;
+			$status = (empty($dr_order['order_info']['status']) ) ? '' : $dr_order['order_info']['status'];
+			$expires = (empty($dr_order['time_end_annual']) ) ? 0 : $dr_order['time_end_annual'];
+			$billing = (empty($dr_order['billing']) ) ? '' : $dr_order['billing'];
+			$dr_transactions['order']['status'] = $status;
+			$dr_transactions['order']['expires'] = $expires;
+			$dr_transactions['order']['billing_type'] = $billing;
+			update_user_option($this->user_id, 'dr_transactions', $dr_transactions);
+
+			delete_user_meta($this->user_id, 'dr_order');
+			delete_user_meta($this->user_id, 'dr_credits');
+			delete_user_meta($this->user_id, 'dr_credits_log');
+		}
+
 		if(! $dr_transactions ){
 			$dr_transactions = $this->struc;
 			$options = $this->get_options('payments');
@@ -61,20 +78,6 @@ class DR_Transactions{
 			update_user_option($this->user_id, 'dr_transactions', $dr_transactions);
 		}
 
-		// $dr_blog has entire transaction array
-		if(! empty($dr_order) || ! empty($dr_credits) || ! empty($dr_credits_log) ) { // Need to convert
-			$dr_transactions = $dr_struc;
-			$status = $dr_order['order_info']['status'];
-			$expires = $dr_order['time_end_annual'];
-			$dr_transactions['order']['status'] = $status;
-			$dr_transactions['order']['billing_type'] = $dr_order['billing'];
-			$dr_transactions['order']['expires'] = $expiration;
-			update_user_option($this->user_id, 'dr_transactions', $dr_transactions);
-
-			delete_user_meta($this->user_id, 'dr_order');
-			delete_user_meta($this->user_id, 'dr_credits');
-			delete_user_meta($this->user_id, 'dr_credits_log');
-		}
 	}
 
 	/**

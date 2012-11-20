@@ -292,7 +292,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 
 		/* Handles request for listings page */
 		$templates = array();
-		$page_template = locate_template( array('page.php' ) );
+		$page_template = locate_template( array('page.php', 'index.php' ) );
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
 
 		$logged_url = trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/';
