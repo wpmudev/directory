@@ -24,6 +24,7 @@ class Directory_Core_Admin extends Directory_Core {
 
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
+			add_action( 'restrict_manage_posts', array($this,'on_restrict_manage_posts') );
 
 		add_action( 'admin_print_scripts', array( &$this, 'js_print_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
@@ -590,6 +591,24 @@ class Directory_Core_Admin extends Directory_Core {
 		else
 		echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
 	}
+	
+	function on_restrict_manage_posts() {
+	global $typenow;
+	$taxonomy = 'listing_category';
+	if( $typenow == "directory_listing" ){
+
+		$filters = array($taxonomy);
+		foreach ($filters as $tax_slug) {
+			$tax_obj = get_taxonomy($tax_slug);
+			$tax_name = $tax_obj->labels->name;
+			$terms = get_terms($tax_slug);
+			echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+			echo "<option value=''>{$tax_obj->labels->all_items}&nbsp;</option>";
+			foreach ($terms as $term) { echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; }
+			echo "</select>";
+		}
+	}
+}
 
 }
 

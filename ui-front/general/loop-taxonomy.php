@@ -131,4 +131,4 @@ $count = 1;
 </div>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
-<?php echo $dr->pagination( $cf->pagination_bottom ); ?>
+<?php echo $dr->pagination( $dr->pagination_bottom ); ?>

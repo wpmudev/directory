@@ -92,3 +92,4 @@ function dr_supports_taxonomy($taxonomy=''){
 //  return $allow;
 //}
 //add_filter('directory_full_access', 'allow_directory_filter');
+

@@ -44,7 +44,7 @@ $editor_settings =   array(
 'textarea_rows' => 10, //get_option('default_post_edit_rows', 10), // rows="..."
 'tabindex' => '',
 'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the <style> tags, can use "scoped".
-'editor_class' => '', // add extra class(es) to the editor textarea
+'editor_class' => 'required', // add extra class(es) to the editor textarea
 'teeny' => false, // output the minimal editor config used in Press This
 'dfw' => false, // replace the default fullscreen with DFW (needs specific css)
 'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
@@ -190,5 +190,23 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 	</form>
 
-	<script type="text/javascript">jQuery('#dr_update_form').validate();</script>
+	<script type="text/javascript">
+		jQuery('#dr_update_form').validate();
+
+//		jQuery("#dr_update_form").validate({
+//			rules: {
+//				'tax_input[listing_category][]' : {
+//					required : {
+//						depends: function(element) {
+//							return jQuery('input[name=\'tax_input[listing_category][]\']:checked').size() ==0;
+//						}
+//					}
+//				}
+//			},
+//			messages: {
+//				'tax_input[listing_category][]': "Please select at least one category."
+//			}
+//		});
+		
+	</script>
 </div>

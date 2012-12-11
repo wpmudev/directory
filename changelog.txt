@@ -1,9 +1,11 @@
 === Directory ===
 Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub) 
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
-
  
 == Changelog ==
+
+= 2.2.0.7 Arnold Bailey =
+* Fixed pagination problem in loop-taxonomy
 
 = 2.2.0.6 Arnold Bailey =
 * Fixed old data conversion problem.
