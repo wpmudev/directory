@@ -70,7 +70,7 @@ class Directory_Core_Main extends Directory_Core {
 			if ( isset( $_POST['action'] ) && 'delete_listing' ==  $_POST['action'] && wp_verify_nonce( $_POST['_wpnonce'], 'action_verify' ) ) {
 				if ( $this->user_can_edit_listing( $_POST['post_id'] ) ) {
 					wp_delete_post( $_POST['post_id'] );
-					wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is deleted!', '' ) ) ), get_permalink($this->my_listings_page_id) ) );
+					wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is deleted!', $this->text_domain ) ) ), get_permalink($this->my_listings_page_id) ) );
 					exit;
 				}
 			}
@@ -104,9 +104,9 @@ class Directory_Core_Main extends Directory_Core {
 						$meta->status = 'paid';
 
 						if(is_page($this->add_listing_page_id)){
-							wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'New Listing is added!', '' ) ) ), get_permalink($this->my_listings_page_id) ) );
+							wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'New Listing is added!', $this->text_domain ) ) ), get_permalink($this->my_listings_page_id) ) );
 						} else {
-							wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is updated!', '' ) ) ), get_permalink($this->my_listings_page_id) ) );
+							wp_redirect( add_query_arg( array( 'updated' => 'true', 'dmsg' => urlencode( __( 'Listing is updated!', $this->text_domain ) ) ), get_permalink($this->my_listings_page_id) ) );
 						}
 						exit;
 

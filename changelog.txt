@@ -4,6 +4,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.0.8 Arnold Bailey =
+* Fixed some translation items.
+* Fixed Affiliation dropdowns.
+
 = 2.2.0.7 Arnold Bailey =
 * Fixed pagination problem in loop-taxonomy
 

@@ -151,7 +151,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 			<span class="description"><?php echo $labels->add_or_remove_items; ?></span>
 		</div>
 
-		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px'}); </script>
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto', height:'150px', defaultText: '<?php _e("add a tag", $this->text_domain); ?>'}); </script>
 		<?php endforeach; ?>
 
 		<div class="clear"><br /></div>

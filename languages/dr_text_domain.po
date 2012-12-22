@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-18 11:23-0500\n"
+"POT-Creation-Date: 2012-12-18 13:17-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -33,54 +33,44 @@ msgstr ""
 msgid "Directory"
 msgstr ""
 
-#: ../loader.php:71
-msgid ""
-"<b>The Directory plugin</b><br /><b>Notice:</b> We found that you've used an "
-"older version of the plugin. To use the new version of the plugin, we "
-"recommend you  to make <b>Backup of your Database</b> and then click on "
-"<b>'Transition to new version'.</b> All your data will be migrated to the "
-"new version.<br /> If you were using the included Directory theme, you will "
-"need to <b>reactivate</b> it after the transition is complete."
-msgstr ""
-
-#: ../core/admin.php:63 ../core/data.php:56
+#: ../core/admin.php:64 ../core/data.php:56
 msgid "Add New"
 msgstr ""
 
-#: ../core/admin.php:68
+#: ../core/admin.php:69
 msgid "Getting Started"
 msgstr ""
 
-#: ../core/admin.php:73
+#: ../core/admin.php:74
 msgid "Directory Settings"
 msgstr ""
 
-#: ../core/admin.php:73
+#: ../core/admin.php:74
 msgid "Settings"
 msgstr ""
 
-#: ../core/admin.php:79
+#: ../core/admin.php:80
 msgid "Directory Credits"
 msgstr ""
 
-#: ../core/admin.php:79
+#: ../core/admin.php:80
 msgid "Credits"
 msgstr ""
 
-#: ../core/admin.php:251 ../ui-admin/message.php:3
+#: ../core/admin.php:252 ../ui-admin/message.php:3
 msgid "Settings Saved."
 msgstr ""
 
-#: ../core/admin.php:280
+#: ../core/admin.php:281
 msgid "ROLE ALREADY EXISTS"
 msgstr ""
 
-#: ../core/admin.php:281
+#: ../core/admin.php:282
 #, php-format
 msgid "New Role \"%s\" Added"
 msgstr ""
 
-#: ../core/admin.php:288
+#: ../core/admin.php:289
 #, php-format
 msgid "Role \"%s\" Removed"
 msgstr ""
@@ -89,35 +79,35 @@ msgstr ""
 msgid "My Credits"
 msgstr ""
 
-#: ../core/buddypress.php:116 ../core/core.php:1003
+#: ../core/buddypress.php:117 ../core/core.php:1005
 #: ../ui-admin/settings-shortcodes.php:41
 #: ../ui-admin/settings-shortcodes.php:42
 msgid "Add Listing"
 msgstr ""
 
-#: ../core/buddypress.php:128
+#: ../core/buddypress.php:130
 msgid "All"
 msgstr ""
 
-#: ../core/buddypress.php:184 ../core/main.php:73
+#: ../core/buddypress.php:186 ../core/main.php:73
 msgid "Listing is deleted!"
 msgstr ""
 
-#: ../core/buddypress.php:220 ../core/main.php:107
+#: ../core/buddypress.php:229 ../core/main.php:107
 msgid "New Listing is added!"
 msgstr ""
 
-#: ../core/buddypress.php:222 ../core/main.php:109
+#: ../core/buddypress.php:231 ../core/main.php:109
 msgid "Listing is updated!"
 msgstr ""
 
-#: ../core/buddypress.php:234 ../core/main.php:121
+#: ../core/buddypress.php:243 ../core/main.php:121
 msgid ""
 "You do not have enough credits to publish your listing. Please purchase more "
 "credits. Your Listing has been saved as a Draft."
 msgstr ""
 
-#: ../core/buddypress.php:552 ../core/buddypress.php:553
+#: ../core/buddypress.php:561 ../core/buddypress.php:562
 msgid "You are being redirected. Please wait."
 msgstr ""
 
@@ -300,64 +290,64 @@ msgstr ""
 msgid "CC Country Code"
 msgstr ""
 
-#: ../core/core.php:395
+#: ../core/core.php:397
 msgid "Virtual"
 msgstr ""
 
-#: ../core/core.php:494
+#: ../core/core.php:496
 msgid "Virtual page. Editing this page won't change anything."
 msgstr ""
 
-#: ../core/core.php:873
+#: ../core/core.php:875
 msgid "More Info &raquo;"
 msgstr ""
 
-#: ../core/core.php:983 ../core/data.php:54 ../core/tutorial.php:189
+#: ../core/core.php:985 ../core/data.php:54
 #: ../ui-admin/settings-shortcodes.php:33
 #: ../ui-admin/settings-shortcodes.php:34
 msgid "Listings"
 msgstr ""
 
-#: ../core/core.php:1023 ../core/data.php:58
+#: ../core/core.php:1025 ../core/data.php:58
 msgid "Edit Listing"
 msgstr ""
 
-#: ../core/core.php:1044 ../ui-admin/settings-shortcodes.php:49
+#: ../core/core.php:1046 ../ui-admin/settings-shortcodes.php:49
 #: ../ui-admin/settings-shortcodes.php:50
 msgid "My Listings"
 msgstr ""
 
-#: ../core/core.php:1064
+#: ../core/core.php:1066
 msgid "My Listing Credits"
 msgstr ""
 
-#: ../core/core.php:1086 ../ui-admin/settings-shortcodes.php:57
+#: ../core/core.php:1088 ../ui-admin/settings-shortcodes.php:57
 #: ../ui-admin/settings-shortcodes.php:58
 msgid "Go to Profile"
 msgstr ""
 
-#: ../core/core.php:1106 ../ui-admin/settings-shortcodes.php:73
+#: ../core/core.php:1108 ../ui-admin/settings-shortcodes.php:73
 #: ../ui-admin/settings-shortcodes.php:74
 #: ../ui-front/general/page-signup.php:29
 msgid "Signup"
 msgstr ""
 
-#: ../core/core.php:1126 ../ui-admin/settings-shortcodes.php:65
+#: ../core/core.php:1128 ../ui-admin/settings-shortcodes.php:65
 #: ../ui-admin/settings-shortcodes.php:66
 msgid "Signin"
 msgstr ""
 
-#: ../core/core.php:1150 ../core/core.php:1174
+#: ../core/core.php:1152 ../core/core.php:1176
 #: ../ui-admin/settings-shortcodes.php:81
 #: ../ui-admin/settings-shortcodes.php:82
 msgid "Logout"
 msgstr ""
 
-#: ../core/core.php:1200
+#: ../core/core.php:1202
 msgid "Set Featured Image"
 msgstr ""
 
-#: ../core/core.php:1205
+#: ../core/core.php:1207
 msgid "Remove featured image"
 msgstr ""
 
@@ -564,81 +554,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: ../core/tutorial.php:19
-msgid "Setup tutorial"
-msgstr ""
-
-#: ../core/tutorial.php:20
-msgid "Category tutorial"
-msgstr ""
-
-#: ../core/tutorial.php:21
-msgid "Listing tutorial"
-msgstr ""
-
-#: ../core/tutorial.php:99
-msgid "General tab"
-msgstr ""
-
-#: ../core/tutorial.php:101
-msgid "Here you can set some settings as redirection, display options."
-msgstr ""
-
-#: ../core/tutorial.php:111
-msgid "Capabilities tab"
-msgstr ""
-
-#: ../core/tutorial.php:113
-msgid ""
-"Here you can change capabilities (edit, view, delete etc.) of listings for "
-"user's roles."
-msgstr ""
-
-#: ../core/tutorial.php:123
-msgid "Payments tab"
-msgstr ""
-
-#: ../core/tutorial.php:125
-msgid ""
-"Here you can set price and settings for Recurring and One-time payments and "
-"to change Terms of Service."
-msgstr ""
-
-#: ../core/tutorial.php:135
-msgid "Payments Type tab"
-msgstr ""
-
-#: ../core/tutorial.php:137
-msgid ""
-"Here you can set settings for payments gateways or set \"Free listings\" "
-"mode."
-msgstr ""
-
-#: ../core/tutorial.php:147 ../core/tutorial.php:159
-msgid "Shortcodes tab"
-msgstr ""
-
-#: ../core/tutorial.php:149
-msgid "Here you can find useful Sortcodes for expansion opportunities."
-msgstr ""
-
-#: ../core/tutorial.php:161 ../ui-admin/settings-affiliate.php:23
-msgid "Here you can set reward for your affiliates."
-msgstr ""
-
-#: ../core/tutorial.php:174
-msgid "Categories"
-msgstr ""
-
-#: ../core/tutorial.php:176
-msgid "Here you can create new listing category or edit already exist."
-msgstr ""
-
-#: ../core/tutorial.php:191
-msgid "Here you can create your own listings or edit already exist."
-msgstr ""
-
-#: ../core/wpmudev-dash-notification.php:57
+#: ../core/tutorial.php:57 ../core/wpmudev-dash-notification.php:57
 #, php-format
 msgid ""
 "Easily get updates, support, and one-click WPMU DEV plugin/theme "
@@ -648,7 +564,7 @@ msgid ""
 "dev/update-notifications-plugin-information/\">(find out more)</a></small>"
 msgstr ""
 
-#: ../core/wpmudev-dash-notification.php:61
+#: ../core/tutorial.php:61 ../core/wpmudev-dash-notification.php:61
 #, php-format
 msgid ""
 "Updates, Support, Premium Plugins, Community - <strong><a href=\"%s\" title="
@@ -840,6 +756,10 @@ msgstr ""
 
 #: ../ui-admin/settings-affiliate.php:21
 msgid "Affiliate settings"
+msgstr ""
+
+#: ../ui-admin/settings-affiliate.php:23
+msgid "Here you can set reward for your affiliates."
 msgstr ""
 
 #: ../ui-admin/settings-affiliate.php:30
@@ -1440,8 +1360,8 @@ msgid "Custom API URL"
 msgstr ""
 
 #: ../ui-admin/settings-payment-types.php:327
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:190
-#: ../ui-front/general/page-update-listing.php:186
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:191
+#: ../ui-front/general/page-update-listing.php:187
 msgid "Save Changes"
 msgstr ""
 
@@ -1647,7 +1567,9 @@ msgid ""
 msgstr ""
 
 #: ../ui-admin/settings-shortcodes.php:17
-msgid "Attributes:"
+msgid ""
+"Attributes: (\"|\" means use one OR the other. ie style=\"grid\" or style="
+"\"list\" not style=\"grid | list\")"
 msgstr ""
 
 #: ../ui-admin/settings-shortcodes.php:18
@@ -1838,9 +1760,9 @@ msgid "Available Credits:"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:56
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:69
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:70
 #: ../ui-front/general/page-my-listings.php:53
-#: ../ui-front/general/page-update-listing.php:70
+#: ../ui-front/general/page-update-listing.php:71
 msgid "Title"
 msgstr ""
 
@@ -1870,49 +1792,49 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:21
-#: ../ui-front/general/page-update-listing.php:22
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:22
+#: ../ui-front/general/page-update-listing.php:23
 msgid "Auto Draft"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:71
-#: ../ui-front/general/page-update-listing.php:72
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:72
+#: ../ui-front/general/page-update-listing.php:73
 msgid "Enter title here."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:78
-#: ../ui-front/general/page-update-listing.php:80
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:79
+#: ../ui-front/general/page-update-listing.php:81
 msgid "Content"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:90
-#: ../ui-front/general/page-update-listing.php:84
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:91
+#: ../ui-front/general/page-update-listing.php:85
 msgid "The content of your listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:95
-#: ../ui-front/general/page-update-listing.php:90
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:96
+#: ../ui-front/general/page-update-listing.php:91
 msgid "Excerpt"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:97
-#: ../ui-front/general/page-update-listing.php:92
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:98
+#: ../ui-front/general/page-update-listing.php:93
 msgid "A short excerpt of your listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:162
-#: ../ui-front/general/page-update-listing.php:159
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:163
+#: ../ui-front/general/page-update-listing.php:160
 msgid "Status"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:173
-#: ../ui-front/general/page-update-listing.php:170
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:174
+#: ../ui-front/general/page-update-listing.php:171
 msgid "Select a status for your Listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:192
-#: ../ui-front/general/page-update-listing.php:188
-#: ../ui-front/general/single-listing.php:100
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:193
+#: ../ui-front/general/page-update-listing.php:189
+#: ../ui-front/general/single-listing.php:102
 msgid "Cancel"
 msgstr ""
 
@@ -1928,8 +1850,8 @@ msgstr ""
 
 #: ../ui-front/general/loop-author.php:56
 msgid ""
-"Apologies, but no results were found for the requested classifieds. Perhaps "
-"searching will help find a related classified."
+"Apologies, but no results were found for the requested listings. Perhaps "
+"searching will help find a related listing."
 msgstr ""
 
 #: ../ui-front/general/loop-taxonomy.php:44
@@ -2228,7 +2150,7 @@ msgstr ""
 
 #: ../ui-front/general/page-signup.php:630
 #: ../ui-front/general/page-signup.php:741
-#: ../ui-front/general/single-listing.php:69
+#: ../ui-front/general/single-listing.php:71
 msgid "Name"
 msgstr ""
 
@@ -2266,6 +2188,10 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
+#: ../ui-front/general/page-update-listing.php:154
+msgid "add a tag"
+msgstr ""
+
 #: ../ui-front/general/pagination.php:19
 #, php-format
 msgid "Page %1$d of %2$d"
@@ -2287,17 +2213,17 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:9
+#: ../ui-front/general/single-listing.php:7
 msgid ""
 "Send message failed: you didn't fill all required fields correctly in "
 "contact form!"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:19
+#: ../ui-front/general/single-listing.php:17
 msgid "Message is sent!"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:24
+#: ../ui-front/general/single-listing.php:22
 msgid "Email service is not responding!"
 msgstr ""
 
@@ -2322,64 +2248,64 @@ msgstr ""
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:56
+#: ../ui-front/general/single-listing.php:57
 msgid "Contact User"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:69
-#: ../ui-front/general/single-listing.php:74
-#: ../ui-front/general/single-listing.php:79
-#: ../ui-front/general/single-listing.php:84
-#: ../ui-front/general/single-listing.php:90
+#: ../ui-front/general/single-listing.php:71
+#: ../ui-front/general/single-listing.php:76
+#: ../ui-front/general/single-listing.php:81
+#: ../ui-front/general/single-listing.php:86
+#: ../ui-front/general/single-listing.php:92
 msgid "required"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:71
+#: ../ui-front/general/single-listing.php:73
 msgid "Enter your full name here."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:74
+#: ../ui-front/general/single-listing.php:76
 msgid "Email"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:76
+#: ../ui-front/general/single-listing.php:78
 msgid "Enter a valid email address here."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:79
+#: ../ui-front/general/single-listing.php:81
 msgid "Subject"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:81
+#: ../ui-front/general/single-listing.php:83
 msgid "Enter the subject of your inquire here."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:84
+#: ../ui-front/general/single-listing.php:86
 msgid "Message"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:86
+#: ../ui-front/general/single-listing.php:88
 msgid "Enter the content of your inquire here."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:90
+#: ../ui-front/general/single-listing.php:92
 msgid "Security image"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:93
+#: ../ui-front/general/single-listing.php:95
 msgid "Enter the characters from the image."
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:99
+#: ../ui-front/general/single-listing.php:101
 msgid "Send"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:123
+#: ../ui-front/general/single-listing.php:126
 #, php-format
 msgid "About %s"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:127
+#: ../ui-front/general/single-listing.php:130
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""

@@ -5,7 +5,7 @@ $dr_labels_txt = array (
 'one_time'  => __( 'Affiliate payment credited for permanent member (one-time payments):', $this->text_domain ),
 );
 
-$payment_settings   = $this->get_options( 'payment_settings' );
+$payment_settings   = $this->get_options( 'payments' );
 
 $affiliate_settings['payment_settings']['recurring_cost']   = $payment_settings['recurring_cost'];
 $affiliate_settings['payment_settings']['one_time_cost']   = $payment_settings['one_time_cost'];
