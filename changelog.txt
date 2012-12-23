@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.1 Arnold Bailey =
+* Modified image manager to work with v3,5
+
 = 2.2.0.8 Arnold Bailey =
 * Fixed some translation items.
 * Fixed Affiliation dropdowns.

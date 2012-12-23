@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-18 13:16-0500\n"
+"POT-Creation-Date: 2012-12-23 14:23-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -1361,7 +1361,7 @@ msgstr ""
 
 #: ../ui-admin/settings-payment-types.php:327
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:191
-#: ../ui-front/general/page-update-listing.php:187
+#: ../ui-front/general/page-update-listing.php:205
 msgid "Save Changes"
 msgstr ""
 
@@ -1762,7 +1762,7 @@ msgstr ""
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:56
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:70
 #: ../ui-front/general/page-my-listings.php:53
-#: ../ui-front/general/page-update-listing.php:71
+#: ../ui-front/general/page-update-listing.php:80
 msgid "Title"
 msgstr ""
 
@@ -1798,42 +1798,42 @@ msgid "Auto Draft"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:72
-#: ../ui-front/general/page-update-listing.php:73
+#: ../ui-front/general/page-update-listing.php:82
 msgid "Enter title here."
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:79
-#: ../ui-front/general/page-update-listing.php:81
+#: ../ui-front/general/page-update-listing.php:99
 msgid "Content"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:91
-#: ../ui-front/general/page-update-listing.php:85
+#: ../ui-front/general/page-update-listing.php:103
 msgid "The content of your listing."
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:96
-#: ../ui-front/general/page-update-listing.php:91
+#: ../ui-front/general/page-update-listing.php:109
 msgid "Excerpt"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:98
-#: ../ui-front/general/page-update-listing.php:93
+#: ../ui-front/general/page-update-listing.php:111
 msgid "A short excerpt of your listing."
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:163
-#: ../ui-front/general/page-update-listing.php:160
+#: ../ui-front/general/page-update-listing.php:178
 msgid "Status"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:174
-#: ../ui-front/general/page-update-listing.php:171
+#: ../ui-front/general/page-update-listing.php:189
 msgid "Select a status for your Listing."
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:193
-#: ../ui-front/general/page-update-listing.php:189
+#: ../ui-front/general/page-update-listing.php:207
 #: ../ui-front/general/single-listing.php:102
 msgid "Cancel"
 msgstr ""
@@ -2188,7 +2188,7 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: ../ui-front/general/page-update-listing.php:154
+#: ../ui-front/general/page-update-listing.php:172
 msgid "add a tag"
 msgstr ""
 

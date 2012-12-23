@@ -32,10 +32,13 @@ if(is_page($this->edit_listing_page_id)){
 	$post_ID = $listing_data['ID'];
 	$editing = true;
 }
+$post = get_post($post_ID);
 
 if ( isset( $_POST['listing_data'] ) ) $listing_data = $_POST['listing_data'];
 
 require_once(ABSPATH . 'wp-admin/includes/template.php');
+require_once(ABSPATH . 'wp-admin/includes/media.php');
+require_once(ABSPATH . 'wp-admin/includes/post.php');
 
 $editor_settings =   array(
 'wpautop' => true, // use wpautop?
@@ -52,10 +55,16 @@ $editor_settings =   array(
 );
 
 $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_data['post_content'];
+/*
+<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
+
+<script type="text/javascript" src="<?php echo admin_url('js/post.js'); ?>" ></script>
+*/
 
 ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
+
 <?php if ( !empty( $error ) ): ?>
 <br /><div class="error"><?php echo $error . '<br />'; ?></div>
 <?php endif; ?>
@@ -63,7 +72,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 <div class="dr_update_form">
 
 	<form class="standard-form base" method="post" action="#" enctype="multipart/form-data" id="dr_update_form" >
-		<input type="hidden" id="post_id" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
+		<input type="hidden" id="post_ID" name="listing_data[ID]" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 		<input type="hidden" name="post_id" value="<?php echo ( isset( $listing_data['ID'] ) ) ? $listing_data['ID'] : ''; ?>" />
 
 		<?php if(post_type_supports('directory_listing','title') ): ?>
@@ -74,7 +83,16 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 		<?php endif; ?>
 
-		<div class="editfield"><?php echo $this->get_post_image_link($post_ID); ?></div>
+		<div class="editfield">
+			<div id="postimagediv">
+				<div class="inside">
+					<?php
+					$thumbnail_id = get_post_meta( $post_ID, '_thumbnail_id', true );
+					echo _wp_post_thumbnail_html($thumbnail_id, $post_ID);
+					?>
+				</div>
+			</div>
+		</div>
 
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
 		<div>

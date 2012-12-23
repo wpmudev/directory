@@ -14,9 +14,9 @@ WPSetThumbnailID = function(id){
 	}
 };
 
-WPRemoveThumbnail = function( nonce){
+WPRemoveThumbnail = function(nonce){
 	$.post(ajaxurl, {
-		action:"set-post-thumbnail", post_id: $('#post_id').val(), thumbnail_id: -1, _ajax_nonce: nonce, cookie: encodeURIComponent(document.cookie)
+		action:"set-post-thumbnail", post_id: $('#post_ID').val(), thumbnail_id: -1, _ajax_nonce: nonce, cookie: encodeURIComponent(document.cookie)
 	}, function(str){
 		if ( str == '0' ) {
 			alert( setPostThumbnailL10n.error );
