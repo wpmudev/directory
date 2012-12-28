@@ -366,23 +366,16 @@ class Directory_Core {
 		return $wp;
 	}
 
-	/**
-	* Restrict Media library to current user's files
-	*
-	*/
 	function on_pre_get_posts($wp_query_obj) {
+		global $current_user;
 
-		global $current_user, $pagenow;
+		if( $current_user->ID == 0 ) return;
 
-		if( !is_a( $current_user, 'WP_User') ) return;
-
-		if( 'media-upload.php' != $pagenow ) return;
-
-		if( !current_user_can('administrator') &&  !current_user_can('edit_others_listings') ) $wp_query_obj->set('author', $current_user->id );
-
-		return;
+		if($_POST['action'] == 'query-attachments' 
+		&& !current_user_can('administrator') 
+		&& !current_user_can('edit_others_classifieds') ) 
+		$wp_query_obj->set('author', $current_user->ID );
 	}
-
 
 	/**
 	* Intiate plugin.
