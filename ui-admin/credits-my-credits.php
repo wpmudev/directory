@@ -1,8 +1,7 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
-$options = $this->get_options('checkout');
-$options = (empty($options) ) ? array() : $options;
 $transactions = new DR_Transactions;
+
 ?>
 
 <div class="wrap">

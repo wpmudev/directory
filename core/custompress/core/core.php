@@ -56,7 +56,7 @@ class CustomPress_Core {
 
 		wp_enqueue_script('jquery-ui-datepicker');
 
-		// People use both "_" and "-" versions for lacale IDs en_GB en-GB
+		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
 		$wplang = str_replace('_', '-', WPLANG);
 		$lang = ($wplang == '') ? '' : substr($wplang, 0, 2); // Non specific locale
@@ -164,6 +164,9 @@ class CustomPress_Core {
 	function display_custom_post_types( $query ) {
 		global $wp_query;
 		//if ( is_main_site() || get_site_option('allow_per_site_content_types') )
+		
+		if(is_admin()) return $query;
+		
 		$options = $this->get_options();
 
 		//Home Page
@@ -189,7 +192,7 @@ class CustomPress_Core {
 			$post_types = $options['display_post_types']['front_page']['post_type'];
 			if ( is_front_page() && !in_array( 'default', $post_types ) ){
 				if(count($post_types) == 1) $post_types = $post_types[0];
-				$wp_query->query_vars['post_type'] = $post_types;
+				$wp_query->query_vars['post_type'] = $post_types; 
 			}
 		}
 

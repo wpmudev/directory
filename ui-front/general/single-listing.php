@@ -106,7 +106,6 @@ endif; ?>
 </form>
 <div class="clear"></div>
 
-
 <?php
 //Note that $content is prefilled with the usual expanded the_content from WP by the plugin, we're just wrapping it with extra meta.
 echo $content;

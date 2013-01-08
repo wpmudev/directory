@@ -24,7 +24,7 @@ class Directory_Core_Admin extends Directory_Core {
 
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'admin_menu', array( &$this, 'reorder_menu' ), 999 );
-			add_action( 'restrict_manage_posts', array($this,'on_restrict_manage_posts') );
+		add_action( 'restrict_manage_posts', array($this,'on_restrict_manage_posts') );
 
 		add_action( 'admin_print_scripts', array( &$this, 'js_print_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
@@ -305,17 +305,53 @@ class Directory_Core_Admin extends Directory_Core {
 	function handle_credits_page_requests(){
 		$valid_tabs = array(
 		'my-credits',
-		'shortcodes',
+		'send-credits',
 		);
 
 		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
 		$tab = (empty($_GET['tab'])) ? 'my-credits' : $_GET['tab']; //default tab
 
-		if($page == 'directory_settings' && in_array($tab, $valid_tabs) ) {
+		if($page == 'directory_credits' && in_array($tab, $valid_tabs) ) {
+			if ( $tab == 'send-credits' ) {
+				if(!empty($_POST)) check_admin_referer('verify');
+				$send_to = ( empty($_POST['manage_credits'])) ? '' : $_POST['manage_credits'];
+				$send_to_user = ( empty($_POST['manage_credits_user'])) ? '' : $_POST['manage_credits_user'];
+				$send_to_count = ( empty($_POST['manage_credits_count'])) ? '' : $_POST['manage_credits_count'];
 
+				$credits = (is_numeric($send_to_count)) ? (intval($send_to_count)) : 0;
 
-			if(isset($_POST['save']) ) $this->save_admin_options( $_POST );
+				if(is_multisite()) $blog_id = get_current_blog_id();
 
+				if ($send_to == 'send_single'){
+					$user = get_user_by('login', $send_to_user);
+					if($user){
+						$transaction = new DR_Transactions($user->ID, $blog_id);
+						$transaction->credits += $credits;
+						unset($transaction);
+						$this->message = sprintf(__('User "%s" received %s credits to member\'s Directory account',$this-text_domain), $send_to_user, $credits);
+
+					} else {
+						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this-text_domain), $send_to_user);
+					}
+				}
+
+				if ($send_to == 'send_all'){
+					$search = array();
+					if(is_multisite()) $search['blog_id'] = get_current_blog_id();
+					$users = get_users($search);
+					foreach($users as $user){
+						$transaction = new DR_Transactions($user->ID, $blog_id);
+						$transaction->credits += $credits;
+						unset($transaction);
+					}
+					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this-text_domain), $credits);
+
+				}
+			} else {
+				if ( isset( $_POST['purchase'] ) ) {
+					$this->js_redirect( get_permalink($this->checkout_page_id) );
+				}
+			}
 		}
 
 		$this->render_admin( "credits-{$tab}" );
@@ -510,7 +546,7 @@ class Directory_Core_Admin extends Directory_Core {
 
 				if ( 1 == $debug_ipn ) {
 					$this->write_to_log(
-					' - 05 -' . " subscr_payment OK\r\n" . 
+					' - 05 -' . " subscr_payment OK\r\n" .
 					print_r($transactions, true) . "\r\n",
 					'debug_ipn' );
 				}
@@ -591,24 +627,24 @@ class Directory_Core_Admin extends Directory_Core {
 		else
 		echo "<p>Rendering of admin template {$this->plugin_dir}ui-admin/{$name}.php failed</p>";
 	}
-	
-	function on_restrict_manage_posts() {
-	global $typenow;
-	$taxonomy = 'listing_category';
-	if( $typenow == "directory_listing" ){
 
-		$filters = array($taxonomy);
-		foreach ($filters as $tax_slug) {
-			$tax_obj = get_taxonomy($tax_slug);
-			$tax_name = $tax_obj->labels->name;
-			$terms = get_terms($tax_slug);
-			echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-			echo "<option value=''>{$tax_obj->labels->all_items}&nbsp;</option>";
-			foreach ($terms as $term) { echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; }
-			echo "</select>";
+	function on_restrict_manage_posts() {
+		global $typenow;
+		$taxonomy = 'listing_category';
+		if( $typenow == "directory_listing" ){
+
+			$filters = array($taxonomy);
+			foreach ($filters as $tax_slug) {
+				$tax_obj = get_taxonomy($tax_slug);
+				$tax_name = $tax_obj->labels->name;
+				$terms = get_terms($tax_slug);
+				echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+				echo "<option value=''>{$tax_obj->labels->all_items}&nbsp;</option>";
+				foreach ($terms as $term) { echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; }
+				echo "</select>";
+			}
 		}
 	}
-}
 
 }
 
