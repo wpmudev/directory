@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.1.4 Arnold Bailey =
+* Removed some left over debug code.
+
 = 2.2.1.3 Arnold Bailey =
 * Update to CustomPress 1.3.0.7
 

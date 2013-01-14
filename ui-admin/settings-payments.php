@@ -192,7 +192,7 @@ $options = $this->get_options('payments');
 					<tr>
 						<th><label for="credits_description"><?php _e( 'Description', $this->text_domain ); ?></label></th>
 						<td>
-							<textarea id="credits_description" name="credits_description" rows="1" cols="55"><?php echo ( empty( $options['description'] ) ) ? '' : sanitize_text_field($options['description']); ?></textarea>
+							<textarea id="credits_description" name="credits_description" rows="1" cols="55"><?php echo ( empty( $options['credits_description'] ) ) ? '' : sanitize_text_field($options['credits_description']); ?></textarea>
 							<br />
 							<span class="description"><?php _e( 'Description of the costs and durations associated with publishing an ad. Will be displayed in the admin area.', $this->text_domain ); ?></span>
 						</td>
