@@ -76,7 +76,7 @@ class Directory_Core_Admin extends Directory_Core {
 		add_action( 'admin_print_scripts-' .  $settings_page, array( &$this, 'on_enqueue_scripts' ) );
 		//@todo striaghten out style and script loads.
 
-		if($this->use_credits){
+		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
 			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Credits', $this->text_domain ), __( 'Credits', $this->text_domain ), 'read', 'directory_credits' , array( &$this, 'handle_credits_page_requests' ) );
 		}
 	}

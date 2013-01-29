@@ -13,7 +13,7 @@ elseif ( isset ( $_GET['ct_edit_taxonomy'] ) ) {
 	$taxonomy['taxonomy'] = $_GET['ct_edit_taxonomy'];
 }
 
-var_dump( $taxonomy );
+//var_dump( $taxonomy );
 ?>
 
 <h3><?php _e('Add Taxonomy', $this->text_domain); ?></h3>

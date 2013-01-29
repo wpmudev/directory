@@ -83,6 +83,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 		<?php endif; ?>
 
+		<?php if(post_type_supports('directory_listing','thumbnail') ): ?>
 		<div class="editfield">
 			<div id="postimagediv">
 				<div class="inside">
@@ -93,6 +94,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<?php if(post_type_supports('directory_listing','editor') ): ?>
 		<div>

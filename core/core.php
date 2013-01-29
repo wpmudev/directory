@@ -155,7 +155,7 @@ class Directory_Core {
 		$defaults['title_reply'] = __('Write a Review', $this->text_domain);
 		$defaults['label_submit'] = __('Post Review', $this->text_domain);
 		$defaults['must_log_in'] = '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.', $this->text_domain ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
-		$defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . _x( 'Review', $this->text_domain ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+		$defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . __( 'Review', $this->text_domain ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
 		$defaults['cancel_reply_link'] = __( 'Cancel review', $this->text_domain );
 
 		return $defaults;
@@ -371,9 +371,9 @@ class Directory_Core {
 
 		if( $current_user->ID == 0 ) return;
 
-		if($_POST['action'] == 'query-attachments' 
-		&& !current_user_can('administrator') 
-		&& !current_user_can('edit_others_classifieds') ) 
+		if(! empty($_POST['action']) && $_POST['action'] == 'query-attachments'
+		&& !current_user_can('administrator')
+		&& !current_user_can('edit_others_classifieds') )
 		$wp_query_obj->set('author', $current_user->ID );
 	}
 
@@ -552,6 +552,8 @@ class Directory_Core {
 			$page_id = wp_insert_post( $args );
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "add_listing" );
+		} else {
+			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->add_listing_page_id = $page_id; //Remember the number
@@ -575,6 +577,8 @@ class Directory_Core {
 			$page_id = wp_insert_post( $args );
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "edit_listing" );
+		} else {
+			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->edit_listing_page_id = $page_id; //Remember the number
@@ -600,6 +604,8 @@ class Directory_Core {
 			$page_id = wp_insert_post( $args );
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", 'my_listings_credits' );
+		} else {
+			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->my_credits_page_id = $page_id; // Remember the number
@@ -647,6 +653,8 @@ class Directory_Core {
 			$page_id = wp_insert_post( $args );
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "signin" );
+		} else {
+			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->signin_page_id = $page_id; //Remember the number
@@ -1060,7 +1068,7 @@ class Directory_Core {
 		'view' => 'both', //loggedin, loggedout, both
 		), $atts ) );
 
-		if(! $this->use_credits) return '';
+		if(! $this->use_credits || (!$this->use_paypal && ! $this->use_authorizenet)) return ''; //No way to pay no button
 
 		$view = strtolower($view);
 		if(is_user_logged_in())	{if($view == 'loggedout') return '';}
@@ -1265,10 +1273,10 @@ class Directory_Core {
 	**/
 	function handle_contact_form_requests() {
 
+		if(! session_id() ) session_start();
 		/* Only handle request if on single{}.php template and our post type */
 		if ( get_post_type() == $this->post_type && is_single($_SESSION['dr_random_value']) ) {
 
-			if(! session_id() ) session_start();
 
 			//print_r($_POST['dr_random_value']); print_r(' ' . md5(strtoupper( $_POST['dr_random_value']) ) ); print_r(' ' . $_SESSION['dr_random_value']);
 
@@ -1313,6 +1321,22 @@ class Directory_Core {
 		}
 	}
 
+	/**
+	* Redirect using JavaScript. Useful if headers are already sent.
+	*
+	* @param string $url The URL to which the function should redirect
+	**/
+	function js_redirect( $url, $silent = false ) {
+		if(! $silent ):
+		?>
+		<p><?php _e( 'You are being redirected. Please wait.', $this->text_domain );  ?></p>
+		<img src="<?php echo $this->plugin_url .'/ui-front/images/loader.gif'; ?>" alt="<?php _e( 'You are being redirected. Please wait.', $this->text_domain );  ?>" />
+		<?php endif; ?>
+		<script type="text/javascript">//<![CDATA[
+			window.location = '<?php echo $url; ?>';	//]]>
+		</script>
+		<?php
+	}
 
 
 }

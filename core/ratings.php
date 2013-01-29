@@ -1,5 +1,4 @@
 <?php
-
 /**
 * Ratings_Core
 *
@@ -9,18 +8,26 @@
 * @author Ivan Shaovchev (Incsub)
 * @license GNU General Public License (Version 2 - GPLv2) {@link http://www.gnu.org/licenses/gpl-2.0.html}
 */
+
 class DR_Ratings {
 
 	/** @var string The current page. Used for custom hooks. */
 	var $page;
 	/** @var array Array with values used for determining post quality. */
-	var $quality = array( 1 => 'Not so great', 2 => 'Quite good', 3 => 'Good', 4 => 'Great!', 5 => 'Excellent!' );
-
+	var $quality;
 	/**
 	* Class constructor.
 	*/
 
 	function __construct(){
+		$this->quality = array(
+		1 => __('Not so great', DR_TEXT_DOMAIN),
+		2 => __('Quite good', DR_TEXT_DOMAIN),
+		3 => __('Good', DR_TEXT_DOMAIN),
+		4 => __('Great!', DR_TEXT_DOMAIN),
+		5 => __('Excellent!', DR_TEXT_DOMAIN)
+		);
+
 		$this->init();
 	}
 
@@ -167,7 +174,7 @@ class DR_Ratings {
 						// Disable Stars for exclude the next vote
 						//ui.disable();
 						// Display message to the user at the begining of request
-						$(".messages").text("Saving...").stop().css("opacity", 1).fadeIn(30);
+						$(".messages").text("<?php _e('Saving...', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
 						// Send request to the server using POST method
 					$.post("<?php echo $ajaxurl; ?>", { action: 'sr_save_vote', post_id: <?php echo $post_id; ?>, rate: value }, function(response) {
 						// Select stars from "Average rating" control to match the returned average rating value
@@ -176,7 +183,7 @@ class DR_Ratings {
 						$(".all_votes").text(response.votes);
 						$(".all_avg").text(response.avg);
 						// Display confirmation message to the user
-						$(".messages").text("Rating saved (" + value + "). Thanks!").stop().css("opacity", 1).fadeIn(30);
+						$(".messages").text("<?php _e('Rating saved', DR_TEXT_DOMAIN); ?> (" + value + "). <?php _e('Thanks!', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
 						// Hide confirmation message and enable stars for "Rate this" control, after 2 sec...
 						setTimeout(function(){
 							$(".messages").fadeOut(1000, function(){})
@@ -230,14 +237,14 @@ class DR_Ratings {
 			<?php endif; ?>
 			*/ ?>
 			<div class="clear-left"></div>
-			<div class="sr-avg-rating"><strong>Rate this:</strong> <span class="caption"></span>
+			<div class="sr-avg-rating"><strong><?php _e('Rate this:', DR_TEXT_DOMAIN); ?></strong> <span class="caption"></span>
 				<form class="rat" action="#" method="post">
 					<select name="rate">
 						<?php foreach ( $this->quality as $scale => $text ): ?>
 						<option <?php selected($scale == $rating); ?> value="<?php echo $scale; ?>"><?php echo $text; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<input type="submit" value="Rate it!" />
+					<input type="submit" value="<?php _e('Rate it!', DR_TEXT_DOMAIN); ?>" />
 				</form>
 			</div> <?php
 		}
@@ -252,8 +259,8 @@ class DR_Ratings {
 	function render_avg_rating() {
 		global $post;
 		$rating = $this->get_rating( $post->ID ); ?>
-		<div class="sr-rate-this"><strong>Average rating</strong>
-		<span>(<span class="all_votes-<?php echo $post->ID; ?>"><?php echo $rating['votes']; ?></span> votes; <span class="all_avg<?php echo $post->ID; ?>"><?php echo $rating['avg'] ?></span>)</span>
+		<div class="sr-rate-this"><strong><?php _e('Average rating', DR_TEXT_DOMAIN); ?></strong>
+		<span>(<span class="all_votes-<?php echo $post->ID; ?>"><?php echo $rating['votes']; ?></span> <?php _e('votes', DR_TEXT_DOMAIN); ?>; <span class="all_avg<?php echo $post->ID; ?>"><?php echo $rating['avg'] ?></span>)</span>
 			<form class="avg" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ): ?>
 				<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
@@ -276,8 +283,8 @@ class DR_Ratings {
 		}
 
 		$rating = $this->get_rating( $post_id ); ?>
-		<div class="sr-rate-this"><strong>Average rating</strong>
-		<span>(<span class="all_votes<?php echo $post_id; ?>"><?php echo $rating['votes']; ?></span> votes; <span class="all_avg<?php echo $post_id; ?>"><?php echo $rating['avg'] ?></span>)</span>
+		<div class="sr-rate-this"><strong><?php _e('Average rating', DR_TEXT_DOMAIN); ?></strong>
+		<span>(<span class="all_votes<?php echo $post_id; ?>"><?php echo $rating['votes']; ?></span> <?php _e('votes', DR_TEXT_DOMAIN); ?>; <span class="all_avg<?php echo $post_id; ?>"><?php echo $rating['avg'] ?></span>)</span>
 			<form class="avg_of_listings" style="float: left; padding: 3px 8px 0 0;" action="#">
 				<?php foreach ( $this->quality as $scale => $text ): ?>
 				<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating['avg'] ? 'checked="checked"' : '' ?> />
@@ -296,15 +303,15 @@ class DR_Ratings {
 		global $post;
 
 		$user_id = (empty($user_id) ) ? get_current_user_id() : $user_id;
-		
+
 		$rating = $this->get_rating( $post->ID, $user_id );
 
 		?>
 		<div class="sr-user-rating"><strong><?php _e( 'Rating:', DR_TEXT_DOMAIN ); ?></strong>
 			<span>(<?php echo $this->quality[$rating] ?>)</span>
 			<form class="user_votes" style="float: left; padding: 3px 8px 0 0;" action="#">
-				<?php foreach ( $this->quality as $scale => $text ):
-
+				<?php
+				foreach ( $this->quality as $scale => $text ):
 				?>
 				<input type="radio" name="rate_avg" value="<?php echo $scale; ?>" title="<?php echo $text; ?>" disabled="disabled" <?php echo $scale == $rating ? 'checked="checked"' : '' ?> />
 				<?php endforeach; ?>

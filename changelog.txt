@@ -4,6 +4,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.1.7 Arnold Bailey =
+* Fixed some translation items.
+* Reset Virtual pages to 'virtual' if user edits them.
+
+= 2.2.1.5 Arnold Bailey =
+* Hide the Credit functions if no valid payment method
+
 = 2.2.1.4 Arnold Bailey =
 * Removed some left over debug code.
 
