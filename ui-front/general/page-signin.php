@@ -125,7 +125,7 @@ if(is_multisite() ){
 			</div>
 
 			<div id="tab3_login" class="dr_tab_content" style="display:none;">
-				<h3><?php _e('Lose something?' $this->text_domain); ?></h3>
+				<h3><?php _e('Lose something?', $this->text_domain); ?></h3>
 				<p><?php _e('Enter your username or email to reset your password.', $this->text_domain); ?></p>
 				<form method="post" action="<?php echo site_url('wp-login.php?action=lostpassword', 'login_post') ?>" class="wp-user-form">
 					<div class="username">

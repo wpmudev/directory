@@ -13,7 +13,7 @@
 		<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span> 	
 
 		<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) : ?>
-			<?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>
+			<?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.', THEME_TEXT_DOMAIN ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>
 		<?php else: ?>
 			<?php do_action('sr_rate_this'); ?>
 		<?php endif; ?>
