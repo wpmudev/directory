@@ -269,6 +269,37 @@ $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 				</tr>
 			</table>
 		</div>
+
+		<div class="ct-table-wrap">
+			<div class="ct-arrow"><br></div>
+			<h3 class="ct-toggle"><?php _e('Show Admin Column', $this->text_domain) ?></h3>
+			<table class="form-table show_admin_column">
+				<tr>
+					<th>
+						<label><?php _e('Show Admin Column', $this->text_domain) ?></label>
+					</th>
+					<td>
+						<span class="description"><?php _e('Whether to allow automatic creation of taxonomy columns on associated post-types.', $this->text_domain); ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<label>
+							<input type="radio" name="show_admin_column" value="1" <?php checked( isset( $taxonomy['show_admin_column'] ) && $taxonomy['show_admin_column'] === true ); ?> />
+							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<label>
+							<input type="radio" name="show_admin_column" value="0" <?php checked( isset( $taxonomy['show_admin_column'] ) && $taxonomy['show_admin_column'] === false ); ?> />
+							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong></span>
+						</label>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Show In Nav Menus ', $this->text_domain) ?></h3>

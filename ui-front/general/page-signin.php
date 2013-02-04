@@ -36,7 +36,7 @@ if(is_multisite() ){
 			<?php if ($register == true): ?>
 
 			<h3><?php _e('Success!', $this->text_domain); ?></h3>
-			<p><?php _e('Check your email for the password and then return to log in.', $this-text_domain); ?></p>
+			<p><?php _e('Check your email for the password and then return to log in.', $this->text_domain); ?></p>
 
 			<?php elseif($reset == true): ?>
 

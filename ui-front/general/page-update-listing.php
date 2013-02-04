@@ -83,7 +83,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 		<?php endif; ?>
 
-		<?php if(post_type_supports('directory_listing','thumbnail') ): ?>
+		<?php if(post_type_supports('directory_listing','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
 		<div class="editfield">
 			<div id="postimagediv">
 				<div class="inside">

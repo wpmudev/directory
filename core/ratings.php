@@ -20,16 +20,17 @@ class DR_Ratings {
 	*/
 
 	function __construct(){
-		$this->quality = array(
-		1 => __('Not so great', DR_TEXT_DOMAIN),
-		2 => __('Quite good', DR_TEXT_DOMAIN),
-		3 => __('Good', DR_TEXT_DOMAIN),
-		4 => __('Great!', DR_TEXT_DOMAIN),
-		5 => __('Excellent!', DR_TEXT_DOMAIN)
-		);
-
-		$this->init();
-	}
+		add_action( 'init', array(&$this, 'init') );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
+		add_action( 'wp_head', array( &$this, 'print_scripts' ) );
+		add_action( 'sr_avg_rating', array( &$this, 'render_avg_rating' ) );
+		add_action( 'sr_avg_ratings_of_listings', array( &$this, 'render_avg_ratings_of_listings' ) );
+		add_action( 'sr_user_rating', array( &$this, 'render_user_rating') );
+		add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
+		add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
+		add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
+ 	}
 
 	function DR_Ratings() {
 		$this->__construct();
@@ -42,15 +43,13 @@ class DR_Ratings {
 	* @return void
 	*/
 	function init() {
-		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
-		add_action( 'wp_head', array( &$this, 'print_scripts' ) );
-		add_action( 'sr_avg_rating', array( &$this, 'render_avg_rating' ) );
-		add_action( 'sr_avg_ratings_of_listings', array( &$this, 'render_avg_ratings_of_listings' ) );
-		add_action( 'sr_user_rating', array( &$this, 'render_user_rating') );
-		add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
-		add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
-		add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
+		$this->quality = array(
+		1 => __('Not so great', DR_TEXT_DOMAIN),
+		2 => __('Quite good', DR_TEXT_DOMAIN),
+		3 => __('Good', DR_TEXT_DOMAIN),
+		4 => __('Great!', DR_TEXT_DOMAIN),
+		5 => __('Excellent!', DR_TEXT_DOMAIN)
+		);
 	}
 
 	/**

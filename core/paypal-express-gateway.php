@@ -141,6 +141,8 @@ class Paypal_Express_Gateway {
 			$nvpstr .= '&L_BILLINGTYPE0='                 . urlencode( 'RecurringPayments' );
 			$nvpstr .= '&L_BILLINGAGREEMENTDESCRIPTION0=' . urlencode( $billing_agreement );
 		}
+		$nvpstr .= '&L_PAYMENTREQUEST_0_NAME0=' . urlencode( $billing_agreement );
+		$nvpstr .= '&L_PAYMENTREQUEST_0_AMT0=' .	urlencode( $payment_amount );
 
 		/*
 		* Make the API call to PayPal
@@ -565,7 +567,7 @@ class Paypal_Express_Gateway {
 		$cc['cc_zip']          = (empty($nvp_array['SHIPTOZIP']) ) ? '' : $nvp_array['SHIPTOZIP'];
 		$cc['cc_country_code'] = (empty($nvp_array['SHIPTOCOUNTRYNAME']) ) ? '' : $nvp_array['SHIPTOCOUNTRYNAME'];
 		$cc['total_amount']    = (empty($nvp_array['AMT']) ) ? 0 : $nvp_array['AMT'];
-		$cc['currancy_code']   = (empty($nvp_array['CURRENCYCODE']) ) ? '' : $nvp_array['CURRENCYCODE'];
+		$cc['currency_code']   = (empty($nvp_array['CURRENCYCODE']) ) ? '' : $nvp_array['CURRENCYCODE'];
 		
 		$nvp_array['CC'] = $cc;
 		return $nvp_array;

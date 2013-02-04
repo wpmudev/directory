@@ -4,8 +4,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.2 Arnold Bailey =
+* Version 1.3.1 of CustomPress
+* Fixed currency display.
+
 = 2.2.1.8 Arnold Bailey =
 * Fixed some more translation items.
+* Changes to ratings.php to properly initialize it.
 
 = 2.2.1.7 Arnold Bailey =
 * Fixed some translation items.

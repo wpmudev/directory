@@ -532,7 +532,7 @@ $error       = get_query_var('checkout_error');
 				<tr>
 					<td><?php _e( 'Total Amount', $this->text_domain ); ?>:</td>
 					<td>
-						<strong><?php echo $_SESSION['cost']; ?> USD</strong>
+						<strong><?php echo $_SESSION['cost']; ?> <?php echo (empty($oppaypal['currency']) ) ? 'USD' : $oppaypal['currency']; ?></strong>
 						<input type="hidden" name="total_amount" value="<?php echo $_SESSION['cost']; ?>" />
 					</td>
 				</tr>
@@ -646,7 +646,7 @@ $error       = get_query_var('checkout_error');
 				<tr>
 					<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
 					<td>
-						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currancy_code']) ) ? 'USD' : $cc['currancy_code']; ?></strong>
+						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $oppaypal['currency_code']; ?></strong>
 					</td>
 				</tr>
 			</table>
@@ -750,7 +750,7 @@ $error       = get_query_var('checkout_error');
 				<tr>
 					<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
 					<td>
-						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currancy_code']) ) ? 'USD' : $cc['currancy_code']; ?></strong>
+						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $oppaypal['currency_code']; ?></strong>
 					</td>
 				</tr>
 			</table>

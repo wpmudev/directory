@@ -58,6 +58,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
+
 <?php if ( !empty( $error ) ): ?>
 <br /><div class="error"><?php echo $error . '<br />'; ?></div>
 <?php endif; ?>
@@ -76,8 +77,8 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 		<?php endif; ?>
 
-		<?php if(post_type_supports('directory_listing','thumbnail') ): ?>
-		<div class="editfield" style="width:300px;">
+		<?php if(post_type_supports('directory_listing','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
+		<div class="editfield">
 			<div id="postimagediv">
 				<div class="inside">
 					<?php

@@ -407,6 +407,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				'public'              => (bool) $params['public'] ,
 				'show_ui'             => ( isset( $params['show_ui'] ) ) ? (bool) $params['show_ui'] : null,
 				'show_tagcloud'       => ( isset( $params['show_tagcloud'] ) ) ? (bool) $params['show_tagcloud'] : null,
+				'show_admin_column'   => ( isset( $params['show_admin_column'] ) ) ? (bool) $params['show_admin_column'] : null,
 				'show_in_nav_menus'   => ( isset( $params['show_in_nav_menus'] ) ) ? (bool) $params['show_in_nav_menus'] : null,
 				'hierarchical'        => (bool) $params['hierarchical'],
 				'rewrite'             => (bool) $params['rewrite'],

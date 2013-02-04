@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.1 = 2013-01-06 Arnold Bailey
+* Added show_admin_column attribute to the Taxonomy editor for Wordpress > v3.5
+
 = 1.3.0.7 = 2013-01-06 Arnold Bailey
 * Added block on combining post types on Admin screens which apparently happens with some plugins.
 
