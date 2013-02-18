@@ -21,54 +21,54 @@ var content_types = {
 	// initiate the values associated with the post type public field
 	function init_public_checked_post_type() {
 		if ( $('.ct-post-type input[name="public"]:checked').val() === '0' ) {
-			$('.ct-post-type input[name="show_ui"][value="0"]').attr( 'checked', true );
-			$('.ct-post-type input[name="show_in_nav_menus"][value="0"]').attr( 'checked', true );
-			$('.ct-post-type input[name="publicly_queryable"][value="0"]').attr( 'checked', true );
-			$('.ct-post-type input[name="exclude_from_search"][value="1"]').attr( 'checked', true );
-			$('.ct-post-type input[name="show_ui"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="show_in_nav_menus"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="publicly_queryable"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="exclude_from_search"]').attr( 'disabled', true );
+			$('.ct-post-type input[name="show_ui"][value="0"]').prop( 'checked', true );
+			$('.ct-post-type input[name="show_in_nav_menus"][value="0"]').prop( 'checked', true );
+			$('.ct-post-type input[name="publicly_queryable"][value="0"]').prop( 'checked', true );
+			$('.ct-post-type input[name="exclude_from_search"][value="1"]').prop( 'checked', true );
+			$('.ct-post-type input[name="show_ui"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="show_in_nav_menus"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="publicly_queryable"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="exclude_from_search"]').prop( 'disabled', true );
 		}
 		else if ( $('.ct-post-type input[name="public"]:checked').val() === '1' ) {
-			$('.ct-post-type input[name="show_ui"][value="1"]').attr( 'checked', true );
-			$('.ct-post-type input[name="show_in_nav_menus"][value="1"]').attr( 'checked', true );
-			$('.ct-post-type input[name="publicly_queryable"][value="1"]').attr( 'checked', true );
-			$('.ct-post-type input[name="exclude_from_search"][value="0"]').attr( 'checked', true );
-			$('.ct-post-type input[name="show_ui"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="show_in_nav_menus"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="publicly_queryable"]').attr('disabled', true );
-			$('.ct-post-type input[name="exclude_from_search"]').attr( 'disabled', true );
+			$('.ct-post-type input[name="show_ui"][value="1"]').prop( 'checked', true );
+			$('.ct-post-type input[name="show_in_nav_menus"][value="1"]').prop( 'checked', true );
+			$('.ct-post-type input[name="publicly_queryable"][value="1"]').prop( 'checked', true );
+			$('.ct-post-type input[name="exclude_from_search"][value="0"]').prop( 'checked', true );
+			$('.ct-post-type input[name="show_ui"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="show_in_nav_menus"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="publicly_queryable"]').prop('disabled', true );
+			$('.ct-post-type input[name="exclude_from_search"]').prop( 'disabled', true );
 		}
 		else if ( $('.ct-post-type input[name="public"]:checked').val() === 'advanced' ) {
-			$('.ct-post-type input[name="show_ui"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="show_in_nav_menus"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="publicly_queryable"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="exclude_from_search"]').attr( 'disabled', false );
+			$('.ct-post-type input[name="show_ui"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="show_in_nav_menus"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="publicly_queryable"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="exclude_from_search"]').prop( 'disabled', false );
 		}
 	}
 
 	// initiate the value of the post_type rewrite field
 	function init_has_archive_checked_post_type() {
 		if ( $('.ct-post-type input[name="has_archive"]:checked').val() === '0' ) {
-			$('.ct-post-type input[name="has_archive_slug"]').attr( 'disabled', true );
+			$('.ct-post-type input[name="has_archive_slug"]').prop( 'disabled', true );
 		} else if ( $('.ct-post-type input[name="has_archive"]:checked').val() === '1' ) {
-			$('.ct-post-type input[name="has_archive_slug"]').attr( 'disabled', false );
+			$('.ct-post-type input[name="has_archive_slug"]').prop( 'disabled', false );
 		}
 	}
 
 	// initiate the value of the post_type rewrite field
 	function init_rewrite_checked_post_type() {
 		if ( $('.ct-post-type input[name="rewrite"]:checked').val() === '0' ) {
-			$('.ct-post-type input[name="rewrite_slug"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="rewrite_with_front"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="rewrite_feeds"]').attr( 'disabled', true );
-			$('.ct-post-type input[name="rewrite_pages"]').attr( 'disabled', true );
+			$('.ct-post-type input[name="rewrite_slug"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="rewrite_with_front"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="rewrite_feeds"]').prop( 'disabled', true );
+			$('.ct-post-type input[name="rewrite_pages"]').prop( 'disabled', true );
 		} else if ( $('.ct-post-type input[name="rewrite"]:checked').val() === '1' ) {
-			$('.ct-post-type input[name="rewrite_slug"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="rewrite_with_front"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="rewrite_feeds"]').attr( 'disabled', false );
-			$('.ct-post-type input[name="rewrite_pages"]').attr( 'disabled', false );
+			$('.ct-post-type input[name="rewrite_slug"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="rewrite_with_front"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="rewrite_feeds"]').prop( 'disabled', false );
+			$('.ct-post-type input[name="rewrite_pages"]').prop( 'disabled', false );
 		}
 	}
 
@@ -86,38 +86,38 @@ var content_types = {
 	// initiate the values for the taxonomy public field
 	function init_public_checked_taxonomy() {
 		if ( $('.ct-taxonomy input[name="public"]:checked').val() === '0' ) {
-			$('.ct-taxonomy input[name="show_ui"][value="0"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_in_nav_menus"][value="0"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_tagcloud"][value="0"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_ui"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="show_in_nav_menus"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="show_tagcloud"]').attr( 'disabled', true );
+			$('.ct-taxonomy input[name="show_ui"][value="0"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_in_nav_menus"][value="0"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_tagcloud"][value="0"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_ui"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="show_in_nav_menus"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="show_tagcloud"]').prop( 'disabled', true );
 		}
 		else if ( $('.ct-taxonomy input[name="public"]:checked').val() === '1' ) {
-			$('.ct-taxonomy input[name="show_ui"][value="1"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_in_nav_menus"][value="1"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_tagcloud"][value="1"]').attr( 'checked', true );
-			$('.ct-taxonomy input[name="show_ui"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="show_in_nav_menus"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="show_tagcloud"]').attr('disabled', true );
+			$('.ct-taxonomy input[name="show_ui"][value="1"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_in_nav_menus"][value="1"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_tagcloud"][value="1"]').prop( 'checked', true );
+			$('.ct-taxonomy input[name="show_ui"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="show_in_nav_menus"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="show_tagcloud"]').prop('disabled', true );
 		}
 		else if ( $('.ct-taxonomy input[name="public"]:checked').val() === 'advanced' ) {
-			$('.ct-taxonomy input[name="show_ui"]').attr( 'disabled', false );
-			$('.ct-taxonomy input[name="show_in_nav_menus"]').attr( 'disabled', false );
-			$('.ct-taxonomy input[name="show_tagcloud"]').attr( 'disabled', false );
+			$('.ct-taxonomy input[name="show_ui"]').prop( 'disabled', false );
+			$('.ct-taxonomy input[name="show_in_nav_menus"]').prop( 'disabled', false );
+			$('.ct-taxonomy input[name="show_tagcloud"]').prop( 'disabled', false );
 		}
 	}
 
 	// initiate the value of the taxonomy rewrite field
 	function init_rewrite_checked_taxonomy() {
 		if ( $('.ct-taxonomy input[name="rewrite"]:checked').val() === '0' ) {
-			$('.ct-taxonomy input[name="rewrite_slug"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="rewrite_with_front"]').attr( 'disabled', true );
-			$('.ct-taxonomy input[name="rewrite_hierarchical"]').attr( 'disabled', true );
+			$('.ct-taxonomy input[name="rewrite_slug"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="rewrite_with_front"]').prop( 'disabled', true );
+			$('.ct-taxonomy input[name="rewrite_hierarchical"]').prop( 'disabled', true );
 		} else if ( $('.ct-taxonomy input[name="rewrite"]:checked').val() === '1' ) {
-			$('.ct-taxonomy input[name="rewrite_slug"]').attr( 'disabled', false );
-			$('.ct-taxonomy input[name="rewrite_with_front"]').attr( 'disabled', false );
-			$('.ct-taxonomy input[name="rewrite_hierarchical"]').attr( 'disabled', false );
+			$('.ct-taxonomy input[name="rewrite_slug"]').prop( 'disabled', false );
+			$('.ct-taxonomy input[name="rewrite_with_front"]').prop( 'disabled', false );
+			$('.ct-taxonomy input[name="rewrite_hierarchical"]').prop( 'disabled', false );
 		}
 	}
 
@@ -147,7 +147,7 @@ var content_types = {
 			{
 				$('#ajax-loader').show();
 				// clear checked fields
-				$('#capabilities input').attr( 'checked', false );
+				$('#capabilities input').prop( 'checked', false );
 				// set data
 				var data = {
 					action: 'ct_get_caps',
@@ -159,7 +159,7 @@ var content_types = {
 					$('#ajax-loader').hide();
 					$.each(response, function(index) {
 						if ( index !== null ) {
-							$('input[name="capabilities[' + index + ']"]').attr( 'checked', true );
+							$('input[name="capabilities[' + index + ']"]').prop( 'checked', true );
 						}
 					});
 				});
@@ -214,7 +214,7 @@ var content_types = {
 			});
 
 			// custom fields remove options
-			$('.ct-field-delete-option').live('click', function() {
+			$('.ct-field-delete-option').on('click', function() {
 				$(this).parent().remove();
 			});
 

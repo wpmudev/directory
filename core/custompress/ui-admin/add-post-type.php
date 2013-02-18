@@ -6,7 +6,7 @@
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Post Type', $this->text_domain) ?></h3>
-			<table class="form-table <?php do_action('ct_invalid_field_post_type'); ?>" />
+			<table class="form-table <?php do_action('ct_invalid_field_post_type'); ?>">
 				<tr>
 					<th>
 						<label><?php _e('Post Type', $this->text_domain) ?> <span class="ct-required">( <?php _e('required', $this->text_domain); ?> )</span></label>
@@ -132,7 +132,7 @@
 				</tr>
 			</table>
 		</div>
-		
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Map Meta Capabilities', $this->text_domain) ?></h3>
@@ -156,10 +156,7 @@
 				</tr>
 			</table>
 		</div>
-		
-		
-		
-		
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Labels', $this->text_domain) ?></h3>
@@ -339,31 +336,31 @@
 						<label>
 							<input type="radio" name="public" value="1"  <?php checked( ! isset($_POST['public']) ||  (isset($_POST['public']) && $_POST['public'] === '1')); ?> />
 							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong>
-							</label>
-							<br />
-							<?php _e('Display a user-interface for this "post_type"', $this->text_domain);?><br /><code>( show_ui = TRUE )</code><br /><br />
-							<?php _e('Show "post_type" for selection in navigation menus', $this->text_domain); ?><br /><code>( show_in_nav_menus = TRUE )</code><br /><br />
-							<?php _e('"post_type" queries can be performed from the front-end', $this->text_domain); ?><br /><code>( publicly_queryable = TRUE )</code><br /><br />
-							<?php _e('Exclude posts with this post type from search results', $this->text_domain); ?><br /> <code>( exclude_from_search = FALSE )</code>
-						</span>
+								<br />
+								<?php _e('Display a user-interface for this "post_type"', $this->text_domain);?><br /><code>( show_ui = TRUE )</code><br /><br />
+								<?php _e('Show "post_type" for selection in navigation menus', $this->text_domain); ?><br /><code>( show_in_nav_menus = TRUE )</code><br /><br />
+								<?php _e('"post_type" queries can be performed from the front-end', $this->text_domain); ?><br /><code>( publicly_queryable = TRUE )</code><br /><br />
+								<?php _e('Exclude posts with this post type from search results', $this->text_domain); ?><br /> <code>( exclude_from_search = FALSE )</code>
+							</span>
+						</label>
 						<br /><br />
 						<label>
 							<input type="radio" name="public" value="0" <?php checked( isset($_POST['public'])  && $_POST['public'] === '0'); ?> />
 							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong>
-							</label>
-							<br />
-							<?php _e('Don not display a user-interface for this "post_type"', $this->text_domain);?><br /><code>( show_ui = FALSE )</code><br /><br />
-							<?php _e('Hide "post_type" for selection in navigation menus', $this->text_domain); ?><br /><code>( show_in_nav_menus = FALSE )</code><br /><br />
-							<?php _e('"post_type" queries cannot be performed from the front-end', $this->text_domain); ?><br /><code>( publicly_queryable = FALSE )</code><br /><br />
-							<?php _e('Exclude posts with this post type from search results', $this->text_domain); ?><br /> <code>( exclude_from_search = TRUE )</code>
-						</span>
+								<br />
+								<?php _e('Do not display a user-interface for this "post_type"', $this->text_domain);?><br /><code>( show_ui = FALSE )</code><br /><br />
+								<?php _e('Hide "post_type" for selection in navigation menus', $this->text_domain); ?><br /><code>( show_in_nav_menus = FALSE )</code><br /><br />
+								<?php _e('"post_type" queries cannot be performed from the front-end', $this->text_domain); ?><br /><code>( publicly_queryable = FALSE )</code><br /><br />
+								<?php _e('Exclude posts with this post type from search results', $this->text_domain); ?><br /> <code>( exclude_from_search = TRUE )</code>
+							</span>
+						</label>
 						<br /><br />
 						<label>
 							<input type="radio" name="public" value="advanced" <?php checked(isset($_POST['public']) && $_POST['public'] =='advanced'); ?> />
 							<span class="description"><strong><?php _e('Advanced', $this->text_domain); ?></strong>
-							</label>
-							<br />
-						<?php _e('You can set each component manualy.', $this->text_domain); ?></span>
+								<br />
+							<?php _e('You can set each component manualy.', $this->text_domain); ?></span>
+						</label>
 					</td>
 				</tr>
 			</table>
@@ -386,16 +383,16 @@
 						<label>
 							<input type="radio" name="show_ui" value="1" <?php checked( isset( $_POST['public'] ) && $_POST['public'] == 'advanced' && isset( $_POST['show_ui'] ) && $_POST['show_ui'] === '1'); ?> />
 							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong>
-							</label>
-							<br />
-						<?php _e('Display a user-interface (admin panel) for this post type.', $this->text_domain); ?></span>
+								<br />
+							<?php _e('Display a user-interface (admin panel) for this post type.', $this->text_domain); ?></span>
+						</label>
 						<br />
 						<label>
 							<input type="radio" name="show_ui" value="0" <?php checked( isset( $_POST['public'] ) && $_POST['public'] == 'advanced' && isset( $_POST['show_ui'] ) && $_POST['show_ui'] === '0' ); ?> />
 							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong>
-							</label>
-							<br />
-						<?php _e('Do not display a user-interface for this post type.', $this->text_domain); ?></span>
+								<br />
+							<?php _e('Do not display a user-interface for this post type.', $this->text_domain); ?></span>
+						</label>
 					</td>
 				</tr>
 			</table>
@@ -607,6 +604,117 @@
 				</tr>
 			</table>
 		</div>
+
+
+		<div class="ct-table-wrap">
+			<div class="ct-arrow"><br></div>
+			<h3 class="ct-toggle"><?php _e('EP Mask', $this->text_domain) ?></h3>
+			<table class="form-table">
+				<tr>
+					<th>
+						<label><?php _e('EP Mask', $this->text_domain) ?></label>
+					</th>
+					<td>
+						<span class="description"><?php _e('Endpoint mask describing the places the endpoint should be added.', $this->text_domain); ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<input type="hidden" name="ep_mask[EP_NONE]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_NONE]" value="<?php echo EP_NONE; ?>" <?php checked( $_POST['ep_mask']['EP_NONE'] & EP_NONE, EP_NONE); ?> />
+							<span class="description"><strong><?php _e('EP_NONE: for default, nothing.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_PERMALINK]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_PERMALINK]" value="<?php echo EP_PERMALINK; ?>" <?php checked( $_POST['ep_mask']['EP_PERMALINK'] & EP_PERMALINK, EP_PERMALINK ); ?> />
+							<span class="description"><strong><?php _e('EP_PERMALINK: for Permalink.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_ATTACHMENT]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_ATTACHMENT]" value="<?php echo EP_ATTACHMENT; ?>" <?php checked( $_POST['ep_mask']['EP_ATTACHMENT'] & EP_ATTACHMENT, EP_ATTACHMENT); ?> />
+							<span class="description"><strong><?php _e('EP_ATTACHMENT: for Attachment.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_DATE]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_DATE]" value="<?php echo EP_DATE; ?>" <?php checked( $_POST['ep_mask']['EP_DATE'] & EP_DATE, EP_DATE); ?> />
+							<span class="description"><strong><?php _e('EP_DATE: for Date.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_YEAR]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_YEAR]" value="<?php echo EP_YEAR; ?>" <?php checked( $_POST['ep_mask']['EP_YEAR'] & EP_YEAR, EP_YEAR); ?> />
+							<span class="description"><strong><?php _e('EP_YEAR: for Year.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_MONTH]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_MONTH]" value="<?php echo EP_MONTH; ?>" <?php checked( $_POST['ep_mask']['EP_MONTH'] & EP_MONTH, EP_MONTH); ?> />
+							<span class="description"><strong><?php _e('EP_MONTH: for Month.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_DAY]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_DAY]" value="<?php echo EP_DAY; ?>" <?php checked( $_POST['ep_mask']['EP_DAY'] & EP_DAY, EP_DAY); ?> />
+							<span class="description"><strong><?php _e('EP_DAY: for Day.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_ROOT]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_ROOT]" value="<?php echo EP_ROOT; ?>" <?php checked( $_POST['ep_mask']['EP_ROOT'] & EP_ROOT, EP_ROOT); ?> />
+							<span class="description"><strong><?php _e('EP_ROOT: for Root.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_COMMENTS]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_COMMENTS]" value="<?php echo EP_COMMENTS; ?>" <?php checked( $_POST['ep_mask']['EP_COMMENTS'] & EP_COMMENTS, EP_COMMENTS); ?> />
+							<span class="description"><strong><?php _e('EP_COMMENTS: for Comments.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_SEARCH]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_SEARCH]" value="<?php echo EP_SEARCH; ?>" <?php checked( $_POST['ep_mask']['EP_SEARCH'] & EP_SEARCH, EP_SEARCH); ?> />
+							<span class="description"><strong><?php _e('EP_SEARCH: for Search.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_CATEGORIES]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_CATEGORIES]" value="<?php echo EP_CATEGORIES; ?>" <?php checked( $_POST['ep_mask']['EP_CATEGORIES'] & EP_CATEGORIES, EP_CATEGORIES); ?> />
+							<span class="description"><strong><?php _e('EP_CATEGORIES: for Categories.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_TAGS]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EPEP_TAGS_DAY]" value="<?php echo EP_TAGS; ?>" <?php checked( $_POST['ep_mask']['EP_TAGS'] & EP_TAGS, EP_TAGS); ?> />
+							<span class="description"><strong><?php _e('EP_TAGS: for Tags.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_AUTHORS]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_AUTHORS]" value="<?php echo EP_AUTHORS; ?>" <?php checked( $_POST['ep_mask']['EP_AUTHORS'] & EP_AUTHORS, EP_AUTHORS); ?> />
+							<span class="description"><strong><?php _e('EP_AUTHORS: for Authors.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_PAGES]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_PAGES]" value="<?php echo EP_PAGES; ?>" <?php checked( $_POST['ep_mask']['EP_PAGES'] & EP_PAGES, EP_PAGES); ?> />
+							<span class="description"><strong><?php _e('EP_PAGES: for Pages.', $this->text_domain); ?></strong></span>
+						</label>
+						<br />
+						<input type="hidden" name="ep_mask[EP_ALL]" value="0" />
+						<label>
+							<input type="checkbox" name="ep_mask[EP_ALL]" value="<?php echo EP_ALL; ?>" <?php checked( $_POST['ep_mask']['EP_ALL'] & EP_ALL, EP_ALL); ?> />
+							<span class="description"><strong><?php _e('EP_ALL: for everything.', $this->text_domain); ?></strong></span>
+						</label>
+					</td>
+				</tr>
+			</table>
+		</div>
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Query var', $this->text_domain) ?></h3>
@@ -616,25 +724,29 @@
 						<label><?php _e('Query var', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<span class="description"><?php _e('Can queries be performed on this post_type.', $this->text_domain); ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td>
+						<p><span class="description"><?php _e('Name of the query var to use for this post type. False to prevent queries. Defaults to the post type name.', $this->text_domain); ?></span></p>
 						<label>
-							<input type="radio" name="query_var" value="1" <?php checked( !isset($_POST['query_var']) || ! empty($_POST['query_var'])); ?> />
+							<input type="radio" name="query_var" value="1" <?php checked( empty($_POST['query_var']) || (isset( $_POST['query_var'] ) && $_POST['query_var'] === '1')); ?> />
 							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<label>
-							<input type="radio" name="query_var" value="0" <?php checked(isset($_POST['query_var']) && empty($_POST['query_var'])); ?> />
+							<input type="radio" name="query_var" value="0" <?php checked( ! empty($_POST['query_var']) || (isset( $_POST['query_var'] ) && $_POST['query_var'] === '0')); ?> />
 							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong></span>
 						</label>
+						<br /><br />
+						<span class="description"><strong><?php _e('Custom Query Key', $this->text_domain); ?></strong></span>
+						<br />
+						<input type="text" name="query_var_key" value="<?php if ( !empty( $_POST['query_var_key'] ) ) echo $_POST['query_var_key']; ?>" />
+						<br />
+						<span class="description"><?php _e('Custom query var key.', $this->text_domain); ?></span>
 					</td>
 				</tr>
 			</table>
 		</div>
+
+
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('Can Export', $this->text_domain) ?></h3>
@@ -663,6 +775,8 @@
 				</tr>
 			</table>
 		</div>
+
+
 	</div>
 	<p class="submit">
 		<?php wp_nonce_field('submit_post_type'); ?>

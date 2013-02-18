@@ -702,7 +702,7 @@ $error       = get_query_var('checkout_error');
 		<span class="dp-submit-txt"><?php _e( 'You can go to your profile and review/change your personal information, or you can go straight to the directory listing submission page.', $this->text_domain ); ?></span>
 		<br />
 
-		<?php echo do_shortcode('[dr_my_listings_btn text="Proceed to your Listings" view="always"]'); ?>
+		<?php echo do_shortcode('[dr_my_listings_btn text="' . __('Proceed to your Listings', $this->text_domain) . '" view="always"]'); ?>
 
 
 		<form id="go-to-profile-su" action="#" method="post">

@@ -162,12 +162,10 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 							<?php endif; ?>
 						</td>
 					</tr>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>
-</form>
+				</table>
+			</div>
+		</div>
+	</form>
 </div>
 
 <?php

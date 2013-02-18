@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-29 09:55-0500\n"
+"POT-Creation-Date: 2013-02-18 12:48-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../loader.php:16
@@ -91,6 +91,7 @@ msgid "All users have had \"%s\" credits added to their accounts."
 msgstr ""
 
 #: ../core/buddypress.php:105 ../ui-admin/navigation.php:23
+#: ../ui-front/general/page-my-listings.php:47
 msgid "My Credits"
 msgstr ""
 
@@ -491,55 +492,55 @@ msgstr ""
 msgid "Add or remove listing categories"
 msgstr ""
 
-#: ../core/ratings.php:24
+#: ../core/ratings.php:47
 msgid "Not so great"
 msgstr ""
 
-#: ../core/ratings.php:25
+#: ../core/ratings.php:48
 msgid "Quite good"
 msgstr ""
 
-#: ../core/ratings.php:26
+#: ../core/ratings.php:49
 msgid "Good"
 msgstr ""
 
-#: ../core/ratings.php:27
+#: ../core/ratings.php:50
 msgid "Great!"
 msgstr ""
 
-#: ../core/ratings.php:28
+#: ../core/ratings.php:51
 msgid "Excellent!"
 msgstr ""
 
-#: ../core/ratings.php:177
+#: ../core/ratings.php:176
 msgid "Saving..."
 msgstr ""
 
-#: ../core/ratings.php:186
+#: ../core/ratings.php:185
 msgid "Rating saved"
 msgstr ""
 
-#: ../core/ratings.php:186
+#: ../core/ratings.php:185
 msgid "Thanks!"
 msgstr ""
 
-#: ../core/ratings.php:240
+#: ../core/ratings.php:239
 msgid "Rate this:"
 msgstr ""
 
-#: ../core/ratings.php:247
+#: ../core/ratings.php:246
 msgid "Rate it!"
 msgstr ""
 
-#: ../core/ratings.php:262 ../core/ratings.php:286
+#: ../core/ratings.php:261 ../core/ratings.php:285
 msgid "Average rating"
 msgstr ""
 
-#: ../core/ratings.php:263 ../core/ratings.php:287
+#: ../core/ratings.php:262 ../core/ratings.php:286
 msgid "votes"
 msgstr ""
 
-#: ../core/ratings.php:310
+#: ../core/ratings.php:309
 msgid "Rating:"
 msgstr ""
 
@@ -1424,8 +1425,8 @@ msgid "Custom API URL"
 msgstr ""
 
 #: ../ui-admin/settings-payment-types.php:327
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:205
-#: ../ui-front/general/page-update-listing.php:207
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:202
+#: ../ui-front/general/page-update-listing.php:204
 msgid "Save Changes"
 msgstr ""
 
@@ -1824,7 +1825,7 @@ msgid "Available Credits:"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:56
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:73
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:74
 #: ../ui-front/general/page-my-listings.php:53
 #: ../ui-front/general/page-update-listing.php:80
 msgid "Title"
@@ -1861,43 +1862,43 @@ msgstr ""
 msgid "Auto Draft"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:75
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:76
 #: ../ui-front/general/page-update-listing.php:82
 msgid "Enter title here."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:93
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:94
 #: ../ui-front/general/page-update-listing.php:101
 msgid "Content"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:105
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:106
 #: ../ui-front/general/page-update-listing.php:105
 msgid "The content of your listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:110
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:111
 #: ../ui-front/general/page-update-listing.php:111
 msgid "Excerpt"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:112
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:113
 #: ../ui-front/general/page-update-listing.php:113
 msgid "A short excerpt of your listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:177
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:178
 #: ../ui-front/general/page-update-listing.php:180
 msgid "Status"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:188
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:189
 #: ../ui-front/general/page-update-listing.php:191
 msgid "Select a status for your Listing."
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:207
-#: ../ui-front/general/page-update-listing.php:209
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:204
+#: ../ui-front/general/page-update-listing.php:206
 #: ../ui-front/general/single-listing.php:102
 msgid "Cancel"
 msgstr ""
@@ -2250,6 +2251,10 @@ msgstr ""
 
 #: ../ui-front/general/page-signup.php:701
 msgid "The registration is completed successfully!"
+msgstr ""
+
+#: ../ui-front/general/page-signup.php:705
+msgid "Proceed to your Listings"
 msgstr ""
 
 #: ../ui-front/general/page-signup.php:758

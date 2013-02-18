@@ -164,9 +164,9 @@ class CustomPress_Core {
 	function display_custom_post_types( $query ) {
 		global $wp_query;
 		//if ( is_main_site() || get_site_option('allow_per_site_content_types') )
-		
+
 		if(is_admin()) return $query;
-		
+
 		$options = $this->get_options();
 
 		//Home Page
@@ -192,7 +192,7 @@ class CustomPress_Core {
 			$post_types = $options['display_post_types']['front_page']['post_type'];
 			if ( is_front_page() && !in_array( 'default', $post_types ) ){
 				if(count($post_types) == 1) $post_types = $post_types[0];
-				$wp_query->query_vars['post_type'] = $post_types; 
+				$wp_query->query_vars['post_type'] = $post_types;
 			}
 		}
 
@@ -395,6 +395,34 @@ class CustomPress_Core {
 		return $tag_list;
 	}
 
+	/**
+	* Returns an array of all plural capabilities for a given post type
+	* Generated from the default capabilities list for any post type and the capability type id.
+	*
+	* @param string $post_type - Post type name to generate array for.
+	* @return array of all capability names
+	*/
+	function all_capabilities($post_type = null){
+
+		if(empty($post_type) ) return array();
+
+		$post_type_obj = get_post_type_object($post_type);
+
+		$all_caps = array_keys(get_object_vars($post_type_obj->cap) );
+
+		//Get plural capability typee
+		$plural_base = $post_type_obj->capability_type . 's';
+
+		//Replace default "post" with the defined capability type
+		$all_caps = str_replace('post', $post_type_obj->capability_type, $all_caps);
+
+		//Select only the plural versions
+		foreach ( $all_caps as $key => &$capability ) {
+			if (strstr($capability, $plural_base) != $plural_base) unset($all_caps[$key]);
+		}
+
+		return $all_caps;
+	}
 
 }
 

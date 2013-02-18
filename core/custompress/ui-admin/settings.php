@@ -68,7 +68,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="cp_post_type"><?php _e('On "Blog / Home" page, display these post types: ', $this->text_domain) ?></label>
+					<label><?php _e('On "Blog / Home" page, display these post types: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[home][]" value="post" <?php checked(is_array($cp_post_type['home']['post_type']) && in_array('post',$cp_post_type['home']['post_type'])); ?> />
@@ -109,7 +109,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="cp_post_type"><?php _e('On "Front" page, display these post types: ', $this->text_domain) ?></label>
+					<label><?php _e('On "Front" page, display these post types: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[front_page][]" value="post" <?php checked(is_array($cp_post_type['front_page']['post_type']) && in_array('post',$cp_post_type['front_page']['post_type'])); ?> />
@@ -150,7 +150,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="cp_post_type"><?php _e('On "Archive" pages, display these post types:  ', $this->text_domain) ?></label>
+					<label><?php _e('On "Archive" pages, display these post types:  ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[archive][]" value="post" <?php checked(is_array($cp_post_type['archive']['post_type']) && in_array('post',$cp_post_type['archive']['post_type'])); ?> />
@@ -191,7 +191,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="cp_post_type"><?php _e('On "Search" pages, display these post types:  ', $this->text_domain) ?></label>
+					<label><?php _e('On "Search" pages, display these post types:  ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[search][]" value="post" <?php checked(is_array($cp_post_type['search']['post_type']) && in_array('post',$cp_post_type['search']['post_type'])); ?> />
@@ -278,7 +278,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="post_type"><?php _e('Create template file for: ', $this->text_domain) ?></label>
+					<label><?php _e('Create template file for: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<?php if ( !empty( $post_types )): ?>

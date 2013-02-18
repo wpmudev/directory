@@ -328,10 +328,10 @@ class Directory_Core_Admin extends Directory_Core {
 						$transaction = new DR_Transactions($user->ID, $blog_id);
 						$transaction->credits += $credits;
 						unset($transaction);
-						$this->message = sprintf(__('User "%s" received %s credits to member\'s Directory account',$this-text_domain), $send_to_user, $credits);
+						$this->message = sprintf(__('User "%s" received %s credits to member\'s Directory account',$this->text_domain), $send_to_user, $credits);
 
 					} else {
-						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this-text_domain), $send_to_user);
+						$this->message = sprintf(__('User "%s" not found or not a Classifieds member',$this->text_domain), $send_to_user);
 					}
 				}
 
@@ -344,7 +344,7 @@ class Directory_Core_Admin extends Directory_Core {
 						$transaction->credits += $credits;
 						unset($transaction);
 					}
-					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this-text_domain), $credits);
+					$this->message = sprintf(__('All users have had "%s" credits added to their accounts.',$this->text_domain), $credits);
 
 				}
 			} else {

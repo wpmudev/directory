@@ -86,10 +86,10 @@ $nonce = wp_create_nonce('reorder_custom_fields');
 				<span class="description"><?php _e('network', $this->text_domain); ?></span>
 				<?php endif; ?>
 				<?php if($i != 1 && ! $flag): ?>
-				<span class="ct-up"><a href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . "&ct_content_type=custom_field&direction=up&_wpnonce=$nonce&ct_reorder_custom_field=" . $custom_field['field_id'] )); ?>"><img src="<?php echo $this->plugin_url . 'ui-admin/images/up.png'; ?>" /></a> </span>
+				<span class="ct-up"><a href="<?php esc_attr_e( self_admin_url( 'admin.php?page=' . $_GET['page'] . "&ct_content_type=custom_field&direction=up&_wpnonce=$nonce&ct_reorder_custom_field=" . $custom_field['field_id'] )); ?>"><img src="<?php echo $this->plugin_url . 'ui-admin/images/up.png'; ?>" alt="<?php esc_attr_e('Move Up', $this->text_domain); ?>" title="<?php esc_attr_e('Move Up', $this->text_domain); ?>"/></a> </span>
 				<?php endif; ?>
 				<?php if($i != $last && ! $flag): ?>
-				<span class="ct-down"><a href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . "&ct_content_type=custom_field&direction=down&_wpnonce=$nonce&ct_reorder_custom_field=" . $custom_field['field_id'] )); ?>"><img src="<?php echo $this->plugin_url . 'ui-admin/images/down.png'; ?>" /></a></span>
+				<span class="ct-down"><a href="<?php esc_attr_e( self_admin_url( 'admin.php?page=' . $_GET['page'] . "&ct_content_type=custom_field&direction=down&_wpnonce=$nonce&ct_reorder_custom_field=" . $custom_field['field_id'] )); ?>"><img src="<?php echo $this->plugin_url . 'ui-admin/images/down.png'; ?>" alt="<?php esc_attr_e('Move Down', $this->text_domain); ?>" title="<?php esc_attr_e('Move Down', $this->text_domain); ?>"/></a></span>
 				<?php endif; ?>
 			</td>
 			<td>
@@ -99,14 +99,14 @@ $nonce = wp_create_nonce('reorder_custom_fields');
 					echo( $custom_field['field_title'] );
 					else:
 					?>
-					<a href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=custom_field&ct_edit_custom_field=' . $custom_field['field_id'] )); ?>"><?php echo( $custom_field['field_title'] ); ?></a>
+					<a href="<?php esc_attr_e( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=custom_field&ct_edit_custom_field=' . $custom_field['field_id'] )); ?>"><?php echo( $custom_field['field_title'] ); ?></a>
 					<?php endif; ?>
 
 				</strong>
 				<div class="row-actions" id="row-actions-<?php echo $custom_field['field_id']; ?>" >
 					<?php if(! $flag): ?>
 					<span class="edit">
-						<a title="<?php _e('Edit this custom field', $this->text_domain); ?>" href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=custom_field&ct_edit_custom_field=' . $custom_field['field_id'] ) ); ?>"><?php _e( 'Edit', $this->text_domain ); ?></a> |
+						<a title="<?php _e('Edit this custom field', $this->text_domain); ?>" href="<?php esc_attr_e( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=custom_field&ct_edit_custom_field=' . $custom_field['field_id'] ) ); ?>"><?php _e( 'Edit', $this->text_domain ); ?></a> |
 					</span>
 					<?php endif; ?>
 					<span>
@@ -143,7 +143,7 @@ $nonce = wp_create_nonce('reorder_custom_fields');
 			</td>
 		</tr>
 		<tr id="embed-code-<?php echo $custom_field['field_id']; ?>" class="embed-code <?php echo ( $class ); ?>">
-			<td colspan="10">
+			<td colspan="7">
 				<div class="embed-code-wrap">
 					<span class="description"><?php _e( 'Embed code returns the values of the custom field with the specified key from the specified post. Property may be one of "title", "description" or "value". If property is not used "value" wil be returned. Use inside the loop in templates and PHP code ', $this->text_domain ); ?></span>
 					<br />

@@ -189,12 +189,8 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 			<p class="description"><?php _e( 'Select a status for your Listing.', $this->text_domain ); ?></p>
 		</div>
 
-		<?php if( isset( $CustomPress_Core) ) : ?>
-		<div class="editfield">
-			<?php
-			echo do_shortcode('[custom_fields_input id="' . $listing_data['ID'] . '"][/custom_fields_input]');
-			?>
-		</div>
+		<?php if ( isset( $CustomPress_Core ) ) : ?>
+		<?php echo do_shortcode('[custom_fields_input" style="editfield"]'); ?>
 		<?php endif; ?>
 
 		<?php if ( !empty( $error ) ): ?>

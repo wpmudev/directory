@@ -5,6 +5,18 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.2.1 = 2013-02-18 Arnold Bailey
+* Added [ct_in] shortcode for individual input fields for better placement capability.
+* Added "not" attribute to [ct_filter] to invert the filter
+
+= 1.3.2 = 2013-02-12 Arnold Bailey
+* Added custom query var string for post types.
+* Added custom query var string for taxonomies.
+* Added EP Mask settings for post types, supports Endpoints.
+* Added EP Mask settings for taxonomies, supports Endpoints.
+* Changed flush_rewrite_rules to allow other plugins to setup rewrites before the global flush_network_rewrite_rules();
+* Added create_xxxxs capability which was added in WP v3.5
+
 = 1.3.1 = 2013-01-06 Arnold Bailey
 * Added show_admin_column attribute to the Taxonomy editor for Wordpress > v3.5
 

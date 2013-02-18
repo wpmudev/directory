@@ -1,8 +1,10 @@
 <?php
-
 /**
 * Load core DB data. Only loaded during Activation
+* 
 */
+
+
 if ( !class_exists('Directory_Core_Data') ):
 
 class Directory_Core_Data {
@@ -12,8 +14,6 @@ class Directory_Core_Data {
 	*
 	* @return void
 	*/
-	function Directory_Core_Data() { $this->__construct(); }
-
 
 	function __construct() {
 		//Load default data if object instatiated. Set to only happen during plugin Activate

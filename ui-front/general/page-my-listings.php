@@ -44,7 +44,7 @@ if ( isset( $_GET['updated'] ) ) {
 
 <div>
 	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $this->text_domain ) .  '[/dr_add_listing_btn]'); ?>
-	<?php echo do_shortcode('[dr_my_credits_btn text="My Credits" view="loggedin"]'); ?>
+	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('My Credits', $this->text_domain) . '" view="loggedin"]'); ?>
 </div>
 
 <?php if ( count( $custom_query->posts ) ) : ?>
