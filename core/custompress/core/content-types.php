@@ -949,13 +949,12 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 			}
 		}
-
 	}
 
 	/**
 	* Flush rewrite rules based on boolean check
 	*  Setting 'ct_flush_rewrite_rules' site_option to a unique triggers across network
-	* @return void
+	* @return $wp_roles;
 	*/
 	function flush_rewrite_rules() {
 		// Mechanism for detecting changes in sub-site content types for flushing rewrite rules
@@ -1394,22 +1393,22 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($field_values)
-							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( is_array($field_values) && array_search($field_option, $field_values) !== false ), $field_option );
+							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( is_array($field_values) && array_search($field_option, $field_values) !== false, true, false ), $field_option );
 							else
-							$result .= sprintf('<label><input type="checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( $custom_field['field_default_option'] == $key ), $field_option );
+							$result .= sprintf('<label><input type="checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( $custom_field['field_default_option'], $key, false ), $field_option );
 						}
 						break;
 					}
 					case 'multiselectbox': {
-						$multiselectbox_values = get_post_meta( $post->ID, $fid, true );
+						$multiselectbox_values = get_post_meta( $post->ID, $id, true );
 						$multiselectbox_values = (is_array($multiselectbox_values)) ? $multiselectbox_values : (array)$multiselectbox_values;
-
-						$result = sprintf('<select class="ct-field ct-multiselectbox" name="%s[]" id="%s" mutiple="multiple" class="ct-select-multiple" >', $id, $id ) . PHP_EOL;
+	
+						$result = sprintf('<select class="ct-field ct-select-multiple" name="%s[]" id="%s" multiple="multiple">', $id, $id ) . PHP_EOL;
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($multiselectbox_values)
-							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected(in_array($field_option, $multiselectbox_values) ), $field_option ) . PHP_EOL;
+							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected(in_array($field_option, $multiselectbox_values), true, false ), $field_option ) . PHP_EOL;
 							else
-							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected($custom_field['field_default_option'] == $key ), $field_option ) . PHP_EOL;
+							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected($custom_field['field_default_option'], $key, false ), $field_option ) . PHP_EOL;
 						}
 						$result .= "</select>\n";
 						break;
@@ -1832,6 +1831,23 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			update_option('ct_custom_fields', $custom_fields);
 		}
 
+	}
+
+	/**
+	* Returns an array of the custom fields belonging to a given post_type.
+	* @param string post_type to get custom fields for
+	* @return array 
+	*/
+	function get_custom_fields_set($post_type = ''){
+		if(empty($post_type) ) return array();
+		
+		$result = array();
+		
+		foreach($this->all_custom_fields as $key => $field) {
+			if( in_array($post_type, $field['object_type']) ) $result[$key] = $field;
+		} 
+		
+		return $result;
 	}
 
 }

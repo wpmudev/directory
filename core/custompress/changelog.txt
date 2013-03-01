@@ -5,6 +5,14 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.2.3 = 2013-03-01 Arnold Bailey
+* Fixed problem with multiselect custom fields display
+
+= 1.3.2.2 = 2013-02-26 Arnold Bailey
+* Added get_custom_fields_set($post_type)
+* Changed Map Meta Capabilities to default to True
+* Simplified display_custom_fields.php
+
 = 1.3.2.1 = 2013-02-18 Arnold Bailey
 * Added [ct_in] shortcode for individual input fields for better placement capability.
 * Added "not" attribute to [ct_filter] to invert the filter

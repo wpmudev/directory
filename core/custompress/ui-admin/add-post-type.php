@@ -144,12 +144,12 @@
 					<td>
 						<p><span class="description"><?php _e('Use the internal default meta capability handling.', $this->text_domain); ?></span></p>
 						<label>
-							<input type="radio" name="map_meta_cap" value="1" <?php checked( isset($post_type['map_meta_cap']) && $_POST['map_meta_cap'] === true); ?> />
+							<input type="radio" name="map_meta_cap" value="1" <?php checked(! isset($post_type['map_meta_cap']) || $_POST['map_meta_cap'] === true); ?> />
 							<span class="description"><strong><?php _e('TRUE', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<label>
-							<input type="radio" name="map_meta_cap" value="0" <?php checked(! isset($post_type['map_meta_cap']) || $_POST['map_meta_cap'] === false); ?> />
+							<input type="radio" name="map_meta_cap" value="0" <?php checked( isset($post_type['map_meta_cap']) && $_POST['map_meta_cap'] === false); ?> />
 							<span class="description"><strong><?php _e('FALSE', $this->text_domain); ?></strong> (default)</span>
 						</label>
 					</td>

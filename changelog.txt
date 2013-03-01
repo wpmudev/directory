@@ -4,6 +4,13 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.2.3 Arnold Bailey =
+* Update to Custompress 1.3.2.. Fixes display problem with custom Multi select box
+
+= 2.2.2.2 Arnold Bailey =
+* Added CustomPress 1.3.2.2
+* Fixed session variable in contact email
+
 = 2.2.2.1 Arnold Bailey =
 * Added CustomPress 1.3.2.1
 

@@ -59,61 +59,62 @@ $output = false;
 					<label for="<?php echo $fid; ?>"><?php echo ( $custom_field['field_title'] ); ?></label>
 					<?php echo do_shortcode('[ct_in id="' . $fid . '" ]'); ?>
 					<p class="description"><?php echo do_shortcode('[ct_in id="' . $fid . '" property="description"]'); ?></p>
-					</div>
+				</div>
+				<?php
+				endif; $output = false;
+				endforeach;
+				endif; //is_array($custom_fields)
+				break;
+			}
+			case 'table':
+			default: {
+				?>
+				<table class="form-table">
+
+					<?php
+					if(is_array($custom_fields)) :
+					foreach ( $custom_fields as $key => $custom_field ) :
+					if( in_array($post->post_type, $custom_field['object_type'] ) ){
+						$output = true;
+					} else {
+						unset($custom_fields[$key]); //Filter out unused ones for Validation rules later
+					}
+
+					$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
+
+					//Field ID to use
+					$fid = $prefix . $custom_field['field_id'];
+
+					$custom_field['field_title'] .= (empty($custom_field['field_required'])) ? '' : '*'; //required field class
+
+					if ( $output ):
+					?>
+					<tr>
+						<th>
+							<label for="<?php echo $fid; ?>"><?php echo ( $custom_field['field_title'] ); ?></label>
+						</th>
+						<td>
+							<?php
+							echo do_shortcode('[ct_in id="' . $fid . '" ]');
+							?>
+							<br /><span class="description"><?php echo do_shortcode('[ct_in id="' . $fid . '" property="description"]'); ?></span>
+						</td>
+					</tr>
 					<?php
 					endif; $output = false;
 					endforeach;
 					endif; //is_array($custom_fields)
-					break;
-				}
-				case 'table':
-				default: {
 					?>
-					<table class="form-table">
+				</table>
+				<?php
 
-						<?php
-						if(is_array($custom_fields)) :
-						foreach ( $custom_fields as $key => $custom_field ) :
-						if( in_array($post->post_type, $custom_field['object_type'] ) ){
-							$output = true;
-						} else {
-							unset($custom_fields[$key]); //Filter out unused ones for Validation rules later
-						}
-
-						$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
-
-						//Field ID to use
-						$fid = $prefix . $custom_field['field_id'];
-
-						$custom_field['field_title'] .= (empty($custom_field['field_required'])) ? '' : '*'; //required field class
-
-						if ( $output ):
-						?>
-						<tr>
-							<th>
-								<label for="<?php echo $fid; ?>"><?php echo ( $custom_field['field_title'] ); ?></label>
-							</th>
-							<td>
-								<?php
-								echo do_shortcode('[ct_in id="' . $fid . '" ]');
-								?>
-								<br /><span class="description"><?php echo do_shortcode('[ct_in id="' . $fid . '" property="description"]'); ?></span>
-							</td>
-						</tr>
-						<?php
-						endif; $output = false;
-						endforeach;
-						endif; //is_array($custom_fields)
-						?>
-					</table>
-					<?php
-
-				}
-				break;
 			}
-			?>
-		</div>
-		<script type="text/javascript">
-			<?php echo $this->validation_rules($custom_fields); ?>
-		</script>
+			break;
+		}
+		?>
 	</div>
+	<script type="text/javascript">
+		<?php echo $this->validation_rules( $this->get_custom_fields_set($post->post_type) ); ?>
+		
+	</script>
+</div>
