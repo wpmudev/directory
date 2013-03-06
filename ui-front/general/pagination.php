@@ -19,7 +19,7 @@ $showitems = ($range * 2) + 1;
 		<span><?php echo sprintf( __('Page %1$d of %2$d',$this->text_domain), $paged, $pages); ?></span>
 
 		<?php if($paged > 2 && $paged > $range+1 && $showitems < $pages): ?>
-		<a href="<?php get_pagenum_link(1); ?>">&laquo;<?php _e('First',$this->text_domain); ?></a>
+		<a href="<?php echo get_pagenum_link(1); ?>">&laquo;<?php _e('First',$this->text_domain); ?></a>
 		<?php endif; ?>
 
 		<?php if($paged > 1 && $showitems < $pages) : ?>

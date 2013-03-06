@@ -1402,7 +1402,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					case 'multiselectbox': {
 						$multiselectbox_values = get_post_meta( $post->ID, $id, true );
 						$multiselectbox_values = (is_array($multiselectbox_values)) ? $multiselectbox_values : (array)$multiselectbox_values;
-	
+
 						$result = sprintf('<select class="ct-field ct-select-multiple" name="%s[]" id="%s" multiple="multiple">', $id, $id ) . PHP_EOL;
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($multiselectbox_values)
@@ -1448,11 +1448,13 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					case 'datepicker': {
 						$result = $this->jquery_ui_css() . PHP_EOL;
 						$result .= sprintf('<input type="text" class="pickdate ct-field" name="%s" id="%s" value="%s" />', $id, $id, esc_attr( get_post_meta( $post->ID, $id, true ) ) ) . PHP_EOL;
-						$result .= '<script type="text/javascript">
+						$result .= sprintf('
+						<script type="text/javascript">
 						jQuery(document).ready(function(){
-						jQuery("#' . $id . '").datepicker({ dateFormat : ' . $custom_field['field_date_format'] . ' });
+						jQuery("#%s").datepicker({ dateFormat : "%s" });
 						});
-						</script>';
+						</script>
+						', $id, $custom_field['field_date_format'] );
 						break;
 					}
 				}
@@ -1614,7 +1616,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 	function filter_shortcode($atts, $content=null){
 		global $post;
-		
+
 		extract( shortcode_atts( array(
 		'terms' => '',
 		'not' => 'false',
@@ -1649,9 +1651,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 
 		if($not == 'true'){
-			
-			foreach($fields as &$field) $field = preg_replace('/^(_ct|ct)_/', '', $field); 
-			
+
+			foreach($fields as &$field) $field = preg_replace('/^(_ct|ct)_/', '', $field);
+
 			$fields = array_keys( array_diff_key( $this->all_custom_fields, array_flip($fields)) );
 		}
 
@@ -1836,17 +1838,17 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	/**
 	* Returns an array of the custom fields belonging to a given post_type.
 	* @param string post_type to get custom fields for
-	* @return array 
+	* @return array
 	*/
 	function get_custom_fields_set($post_type = ''){
 		if(empty($post_type) ) return array();
-		
+
 		$result = array();
-		
+
 		foreach($this->all_custom_fields as $key => $field) {
 			if( in_array($post_type, $field['object_type']) ) $result[$key] = $field;
-		} 
-		
+		}
+
 		return $result;
 	}
 
