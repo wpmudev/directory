@@ -30,7 +30,7 @@ class DR_Ratings {
 		add_action( 'sr_rate_this', array( &$this, 'render_rate_this' ) );
 		add_action( 'wp_ajax_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
 		add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
- 	}
+	}
 
 	function DR_Ratings() {
 		$this->__construct();
@@ -179,8 +179,8 @@ class DR_Ratings {
 						// Select stars from "Average rating" control to match the returned average rating value
 						$(".avg").stars("select", Math.round(response.avg));
 						// Update other text controls...
-						$(".all_votes").text(response.votes);
-						$(".all_avg").text(response.avg);
+						$(".all_votes-<? echo $post->ID; ?>").text(response.votes);
+						$(".all_avg<? echo $post->ID; ?>").text(response.avg);						
 						// Display confirmation message to the user
 						$(".messages").text("<?php _e('Rating saved', DR_TEXT_DOMAIN); ?> (" + value + "). <?php _e('Thanks!', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
 						// Hide confirmation message and enable stars for "Rate this" control, after 2 sec...

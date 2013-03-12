@@ -18,7 +18,7 @@ $query_args = array(
 'posts_per_page' => 1000,
 'author' => get_current_user_id(),
 );
- 
+
 $custom_query = new WP_Query( $query_args);
 
 //Display status message
@@ -67,11 +67,15 @@ if ( isset( $_GET['updated'] ) ) {
 			<div class="row-actions">
 				<span class="edit">
 					<a title="Edit this listing" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Edit', DR_TEXT_DOMAIN ); ?></a>
-				| </span>
-				<span class="delete" id="delete-<?php echo $listing->ID; ?>">
+				</span>
+				
+				<?php if(current_user_can( 'delete_listings' )) ?>
+				<span class="delete" id="delete-<?php echo $listing->ID; ?>"> |
 					<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
-				| </span>
-				<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;">
+				</span>
+				<?php endif; ?>
+
+				<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;"> |
 					<?php _e( 'Delete? ', DR_TEXT_DOMAIN ); ?>
 					<a title="no" href="javascript:;" onclick="dr_listings.toggle_delete_no( '<?php echo $listing->ID; ?>' );"><?php _e( 'No', DR_TEXT_DOMAIN ); ?></a>
 					|

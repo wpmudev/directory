@@ -419,7 +419,12 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				'hierarchical'        => (bool) $params['hierarchical'],
 				'rewrite'             => (bool) $params['rewrite'],
 				'query_var'           => (bool) $params['query_var'],
-				//'capabilities'        => array ('manage_terms' => 'manage_categories'), // TODO implement advanced capabilities
+				'capabilities'        => array (
+				'manage_terms' => 'manage_categories',
+				'edit_terms'   => 'manage_categories',
+				'delete_terms' => 'manage_categories',
+				'assign_terms' => 'edit_posts',
+				), 
 				);
 
 				// Remove empty values from labels so we can use the defaults
@@ -459,8 +464,16 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					$this->flush_rewrite_rules = true;
 				}
 
-				// Set the assiciated object types ( post types )
+				// Set the associated object types ( post types )
 				$object_type = $params['object_type'];
+				//Set assign_terms for this associated post_type if not already includes 'post'
+				foreach($object_type as $post_type){
+					$cap_type = $this->all_post_types[$post_type]['capability_type'];
+					if($cap_type != 'post') {
+						$args['capabilities']['assign_terms'] = "edit_{$cap_type}s";
+						break;
+					}
+				}
 
 				// Set the taxonomy which we are adding/updating
 				$taxonomy = ( isset( $params['taxonomy'] )) ? strtolower( $params['taxonomy'] ) : $_GET['ct_edit_taxonomy'];
