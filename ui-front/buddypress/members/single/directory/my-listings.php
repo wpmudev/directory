@@ -72,7 +72,7 @@ if ( isset( $_GET['updated'] ) ) {
 						<a title="Edit this listing" href="javascript:;" onclick="dr_listings.edit( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Edit', DR_TEXT_DOMAIN ); ?></a>
 					</span>
 
-					<?php if(current_user_can( 'delete_listings' )) ?>
+					<?php if(current_user_can( 'delete_listings' )): ?>
 					<span class="delete" id="delete-<?php echo $listing->ID; ?>"> |
 						<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
 					</span>

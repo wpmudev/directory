@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.2.6 Arnold Bailey =
+* Fixed typo on delete button
+
 = 2.2.2.5 Arnold Bailey =
 * Hide delete button if user doesn't have delete rights
 * update of ratings count on update
