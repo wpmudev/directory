@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.2.7 = 2013-03-04 Arnold Bailey
+* blocked post update when post moved between trash and active to prevent custom fields from being lost.
+
 = 1.3.2.5 = 2013-03-04 Arnold Bailey
 * Added assign_terms capabilties to use the associated post_types. 
   Note that on multiple post types assigned to one taxonomy can only enable assign_terms for one post_type, 

@@ -906,6 +906,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		|| defined('DOING_AJAX') && DOING_AJAX
 		|| defined('DOING_CRON') && DOING_CRON
 		|| isset($_REQUEST['bulk_edit'])
+		|| (isset($_REQUEST['action']) && in_array($_REQUEST['action'], array( 'trash', 'untrash' ) ) )
 		)
 		return;
 
