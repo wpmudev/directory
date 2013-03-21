@@ -403,3 +403,49 @@ ul.dr_tabs li.dr_active a {
 #TB_HideSelect{
 	z-index:9999;
 }
+
+/** File upload button 
+*
+* this is rather empirically arrived at ratios to get the upload button 
+* to work in all browsers due to [type=file] weirdness between browsers 
+* Firefox in particualr is touchy.
+*/
+
+.upload-button {
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.upload-button input {
+  position: absolute;
+  right: 0;
+  top: -200%;
+  width: 100%;
+  height: 400%;
+  font-size: 10%;
+  letter-spacing: 12em;
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  opacity: 0;
+  margin-right: 10px;
+}
+
+.upload-button .button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px;
+  margin-right: 5px;
+  padding: 4px 18px;
+  text-transform: uppercase;
+}
+
+.upload-button .file-holder {
+	background: #ddd;
+	padding:3px;
+}

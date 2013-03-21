@@ -56,7 +56,7 @@ class DR_Transactions{
 
 		// $dr_blog has entire transaction array
 		if(! empty($dr_order) || ! empty($dr_credits) || ! empty($dr_credits_log) ) { // Need to convert
-			$dr_transactions = $dr_struc;
+			$dr_transactions = $this->struc;
 			$dr_transactions['credits'] = (empty($dr_credits) ) ? 0 : $dr_credits;
 			$status = (empty($dr_order['order_info']['status']) ) ? '' : $dr_order['order_info']['status'];
 			$expires = (empty($dr_order['time_end_annual']) ) ? 0 : $dr_order['time_end_annual'];
@@ -95,7 +95,6 @@ class DR_Transactions{
 		else
 		return $options;
 	}
-
 
 	function __get( $property = '' ){
 
@@ -226,7 +225,6 @@ class DR_Transactions{
 
 						$expiration_date = $this->get_expiration_date($this->_transactions['order']['billing_period'], $this->_transactions['order']['billing_frequency'], $date );
 						$this->_transactions['order']['expires'] = $expiration_date->getTimestamp();
-
 					}
 				}
 			}
@@ -257,6 +255,7 @@ class DR_Transactions{
 				$member_role = $member_role['member_role'];
 				$user = get_userdata($this->user_id);
 				$user->set_role($member_role);
+
 			}
 
 			break;
@@ -330,6 +329,7 @@ class DR_Transactions{
 				$member_role = $member_role['member_role'];
 				$user = get_userdata($this->user_id);
 				$user->set_role($member_role);
+
 			}
 
 			//			print_r($value.'');

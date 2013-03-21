@@ -424,7 +424,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				'edit_terms'   => 'manage_categories',
 				'delete_terms' => 'manage_categories',
 				'assign_terms' => 'edit_posts',
-				), 
+				),
 				);
 
 				// Remove empty values from labels so we can use the defaults
@@ -1348,8 +1348,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				switch ($custom_field['field_type']){
 					case 'checkbox':
 					case 'multiselectbox': {
-						if ( get_post_meta( $post->ID, $id, true ) ) {
-							foreach ( get_post_meta( $post->ID, $id, true ) as $value ) {
+						if( $values = get_post_meta( $post->ID, $id, true ) ) {
+							foreach ( (array)$values as $value ) {
 								$result .= (empty($result)) ? $value : ', ' . $value;
 							}
 						}
@@ -1357,8 +1357,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					}
 					case 'selectbox':
 					case 'radio': {
-						if ( get_post_meta( $post->ID, $id, false ) ) {
-							foreach ( get_post_meta( $post->ID, $id, false ) as $value ) {
+						if( $values = get_post_meta( $post->ID, $id, true ) ) {
+							foreach ( (array)$values as $value ) {
 								$result .= (empty($result)) ? $value : ', ' . $value;
 							}
 						}
