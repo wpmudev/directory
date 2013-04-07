@@ -485,6 +485,7 @@ class Directory_Core {
 	* @return void
 	**/
 	function create_default_pages() {
+		
 		/* Create neccessary pages */
 		$post_content = __('Virtual page. Editing this page won\'t change anything.', $this->text_domain);
 
@@ -553,7 +554,7 @@ class Directory_Core {
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "add_listing" );
 		} else {
-			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			if(! in_array($directory_page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->add_listing_page_id = $page_id; //Remember the number
@@ -578,7 +579,7 @@ class Directory_Core {
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "edit_listing" );
 		} else {
-			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			if(! in_array($directory_page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->edit_listing_page_id = $page_id; //Remember the number
@@ -605,7 +606,7 @@ class Directory_Core {
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", 'my_listings_credits' );
 		} else {
-			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			if(! in_array($directory_page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->my_credits_page_id = $page_id; // Remember the number
@@ -654,7 +655,7 @@ class Directory_Core {
 			$directory_page = get_post($page_id);
 			add_post_meta( $page_id, "directory_page", "signin" );
 		} else {
-			if($directory_page->post_status != 'virtual') wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			if(! in_array($directory_page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 
 		$this->signin_page_id = $page_id; //Remember the number

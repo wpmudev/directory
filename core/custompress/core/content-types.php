@@ -118,7 +118,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		add_filter( 'attachment_fields_to_save', array( &$this, 'save_custom_for_attachment' ), 111, 2 );
 
 		add_action( 'add_meta_boxes', array( &$this, 'on_add_meta_boxes' ), 2 );
-		add_action( 'admin_menu', array( &$this, 'create_custom_fields' ), 2 );
 		add_action( 'save_post', array( &$this, 'save_custom_fields' ), 1, 1 );
 		add_action( 'user_register', array( &$this, 'set_user_registration_rewrite_rules' ) );
 
@@ -467,13 +466,15 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				// Set the associated object types ( post types )
 				$object_type = $params['object_type'];
 				//Set assign_terms for this associated post_type if not already includes 'post'
+				$cap_type = 'post';
 				foreach($object_type as $post_type){
-					$cap_type = $this->all_post_types[$post_type]['capability_type'];
+					global $wp_post_types;
+					$cap_type = $wp_post_types[$post_type]->capability_type;
 					if($cap_type != 'post') {
-						$args['capabilities']['assign_terms'] = "edit_{$cap_type}s";
 						break;
 					}
 				}
+				$args['capabilities']['assign_terms'] = "edit_{$cap_type}s";
 
 				// Set the taxonomy which we are adding/updating
 				$taxonomy = ( isset( $params['taxonomy'] )) ? strtolower( $params['taxonomy'] ) : $_GET['ct_edit_taxonomy'];
@@ -795,29 +796,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	}
 
 	/**
-	* Create the custom fields
-	*
-	* @return void
-	*/
-	function create_custom_fields() {
-
-		global $submenu;
-		//Add admin submenu in media tab for taxanomy of attachment post type
-		$taxonomies = $this->taxonomies;
-		//If custom taxonomies are present
-		if ( is_array( $taxonomies ) ) {
-			// Sort taxonomies
-			ksort( $taxonomies );
-			foreach ( $taxonomies as $taxonomy => $args ) {
-				if ( in_array ( 'attachment', $args['object_type'] ) ) {
-					$name = ( isset( $args['args']['labels']['name'] ) ) ? $args['args']['labels']['name'] : $taxonomy;
-					$submenu['upload.php'][] = array( $name, 'upload_files', 'edit-tags.php?taxonomy=' . $taxonomy );
-				}
-			}
-		}
-	}
-
-	/**
 	* Add Custom field edit metaboxes
 	*
 	* @return void
@@ -1065,93 +1043,94 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 			$script = '';
 
-			//add hierarchical terms as checkbox
-			foreach ( $form_fields as $taxonomy => $taxonomy_value ) {
-				if ( isset( $taxonomy_value['hierarchical'] ) && 1 == $taxonomy_value['hierarchical'] ) {
-					//get all terms of taxonomy
-					$terms = get_terms( $taxonomy, array( 'get' => 'all' ) );
-
-					$taxonomy_tree  = array();
-					$children       = array();
-					$term_ids       = array();
-
-					//create hierarchical tree
-					foreach( $terms as $term ) {
-						$term_ids[$term->term_id] = $term;
-						if ( 0 == $term->parent )
-						$taxonomy_tree[$term->term_id] = array();
-						else
-						$children[$term->parent][$term->term_id] = array();
-
-					}
-
-					if ( count( $children ) ) {
-						foreach( $children as $base => $child )
-						foreach( $children as $child_key => $val )
-						if ( array_key_exists( $base, $val ) ) {
-							$children[$child_key][$base] = &$children[$base];
-							break;
-						}
-
-						foreach ( $children as $base => $child )
-						if ( isset( $taxonomy_tree[$base] ) )
-						$taxonomy_tree[$base] = $child;
-					}
-
-					//gen checkbox of tree
-					$checkbox = $this->media_gen_hierarchical_field( $post->ID, $taxonomy, $term_ids, $taxonomy_tree );
-					if ( $terms ) {
-						$form_fields[ 'temp_' . $taxonomy]['input']    = 'checkbox';
-						$form_fields[ 'temp_' . $taxonomy]['label']    = ( isset( $taxonomy_value['labels']->name ) && '' != $taxonomy_value['labels']->name ) ? $taxonomy_value['labels']->name : ucwords( $taxonomy );
-						$form_fields[ 'temp_' . $taxonomy]['checkbox'] = $checkbox;
-
-						/* Save hierarchical terms:
-						only with JavaScript - for change Array value to String
-						because terms velue can't be array - error of WP \wp-admin\includes\media.php - line 479 - wp_set_object_terms....
-						*/
-						// gen JavaScript
-						$script .= '
-						var ' . $taxonomy . ' = "";
-
-						if ( jQuery("input:checkbox[name=\'my_terms_[' . $post->ID . '][' . $taxonomy . '][]\']").length ) {
-						jQuery("input:checkbox[name=\'my_terms_[' . $post->ID . '][' . $taxonomy . '][]\']:checked").each(function(){
-						' . $taxonomy . ' = ' . $taxonomy . ' + "," + this.value;
-						})
-
-						if ( jQuery("input:hidden[name=\'attachments[' . $post->ID . '][' . $taxonomy . ']\']").length ) {
-						jQuery("input:hidden[name=\'attachments[' . $post->ID . '][' . $taxonomy . ']\']").val( ' . $taxonomy . ' );
-						}
-						}
-						';
-
-						$form_fields[$taxonomy]['input'] = 'hidden';
-						$form_fields[$taxonomy]['value'] = '';
-						$add_script = 1;
-
-					} else {
-						$form_fields[$taxonomy]['input'] = 'html';
-						$form_fields[$taxonomy]['html']  = __( 'No values', $this->text_domain );
-					}
-				}
-			}
-
-			//add JavaScript to media page for save terms
-			if ( isset( $add_script ) ) {
-				$form_fields['script_for_terms']['input'] = 'html';
-				$form_fields['script_for_terms']['label'] = '';
-				$form_fields['script_for_terms']['html']  = '
-				<script type="text/javascript">
-				jQuery( document ).ready( function() {
-				jQuery("#media-single-form").submit(function(){
-				' . $script . '
-				return true;
-				});
-				});
-				</script>
-				';
-			}
-
-
+//
+//			//add hierarchical terms as checkbox
+//			foreach ( $form_fields as $taxonomy => $taxonomy_value ) {
+//				if ( isset( $taxonomy_value['hierarchical'] ) && 1 == $taxonomy_value['hierarchical'] ) {
+//					//get all terms of taxonomy
+//					$terms = get_terms( $taxonomy, array( 'get' => 'all' ) );
+//
+//					$taxonomy_tree  = array();
+//					$children       = array();
+//					$term_ids       = array();
+//
+//					//create hierarchical tree
+//					foreach( $terms as $term ) {
+//						$term_ids[$term->term_id] = $term;
+//						if ( 0 == $term->parent )
+//						$taxonomy_tree[$term->term_id] = array();
+//						else
+//						$children[$term->parent][$term->term_id] = array();
+//
+//					}
+//
+//					if ( count( $children ) ) {
+//						foreach( $children as $base => $child )
+//						foreach( $children as $child_key => $val )
+//						if ( array_key_exists( $base, $val ) ) {
+//							$children[$child_key][$base] = &$children[$base];
+//							break;
+//						}
+//
+//						foreach ( $children as $base => $child )
+//						if ( isset( $taxonomy_tree[$base] ) )
+//						$taxonomy_tree[$base] = $child;
+//					}
+//
+//					//gen checkbox of tree
+//					$checkbox = $this->media_gen_hierarchical_field( $post->ID, $taxonomy, $term_ids, $taxonomy_tree );
+//					if ( $terms ) {
+//						$form_fields[ 'temp_' . $taxonomy]['input']    = 'checkbox';
+//						$form_fields[ 'temp_' . $taxonomy]['label']    = ( isset( $taxonomy_value['labels']->name ) && '' != $taxonomy_value['labels']->name ) ? $taxonomy_value['labels']->name : ucwords( $taxonomy );
+//						$form_fields[ 'temp_' . $taxonomy]['checkbox'] = $checkbox;
+//
+//						/* Save hierarchical terms:
+//						only with JavaScript - for change Array value to String
+//						because terms velue can't be array - error of WP \wp-admin\includes\media.php - line 479 - wp_set_object_terms....
+//						*/
+//						// gen JavaScript
+//						$script .= '
+//						var ' . $taxonomy . ' = "";
+//
+//						if ( jQuery("input:checkbox[name=\'my_terms_[' . $post->ID . '][' . $taxonomy . '][]\']").length ) {
+//						jQuery("input:checkbox[name=\'my_terms_[' . $post->ID . '][' . $taxonomy . '][]\']:checked").each(function(){
+//						' . $taxonomy . ' = ' . $taxonomy . ' + "," + this.value;
+//						})
+//
+//						if ( jQuery("input:hidden[name=\'attachments[' . $post->ID . '][' . $taxonomy . ']\']").length ) {
+//						jQuery("input:hidden[name=\'attachments[' . $post->ID . '][' . $taxonomy . ']\']").val( ' . $taxonomy . ' );
+//						}
+//						}
+//						';
+//
+//						$form_fields[$taxonomy]['input'] = 'hidden';
+//						$form_fields[$taxonomy]['value'] = '';
+//						$add_script = 1;
+//
+//					} else {
+//						$form_fields[$taxonomy]['input'] = 'html';
+//						$form_fields[$taxonomy]['html']  = __( 'No values', $this->text_domain );
+//					}
+//				}
+//			}
+//
+//			//add JavaScript to media page for save terms
+//			if ( isset( $add_script ) ) {
+//				$form_fields['script_for_terms']['input'] = 'html';
+//				$form_fields['script_for_terms']['label'] = '';
+//				$form_fields['script_for_terms']['html']  = '
+//				<script type="text/javascript">
+//				jQuery( document ).ready( function() {
+//				jQuery("#media-single-form").submit(function(){
+//				' . $script . '
+//				return true;
+//				});
+//				});
+//				</script>
+//				';
+//			}
+//
+//
 			//Add custom fields to Media page
 			if ( is_array( $this->all_custom_fields ) )
 			foreach ( $this->all_custom_fields as $custom_field ) {

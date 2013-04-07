@@ -407,10 +407,12 @@ class CustomPress_Core {
 		if(empty($post_type) ) return array();
 
 		$post_type_obj = get_post_type_object($post_type);
+		
+		if( empty($post_type_obj->cap) ) return array();
 
-		$all_caps = array_keys(get_object_vars($post_type_obj->cap) );
+		$all_caps = array_keys(get_object_vars( $post_type_obj->cap) );
 
-		//Get plural capability typee
+		//Get plural capability type
 		$plural_base = $post_type_obj->capability_type . 's';
 
 		//Replace default "post" with the defined capability type

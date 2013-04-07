@@ -4,9 +4,12 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
-= 2.2.2.8 Arnold Bailey =
+= 2.2.2.9 Arnold Bailey =
+* Allow virtual pages to be moved to Trash
+* Fixed query loop count
+
 * Added CustomPress 1.3.2.8
-* Changed css on the Simpleupload button
+* Changed css on the Simple upload button
 
 = 2.2.2.7 Arnold Bailey =
 * Added CustomPress 1.3.2.7

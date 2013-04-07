@@ -37,4 +37,4 @@ get_template_part( 'loop', 'taxonomy' );
 else
 load_template( DR_PLUGIN_DIR . 'ui-front/general/loop-taxonomy.php' );
 
-wp_reset_query();
+$wp_query->post_count = 0;
