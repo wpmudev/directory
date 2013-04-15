@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.3 = 2013-04-15 Arnold Bailey
+* Fixed blank assign_terms due to order of processing settings
+
 = 1.3.2.9 = 2013-04-08 Arnold Bailey
 * Fixed duplicate taxonomy menu when used on attachment post type
 * Fixed "attachments" assign_terms capability setting

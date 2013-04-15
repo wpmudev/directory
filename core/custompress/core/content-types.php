@@ -464,13 +464,18 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 
 				// Set the associated object types ( post types )
+				if(is_network_admin() ) {
+					$post_types = get_site_option('ct_custom_post_types');
+				} else {
+					$post_types = get_option('ct_custom_post_types');
+				}
 				$object_type = $params['object_type'];
 				//Set assign_terms for this associated post_type if not already includes 'post'
 				$cap_type = 'post';
 				foreach($object_type as $post_type){
-					global $wp_post_types;
-					$cap_type = $wp_post_types[$post_type]->capability_type;
-					if($cap_type != 'post') {
+					$cap = $post_types[$post_type]['capability_type'];
+					if($cap != 'post') {
+						$cap_type=$cap;
 						break;
 					}
 				}

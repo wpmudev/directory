@@ -11,6 +11,9 @@ global $post, $post_ID, $CustomPress_Core;
 $listing_data   = '';
 $selected_cats  = '';
 $error = $dr_error; // get_query_var('dr_error');
+
+$options = $this->get_options('general');
+
 $post_statuses = get_post_statuses(); // get the wp post status list
 $allowed_statuses = $this->get_options('general'); // Get the ones we allow
 $allowed_statuses['moderation'] = (empty($allowed_statuses['moderation']) ) ? array('publish' => 1, 'draft'=> 1 ) : $allowed_statuses['moderation']; // Get the ones we allow
@@ -79,6 +82,19 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		<?php if(post_type_supports('directory_listing','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
 		<div class="editfield">
+			<?php if(empty($options['media_manager']) ): ?>
+
+			<?php if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?><br />
+			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Feature Image Chosen", $this->text_domain); ?>';</script>
+			<span class="upload-button">
+				<?php $class = (empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
+				<input type="file" name="feature_image" size="1" id="image" class="<?php echo $class; ?>" />
+				<button type="button" class="button"><?php _e('Set Feature Image', $this->text_domain); ?></button>
+			</span>
+			<br />
+
+			<?php else: ?>
+
 			<div id="postimagediv">
 				<div class="inside">
 					<?php
@@ -87,6 +103,8 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 					?>
 				</div>
 			</div>
+			<?php endif; ?>
+
 		</div>
 		<?php endif; ?>
 

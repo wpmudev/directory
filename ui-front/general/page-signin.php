@@ -5,13 +5,18 @@ get_currentuserinfo();
 
 $register = (empty($_GET['register'])) ? '' : $_GET['register'];
 $reset = (empty($_GET['reset'])) ? '' : $_GET['reset'];
-$redirect = (empty($_GET['redirect_to'])) ? '' : $_GET['redirect_to'];
+$redirect = (empty($_GET['redirect_to'])) ? home_url() : $_GET['redirect_to'];
+
+$options = $this->get_options('general');
+
+$signin_url = empty($options['signin_url']) ? $options['signin_url'] : home_url();
 
 $options = $this->get_options('payments');
 
 if(is_multisite() ){
 	$registration = get_site_option('registration');
 	$can_register = ($registration == 'user' || $registration == 'all' );
+	//define transient to identify the blog id we're in
 	if($blog_id > 1) set_site_transient('register_blog_id_'.$_SERVER['REMOTE_ADDR'], $blog_id, 60 * 60 );
 } else {
 	$can_register = get_option('users_can_register');
@@ -51,7 +56,7 @@ if(is_multisite() ){
 
 			<?php endif; ?>
 
-			<form method="post" action="<?php bloginfo('url') ?>/wp-login.php" class="wp-user-form">
+			<form method="post" action="<?php echo wp_login_url(); ?>" class="wp-user-form">
 				<div class="username">
 					<label for="user_login"><?php _e('Username', $this->text_domain); ?>: </label>
 					<input type="text" name="log" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" id="user_login" tabindex="11" />
@@ -79,7 +84,7 @@ if(is_multisite() ){
 			<p><?php _e('Sign up now for the good stuff.', $this->text_domain); ?></p>
 
 			<?php if(is_multisite()): ?>
-			<form method="post" id="register_frm" action="<?php echo network_home_url('wp-signup.php') ?>" class="wp-user-form">
+			<form method="post" id="register_frm" action="<?php echo network_site_url('wp-signup.php', 'login_post') ?>" class="wp-user-form">
 				<input type="hidden" name="stage" value="validate-user-signup" />
 				<?php do_action( 'signup_hidden_fields' ); ?>
 				<input type="hidden" name="signup_for" value="user" />
@@ -90,7 +95,7 @@ if(is_multisite() ){
 
 				<?php else:	?>
 
-				<form method="post" id="register_frm" action="<?php echo home_url('wp-login.php?action=register', 'login_post') ?>" class="wp-user-form">
+				<form method="post" id="register_frm" action="<?php echo wp_login_url() . '?action=register'; ?>" class="wp-user-form">
 					<div class="username">
 						<label for="user_login"><?php _e('Username', $this->text_domain); ?>: </label>
 						<input  class="required" type="text" name="user_login" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" id="user_login" tabindex="101" />
@@ -127,7 +132,7 @@ if(is_multisite() ){
 			<div id="tab3_login" class="dr_tab_content" style="display:none;">
 				<h3><?php _e('Lose something?', $this->text_domain); ?></h3>
 				<p><?php _e('Enter your username or email to reset your password.', $this->text_domain); ?></p>
-				<form method="post" action="<?php echo site_url('wp-login.php?action=lostpassword', 'login_post') ?>" class="wp-user-form">
+				<form method="post" action="<?php echo wp_lostpassword_url(); ?>" class="wp-user-form">
 					<div class="username">
 						<label for="user_login" class="hide"><?php _e('Username or Email', $this->text_domain); ?>: </label>
 						<input type="text" name="user_login" value="" size="20" id="user_login" tabindex="1001" />
@@ -157,8 +162,8 @@ if(is_multisite() ){
 				<p>
 					<a href="<?php echo wp_logout_url('index.php'); ?>"><?php _e('Log out', $this->text_domain); ?></a> |
 					<?php if (current_user_can('manage_options')) {
-					echo '<a href="' . admin_url() . '">' . __('Admin') . '</a>'; } else {
-					echo '<a href="' . admin_url() . 'profile.php">' . __('Profile') . '</a>'; } ?>
+					echo '<a href="' . admin_url() . '">' . __('Admin', $this->text_domain) . '</a>'; } else {
+					echo '<a href="' . admin_url() . 'profile.php">' . __('Profile', $this->text_domain) . '</a>'; } ?>
 				</p>
 			</div>
 		</div>

@@ -139,11 +139,17 @@ $options = $this->get_options('general');
 			</div>
 		</div>
 
-
 		<div class="postbox">
 			<h3 class='hndle'><span><?php _e( 'Display Options', $this->text_domain ) ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
+					<tr>
+						<th><label for="media_manager"><?php _e( 'Media manager:', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="checkbox" id="media_manager" name="media_manager" value="1" <?php echo ( isset( $options['media_manager'] ) && 1 == $options['media_manager'] ) ? 'checked' : ''; ?> />
+							<span class="description"><?php _e( 'enable full media manager for feature image uploads', $this->text_domain ); ?></span>
+						</td>
+					</tr>
 					<tr>
 						<th>
 							<label for="count_cat"><?php _e( 'Count of category:', $this->text_domain ) ?></label>

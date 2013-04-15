@@ -112,7 +112,7 @@ echo $content;
 ?>
 <div class="clear"></div>
 <div class="dr-custom-block">
-	<?php echo do_shortcode('[custom_fields_block wrap="table"][/custom_fields_block]'); ?>
+	<?php echo do_shortcode('[dr_custom_fields]'); ?>
 </div>
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>

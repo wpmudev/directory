@@ -19,7 +19,7 @@ class Directory_Core_Main extends Directory_Core {
 		parent::__construct(); //Get the inheritance right
 
 		add_action( 'init', array(&$this, 'init'));
-		add_action( 'wp_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ), 99 );
 
 		add_action( 'template_redirect', array( &$this, 'get_author_template' ));
 

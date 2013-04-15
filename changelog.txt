@@ -4,6 +4,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.3 Arnold Bailey =
+* Changed login url calculation
+* Added "Simple" image upload mode choice. Default is the Simple mode. Settings > General > Media manager to enable full media manager.  
+
 = 2.2.2.9 Arnold Bailey =
 * Allow virtual pages to be moved to Trash
 * Fixed query loop count

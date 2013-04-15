@@ -35,7 +35,7 @@ class Directory_Core_Buddypress extends Directory_Core {
 		add_action( 'admin_menu', array( &$this, 'add_navigation' ), 2 );
 
 		/* Enqueue styles */
-		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 99 );
 		add_action( 'wp_print_scripts', array( &$this, 'on_print_scripts' ) );
 		add_action( 'wp_head', array( &$this, 'print_scripts' ) );
 		add_action( 'bp_template_content', array( &$this, 'process_page_requests' ) );
