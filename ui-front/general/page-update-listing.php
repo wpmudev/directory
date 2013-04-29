@@ -67,6 +67,8 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
+<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/ui-front.js'; ?>" >
+</script>
 
 <?php if ( !empty( $error ) ): ?>
 <br /><div class="error"><?php echo $error . '<br />'; ?></div>

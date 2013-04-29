@@ -41,3 +41,32 @@ var dr_listings = {
 	}
 	
 };
+
+var js_translate = js_translate || {};
+js_translate.image_chosen = 'Image Chosen';
+
+(function($){
+
+	jQuery(document).ready(function($) {
+		$('.upload-button input:file').on('change focus click', fileInputs );
+	});
+
+	fileInputs = function() {
+		var $this = $(this),
+		$val = $this.val(),
+		valArray = $val.split('\\'),
+		newVal = valArray[valArray.length-1],
+		$button = $this.siblings('.button'),
+		$fakeFile = $this.siblings('.file-holder');
+		if(newVal !== '') {
+			$button.text(js_translate.image_chosen);
+			if($fakeFile.length === 0) {
+				$button.after('<span class="file-holder">' + newVal + '</span>');
+			} else {
+				$fakeFile.text(newVal);
+			}
+		}
+	};
+
+})(jQuery);
+

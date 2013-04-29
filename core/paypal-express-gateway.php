@@ -142,6 +142,7 @@ class Paypal_Express_Gateway {
 			$nvpstr .= '&L_BILLINGAGREEMENTDESCRIPTION0=' . urlencode( $billing_agreement );
 		}
 		$nvpstr .= '&L_PAYMENTREQUEST_0_NAME0=' . urlencode( $billing_agreement );
+		$nvpstr .= '&PAYMENTREQUEST_0_ITEMAMT=' .	urlencode( $payment_amount );
 		$nvpstr .= '&L_PAYMENTREQUEST_0_AMT0=' .	urlencode( $payment_amount );
 
 		/*
