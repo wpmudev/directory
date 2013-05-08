@@ -442,17 +442,6 @@ class Directory_Core {
 				$this->current_user->remove_cap('create_listings');
 			}
 		}
-
-		// Rewrite rules
-		add_rewrite_rule( 'listings/author/(.+?)(/page/(.+?))?/?$', 'index.php?post_type=directory_listing&author_name=$matches[1]&paged=$matches[3]', 'top' );
-
-		//add_rewrite_rule( 'listings/page/([0-9]{1,})/?$', 'index.php?post_type=directory_listing&paged=$matches[1]', 'top' );
-
-		//add_rewrite_rule( 'listings/rating/page/([0-9]{1,})/?$', 'index.php?post_type=directory_listing&rating&paged=$matches[1]', 'top' );
-
-		flush_rewrite_rules();
-
-
 	}
 
 	/**
