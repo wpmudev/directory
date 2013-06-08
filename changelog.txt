@@ -11,7 +11,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * Removed flush_rewrite_rules from init
 
 = 2.2.3.1 Arnold Bailey =
-* Correct problem with simnple upload.
+* Correct problem with simple upload.
 * Added parameters to PayPal ordering for line item calculation
 * fixed problem with simple feature image upload.
 
