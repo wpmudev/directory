@@ -274,9 +274,9 @@ class Directory_Core_Buddypress extends Directory_Core {
 		//default for directory page
 		elseif ( $bp->current_component == $this->directory_page_slug ) {
 			if ( bp_is_my_profile() ) {
-				$this->js_redirect( trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/' . $this->my_listings_page_slug );
+				$this->js_redirect( trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/' . $this->my_listings_page_slug, true );
 			} else {
-				$this->js_redirect( trailingslashit($bp->displayed_user->domain) . $this->directory_page_slug . '/' . 'all' );
+				$this->js_redirect( trailingslashit($bp->displayed_user->domain) . $this->directory_page_slug . '/' . 'all', true );
 			}
 		}
 	}
@@ -296,14 +296,11 @@ class Directory_Core_Buddypress extends Directory_Core {
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
 
 		$logged_url = trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/';
-		/*
-		if ( $bp->current_component == $this->directory_page_slug && $bp->current_action == 'all' ) {
-		$this->js_redirect( $logged_url . $this->my_listings_page_slug . '/active', true);
-		}
 
-		else
-		*/
-		if ( is_post_type_archive('directory_listing') ) {
+		if ( $bp->current_component == $this->directory_page_slug && $bp->current_action == '' ) {
+			$this->process_page_requests(); return;
+		}
+		elseif ( is_post_type_archive('directory_listing') ) {
 			/* Set the proper step which will be loaded by "page-my-listings.php" */
 			$templates = array( 'page-listing.php' );
 			if ( ! $this->directory_template = locate_template( $templates ) ) {

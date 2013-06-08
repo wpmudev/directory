@@ -212,7 +212,7 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 		</div>
 
 		<?php if ( isset( $CustomPress_Core ) ) : ?>
-		<?php echo do_shortcode('[custom_fields_input" style="editfield"]'); ?>
+		<?php echo do_shortcode('[custom_fields_input style="editfield"]'); ?>
 		<?php endif; ?>
 
 		<?php if ( !empty( $error ) ): ?>
@@ -226,24 +226,4 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 	</form>
-
-	<script type="text/javascript">
-		jQuery('#dr_update_form').validate();
-
-		//		jQuery("#dr_update_form").validate({
-		//			rules: {
-		//				'tax_input[listing_category][]' : {
-		//					required : {
-		//						depends: function(element) {
-		//							return jQuery('input[name=\'tax_input[listing_category][]\']:checked').size() ==0;
-		//						}
-		//					}
-		//				}
-		//			},
-		//			messages: {
-		//				'tax_input[listing_category][]': "Please select at least one category."
-		//			}
-		//		});
-
-	</script>
 </div>

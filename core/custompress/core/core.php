@@ -23,6 +23,9 @@ class CustomPress_Core {
 	/** @public string $options_name The options name */
 	public $options_name = 'cp_options';
 
+	protected $add_datepicker = false;
+	protected $add_validate = false;
+	
 	function CustomPress_Core() {__construct(); }
 
 	function __construct(){
@@ -31,6 +34,12 @@ class CustomPress_Core {
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
+
+		add_action('init', array($this, 'on_init'));
+
+		add_action('wp_footer', array($this, 'add_scripts'));
+		add_action('admin_footer', array($this, 'add_scripts'));
+		
 		add_action('wp_enqueue_scripts', array($this, 'on_wp_enqueue_scripts'));
 
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
@@ -88,11 +97,48 @@ class CustomPress_Core {
 
 	function on_init(){
 
+		// People use both "_" and "-" versions for locale IDs en_GB en-GB
+		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
+		$wplang = str_replace('_', '-', WPLANG);
+		$lang = ($wplang == '') ? '' : substr($wplang, 0, 2); // Non specific locale
+
+		// Specific locale exceptions
+		$lang = (in_array($wplang, array('ar-DZ', 'cy-GB', 'en-AU', 'en-GB', 'en-NZ', 'fr-CH', 'nl-BE', 'pt-BR', 'sr-SR', 'zh-CN', 'zh-HK', 'zh-TW') ) )  ?  $wplang : $lang;
+
+		if(!empty($lang))
+		{
+			// If it can't find one too bad.
+			wp_register_script('jquery-ui-datepicker-lang', $this->plugin_url . "datepicker/js/i18n/jquery.ui.datepicker-$lang.js", array('jquery','jquery-ui-datepicker'), '1.8.18');
+		}
+
+		// Dynamic CSS switching for date picker
+		wp_register_script('dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), '1.8.18');
+		wp_enqueue_script('dynamic-css');
+
+		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
+		wp_register_script('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array('jquery'), '1.8.18');
+		wp_register_style('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/style.css", array(), '0.5');
+	}
+	
+	function add_scripts(){
+		global $wp_scripts;
+		
+		if($this->add_datepicker){
+			$wp_scripts->do_items('jquery');	
+			
+			$wp_scripts->do_items('jquery-ui-datepicker');	
+			$wp_scripts->do_items('jquery-ui-datepicker-lang');	
+		}
+		
+		if($this->add_validate){
+			$wp_scripts->do_items('jquery-validate');
+		}
+		
 	}
 
 	function on_wp_enqueue_scripts(){
 
-		$this->enqueue_datepicker();
+		//$this->enqueue_datepicker();
 
 	}
 
@@ -347,7 +393,7 @@ class CustomPress_Core {
 	*
 	*/
 	function jquery_ui_css($theme = ''){
-		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : $theme;
+		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : 'excite-bike';
 		echo '<script type="text/javascript">update_stylesheet( "' . $this->plugin_url . "datepicker/css/$theme/datepicker.css\" ); </script>\n";
 	}
 

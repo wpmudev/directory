@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.3.4 Arnold Bailey =
+* CustomPress 1.3.3.4
+
 = 2.2.3.2 Arnold Bailey =
 * Removed flush_rewrite_rules from init
 

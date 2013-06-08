@@ -224,6 +224,4 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
 	</form>
-
-	<script type="text/javascript">jQuery('#dr_update_form').validate();</script>
 </div>

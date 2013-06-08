@@ -9,6 +9,7 @@ $post_types = get_site_option('ct_custom_post_types');
 else
 $post_types = $this->post_types;
 
+$this->add_datepicker = true;
 
 if ( $enable_subsite_content_types && $display_network_content_types )
 $network_post_types = get_site_option('ct_custom_post_types');
