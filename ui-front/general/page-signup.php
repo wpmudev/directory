@@ -477,6 +477,7 @@ $error       = get_query_var('checkout_error');
 
 
 		if ( ! empty($details['confirm_error']) ):
+		
 		?>
 		<span style="color: red;"><?php echo $details['confirm_error']; ?></span>
 		<div class="clear"></div>
@@ -488,10 +489,12 @@ $error       = get_query_var('checkout_error');
 			<strong><?php _e( 'Payment Details', $this->text_domain ); ?></strong>
 			<div class="clear"></div>
 			<table id="cc-user-details" class="form-table">
+
 				<tr>
 					<td><label for="cc_email"><?php _e( 'Email Address for Credit Card', $this->text_domain ); ?>:</label></td>
 					<td><input type="text" id="cc_email" name="cc_email" value="<?php echo empty($current_user->cc_email) ? esc_attr($current_user->user_email) : esc_attr($current_user->cc_email); ?>" class="required email" /></td>
 				</tr>
+				
 				<tr>
 					<td><label for="first-name"><?php _e( 'First Name', $this->text_domain ); ?>:</label></td>
 					<td><input type="text" id="first-name" name="cc_firstname" value="<?php echo empty($current_user->cc_firstname) ? esc_attr($current_user->first_name) : esc_attr($current_user->cc_firstname); ?>" class="required"  /></td>
@@ -528,7 +531,6 @@ $error       = get_query_var('checkout_error');
 				</tr>
 
 				<?php if(! $this->use_free): ?>
-
 				<tr>
 					<td><?php _e( 'Total Amount', $this->text_domain ); ?>:</td>
 					<td>
@@ -622,20 +624,28 @@ $error       = get_query_var('checkout_error');
 
 			<strong><?php _e( 'Confirm Payment', $this->text_domain ); ?></strong>
 			<table>
+				<?php if( !empty($cc['cc_email']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Email Address', $this->text_domain ); ?>:</label></td>
 					<td><?php echo $cc['cc_email']; ?></td>
 				</tr>
+				<?php endif; ?>
+				
+				<?php if( !empty($cc['cc_firstname']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Name', $this->text_domain ); ?>:</label></td>
 					<td><?php echo $cc['cc_firstname']; ?> <?php echo $cc['cc_lastname']; ?></td>
 				</tr>
+				<?php endif; ?>
+
+				<?php if( !empty($cc['cc_street']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Address', $this->text_domain ); ?>:</label></td>
 					<td>
 						<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', $this->text_domain), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
 					</td>
 				</tr>
+				<?php endif; ?>
 
 				<?php if ( $_SESSION['billing_type'] == 'recurring' ): ?>
 				<tr>
@@ -643,10 +653,11 @@ $error       = get_query_var('checkout_error');
 					<td><?php echo $_SESSION['billing_agreement']; ?></td>
 				</tr>
 				<?php endif; ?>
+				
 				<tr>
 					<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
 					<td>
-						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $oppaypal['currency_code']; ?></strong>
+						<strong><?php printf('%s %s', $cc['total_amount'], empty($cc['currency_code']) ? 'USD' : $oppaypal['currency']); ?></strong>
 					</td>
 				</tr>
 			</table>
@@ -733,24 +744,33 @@ $error       = get_query_var('checkout_error');
 
 			<strong><?php _e( 'Confirm Payment', $this-->text_domain ); ?></strong>
 			<table>
+				<?php if( !empty($cc['cc_email']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Email Address', $this->text_domain ); ?>:</label></td>
 					<td><?php echo empty($cc['cc_email']) ? $current_user->user_email : $cc['cc_email']; ?></td>
 				</tr>
+				<?php endif; ?>
+				
+				<?php if( !empty($cc['cc_firstname']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Name', $this->text_domain ); ?>:</label></td>
 					<td><?php echo empty($cc['cc_firstname']) ? $current_user->first_name : $cc['cc_firstname']; ?> <?php echo empty($cc['cc_lastname']) ? $current_user->last_name : $cc['cc_lastname']; ?></td>
 				</tr>
+				<?php endif; ?>
+
+				<?php if( !empty($cc['cc_street']) ): ?>
 				<tr>
 					<td><label><?php _e( 'Address', $this->text_domain ); ?>:</label></td>
 					<td>
 						<?php echo trim( sprintf( __ ( '%1$s, %2$s, %3$s %4$s %5$s', $this->text_domain), $cc['cc_street'], $cc['cc_city'], $cc['cc_state'], $cc['cc_zip'], $cc['cc_country_code']), ', ') ; ?>
 					</td>
 				</tr>
+				<?php endif; ?>
+
 				<tr>
 					<td><label><?php _e('Total Amount', $this->text_domain); ?>:</label></td>
 					<td>
-						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $oppaypal['currency_code']; ?></strong>
+						<strong><?php echo $cc['total_amount']; ?> <?php echo (empty($cc['currency_code']) ) ? 'USD' : $oppaypal['currency']; ?></strong>
 					</td>
 				</tr>
 			</table>

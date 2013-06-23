@@ -80,12 +80,12 @@ endif; ?>
 	<div class="editfield">
 		<label for="subject"><?php _e( 'Subject', $this->text_domain ); ?> (<?php _e( 'required', $this->text_domain ); ?>)</label>
 		<input type="text" id="subject" name ="subject" value="<?php echo ( isset( $_POST['subject'] ) ) ? $_POST['subject'] : ''; ?>" />
-		<p class="description"><?php _e( 'Enter the subject of your inquire here.', $this->text_domain ); ?></p>
+		<p class="description"><?php _e( 'Enter the subject of your enquiry here.', $this->text_domain ); ?></p>
 	</div>
 	<div class="editfield">
 		<label for="message"><?php _e( 'Message', $this->text_domain ); ?> (<?php _e( 'required', $this->text_domain ); ?>)</label>
 		<textarea id="message" name="message"><?php echo ( isset( $_POST['message'] ) ) ? $_POST['message'] : ''; ?></textarea>
-		<p class="description"><?php _e( 'Enter the content of your inquire here.', $this->text_domain ); ?></p>
+		<p class="description"><?php _e( 'Enter the content of your enquiry here.', $this->text_domain ); ?></p>
 	</div>
 
 	<div class="editfield">

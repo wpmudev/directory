@@ -139,6 +139,8 @@ class Directory_Core_Main extends Directory_Core {
 	function handle_page_requests() {
 		global $wp_query;
 
+//printf('<pre>%s</pre>',print_r($wp_query, true) );
+
 		$templates = array();
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
 

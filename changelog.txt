@@ -4,6 +4,12 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.3.5 Arnold Bailey =
+* Updated wpmu-assist.php mu Plugin
+* Spelling corrections for language file
+* Stripslashes fix
+* Blank empty fields on Checkout confirm
+
 = 2.2.3.4 Arnold Bailey =
 * CustomPress 1.3.3.4
 

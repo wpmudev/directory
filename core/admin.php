@@ -266,28 +266,30 @@ class Directory_Core_Admin extends Directory_Core {
 		'shortcodes',
 		);
 
+		$params = stripslashes_deep($_POST);
+		
 		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
 		$tab = (empty($_GET['tab'])) ? 'general' : $_GET['tab']; //default tab
 
 		if($page == 'directory_settings' && in_array($tab, $valid_tabs) ) {
 
-			if ( isset( $_POST['add_role'] ) ) {
+			if ( isset( $params['add_role'] ) ) {
 				check_admin_referer('verify');
-				$name = sanitize_file_name($_POST['new_role']);
+				$name = sanitize_file_name($params['new_role']);
 				$slug = sanitize_key(preg_replace('/\W+/','_',$name) );
 				$result = add_role($slug, $name, array('read' => true) );
 				if (empty($result) ) $this->message = __('ROLE ALREADY EXISTS' , $this->text_domain);
 				else $this->message = sprintf(__('New Role "%s" Added' , $this->text_domain), $name);
 			}
 
-			if ( isset( $_POST['remove_role'] ) ) {
+			if ( isset( $params['remove_role'] ) ) {
 				check_admin_referer('verify');
-				$name = $_POST['delete_role'];
+				$name = $params['delete_role'];
 				remove_role($name);
 				$this->message = sprintf(__('Role "%s" Removed' , $this->text_domain), $name);
 			}
 
-			if(isset($_POST['save']) ) $this->save_admin_options( $_POST );
+			if(isset($params['save']) ) $this->save_admin_options( $params );
 		}
 
 		$this->render_admin( "settings-{$tab}" );
@@ -306,15 +308,17 @@ class Directory_Core_Admin extends Directory_Core {
 		'send-credits',
 		);
 
+		$params = stripslashes_deep($_POST);
+		
 		$page = (empty($_GET['page'])) ? '' : $_GET['page'] ;
 		$tab = (empty($_GET['tab'])) ? 'my-credits' : $_GET['tab']; //default tab
 
 		if($page == 'directory_credits' && in_array($tab, $valid_tabs) ) {
 			if ( $tab == 'send-credits' ) {
-				if(!empty($_POST)) check_admin_referer('verify');
-				$send_to = ( empty($_POST['manage_credits'])) ? '' : $_POST['manage_credits'];
-				$send_to_user = ( empty($_POST['manage_credits_user'])) ? '' : $_POST['manage_credits_user'];
-				$send_to_count = ( empty($_POST['manage_credits_count'])) ? '' : $_POST['manage_credits_count'];
+				if(!empty($params)) check_admin_referer('verify');
+				$send_to = ( empty($params['manage_credits'])) ? '' : $params['manage_credits'];
+				$send_to_user = ( empty($params['manage_credits_user'])) ? '' : $params['manage_credits_user'];
+				$send_to_count = ( empty($params['manage_credits_count'])) ? '' : $params['manage_credits_count'];
 
 				$credits = (is_numeric($send_to_count)) ? (intval($send_to_count)) : 0;
 
@@ -346,7 +350,7 @@ class Directory_Core_Admin extends Directory_Core {
 
 				}
 			} else {
-				if ( isset( $_POST['purchase'] ) ) {
+				if ( isset( $params['purchase'] ) ) {
 					$this->js_redirect( get_permalink($this->checkout_page_id) );
 				}
 			}

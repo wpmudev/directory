@@ -3,7 +3,7 @@
 Plugin Name: WPMU Assist
 Plugin URI: http://premium.wpmudev.org/project/classifieds
 Description: Allows single blog registration on Multisite. On registering from a blog other than the main site it saves the blog_id and sends the emails as the originating blog and on activation adds the user to the originating blog as well as the main blog.
-Version: 1.0.1
+Version: 1.0.2
 Author: Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
 License: GNU General Public License (Version 2 - GPLv2)
@@ -30,7 +30,7 @@ class WPMU_Assist{
 			$this->plugin_dir = plugin_dir_path(__FILE__);
 
 		}
-		if(defined('ASSIST_DEBUG') ) $this->debug = true;
+		if(defined('WPMU_ASSIST_DEBUG') && WPMU_ASSIST_DEBUG ) $this->debug = true;
 	}
 
 /**
@@ -40,13 +40,20 @@ class WPMU_Assist{
 	function on_template_redirect(){
 		global $blog_id;
 
-		if ($this->debug) $this->write_to_log('Template:' . $_SERVER['REQUEST_URI'] );
+		if ($this->debug) $this->write_to_log('REQUEST_URI:' . $_SERVER['REQUEST_URI'] );
 
 		//Save the incoming $blog_id for wp-signup.php
+
+		if ($this->debug) $this->write_to_log('SCRIPT_NAME:' . $_SERVER['SCRIPT_NAME'] );
+		
 		if($_SERVER['SCRIPT_NAME'] == '/wp-signup.php'
+		|| $_SERVER['SCRIPT_NAME'] == '/wp-login.php' 
 		|| $_SERVER['REQUEST_URI'] == '/register/' 
 		) {
-			if($blog_id > 1) set_site_transient('register_blog_id_'.$_SERVER['REMOTE_ADDR'], $blog_id, 60 * 60 );
+			if($blog_id > 1) {
+				if ($this->debug) $this->write_to_log('Transient: register_blog_id_'.$_SERVER['REMOTE_ADDR'] . $blog_id );
+				set_site_transient('register_blog_id_'.$_SERVER['REMOTE_ADDR'], $blog_id, 60 * 60 );
+			}
 		}
 		if ($this->debug) $this->write_to_log('Blog:' . $blog_id );
 	}
