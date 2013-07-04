@@ -950,7 +950,7 @@ class Directory_Core {
 	* @return string formatted date
 	**/
 	function format_date( $date ) {
-		return date( get_option('date_format'), $date );
+		return date_i18n( get_option('date_format'), $date );
 	}
 
 

@@ -9,7 +9,8 @@ $post_types = get_site_option('ct_custom_post_types');
 else
 $post_types = $this->post_types;
 
-$this->add_datepicker = true;
+wp_enqueue_script('jquery-ui-datepicker');
+wp_enqueue_script('jquery-ui-datepicker-lang');
 
 if ( $enable_subsite_content_types && $display_network_content_types )
 $network_post_types = get_site_option('ct_custom_post_types');
@@ -17,13 +18,13 @@ $network_post_types = get_site_option('ct_custom_post_types');
 $options = $this->get_options();
 
 //Get or initialize post type display
-$cp_post_type = empty($options['display_post_types']) ? 
+$cp_post_type = empty($options['display_post_types']) ?
 array(
-'home' => array('post_type' => array()), 
-'front_page' => array('post_type' => array() ), 
-'archive' => array('post_type' => array() ), 
-'search' => array('post_type' => array() ) 
-) 
+'home' => array('post_type' => array()),
+'front_page' => array('post_type' => array() ),
+'archive' => array('post_type' => array() ),
+'search' => array('post_type' => array() )
+)
 : $options['display_post_types'];
 
 ?>
@@ -51,13 +52,13 @@ array(
 					<span class="description"><?php _e('If you enable this option, all subsites will use and display the content types defined at the network level. ', $this->text_domain); ?></span>
 					<br /><br />
 
-<!--
+					<!--
 					<input type="radio" name="display_network_content_types" value="1" <?php checked(empty( $display_network_content_types ), false ); ?> />
 					<span class="description"><?php _e('Display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
 					<br />
 					<input type="radio" name="display_network_content_types" value="0" <?php checked( empty($display_network_content_types ), true ); ?> />
 					<span class="description"><?php _e('Do not display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
--->	
+					-->
 				</td>
 			</tr>
 		</table>

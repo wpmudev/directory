@@ -1367,7 +1367,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	function ct_in_shortcode($atts, $content=null){
 		global $post;
 		
-		$this->add_validate = true; // Need the validate script
+		wp_enqueue_script('jquery-validate');
 
 		extract( shortcode_atts( array(
 		'id' => '',
@@ -1446,7 +1446,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						break;
 					}
 					case 'datepicker': {
-						$this->add_datepicker = true; // Need datepicker script
+						wp_enqueue_script('jquery-ui-datepicker');
+						wp_enqueue_script('jquery-ui-datepicker-lang');
 						$result = $this->jquery_ui_css() . PHP_EOL;
 						$result .= sprintf('<input type="text" class="pickdate ct-field" name="%s" id="%s" value="%s" />', $id, $id, esc_attr( get_post_meta( $post->ID, $id, true ) ) ) . PHP_EOL;
 						$result .= sprintf('
@@ -1515,8 +1516,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		if ( ! empty($post_id) ) $post = get_post($post_id);
 		ob_start();
 		
-		$this->add_validate = true;
-		$this->add_datepicker = true;
+		wp_enqueue_script('jquery-validate');
 		
 		$this->display_custom_fields( do_shortcode($content), $style );
 		$result = ob_get_contents();

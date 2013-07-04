@@ -614,9 +614,7 @@ $error       = get_query_var('checkout_error');
 			$cc = $_SESSION['CC'];
 
 			foreach($cc as $key => $value) :
-			?>
-			<input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value;?>" />
-			<?php endforeach; ?>
+			?><input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value;?>" /><?php endforeach; ?>
 
 			<input type="hidden" name="billing_type" value="<?php echo $_SESSION['billing_type']; ?>" />
 			<input type="hidden" name="credits" value="<?php echo (empty($_SESSION['credits']) ) ? 0 : $_SESSION['credits']; ?>" />
@@ -734,9 +732,7 @@ $error       = get_query_var('checkout_error');
 
 			$cc = $_SESSION['CC'];
 			foreach($cc as $key => $value) :
-			?>
-			<input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value;?>" />
-			<?php endforeach; ?>
+			?><input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value;?>" /><?php endforeach; ?>
 
 			<input type="hidden" name="billing_type" value="<?php echo $_SESSION['billing_type']; ?>" />
 			<input type="hidden" name="credits" value="<?php echo empty($_SESSION['credits']) ? 0 : $_SESSION['credits']; ?>" />

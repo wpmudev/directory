@@ -176,8 +176,9 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		wp_enqueue_script( 'ct-admin-scripts', $this->plugin_url . 'ui-admin/js/ct-scripts.js', array( 'jquery' ) );
 		wp_enqueue_script('jquery-combobox');
 		wp_enqueue_style('jquery-combobox');
-		$this->add_validate = true;
-		$this->add_datepicker = true;
+		wp_enqueue_script('jquery-validate');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('jquery-ui-datepicker-lang');
 	}
 
 	/**
@@ -189,8 +190,9 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		wp_enqueue_script( 'settings-admin-scripts', $this->plugin_url . 'ui-admin/js/settings-scripts.js', array( 'jquery' ) );
 		wp_enqueue_script('jquery-combobox');
 		wp_enqueue_style('jquery-combobox');
-		$this->add_validate = true;
-		$this->add_datepicker = true;
+		wp_enqueue_script('jquery-validate');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('jquery-ui-datepicker-lang');
 	}
 
 	/**
@@ -202,8 +204,9 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		wp_enqueue_style( 'ct-admin-custom-field-styles', $this->plugin_url . 'ui-admin/css/custom-fields-styles.css' );
 		wp_enqueue_script('jquery-combobox');
 		wp_enqueue_style('jquery-combobox');
-		$this->add_validate = true;
-		$this->add_datepicker = true;
+		wp_enqueue_script('jquery-validate');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('jquery-ui-datepicker-lang');
 	}
 
 	/**

@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.3.6 = 2013-06-08 Arnold Bailey
+* Changes to JS loading
+
 = 1.3.3.4 = 2013-06-08 Arnold Bailey
 * Moved script loading to the footer so shortcodes can be scanned to see if the script is actually needed. Requires jQuery(document).ready() around script using them.
 * Fixed default theme for datepicker

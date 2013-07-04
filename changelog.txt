@@ -4,6 +4,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.3.6 Arnold Bailey =
+* Fixed date formatting to allow localization
+* Author slug incorrect if has_archive and rewrite sluga changed in BuddyPress
+* CustomPress 1.3.3.6
+
 = 2.2.3.5 Arnold Bailey =
 * Updated wpmu-assist.php mu Plugin
 * Spelling corrections for language file

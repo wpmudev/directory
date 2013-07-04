@@ -169,7 +169,10 @@ function the_dr_posted_on() {
   global $bp;
 
 	// For BuddyPress compatibility
-	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . 'listings/' : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
+	$obj = get_post_type_object('directory_listing');
+	$rewrite_slug = ($obj->has_archive) ? $obj->has_archive : '';
+	
+	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . $rewrite_slug : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
 
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
 	'meta-prep meta-prep-author',
