@@ -470,11 +470,21 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					$post_types = get_option('ct_custom_post_types');
 				}
 				$object_type = $params['object_type'];
+
 				//Set assign_terms for this associated post_type if not already includes 'post'
 				$cap_type = 'post';
+
+				global $wp_post_types;
 				foreach($object_type as $post_type){
+					//Check the customs first
 					$cap = $post_types[$post_type]['capability_type'];
-					if($cap != 'post') {
+					if( !empty($cap) && $cap != 'post') {
+						$cap_type=$cap;
+						break;
+					}
+					//No then check the builtins
+					$cap = $wp_post_types[$post_type]->capability_type;
+					if( !empty($cap) && $cap != 'post') {
 						$cap_type=$cap;
 						break;
 					}
@@ -1274,7 +1284,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 			$type       = 'checkbox';
 			$checked    = is_object_in_term( $post_id, $taxonomy, $term_id ) ? ' checked="checked"' : '';
 			$checkbox  .= str_repeat( '&ndash;&ndash;', count( get_ancestors( $term_id, $taxonomy ) ) );
-			$checkbox  .= ' <input type="' . $type . '" id="my_terms_' . $post_id . '_' . $taxonomy . '_' . $num . '" name="my_terms_[' . $post_id . '][' . $taxonomy . '][]" value="' . $term_ids[$term_id]->name . '"' . $checked . ' /><label for="attachments_' . $post_id . '_' . $taxonomy . '_' . $num . '">' . esc_html( $term_ids[$term_id]->name ) . "</label><br />\n";
+			$checkbox  .= ' <input type="' . $type . '" id="my_terms_' . $post_id . '_' . $taxonomy . '_' . $num . '" name="my_terms_[' . $post_id . '][' . $taxonomy . '][]" value="' . $term_ids[$term_id]->name . '"' . $checked . ' /><label for="attachments_' . $post_id . '_' . $taxonomy . '_' . $num . '">' . esc_html( $term_ids[$term_id]->name ) . "</label><br />\n";		 			    	 				  
 			$num++;
 			if ( count( $tree ) )
 			$checkbox = $this->media_gen_hierarchical_field( $post_id, $taxonomy, $term_ids, $tree, $checkbox, $num );
@@ -1366,7 +1376,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function ct_in_shortcode($atts, $content=null){
 		global $post;
-		
+
 		wp_enqueue_script('jquery-validate');
 
 		extract( shortcode_atts( array(
@@ -1515,9 +1525,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		if ( ! empty($post_id) ) $post = get_post($post_id);
 		ob_start();
-		
+
 		wp_enqueue_script('jquery-validate');
-		
+
 		$this->display_custom_fields( do_shortcode($content), $style );
 		$result = ob_get_contents();
 		ob_end_clean();
@@ -1745,7 +1755,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$messages = array();
 
 		$validation = array();
-		
+
 		$validation[] = "		jQuery(document).ready( function($) {";
 		$validation[] = "jQuery('#ct_custom_fields_form').closest('form').validate();"; //find the form we're validating
 

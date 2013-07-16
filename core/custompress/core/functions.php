@@ -9,3 +9,10 @@ if( ! function_exists('flush_network_rewrite_rules') ){
 	}
 }
 
+function add_taxonomy(){
+	
+	register_taxonomy_for_object_type('casting', 'portfolio');
+	
+}
+
+add_action('init', 'add_taxonomy');

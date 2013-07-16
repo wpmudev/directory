@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.3.7 = 2013-06-08 Arnold Bailey
+* changes to assign_terms processing.
+
 = 1.3.3.6 = 2013-06-08 Arnold Bailey
 * Changes to JS loading
 
