@@ -902,20 +902,27 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		|| (isset($_REQUEST['action']) && in_array($_REQUEST['action'], array( 'trash', 'untrash' ) ) )
 		)
 		return;
+		
+		$params = stripslashes_deep($_POST);
 
 		$custom_fields = $this->all_custom_fields;
-
+		$post_type = get_post_type($post_id);
+		
 		if ( !empty( $custom_fields )) {
 			foreach ( $custom_fields as $custom_field ) {
 				$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
 
-				if ( isset( $_POST[$prefix . $custom_field['field_id']] ))
-				update_post_meta( $post_id, $prefix . $custom_field['field_id'], $_POST[$prefix . $custom_field['field_id']] );
+				if ( isset( $params[$prefix . $custom_field['field_id']] ) && in_array( $post_type, $custom_field['object_type'])){
+					update_post_meta( $post_id, $prefix . $custom_field['field_id'], $params[$prefix . $custom_field['field_id']] );
+				}
+
 				//for non checked checkbox set value -1
-				elseif ( isset($_POST["post_type"]) && in_array( $_POST["post_type"], $custom_field["object_type"] ) && 'checkbox' == $custom_field['field_type'] )
-				update_post_meta( $post_id, $prefix . $custom_field['field_id'], -1 );
-				else
-				delete_post_meta( $post_id, $prefix . $custom_field['field_id'] );
+				if('checkbox' == $custom_field['field_type']){
+					if ( isset($params["post_type"]) && in_array( $params["post_type"], $custom_field["object_type"] ) )
+					update_post_meta( $post_id, $prefix . $custom_field['field_id'], -1 );
+					else
+					delete_post_meta( $post_id, $prefix . $custom_field['field_id'] );
+				}
 			}
 		}
 	}

@@ -4,6 +4,12 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.3.9 Arnold Bailey =
+* Changes cabapility for Classifieds Settings to create_users from edit_users to better handle changes in WP 3x
+
+= 2.2.3.8 Arnold Bailey =
+* CustomPress 1.3.3.8
+
 = 2.2.3.7 Arnold Bailey =
 * Fixed author overwrite
 * CustomPress 1.3.3.7

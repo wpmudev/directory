@@ -5,7 +5,7 @@ $post_types = get_post_types('','names');
 $taxonomy = $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 
 global $wp_post_types, $wp_taxonomies;
-var_dump($wp_post_types);
+//var_dump($wp_post_types);
 
 
 ?>

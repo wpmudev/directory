@@ -5,6 +5,12 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.3.9 = 2013-06-08 Arnold Bailey
+* Fix to save_custom_fields were it would delete meta data incorrectly on check boxes.
+
+= 1.3.3.8 = 2013-06-08 Arnold Bailey
+* Removed add_taxonomy function because of naem collision.
+
 = 1.3.3.7 = 2013-06-08 Arnold Bailey
 * changes to assign_terms processing.
 

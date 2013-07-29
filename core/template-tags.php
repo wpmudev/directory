@@ -143,6 +143,7 @@ function the_dr_categories_archive() {
 * @return void
 */
 function the_dr_breadcrumbs() {
+	global $wp_query;
 	$output = '';
 	$category = get_queried_object();
 	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
@@ -153,7 +154,7 @@ function the_dr_breadcrumbs() {
 
 		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
 	}
-
+	
 	$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
 
 	echo $output;

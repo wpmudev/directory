@@ -61,21 +61,46 @@ class Directory_Core_Admin extends Directory_Core {
 
 		if ( ! current_user_can('unfiltered_html') ) {
 			remove_submenu_page('edit.php?post_type=directory_listing', 'post-new.php?post_type=directory_listing' );
-			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Add New', $this->text_domain ), __( 'Add New', $this->text_domain ), 'create_listings', 'listings_add', array( &$this, 'redirect_add' ) );
+			add_submenu_page( 
+			'edit.php?post_type=directory_listing', 
+			__( 'Add New', $this->text_domain ), 
+			__( 'Add New', $this->text_domain ), 
+			'create_listings', 'listings_add', 
+			array( &$this, 'redirect_add' ) );
 		}
 
 		if ( ( isset( $opts['general']['show_getting_started'] ) && '1' == $opts['general']['show_getting_started'] ) || !$this->_getting_started_complete() ) {
-			$menu_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Getting Started', $this->text_domain ), __( 'Getting Started', $this->text_domain ), 'manage_options', 'dr-get_started', array( $this, 'create_getting_started_page' ) );
+			
+			$menu_page = add_submenu_page( 
+			'edit.php?post_type=directory_listing', 
+			__( 'Getting Started', $this->text_domain ), 
+			__( 'Getting Started', $this->text_domain ), 
+			'manage_options', 
+			'dr-get_started', 
+			array( $this, 'create_getting_started_page' ) );
+			
 			// Hook styles
 			//add_action( 'admin_print_styles-' .  $menu_page, array( &$this, 'enqueue_styles' ) );
 		}
-		$settings_page = add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Settings', $this->text_domain ), __( 'Settings', $this->text_domain ), 'edit_users', 'directory_settings', array( &$this, 'handle_settings_page_requests' ) );
+		
+		$settings_page = add_submenu_page( 
+		'edit.php?post_type=directory_listing', 
+		__( 'Directory Settings', $this->text_domain ), 
+		__( 'Settings', $this->text_domain ), 
+		'create_users', //create_users so on multisite you can turn on and off Settings with the Admin add users switch
+		'directory_settings', array( &$this, 
+		'handle_settings_page_requests' ) );
 
 		add_action( 'admin_print_scripts-' .  $settings_page, array( &$this, 'on_enqueue_scripts' ) );
 		//@todo striaghten out style and script loads.
 
 		if($this->use_credits	&& (current_user_can('manage_options') || $this->use_paypal || $this->authorizenet ) ){
-			add_submenu_page( 'edit.php?post_type=directory_listing', __( 'Directory Credits', $this->text_domain ), __( 'Credits', $this->text_domain ), 'read', 'directory_credits' , array( &$this, 'handle_credits_page_requests' ) );
+			add_submenu_page( 
+			'edit.php?post_type=directory_listing', 
+			__( 'Directory Credits', $this->text_domain ), 
+			__( 'Credits', $this->text_domain ), 
+			'read', 'directory_credits' , 
+			array( &$this, 'handle_credits_page_requests' ) );
 		}
 	}
 
