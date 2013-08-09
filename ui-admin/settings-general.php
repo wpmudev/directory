@@ -144,9 +144,16 @@ $options = $this->get_options('general');
 			<div class="inside">
 				<table class="form-table">
 					<tr>
+						<th><label for="field_image_req"><?php _e( 'Image field:', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="checkbox" id="field_image_req" name="field_image_req" value="1" <?php checked( isset( $options['field_image_req'] ) && 1 == $options['field_image_req'] ); ?> />
+							<span class="description"><?php _e( 'not required', $this->text_domain ); ?></span>
+						</td>
+					</tr>
+					<tr>
 						<th><label for="media_manager"><?php _e( 'Media manager:', $this->text_domain ); ?></label></th>
 						<td>
-							<input type="checkbox" id="media_manager" name="media_manager" value="1" <?php echo ( isset( $options['media_manager'] ) && 1 == $options['media_manager'] ) ? 'checked' : ''; ?> />
+							<input type="checkbox" id="media_manager" name="media_manager" value="1" <?php checked( isset( $options['media_manager'] ) && 1 == $options['media_manager'] ); ?> />
 							<span class="description"><?php _e( 'enable full media manager for feature image uploads', $this->text_domain ); ?></span>
 						</td>
 					</tr>

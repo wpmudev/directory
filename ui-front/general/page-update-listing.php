@@ -90,13 +90,15 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 		<?php if(post_type_supports('directory_listing','thumbnail') && current_theme_supports('post-thumbnails') ): ?>
 		<div class="editfield">
-			
+
 			<?php if(empty($options['media_manager']) ): ?>
 
 			<?php if(has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?><br />
 			<script type="text/javascript">js_translate.image_chosen = '<?php _e("Feature Image Chosen", $this->text_domain); ?>';</script>
 			<span class="upload-button">
-				<?php $class = (empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
+
+				<?php $class = ( empty($options['field_image_req']) && !has_post_thumbnail() ) ? 'required' : ''; ?>
+
 				<input type="file" name="feature_image" size="1" id="image" class="<?php echo $class; ?>" />
 				<button type="button" class="button"><?php _e('Set Feature Image', $this->text_domain); ?></button>
 			</span>
@@ -225,5 +227,10 @@ $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_dat
 
 			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
+		<script type="text/javascript">
+			jQuery(document).ready( function($) {
+				$('#title').closest('form').validate(); //find the form we're validating
+			});
+		</script>
 	</form>
 </div>

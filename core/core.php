@@ -125,6 +125,7 @@ class Directory_Core {
 		add_filter( 'author_link', array(&$this, 'on_author_link'));
 		add_filter( 'login_redirect', array(&$this, 'on_login_redirect'), 10, 3);
 		add_filter( 'logout_url', array(&$this, 'on_logout_url'), 10, 2);
+		add_filter('admin_post_thumbnail_html', array(&$this,'on_admin_post_thumbnail_html') );
 
 
 		//Shortcodes
@@ -1188,36 +1189,22 @@ class Directory_Core {
 		return $result;
 	}
 
-	function get_post_image_link($post_id = 0){
+	/**
+	*  on_admin_post_thumbnail_html adds a hidden required field if the feature image is empty
+	*
+	*/
+	function on_admin_post_thumbnail_html($content = ''){
 
-		if ( ! ( post_type_supports( 'directory_listing', 'thumbnail' )
-		&& current_theme_supports( 'post-thumbnails', 'directory_listing' ) ) )
-		return '';
+		if(get_post_type() != 'directory_listing') return $content;
 
-		ob_start();
-		?>
-		<div id="postimagediv">
-			<div class="inside">
-				<?php
+		$options = $this->get_options('general');
+		$required = empty($options['field_image_req']);
 
-				$html = '<p><a class="thickbox" href="' . esc_attr(admin_url() . "/media-upload.php?post_id={$post_id}&type=image&TB_iframe=1&width=640&height=510") . '" id="set-post-thumbnail" >' . esc_html__( 'Set Featured Image') . '</a></p>';
+		if( !$required || (stripos($content, 'set-post-thumbnail') === false) ) return $content;
 
-				if(has_post_thumbnail($post_id)){
-					$html = get_the_post_thumbnail($post_id, array(200,150));
-					$ajax_nonce = wp_create_nonce( "set_post_thumbnail-{$post_id}" );
-					$html .= '<p class="hide-if-no-js"><a href="#" id="remove-post-thumbnail" onclick="WPRemoveThumbnail(\'' . $ajax_nonce . '\');return false;">' . esc_html__( 'Remove featured image' ) . '</a></p>';
-				}
-				echo $html;
+		$content = str_replace('<a', '<input type="text" style="visibility: hidden;width:0;" value="" class="required" /><a', $content);
 
-				?>
-
-			</div>
-		</div>
-		<?php
-		$result = ob_get_contents();
-		ob_end_clean();
-
-		return apply_filters( 'admin_post_thumbnail_html', $result );
+		return $content;
 	}
 
 	/**

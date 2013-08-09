@@ -4,6 +4,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.4 Arnold Bailey =
+* Fixed problem with required images switch.
+* Removed explicit author setting on saving post. Sometimes set the wrong author.
+* Changed signin to better handle Buddypress registration.
+
 = 2.2.3.9 Arnold Bailey =
 * Changes cabapility for Classifieds Settings to create_users from edit_users to better handle changes in WP 3x
 

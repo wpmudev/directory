@@ -31,7 +31,13 @@ if(is_multisite() ){
 	<ul class="dr_tabs">
 		<li class="dr_active"><a href="#tab1_login"><?php _e('Login', $this->text_domain); ?></a></li>
 		<?php if($can_register): ?>
+
+		<?php if(isset($bp) ): ?>
+		<li><a href="<?php echo site_url('wp-login?action=register'); ?>"><?php _e('Register Account', $this->text_domain); ?></a></li>
+		<?php else: ?>
 		<li><a href="#tab2_login"><?php _e('New Account', $this->text_domain); ?></a></li>
+		<?php endif; ?>
+
 		<?php endif; ?>
 		<li><a href="#tab3_login"><?php _e('Forgot?', $this->text_domain); ?></a></li>
 	</ul>
