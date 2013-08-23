@@ -32,10 +32,6 @@ class DR_Ratings {
 		add_action( 'wp_ajax_nopriv_sr_save_vote', array( &$this, 'handle_ajax_requests' ) );
 	}
 
-	function DR_Ratings() {
-		$this->__construct();
-	}
-
 	/**
 	* Hook class methods.
 	*

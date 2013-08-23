@@ -23,8 +23,6 @@ class CustomPress_Core {
 	/** @public string $options_name The options name */
 	public $options_name = 'cp_options';
 
-	function CustomPress_Core() {__construct(); }
-
 	function __construct(){
 		add_action( 'plugins_loaded', array( &$this, 'on_plugins_loaded' ), 0 );
 

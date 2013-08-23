@@ -22,8 +22,6 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	/** @public boolean Flag whether the users have the ability to declair post type for their own blogs */
 	public $enable_subsite_content_types = true;
 
-	function CustomPress_Core_Admin() { __construct(); }
-
 	function __construct(){
 
 		parent::__construct();

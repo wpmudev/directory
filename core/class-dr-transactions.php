@@ -38,8 +38,6 @@ class DR_Transactions{
 	'authorizenet' => array('transactions' => array(), 'profile_id' => ''),
 	);
 
-	function DR_Transactions($user_id = 0, $blogid=0) { __construct($user_id, $blogid); }
-
 	function __construct($user_id = 0, $blogid=0){
 		global $blog_id;
 

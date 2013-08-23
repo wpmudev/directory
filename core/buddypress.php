@@ -12,8 +12,6 @@ class Directory_Core_Buddypress extends Directory_Core {
 	* @return void
 	**/
 
-	function Directory_Core_Buddypress() { __construct();}
-
 	function __construct(){
 
 		parent::__construct(); //Get the inheritance right
@@ -193,12 +191,12 @@ class Directory_Core_Buddypress extends Directory_Core {
 		//Component add-listing page
 		elseif ( $bp->current_component == $this->directory_page_slug && $bp->current_action == 'add-listing' ) {
 
-//			//Are we adding a Listing?
-//			if(! $this->use_free
-//			&& ! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
-//				wp_redirect( get_permalink($this->signup_page_id) );
-//				exit;
-//			}
+			//			//Are we adding a Listing?
+			//			if(! $this->use_free
+			//			&& ! (current_user_can('create_listings') && current_user_can('publish_listings') ) ) {
+			//				wp_redirect( get_permalink($this->signup_page_id) );
+			//				exit;
+			//			}
 
 			if ( isset( $_POST['update_listing'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'verify' ) ) {
 
@@ -297,7 +295,10 @@ class Directory_Core_Buddypress extends Directory_Core {
 
 		$logged_url = trailingslashit($bp->loggedin_user->domain) . $this->directory_page_slug . '/';
 
-		if ( $bp->current_component == $this->directory_page_slug && $bp->current_action == '' ) {
+		if(is_feed()){
+			return;
+		}
+		elseif ( $bp->current_component == $this->directory_page_slug && $bp->current_action == '' ) {
 			$this->process_page_requests(); return;
 		}
 		elseif ( is_post_type_archive('directory_listing') ) {

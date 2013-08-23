@@ -17,8 +17,6 @@ class DR_Meta{
 
 	);
 
-	function DR_Meta($id = 0){ __construct($id); }
-
 	function __construct($id = 0){
 		global $post_id;
 

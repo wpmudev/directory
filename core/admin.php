@@ -16,8 +16,6 @@ class Directory_Core_Admin extends Directory_Core {
 	/**
 	* Constructor.
 	*/
-	function Directory_Core_Admin() { __construct(); }
-
 	function __construct(){
 
 		parent::__construct();

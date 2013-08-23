@@ -11,9 +11,6 @@ class Directory_Core_Main extends Directory_Core {
 	*
 	* @return void
 	**/
-
-	function Directory_Core_Main() { __construct();}
-
 	function __construct(){
 
 		parent::__construct(); //Get the inheritance right
@@ -139,20 +136,23 @@ class Directory_Core_Main extends Directory_Core {
 	function handle_page_requests() {
 		global $wp_query;
 
-//printf('<pre>%s</pre>',print_r($wp_query, true) );
+		//printf('<pre>%s</pre>',print_r($wp_query, true) );
 
 		$templates = array();
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
 
-		//Check if a custom template is selected, if not or not a page, default to the one selected for the directory_listing virtual page. 
+		//Check if a custom template is selected, if not or not a page, default to the one selected for the directory_listing virtual page.
 		$id = get_queried_object_id();
 		if(empty($id) ) $id = $this->directory_page_id;
 		$slug = get_page_template_slug($id);
 		if(empty($slug) ) $page_template = get_page_template();
 		else $page_template = locate_template(array($slug, 'page.php', 'index.php') );
 
+		if(is_feed()){
+			return;
+		}
 		//load proper theme for home listing page
-		if ( is_home() ) {
+		elseif ( is_home() ) {
 			$templates[] = 'home-listing.php';
 
 			//if custom template exists load it
@@ -446,7 +446,7 @@ class Directory_Core_Main extends Directory_Core {
 	* including JS/CSS
 	**/
 	function on_enqueue_scripts() {
-		
+
 		if(is_page($this->add_listing_page_id) || is_page($this->edit_listing_page_id)) {
 			wp_enqueue_script('thickbox');
 			wp_enqueue_style('thickbox');

@@ -100,8 +100,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*
 	* @return void
 	*/
-	function CustomPress_Content_Types() { __construct(); }
-
 	function __construct(){
 
 		parent::__construct();

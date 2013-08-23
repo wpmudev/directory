@@ -80,8 +80,6 @@ class Directory_Core {
 	/**
 	* Constructor.
 	*/
-	function Directory_Core() { __construct(); }
-
 	function __construct(){
 
 		//Default capability map for Listings
@@ -475,7 +473,7 @@ class Directory_Core {
 	* @return void
 	**/
 	function create_default_pages() {
-		
+
 		/* Create neccessary pages */
 		$post_content = __('Virtual page. Editing this page won\'t change anything.', $this->text_domain);
 
@@ -924,7 +922,7 @@ class Directory_Core {
 		global $wp_query, $post;
 
 		//filter out nav titles
-		if ($post->ID != $id )
+		if ( !is_object($post) || ($post->ID != $id) )
 		return $title;
 
 		//taxonomy pages
@@ -1342,7 +1340,7 @@ add_action('plugins_loaded', 'dr_on_plugins_loaded');
 function dr_on_plugins_loaded(){
 	if(is_admin()){ 	//Are we admin
 		include_once DR_PLUGIN_DIR . 'core/admin.php';
-		include_once DR_PLUGIN_DIR . 'core/tutorial.php';
+		//include_once DR_PLUGIN_DIR . 'core/tutorial.php';
 		require_once DR_PLUGIN_DIR . 'core/contextual_help.php';
 	}
 	elseif(defined('BP_VERSION')){ //Are we BuddyPress

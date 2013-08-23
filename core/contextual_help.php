@@ -15,10 +15,6 @@ class DR_ContextualHelp {
     private $text_domain = DR_TEXT_DOMAIN;
 
 
-    function DR_ContextualHelp() {
-        __construct();
-    }
-
     /**
      * PHP 5 constructor
      **/

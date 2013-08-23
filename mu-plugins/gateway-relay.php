@@ -42,8 +42,6 @@ class Gateway_Relay{
 	public $postdata = '';
 	public $source = '';
 
-	function Gateway_Relay(){__construct();}
-
 	function __construct(){
 
 		add_action( 'wp_ajax_nopriv_gateway_relay', array( &$this, 'process' ) );

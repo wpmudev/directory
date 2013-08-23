@@ -5,6 +5,9 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.4.1 = 2013-08-23 Arnold Bailey
+* Removed PHP 4 type constructors which now cause Warnings
+
 = 1.3.3.9 = 2013-06-08 Arnold Bailey
 * Fix to save_custom_fields were it would delete meta data incorrectly on check boxes.
 

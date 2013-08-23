@@ -51,8 +51,6 @@ class Paypal_Express_Gateway {
 	/**
 	* Constructor.
 	*/
-	function Paypal_Express_Gateway( $options = null ) { __construct($options); }
-
 	function __construct($options = null) {
 		$this->init_vars( $options );
 	}

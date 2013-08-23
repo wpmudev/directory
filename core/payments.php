@@ -50,9 +50,6 @@ class DR_Payments{
 	/**
 	* Constructor.
 	*/
-
-	function DR_Payments() { __construct(); }
-
 	function __construct() {
 		global $Directory_Core;
 
