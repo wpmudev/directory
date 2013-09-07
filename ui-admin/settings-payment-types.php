@@ -175,7 +175,7 @@ $authorizenet = (empty($options['authorizenet']) ) ? array() : $options['authori
 							<label for="pp_payment_url"><?php _e( 'Redirect URL on Success:', $this->text_domain ) ?></label>
 						</th>
 						<td>
-							<input type="text" name="payapl[payment_url]" id="pp_payment_url" value="<?php echo (empty($paypal['payment_url']) ) ? '' : $paypal['payment_url']; ?>" size="50" />
+							<input type="text" name="paypal[payment_url]" id="pp_payment_url" value="<?php echo (empty($paypal['payment_url']) ) ? '' : $paypal['payment_url']; ?>" size="50" />
 							<br /><span class="description"><?php _e( 'by default to internal success page', $this->text_domain ) ?></span>
 						</td>
 					</tr>

@@ -96,11 +96,13 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	function manage_cf_columns( $column_name, $post_it ) {
 
 		if (is_network_admin() ){
-			if ( $column_name == $this->network_custom_fields[$column_name]['field_id']) {
+			if ( isset($this->network_custom_fields[$column_name]) 
+			&& $column_name == $this->network_custom_fields[$column_name]['field_id']) {
 				$custom_field = $this->network_custom_fields[$column_name];
 			}
 		} else {
-			if ( $column_name == $this->custom_fields[$column_name]['field_id']) {
+			if ( isset($this->network_custom_fields[$column_name]) 
+			&& $column_name == $this->custom_fields[$column_name]['field_id']) {
 				$custom_field = $this->custom_fields[$column_name];
 			}
 

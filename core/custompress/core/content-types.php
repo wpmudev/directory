@@ -913,14 +913,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				if ( isset( $params[$prefix . $custom_field['field_id']] ) && in_array( $post_type, $custom_field['object_type'])){
 					update_post_meta( $post_id, $prefix . $custom_field['field_id'], $params[$prefix . $custom_field['field_id']] );
 				}
-
-				//for non checked checkbox set value -1
-				if('checkbox' == $custom_field['field_type']){
-					if ( isset($params["post_type"]) && in_array( $params["post_type"], $custom_field["object_type"] ) )
-					update_post_meta( $post_id, $prefix . $custom_field['field_id'], -1 );
-					else
-					delete_post_meta( $post_id, $prefix . $custom_field['field_id'] );
-				}
 			}
 		}
 	}

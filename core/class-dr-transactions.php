@@ -252,7 +252,9 @@ class DR_Transactions{
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];
 				$user = get_userdata($this->user_id);
-				$user->set_role($member_role);
+				if( !user_can($user, 'administrator') ){
+					$user->set_role($member_role);
+				}
 
 			}
 
@@ -326,8 +328,9 @@ class DR_Transactions{
 				$member_role = $this->get_options('general');
 				$member_role = $member_role['member_role'];
 				$user = get_userdata($this->user_id);
-				$user->set_role($member_role);
-
+				if( !user_can($user, 'administrator') ){
+					$user->set_role($member_role);
+				}
 			}
 
 			//			print_r($value.'');

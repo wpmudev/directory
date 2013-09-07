@@ -4,6 +4,11 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.4.2 Arnold Bailey =
+* Fixed glitch where recurring only payment would hide purchase button.
+* Changes to checkbox custom field code.
+* Corrections to the return url for PayPal
+
 = 2.2.4.1 Arnold Bailey =
 * Removed PHP 4 type constructors which now cause Warnings
 * Fixed Feeds for custom types so all are sent instead of just the first one.
