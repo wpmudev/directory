@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.4.3 Arnold Bailey =
+* customPress 1.3.4.3
+
 = 2.2.4.2 Arnold Bailey =
 * Fixed glitch where recurring only payment would hide purchase button.
 * Changes to checkbox custom field code.
