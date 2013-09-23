@@ -58,12 +58,8 @@ $editor_settings =   array(
 );
 
 $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_data['post_content'];
-/*
-<script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
 
-<script type="text/javascript" src="<?php echo admin_url('js/post.js'); ?>" ></script>
-*/
-
+wp_enqueue_script('set-post-thumbnail');
 ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>

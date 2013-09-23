@@ -1198,7 +1198,7 @@ class Directory_Core {
 		$options = $this->get_options('general');
 		$required = empty($options['field_image_req']);
 
-		if( !$required || (stripos($content, 'set-post-thumbnail') === false) ) return $content;
+		if( !$required || (stripos($content, 'remove-post-thumbnail') !== false) ) return $content;
 
 		$content = str_replace('<a', '<input type="text" style="visibility: hidden;width:0;" value="" class="required" /><a', $content);
 

@@ -94,6 +94,7 @@ $error       = get_query_var('checkout_error');
 						$bastr .= __( ' per ', $this->text_domain );
 						$bastr .= ( ! empty( $opset['billing_frequency'] ) && $opset['billing_frequency'] != 1 ) ? $opset['billing_frequency'] . ' ' : '';
 						$bastr .= empty( $opset['billing_period'] ) ? '' : $opset['billing_period'];
+						$bastr .= ($opset['billing_frequency'] > 1) ? __(' period', $this->text_domain) : '';
 						echo $bastr;
 						?>
 					</span>

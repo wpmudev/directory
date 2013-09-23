@@ -4,6 +4,10 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
  
 == Changelog ==
 
+= 2.2.4.4 Arnold Bailey =
+* Fixed incorrect required message on Feature image on the backend;
+* Added "eriod to price display for things like 4 Month => 4 Month period.
+
 = 2.2.4.3 Arnold Bailey =
 * customPress 1.3.4.3
 
