@@ -14,7 +14,8 @@
 * @access public
 * @return void
 */
-function the_dr_categories_home( $echo = true ) {
+function the_dr_categories_home( $echo = true ){
+
 	//get plugin options
 	$options  = get_option( DR_OPTIONS_NAME );
 
@@ -37,158 +38,235 @@ function the_dr_categories_home( $echo = true ) {
 
 	$categories = get_categories( $args );
 
-	$output = '<div id="dr_list_categories" class="dr_list_categories" >' . "\n";
+	$output = '<div id="dr_list_categories" class="listing_category" >' . "\n";
 	$output .= "<ul>\n";
 
-	foreach( $categories as $category ) {
-		$count_items = 0;
+	foreach( $categories as $category ){
 
 		$output .= "<li>\n";
 		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
+		
+		$output .= '<div class="term-list">';
 
 		$args = array(
-		'parent'       => $category->term_id,
-		'orderby'      => 'name',
-		'order'        => 'ASC',
-		'hide_empty'   => $hide_empty_sub_cat,
-		'hierarchical' => 1,
-		'number'       => $sub_cat_num,
-		'taxonomy'     => $category->taxonomy,
-		'pad_counts'   => 1
+		'show_option_all'    => '',
+		'orderby'            => 'name',
+		'order'              => 'ASC',
+		'style'              => 'none',
+		'show_count'         => 1,
+		'hide_empty'         => $hide_empty_sub_cat,
+		'use_desc_for_title' => 1,
+		'child_of'           => $category->term_id,
+		'feed'               => '',
+		'feed_type'          => '',
+		'feed_image'         => '',
+		'exclude'            => '',
+		'exclude_tree'       => '',
+		'include'            => '',
+		'hierarchical'       => true,
+		'title_li'           => '',
+		'show_option_none'   => '', //sprintf('<span class="dr-empty">%s</span>', __('No categories', DR_TEXT_DOMAIN ) ),
+		'number'             => $sub_cat_num,
+		'echo'               => 0,
+		'depth'              => 1,
+		'current_category'   => 0,
+		'pad_counts'         => 1,
+		'taxonomy'           => $category->taxonomy,
+		'walker'             => null
 		);
+		$output .=   wp_list_categories($args);
 
-		$sub_categories = get_categories( $args );
+		$output .= "</div><!-- .term-list -->\n";
 
-		foreach ( $sub_categories as $sub_category ) {
-			$output .= '<div class="term"><a href="' . get_term_link( $sub_category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $sub_category->name . '" >' . $sub_category->name . "</a> <span>({$sub_category->count})</span></div>\n";
-			$count_items++;
-		}
-
-		if ( isset( $options['general']['display_listing'] ) && '1' == $options['general']['display_listing']  )
-		{
-			if ( $sub_cat_num > $count_items ) {
-				$args = array(
-				'numberposts'       => $sub_cat_num - $count_items,
-				'post_type'         => 'directory_listing',
-				'category'  => $category->slug,
-				);
-
-				$my_posts = get_posts( $args );
-
-				foreach( $my_posts as $post ) {
-					$output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . $post->post_title . '" >' . $post->post_title . "</a><br />\n";
-					$count_items++;
-					if ( $sub_cat_num < $count_items ) break;
-				}
-			}
-		}
 		$output .= "</li>\n";
+
 	}
 
 	$output .= "</ul>\n";
-	$output .= "</div>\n";
-	$output .= '<div class="clear"></div>' . "\n";
+	$output .= "</div><!-- .dr_list_categories -->\n";
 
-	if ( $echo )
-	echo $output;
-	else
 	return $output;
 }
 
-/**
-* the_dir_categories_archive
-*
-* @access public
-* @return void
-*/
-function the_dr_categories_archive() {
 
-	//get related taxonomies
-	$taxonomies = array_values( get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1 ) ) );
-	$args = array(
-	'parent'       => get_queried_object_id(),
-	'orderby'      => 'name',
-	'order'        => 'ASC',
-	'hide_empty'   => 0,
-	'hierarchical' => 1,
-	'number'       => 10,
-	'taxonomy'     => $taxonomies,
-	'pad_counts'   => 1
-	);
-
-	$categories = get_categories( $args );
-
-	$i = 1;
-	$output = '<table><tr><td>';
-
-	foreach( $categories as $category ) {
-
-		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
-
-		if ( $i % 5 == 0 )
-		$output .= '</td><td>';
-
-		$i++;
-	}
-
-	$output .= '</td></tr></table>';
-
-	echo $output;
-}
-
-/**
-* the_dir_breadcrumbs
-*
-* @access public
-* @return void
-*/
-function the_dr_breadcrumbs() {
-	global $wp_query;
-	$output = '';
-	$category = get_queried_object();
-	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
-	$category_parent_ids = array_reverse( $category_parent_ids );
-
-	foreach ( $category_parent_ids as $category_parent_id ) {
-		$category_parent = get_term( $category_parent_id, $category->taxonomy );
-
-		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
-	}
-	
-	//$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
-
-	echo $output;
-}
-
-/**
-* Prints HTML with meta information for the current post—date/time and author.
-*
-* @access public
-* @return void
-*/
-function the_dr_posted_on() {
-  global $bp;
-
-	// For BuddyPress compatibility
-	$obj = get_post_type_object('directory_listing');
-	$rewrite_slug = ($obj->has_archive) ? $obj->has_archive : '';
-	
-	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . $rewrite_slug : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
-
-	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
-	'meta-prep meta-prep-author',
-	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
-	get_permalink(),
-	esc_attr( get_the_time() ),
-	get_the_date()
-	),
-	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-	$alink,
-	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
-	get_the_author()
-	)
-	);
-}
+//function xthe_dr_categories_home( $echo = true ) {
+//	//get plugin options
+//	$options  = get_option( DR_OPTIONS_NAME );
+//
+//	$cat_num                = ( isset( $options['general']['count_cat'] ) && is_numeric( $options['general']['count_cat'] ) && 0 < $options['general']['count_cat'] ) ? $options['general']['count_cat'] : 10;
+//	$sub_cat_num            = ( isset( $options['general']['count_sub_cat'] ) && is_numeric( $options['general']['count_sub_cat'] ) && 0 < $options['general']['count_sub_cat'] ) ? $options['general']['count_sub_cat'] : 5;
+//	$hide_empty_sub_cat     = ( isset( $options['general']['hide_empty_sub_cat'] ) && is_numeric( $options['general']['hide_empty_sub_cat'] ) && 0 < $options['general']['hide_empty_sub_cat'] ) ? $options['general']['hide_empty_sub_cat'] : 0;
+//
+//	$taxonomies = array_values(get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1)));
+//
+//	$args = array(
+//	'parent'       => 0,
+//	'orderby'      => 'name',
+//	'order'        => 'ASC',
+//	'hide_empty'   => 0,
+//	'hierarchical' => 1,
+//	'number'       => $cat_num,
+//	'taxonomy'     => $taxonomies,
+//	'pad_counts'   => 1
+//	);
+//
+//	$categories = get_categories( $args );
+//
+//	$output = '<div id="dr_list_categories" class="dr_list_categories" >' . "\n";
+//	$output .= "<ul>\n";
+//
+//	foreach( $categories as $category ) {
+//		$count_items = 0;
+//
+//		$output .= "<li>\n";
+//		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
+//
+//		$args = array(
+//		'parent'       => $category->term_id,
+//		'orderby'      => 'name',
+//		'order'        => 'ASC',
+//		'hide_empty'   => $hide_empty_sub_cat,
+//		'hierarchical' => 1,
+//		'number'       => $sub_cat_num,
+//		'taxonomy'     => $category->taxonomy,
+//		'pad_counts'   => 1
+//		);
+//
+//		$sub_categories = get_categories( $args );
+//		
+//		$output .= '<div class="term-list">';	
+//		
+//		foreach ( $sub_categories as $sub_category ) {
+//			$output .= '<div class="term"><a href="' . get_term_link( $sub_category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $sub_category->name . '" >' . $sub_category->name . "</a> <span>({$sub_category->count})</span></div>\n";
+//			$count_items++;
+//		}
+//		$output .= '</div>';	
+//
+//		if ( isset( $options['general']['display_listing'] ) && '1' == $options['general']['display_listing']  )
+//		{
+//			if ( $sub_cat_num > $count_items ) {
+//				$args = array(
+//				'numberposts'       => $sub_cat_num - $count_items,
+//				'post_type'         => 'directory_listing',
+//				'category'  => $category->slug,
+//				);
+//
+//				$my_posts = get_posts( $args );
+//
+//				foreach( $my_posts as $post ) {
+//					$output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . $post->post_title . '" >' . $post->post_title . "</a><br />\n";
+//					$count_items++;
+//					if ( $sub_cat_num < $count_items ) break;
+//				}
+//			}
+//		}
+//		$output .= "</li>\n";
+//	}
+//
+//	$output .= "</ul>\n";
+//	$output .= "</div>\n";
+//	$output .= '<div class="clear"></div>' . "\n";
+//
+//	if ( $echo )
+//	echo $output;
+//	else
+//	return $output;
+//}
+//
+///**
+//* the_dir_categories_archive
+//*
+//* @access public
+//* @return void
+//*/
+//function the_dr_categories_archive() {
+//
+//	//get related taxonomies
+//	$taxonomies = array_values( get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1 ) ) );
+//	$args = array(
+//	'parent'       => get_queried_object_id(),
+//	'orderby'      => 'name',
+//	'order'        => 'ASC',
+//	'hide_empty'   => 0,
+//	'hierarchical' => 1,
+//	'number'       => 10,
+//	'taxonomy'     => $taxonomies,
+//	'pad_counts'   => 1
+//	);
+//
+//	$categories = get_categories( $args );
+//
+//	$i = 1;
+//	$output = '<table><tr><td>';
+//
+//	foreach( $categories as $category ) {
+//
+//		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
+//
+//		if ( $i % 5 == 0 )
+//		$output .= '</td><td>';
+//
+//		$i++;
+//	}
+//
+//	$output .= '</td></tr></table>';
+//
+//	echo $output;
+//}
+//
+///**
+//* the_dir_breadcrumbs
+//*
+//* @access public
+//* @return void
+//*/
+//function the_dr_breadcrumbs() {
+//	global $wp_query;
+//	$output = '';
+//	$category = get_queried_object();
+//	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
+//	$category_parent_ids = array_reverse( $category_parent_ids );
+//
+//	foreach ( $category_parent_ids as $category_parent_id ) {
+//		$category_parent = get_term( $category_parent_id, $category->taxonomy );
+//
+//		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
+//	}
+//	
+//	//$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
+//
+//	echo $output;
+//}
+//
+///**
+//* Prints HTML with meta information for the current post—date/time and author.
+//*
+//* @access public
+//* @return void
+//*/
+//function the_dr_posted_on() {
+//  global $bp;
+//
+//	// For BuddyPress compatibility
+//	$obj = get_post_type_object('directory_listing');
+//	$rewrite_slug = ($obj->has_archive) ? $obj->has_archive : '';
+//	
+//	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . $rewrite_slug : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
+//
+//	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
+//	'meta-prep meta-prep-author',
+//	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
+//	get_permalink(),
+//	esc_attr( get_the_time() ),
+//	get_the_date()
+//	),
+//	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+//	$alink,
+//	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
+//	get_the_author()
+//	)
+//	);
+//}
 
 /**
 * Prints HTML with meta information for the current post (category, tags and permalink).

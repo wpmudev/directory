@@ -106,7 +106,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								$date_format = (empty($date_format)) ? $this->get_options('date_format') : $date_format;
 								$date_format = (is_array($date_format)) ? 'mm/dd/yy' : $date_format;
 
-								$this->jquery_ui_css(); //Load the current ui theme css
+//								$this->jquery_ui_css(); //Load the current ui theme css
 
 								?>
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>

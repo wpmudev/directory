@@ -9,6 +9,7 @@ $post_types = get_site_option('ct_custom_post_types');
 else
 $post_types = $this->post_types;
 
+wp_enqueue_style('jquery-ui-datepicker');
 wp_enqueue_script('jquery-ui-datepicker');
 wp_enqueue_script('jquery-ui-datepicker-lang');
 
@@ -247,11 +248,11 @@ array(
 					$datepicker_theme = $this->get_options('datepicker_theme');
 					$datepicker_theme = (is_array($datepicker_theme)) ? 'excite-bike' : $datepicker_theme;
 
-					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
+//					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
 
 					$themes = glob($this->plugin_dir . 'datepicker/css/*', GLOB_ONLYDIR);
 					?>
-					<select id="datepicker_theme" name="datepicker_theme" style="width:230px" onchange="jQuery('#custom_date_format').val(''); update_stylesheet('<?php echo $this->plugin_url . 'datepicker/css/'; ?>' + this.options[this.selectedIndex].value + '/datepicker.css'); " >
+					<select id="datepicker_theme" name="datepicker_theme" style="width:230px" onchange="jQuery('#custom_date_format').val(''); jQuery('#jquery-ui-datepicker-css').prop('href', '<?php echo $this->plugin_url . 'datepicker/css/'; ?>' + this.options[this.selectedIndex].value + '/datepicker.css'); " >
 						<?php
 						foreach($themes as $theme){
 							$theme = basename($theme);

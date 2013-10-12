@@ -5,6 +5,12 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.4.5 = 2013-10-02 Arnold Bailey
+* Refactored lazy loading of datepicker CSS
+
+= 1.3.4.4 = 2013-09-30 Arnold Bailey
+* Fixed glitch in custom column display in Admin.
+
 = 1.3.4.3 = 2013-09-15 Arnold Bailey
 * Fix for catching when all checkboxes are empty
 

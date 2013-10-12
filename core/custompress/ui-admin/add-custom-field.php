@@ -98,7 +98,7 @@ $post_types = get_post_types('','names');
 								$date_format = (empty($_POST['field_date_format'])) ? $this->get_options('date_format') : $_POST['field_date_format'];
 								$date_format = (is_array($date_format)) ? 'mm/dd/yy' : $date_format;
 
-								$this->jquery_ui_css(); //Load the current ui theme css
+//								$this->jquery_ui_css(); //Load the current ui theme css
 
 								?>
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>

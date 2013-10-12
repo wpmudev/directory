@@ -71,13 +71,17 @@ class CustomPress_Core {
 
 		// Dynamic CSS switching for date picker
 		wp_register_script('dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), 'CP-'.CP_VERSION);
-		wp_enqueue_script('dynamic-css');
+		//wp_enqueue_script('dynamic-css');
 
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
 		wp_register_script('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array('jquery'), '1.8.18');
 		wp_register_style('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/style.css", array(), '0.5');
+
+		$theme = $this->get_options('datepicker_theme');
+		$theme = (empty($theme) ) ? 'excite-bike' : $theme;
+		wp_register_style('jquery-ui-datepicker', $this->plugin_url . "datepicker/css/{$theme}/datepicker.css", array(), '0.5');
 	}
-	
+
 	function on_wp_enqueue_scripts(){
 
 		//$this->enqueue_datepicker();
@@ -335,8 +339,11 @@ class CustomPress_Core {
 	*
 	*/
 	function jquery_ui_css($theme = ''){
-		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : 'excite-bike';
-		echo '<script type="text/javascript">update_stylesheet( "' . $this->plugin_url . "datepicker/css/$theme/datepicker.css\" ); </script>\n";
+		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : $theme;
+		$theme = (empty($theme)) ? 'excite-bike' : $theme;
+		?>
+		<script>jQuery(document).ready( function(){jQuery("#jquery-ui-datepicker-css").prop("href", "<?php echo $this->plugin_url . "datepicker/css/{$theme}/datepicker.css"; ?>");});</script>
+		<?php
 	}
 
 	/**
@@ -395,7 +402,7 @@ class CustomPress_Core {
 		if(empty($post_type) ) return array();
 
 		$post_type_obj = get_post_type_object($post_type);
-		
+
 		if( empty($post_type_obj->cap) ) return array();
 
 		$all_caps = array_keys(get_object_vars( $post_type_obj->cap) );

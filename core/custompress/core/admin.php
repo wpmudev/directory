@@ -48,8 +48,8 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		//Add custom fields as Columns on edit Post Type page
 		if ( isset( $_GET['post_type'] )){
 
-			if (is_network_admin()){
-				if( isset($this->network_post_types[$_GET['post_type']]) && is_array( $this->network_post_types[$_GET['post_type'] ] ) ) {
+			if ($this->display_network_content){
+				if( isset($this->all_post_types[$_GET['post_type']]) && is_array( $this->all_post_types[$_GET['post_type'] ] ) ) {
 					add_filter( 'manage_edit-' . $_GET['post_type'] . '_columns', array( &$this, 'add_new_cf_columns' ) );
 					add_action( 'manage_' . $_GET['post_type'] . '_posts_custom_column', array( &$this, 'manage_cf_columns' ), 10, 2 );
 				}
@@ -69,7 +69,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	*/
 	function add_new_cf_columns( $columns ) {
 
-		if( is_network_admin() ) {
+		if( $this->display_network_content ) {
 
 			if ( isset( $this->network_post_types[$_GET['post_type']]['cf_columns'] ) && is_array( $this->network_post_types[$_GET['post_type']]['cf_columns'] ) )
 			foreach ( $this->network_post_types[$_GET['post_type']]['cf_columns'] as $key => $value ) {
@@ -84,7 +84,6 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			}
 
 		}
-
 		return $columns;
 	}
 
@@ -95,18 +94,17 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 	*/
 	function manage_cf_columns( $column_name, $post_it ) {
 
-		if (is_network_admin() ){
-			if ( isset($this->network_custom_fields[$column_name]) 
-			&& $column_name == $this->network_custom_fields[$column_name]['field_id']) {
-				$custom_field = $this->network_custom_fields[$column_name];
+		if ( $this->display_network_content ){
+			if ( isset($this->all_custom_fields[$column_name]) 
+			&& $column_name == $this->all_custom_fields[$column_name]['field_id']) {
+				$custom_field = $this->all_custom_fields[$column_name];
 			}
 		} else {
-			if ( isset($this->network_custom_fields[$column_name]) 
+			if ( isset($this->custom_fields[$column_name]) 
 			&& $column_name == $this->custom_fields[$column_name]['field_id']) {
 				$custom_field = $this->custom_fields[$column_name];
 			}
-
-			$prefix = ( empty($custom_field['field_wp_allow'] ) ) ? $prefix = '_ct_' : 'ct_';
+			$prefix = ( empty($custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
 			echo get_post_meta( $post_it, $prefix . $column_name, true );
 		}
 	}
@@ -177,6 +175,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		wp_enqueue_script('jquery-combobox');
 		wp_enqueue_style('jquery-combobox');
 		wp_enqueue_script('jquery-validate');
+		wp_enqueue_style('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-ui-datepicker-lang');
 	}
