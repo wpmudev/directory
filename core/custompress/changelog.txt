@@ -5,6 +5,13 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.4.7 = 2013-11-22 Arnold Bailey
+* Added Hide input for this Post Type which prevents showing a given Custom field on the admin input page for that post type.
+
+= 1.3.4.6 = 2013-11-06 Arnold Bailey
+* Rearranged some functions so they are only needed on the Admin side.
+* Added [ct_validate] shortcode to enable vaidation when only [ct_in] fields are used.
+
 = 1.3.4.5 = 2013-10-02 Arnold Bailey
 * Refactored lazy loading of datepicker CSS
 
@@ -50,10 +57,10 @@ Author URI: http://premium.wpmudev.org
 * blocked post update when post moved between trash and active to prevent custom fields from being lost.
 
 = 1.3.2.5 = 2013-03-04 Arnold Bailey
-* Added assign_terms capabilties to use the associated post_types. 
-  Note that on multiple post types assigned to one taxonomy can only enable assign_terms for one post_type, 
-  because assign_terms cannot accept an array. 
-  
+* Added assign_terms capabilties to use the associated post_types.
+  Note that on multiple post types assigned to one taxonomy can only enable assign_terms for one post_type,
+  because assign_terms cannot accept an array.
+
 = 1.3.2.4 = 2013-03-04 Arnold Bailey
 * Added missing quotes on datepicker call
 
@@ -137,8 +144,8 @@ Author URI: http://premium.wpmudev.org
 * Fixed display_custom_post_types() to handle multiple post_types.
 
 = 1.2.2.4 = 2012-06-01 Arnold Bailey
-* Changed priority of when custom field shortcodes are expanded so they will occur first. 
-This allows other shortcodes to use the custom values for example 
+* Changed priority of when custom field shortcodes are expanded so they will occur first.
+This allows other shortcodes to use the custom values for example
 
 [embed][ct id="ct_Video_text_f2ed" property="value"][/embed]
 
@@ -148,10 +155,10 @@ will now properly expand.
 * Fixed settings not saving from Network menu
 
 = 1.2.2.2 = 2012-05-24 Arnold Bailey
-* Ensured that on custom Archive pages that the post_type query_var would be passed as a string if only one custom post_type. 
+* Ensured that on custom Archive pages that the post_type query_var would be passed as a string if only one custom post_type.
 	Multiple post_type pages pass as an array which will confuse some parts of WordPress. This is a Wordpress bug work around.
-* Out of order script queuing	
-	
+* Out of order script queuing
+
 
 = 1.2.2.1 = 2012-05-20 Arnold Bailey
 * Changed datepicker load order
@@ -189,7 +196,7 @@ will now properly expand.
 
 = 1.2.1.1 = 2012-04-11 Arnold Bailey
 * Fixed error on display of radio and selectbox shortcodes
-* Fixed debug warnings in several places. 
+* Fixed debug warnings in several places.
 
 = 1.2.1 = 2012-04-05 Arnold Bailey
 
@@ -201,7 +208,7 @@ will now properly expand.
 * Added individual date formats for each created field
 * Added shortcodes for Taxonomy [tax id="tax" before="your before text " separator=", " after=" your after text"]
 * Added shortcodes for Custom fields including metadata [ct id="field id" property=" title | description | value "] or leave out property entirely for default value.
-* Enabled shortcodes in widgets 
+* Enabled shortcodes in widgets
 * Change embed codes to <? echo do_shortcode('[]'); ?> style for better error trapping. The old style still works so old templates aren't broken.
 * Corrected CP_PLUGIN_URL for SSL
 * Fixed double display of options on Radio buttons
@@ -224,12 +231,12 @@ will now properly expand.
 * Fixed Warning\Notice message;
 * Fixed problem with change selectbox on multiselectbox;
 * Fixed labels for Custom Fields on media page;
-* Fixed saving value of non checked checkbox(custom fields) on all pages; 
+* Fixed saving value of non checked checkbox(custom fields) on all pages;
 
 =1.1.7.2 =
 
 * Fixed problem of saving the custom hierarchical taxonomy on media page;
-* Fixed saving value of non checked checkbox(custom fields) on media page; 
+* Fixed saving value of non checked checkbox(custom fields) on media page;
 
 =1.1.7 =
 
@@ -244,7 +251,7 @@ will now properly expand.
 
 =1.1.5 =
 
-* Fixed problem with upper case in name of taxonomy; 
+* Fixed problem with upper case in name of taxonomy;
 * Fixed problem of display "An unidentified error has occurred" when click on "All ...";
 * Fixed problem with create custom template;
 * Changed style for Custom fields;
@@ -259,11 +266,11 @@ will now properly expand.
 
 =1.1.3 =
 
-* fixed problem with navigation menu on home page. 
+* fixed problem with navigation menu on home page.
 
 =1.1.2 =
 
-* Major update 
+* Major update
 
 
 

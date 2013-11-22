@@ -10,7 +10,7 @@
 		<br />
 		<?php the_dr_posted_in(); ?>
 		<?php edit_post_link( __( 'Edit', THEME_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
-		<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span> 	
+		<span class="tags"><?php the_tags( __( 'Tags: ', THEME_TEXT_DOMAIN ), ', ', ''); ?></span>
 
 		<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) : ?>
 			<?php echo '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to rate item.', THEME_TEXT_DOMAIN ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post->ID ) ) ) ) . '</p>'; ?>
@@ -39,7 +39,7 @@
 				<h2><?php printf( esc_attr__( 'About %s', THEME_TEXT_DOMAIN ), get_the_author() ); ?></h2>
 				<?php the_author_meta( 'description' ); ?>
 				<div id="author-link">
-					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+					<a href="<?php echo get_author_directory_url( get_the_author_meta( 'ID' ) ); ?>">
 						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', THEME_TEXT_DOMAIN ), get_the_author() ); ?>
 					</a>
 				</div><!-- #author-link	-->

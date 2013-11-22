@@ -3,7 +3,7 @@
 Plugin Name: CustomPress
 Plugin URI: http://premium.wpmudev.org/project/custompress
 Description: CustomPress - Custom Post, Taxonomy and Field Manager.
-Version: 1.3.4.5
+Version: 1.3.4.7
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
 Text Domain: custompress
@@ -13,10 +13,10 @@ License: GNU General Public License (Version 2 - GPLv2)
 Network: false
 */
 
-$plugin_header_translate = array(    
-__('CustomPress - Custom Post, Taxonomy and Field Manager.', 'custompress'),    
-__('Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)', 'custompress'),    
-__('http://premium.wpmudev.org', 'custompress'),    
+$plugin_header_translate = array(
+__('CustomPress - Custom Post, Taxonomy and Field Manager.', 'custompress'),
+__('Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)', 'custompress'),
+__('http://premium.wpmudev.org', 'custompress'),
 __('CustomPress', 'custompress'));
 
 /*
@@ -37,22 +37,32 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Define plugin version */
-define ( 'CP_VERSION', '1.3.4.5' );
+if( !defined('CP_VERSION') ) define ( 'CP_VERSION', '1.3.4.7' );
 /* define the plugin folder url */
-define ( 'CP_PLUGIN_URL', plugin_dir_url(__FILE__) );
+if( !defined('CP_PLUGIN_URL') ) define ( 'CP_PLUGIN_URL', plugin_dir_url(__FILE__) );
 /* define the plugin folder dir */
-define ( 'CP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
+if( !defined('CP_PLUGIN_DIR') ) define ( 'CP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 /* define the text domain for CustomPress */
-define ( 'CP_TEXT_DOMAIN', 'custompress' );
+if( !defined('CP_TEXT_DOMAIN') ) define ( 'CP_TEXT_DOMAIN', 'custompress' );
 
 //define('CT_ALLOW_IMPORT', true);
 
 
 /* include CustomPress files */
-include_once 'core/wpmudev-dash-notification.php';
-
 include_once 'core/core.php';
 include_once 'core/content-types.php';
 include_once 'core/functions.php';
 
 if ( is_admin() ) include_once 'core/admin.php';
+
+global $wpmudev_notices;
+$wpmudev_notices[] = array( 'id'=> 163,
+'name'=> 'CustomPress',
+'screens' => array(
+'toplevel_page_ct_content_types',
+'custompress_page_cp_main',
+'custompress_page_ct_export',
+'toplevel_page_ct_content_types-network',
+'custompress_page_cp_main-network',
+'custompress_page_ct_export-network' ) );
+include_once 'core/wpmudev-dash-notification.php';

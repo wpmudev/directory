@@ -1,8 +1,17 @@
 === Directory ===
-Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub) 
+Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
- 
+
 == Changelog ==
+
+= 2.2.4.7 Arnold Bailey =
+* Changed author links to only display BudyPress author urls on BP_ROOT
+* Made contact email editable
+* Added setting to disable contact form
+* CustomPress 1.3.4.7
+
+= 2.2.4.6 Arnold Bailey =
+* To much code accidentally commented out during a change.
 
 = 2.2.4.5 Arnold Bailey =
 * CustomPress 1.3.4.5
@@ -63,7 +72,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 = 2.2.3 Arnold Bailey =
 * Changed login url calculation
-* Added "Simple" image upload mode choice. Default is the Simple mode. Settings > General > Media manager to enable full media manager.  
+* Added "Simple" image upload mode choice. Default is the Simple mode. Settings > General > Media manager to enable full media manager.
 
 = 2.2.2.9 Arnold Bailey =
 * Allow virtual pages to be moved to Trash
@@ -216,7 +225,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 
 = 2.0.5 =
-* Fixed problem of display pages "My Listings", "Add Listing", "Edit Listing" for some permalinks structures;  
+* Fixed problem of display pages "My Listings", "Add Listing", "Edit Listing" for some permalinks structures;
 
 = 2.0.4 =
 * Added My Listings page;
@@ -277,7 +286,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 * fixed JS problem for rating script
 
 = 2.0.0 Beta 3 =
-* fixed file upload 
+* fixed file upload
 
 = 2.0.0 Beta 2 =
 * Added page of Sign in

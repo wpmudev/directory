@@ -224,12 +224,7 @@ wp_enqueue_script('set-post-thumbnail');
 
 			<input type="button" value="<?php _e( 'Cancel', $this->text_domain ); ?>" onclick="location.href='<?php echo get_permalink($this->my_listings_page_id); ?>'">
 		</div>
-		
-		<script type="text/javascript">
-			jQuery(document).ready( function($) {
-				$('#title').closest('form').validate(); //find the form we're validating
-			});
-		</script>
 
+		<?php //echo do_shortcode('[ct_validate]') ; ?>
 	</form>
 </div>

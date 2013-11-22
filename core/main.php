@@ -15,13 +15,14 @@ class Directory_Core_Main extends Directory_Core {
 
 		parent::__construct(); //Get the inheritance right
 
-		add_action( 'init', array(&$this, 'init'));
+		//add_action( 'init', array(&$this, 'init'));
 		add_action( 'wp_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ), 99 );
 
 		add_action( 'template_redirect', array( &$this, 'get_author_template' ));
 
 		add_action( 'template_redirect', array( &$this, 'process_page_requests' ));
 		add_action( 'template_redirect', array( &$this, 'handle_page_requests' ));
+
 		add_action( 'wp_print_scripts', array( &$this, 'on_print_scripts' ) );
 
 		//hide some menu pages
@@ -29,6 +30,8 @@ class Directory_Core_Main extends Directory_Core {
 
 		//add menu items
 		add_filter( 'wp_list_pages', array( &$this, 'filter_list_pages' ), 10, 2 );
+
+		//add_filter('template_include', array( &$this, 'on_template_include' ) );
 
 	}
 
@@ -384,6 +387,48 @@ class Directory_Core_Main extends Directory_Core {
 			status_header( 200 );
 		}
 	}
+
+/**
+* Substitute a template if requested. Any custom templates have been searched for and found.
+* Check for "customness" and let custom templates overide. Otherwise force the page template and filter the content and title.
+*
+*/
+function on_template_include($template = '') {
+	global $wp_query, $post;
+
+	$this->title = '';
+	$this->content = '';
+
+	//Leave feeds alone
+	if(is_feed()) return $template;
+
+	//printf('<pre>%s</pre>', print_r($wp_query, true) ); exit;
+	//var_dump($template);
+
+	//Default template has been selected by Wordpress at this point. Do we change it
+	//Is this a custom template? Then leave it alone
+	$is_custom = !in_array(pathinfo($template, PATHINFO_FILENAME), array(
+	'404',
+	'archive',
+	'attachment',
+	'author',
+	'comments-popup',
+	'date',
+	'front-page',
+	'home',
+	'index',
+	'page',
+	'search',
+	'single',
+	'taxonomy',
+	) );
+
+	//skip the rest
+	if( $is_custom ) return $template;
+
+
+	return $template;
+}
 
 	/**
 	* adds our links to theme nav menus using wp_list_pages()

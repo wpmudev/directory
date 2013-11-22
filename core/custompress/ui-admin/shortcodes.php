@@ -42,6 +42,21 @@
 						</div>
 					</td>
 				</tr>
+				<tr>
+					<th>
+						<?php _e('Custom Fields Validate', $this->text_domain); ?>
+					</th>
+					<td>
+						<p>
+							<?php _e('When using the individual [ct_in] custom fields, this shortcode collects and adds the necessary script to run validation on the fields. ', $this->text_domain); ?>
+							<?php _e('The [custom_fields_input] shortcode automatically includes this tag with the group of fields. It is only necessary for [ct_in] fields.', $this->text_domain); ?>
+						</p>
+						<div class="embed-code-wrap">
+							<code>[ct_validate]</code>
+							<br /><span class="description"><?php _e('Should be placed just before the closing &lt;/form&gt; tag of the form containg the fields to be validated.', $this->text_domain); ?></span>
+						</div>
+					</td>
+				</tr>
 
 				<tr>
 					<th>

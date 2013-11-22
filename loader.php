@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.2.4.5
+Version: 2.2.4.7
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
 Text Domain: dr_text_domain
@@ -12,10 +12,10 @@ WDP ID: 164
 License: GNU General Public License (Version 2 - GPLv2)
 */
 
-$plugin_header_translate = array(    
-__('Directory - Create full blown directory site.', 'dr_text_domain'),    
-__('Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)', 'dr_text_domain'),    
-__('http://premium.wpmudev.org', 'dr_text_domain'),    
+$plugin_header_translate = array(
+__('Directory - Create full blown directory site.', 'dr_text_domain'),
+__('Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)', 'dr_text_domain'),
+__('http://premium.wpmudev.org', 'dr_text_domain'),
 __('Directory', 'dr_text_domain'),
 );
 
@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.2.4.5' );
+define( 'DR_VERSION', '2.2.4.7' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir
@@ -48,7 +48,6 @@ define( 'DR_TEXT_DOMAIN', 'dr_text_domain' );
 define( 'DR_OPTIONS_NAME', 'dr_options' );
 
 // include core files
-include_once 'core/wpmudev-dash-notification.php';
 //If another version of CustomPress not loaded, load ours.
 if(!class_exists('CustomPress_Core')) include_once 'core/custompress/loader.php';
 
@@ -58,5 +57,15 @@ include_once 'core/template-tags.php';
 include_once 'core/payments.php';
 include_once 'core/ratings.php';
 
-
-
+global $wpmudev_notices;
+$wpmudev_notices[] = array( 'id'=> 164,
+'name'=> 'Directory',
+'screens' => array(
+'directory_listing_page_dr-get_started',
+'edit-directory_listing',
+'directory_listing',
+'edit-listing_tag',
+'edit-listing_category',
+'directory_listing_page_directory_settings',
+) );
+include_once 'core/wpmudev-dash-notification.php';

@@ -11,10 +11,6 @@ $style = (empty($style) ) ? 'table' : $style;
 $custom_fields = array();
 
 if(empty($field_ids)){
-	//	if ( $type == 'local' )
-	//	$custom_fields = $this->custom_fields;
-	//	elseif ( $type == 'network' )
-	//	$custom_fields = $this->network_custom_fields;
 	$custom_fields = $this->all_custom_fields;
 } else {
 	foreach($field_ids as $field_id){
@@ -41,9 +37,13 @@ $output = false;
 				if(is_array($custom_fields)) :
 				foreach ( $custom_fields as $key => $custom_field ) :
 				if( in_array($post->post_type, $custom_field['object_type'] ) ){
-					$output = true;
-				} else {
-					unset($custom_fields[$key]); //Filter out unused ones for Validation rules later
+					if(is_admin() ) {
+						if( !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
+							$output = true;
+						}
+					} else {
+						$output = true;
+					}
 				}
 
 				$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
@@ -75,9 +75,13 @@ $output = false;
 					if(is_array($custom_fields)) :
 					foreach ( $custom_fields as $key => $custom_field ) :
 					if( in_array($post->post_type, $custom_field['object_type'] ) ){
-						$output = true;
-					} else {
-						unset($custom_fields[$key]); //Filter out unused ones for Validation rules later
+						if(is_admin() ) {
+							if( !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
+								$output = true;
+							}
+						} else {
+							$output = true;
+						}
 					}
 
 					$prefix = ( empty( $custom_field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
@@ -113,8 +117,5 @@ $output = false;
 		}
 		?>
 	</div>
-	<script type="text/javascript">
-		<?php echo $this->validation_rules( $this->get_custom_fields_set($post->post_type) ); ?>
-		
-	</script>
+	<?php echo do_shortcode('[ct_validate]'); ?>
 </div>

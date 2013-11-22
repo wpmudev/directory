@@ -41,7 +41,7 @@ $post_types = get_post_types('','names');
 					</tr>
 					<tr>
 						<th>
-							<label for="field_wp_allow"><?php _e('Allow for WP/plugins', $this->text_domain) ?> 
+							<label for="field_wp_allow"><?php _e('Allow for WP/plugins', $this->text_domain) ?>
 							<br /><span class="ct-required">(<?php _e("can't be changed", $this->text_domain) ?>)</span></label>
 						</th>
 						<td>
@@ -169,6 +169,7 @@ $post_types = get_post_types('','names');
 				</table>
 			</div>
 		</div>
+
 		<div class="ct-wrap-right">
 			<div class="ct-table-wrap">
 				<div class="ct-arrow"><br></div>
@@ -193,6 +194,32 @@ $post_types = get_post_types('','names');
 				</table>
 			</div>
 		</div>
+
+		<div class="ct-wrap-right">
+			<div class="ct-table-wrap">
+				<div class="ct-arrow"><br></div>
+				<h3 class="ct-toggle"><?php _e('Hide input for this Post Type', $this->text_domain) ?></h3>
+				<table class="form-table <?php do_action('ct_invalid_field_object_type'); ?>">
+					<tr>
+						<th>
+							<label for="hide_type"><?php _e('Post Type', $this->text_domain) ?> <span class="ct-required">( <?php _e('required', $this->text_domain); ?> )</span></label>
+						</th>
+						<td>
+							<select name="hide_type[]" multiple="multiple" class="ct-object-type">
+								<?php if ( is_array( $post_types )): ?>
+								<?php foreach( $post_types as $post_type ): ?>
+								<option value="<?php echo ( $post_type ); ?>" <?php if ( isset( $_POST['hide_type'] ) && is_array( $_POST['hide_type'] )) { foreach ( $_POST['hide_type'] as $post_value ) { selected( $post_value == $post_type ); }} ?>><?php echo ( $post_type ); ?></option>
+								<?php endforeach; ?>
+								<?php endif; ?>
+							</select>
+							<br />
+							<span class="description"><?php _e('To hide this input field on the Admin edit page for a post type, select one or more post types to hide.', $this->text_domain); ?></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
 		<br style="clear: left" />
 
 		<p class="submit">

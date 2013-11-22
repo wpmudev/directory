@@ -45,7 +45,7 @@ function the_dr_categories_home( $echo = true ){
 
 		$output .= "<li>\n";
 		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
-		
+
 		$output .= '<div class="term-list">';
 
 		$args = array(
@@ -133,14 +133,14 @@ function the_dr_categories_home( $echo = true ){
 //		);
 //
 //		$sub_categories = get_categories( $args );
-//		
-//		$output .= '<div class="term-list">';	
-//		
+//
+//		$output .= '<div class="term-list">';
+//
 //		foreach ( $sub_categories as $sub_category ) {
 //			$output .= '<div class="term"><a href="' . get_term_link( $sub_category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $sub_category->name . '" >' . $sub_category->name . "</a> <span>({$sub_category->count})</span></div>\n";
 //			$count_items++;
 //		}
-//		$output .= '</div>';	
+//		$output .= '</div>';
 //
 //		if ( isset( $options['general']['display_listing'] ) && '1' == $options['general']['display_listing']  )
 //		{
@@ -172,101 +172,96 @@ function the_dr_categories_home( $echo = true ){
 //	else
 //	return $output;
 //}
-//
-///**
-//* the_dir_categories_archive
-//*
-//* @access public
-//* @return void
-//*/
-//function the_dr_categories_archive() {
-//
-//	//get related taxonomies
-//	$taxonomies = array_values( get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1 ) ) );
-//	$args = array(
-//	'parent'       => get_queried_object_id(),
-//	'orderby'      => 'name',
-//	'order'        => 'ASC',
-//	'hide_empty'   => 0,
-//	'hierarchical' => 1,
-//	'number'       => 10,
-//	'taxonomy'     => $taxonomies,
-//	'pad_counts'   => 1
-//	);
-//
-//	$categories = get_categories( $args );
-//
-//	$i = 1;
-//	$output = '<table><tr><td>';
-//
-//	foreach( $categories as $category ) {
-//
-//		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
-//
-//		if ( $i % 5 == 0 )
-//		$output .= '</td><td>';
-//
-//		$i++;
-//	}
-//
-//	$output .= '</td></tr></table>';
-//
-//	echo $output;
-//}
-//
-///**
-//* the_dir_breadcrumbs
-//*
-//* @access public
-//* @return void
-//*/
-//function the_dr_breadcrumbs() {
-//	global $wp_query;
-//	$output = '';
-//	$category = get_queried_object();
-//	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
-//	$category_parent_ids = array_reverse( $category_parent_ids );
-//
-//	foreach ( $category_parent_ids as $category_parent_id ) {
-//		$category_parent = get_term( $category_parent_id, $category->taxonomy );
-//
-//		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
-//	}
-//	
-//	//$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
-//
-//	echo $output;
-//}
-//
-///**
-//* Prints HTML with meta information for the current post—date/time and author.
-//*
-//* @access public
-//* @return void
-//*/
-//function the_dr_posted_on() {
-//  global $bp;
-//
-//	// For BuddyPress compatibility
-//	$obj = get_post_type_object('directory_listing');
-//	$rewrite_slug = ($obj->has_archive) ? $obj->has_archive : '';
-//	
-//	$alink = ( isset( $bp ) ) ? bp_core_get_user_domain( get_the_author_meta('ID') ) . $rewrite_slug : get_author_posts_url( get_the_author_meta( 'ID' ) ) ;
-//
-//	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
-//	'meta-prep meta-prep-author',
-//	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
-//	get_permalink(),
-//	esc_attr( get_the_time() ),
-//	get_the_date()
-//	),
-//	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-//	$alink,
-//	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
-//	get_the_author()
-//	)
-//	);
-//}
+
+/**
+* the_dir_categories_archive
+*
+* @access public
+* @return void
+*/
+function the_dr_categories_archive() {
+
+	//get related taxonomies
+	$taxonomies = array_values( get_taxonomies(array('object_type' => array('directory_listing'), 'hierarchical' => 1 ) ) );
+	$args = array(
+	'parent'       => get_queried_object_id(),
+	'orderby'      => 'name',
+	'order'        => 'ASC',
+	'hide_empty'   => 0,
+	'hierarchical' => 1,
+	'number'       => 10,
+	'taxonomy'     => $taxonomies,
+	'pad_counts'   => 1
+	);
+
+	$categories = get_categories( $args );
+
+	$i = 1;
+	$output = '<table><tr><td>';
+
+	foreach( $categories as $category ) {
+
+		$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a> (' . $category->count . ') <br />';
+
+		if ( $i % 5 == 0 )
+		$output .= '</td><td>';
+
+		$i++;
+	}
+
+	$output .= '</td></tr></table>';
+
+	echo $output;
+}
+
+/**
+* the_dir_breadcrumbs
+*
+* @access public
+* @return void
+*/
+function the_dr_breadcrumbs() {
+	global $wp_query;
+	$output = '';
+	$category = get_queried_object();
+	$category_parent_ids = get_ancestors( $category->term_id, $category->taxonomy );
+	$category_parent_ids = array_reverse( $category_parent_ids );
+
+	foreach ( $category_parent_ids as $category_parent_id ) {
+		$category_parent = get_term( $category_parent_id, $category->taxonomy );
+
+		$output .= '<a href="' . get_term_link( $category_parent ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category_parent->name ) . '" >' . $category_parent->name . '</a> / ';
+	}
+
+	//$output .= '<a href="' . get_term_link( $category ) . '" title="' . sprintf( __( 'View all posts in %s', DR_TEXT_DOMAIN ), $category->name ) . '" >' . $category->name . '</a>';
+
+	echo $output;
+}
+
+/**
+* Prints HTML with meta information for the current post—date/time and author.
+*
+* @access public
+* @return void
+*/
+function the_dr_posted_on() {
+
+	$alink = get_author_directory_url( get_the_author_meta( 'ID' ) ) ;
+
+	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
+	'meta-prep meta-prep-author',
+	sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
+	esc_attr( get_permalink() ),
+	esc_attr( get_the_time() ),
+	esc_attr( get_the_date() )
+	),
+	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+	$alink,
+	sprintf( esc_attr__( 'View all posts by %s', DR_TEXT_DOMAIN ), get_the_author() ),
+	get_the_author()
+	)
+	);
+}
 
 /**
 * Prints HTML with meta information for the current post (category, tags and permalink).
@@ -350,3 +345,71 @@ function the_dr_comment( $comment, $args, $depth ) {
 	break;
 	endswitch;
 }
+
+/**
+* Retrieve the URL to the author page for the user with the ID provided.
+*
+* @since 2.1.0
+* @uses $wp_rewrite WP_Rewrite
+* @return string The URL to the author's page.
+*/
+function get_author_directory_url($author_id, $author_nicename = '') {
+	global $wp_rewrite, $bp, $blog_id;
+	$auth_ID = (int) $author_id;
+	$link = $wp_rewrite->get_author_permastruct();
+
+	$directory_obj = get_post_type_object('directory_listing');
+
+	if( is_object( $directory_obj ) ) {
+		$slug = $directory_obj->has_archive;
+		if( !is_string($slug) ) $slug = 'listings';
+	}
+
+	if ( isset( $bp ) && $bp->root_blog_id == $blog_id ){
+		$link = trailingslashit( bp_core_get_user_domain( $author_id ) . $slug);
+	} else {
+		if ( empty($link) ) {
+			$file = home_url( '/' );
+			$link = $file . "?post_type={$slug}&author=" . $auth_ID;
+		} else {
+			$link = $link . "/{$slug}";
+			if ( '' == $author_nicename ) {
+				$user = get_userdata($author_id);
+				if ( !empty($user->user_nicename) )
+				$author_nicename = $user->user_nicename;
+			}
+			$link = str_replace('%author%', $author_nicename, $link);
+			$link = home_url( user_trailingslashit( $link ) );
+		}
+	}
+
+	/**
+	* Filter the URL to the author's page.
+	*
+	* @since 2.1.0
+	*
+	* @param string $link            The URL to the author's page.
+	* @param int    $author_id       The author's id.
+	* @param string $author_nicename The author's nice name.
+	*/
+	$link = apply_filters( 'author_directory_link', $link, $author_id, $author_nicename );
+
+	return $link;
+}
+
+
+function the_author_directory_link(){
+	global $authordata;
+
+	if ( !is_object( $authordata ) )
+	return false;
+
+	$link = sprintf(
+	'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+	esc_url( get_author_directory_url( $authordata->ID, $authordata->user_nicename ) ),
+	esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+	get_the_author()
+	);
+	return $link;
+}
+

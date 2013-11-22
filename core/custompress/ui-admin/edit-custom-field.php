@@ -102,8 +102,8 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 
 								<?php
 
-								$date_format = $custom_field['field_date_format'];
-								$date_format = (empty($date_format)) ? $this->get_options('date_format') : $date_format;
+
+								$date_format = (isset( $custom_field['field_date_format'])) ? $custom_field['field_date_format'] : $this->get_options('date_format');
 								$date_format = (is_array($date_format)) ? 'mm/dd/yy' : $date_format;
 
 //								$this->jquery_ui_css(); //Load the current ui theme css
@@ -200,6 +200,32 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 				</table>
 			</div>
 		</div>
+
+		<div class="ct-wrap-right">
+			<div class="ct-table-wrap">
+				<div class="ct-arrow"><br></div>
+				<h3 class="ct-toggle"><?php _e('Hide input for this Post Type', $this->text_domain) ?></h3>
+				<table class="form-table">
+					<tr>
+						<th>
+							<label for="hide_type"><?php _e('Post Type', $this->text_domain) ?></label>
+						</th>
+						<td>
+							<select name="hide_type[]" multiple="multiple" class="ct-object-type">
+								<?php if ( !empty( $post_types ) ): ?>
+								<?php foreach( $post_types as $post_type ): ?>
+								<option value="<?php echo ( $post_type ); ?>" <?php if(is_array( $custom_field['hide_type'] ) ) { foreach ( $custom_field['hide_type'] as $key => $hide_type ) { if ( $hide_type == $post_type ) echo( 'selected="selected"' ); } } ?>><?php echo ( $post_type ); ?></option>
+								<?php endforeach; ?>
+								<?php endif; ?>
+							</select>
+							<br />
+							<span class="description"><?php _e('To hide this input field on the Admin edit page for a post type, select one or more post types to hide.', $this->text_domain); ?></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
 		<br style="clear: left" />
 		<p class="submit">
 			<?php wp_nonce_field( 'submit_custom_field' ); ?>

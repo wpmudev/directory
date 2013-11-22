@@ -1,3 +1,9 @@
+<?php
+
+$options = $this->get_options( 'general' );
+
+?>
+
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/ui-front.js'; ?>" >
 </script>
 
@@ -53,6 +59,8 @@ endif; ?>
 
 <div class="clear"></div>
 
+<?php if( !$options['disable_contact_form'] ): ?>
+
 <form method="post" action="#" class="contact-user-btn action-form" id="action-form">
 	<input type="submit" name="contact_user" value="<?php _e('Contact User', $this->text_domain ); ?>" onclick="dr_listings.toggle_contact_form(); return false;" />
 </form>
@@ -104,6 +112,9 @@ endif; ?>
 	</div>
 
 </form>
+
+<?php endif; ?>
+
 <div class="clear"></div>
 
 <?php
@@ -125,7 +136,7 @@ echo $content;
 		<h2><?php printf( esc_attr__( 'About %s', DR_TEXT_DOMAIN ), get_the_author() ); ?></h2>
 		<?php the_author_meta( 'description' ); ?>
 		<div id="author-link">
-			<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+			<a href="<?php echo get_author_directory_url( get_the_author_meta( 'ID' ) ); ?>">
 				<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', DR_TEXT_DOMAIN ), get_the_author() ); ?>
 			</a>
 		</div><!-- #author-link    -->

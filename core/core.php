@@ -372,7 +372,7 @@ class Directory_Core {
 
 		if(! empty($_POST['action']) && $_POST['action'] == 'query-attachments'
 		&& !current_user_can('administrator')
-		&& !current_user_can('edit_others_classifieds') )
+		&& !current_user_can('edit_others_listings') )
 		$wp_query_obj->set('author', $current_user->ID );
 	}
 
@@ -383,6 +383,21 @@ class Directory_Core {
 	*/
 	function init() {
 		global $blog_id;
+
+		$directory_obj = get_post_type_object('directory_listing');
+
+		if( ! empty( $directory_obj ) ) {
+
+			if( !is_string($slug = $directory_obj->has_archive) ){
+				$slug = $listings;
+			}
+
+			add_rewrite_rule("author/([^/]+)/{$slug}/page/?([2-9][0-9]*)",
+			"index.php?post_type=directory_listing&author_name=\$matches[1]&paged=\$matches[2]", 'top');
+
+			add_rewrite_rule("author/([^/]+)/{$slug}",
+			"index.php?post_type=directory_listing&author_name=\$matches[1]", 'top');
+		}
 
 		// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
 		register_post_status( 'virtual', array(
@@ -1253,6 +1268,25 @@ class Directory_Core {
 		return $link;
 	}
 
+	function email_replace( $content = '' ){
+		global $post;
+
+		$user_info  = get_userdata( $post->post_author );
+
+		$result =
+		str_replace('SITE_NAME', get_bloginfo('name'),
+		str_replace('POST_TITLE', $post->post_title,
+		str_replace('POST_LINK', make_clickable( get_permalink($post->ID) ),
+		str_replace('TO_NAME', $user_info->nicename,
+		str_replace('FROM_NAME', $_POST['name'],
+		str_replace('FROM_EMAIL', $_POST['email'],
+		str_replace('FROM_SUBJECT', $_POST['subject'],
+		str_replace('FROM_MESSAGE', $_POST['message'],
+		$content) ) ) ) ) ) ) );
+
+		return $result;
+	}
+
 	/**
 	* Handles the request for the contact form on the single{}.php template
 	**/
@@ -1263,7 +1297,7 @@ class Directory_Core {
 		if ( get_post_type() == $this->post_type && is_single() ) {
 
 			if (isset( $_POST['contact_form_send'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'send_message' ) ){
-
+				$_POST = stripslashes_deep($_POST);
 				if ( isset( $_POST['name'] ) && '' != $_POST['name']
 				&& isset( $_POST['email'] ) && '' != $_POST['email']
 				&& isset( $_POST['subject'] ) && '' != $_POST['subject']
@@ -1275,25 +1309,26 @@ class Directory_Core {
 
 					$user_info  = get_userdata( $post->post_author );
 
-					$body       = 'Hi %s, you have received message from:<br />
-					<br />
-					Name: %s <br />
-					Email: %s <br />
-					Subject: %s <br />
-					Message: <br />
-					%s
-					<br />
-					<br />
-					<br />
-					Directory link: %s
-					';
+					$options = $this->get_options( 'general' );
 
-					$tm_subject =  'Contact Request: %s [ %s ]';
+					$body       = nl2br($this->email_replace( $options['email_content'] ) );
+
+					$tm_subject =  $this->email_replace( $options['email_subject'] );
 
 					$to         = $user_info->user_email;
-					$subject    = sprintf( __( $tm_subject, $this->text_domain ), $_POST['subject'], $post->post_title );
-					$message    = sprintf( __( $body, $this->text_domain ), $user_info->user_nicename, $_POST['name'], $_POST['email'], $_POST['subject'], $_POST['message'], get_permalink( $post->ID ) );
-					$headers    = "MIME-Version: 1.0\n" . "From: " . $_POST['name'] .  " <{$_POST['email']}>\n" . "Content-Type: text/html; charset=\"" . get_option( 'blog_charset' ) . "\"\n";
+					$subject    = $tm_subject;
+					$message    = $body;
+					$headers[]  = "MIME-Version: 1.0";
+					$headers[]  = "From: " . $_POST['name'] .  " <{$_POST['email']}>";
+					$headers[]  = "Content-Type: text/html; charset=\"" . get_option( 'blog_charset' ) . '"';
+
+					if( $options['cc_admin'] == '1'){
+						$headers[]  = "Cc: " . get_bloginfo('admin_email');
+					}
+
+					if( $options['cc_sender'] == '1'){
+						$headers[]  = "Cc: " . $_POST['name'] .  " <{$_POST['email']}>";
+					}
 
 					$sent = (wp_mail( $to, $subject, $message, $headers ) ) ? '1' : '0';
 					wp_redirect( get_permalink( $post->ID ) . '?sent=' . $sent );

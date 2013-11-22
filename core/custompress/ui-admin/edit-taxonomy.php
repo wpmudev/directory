@@ -430,15 +430,16 @@ global $wp_post_types, $wp_taxonomies;
 				<tr>
 					<th></th>
 					<td>
+						<?php $taxonomy['rewrite']['ep_mask'] = empty($taxonomy['rewrite']['ep_mask']) ? 0 : $taxonomy['rewrite']['ep_mask']; ?>
 						<input type="hidden" name="ep_mask[EP_NONE]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_NONE]" value="<?php echo EP_NONE; ?>" <?php checked( ! (bool) $taxonomy['rewrite']['ep_mask']); ?> />
+							<input type="checkbox" name="ep_mask[EP_NONE]" value="<?php echo EP_NONE; ?>" <?php checked( empty($taxonomy['rewrite']['ep_mask']) ); ?> />
 							<span class="description"><strong><?php _e('EP_NONE: for default, nothing.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_PERMALINK]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_PERMALINK]" value="<?php echo EP_PERMALINK; ?>" <?php checked( $taxonomy['rewrite']['ep_mask'] & EP_PERMALINK, EP_PERMALINK); ?> />
+							<input type="checkbox" name="ep_mask[EP_PERMALINK]" value="<?php echo EP_PERMALINK; ?>" <?php checked( ($taxonomy['rewrite']['ep_mask'] & EP_PERMALINK), EP_PERMALINK) ; ?> />
 							<span class="description"><strong><?php _e('EP_PERMALINK: for Permalink.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />

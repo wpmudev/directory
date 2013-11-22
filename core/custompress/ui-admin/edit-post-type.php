@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
+﻿<?php if (!defined('ABSPATH')) die('No direct access allowed!'); ?>
 
 <?php
 if(is_network_admin()){
@@ -179,7 +179,7 @@ if(is_network_admin()){
 				<tr>
 					<th>
 						<label for="roles"><?php _e( 'Assign Capabilities', $this->text_domain ) ?></label>
-						<img id="ajax-loader" alt="ajax-loader" src="<?php echo admin_url() . 'images/loading.gif' ?>" />
+						<img id="ajax-loader" alt="ajax-loader" src="<?php echo set_url_scheme(admin_url() ) . 'images/loading.gif' ?>" />
 					</th>
 					<td>
 
