@@ -284,7 +284,7 @@ $default_email = __(
 					<tr>
 						<th><label for="email_subject"><?php _e( 'Email Subject:', $this->text_domain ); ?></label></th>
 						<td>
-							<input type="text" id="email_subject" name="email_subject" size="116" value="<?php echo ( isset( $options['email_subject'] ) && '' != $options['email_subject'] ) ? $options['email_subject'] : 'SITE_NAME Contact Request: FROM_SUBJECT [ POST_TITLE ]'; ?>" />
+							<input class="dr-full" type="text" id="email_subject" name="email_subject" size="116" value="<?php echo ( isset( $options['email_subject'] ) && '' != $options['email_subject'] ) ? $options['email_subject'] : 'SITE_NAME Contact Request: FROM_SUBJECT [ POST_TITLE ]'; ?>" />
 							<br />
 							<span class="description"><?php _e( 'Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', $this->text_domain ); ?></span>
 						</td>
@@ -292,7 +292,7 @@ $default_email = __(
 					<tr>
 						<th><label for="field_image_req"><?php _e( 'Email Content:', $this->text_domain ); ?></label></th>
 						<td>
-							<textarea id="email_content" name="email_content" cols="120" rows="10" wrap="hard" ><?php
+							<textarea class="dr-full" id="email_content" name="email_content" cols="120" rows="10" wrap="hard" ><?php
 								echo esc_textarea( empty($options['email_content']) ? $default_email : $options['email_content'] );
 							?></textarea>
 							<br />

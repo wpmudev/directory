@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.4.8 Arnold Bailey =
+- BOM in file causing problems
+
 = 2.2.4.7 Arnold Bailey =
 * Changed author links to only display BudyPress author urls on BP_ROOT
 * Made contact email editable

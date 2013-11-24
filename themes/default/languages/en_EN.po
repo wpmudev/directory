@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory Theme 1.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-18 10:57-0500\n"
-"PO-Revision-Date: 2012-10-18 11:00-0500\n"
-"Last-Translator: Arnold Bailey <abaileytn@gmail.com>\n"
+"POT-Creation-Date: 2013-11-23 20:26-0500\n"
+"PO-Revision-Date: 2013-11-23 20:26-0500\n"
+"Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../comments.php:9
@@ -125,11 +125,11 @@ msgstr ""
 msgid "Permalink to %s"
 msgstr ""
 
-#: ../dr_listinglist.php:87 ../loops/loop-archive.php:43
+#: ../dr_listinglist.php:89 ../loops/loop-archive.php:45
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../dr_listinglist.php:108 ../components/messages.php:5
+#: ../dr_listinglist.php:110 ../components/messages.php:5
 msgid ""
 "Sorry, we can't find the archive you're looking for at this URL. Please try "
 "selecting a menu item from above or to the side of this message to get where "
@@ -181,31 +181,31 @@ msgstr ""
 msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
-#: ../single-listing.php:38 ../loops/loop-single.php:28
+#: ../single-listing.php:40 ../loops/loop-single.php:28
 msgid "Pages:"
 msgstr ""
 
-#: ../single-listing.php:49 ../loops/loop-single.php:39
+#: ../single-listing.php:51 ../loops/loop-single.php:39
 #, php-format
 msgid "About %s"
 msgstr ""
 
-#: ../single-listing.php:53 ../loops/loop-single.php:43
+#: ../single-listing.php:55 ../loops/loop-single.php:43
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../single-listing.php:69 ../components/pagination.php:18
+#: ../single-listing.php:71 ../components/pagination.php:18
 #: ../components/pagination.php:25 ../components/pagination.php:32
 msgid "&laquo; Previous Entries"
 msgstr ""
 
-#: ../single-listing.php:70 ../components/pagination.php:19
+#: ../single-listing.php:72 ../components/pagination.php:19
 #: ../components/pagination.php:26 ../components/pagination.php:33
 msgid "Next Entries &raquo;"
 msgstr ""
 
-#: ../single-listing.php:75 ../components/messages.php:11
+#: ../single-listing.php:77 ../components/messages.php:11
 msgid ""
 "Sorry, we can't find the post you're looking for at this URL. Please try "
 "selecting a menu item from above or to the side of this message to get where "

@@ -45,3 +45,9 @@
 	font-weight: normal;
 }
 
+input.dr-full,
+textarea.dr-full{
+	width:100%;
+}
+
+
