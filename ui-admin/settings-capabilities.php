@@ -25,9 +25,7 @@ $options = $this->get_options('general');
 						</th>
 						<td>
 							<select id="roles" name="roles">
-								<?php foreach ( $wp_roles->role_names as $role => $name ): ?>
-								<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
-								<?php endforeach; ?>
+							<?php wp_dropdown_roles('administrator'); ?>
 							</select>
 							<br /><span class="description"><?php _e('Select a role to which you want to assign Directory capabilities.', $this->text_domain); ?></span>
 

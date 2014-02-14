@@ -184,18 +184,13 @@ if(is_network_admin()){
 					<td>
 
 						<select id="roles" name="roles">
-							<?php
-							global $wp_roles;
-							$role_obj = $wp_roles->get_role( 'administrator' );
-							foreach ( $wp_roles->role_names as $role => $name ): ?>
-							<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
-							<?php endforeach; ?>
+							<?php wp_dropdown_roles('administrator'); ?>
 						</select>
 						<br /><span class="description"><?php echo sprintf(__('Select a role to which you want to assign %s capabilities.', $this->text_domain), $capability_type ); ?></span>
 						<br /><br />
 						<div id="capabilities">
 							<?php
-							
+
 							$all_caps = $this->all_capabilities($_GET['ct_edit_post_type']);
 							if( ! empty($all_caps) ){
 								sort($all_caps);
@@ -663,7 +658,7 @@ if(is_network_admin()){
 				</tr>
 			</table>
 		</div>
-		
+
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br></div>
 			<h3 class="ct-toggle"><?php _e('EP Mask', $this->text_domain) ?></h3>
@@ -825,7 +820,7 @@ if(is_network_admin()){
 				</tr>
 			</table>
 		</div>
-		
+
 	</div>
 	<p class="submit ct-clear">
 		<?php wp_nonce_field('submit_post_type'); ?>

@@ -212,6 +212,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				}
 			}
 		}
+	//var_dump($wp_post_types);
 	}
 
 	/**
@@ -727,6 +728,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		extract( shortcode_atts( array(
 		'id' => '',
 		'property' => 'input',
+		'class' => '',
 		), $atts ) );
 
 		// Take off the prefix for indexing the array;
@@ -740,7 +742,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		$property = strtolower($property);
 		$result = '';
 
-
 		switch ($property){
 			case 'title': $result = $custom_field['field_title']; break;
 			case 'description': $result = $custom_field['field_description']; break;
@@ -752,9 +753,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($field_values)
-							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( is_array($field_values) && array_search($field_option, $field_values) !== false, true, false ), $field_option );
+							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox %s" name="%s[]" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked( is_array($field_values) && array_search($field_option, $field_values) !== false, true, false ), $field_option );
 							else
-							$result .= sprintf('<label><input type="checkbox" name="%s[]" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked( $custom_field['field_default_option'], $key, false ), $field_option );
+							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox %s" name="%s[]" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked( $custom_field['field_default_option'], $key, false ), $field_option );
 						}
 						break;
 					}
@@ -762,7 +763,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						$multiselectbox_values = get_post_meta( $post->ID, $id, true );
 						$multiselectbox_values = (is_array($multiselectbox_values)) ? $multiselectbox_values : (array)$multiselectbox_values;
 
-						$result = sprintf('<select class="ct-field ct-select-multiple" name="%s[]" id="%s" multiple="multiple">', $id, $id ) . PHP_EOL;
+						$result = sprintf('<select class="ct-field ct-select-multiple %s" name="%s[]" id="%s" multiple="multiple">', $class, $id, $id ) . PHP_EOL;
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($multiselectbox_values)
 							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected(in_array($field_option, $multiselectbox_values), true, false ), $field_option ) . PHP_EOL;
@@ -775,7 +776,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					case 'selectbox': {
 						$field_value = get_post_meta( $post->ID, $id, true );
 
-						$result = sprintf('<select class="ct-field ct-selectbox" name="%s" id="%s" >', $id, $id) . PHP_EOL;
+						$result = sprintf('<select class="ct-field ct-selectbox %s" name="%s" id="%s" >', $class, $id, $id) . PHP_EOL;
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if ($field_value)
 							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected($field_value, $field_option, false), $field_option ) . PHP_EOL;
@@ -790,18 +791,18 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 						foreach ( $custom_field['field_options'] as $key => $field_option ) {
 							if($field_value)
-							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radio"  name="%s" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $field_option, false), $field_option);
+							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radio %s"  name="%s" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $field_option, false), $field_option);
 							else
-							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radion" name="%s" id="%s" value="%s" %s /> %s</label>', $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $key, false), $field_option);
+							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radion %s" name="%s" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $key, false), $field_option);
 						}
 						break;
 					}
 					case 'text': {
-						$result = sprintf('<input type="text" class="ct-field ct-text" name="%s" id="%s" value="%s" />', $id, $id, esc_attr( get_post_meta( $post->ID, $id, true ) ) );
+						$result = sprintf('<input type="text" class="ct-field ct-text %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( get_post_meta( $post->ID, $id, true ) ) );
 						break;
 					}
 					case 'textarea': {
-						$result = sprintf('<textarea class="ct-field ct-textarea" name="%s" id="%s" rows="5" cols="40" >%s</textarea>', $id, $id, esc_textarea( get_post_meta( $post->ID, $id, true ) ) );
+						$result = sprintf('<textarea class="ct-field ct-textarea %s" name="%s" id="%s" rows="5" cols="40" >%s</textarea>', $class, $id, $id, esc_textarea( get_post_meta( $post->ID, $id, true ) ) );
 						break;
 					}
 					case 'datepicker': {
@@ -809,7 +810,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						wp_enqueue_script('jquery-ui-datepicker');
 						wp_enqueue_script('jquery-ui-datepicker-lang');
 						//						$result = $this->jquery_ui_css() . PHP_EOL;
-						$result = sprintf('<input type="text" class="pickdate ct-field" name="%s" id="%s" value="%s" />', $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
+						$result = sprintf('<input type="text" class="pickdate ct-field date %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
 						$result .= sprintf('
 						<script type="text/javascript">
 						jQuery(document).ready(function(){

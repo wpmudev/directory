@@ -124,3 +124,12 @@
 .toplevel_page_ct_content_types .updated {
 	margin: 12px 1.5em 0 0;
 }
+
+.form-table input[type="text"],
+.form-table textarea{
+	width: 100%;
+}
+
+.form-table th{
+	padding-left: 5px;
+}

@@ -178,6 +178,7 @@ class Directory_Core_Main extends Directory_Core {
 				add_filter( 'the_title', array( &$this, 'page_title_output' ), 10 , 2 );
 				add_filter( 'the_content', array( &$this, 'listing_list_theme' ) );
 			}
+
 			add_filter( 'template_include', array( &$this, 'custom_directory_template' ) );
 
 			$this->is_directory_page = true;
@@ -195,6 +196,7 @@ class Directory_Core_Main extends Directory_Core {
 			if ( $listing_id ) $templates[] = "single-listing-$listing_id.php";
 
 			$templates[] = 'single-listing.php';
+			$templates[] = 'single-listings.php';
 
 
 

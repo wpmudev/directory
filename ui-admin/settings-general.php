@@ -1,6 +1,5 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
-global $wp_roles;
 $options = $this->get_options('general');
 
 $default_email = __(
@@ -37,11 +36,7 @@ $default_email = __(
 						</th>
 						<td>
 							<select id="member_role" name="member_role" style="width:200px;">
-								<?php
-								$roles = array_reverse($wp_roles->role_names);
-								foreach ( $roles as $role => $name ): ?>
-								<option value="<?php echo $role; ?>" <?php selected(isset($options['member_role'] ) && $role == $options['member_role']); ?> ><?php echo $name; ?></option>
-								<?php endforeach; ?>
+							<?php wp_dropdown_roles(@$options['member_role']); ?>
 							</select>
 							<br /><span class="description"><?php _e('Select the role to which you want to assign a Directory member on signup.', $this->text_domain); ?></span>
 							<br /><span class="description"><?php _e('If you are running multiple plugins that have signups use the same role for both.', $this->text_domain); ?></span>
@@ -63,7 +58,7 @@ $default_email = __(
 								<?php
 								$system_roles = array('administrator', 'editor', 'author', 'contributor', 'subscriber');
 								$role_names = $wp_roles->role_names;
-								foreach ( $role_names as $role => $name ):
+								foreach ( (array) $role_names as $role => $name ):
 								if(! in_array($role, $system_roles) ): //Don't delete system roles.
 								?>
 								<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
@@ -277,7 +272,7 @@ $default_email = __(
 						<th><label for="cc_sender"><?php _e( 'CC the Sender:', $this->text_domain ); ?></label></th>
 						<td>
 							<input type="hidden" name="cc_sender" value="0" />
-							<input type="checkbox" id="cc_sender" name="cc_admin" value="1" <?php checked( isset( $options['cc_sender'] ) && 1 == $options['cc_sender'] ); ?> />
+							<input type="checkbox" id="cc_sender" name="cc_sender" value="1" <?php checked( isset( $options['cc_sender'] ) && 1 == $options['cc_sender'] ); ?> />
 							<span class="description"><?php _e( 'cc the sender', $this->text_domain ); ?></span>
 						</td>
 					</tr>

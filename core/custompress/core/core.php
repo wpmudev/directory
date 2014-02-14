@@ -13,13 +13,13 @@ if(! class_exists('CustomPress_Core')):
 class CustomPress_Core {
 
 	/** @public string $plugin_version Plugin version */
-	public $plugin_version = CP_VERSION;
+	public $plugin_version = CPT_VERSION;
 	/** @public string $plugin_url Plugin URL */
-	public $plugin_url = CP_PLUGIN_URL;
+	public $plugin_url = CPT_PLUGIN_URL;
 	/** @public string $plugin_dir Path to plugin directory */
-	public $plugin_dir = CP_PLUGIN_DIR;
+	public $plugin_dir = CPT_PLUGIN_DIR;
 	/** @public string $text_domain The text domain for strings localization */
-	public $text_domain = CP_TEXT_DOMAIN;
+	public $text_domain = CPT_TEXT_DOMAIN;
 	/** @public string $options_name The options name */
 	public $options_name = 'cp_options';
 
@@ -70,7 +70,7 @@ class CustomPress_Core {
 		}
 
 		// Dynamic CSS switching for date picker
-		wp_register_script('dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), 'CP-'.CP_VERSION);
+		wp_register_script('dynamic-css', $this->plugin_url . "datepicker/js/cp-dynamic-css.js", array(), 'CP-'.CPT_VERSION);
 		//wp_enqueue_script('dynamic-css');
 
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');

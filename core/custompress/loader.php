@@ -3,8 +3,8 @@
 Plugin Name: CustomPress
 Plugin URI: http://premium.wpmudev.org/project/custompress
 Description: CustomPress - Custom Post, Taxonomy and Field Manager.
-Version: 1.3.4.8
-Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
+Version: 1.3.4.9
+Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: custompress
 Domain Path: languages
@@ -20,6 +20,8 @@ __('http://premium.wpmudev.org', 'custompress'),
 __('CustomPress', 'custompress'));
 
 /*
+
+Auhtors - Ivan Shaovchev, Andrey Shipilov, Arnold Bailey
 Copyright 2011 Incsub, (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
@@ -37,13 +39,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Define plugin version */
-if( !defined('CP_VERSION') ) define ( 'CP_VERSION', '1.3.4.8' );
+if( !defined('CPT_VERSION') ) define ( 'CPT_VERSION', '1.3.4.9' );
 /* define the plugin folder url */
-if( !defined('CP_PLUGIN_URL') ) define ( 'CP_PLUGIN_URL', plugin_dir_url(__FILE__) );
+if( !defined('CPT_PLUGIN_URL') ) define ( 'CPT_PLUGIN_URL', plugin_dir_url(__FILE__) );
 /* define the plugin folder dir */
-if( !defined('CP_PLUGIN_DIR') ) define ( 'CP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
+if( !defined('CPT_PLUGIN_DIR') ) define ( 'CPT_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 /* define the text domain for CustomPress */
-if( !defined('CP_TEXT_DOMAIN') ) define ( 'CP_TEXT_DOMAIN', 'custompress' );
+if( !defined('CPT_TEXT_DOMAIN') ) define ( 'CPT_TEXT_DOMAIN', 'custompress' );
 
 //define('CT_ALLOW_IMPORT', true);
 

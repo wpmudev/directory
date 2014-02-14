@@ -4,11 +4,16 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.4.9 Arnold Bailey =
+- Changed Role dropdown to not display non-editable roles.
+- CC Sender checkbox saved wrong value.
+- Login redirect changed to not default to Home
+
 = 2.2.4.8 Arnold Bailey =
 - BOM in file causing problems
 
 = 2.2.4.7 Arnold Bailey =
-* Changed author links to only display BudyPress author urls on BP_ROOT
+* Changed author links to only display BuddyPress author urls on BP_ROOT
 * Made contact email editable
 * Added setting to disable contact form
 * CustomPress 1.3.4.7
@@ -22,7 +27,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 = 2.2.4.4 Arnold Bailey =
 * Fixed incorrect required message on Feature image on the backend;
-* Added "eriod to price display for things like 4 Month => 4 Month period.
+* Added "period to price display for things like 4 Month => 4 Month period.
 
 = 2.2.4.3 Arnold Bailey =
 * customPress 1.3.4.3

@@ -48,7 +48,12 @@ if ( isset( $_GET['updated'] ) ) {
 	<?php elseif($this->use_credits): ?>
 	<div class="av-credits"><?php _e( 'Available Credits:', $this->text_domain ); ?> <?php echo $this->transactions->credits; ?></div>
 	<?php endif; ?>
-	<div class="clear"></div>
+
+	<div>
+	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $this->text_domain ) .  '[/dr_add_listing_btn]'); ?>
+	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('My Credits', $this->text_domain) . '" view="loggedin"]'); ?>
+	</div>
+
 
 	<?php if ( count( $custom_query->posts ) ) : ?>
 	<table class="wp-list-table widefat fixed posts">
@@ -77,7 +82,7 @@ if ( isset( $_GET['updated'] ) ) {
 						<a title="Delete this listing" href="javascript:;" onclick="dr_listings.toggle_delete( '<?php echo $listing->ID; ?>' );" ><?php _e( 'Delete', DR_TEXT_DOMAIN ); ?></a>
 					</span>
 					<?php endif; ?>
-					
+
 					<span class="delete" id="delete-confirm-<?php echo $listing->ID; ?>" style="display: none;"> |
 						<?php _e( 'Delete? ', DR_TEXT_DOMAIN ); ?>
 						<a title="no" href="javascript:;" onclick="dr_listings.toggle_delete_no( '<?php echo $listing->ID; ?>' );"><?php _e( 'No', DR_TEXT_DOMAIN ); ?></a>

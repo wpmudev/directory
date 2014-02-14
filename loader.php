@@ -3,8 +3,8 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.2.4.8
-Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
+Version: 2.2.4.9
+Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: dr_text_domain
 Domain Path: /languages
@@ -20,6 +20,8 @@ __('Directory', 'dr_text_domain'),
 );
 
 /*
+
+Authors - Ivan Shaovchev, Andrey Shipilov, Arnold Bailey
 Copyright 2012 Incsub, (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
@@ -37,7 +39,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.2.4.8' );
+define( 'DR_VERSION', '2.2.4.9' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir

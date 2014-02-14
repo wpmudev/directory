@@ -43,7 +43,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<label for="field_message"><?php _e('Required Field Error Prompt', $this->text_domain) ?></label><br />
 						</th>
 						<td>
-							<input type="text" id="field_message" name="field_message" size="55" value="<?php if ( isset( $custom_field['field_message'] ) ) echo $custom_field['field_message']; ?>" />
+							<input type="text" id="field_message" name="field_message" value="<?php if ( isset( $custom_field['field_message'] ) ) echo $custom_field['field_message']; ?>" />
 							<br /><span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
 						</td>
 					</tr>

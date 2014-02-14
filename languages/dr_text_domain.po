@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-23 20:26-0500\n"
+"POT-Creation-Date: 2014-02-14 17:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../loader.php:16
@@ -91,11 +91,12 @@ msgid "All users have had \"%s\" credits added to their accounts."
 msgstr ""
 
 #: ../core/buddypress.php:103 ../ui-admin/navigation.php:23
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:54
 #: ../ui-front/general/page-my-listings.php:47
 msgid "My Credits"
 msgstr ""
 
-#: ../core/buddypress.php:115 ../core/core.php:1020
+#: ../core/buddypress.php:115 ../core/core.php:1024
 #: ../ui-admin/settings-shortcodes.php:41
 #: ../ui-admin/settings-shortcodes.php:42
 msgid "Add Listing"
@@ -123,8 +124,8 @@ msgid ""
 "credits. Your Listing has been saved as a Draft."
 msgstr ""
 
-#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1349
-#: ../core/core.php:1350
+#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1353
+#: ../core/core.php:1354
 msgid "You are being redirected. Please wait."
 msgstr ""
 
@@ -307,54 +308,54 @@ msgstr ""
 msgid "CC Country Code"
 msgstr ""
 
-#: ../core/core.php:404
+#: ../core/core.php:408
 msgid "Virtual"
 msgstr ""
 
-#: ../core/core.php:493
+#: ../core/core.php:497
 msgid "Virtual page. Editing this page won't change anything."
 msgstr ""
 
-#: ../core/core.php:890
+#: ../core/core.php:894
 msgid "More Info &raquo;"
 msgstr ""
 
-#: ../core/core.php:1000 ../core/data.php:54
+#: ../core/core.php:1004 ../core/data.php:54
 #: ../ui-admin/settings-shortcodes.php:33
 #: ../ui-admin/settings-shortcodes.php:34
 msgid "Listings"
 msgstr ""
 
-#: ../core/core.php:1040 ../core/data.php:58
+#: ../core/core.php:1044 ../core/data.php:58
 msgid "Edit Listing"
 msgstr ""
 
-#: ../core/core.php:1061 ../ui-admin/settings-shortcodes.php:49
+#: ../core/core.php:1065 ../ui-admin/settings-shortcodes.php:49
 #: ../ui-admin/settings-shortcodes.php:50
 msgid "My Listings"
 msgstr ""
 
-#: ../core/core.php:1081
+#: ../core/core.php:1085
 msgid "My Listing Credits"
 msgstr ""
 
-#: ../core/core.php:1103 ../ui-admin/settings-shortcodes.php:57
+#: ../core/core.php:1107 ../ui-admin/settings-shortcodes.php:57
 #: ../ui-admin/settings-shortcodes.php:58
 msgid "Go to Profile"
 msgstr ""
 
-#: ../core/core.php:1123 ../ui-admin/settings-shortcodes.php:73
+#: ../core/core.php:1127 ../ui-admin/settings-shortcodes.php:73
 #: ../ui-admin/settings-shortcodes.php:74
 #: ../ui-front/general/page-signup.php:29
 msgid "Signup"
 msgstr ""
 
-#: ../core/core.php:1143 ../ui-admin/settings-shortcodes.php:65
+#: ../core/core.php:1147 ../ui-admin/settings-shortcodes.php:65
 #: ../ui-admin/settings-shortcodes.php:66
 msgid "Signin"
 msgstr ""
 
-#: ../core/core.php:1167 ../core/core.php:1191
+#: ../core/core.php:1171 ../core/core.php:1195
 #: ../ui-admin/settings-shortcodes.php:81
 #: ../ui-admin/settings-shortcodes.php:82
 msgid "Logout"
@@ -860,11 +861,11 @@ msgstr ""
 msgid "Assign Capabilities"
 msgstr ""
 
-#: ../ui-admin/settings-capabilities.php:32
+#: ../ui-admin/settings-capabilities.php:30
 msgid "Select a role to which you want to assign Directory capabilities."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:7
+#: ../ui-admin/settings-general.php:6
 msgid ""
 "Hi TO_NAME, you have received a message from\n"
 "\n"
@@ -879,272 +880,272 @@ msgid ""
 "  Listings link: POST_LINK\n"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:27
+#: ../ui-admin/settings-general.php:26
 msgid "General Settings"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:31
+#: ../ui-admin/settings-general.php:30
 msgid "Directory Member Role"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:36
+#: ../ui-admin/settings-general.php:35
 msgid "Assign Member's Role"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:46
+#: ../ui-admin/settings-general.php:41
 msgid ""
 "Select the role to which you want to assign a Directory member on signup."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:47
+#: ../ui-admin/settings-general.php:42
 msgid ""
 "If you are running multiple plugins that have signups use the same role for "
 "both."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:57
+#: ../ui-admin/settings-general.php:52
 msgid "Add a Role"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:58
+#: ../ui-admin/settings-general.php:53
 msgid "Add a new role. Alphanumerics only."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:59
+#: ../ui-admin/settings-general.php:54
 msgid ""
 "When you add a new role you must add the appropriate capabilities to make it "
 "functional."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:75
+#: ../ui-admin/settings-general.php:70
 msgid "Remove a Role"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:76
+#: ../ui-admin/settings-general.php:71
 msgid "Confirm Remove this Role"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:85
+#: ../ui-admin/settings-general.php:80
 msgid "Directory Status Options"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:90
+#: ../ui-admin/settings-general.php:85
 msgid "Available Directory Status Options"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:93
+#: ../ui-admin/settings-general.php:88
 msgid "Published"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:94
+#: ../ui-admin/settings-general.php:89
 msgid "Allow members to Publish Listings themselves."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:95
+#: ../ui-admin/settings-general.php:90
 msgid "Pending Review"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:96
+#: ../ui-admin/settings-general.php:91
 msgid "Listing is pending review by an administrator."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:97
+#: ../ui-admin/settings-general.php:92
 msgid "Draft"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:98
+#: ../ui-admin/settings-general.php:93
 msgid "Allow members to save Drafts."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:107
+#: ../ui-admin/settings-general.php:102
 msgid "Redirection Options"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:109
+#: ../ui-admin/settings-general.php:104
 msgid ""
 "Here you can set the page, to which will redirected the user after "
 "registration or login."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:113
+#: ../ui-admin/settings-general.php:108
 msgid "Redirect URL (sign in):"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:117 ../ui-admin/settings-general.php:126
+#: ../ui-admin/settings-general.php:112 ../ui-admin/settings-general.php:121
 #: ../ui-admin/settings-payment-types.php:188
 #: ../ui-admin/settings-payment-types.php:253
 msgid "by default to Home page"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:122
+#: ../ui-admin/settings-general.php:117
 msgid "Redirect URL (logout):"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:134
+#: ../ui-admin/settings-general.php:129
 msgid "Custom Field Options"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:139
+#: ../ui-admin/settings-general.php:134
 msgid "Display Custom Fields as:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:143
+#: ../ui-admin/settings-general.php:138
 msgid "table"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:144
+#: ../ui-admin/settings-general.php:139
 msgid "ul"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:145
+#: ../ui-admin/settings-general.php:140
 msgid "div"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:147
+#: ../ui-admin/settings-general.php:142
 msgid "Structure of the custom fields block."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:157
+#: ../ui-admin/settings-general.php:152
 msgid "Display Options"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:161
+#: ../ui-admin/settings-general.php:156
 msgid "Image field:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:164
+#: ../ui-admin/settings-general.php:159
 msgid "not required"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:168
+#: ../ui-admin/settings-general.php:163
 msgid "Media manager:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:171
+#: ../ui-admin/settings-general.php:166
 msgid "enable full media manager for feature image uploads"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:176
+#: ../ui-admin/settings-general.php:171
 msgid "Count of category:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:180
+#: ../ui-admin/settings-general.php:175
 msgid ""
 "a number of categories that will be displayed in the list of categories."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:185
+#: ../ui-admin/settings-general.php:180
 msgid "Count of sub-category:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:189
+#: ../ui-admin/settings-general.php:184
 msgid ""
 "a number of sub-category that will be displayed for each category in the "
 "list of categories."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:194
+#: ../ui-admin/settings-general.php:189
 msgid "Empty sub-category:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:198
+#: ../ui-admin/settings-general.php:193
 msgid "Hide empty sub-category"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:219
+#: ../ui-admin/settings-general.php:214
 msgid "Pagination Settings"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:223
+#: ../ui-admin/settings-general.php:218
 msgid "Pagination position:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:226
+#: ../ui-admin/settings-general.php:221
 msgid "display at top of page."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:229
+#: ../ui-admin/settings-general.php:224
 msgid "display at bottom of page."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:233
+#: ../ui-admin/settings-general.php:228
 msgid "Pagination Range:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:237
+#: ../ui-admin/settings-general.php:232
 msgid "Number of page links to show at one time in pagination"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:245
+#: ../ui-admin/settings-general.php:240
 msgid "Getting started page"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:247
+#: ../ui-admin/settings-general.php:242
 msgid ""
 "Show &quot;Getting started&quot; page even after all the steps are done:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:249
+#: ../ui-admin/settings-general.php:244
 #: ../ui-admin/settings-payment-types.php:277
 #: ../ui-admin/settings-payment-types.php:305
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:85
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:90
 #: ../ui-front/general/page-my-listings.php:82
 msgid "Yes"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:251
+#: ../ui-admin/settings-general.php:246
 #: ../ui-admin/settings-payment-types.php:278
 #: ../ui-admin/settings-payment-types.php:306
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:83
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:88
 #: ../ui-front/general/page-my-listings.php:80
 msgid "No"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:253
+#: ../ui-admin/settings-general.php:248
 msgid ""
 "By default, \"Getting started\" page will be hidden once you completed all "
 "the steps. Use this option to make it control that behavior."
 msgstr ""
 
-#: ../ui-admin/settings-general.php:258
+#: ../ui-admin/settings-general.php:253
 msgid "Notification Settings"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:262
+#: ../ui-admin/settings-general.php:257
 msgid "Disable Contact Form:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:266
+#: ../ui-admin/settings-general.php:261
 msgid "disable contact form"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:270
+#: ../ui-admin/settings-general.php:265
 msgid "CC the Administrator:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:274
+#: ../ui-admin/settings-general.php:269
 msgid "cc the administrator"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:277
+#: ../ui-admin/settings-general.php:272
 msgid "CC the Sender:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:281
+#: ../ui-admin/settings-general.php:276
 msgid "cc the sender"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:285
+#: ../ui-admin/settings-general.php:280
 msgid "Email Subject:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:289 ../ui-admin/settings-general.php:299
+#: ../ui-admin/settings-general.php:284 ../ui-admin/settings-general.php:294
 msgid ""
 "Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, "
 "POST_TITLE, POST_LINK, SITE_NAME"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:293
+#: ../ui-admin/settings-general.php:288
 msgid "Email Content:"
 msgstr ""
 
@@ -1811,13 +1812,13 @@ msgid ""
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/listings.php:60
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:100
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:105
 #: ../ui-front/general/page-my-listings.php:97
 msgid "No Listings"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/listings.php:93
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:64
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:69
 #: ../ui-front/general/loop-author.php:101
 #: ../ui-front/general/loop-taxonomy.php:91
 #: ../ui-front/general/page-my-listings.php:61
@@ -1893,35 +1894,40 @@ msgstr ""
 msgid "Available Credits:"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:56
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:53
+#: ../ui-front/general/page-my-listings.php:46
+msgid "Create New Listing"
+msgstr ""
+
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:61
 #: ../ui-front/buddypress/members/single/directory/update-listing.php:80
 #: ../ui-front/general/page-my-listings.php:53
 #: ../ui-front/general/page-update-listing.php:81
 msgid "Title"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:57
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:62
 #: ../ui-front/general/page-my-listings.php:54
 msgid "Date"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:72
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:77
 #: ../ui-front/general/page-my-listings.php:69
 #: ../ui-front/general/page-signup.php:784
 msgid "Edit"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:77
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:82
 #: ../ui-front/general/page-my-listings.php:74
 msgid "Delete"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:82
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:87
 #: ../ui-front/general/page-my-listings.php:79
 msgid "Delete? "
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:88
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:93
 #: ../ui-front/general/page-my-listings.php:85
 msgid "Preview"
 msgstr ""
@@ -2006,10 +2012,6 @@ msgstr ""
 
 #: ../ui-front/general/page-my-listings.php:40
 msgid "You have access to create new ads"
-msgstr ""
-
-#: ../ui-front/general/page-my-listings.php:46
-msgid "Create New Listing"
 msgstr ""
 
 #: ../ui-front/general/page-signin.php:32

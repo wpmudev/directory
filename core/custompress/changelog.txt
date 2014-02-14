@@ -5,7 +5,11 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
-= 1.3.4.6 = 2013-11-23 Arnold Bailey
+= 1.3.4.9 = 2014-02-14 Arnold Bailey
+- Changed Role dropdown to not display non-editable roles.
+- Changed CP_* defines to CPT_* to avoid naming collisions with CollabPress
+
+= 1.3.4.8 = 2013-11-23 Arnold Bailey
 - BOM in file causing problems
 
 = 1.3.4.7 = 2013-11-22 Arnold Bailey
@@ -213,7 +217,7 @@ will now properly expand.
 * Added shortcodes for Custom fields including metadata [ct id="field id" property=" title | description | value "] or leave out property entirely for default value.
 * Enabled shortcodes in widgets
 * Change embed codes to <? echo do_shortcode('[]'); ?> style for better error trapping. The old style still works so old templates aren't broken.
-* Corrected CP_PLUGIN_URL for SSL
+* Corrected CPT_PLUGIN_URL for SSL
 * Fixed double display of options on Radio buttons
 * Fixed Group checkbox problem
 * Added class exists exclusions

@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 $options = $this->get_options('payments');
 
@@ -18,7 +18,7 @@ $options = $this->get_options('payments');
 		$( "#enable_credits" ).change( function () {$("#credits_table input, #credits_table textarea" ).prop( "readonly" , ! $( "#enable_credits" ).prop( "checked" ) ); });
 
 		$( "#payment_settings" ).submit( function () {
-			if ( $( "#enable_recurring" ).prop( "checked" ) 
+			if ( $( "#enable_recurring" ).prop( "checked" )
 			|| $( "#enable_one_time").prop( "checked" )
 			|| $( "#enable_credits" ).prop( "checked" ) ) {
 				return true;
@@ -31,7 +31,7 @@ $options = $this->get_options('payments');
 			return false;
 		});
 	});
-	
+
 })(jQuery);
 </script>
 -->
@@ -89,7 +89,7 @@ $options = $this->get_options('payments');
 								<option value="Week" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Week' ); ?>><?php _e( 'Week', $this->text_domain ); ?></option>
 <!--
 								<option value="SemiMonth" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'SemiMonth' ); ?>><?php _e( 'SemiMonth', $this->text_domain ); ?></option>
--->		
+-->
 								<option value="Month" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Month' ); ?>><?php _e( 'Month', $this->text_domain ); ?></option>
 								<option value="Year" <?php selected( isset( $options['billing_period'] ) && $options['billing_period'] == 'Year' ); ?>><?php _e( 'Year', $this->text_domain ); ?></option>
 							</select>
@@ -110,7 +110,7 @@ $options = $this->get_options('payments');
 							<label for="billing_agreement"><?php _e('Billing Agreement', $this->text_domain) ?></label>
 						</th>
 						<td>
-							<input type="text" name="billing_agreement" id="billing_agreement" size="100" value="<?php echo ( empty( $options['billing_agreement'] ) ) ? '' : $options['billing_agreement']; ?>" />
+							<input type="text" name="billing_agreement" id="billing_agreement" class="dr-full" value="<?php echo ( empty( $options['billing_agreement'] ) ) ? '' : $options['billing_agreement']; ?>" />
 							<br /><span class="description"><?php _e('The description of the goods or services associated with that billing agreement. PayPal recommends that the description contain a brief summary of the billing agreement terms and conditions. For example, customer will be billed at "$9.99 per month for 2 years."', $this->text_domain); ?></span>
 						</td>
 					</tr>
@@ -192,7 +192,7 @@ $options = $this->get_options('payments');
 					<tr>
 						<th><label for="credits_description"><?php _e( 'Description', $this->text_domain ); ?></label></th>
 						<td>
-							<textarea id="credits_description" name="credits_description" rows="1" cols="55"><?php echo ( empty( $options['credits_description'] ) ) ? '' : sanitize_text_field($options['credits_description']); ?></textarea>
+							<textarea id="credits_description" name="credits_description" rows="1" class="dr-full"><?php echo ( empty( $options['credits_description'] ) ) ? '' : sanitize_text_field($options['credits_description']); ?></textarea>
 							<br />
 							<span class="description"><?php _e( 'Description of the costs and durations associated with publishing an ad. Will be displayed in the admin area.', $this->text_domain ); ?></span>
 						</td>
@@ -210,7 +210,7 @@ $options = $this->get_options('payments');
 							<label for="tos_content"><?php _e('Terms of Service', $this->text_domain) ?></label>
 						</th>
 						<td>
-							<textarea name="tos_content" id="tos_content" rows="15" cols="125"><?php echo ( empty( $options['tos_content'] ) ) ? '' : sanitize_text_field($options['tos_content']); ?></textarea>
+							<textarea name="tos_content" id="tos_content" rows="15" class="dr-full"><?php echo ( empty( $options['tos_content'] ) ) ? '' : sanitize_text_field($options['tos_content']); ?></textarea>
 							<br />
 							<span class="description"><?php _e('Text for "Terms of Service"'); ?></span>
 						</td>

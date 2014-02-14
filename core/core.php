@@ -247,7 +247,7 @@ class Directory_Core {
 
 		$result = false;
 
-		if(current_user_can('manage_options') ) $result = true;
+		if(current_user_can('manage_options') || $this->use_free) $result = true;
 
 		//for paid users
 		if ( $this->transactions->billing_type ) {
@@ -270,8 +270,10 @@ class Directory_Core {
 	*
 	*/
 	function on_login_redirect($redirect = '', $request = '', $user = '') {
+
 		$options = $this->get_options('general');
-		$redirect = (empty($options['signin_url']) )? home_url() : $options['signin_url'];
+		$signin_url  = trim($options['signin_url']);
+		$redirect = empty( $signin_url )? $redirect : $signin_url;
 
 		return $redirect;
 	}
@@ -281,8 +283,10 @@ class Directory_Core {
 	*
 	*/
 	function on_logout_url($logout_url = '', $redirect = '') {
+
 		$options = $this->get_options('general');
-		$redirect = (empty($options['logout_url']) ) ? home_url() : $options['logout_url'];
+		$logout_url  = trim($options['logout_url']);
+		$redirect = empty( $logout_url )? $redirect : $logout_url;
 		$logout_url = add_query_arg(array('redirect_to' => $redirect), $logout_url );
 
 		return $logout_url;

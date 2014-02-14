@@ -21,7 +21,7 @@ if( ! function_exists('write_to_log') ):
 function write_to_log($error, $log = 'flush_rewrite_rules') {
 
 	//create filename for each month
-	$filename = CP_PLUGIN_DIR . "{$log}_" . date('Y_m') . '.log';
+	$filename = CPT_PLUGIN_DIR . "{$log}_" . date('Y_m') . '.log';
 
 	//add timestamp to error
 	$message = gmdate('[Y-m-d H:i:s] ') . $error;
