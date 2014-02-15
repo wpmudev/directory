@@ -114,6 +114,7 @@ class Directory_Core {
 
 		add_action( 'template_redirect', array( &$this, 'handle_contact_form_requests' ) );
 
+		add_action('wp_logout', array( &$this, 'on_wp_logout' ) );
 
 		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
@@ -122,9 +123,7 @@ class Directory_Core {
 		add_filter( 'excerpt_more', array(&$this, 'on_excerpt_more'));
 		add_filter( 'author_link', array(&$this, 'on_author_link'));
 		add_filter( 'login_redirect', array(&$this, 'on_login_redirect'), 10, 3);
-		add_filter( 'logout_url', array(&$this, 'on_logout_url'), 10, 2);
 		add_filter('admin_post_thumbnail_html', array(&$this,'on_admin_post_thumbnail_html') );
-
 
 		//Shortcodes
 
@@ -278,18 +277,18 @@ class Directory_Core {
 		return $redirect;
 	}
 
+
 	/**
 	* Redirect signout to home or user defined url
 	*
 	*/
-	function on_logout_url($logout_url = '', $redirect = '') {
-
+	function on_wp_logout(){
 		$options = $this->get_options('general');
-		$logout_url  = trim($options['logout_url']);
-		$redirect = empty( $logout_url )? $redirect : $logout_url;
-		$logout_url = add_query_arg(array('redirect_to' => $redirect), $logout_url );
-
-		return $logout_url;
+		$url = trim($options['logout_url']);
+		if( ! empty($url) ) {
+		wp_redirect($url);
+		exit;
+		}
 	}
 
 	function on_parse_query($query){

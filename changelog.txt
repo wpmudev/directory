@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.5 Arnold Bailey =
+Fixed Logout link redirect.
+
 = 2.2.4.9 Arnold Bailey =
 - Changed Role dropdown to not display non-editable roles.
 - CC Sender checkbox saved wrong value.
