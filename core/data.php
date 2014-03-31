@@ -20,6 +20,7 @@ class Directory_Core_Data {
 		add_action( 'init', array( &$this, 'load_data' ) );
 		add_action( 'init', array( &$this, 'load_payment_data' ) );
 		add_action( 'init', array( &$this, 'load_mu_plugins' ) );
+		add_action( 'init', array( &$this, 'rewrite_rules' ) );
 	}
 
 	/**
@@ -241,6 +242,17 @@ class Directory_Core_Data {
 		update_option( DR_OPTIONS_NAME, $options );
 	}
 	
+		function rewrite_rules() {
+
+		add_rewrite_rule("directory_listing/author/([^/]+)/page/?([2-9][0-9]*)",
+		"index.php?post_type=directory_listing&author_name=\$matches[1]&paged=\$matches[2]", 'top');
+
+		add_rewrite_rule("directory_listing/author/([^/]+)",
+		"index.php?post_type=directory_listing&author_name=\$matches[1]", 'top');
+
+		flush_network_rewrite_rules();
+	}
+
 	function load_mu_plugins(){
 
 	if(!is_dir(WPMU_PLUGIN_DIR . '/logs')):

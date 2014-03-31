@@ -246,7 +246,7 @@ function the_dr_breadcrumbs() {
 */
 function the_dr_posted_on() {
 
-	$alink = get_author_directory_url( get_the_author_meta( 'ID' ) ) ;
+	$alink = get_author_directory_link( get_the_author_meta( 'ID' ) ) ;
 
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
 	'meta-prep meta-prep-author',
@@ -262,6 +262,7 @@ function the_dr_posted_on() {
 	)
 	);
 }
+
 
 /**
 * Prints HTML with meta information for the current post (category, tags and permalink).
@@ -370,7 +371,7 @@ function get_author_directory_url($author_id, $author_nicename = '') {
 	} else {
 		if ( empty($link) ) {
 			$file = home_url( '/' );
-			$link = $file . "?post_type={$slug}&author=" . $auth_ID;
+			$link = $file . "?post_type=directory_listing&author=" . $auth_ID;
 		} else {
 			$link = $link . "/{$slug}";
 			if ( '' == $author_nicename ) {

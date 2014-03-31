@@ -266,7 +266,7 @@ array(
 					<div class="pickdate"></div>
 				</td>
 				<td style="vertical-align:top;">
-					<input type="text" id="date_format" name="date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('.pickdate').datepicker( 'option', 'dateFormat', this.value );"/><br />
+					<input type="text" id="date_format" name="date_format" size="38" value="<?php esc_attr_e( $date_format ); ?>" onchange="jQuery('.pickdate').datepicker( 'option', 'dateFormat', this.value );"/><br />
 					<span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
 					<br /><br />
 					<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
@@ -313,9 +313,9 @@ array(
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		//Make em pickers
-		jQuery('.pickdate').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
+		jQuery('.pickdate').datepicker({ dateFormat : '<?php echo esc_js($date_format); ?>' });
 		//Default date for display
-		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
+		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo esc_js( $date_format ); ?>', new Date(), {}) );
 	});
 </script>
 

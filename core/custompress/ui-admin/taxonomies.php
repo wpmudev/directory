@@ -63,7 +63,7 @@ if(is_multisite()) {
 					else:
 					?>
 
-					<a href="<?php echo self_admin_url('admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name); ?>"><?php echo( $name ); ?></a>
+					<a href="<?php echo esc_url( self_admin_url('admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name) ); ?>"><?php esc_html_e( $name ); ?></a>
 					<?php endif; ?>
 
 				</strong>
@@ -71,12 +71,12 @@ if(is_multisite()) {
 					<?php if(! $flag): ?>
 
 					<span class="edit">
-						<a title="<?php _e('Edit this taxonomy', $this->text_domain); ?>" href="<?php echo self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ); ?>" ><?php _e('Edit', $this->text_domain); ?></a> |
+						<a title="<?php _e('Edit this taxonomy', $this->text_domain); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&ct_content_type=taxonomy&ct_edit_taxonomy=' . $name ) ); ?>" ><?php _e('Edit', $this->text_domain); ?></a> |
 					</span>
 					<?php endif; ?>
 
 					<span>
-						<a title="<?php _e('Show embed code', $this->text_domain); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php echo( $name ); ?>'); return false;"><?php _e('Embed Code', $this->text_domain); ?></a>
+						<a title="<?php _e('Show embed code', $this->text_domain); ?>" href="" onclick="javascript:content_types.toggle_embed_code('<?php esc_html_e( $name ); ?>'); return false;"><?php _e('Embed Code', $this->text_domain); ?></a>
 					</span>
 
 					<?php if($flag): ?>
@@ -85,21 +85,21 @@ if(is_multisite()) {
 
 					<?php if(! $flag): ?>
 					<span class="trash">
-						| <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>
+						| <a class="submitdelete" href="" onclick="javascript:content_types.toggle_delete('<?php esc_html_e( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>
 					</span>
 					<?php endif; ?>
 				</div>
 				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_taxonomy'); ?>
-					<input type="hidden" name="taxonomy_name" value="<?php echo( $name ); ?>" />
+					<input type="hidden" name="taxonomy_name" value="<?php esc_html_e( $name ); ?>" />
 					<input type="submit" class="button confirm" value="<?php _e( 'Confirm', $this->text_domain ); ?>" name="submit" />
 					<input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
 				</form>
 			</td>
-			<td><?php if ( isset( $taxonomy['args']['labels']['name'] ) ) echo $taxonomy['args']['labels']['name']; ?></td>
+			<td><?php if ( isset( $taxonomy['args']['labels']['name'] ) ) esc_html_e( $taxonomy['args']['labels']['name'] ); ?></td>
 			<td>
 				<?php foreach( $taxonomy['object_type'] as $object_type ): ?>
-				<?php echo( $object_type ); ?>
+				<?php esc_html_e( $object_type ); ?>
 				<?php endforeach; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">

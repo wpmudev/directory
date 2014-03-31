@@ -41,7 +41,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php foreach($post_types as $key => $post_type): ?>
-							<label class="ct-list"><input type="checkbox" name="pt[<?php echo $key?>]" value="1" <?php checked(! empty($_POST['pt'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
+							<label class="ct-list"><input type="checkbox" name="pt[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['pt'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -49,7 +49,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<textarea id="post_export" rows="6" cols="80" ><?php esc_html_e(post_types_export($post_types)); ?></textarea>
+							<textarea id="post_export" rows="6" cols="80" ><?php echo esc_textarea(post_types_export($post_types)); ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -74,7 +74,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php foreach($taxonomies as $key => $taxonomy): ?>
-							<label class="ct-list"><input type="checkbox" name="tx[<?php echo $key?>]" value="1" <?php checked(! empty($_POST['tx'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
+							<label class="ct-list"><input type="checkbox" name="tx[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['tx'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -82,7 +82,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<textarea id="taxonomies_export" rows="6" cols="80" ><?php esc_html_e(taxonomies_export($taxonomies)); ?></textarea>
+							<textarea id="taxonomies_export" rows="6" cols="80" ><?php echo esc_textarea(taxonomies_export($taxonomies)); ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -107,7 +107,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php foreach($custom_fields as $key => $custom_field): ?>
-							<label class="ct-list-cf"><input type="checkbox" name="cf[<?php echo $key?>]" value="1" <?php checked(! empty($_POST['cf'][$key]) ); ?> />&nbsp;<?php echo $custom_field['field_title'] . ' : ' . $key?></label>
+							<label class="ct-list-cf"><input type="checkbox" name="cf[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['cf'][$key]) ); ?> />&nbsp;<?php echo $custom_field['field_title'] . ' : ' . $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -115,7 +115,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<textarea id="field_export" rows="6" cols="80" ><?php esc_html_e(custom_fields_export($custom_fields)); ?></textarea>
+							<textarea id="field_export" rows="6" cols="80" ><?php echo esc_textarea(custom_fields_export($custom_fields)); ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -146,7 +146,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<td>
 							<?php wp_nonce_field('import'); ?>
 							<?php if( defined('CT_ALLOW_IMPORT') ): ?>
-							<textarea id="ct_import" name="ct_import" rows="6" cols="80" ><?php esc_html_e($import); ?></textarea>
+							<textarea id="ct_import" name="ct_import" rows="6" cols="80" ><?php echo esc_textarea($import); ?></textarea>
 							<?php else: ?>
 							<span class="description"><?php _e("Import is currently disabled on this site. To enable add the line<br /><code>define('CT_ALLOW_IMPORT', true);</code><br />to the wp-config.php file.", $this->text_domain); ?></span>
 							<span class="description"><?php _e("Remove the line when it is no longer needed to prevent possible security problems.", $this->text_domain); ?></span>

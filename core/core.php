@@ -467,21 +467,35 @@ class Directory_Core {
 	* @return int $page[0] /bool false
 	*/
 	function get_page_by_meta( $value ) {
-		$post_statuses = get_post_stati();
-		foreach ( $post_statuses as $post_status ) {
-			$args = array(
-			'hierarchical'  => 0,
-			'meta_key'      => 'directory_page',
-			'meta_value'    => $value,
-			'post_type'     => 'page',
-			'post_status'   => $post_status
-			);
+		global $wpdb;
 
-			$page = get_pages( $args );
+		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
+		$ids = array_keys(
+		$wpdb->get_results($wpdb->prepare(
+		"
+		SELECT post_id
+		FROM {$wpdb->postmeta}
+		WHERE meta_key='directory_page'
+		AND meta_value=%s
+		", $value), OBJECT_K )
+		);
 
-			if ( isset( $page[0] ) && 0 < $page[0]->ID )
-			return $page[0];
+		if( count($ids) != 1 ) { //There can be only one.
+			foreach( $ids as $id ) { //Delete all and start over.
+				wp_delete_post($id, true);
+			}
+			return false;
 		}
+
+		if( get_post_status( $ids[0]) == 'trash' ){ //no trash
+			wp_delete_post($ids[0], true);
+			return false;
+		}
+
+		if ( isset( $ids[0] ) && 0 < $ids[0] ){
+			return get_post($ids[0]);
+		}
+
 		return false;
 	}
 

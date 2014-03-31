@@ -8,7 +8,9 @@ if(is_network_admin()){
 	$post_type = $this->post_types[$_GET['ct_edit_post_type']];
 	$custom_fields = get_option( 'ct_custom_fields' );
 }
-
+if( !isset( $post_type['rewrite']['ep_mask'] ) ) {
+	$post_type['rewrite']['ep_mask'] = EP_PERMALINK;
+}
 ?>
 
 <h3><?php _e('Edit Post Type', $this->text_domain); ?></h3>
@@ -24,8 +26,8 @@ if(is_network_admin()){
 						<label><?php _e('Post Type', $this->text_domain) ?> <span class="ct-required">(<?php _e('required', $this->text_domain); ?>)</span></label>
 					</th>
 					<td>
-						<input type="text" value="<?php if ( isset( $_GET['ct_edit_post_type'] ) ) echo $_GET['ct_edit_post_type']; ?>" disabled="disabled">
-						<input type="hidden" id="post_type" name="post_type" value="<?php if ( isset( $_GET['ct_edit_post_type'] ) ) echo $_GET['ct_edit_post_type']; ?>" />
+						<input type="text" value="<?php if ( isset( $_GET['ct_edit_post_type'] ) ) esc_attr_e( $_GET['ct_edit_post_type'] ); ?>" disabled="disabled">
+						<input type="hidden" id="post_type" name="post_type" value="<?php if ( isset( $_GET['ct_edit_post_type'] ) ) esc_attr_e( $_GET['ct_edit_post_type'] ); ?>" />
 						<br /><span class="description"><?php _e('The new post type system name ( max. 20 characters ). Alphanumeric lower-case characters and underscores only. Min 2 letters. Once added the post type system name cannot be changed.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -139,7 +141,7 @@ if(is_network_admin()){
 						<?php
 						$capability_type = (isset( $post_type['capability_type'] ) ) ? $post_type['capability_type'] : 'post';
 						?>
-						<input type="text" name="capability_type" value="<?php echo $capability_type; ?>" />
+						<input type="text" name="capability_type" value="<?php esc_attr_e( $capability_type ); ?>" />
 						<input type="checkbox" name="capability_type_edit" value="1" />
 						<span class="description ct-capability-type-edit"><strong><?php _e('Edit' , $this->text_domain); ?></strong> (<?php _e('advanced' , $this->text_domain); ?>)</span>
 						<br /><span class="description"><?php _e('The post type to use for checking read, edit, and delete capabilities. Default: "post".' , $this->text_domain); ?></span>
@@ -184,7 +186,12 @@ if(is_network_admin()){
 					<td>
 
 						<select id="roles" name="roles">
-							<?php wp_dropdown_roles('administrator'); ?>
+							<?php
+							global $wp_roles;
+							$role_obj = $wp_roles->get_role( 'administrator' );
+							foreach ( $wp_roles->role_names as $role => $name ): ?>
+							<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
+							<?php endforeach; ?>
 						</select>
 						<br /><span class="description"><?php echo sprintf(__('Select a role to which you want to assign %s capabilities.', $this->text_domain), $capability_type ); ?></span>
 						<br /><br />
@@ -229,7 +236,7 @@ if(is_network_admin()){
 						<label><?php _e('Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[name]" value="<?php if ( isset( $post_type['labels']['name'] ) ) echo $post_type['labels']['name']; ?>" />
+						<input type="text" name="labels[name]" value="<?php if ( isset( $post_type['labels']['name'] ) ) esc_attr_e( $post_type['labels']['name'] ); ?>" />
 						<br /><span class="description"><?php _e('General name for the post type, usually plural.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -238,7 +245,7 @@ if(is_network_admin()){
 						<label><?php _e('Singular Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $post_type['labels']['singular_name'] ) ) echo ( $post_type['labels']['singular_name'] ); ?>" />
+						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $post_type['labels']['singular_name'] ) ) esc_attr_e( $post_type['labels']['singular_name'] ); ?>" />
 						<br /><span class="description"><?php _e('Name for one object of this post type. Defaults to value of name.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -247,7 +254,7 @@ if(is_network_admin()){
 						<label><?php _e('Add New', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new]" value="<?php if ( isset( $post_type['labels']['add_new'] ) ) echo ( $post_type['labels']['add_new'] ); ?>" />
+						<input type="text" name="labels[add_new]" value="<?php if ( isset( $post_type['labels']['add_new'] ) ) esc_attr_e( $post_type['labels']['add_new'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new text. The default is Add New for both hierarchical and non-hierarchical types.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -256,7 +263,7 @@ if(is_network_admin()){
 						<label><?php _e('Add New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $post_type['labels']['add_new_item'] ) ) echo ( $post_type['labels']['add_new_item'] ); ?>" />
+						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $post_type['labels']['add_new_item'] ) ) esc_attr_e( $post_type['labels']['add_new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new item text. Default is Add New Post/Add New Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -265,7 +272,7 @@ if(is_network_admin()){
 						<label><?php _e('Edit Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $post_type['labels']['edit_item'] ) ) echo ( $post_type['labels']['edit_item'] ); ?>" />
+						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $post_type['labels']['edit_item'] ) ) esc_attr_e( $post_type['labels']['edit_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The edit item text. Default is Edit Post/Edit Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -274,7 +281,7 @@ if(is_network_admin()){
 						<label><?php _e('New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[new_item]" value="<?php if ( isset( $post_type['labels']['new_item'] ) ) echo ( $post_type['labels']['new_item'] ); ?>" />
+						<input type="text" name="labels[new_item]" value="<?php if ( isset( $post_type['labels']['new_item'] ) ) esc_attr_e( $post_type['labels']['new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The new item text. Default is New Post/New Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -283,7 +290,7 @@ if(is_network_admin()){
 						<label><?php _e('View Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[view_item]" value="<?php if ( isset( $post_type['labels']['view_item'] ) ) echo ( $post_type['labels']['view_item'] ); ?>" />
+						<input type="text" name="labels[view_item]" value="<?php if ( isset( $post_type['labels']['view_item'] ) ) esc_attr_e( $post_type['labels']['view_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The view item text. Default is View Post/View Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -292,7 +299,7 @@ if(is_network_admin()){
 						<label><?php _e('Search Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[search_items]" value="<?php if ( isset( $post_type['labels']['search_items'] ) ) echo ( $post_type['labels']['search_items'] ); ?>" />
+						<input type="text" name="labels[search_items]" value="<?php if ( isset( $post_type['labels']['search_items'] ) ) esc_attr_e( $post_type['labels']['search_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The search items text. Default is Search Posts/Search Pages.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -301,7 +308,7 @@ if(is_network_admin()){
 						<label><?php _e('Not Found', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[not_found]" value="<?php if ( isset( $post_type['labels']['not_found'] ) ) echo ( $post_type['labels']['not_found'] ); ?>" />
+						<input type="text" name="labels[not_found]" value="<?php if ( isset( $post_type['labels']['not_found'] ) ) esc_attr_e( $post_type['labels']['not_found'] ); ?>" />
 						<br /><span class="description"><?php _e('The not found text. Default is No posts found/No pages found.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -310,7 +317,7 @@ if(is_network_admin()){
 						<label><?php _e('Not Found In Trash', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[not_found_in_trash]" value="<?php if ( isset( $post_type['labels']['not_found_in_trash'] ) ) echo ( $post_type['labels']['not_found_in_trash'] ); ?>" />
+						<input type="text" name="labels[not_found_in_trash]" value="<?php if ( isset( $post_type['labels']['not_found_in_trash'] ) ) esc_attr_e( $post_type['labels']['not_found_in_trash'] ); ?>" />
 						<br /><span class="description"><?php _e('The not found in trash text. Default is No posts found in Trash/No pages found in Trash.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -319,7 +326,7 @@ if(is_network_admin()){
 						<label><?php _e('Parent Item Colon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $post_type['labels']['parent_item_colon'] ) ) echo ( $post_type['labels']['parent_item_colon'] ); ?>" />
+						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $post_type['labels']['parent_item_colon'] ) ) esc_attr_e( $post_type['labels']['parent_item_colon'] ); ?>" />
 						<br /><span class="description"><?php _e('The parent text. This string isn\'t used on non-hierarchical types. In hierarchical ones the default is Parent Page', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -328,7 +335,7 @@ if(is_network_admin()){
 						<label><?php _e('Custom Fields block', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[custom_fields_block]" value="<?php if ( isset( $post_type['labels']['custom_fields_block'] ) ) echo $post_type['labels']['custom_fields_block']; ?>" />
+						<input type="text" name="labels[custom_fields_block]" value="<?php if ( isset( $post_type['labels']['custom_fields_block'] ) ) esc_attr_e( $post_type['labels']['custom_fields_block'] ); ?>" />
 						<br /><span class="description"><?php _e('Title of Custom Fields block.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -343,7 +350,7 @@ if(is_network_admin()){
 						<label><?php _e('Description', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<textarea name="description" cols="52" rows="3"><?php if ( isset( $post_type['description'] ) ) echo ( $post_type['description'] ); ?></textarea>
+						<textarea name="description" cols="52" rows="3"><?php if ( isset( $post_type['description'] ) ) echo esc_textarea( $post_type['description'] ); ?></textarea>
 						<br /><span class="description"><?php _e('A short descriptive summary of what the post type is.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -358,7 +365,7 @@ if(is_network_admin()){
 						<label><?php _e('Menu Position', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="menu_position" value="<?php if ( isset( $post_type['menu_position'] ) ) echo ( $post_type['menu_position'] ); ?>" />
+						<input type="text" name="menu_position" value="<?php if ( isset( $post_type['menu_position'] ) ) esc_attr_e( $post_type['menu_position'] ); ?>" />
 						<br /><span class="description"><?php _e('5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -373,7 +380,7 @@ if(is_network_admin()){
 						<label><?php _e('Menu Icon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="menu_icon" value="<?php if ( isset( $post_type['menu_icon'] ) ) echo ( $post_type['menu_icon'] ); ?>" />
+						<input type="text" name="menu_icon" value="<?php if ( isset( $post_type['menu_icon'] ) ) esc_attr_e( $post_type['menu_icon'] ); ?>" />
 						<br /><span class="description"><?php _e('The url to the icon to be used for this menu.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -390,18 +397,17 @@ if(is_network_admin()){
 					<td>
 						<p><span class="description"><?php _e('These Custom Fields will be display as columns on the custom post type screen.', $this->text_domain); ?></span></p>
 						<?php
-//						$custom_fields = get_site_option( 'ct_custom_fields' );
+
 						if ( ! empty( $custom_fields ) ) {
 							foreach ( $custom_fields as $custom_field ) {
-								//print_r($custom_field['object_type']);
 								if ( false !== array_search( $_GET['ct_edit_post_type'], $custom_field['object_type'] ) ) {
 									if ( isset( $post_type['cf_columns'][$custom_field['field_id']] ) && 1 == $post_type['cf_columns'][$custom_field['field_id']] )
 									$checked = 'checked';
 									else
 									$checked = '';
 
-									echo '<label><input type="checkbox" name="cf_columns[' . $custom_field['field_id'] . ']" value="1" ' . $checked . '  /> ';
-									echo '<span class="description"><strong>' . $custom_field['field_title'] . '</strong></span></label><br />';
+									printf( '<label><input type="checkbox" name="cf_columns[%s]" value="1" %s />', esc_attr($custom_field['field_id']), $checked );
+									printf( '<span class="description"><strong>%s</strong></span></label><br />', esc_html($custom_field['field_title']) );
 								}
 							}
 						}
@@ -601,7 +607,7 @@ if(is_network_admin()){
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="has_archive_slug" value="<?php if ( is_string( $post_type['has_archive'] ) ) echo $post_type['has_archive']; ?>" />
+						<input type="text" name="has_archive_slug" value="<?php if ( is_string( $post_type['has_archive'] ) ) esc_attr_e( $post_type['has_archive'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom slug for post type archive.', $this->text_domain); ?></span>
 					</td>
@@ -630,7 +636,7 @@ if(is_network_admin()){
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="rewrite_slug" value="<?php if ( !empty( $post_type['rewrite']['slug'] ) ) echo( $post_type['rewrite']['slug'] ); ?>" />
+						<input type="text" name="rewrite_slug" value="<?php if ( !empty( $post_type['rewrite']['slug'] ) ) esc_attr_e( $post_type['rewrite']['slug'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Prepend posts with this slug. If empty default will be used.', $this->text_domain); ?></span>
 						<br /><br />
@@ -790,7 +796,7 @@ if(is_network_admin()){
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Query Key', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="query_var_key" value="<?php if ( is_string( $post_type['query_var'] ) ) echo $post_type['query_var']; ?>" />
+						<input type="text" name="query_var_key" value="<?php if ( is_string( $post_type['query_var'] ) ) esc_attr_e( $post_type['query_var'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom query var key.', $this->text_domain); ?></span>
 					</td>

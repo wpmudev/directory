@@ -12,7 +12,7 @@
 						<label><?php _e('Post Type', $this->text_domain) ?> <span class="ct-required">( <?php _e('required', $this->text_domain); ?> )</span></label>
 					</th>
 					<td>
-						<input type="text" name="post_type" value="<?php if ( isset( $_POST['post_type'] ) ) echo $_POST['post_type']; elseif ( isset( $_GET['ct_edit_post_type'] ) ) echo $_GET['ct_edit_post_type']; ?>" />
+						<input type="text" name="post_type" value="<?php if ( isset( $_POST['post_type'] ) ) esc_attr_e( $_POST['post_type'] ); elseif ( isset( $_GET['ct_edit_post_type'] ) ) esc_attr_e( $_GET['ct_edit_post_type'] ); ?>" />
 						<br /><span class="description"><?php _e('The new post type system name ( max. 20 characters ). Alphanumeric lower-case characters and underscores only. Min 2 letters. Once added the post type system name cannot be changed.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -166,7 +166,7 @@
 						<label><?php _e('Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[name]" value="<?php if ( isset( $_POST['labels']['name'] ) ) echo $_POST['labels']['name']; ?>" />
+						<input type="text" name="labels[name]" value="<?php if ( isset( $_POST['labels']['name'] ) ) esc_attr_e( $_POST['labels']['name'] ); ?>" />
 						<br /><span class="description"><?php _e('General name for the post type, usually plural.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -175,7 +175,7 @@
 						<label><?php _e('Singular Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $_POST['labels']['singular_name'] ) ) echo $_POST['labels']['singular_name']; ?>" />
+						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $_POST['labels']['singular_name'] ) ) esc_attr_e( $_POST['labels']['singular_name'] ); ?>" />
 						<br /><span class="description"><?php _e('Name for one object of this post type. Defaults to value of name.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -184,7 +184,7 @@
 						<label><?php _e('Add New', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new]" value="<?php if ( isset( $_POST['labels']['add_new'] ) ) echo $_POST['labels']['add_new']; ?>" />
+						<input type="text" name="labels[add_new]" value="<?php if ( isset( $_POST['labels']['add_new'] ) ) esc_attr_e( $_POST['labels']['add_new'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new text. The default is Add New for both hierarchical and non-hierarchical types.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -193,7 +193,7 @@
 						<label><?php _e('Add New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $_POST['labels']['add_new_item'] ) ) echo $_POST['labels']['add_new_item']; ?>" />
+						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $_POST['labels']['add_new_item'] ) ) esc_attr_e( $_POST['labels']['add_new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new item text. Default is Add New Post/Add New Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -202,7 +202,7 @@
 						<label><?php _e('Edit Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $_POST['labels']['edit_item'] ) ) echo $_POST['labels']['edit_item']; ?>" />
+						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $_POST['labels']['edit_item'] ) ) esc_attr_e( $_POST['labels']['edit_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The edit item text. Default is Edit Post/Edit Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -211,7 +211,7 @@
 						<label><?php _e('New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[new_item]" value="<?php if ( isset( $_POST['labels']['new_item'] ) ) echo $_POST['labels']['new_item']; ?>" />
+						<input type="text" name="labels[new_item]" value="<?php if ( isset( $_POST['labels']['new_item'] ) ) esc_attr_e( $_POST['labels']['new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The new item text. Default is New Post/New Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -220,7 +220,7 @@
 						<label><?php _e('View Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[view_item]" value="<?php if ( isset( $_POST['labels']['view_item'] ) ) echo $_POST['labels']['view_item']; ?>" />
+						<input type="text" name="labels[view_item]" value="<?php if ( isset( $_POST['labels']['view_item'] ) ) esc_attr_e( $_POST['labels']['view_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The view item text. Default is View Post/View Page.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -229,7 +229,7 @@
 						<label><?php _e('Search Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[search_items]" value="<?php if ( isset( $_POST['labels']['search_items'] ) ) echo $_POST['labels']['search_items']; ?>" />
+						<input type="text" name="labels[search_items]" value="<?php if ( isset( $_POST['labels']['search_items'] ) ) esc_attr_e( $_POST['labels']['search_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The search items text. Default is Search Posts/Search Pages.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -238,7 +238,7 @@
 						<label><?php _e('Not Found', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[not_found]" value="<?php if ( isset( $_POST['labels']['not_found'] ) ) echo $_POST['labels']['not_found']; ?>" />
+						<input type="text" name="labels[not_found]" value="<?php if ( isset( $_POST['labels']['not_found'] ) ) esc_attr_e( $_POST['labels']['not_found'] ); ?>" />
 						<br /><span class="description"><?php _e('The not found text. Default is No posts found/No pages found.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -247,7 +247,7 @@
 						<label><?php _e('Not Found In Trash', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[not_found_in_trash]" value="<?php if ( isset( $_POST['labels']['not_found_in_trash'] ) ) echo $_POST['labels']['not_found_in_trash']; ?>" />
+						<input type="text" name="labels[not_found_in_trash]" value="<?php if ( isset( $_POST['labels']['not_found_in_trash'] ) ) esc_attr_e( $_POST['labels']['not_found_in_trash'] ); ?>" />
 						<br /><span class="description"><?php _e('The not found in trash text. Default is No posts found in Trash/No pages found in Trash.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -256,7 +256,7 @@
 						<label><?php _e('Parent Item Colon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $_POST['labels']['parent_item_colon'] ) ) echo $_POST['labels']['parent_item_colon']; ?>" />
+						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $_POST['labels']['parent_item_colon'] ) ) esc_attr_e( $_POST['labels']['parent_item_colon'] ); ?>" />
 						<br /><span class="description"><?php _e('The parent text. This string isn\'t used on non-hierarchical types. In hierarchical ones the default is Parent Page', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -265,7 +265,7 @@
 						<label><?php _e('Custom Fields block', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[custom_fields_block]" value="<?php if ( isset( $_POST['labels']['custom_fields_block'] ) ) echo $_POST['labels']['custom_fields_block']; ?>" />
+						<input type="text" name="labels[custom_fields_block]" value="<?php if ( isset( $_POST['labels']['custom_fields_block'] ) ) esc_attr_e( $_POST['labels']['custom_fields_block'] ); ?>" />
 						<br /><span class="description"><?php _e('Title of Custom Fields block.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -280,7 +280,7 @@
 						<label><?php _e('Description', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<textarea class="ct-field-description" name="description" rows="3"><?php if ( isset( $_POST['description'] ) ) echo $_POST['description']; ?></textarea>
+						<textarea class="ct-field-description" name="description" rows="3"><?php if ( isset( $_POST['description'] ) ) echo esc_textarea( $_POST['description'] ); ?></textarea>
 						<br /><span class="description"><?php _e('A short descriptive summary of what the post type is.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -295,7 +295,7 @@
 						<label><?php _e('Menu Position', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="menu_position" value="<?php if ( isset( $_POST['menu_position'] ) ) echo $_POST['menu_position']; elseif ( !isset( $_POST['menu_position'] ) ) echo '50'; ?>" />
+						<input type="text" name="menu_position" value="<?php if ( isset( $_POST['menu_position'] ) ) esc_attr_e( $_POST['menu_position'] ); elseif ( !isset( $_POST['menu_position'] ) ) echo '50'; ?>" />
 						<br /><span class="description"><?php _e('5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -310,7 +310,7 @@
 						<label><?php _e('Menu Icon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="menu_icon" value="<?php if ( isset( $_POST['menu_icon'] ) ) echo $_POST['menu_icon']; ?>" />
+						<input type="text" name="menu_icon" value="<?php if ( isset( $_POST['menu_icon'] ) ) esc_attr_e( $_POST['menu_icon'] ); ?>" />
 						<br /><span class="description"><?php _e('The url to the icon to be used for this menu.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -537,7 +537,7 @@
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
 
-						<input type="text" name="has_archive_slug" value="<?php if ( ! empty( $_POST['has_archive_slug'] ) ) echo $_POST['has_archive_slug']; ?>" />
+						<input type="text" name="has_archive_slug" value="<?php if ( ! empty( $_POST['has_archive_slug'] ) ) esc_attr_e( $_POST['has_archive_slug'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom slug for post type archive.', $this->text_domain); ?></span>
 					</td>
@@ -576,7 +576,7 @@
 
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="rewrite_slug" value="<?php if ( ! empty($_POST['rewrite_slug'])) echo $_POST['rewrite_slug']; ?>" />
+						<input type="text" name="rewrite_slug" value="<?php if ( ! empty($_POST['rewrite_slug'])) esc_attr_e( $_POST['rewrite_slug'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Prepend posts with this slug. If empty default will be used.', $this->text_domain); ?></span>
 						<br /><br />
@@ -737,7 +737,7 @@
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Query Key', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="query_var_key" value="<?php if ( !empty( $_POST['query_var_key'] ) ) echo $_POST['query_var_key']; ?>" />
+						<input type="text" name="query_var_key" value="<?php if ( !empty( $_POST['query_var_key'] ) ) esc_attr_e( $_POST['query_var_key'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom query var key.', $this->text_domain); ?></span>
 					</td>

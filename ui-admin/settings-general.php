@@ -237,19 +237,6 @@ $default_email = __(
 		</div>
 
 		<div class="postbox">
-			<h3 class='hndle'><span><?php _e( 'Getting started page', $this->text_domain ) ?></span></h3>
-			<div class="inside">
-				<label for="show_getting_started-yes"><?php _e( 'Show &quot;Getting started&quot; page even after all the steps are done:', $this->text_domain ) ?></label>
-				<input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? false : ! empty($options['show_getting_started'] ) ); ?>>
-				<label for="show_getting_started-yes"><?php _e( 'Yes', $this->text_domain ) ?></label>
-				<input type="radio" value="0" id="show_getting_started-no" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? true : empty($options['show_getting_started']) ); ?>>
-				<label for="show_getting_started-no"><?php _e( 'No', $this->text_domain ) ?></label>
-				<br />
-				<span class="description"><?php _e( 'By default, "Getting started" page will be hidden once you completed all the steps. Use this option to make it control that behavior.', $this->text_domain ) ?></span>
-			</div>
-		</div>
-
-		<div class="postbox">
 			<h3 class='hndle'><span><?php _e( 'Notification Settings', $this->text_domain ); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
@@ -295,6 +282,19 @@ $default_email = __(
 						</td>
 					</tr>
 				</table>
+			</div>
+		</div>
+
+		<div class="postbox">
+			<h3 class='hndle'><span><?php _e( 'Getting started page', $this->text_domain ) ?></span></h3>
+			<div class="inside">
+				<label for="show_getting_started-yes"><?php _e( 'Show &quot;Getting started&quot; page even after all the steps are done:', $this->text_domain ) ?></label>
+				<input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? false : ! empty($options['show_getting_started'] ) ); ?>>
+				<label for="show_getting_started-yes"><?php _e( 'Yes', $this->text_domain ) ?></label>
+				<input type="radio" value="0" id="show_getting_started-no" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? true : empty($options['show_getting_started']) ); ?>>
+				<label for="show_getting_started-no"><?php _e( 'No', $this->text_domain ) ?></label>
+				<br />
+				<span class="description"><?php _e( 'By default, "Getting started" page will be hidden once you completed all the steps. Use this option to make it control that behavior.', $this->text_domain ) ?></span>
 			</div>
 		</div>
 

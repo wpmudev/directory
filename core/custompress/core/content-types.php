@@ -323,7 +323,10 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		global $wp_roles;
 
 		if ( ! is_object($wp_roles) ) return;
-		{
+
+		$role = get_role('administrator');
+
+		if(is_multisite()) {
 			$post_types = $this->network_post_types;
 			if(is_array($post_types)){
 				foreach($post_types as $key => $pt){
@@ -331,7 +334,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					if($post_type !== null ) {
 						$all_caps = $this->all_capabilities($key);
 						foreach($all_caps as $capability){
-							$wp_roles->add_cap('administrator', $capability);
+							$role->add_cap( $capability );
 						}
 					}
 				}
@@ -345,7 +348,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 				if($post_type !== null ) {
 					$all_caps = $this->all_capabilities($key);
 					foreach($all_caps as $capability){
-						$wp_roles->add_cap('administrator', $capability);
+						$role->add_cap( $capability );
 					}
 				}
 			}
@@ -810,7 +813,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						wp_enqueue_script('jquery-ui-datepicker');
 						wp_enqueue_script('jquery-ui-datepicker-lang');
 						//						$result = $this->jquery_ui_css() . PHP_EOL;
-						$result = sprintf('<input type="text" class="pickdate ct-field date %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
+						$result = sprintf('<input type="text" class="pickdate ct-field %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
 						$result .= sprintf('
 						<script type="text/javascript">
 						jQuery(document).ready(function(){
@@ -1112,7 +1115,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		//if(empty($custom_fields)) return '';
 
-		$selector = reset(array_keys( array_filter($custom_fields) ) );
+		$selector = array_keys( array_filter($custom_fields) );
+		$selector = reset($selector);
+
 
 		$rules = array();
 		$messages = array();

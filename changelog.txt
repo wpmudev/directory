@@ -4,6 +4,8 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.5.1 Arnold Bailey =
+- Fixed finding virtual pages where content protecting plugins like Membership hides them.
 = 2.2.5 Arnold Bailey =
 Fixed Logout link redirect.
 

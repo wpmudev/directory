@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-14 17:13-0500\n"
+"POT-Creation-Date: 2014-03-31 17:47-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -14,26 +14,10 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../loader.php:16
-msgid "Directory - Create full blown directory site."
-msgstr ""
-
-#: ../loader.php:17
-msgid "Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)"
-msgstr ""
-
-#: ../loader.php:18
-msgid "http://premium.wpmudev.org"
-msgstr ""
-
-#: ../loader.php:19 ../core/contextual_help.php:34
-msgid "Directory"
-msgstr ""
-
-#: ../core/admin.php:64 ../core/admin.php:65 ../core/data.php:56
+#: ../core/admin.php:64 ../core/admin.php:65 ../core/data.php:57
 msgid "Add New"
 msgstr ""
 
@@ -96,7 +80,7 @@ msgstr ""
 msgid "My Credits"
 msgstr ""
 
-#: ../core/buddypress.php:115 ../core/core.php:1024
+#: ../core/buddypress.php:115 ../core/core.php:1037
 #: ../ui-admin/settings-shortcodes.php:41
 #: ../ui-admin/settings-shortcodes.php:42
 msgid "Add Listing"
@@ -124,9 +108,13 @@ msgid ""
 "credits. Your Listing has been saved as a Draft."
 msgstr ""
 
-#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1353
-#: ../core/core.php:1354
+#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1366
+#: ../core/core.php:1367
 msgid "You are being redirected. Please wait."
+msgstr ""
+
+#: ../core/contextual_help.php:34 ../loader.php:19
+msgid "Directory"
 msgstr ""
 
 #: ../core/contextual_help.php:36 ../core/contextual_help.php:71
@@ -255,233 +243,233 @@ msgstr ""
 msgid "Upload files."
 msgstr ""
 
-#: ../core/core.php:154
+#: ../core/core.php:153
 msgid "Write a Review"
 msgstr ""
 
-#: ../core/core.php:155
+#: ../core/core.php:154
 msgid "Post Review"
 msgstr ""
 
-#: ../core/core.php:156
+#: ../core/core.php:155
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a review."
 msgstr ""
 
-#: ../core/core.php:157
+#: ../core/core.php:156
 msgid "Review"
 msgstr ""
 
-#: ../core/core.php:158
+#: ../core/core.php:157
 msgid "Cancel review"
 msgstr ""
 
-#: ../core/core.php:172
+#: ../core/core.php:171
 msgid "CC Email"
 msgstr ""
 
-#: ../core/core.php:173
+#: ../core/core.php:172
 msgid "CC First Name"
 msgstr ""
 
-#: ../core/core.php:174
+#: ../core/core.php:173
 msgid "CC Last Name"
 msgstr ""
 
-#: ../core/core.php:175
+#: ../core/core.php:174
 msgid "CC Street"
 msgstr ""
 
-#: ../core/core.php:176
+#: ../core/core.php:175
 msgid "CC City"
 msgstr ""
 
-#: ../core/core.php:177
+#: ../core/core.php:176
 msgid "CC State"
 msgstr ""
 
-#: ../core/core.php:178
+#: ../core/core.php:177
 msgid "CC Zip"
 msgstr ""
 
-#: ../core/core.php:179
+#: ../core/core.php:178
 msgid "CC Country Code"
 msgstr ""
 
-#: ../core/core.php:408
+#: ../core/core.php:407
 msgid "Virtual"
 msgstr ""
 
-#: ../core/core.php:497
+#: ../core/core.php:510
 msgid "Virtual page. Editing this page won't change anything."
 msgstr ""
 
-#: ../core/core.php:894
+#: ../core/core.php:907
 msgid "More Info &raquo;"
 msgstr ""
 
-#: ../core/core.php:1004 ../core/data.php:54
+#: ../core/core.php:1017 ../core/data.php:55
 #: ../ui-admin/settings-shortcodes.php:33
 #: ../ui-admin/settings-shortcodes.php:34
 msgid "Listings"
 msgstr ""
 
-#: ../core/core.php:1044 ../core/data.php:58
+#: ../core/core.php:1057 ../core/data.php:59
 msgid "Edit Listing"
 msgstr ""
 
-#: ../core/core.php:1065 ../ui-admin/settings-shortcodes.php:49
+#: ../core/core.php:1078 ../ui-admin/settings-shortcodes.php:49
 #: ../ui-admin/settings-shortcodes.php:50
 msgid "My Listings"
 msgstr ""
 
-#: ../core/core.php:1085
+#: ../core/core.php:1098
 msgid "My Listing Credits"
 msgstr ""
 
-#: ../core/core.php:1107 ../ui-admin/settings-shortcodes.php:57
+#: ../core/core.php:1120 ../ui-admin/settings-shortcodes.php:57
 #: ../ui-admin/settings-shortcodes.php:58
 msgid "Go to Profile"
 msgstr ""
 
-#: ../core/core.php:1127 ../ui-admin/settings-shortcodes.php:73
+#: ../core/core.php:1140 ../ui-admin/settings-shortcodes.php:73
 #: ../ui-admin/settings-shortcodes.php:74
 #: ../ui-front/general/page-signup.php:29
 msgid "Signup"
 msgstr ""
 
-#: ../core/core.php:1147 ../ui-admin/settings-shortcodes.php:65
+#: ../core/core.php:1160 ../ui-admin/settings-shortcodes.php:65
 #: ../ui-admin/settings-shortcodes.php:66
 msgid "Signin"
 msgstr ""
 
-#: ../core/core.php:1171 ../core/core.php:1195
+#: ../core/core.php:1184 ../core/core.php:1208
 #: ../ui-admin/settings-shortcodes.php:81
 #: ../ui-admin/settings-shortcodes.php:82
 msgid "Logout"
 msgstr ""
 
-#: ../core/data.php:55
+#: ../core/data.php:56
 msgid "Listing"
 msgstr ""
 
-#: ../core/data.php:57
+#: ../core/data.php:58
 msgid "Add New Listing"
 msgstr ""
 
-#: ../core/data.php:59
+#: ../core/data.php:60
 msgid "New Listing"
 msgstr ""
 
-#: ../core/data.php:60
+#: ../core/data.php:61
 msgid "View Listing"
 msgstr ""
 
-#: ../core/data.php:61
+#: ../core/data.php:62
 msgid "Search Listings"
 msgstr ""
 
-#: ../core/data.php:62
+#: ../core/data.php:63
 msgid "No listings found"
 msgstr ""
 
-#: ../core/data.php:63
+#: ../core/data.php:64
 msgid "No listings found in trash"
 msgstr ""
 
-#: ../core/data.php:96
+#: ../core/data.php:97
 msgid "Listing Tags"
 msgstr ""
 
-#: ../core/data.php:97
+#: ../core/data.php:98
 msgid "Listing Tag"
 msgstr ""
 
-#: ../core/data.php:98
+#: ../core/data.php:99
 msgid "Search Listing Tags"
 msgstr ""
 
-#: ../core/data.php:99
+#: ../core/data.php:100
 msgid "Popular Listing Tags"
 msgstr ""
 
-#: ../core/data.php:100
+#: ../core/data.php:101
 msgid "All Listing Tags"
 msgstr ""
 
-#: ../core/data.php:101
+#: ../core/data.php:102
 msgid "Edit Listing Tag"
 msgstr ""
 
-#: ../core/data.php:102
+#: ../core/data.php:103
 msgid "Update Listing Tag"
 msgstr ""
 
-#: ../core/data.php:103
+#: ../core/data.php:104
 msgid "Add New Listing Tag"
 msgstr ""
 
-#: ../core/data.php:104
+#: ../core/data.php:105
 msgid "New Listing Tag Name"
 msgstr ""
 
-#: ../core/data.php:105
+#: ../core/data.php:106
 msgid "Add or remove listing tags"
 msgstr ""
 
-#: ../core/data.php:106
+#: ../core/data.php:107
 msgid "Choose from the most used listing tags"
 msgstr ""
 
-#: ../core/data.php:107
+#: ../core/data.php:108
 msgid "Separate listing tags with commas"
 msgstr ""
 
-#: ../core/data.php:138
+#: ../core/data.php:139
 msgid "Listing Categories"
 msgstr ""
 
-#: ../core/data.php:139
+#: ../core/data.php:140
 msgid "Listing Category"
 msgstr ""
 
-#: ../core/data.php:140
+#: ../core/data.php:141
 msgid "Search Listing Categories"
 msgstr ""
 
-#: ../core/data.php:141
+#: ../core/data.php:142
 msgid "Popular Listing Categories"
 msgstr ""
 
-#: ../core/data.php:142
+#: ../core/data.php:143
 msgid "All Listing Categories"
 msgstr ""
 
-#: ../core/data.php:143
+#: ../core/data.php:144
 msgid "Parent Category"
 msgstr ""
 
-#: ../core/data.php:144
+#: ../core/data.php:145
 msgid "Edit Listing Category"
 msgstr ""
 
-#: ../core/data.php:145
+#: ../core/data.php:146
 msgid "Update Listing Category"
 msgstr ""
 
-#: ../core/data.php:146
+#: ../core/data.php:147
 msgid "Add New Listing Category"
 msgstr ""
 
-#: ../core/data.php:147
+#: ../core/data.php:148
 msgid "New Listing Category"
 msgstr ""
 
-#: ../core/data.php:148
+#: ../core/data.php:149
 msgid "Parent Category:"
 msgstr ""
 
-#: ../core/data.php:149
+#: ../core/data.php:150
 msgid "Add or remove listing categories"
 msgstr ""
 
@@ -558,7 +546,7 @@ msgstr ""
 msgid "View all posts by %s"
 msgstr ""
 
-#: ../core/template-tags.php:275 ../core/template-tags.php:277
+#: ../core/template-tags.php:276 ../core/template-tags.php:278
 #: ../ui-front/buddypress/members/single/directory/listings.php:76
 #: ../ui-front/buddypress/members/single/directory/listings.php:79
 #: ../ui-front/general/loop-author.php:82
@@ -568,50 +556,50 @@ msgstr ""
 msgid ", "
 msgstr ""
 
-#: ../core/template-tags.php:280
+#: ../core/template-tags.php:281
 #, php-format
 msgid ""
 "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
 "title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
 
-#: ../core/template-tags.php:282
+#: ../core/template-tags.php:283
 #, php-format
 msgid ""
 "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
 "\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
 
-#: ../core/template-tags.php:284
+#: ../core/template-tags.php:285
 #, php-format
 msgid ""
 "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
 "\">permalink</a>."
 msgstr ""
 
-#: ../core/template-tags.php:312
+#: ../core/template-tags.php:313
 #, php-format
 msgid "%s <span class=\"says\">says:</span>"
 msgstr ""
 
-#: ../core/template-tags.php:316
+#: ../core/template-tags.php:317
 msgid "Your review is awaiting moderation."
 msgstr ""
 
-#: ../core/template-tags.php:322
+#: ../core/template-tags.php:323
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: ../core/template-tags.php:323 ../core/template-tags.php:342
+#: ../core/template-tags.php:324 ../core/template-tags.php:343
 msgid "(Edit)"
 msgstr ""
 
-#: ../core/template-tags.php:342
+#: ../core/template-tags.php:343
 msgid "Pingback:"
 msgstr ""
 
-#: ../core/template-tags.php:410
+#: ../core/template-tags.php:411
 #, php-format
 msgid "Posts by %s"
 msgstr ""
@@ -654,6 +642,18 @@ msgstr ""
 #: ../libs/pointers_tutorial.php:498
 #, php-format
 msgid "%s: Step %d of %d"
+msgstr ""
+
+#: ../loader.php:16
+msgid "Directory - Create full blown directory site."
+msgstr ""
+
+#: ../loader.php:17
+msgid "Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)"
+msgstr ""
+
+#: ../loader.php:18
+msgid "http://premium.wpmudev.org"
 msgstr ""
 
 #: ../ui-admin/credits-my-credits.php:12
@@ -1077,15 +1077,57 @@ msgid "Number of page links to show at one time in pagination"
 msgstr ""
 
 #: ../ui-admin/settings-general.php:240
+msgid "Notification Settings"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:244
+msgid "Disable Contact Form:"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:248
+msgid "disable contact form"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:252
+msgid "CC the Administrator:"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:256
+msgid "cc the administrator"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:259
+msgid "CC the Sender:"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:263
+msgid "cc the sender"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:267
+msgid "Email Subject:"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:271 ../ui-admin/settings-general.php:281
+msgid ""
+"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, "
+"POST_TITLE, POST_LINK, SITE_NAME"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:275
+msgid "Email Content:"
+msgstr ""
+
+#: ../ui-admin/settings-general.php:289
 msgid "Getting started page"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:242
+#: ../ui-admin/settings-general.php:291
 msgid ""
 "Show &quot;Getting started&quot; page even after all the steps are done:"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:244
+#: ../ui-admin/settings-general.php:293
 #: ../ui-admin/settings-payment-types.php:277
 #: ../ui-admin/settings-payment-types.php:305
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:90
@@ -1093,7 +1135,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:246
+#: ../ui-admin/settings-general.php:295
 #: ../ui-admin/settings-payment-types.php:278
 #: ../ui-admin/settings-payment-types.php:306
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:88
@@ -1101,52 +1143,10 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: ../ui-admin/settings-general.php:248
+#: ../ui-admin/settings-general.php:297
 msgid ""
 "By default, \"Getting started\" page will be hidden once you completed all "
 "the steps. Use this option to make it control that behavior."
-msgstr ""
-
-#: ../ui-admin/settings-general.php:253
-msgid "Notification Settings"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:257
-msgid "Disable Contact Form:"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:261
-msgid "disable contact form"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:265
-msgid "CC the Administrator:"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:269
-msgid "cc the administrator"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:272
-msgid "CC the Sender:"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:276
-msgid "cc the sender"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:280
-msgid "Email Subject:"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:284 ../ui-admin/settings-general.php:294
-msgid ""
-"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, "
-"POST_TITLE, POST_LINK, SITE_NAME"
-msgstr ""
-
-#: ../ui-admin/settings-general.php:288
-msgid "Email Content:"
 msgstr ""
 
 #: ../ui-admin/settings-payment-types.php:37

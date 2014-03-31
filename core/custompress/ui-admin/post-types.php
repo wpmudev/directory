@@ -72,7 +72,7 @@ $this->render_admin('update-message');
 					echo $name;
 					else:
 					?>
-					<a href="<?php echo( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ) ); ?>"><?php echo $name; ?></a>
+					<a href="<?php echo esc_url( self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ) ); ?>"><?php esc_html_e( $name ); ?></a>
 					<?php endif; ?>
 				</strong>
 				<div class="row-actions" id="row-actions-<?php echo $name; ?>">
@@ -94,14 +94,14 @@ $this->render_admin('update-message');
 					<input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
 				</form>
 			</td>
-			<td><?php echo ( empty( $post_type['labels']['name'] ) ) ? '' : $post_type['labels']['name']; ?></td>
-			<td><?php echo ( empty( $post_type['description'] ) ) ? '' : $post_type['description']; ?></td>
+			<td><?php echo ( empty( $post_type['labels']['name'] ) ) ? '' : esc_html( $post_type['labels']['name'] ); ?></td>
+			<td><?php echo ( empty( $post_type['description'] ) ) ? '' : esc_html( $post_type['description'] ); ?></td>
 			<td>
-				<img src="<?php echo(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
+				<img src="<?php echo esc_html(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
 			</td>
 			<td class="ct-supports">
 				<?php foreach ( $post_type['supports'] as $value ): ?>
-				<?php echo( $value ); ?>
+				<?php echo esc_html( $value ); ?>
 				<?php endforeach; ?>
 			</td>
 			<td><?php echo( $post_type['capability_type'] ); ?></td>

@@ -15,7 +15,7 @@
 						<br /><span class="ct-required">( <?php _e('required', $this->text_domain); ?> )</span></label>
 					</th>
 					<td>
-						<input type="text" name="taxonomy" value="<?php if ( isset( $_POST['taxonomy'] ) ) echo $_POST['taxonomy']; ?>" />
+						<input type="text" name="taxonomy" value="<?php if ( isset( $_POST['taxonomy'] ) ) esc_attr_e( $_POST['taxonomy'] ); ?>" />
 						<br /><span class="description"><?php _e('The system name of the taxonomy. Alphanumeric lower-case characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -34,7 +34,7 @@
 						<select name="object_type[]" multiple="multiple" class="ct-object-type">
 							<?php if ( is_array( $post_types )): ?>
 							<?php foreach( $post_types as $post_type ): ?>
-							<option value="<?php echo ( $post_type ); ?>" <?php if ( isset( $_POST['object_type'] ) && is_array( $_POST['object_type'] )) { foreach ( $_POST['object_type'] as $post_value ) { selected( $post_value == $post_type ); }} ?> ><?php echo( $post_type ); ?></option>
+							<option value="<?php echo ( $post_type ); ?>" <?php if ( isset( $_POST['object_type'] ) && is_array( $_POST['object_type'] )) { foreach ( $_POST['object_type'] as $post_value ) { selected( $post_value == $post_type ); }} ?> ><?php esc_html_e( $post_type ); ?></option>
 							<?php endforeach; ?>
 							<?php endif; ?>
 						</select>
@@ -53,7 +53,7 @@
 						<label><?php _e('Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[name]" value="<?php if ( isset( $_POST['labels']['name'] ) ) echo $_POST['labels']['name']; ?>" />
+						<input type="text" name="labels[name]" value="<?php if ( isset( $_POST['labels']['name'] ) ) esc_attr_e( $_POST['labels']['name'] ); ?>" />
 						<br /><span class="description"><?php _e('General name for the taxonomy, usually plural.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -62,7 +62,7 @@
 						<label><?php _e('Singular Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $_POST['labels']['singular_name']  ) ) echo $_POST['labels']['singular_name']; ?>" />
+						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $_POST['labels']['singular_name']  ) ) esc_attr_e( $_POST['labels']['singular_name'] ); ?>" />
 						<br /><span class="description"><?php _e('Name for one object of this taxonomy. Defaults to value of name.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -71,7 +71,7 @@
 						<label><?php _e('Add New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $_POST['labels']['add_new_item'] ) ) echo $_POST['labels']['add_new_item']; ?>" />
+						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $_POST['labels']['add_new_item'] ) ) esc_attr_e( $_POST['labels']['add_new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new item text. Default is "Add New Tag" or "Add New Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -80,7 +80,7 @@
 						<label><?php _e('New Item Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[new_item_name]" value="<?php if ( isset( $_POST['labels']['new_item_name'] ) ) echo $_POST['labels']['new_item_name']; ?>" />
+						<input type="text" name="labels[new_item_name]" value="<?php if ( isset( $_POST['labels']['new_item_name'] ) ) esc_attr_e( $_POST['labels']['new_item_name'] ); ?>" />
 						<br /><span class="description"><?php _e('The new item name text. Default is "New Tag Name" or "New Category Name".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -89,7 +89,7 @@
 						<label><?php _e('Edit Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $_POST['labels']['edit_item'] ) ) echo $_POST['labels']['edit_item']; ?>" />
+						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $_POST['labels']['edit_item'] ) ) esc_attr_e( $_POST['labels']['edit_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The edit item text. Default is "Edit Tag" or "Edit Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -98,7 +98,7 @@
 						<label><?php _e('Update Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[update_item]" value="<?php if ( isset( $_POST['labels']['update_item'] ) ) echo $_POST['labels']['update_item']; ?>" />
+						<input type="text" name="labels[update_item]" value="<?php if ( isset( $_POST['labels']['update_item'] ) ) esc_attr_e( $_POST['labels']['update_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The update item text. Default is "Update Tag" or "Update Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -107,7 +107,7 @@
 						<label><?php _e('Search Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[search_items]" value="<?php if ( isset( $_POST['labels']['search_items'] ) ) echo $_POST['labels']['search_items']; ?>" />
+						<input type="text" name="labels[search_items]" value="<?php if ( isset( $_POST['labels']['search_items'] ) ) esc_attr_e( $_POST['labels']['search_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The search items text. Default is "Search Tags" or "Search Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -116,7 +116,7 @@
 						<label><?php _e('Popular Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[popular_items]" value="<?php if ( isset( $_POST['labels']['popular_items'] ) ) echo $_POST['labels']['popular_items']; ?>" />
+						<input type="text" name="labels[popular_items]" value="<?php if ( isset( $_POST['labels']['popular_items'] ) ) esc_attr_e( $_POST['labels']['popular_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The popular items text. Default is "Popular Tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -125,7 +125,7 @@
 						<label><?php _e('All Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[all_items]" value="<?php if ( isset( $_POST['labels']['all_items'] ) ) echo $_POST['labels']['all_items']; ?>" />
+						<input type="text" name="labels[all_items]" value="<?php if ( isset( $_POST['labels']['all_items'] ) ) esc_attr_e( $_POST['labels']['all_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The all items text. Default is "All Tags" or "All Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -134,7 +134,7 @@
 						<label><?php _e('Parent Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item]" value="<?php if ( isset( $_POST['labels']['parent_item'] ) ) echo $_POST['labels']['parent_item']; ?>" />
+						<input type="text" name="labels[parent_item]" value="<?php if ( isset( $_POST['labels']['parent_item'] ) ) esc_attr_e( $_POST['labels']['parent_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or "Parent Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -143,7 +143,7 @@
 						<label><?php _e('Parent Item Colon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $_POST['labels']['parent_item_colon'] ) ) echo $_POST['labels']['parent_item_colon']; ?>" />
+						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $_POST['labels']['parent_item_colon'] ) ) esc_attr_e( $_POST['labels']['parent_item_colon'] ); ?>" />
 						<br /><span class="description"><?php _e('The same as parent_item, but with colon : in the end null, "Parent Category:".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -152,7 +152,7 @@
 						<label><?php _e('Add Or Remove Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_or_remove_items]" value="<?php if ( isset( $_POST['labels']['add_or_remove_items'] ) ) echo $_POST['labels']['add_or_remove_items']; ?>" />
+						<input type="text" name="labels[add_or_remove_items]" value="<?php if ( isset( $_POST['labels']['add_or_remove_items'] ) ) esc_attr_e( $_POST['labels']['add_or_remove_items']); ?>" />
 						<br /><span class="description"><?php _e('The add or remove items text is used in the meta box when JavaScript is disabled. This string isn\'t used on hierarchical taxonomies. Default is "Add or remove tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -161,7 +161,7 @@
 						<label><?php _e('Separate Items With Commas', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[separate_items_with_commas]" value="<?php if ( isset( $_POST['labels']['separate_items_with_commas'] ) ) echo $_POST['labels']['separate_items_with_commas']; ?>" />
+						<input type="text" name="labels[separate_items_with_commas]" value="<?php if ( isset( $_POST['labels']['separate_items_with_commas'] ) ) esc_attr_e( $_POST['labels']['separate_items_with_commas'] ); ?>" />
 						<br /><span class="description"><?php _e('The separate item with commas text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Separate tags with commas", or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -170,7 +170,7 @@
 						<label><?php _e('Choose From Most Used', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[choose_from_most_used]" value="<?php if ( isset( $_POST['labels']['choose_from_most_used'] ) ) echo $_POST['labels']['choose_from_most_used']; ?>" />
+						<input type="text" name="labels[choose_from_most_used]" value="<?php if ( isset( $_POST['labels']['choose_from_most_used'] ) ) esc_attr_e( $_POST['labels']['choose_from_most_used'] ); ?>" />
 						<br /><span class="description"><?php _e('The choose from most used text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Choose from the most used tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -385,7 +385,7 @@
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
 
-						<input type="text" name="rewrite_slug" value="<?php if ( ! empty($_POST['rewrite_slug'])) echo $_POST['rewrite_slug']; ?>" />
+						<input type="text" name="rewrite_slug" value="<?php if ( ! empty($_POST['rewrite_slug'])) esc_attr_e( $_POST['rewrite_slug'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Prepend posts with this slug. If empty default will be used.', $this->text_domain); ?></span>
 						<br /><br />
@@ -538,7 +538,7 @@
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Query Key', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="query_var_key" value="<?php if ( !empty( $_POST['query_var_key'] ) ) echo $_POST['query_var_key']; ?>" />
+						<input type="text" name="query_var_key" value="<?php if ( !empty( $_POST['query_var_key'] ) ) esc_attr_e( $_POST['query_var_key'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom query var key.', $this->text_domain); ?></span>
 					</td>

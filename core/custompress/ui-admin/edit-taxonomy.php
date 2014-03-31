@@ -23,8 +23,8 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Taxonomy', $this->text_domain) ?> (<span class="ct-required"> required </span>)</label>
 					</th>
 					<td>
-						<input type="text" value="<?php echo ( $_GET['ct_edit_taxonomy'] ); ?>" disabled="disabled">
-						<input type="hidden" name="taxonomy" value="<?php echo ( $_GET['ct_edit_taxonomy'] ); ?>" />
+						<input type="text" value="<?php esc_attr_e( $_GET['ct_edit_taxonomy'] ); ?>" disabled="disabled">
+						<input type="hidden" name="taxonomy" value="<?php esc_attr_e( $_GET['ct_edit_taxonomy'] ); ?>" />
 						<br /><span class="description"><?php _e('The system name of the taxonomy. Alphanumeric lower case characters and underscores only. Min 2 letters. Once added the taxonomy system name cannot be changed.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -42,7 +42,7 @@ global $wp_post_types, $wp_taxonomies;
 						<select name="object_type[]" multiple="multiple" class="ct-object-type">
 							<?php if ( !empty( $post_types ) ): ?>
 							<?php foreach( $post_types as $post_type ): ?>
-							<option value="<?php echo $post_type; ?>" <?php selected( is_object_in_taxonomy( $post_type, $_GET['ct_edit_taxonomy'] )); ?> ><?php echo ( $post_type ); ?></option>
+							<option value="<?php esc_attr_e( $post_type ); ?>" <?php selected( is_object_in_taxonomy( $post_type, $_GET['ct_edit_taxonomy'] )); ?> ><?php esc_html_e( $post_type ); ?></option>
 							<?php endforeach; ?>
 							<?php endif; ?>
 						</select>
@@ -60,7 +60,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[name]" value="<?php if ( isset( $taxonomy['labels']['name'] ) ) echo ( $taxonomy['labels']['name'] ); ?>" />
+						<input type="text" name="labels[name]" value="<?php if ( isset( $taxonomy['labels']['name'] ) ) esc_attr_e( $taxonomy['labels']['name'] ); ?>" />
 						<br /><span class="description"><?php _e('General name for the taxonomy, usually plural.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -69,7 +69,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Singular Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $taxonomy['labels']['singular_name'] ) ) echo ( $taxonomy['labels']['singular_name'] ); ?>" />
+						<input type="text" name="labels[singular_name]" value="<?php if ( isset( $taxonomy['labels']['singular_name'] ) ) esc_attr_e( $taxonomy['labels']['singular_name'] ); ?>" />
 						<br /><span class="description"><?php _e('Name for one object of this taxonomy. Defaults to value of name.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -78,7 +78,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Add New Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $taxonomy['labels']['add_new_item'] ) ) echo ( $taxonomy['labels']['add_new_item'] ); ?>" />
+						<input type="text" name="labels[add_new_item]" value="<?php if ( isset( $taxonomy['labels']['add_new_item'] ) ) esc_attr_e( $taxonomy['labels']['add_new_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The add new item text. Default is "Add New Tag" or "Add New Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -87,7 +87,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('New Item Name', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[new_item_name]" value="<?php if ( isset( $taxonomy['labels']['new_item_name'] ) ) echo ( $taxonomy['labels']['new_item_name'] ); ?>" />
+						<input type="text" name="labels[new_item_name]" value="<?php if ( isset( $taxonomy['labels']['new_item_name'] ) ) esc_attr_e( $taxonomy['labels']['new_item_name'] ); ?>" />
 						<br /><span class="description"><?php _e('The new item name text. Default is "New Tag Name" or "New Category Name".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -96,7 +96,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Edit Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $taxonomy['labels']['edit_item'] ) ) echo ( $taxonomy['labels']['edit_item'] ); ?>" />
+						<input type="text" name="labels[edit_item]" value="<?php if ( isset( $taxonomy['labels']['edit_item'] ) ) esc_attr_e( $taxonomy['labels']['edit_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The edit item text. Default is "Edit Tag" or "Edit Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -105,7 +105,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Update Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[update_item]" value="<?php if ( isset( $taxonomy['labels']['update_item'] ) ) echo ( $taxonomy['labels']['update_item'] ); ?>" />
+						<input type="text" name="labels[update_item]" value="<?php if ( isset( $taxonomy['labels']['update_item'] ) ) esc_attr_e( $taxonomy['labels']['update_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The update item text. Default is "Update Tag" or "Update Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -114,7 +114,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Search Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[search_items]" value="<?php if ( isset( $taxonomy['labels']['search_items'] ) ) echo ( $taxonomy['labels']['search_items'] ); ?>" />
+						<input type="text" name="labels[search_items]" value="<?php if ( isset( $taxonomy['labels']['search_items'] ) ) esc_attr_e( $taxonomy['labels']['search_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The search items text. Default is "Search Tags" or "Search Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -123,7 +123,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Popular Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[popular_items]" value="<?php if ( isset( $taxonomy['labels']['popular_items']  ) ) echo ( $taxonomy['labels']['popular_items'] ); ?>" />
+						<input type="text" name="labels[popular_items]" value="<?php if ( isset( $taxonomy['labels']['popular_items']  ) ) esc_attr_e( $taxonomy['labels']['popular_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The popular items text. Default is "Popular Tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -132,7 +132,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('All Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[all_items]" value="<?php if ( isset( $taxonomy['labels']['all_items'] ) ) echo ( $taxonomy['labels']['all_items'] ); ?>" />
+						<input type="text" name="labels[all_items]" value="<?php if ( isset( $taxonomy['labels']['all_items'] ) ) esc_attr_e( $taxonomy['labels']['all_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The all items text. Default is "All Tags" or "All Categories".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -141,7 +141,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Parent Item', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item]" value="<?php if ( isset( $taxonomy['labels']['parent_item'] ) ) echo ( $taxonomy['labels']['parent_item'] ); ?>" />
+						<input type="text" name="labels[parent_item]" value="<?php if ( isset( $taxonomy['labels']['parent_item'] ) ) esc_attr_e( $taxonomy['labels']['parent_item'] ); ?>" />
 						<br /><span class="description"><?php _e('The parent item text. This string is not used on non-hierarchical taxonomies such as post tags. Default is null or "Parent Category".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -150,7 +150,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Parent Item Colon', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $taxonomy['labels']['parent_item_colon'] ) ) echo ( $taxonomy['labels']['parent_item_colon'] ); ?>" />
+						<input type="text" name="labels[parent_item_colon]" value="<?php if ( isset( $taxonomy['labels']['parent_item_colon'] ) ) esc_attr_e( $taxonomy['labels']['parent_item_colon'] ); ?>" />
 						<br /><span class="description"><?php _e('The same as parent_item, but with colon : in the end null, "Parent Category:".', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -159,7 +159,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Add Or Remove Items', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[add_or_remove_items]" value="<?php if ( isset( $taxonomy['labels']['add_or_remove_items'] ) ) echo ( $taxonomy['labels']['add_or_remove_items'] ); ?>" />
+						<input type="text" name="labels[add_or_remove_items]" value="<?php if ( isset( $taxonomy['labels']['add_or_remove_items'] ) ) esc_attr_e( $taxonomy['labels']['add_or_remove_items'] ); ?>" />
 						<br /><span class="description"><?php _e('The add or remove items text is used in the meta box when JavaScript is disabled. This string isn\'t used on hierarchical taxonomies. Default is "Add or remove tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -168,7 +168,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Separate Items With Commas', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[separate_items_with_commas]" value="<?php if ( isset( $taxonomy['labels']['separate_items_with_commas'] ) ) echo ( $taxonomy['labels']['separate_items_with_commas'] ); ?>" />
+						<input type="text" name="labels[separate_items_with_commas]" value="<?php if ( isset( $taxonomy['labels']['separate_items_with_commas'] ) ) esc_attr_e( $taxonomy['labels']['separate_items_with_commas'] ); ?>" />
 						<br /><span class="description"><?php _e('The separate item with commas text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Separate tags with commas", or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -177,7 +177,7 @@ global $wp_post_types, $wp_taxonomies;
 						<label><?php _e('Choose From Most Used', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="labels[choose_from_most_used]" value="<?php if ( isset( $taxonomy['labels']['choose_from_most_used'] ) ) echo ( $taxonomy['labels']['choose_from_most_used'] ); ?>" />
+						<input type="text" name="labels[choose_from_most_used]" value="<?php if ( isset( $taxonomy['labels']['choose_from_most_used'] ) ) esc_attr_e( $taxonomy['labels']['choose_from_most_used'] ); ?>" />
 						<br /><span class="description"><?php _e('The choose from most used text used in the taxonomy meta box. This string isn\'t used on hierarchical taxonomies. Default is "Choose from the most used tags" or null.', $this->text_domain); ?></span>
 					</td>
 				</tr>
@@ -393,7 +393,7 @@ global $wp_post_types, $wp_taxonomies;
 
 						<span class="description"><strong><?php _e('Custom Slug', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="rewrite_slug" value="<?php if ( !empty( $taxonomy['rewrite']['slug'] ) ) echo $taxonomy['rewrite']['slug']; ?>" />
+						<input type="text" name="rewrite_slug" value="<?php if ( !empty( $taxonomy['rewrite']['slug'] ) ) esc_attr_e( $taxonomy['rewrite']['slug'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Prepend posts with this slug. If empty default will be used.', $this->text_domain); ?></span>
 						<br /><br />
@@ -547,7 +547,7 @@ global $wp_post_types, $wp_taxonomies;
 						<br /><br />
 						<span class="description"><strong><?php _e('Custom Query Key', $this->text_domain); ?></strong></span>
 						<br />
-						<input type="text" name="query_var_key" value="<?php if ( is_string( $taxonomy['query_var'] ) ) echo $taxonomy['query_var']; ?>" />
+						<input type="text" name="query_var_key" value="<?php if ( is_string( $taxonomy['query_var'] ) ) esc_attr_e( $taxonomy['query_var'] ); ?>" />
 						<br />
 						<span class="description"><?php _e('Custom query var key.', $this->text_domain); ?></span>
 					</td>

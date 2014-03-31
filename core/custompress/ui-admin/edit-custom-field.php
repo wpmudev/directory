@@ -25,7 +25,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<label for="field_title"><?php _e('Field Title', $this->text_domain) ?> <span class="ct-required">( <?php _e('required', $this->text_domain); ?> )</span></label>
 						</th>
 						<td>
-							<input type="text" name="field_title" value="<?php echo ( $custom_field['field_title'] ); ?>" />
+							<input type="text" name="field_title" value="<?php esc_attr_e( $custom_field['field_title'] ); ?>" />
 							<br /><span class="description"><?php _e('The title of the custom field.', $this->text_domain); ?></span>
 						</td>
 					</tr>
@@ -43,7 +43,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<label for="field_message"><?php _e('Required Field Error Prompt', $this->text_domain) ?></label><br />
 						</th>
 						<td>
-							<input type="text" id="field_message" name="field_message" value="<?php if ( isset( $custom_field['field_message'] ) ) echo $custom_field['field_message']; ?>" />
+							<input type="text" id="field_message" name="field_message" value="<?php if ( isset( $custom_field['field_message'] ) ) esc_attr_e( $custom_field['field_message'] ); ?>" />
 							<br /><span class="description"><?php _e('Custom Required Field Error prompt for this field or leave blank for default.', $this->text_domain) ?></span><br />
 						</td>
 					</tr>
@@ -86,14 +86,14 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 									<textarea name="field_regex" rows="2" cols="50" ><?php if ( isset( $custom_field['field_regex'] ) ) echo esc_textarea($custom_field['field_regex']); ?></textarea>
 									<br />
 									<label for="field_regex_options"><?php _e('Options:', $this->text_domain) ?></label>
-									<input type="text" id="field_regex_options" name="field_regex_options" size="3" value="<?php if ( isset( $custom_field['field_regex_options'] ) ) echo $custom_field['field_regex_options']; ?>" />
+									<input type="text" id="field_regex_options" name="field_regex_options" size="3" value="<?php if ( isset( $custom_field['field_regex_options'] ) ) esc_attr_e( $custom_field['field_regex_options'] ); ?>" />
 									<br /><span class="description"><?php _e('i = ignore case, g = global, m = multiline', $this->text_domain) ?></span>
 									<br /><span class="description"><?php _e('Enter a regular expression to validate against or leave blank. Example for Email:', $this->text_domain) ?></span>
 									<br /><span class="description"><?php _e('<code>^[\w.%+-]+@[\w.-]+\.[A-Z]{2,4}$</code> <code>i</code>', $this->text_domain) ?></span>
 								</p>
 								<p>
 									<label for="field_regex_message"><?php _e('Regular Expression Validation Error Message', $this->text_domain) ?></label><br />
-									<input type="text" id="field_message" name="field_regex_message" size="55" value="<?php if ( isset( $custom_field['field_regex_message'] ) ) echo $custom_field['field_regex_message']; ?>" />
+									<input type="text" id="field_message" name="field_regex_message" size="55" value="<?php if ( isset( $custom_field['field_regex_message'] ) ) esc_attr_e( $custom_field['field_regex_message'] ); ?>" />
 									<br /><span class="description"><?php _e('Custom Regular Expression Validation Error message for this field or leave blank for default.', $this->text_domain) ?></span><br />
 								</p>
 							</div>
@@ -111,7 +111,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								?>
 								<h4><?php _e('Fill in the options for this field', $this->text_domain); ?>:</h4>
 								<p>
-									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php echo $date_format; ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/>
+									<input type="text" id="field_date_format" name="field_date_format" size="38" value="<?php esc_attr_e( $date_format ); ?>" onchange="jQuery('#datepicker').datepicker( 'option', 'dateFormat', this.value );"/>
 									<br /><span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
 									<br /><br />
 									<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
@@ -135,9 +135,9 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								<?php if ( isset( $custom_field['field_options'] ) && is_array( $custom_field['field_options'] )): ?>
 								<?php foreach ( $custom_field['field_options'] as $key => $field_option ): ?>
 								<p>
-									<?php _e('Option', $this->text_domain); ?> <?php echo( $key ); ?>:
-									<input type="text" name="field_options[<?php echo( $key ); ?>]" value="<?php echo( $field_option ); ?>" />
-									<input type="radio" value="<?php echo( $key ); ?>" name="field_default_option" <?php if ( $custom_field['field_default_option'] == $key ) echo ( 'checked="checked"' ); ?> />
+									<?php _e('Option', $this->text_domain); ?> <?php esc_html_e( $key ); ?>:
+									<input type="text" name="field_options[<?php esc_attr_e( $key ); ?>]" value="<?php esc_attr_e( $field_option ); ?>" />
+									<input type="radio" value="<?php esc_attr_e( $key ); ?>" name="field_default_option" <?php if ( $custom_field['field_default_option'] == $key ) echo ( 'checked="checked"' ); ?> />
 									<?php _e('Default Value', $this->text_domain); ?>
 									<?php if ( $key != 1 ): ?>
 									<a href="#" class="ct-field-delete-option">[x]</a>
@@ -146,7 +146,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								<?php endforeach; ?>
 								<?php else: ?>
 								<p><?php _e('Option', $this->text_domain); ?> 1:
-									<input type="text" name="field_options[1]" value="<?php if ( isset( $custom_field['field_options'][1] ) ) echo $custom_field['field_options'][1]; ?>" />
+									<input type="text" name="field_options[1]" value="<?php if ( isset( $custom_field['field_options'][1] ) ) esc_attr_e( $custom_field['field_options'][1] ); ?>" />
 									<input type="radio" value="1" name="field_default_option" <?php if ( isset( $custom_field['field_default_option'] ) && $custom_field['field_default_option'] == '1' ) echo 'checked="checked"'; ?> />
 									<?php _e('Default Value', $this->text_domain); ?>
 								</p>
@@ -189,7 +189,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<select name="object_type[]" multiple="multiple" class="ct-object-type">
 								<?php if ( !empty( $post_types ) ): ?>
 								<?php foreach( $post_types as $post_type ): ?>
-								<option value="<?php echo ( $post_type ); ?>" <?php foreach ( $custom_field['object_type'] as $key => $object_type ) { if ( $object_type == $post_type ) echo( 'selected="selected"' ); } ?>><?php echo ( $post_type ); ?></option>
+								<option value="<?php esc_attr_e( $post_type ); ?>" <?php foreach ( $custom_field['object_type'] as $key => $object_type ) { if ( $object_type == $post_type ) echo( 'selected="selected"' ); } ?>><?php esc_html_e( $post_type ); ?></option>
 								<?php endforeach; ?>
 								<?php endif; ?>
 							</select>
@@ -214,7 +214,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 							<select name="hide_type[]" multiple="multiple" class="ct-object-type">
 								<?php if ( !empty( $post_types ) ): ?>
 								<?php foreach( $post_types as $post_type ): ?>
-								<option value="<?php echo ( $post_type ); ?>" <?php if(is_array( $custom_field['hide_type'] ) ) { foreach ( $custom_field['hide_type'] as $key => $hide_type ) { if ( $hide_type == $post_type ) echo( 'selected="selected"' ); } } ?>><?php echo ( $post_type ); ?></option>
+								<option value="<?php esc_attr_e( $post_type ); ?>" <?php if(is_array( $custom_field['hide_type'] ) ) { foreach ( $custom_field['hide_type'] as $key => $hide_type ) { if ( $hide_type == $post_type ) echo( 'selected="selected"' ); } } ?>><?php esc_html_e( $post_type ); ?></option>
 								<?php endforeach; ?>
 								<?php endif; ?>
 							</select>
@@ -238,8 +238,8 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery('#datepicker').datepicker({ dateFormat : '<?php echo $date_format; ?>' });
-		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo $date_format; ?>', new Date(), {}) );
+		jQuery('#datepicker').datepicker({ dateFormat : '<?php echo esc_js( $date_format); ?>' });
+		jQuery('#datepicker').attr('value', jQuery.datepicker.formatDate('<?php echo esc_js($date_format); ?>', new Date(), {}) );
 	});
 </script>
 
