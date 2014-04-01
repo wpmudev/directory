@@ -246,7 +246,7 @@ function the_dr_breadcrumbs() {
 */
 function the_dr_posted_on() {
 
-	$alink = get_author_directory_link( get_the_author_meta( 'ID' ) ) ;
+	$alink = get_author_directory_url( get_the_author_meta( 'ID' ) ) ;
 
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', DR_TEXT_DOMAIN ),
 	'meta-prep meta-prep-author',
@@ -267,7 +267,7 @@ function the_dr_posted_on() {
 /**
 * Prints HTML with meta information for the current post (category, tags and permalink).
 *
-* @access public
+* @access publicd
 * @return void
 */
 function the_dr_posted_in() {
