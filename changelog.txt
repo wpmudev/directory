@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.5.3 Arnold Bailey =
+* Fixed Attachment custom fields save that got broken in WP 3.5
+
 = 2.2.5.2 Arnold Bailey =
 * Bad function call fixed.
 

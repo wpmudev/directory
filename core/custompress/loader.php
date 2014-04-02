@@ -3,7 +3,7 @@
 Plugin Name: CustomPress
 Plugin URI: http://premium.wpmudev.org/project/custompress
 Description: CustomPress - Custom Post, Taxonomy and Field Manager.
-Version: 1.3.5.1
+Version: 1.3.5.3
 Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)
 Author URI: http://premium.wpmudev.org
 Text Domain: custompress
@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Define plugin version */
-if( !defined('CPT_VERSION') ) define ( 'CPT_VERSION', '1.3.5.1' );
+if( !defined('CPT_VERSION') ) define ( 'CPT_VERSION', '1.3.5.3' );
 /* define the plugin folder url */
 if( !defined('CPT_PLUGIN_URL') ) define ( 'CPT_PLUGIN_URL', plugin_dir_url(__FILE__) );
 /* define the plugin folder dir */

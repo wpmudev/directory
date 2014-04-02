@@ -968,7 +968,7 @@ class Directory_Core {
 
 		//title for listings page
 		if ( is_post_type_archive('directory_listing' ) ){
-			return post_type_archive_title();
+			return post_type_archive_title('', false);
 		}
 		return $title;
 	}
