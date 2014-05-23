@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');
@@ -25,7 +25,7 @@ $this->render_admin('update-message');
 
 ?>
 
-<form action="#" method="post" class="ct-form-single-btn">
+<form action="#" method="POST" class="ct-form-single-btn">
 	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php _e('Add Post Type', $this->text_domain); ?>" />
 </form>
 
@@ -35,7 +35,7 @@ $this->render_admin('update-message');
 			<th><?php _e('Post Type', $this->text_domain); ?></th>
 			<th><?php _e('Name', $this->text_domain); ?></th>
 			<th><?php _e('Description', $this->text_domain); ?></th>
-			<th><?php _e('Menu Icon', $this->text_domain); ?></th>
+			<th style="text-align: center;"><?php _e('Menu Icon', $this->text_domain); ?></th>
 			<th><?php _e('Supports', $this->text_domain); ?></th>
 			<th><?php _e('Capability Type', $this->text_domain); ?></th>
 			<th><?php _e('Public', $this->text_domain); ?></th>
@@ -48,7 +48,7 @@ $this->render_admin('update-message');
 			<th><?php _e('Post Type', $this->text_domain); ?></th>
 			<th><?php _e('Name', $this->text_domain); ?></th>
 			<th><?php _e('Description', $this->text_domain); ?></th>
-			<th><?php _e('Menu Icon', $this->text_domain); ?></th>
+			<th style="text-align: center;"><?php _e('Menu Icon', $this->text_domain); ?></th>
 			<th><?php _e('Supports', $this->text_domain); ?></th>
 			<th><?php _e('Capability Type', $this->text_domain); ?></th>
 			<th><?php _e('Public', $this->text_domain); ?></th>
@@ -87,8 +87,9 @@ $this->render_admin('update-message');
 					</span>
 					<?php endif; ?>
 				</div>
-				<form action="#" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
+				<form action="" method="post" id="form-<?php echo( $name ); ?>" class="del-form">
 					<?php wp_nonce_field('delete_post_type'); ?>
+					<input type="hidden" name="delete-post-type" value="1" />
 					<input type="hidden" name="post_type_name" value="<?php echo( $name ); ?>" />
 					<input type="submit" class="button confirm" value="<?php _e( 'Confirm', $this->text_domain ); ?>" name="submit" />
 					<input type="submit" class="button cancel"  value="<?php _e( 'Cancel', $this->text_domain ); ?>" onClick="content_types.cancel('<?php echo( $name ); ?>'); return false;" />
@@ -96,8 +97,31 @@ $this->render_admin('update-message');
 			</td>
 			<td><?php echo ( empty( $post_type['labels']['name'] ) ) ? '' : esc_html( $post_type['labels']['name'] ); ?></td>
 			<td><?php echo ( empty( $post_type['description'] ) ) ? '' : esc_html( $post_type['description'] ); ?></td>
-			<td>
-				<img src="<?php echo esc_html(empty( $post_type['menu_icon'] ) ) ? $this->plugin_url . 'ui-admin/images/default-menu-icon.png' : $post_type['menu_icon']; ?>" alt="<?php if ( empty( $post_type['menu_icon'] ) ) echo( 'No Icon'); ?>" />
+			<td style="text-align: center">
+				<?php
+				$img = $img_style = '';
+				$img_class = ' dashicons-before';
+
+				if( !empty($post_type['menu_icon']) ) {
+					$img = '<img src="' . $post_type['menu_icon'] . '" alt="" />';
+
+					if ( 'none' === $post_type['menu_icon'] || 'div' === $post_type['menu_icon'] ) {
+						$img = '<br />';
+					} elseif ( 0 === strpos( $post_type['menu_icon'], 'data:image/svg+xml;base64,' ) ) {
+						$img = '<br />';
+						$img_style = ' style="background-image:url(\'' . esc_attr( $post_type['menu_icon'] ) . '\')"';
+						$img_class = ' svg';
+					} elseif ( 0 === strpos( $post_type['menu_icon'], 'dashicons-' ) ) {
+						$img = '<br />';
+						$img_class = ' dashicons-before ' . sanitize_html_class( $post_type['menu_icon'] );
+					}
+				}
+				else {
+					$img = '<br />';
+					$img_class = ' dashicons-before dashicons-admin-post';
+				}
+				?>
+				<div class="wp-image-class <?php echo $img_class;?>" <?php echo $img_style; ?> ><?php echo $img; ?></div>
 			</td>
 			<td class="ct-supports">
 				<?php foreach ( $post_type['supports'] as $value ): ?>
@@ -136,6 +160,6 @@ $this->render_admin('update-message');
 	</tbody>
 </table>
 
-<form action="#" method="post" class="ct-form-single-btn">
+<form action="#" method="POST" class="ct-form-single-btn">
 	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php _e('Add Post Type', $this->text_domain); ?>" />
 </form>

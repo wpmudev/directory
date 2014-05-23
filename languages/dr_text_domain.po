@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Directory v2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-02 14:41-0500\n"
+"POT-Creation-Date: 2014-05-23 13:44-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "esc_html__;esc_html_e;esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../core/admin.php:64 ../core/admin.php:65 ../core/data.php:57
@@ -80,7 +80,8 @@ msgstr ""
 msgid "My Credits"
 msgstr ""
 
-#: ../core/buddypress.php:115 ../core/core.php:1037
+#: ../core/buddypress.php:115 ../core/core.php:1044
+#: ../themes/default/components/actionbuttons.php:15
 #: ../ui-admin/settings-shortcodes.php:41
 #: ../ui-admin/settings-shortcodes.php:42
 msgid "Add Listing"
@@ -90,26 +91,26 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: ../core/buddypress.php:184 ../core/main.php:73
+#: ../core/buddypress.php:184 ../core/main.php:75
 msgid "Listing is deleted!"
 msgstr ""
 
-#: ../core/buddypress.php:227 ../core/main.php:107
+#: ../core/buddypress.php:227 ../core/main.php:109
 msgid "New Listing is added!"
 msgstr ""
 
-#: ../core/buddypress.php:229 ../core/main.php:109
+#: ../core/buddypress.php:229 ../core/main.php:111
 msgid "Listing is updated!"
 msgstr ""
 
-#: ../core/buddypress.php:241 ../core/main.php:121
+#: ../core/buddypress.php:241 ../core/main.php:123
 msgid ""
 "You do not have enough credits to publish your listing. Please purchase more "
 "credits. Your Listing has been saved as a Draft."
 msgstr ""
 
-#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1366
-#: ../core/core.php:1367
+#: ../core/buddypress.php:559 ../core/buddypress.php:560 ../core/core.php:1376
+#: ../core/core.php:1377
 msgid "You are being redirected. Please wait."
 msgstr ""
 
@@ -243,24 +244,24 @@ msgstr ""
 msgid "Upload files."
 msgstr ""
 
-#: ../core/core.php:153
+#: ../core/core.php:153 ../themes/default/comments.php:81
 msgid "Write a Review"
 msgstr ""
 
-#: ../core/core.php:154
+#: ../core/core.php:154 ../themes/default/comments.php:84
 msgid "Post Review"
 msgstr ""
 
-#: ../core/core.php:155
+#: ../core/core.php:155 ../themes/default/comments.php:78
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a review."
 msgstr ""
 
-#: ../core/core.php:156
+#: ../core/core.php:156 ../themes/default/comments.php:85
 msgid "Review"
 msgstr ""
 
-#: ../core/core.php:157
+#: ../core/core.php:157 ../themes/default/comments.php:83
 msgid "Cancel review"
 msgstr ""
 
@@ -296,54 +297,55 @@ msgstr ""
 msgid "CC Country Code"
 msgstr ""
 
-#: ../core/core.php:407
+#: ../core/core.php:414
 msgid "Virtual"
 msgstr ""
 
-#: ../core/core.php:510
+#: ../core/core.php:517
 msgid "Virtual page. Editing this page won't change anything."
 msgstr ""
 
-#: ../core/core.php:907
+#: ../core/core.php:914
 msgid "More Info &raquo;"
 msgstr ""
 
-#: ../core/core.php:1017 ../core/data.php:55
+#: ../core/core.php:1024 ../core/data.php:55
 #: ../ui-admin/settings-shortcodes.php:33
 #: ../ui-admin/settings-shortcodes.php:34
 msgid "Listings"
 msgstr ""
 
-#: ../core/core.php:1057 ../core/data.php:59
+#: ../core/core.php:1064 ../core/data.php:59
 msgid "Edit Listing"
 msgstr ""
 
-#: ../core/core.php:1078 ../ui-admin/settings-shortcodes.php:49
+#: ../core/core.php:1085 ../ui-admin/settings-shortcodes.php:49
 #: ../ui-admin/settings-shortcodes.php:50
 msgid "My Listings"
 msgstr ""
 
-#: ../core/core.php:1098
+#: ../core/core.php:1105
 msgid "My Listing Credits"
 msgstr ""
 
-#: ../core/core.php:1120 ../ui-admin/settings-shortcodes.php:57
+#: ../core/core.php:1127 ../themes/default/components/actionbuttons.php:22
+#: ../ui-admin/settings-shortcodes.php:57
 #: ../ui-admin/settings-shortcodes.php:58
 msgid "Go to Profile"
 msgstr ""
 
-#: ../core/core.php:1140 ../ui-admin/settings-shortcodes.php:73
+#: ../core/core.php:1147 ../ui-admin/settings-shortcodes.php:73
 #: ../ui-admin/settings-shortcodes.php:74
 #: ../ui-front/general/page-signup.php:29
 msgid "Signup"
 msgstr ""
 
-#: ../core/core.php:1160 ../ui-admin/settings-shortcodes.php:65
+#: ../core/core.php:1167 ../ui-admin/settings-shortcodes.php:65
 #: ../ui-admin/settings-shortcodes.php:66
 msgid "Signin"
 msgstr ""
 
-#: ../core/core.php:1184 ../core/core.php:1208
+#: ../core/core.php:1191 ../core/core.php:1215
 #: ../ui-admin/settings-shortcodes.php:81
 #: ../ui-admin/settings-shortcodes.php:82
 msgid "Logout"
@@ -654,6 +656,540 @@ msgstr ""
 
 #: ../loader.php:18
 msgid "http://premium.wpmudev.org"
+msgstr ""
+
+#: ../themes/default/comments.php:9
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../themes/default/comments.php:28
+#, php-format
+msgid "One Review for %2$s"
+msgstr ""
+
+#: ../themes/default/comments.php:35
+msgid "<span class=\"meta-nav\">&larr;</span> Older Reviews"
+msgstr ""
+
+#: ../themes/default/comments.php:36
+msgid "Newer Reviews <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../themes/default/comments.php:55
+msgid "<span class=\"meta-nav\">&larr;</span> Older Review"
+msgstr ""
+
+#: ../themes/default/comments.php:56
+msgid "Newer Review <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../themes/default/comments.php:69
+msgid "Reviews are closed."
+msgstr ""
+
+#: ../themes/default/comments.php:82
+#, php-format
+msgid "Write a Review to %s"
+msgstr ""
+
+#: ../themes/default/comments.php:86
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+
+#: ../themes/default/comments.php:87
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+
+#: ../themes/default/components/actionbuttons.php:2
+msgid "Welcome, what would you like to do?"
+msgstr ""
+
+#: ../themes/default/components/actionbuttons.php:5
+#: ../themes/default/components/actionbuttons.php:18
+msgid "Sign Up"
+msgstr ""
+
+#: ../themes/default/components/actionbuttons.php:6
+msgid "Sign In"
+msgstr ""
+
+#: ../themes/default/components/actionbuttons.php:9
+msgid "Log Out"
+msgstr ""
+
+#: ../themes/default/components/branding-header.php:4
+msgid "Home"
+msgstr ""
+
+#: ../themes/default/components/headers.php:3
+#: ../themes/default/components/headers.php:5
+#: ../themes/default/components/headers.php:7
+#, php-format
+msgid "You are browsing the archive for %1$s."
+msgstr ""
+
+#: ../themes/default/components/headers.php:11
+msgid "Search Results"
+msgstr ""
+
+#: ../themes/default/components/headers.php:13
+msgid "Blog"
+msgstr ""
+
+#: ../themes/default/components/messages.php:3
+msgid ""
+"Sorry, we can't find the category you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/messages.php:5
+#: ../themes/default/dr_listinglist.php:110
+msgid ""
+"Sorry, we can't find the archive you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/messages.php:7
+msgid ""
+"Sorry, we can't find the search keyword you're looking for. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/messages.php:9
+msgid ""
+"Sorry, we can't find the author you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/messages.php:11
+#: ../themes/default/single-listing.php:77
+msgid ""
+"Sorry, we can't find the post you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/messages.php:13
+#: ../themes/default/components/messages.php:15
+msgid ""
+"Sorry, we can't find the content you're looking for at this URL. Please try "
+"selecting a menu item from above or to the side of this message to get where "
+"you'd like to go."
+msgstr ""
+
+#: ../themes/default/components/pagination.php:12
+msgid "Pages"
+msgstr ""
+
+#: ../themes/default/components/pagination.php:12
+msgid "number"
+msgstr ""
+
+#: ../themes/default/components/pagination.php:18
+#: ../themes/default/components/pagination.php:25
+#: ../themes/default/components/pagination.php:32
+#: ../themes/default/single-listing.php:71
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+#: ../themes/default/components/pagination.php:19
+#: ../themes/default/components/pagination.php:26
+#: ../themes/default/components/pagination.php:33
+#: ../themes/default/single-listing.php:72
+msgid "Next Entries &raquo;"
+msgstr ""
+
+#: ../themes/default/components/searchcontainer.php:4
+msgid "What can we find for you today?"
+msgstr ""
+
+#: ../themes/default/components/searchcontainer.php:6
+msgid "Find it now!"
+msgstr ""
+
+#: ../themes/default/core/colors.php:35 ../themes/default/core/colors.php:103
+#: ../themes/default/core/colors.php:110
+msgid "Colors"
+msgstr ""
+
+#: ../themes/default/core/colors.php:99
+msgid "Colors Saved!"
+msgstr ""
+
+#: ../themes/default/core/colors.php:113
+msgid "Allow color overrides below."
+msgstr ""
+
+#: ../themes/default/core/colors.php:116
+msgid "Site Title"
+msgstr ""
+
+#: ../themes/default/core/colors.php:119 ../themes/default/core/colors.php:128
+#: ../themes/default/core/colors.php:137 ../themes/default/core/colors.php:146
+#: ../themes/default/core/colors.php:155 ../themes/default/core/colors.php:164
+#: ../themes/default/core/colors.php:173 ../themes/default/core/colors.php:182
+#: ../themes/default/core/colors.php:191
+msgid "Select Color"
+msgstr ""
+
+#: ../themes/default/core/colors.php:120 ../themes/default/core/colors.php:129
+#: ../themes/default/core/colors.php:138 ../themes/default/core/colors.php:147
+#: ../themes/default/core/colors.php:156 ../themes/default/core/colors.php:165
+#: ../themes/default/core/colors.php:174 ../themes/default/core/colors.php:183
+#: ../themes/default/core/colors.php:192
+msgid "Use Default"
+msgstr ""
+
+#: ../themes/default/core/colors.php:125
+msgid "Navigation Bar"
+msgstr ""
+
+#: ../themes/default/core/colors.php:134
+msgid "Content Wrapper"
+msgstr ""
+
+#: ../themes/default/core/colors.php:143
+msgid "Search Box"
+msgstr ""
+
+#: ../themes/default/core/colors.php:152
+msgid "Grid and Action Bars"
+msgstr ""
+
+#: ../themes/default/core/colors.php:161
+msgid "Headings Bars"
+msgstr ""
+
+#: ../themes/default/core/colors.php:170
+msgid "Buttons"
+msgstr ""
+
+#: ../themes/default/core/colors.php:179
+msgid "Buttons Text"
+msgstr ""
+
+#: ../themes/default/core/colors.php:188
+msgid "Global Text"
+msgstr ""
+
+#: ../themes/default/core/colors.php:198 ../themes/default/core/options.php:94
+#: ../ui-admin/settings-payment-types.php:327
+#: ../ui-front/buddypress/members/single/directory/update-listing.php:223
+#: ../ui-front/general/page-update-listing.php:222
+msgid "Save Changes"
+msgstr ""
+
+#: ../themes/default/core/core.php:40
+msgid "Top Menu"
+msgstr ""
+
+#: ../themes/default/core/core.php:57
+msgid "The header advertisement widget area"
+msgstr ""
+
+#: ../themes/default/core/core.php:65
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: ../themes/default/core/core.php:67
+msgid "The first footer widget area"
+msgstr ""
+
+#: ../themes/default/core/core.php:75
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: ../themes/default/core/core.php:77
+msgid "The second footer widget area"
+msgstr ""
+
+#: ../themes/default/core/core.php:85
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: ../themes/default/core/core.php:87
+msgid "The third footer widget area"
+msgstr ""
+
+#: ../themes/default/core/core.php:95
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: ../themes/default/core/core.php:97
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: ../themes/default/core/core.php:116
+msgid "{View Listing}"
+msgstr ""
+
+#: ../themes/default/core/core.php:145
+msgid "Advertise Here"
+msgstr ""
+
+#: ../themes/default/core/options.php:34 ../themes/default/core/options.php:46
+msgid "Options"
+msgstr ""
+
+#: ../themes/default/core/options.php:42
+msgid "Options Saved!"
+msgstr ""
+
+#: ../themes/default/core/options.php:56
+msgid "Presentation"
+msgstr ""
+
+#: ../themes/default/core/options.php:59
+msgid "Text Shadows"
+msgstr ""
+
+#: ../themes/default/core/options.php:62
+msgid "Switch text shadows OFF"
+msgstr ""
+
+#: ../themes/default/core/options.php:66 ../themes/default/core/options.php:69
+msgid "Layout"
+msgstr ""
+
+#: ../themes/default/core/options.php:72
+msgid "Grid Layout"
+msgstr ""
+
+#: ../themes/default/core/options.php:73
+msgid "Rows Layout"
+msgstr ""
+
+#: ../themes/default/core/options.php:75
+msgid "Switch Theme Layout"
+msgstr ""
+
+#: ../themes/default/core/options.php:79
+msgid "Styles"
+msgstr ""
+
+#: ../themes/default/core/options.php:82
+msgid "Style Modern"
+msgstr ""
+
+#: ../themes/default/core/options.php:83
+msgid "Style Minimal"
+msgstr ""
+
+#: ../themes/default/core/options.php:84
+msgid "Style Boxed"
+msgstr ""
+
+#: ../themes/default/core/options.php:85
+msgid "Style Gloss"
+msgstr ""
+
+#: ../themes/default/core/options.php:86
+msgid "Style Skinny"
+msgstr ""
+
+#: ../themes/default/core/options.php:87
+msgid "Style Wide"
+msgstr ""
+
+#: ../themes/default/core/options.php:89
+msgid "Switch Theme Style"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:44
+#: ../themes/default/loops/loop-archive.php:14
+#: ../ui-front/buddypress/members/single/directory/listings.php:100
+#: ../ui-front/general/loop-author.php:108
+#: ../ui-front/general/loop-taxonomy.php:98
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:61
+#: ../themes/default/loops/loop-archive.php:21
+#: ../ui-front/buddypress/members/single/directory/listings.php:105
+#: ../ui-front/general/loop-author.php:113
+#: ../ui-front/general/loop-taxonomy.php:103
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:69
+#: ../themes/default/loops/loop-archive.php:25
+#: ../ui-front/buddypress/members/single/directory/listings.php:110
+#: ../ui-front/general/loop-author.php:118
+#: ../ui-front/general/loop-taxonomy.php:108
+msgid "Leave a review"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:69
+#: ../themes/default/loops/loop-archive.php:25
+#: ../ui-front/buddypress/members/single/directory/listings.php:110
+#: ../ui-front/general/loop-author.php:118
+#: ../ui-front/general/loop-taxonomy.php:108
+msgid "1 Review"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:69
+#: ../themes/default/loops/loop-archive.php:25
+#: ../ui-front/buddypress/members/single/directory/listings.php:110
+#: ../ui-front/general/loop-author.php:118
+#: ../ui-front/general/loop-taxonomy.php:108
+msgid "% Reviews"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:69
+#: ../themes/default/loops/loop-archive.php:25
+#: ../themes/default/loops/loop-blog-page.php:12
+#: ../themes/default/loops/loop-excerpt.php:9
+#: ../themes/default/loops/loop-single.php:9
+#: ../themes/default/single-listing.php:16
+#: ../ui-front/buddypress/members/single/directory/listings.php:110
+#: ../ui-front/general/loop-author.php:118
+#: ../ui-front/general/loop-taxonomy.php:108
+msgid "Reviews Off"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:70
+#: ../themes/default/loops/loop-archive.php:26
+#: ../themes/default/loops/loop-single.php:12
+#: ../themes/default/single-listing.php:19
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:77
+#: ../ui-front/general/page-my-listings.php:69
+#: ../ui-front/general/page-signup.php:784
+msgid "Edit"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:77
+#: ../themes/default/loops/loop-archive.php:33
+#: ../ui-front/buddypress/members/single/directory/listings.php:93
+#: ../ui-front/buddypress/members/single/directory/my-listings.php:69
+#: ../ui-front/general/loop-author.php:101
+#: ../ui-front/general/loop-taxonomy.php:91
+#: ../ui-front/general/page-my-listings.php:61
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../themes/default/dr_listinglist.php:89
+#: ../themes/default/loops/loop-archive.php:45
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../themes/default/footer.php:8
+msgid "Theme by WPMU DEV"
+msgstr ""
+
+#: ../themes/default/footer.php:8
+msgid "WPMU DEV"
+msgstr ""
+
+#: ../themes/default/footer.php:8
+msgid "Copyright"
+msgstr ""
+
+#: ../themes/default/footer.php:8
+msgid "Y"
+msgstr ""
+
+#: ../themes/default/footer.php:8
+msgid "Go back to top &uarr;"
+msgstr ""
+
+#: ../themes/default/loops/loop-attachment.php:13
+msgid "<p class=\"serif\">Read the rest of this entry &rarr;</p>"
+msgstr ""
+
+#: ../themes/default/loops/loop-attachment.php:14
+#: ../themes/default/loops/loop-page.php:10
+msgid "<p><strong>Pages:</strong> "
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:11
+#: ../themes/default/loops/loop-excerpt.php:8
+msgid "in"
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:11
+#: ../themes/default/loops/loop-excerpt.php:8
+msgid "by "
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:12
+#: ../themes/default/loops/loop-excerpt.php:9
+#: ../themes/default/loops/loop-single.php:13
+#: ../themes/default/single-listing.php:20
+msgid "Tags: "
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:12
+#: ../themes/default/loops/loop-excerpt.php:9
+#: ../themes/default/loops/loop-single.php:9
+#: ../themes/default/single-listing.php:16
+#: ../ui-front/general/single-listing.php:43
+msgid "No Reviews &#187;"
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:12
+#: ../themes/default/loops/loop-excerpt.php:9
+#: ../themes/default/loops/loop-single.php:9
+#: ../themes/default/single-listing.php:16
+#: ../ui-front/general/single-listing.php:44
+msgid "1 Review &#187;"
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:12
+#: ../themes/default/loops/loop-excerpt.php:9
+#: ../themes/default/loops/loop-single.php:9
+#: ../themes/default/single-listing.php:16
+#: ../ui-front/general/single-listing.php:45
+msgid "% Reviews &#187;"
+msgstr ""
+
+#: ../themes/default/loops/loop-blog-page.php:16
+#: ../themes/default/loops/loop-excerpt.php:14
+msgid "Permanent Link to"
+msgstr ""
+
+#: ../themes/default/loops/loop-page.php:11
+msgid "Edit this entry."
+msgstr ""
+
+#: ../themes/default/loops/loop-single.php:16
+#: ../themes/default/single-listing.php:23
+#: ../ui-front/general/single-listing.php:54
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to rate item."
+msgstr ""
+
+#: ../themes/default/loops/loop-single.php:28
+#: ../themes/default/single-listing.php:40
+#: ../ui-front/general/page-signup.php:783
+msgid "Pages:"
+msgstr ""
+
+#: ../themes/default/loops/loop-single.php:39
+#: ../themes/default/single-listing.php:51
+#: ../ui-front/general/single-listing.php:136
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: ../themes/default/loops/loop-single.php:43
+#: ../themes/default/single-listing.php:55
+#: ../ui-front/general/single-listing.php:140
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
 #: ../ui-admin/credits-my-credits.php:12
@@ -1494,12 +2030,6 @@ msgstr ""
 msgid "Custom API URL"
 msgstr ""
 
-#: ../ui-admin/settings-payment-types.php:327
-#: ../ui-front/buddypress/members/single/directory/update-listing.php:223
-#: ../ui-front/general/page-update-listing.php:222
-msgid "Save Changes"
-msgstr ""
-
 #: ../ui-admin/settings-payments-type.php:39
 msgid "Payments Type"
 msgstr ""
@@ -1817,53 +2347,6 @@ msgstr ""
 msgid "No Listings"
 msgstr ""
 
-#: ../ui-front/buddypress/members/single/directory/listings.php:93
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:69
-#: ../ui-front/general/loop-author.php:101
-#: ../ui-front/general/loop-taxonomy.php:91
-#: ../ui-front/general/page-my-listings.php:61
-#, php-format
-msgid "Permalink to %s"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:100
-#: ../ui-front/general/loop-author.php:108
-#: ../ui-front/general/loop-taxonomy.php:98
-#, php-format
-msgid "<span class=\"%1$s\">Posted in</span> %2$s"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:105
-#: ../ui-front/general/loop-author.php:113
-#: ../ui-front/general/loop-taxonomy.php:103
-#, php-format
-msgid "<span class=\"%1$s\">Tagged</span> %2$s"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:110
-#: ../ui-front/general/loop-author.php:118
-#: ../ui-front/general/loop-taxonomy.php:108
-msgid "Leave a review"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:110
-#: ../ui-front/general/loop-author.php:118
-#: ../ui-front/general/loop-taxonomy.php:108
-msgid "1 Review"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:110
-#: ../ui-front/general/loop-author.php:118
-#: ../ui-front/general/loop-taxonomy.php:108
-msgid "% Reviews"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/listings.php:110
-#: ../ui-front/general/loop-author.php:118
-#: ../ui-front/general/loop-taxonomy.php:108
-msgid "Reviews Off"
-msgstr ""
-
 #: ../ui-front/buddypress/members/single/directory/my-credits.php:22
 #: ../ui-front/general/page-my-credits.php:10
 msgid "Available Directory Credits"
@@ -1909,12 +2392,6 @@ msgstr ""
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:62
 #: ../ui-front/general/page-my-listings.php:54
 msgid "Date"
-msgstr ""
-
-#: ../ui-front/buddypress/members/single/directory/my-listings.php:77
-#: ../ui-front/general/page-my-listings.php:69
-#: ../ui-front/general/page-signup.php:784
-msgid "Edit"
 msgstr ""
 
 #: ../ui-front/buddypress/members/single/directory/my-listings.php:82
@@ -2350,32 +2827,28 @@ msgstr ""
 msgid "Confirm data"
 msgstr ""
 
-#: ../ui-front/general/page-signup.php:783
-msgid "Pages:"
-msgstr ""
-
 #: ../ui-front/general/page-update-listing.php:192
 msgid "add a tag"
 msgstr ""
 
-#: ../ui-front/general/pagination.php:19
+#: ../ui-front/general/pagination.php:21
 #, php-format
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: ../ui-front/general/pagination.php:22
+#: ../ui-front/general/pagination.php:24
 msgid "First"
 msgstr ""
 
-#: ../ui-front/general/pagination.php:26
+#: ../ui-front/general/pagination.php:28
 msgid "Previous"
 msgstr ""
 
-#: ../ui-front/general/pagination.php:36
+#: ../ui-front/general/pagination.php:38
 msgid "Next"
 msgstr ""
 
-#: ../ui-front/general/pagination.php:40
+#: ../ui-front/general/pagination.php:42
 msgid "Last"
 msgstr ""
 
@@ -2393,25 +2866,8 @@ msgstr ""
 msgid "Email service is not responding!"
 msgstr ""
 
-#: ../ui-front/general/single-listing.php:43
-msgid "No Reviews &#187;"
-msgstr ""
-
-#: ../ui-front/general/single-listing.php:44
-msgid "1 Review &#187;"
-msgstr ""
-
-#: ../ui-front/general/single-listing.php:45
-msgid "% Reviews &#187;"
-msgstr ""
-
 #: ../ui-front/general/single-listing.php:47
 msgid "Reviews Off;"
-msgstr ""
-
-#: ../ui-front/general/single-listing.php:54
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to rate item."
 msgstr ""
 
 #: ../ui-front/general/single-listing.php:65
@@ -2464,14 +2920,4 @@ msgstr ""
 
 #: ../ui-front/general/single-listing.php:109
 msgid "Send"
-msgstr ""
-
-#: ../ui-front/general/single-listing.php:136
-#, php-format
-msgid "About %s"
-msgstr ""
-
-#: ../ui-front/general/single-listing.php:140
-#, php-format
-msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""

@@ -2,6 +2,8 @@
 
 global $bp, $wp_query, $post, $paged;
 
+//printf('<pre>%s</pre>',print_r($wp_query, true) ); exit;
+
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $original_query = $wp_query;

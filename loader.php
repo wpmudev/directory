@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.2.5.3
+Version: 2.2.5.4
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: dr_text_domain
@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.2.5.3' );
+define( 'DR_VERSION', '2.2.5.4' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir
@@ -48,6 +48,8 @@ define( 'DR_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 define( 'DR_TEXT_DOMAIN', 'dr_text_domain' );
 // The key for the options array
 define( 'DR_OPTIONS_NAME', 'dr_options' );
+// The key for the captcha transient
+define( 'DR_CAPTCHA', 'dr_captcha_' );
 
 // include core files
 //If another version of CustomPress not loaded, load ours.

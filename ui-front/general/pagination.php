@@ -2,6 +2,8 @@
 
 global $wp_query;
 
+//printf('<pre>%s</pre>',print_r($wp_query, true) ); exit;
+
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $pages = $wp_query->max_num_pages;
 

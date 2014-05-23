@@ -110,13 +110,13 @@ class Directory_Core {
 		/* Create neccessary pages */
 		add_action( 'wp_loaded', array( &$this, 'create_default_pages' ) );
 		add_action( 'parse_request', array( &$this, 'on_parse_request' ) );
+		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_action('pre_get_posts', array(&$this, 'on_pre_get_posts') );
 
 		add_action( 'template_redirect', array( &$this, 'handle_contact_form_requests' ) );
 
 		add_action('wp_logout', array( &$this, 'on_wp_logout' ) );
 
-		add_filter( 'parse_query', array( &$this, 'on_parse_query' ) );
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
 		add_filter( 'comment_form_defaults', array($this,'review_defaults'));
 		add_filter( 'user_contactmethods', array( &$this, 'contact_fields' ), 10, 2 );
@@ -286,8 +286,8 @@ class Directory_Core {
 		$options = $this->get_options('general');
 		$url = trim($options['logout_url']);
 		if( ! empty($url) ) {
-		wp_redirect($url);
-		exit;
+			wp_redirect($url);
+			exit;
 		}
 	}
 
@@ -295,6 +295,7 @@ class Directory_Core {
 
 		if ( isset( $query ) ) {
 
+			//printf('<pre>%s</pre>',print_r($query, true) ); exit;
 
 			//Or are we editing a listing?
 			if(! @is_post_type_archive('directory_listing') && @is_page($this->directory_page_id) ){
@@ -365,11 +366,15 @@ class Directory_Core {
 
 			exit();
 		}
+		
+		//printf('<pre>%s</pre>',print_r($wp, true) ); exit;
 		return $wp;
 	}
 
 	function on_pre_get_posts($wp_query_obj) {
 		global $current_user;
+
+		//printf('<pre>%s</pre>',print_r($wp_query_obj, true) ); exit;
 
 		if( $current_user->ID == 0 ) return;
 
@@ -377,6 +382,8 @@ class Directory_Core {
 		&& !current_user_can('administrator')
 		&& !current_user_can('edit_others_listings') )
 		$wp_query_obj->set('author', $current_user->ID );
+		
+		
 	}
 
 	/**
@@ -1309,17 +1316,20 @@ class Directory_Core {
 	**/
 	function handle_contact_form_requests() {
 
-		if(! session_id() ) session_start();
 		/* Only handle request if on single{}.php template and our post type */
 		if ( get_post_type() == $this->post_type && is_single() ) {
 
+			$captcha = get_transient( DR_CAPTCHA.$_SERVER['REMOTE_ADDR']);
+
 			if (isset( $_POST['contact_form_send'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'send_message' ) ){
 				$_POST = stripslashes_deep($_POST);
+				
 				if ( isset( $_POST['name'] ) && '' != $_POST['name']
 				&& isset( $_POST['email'] ) && '' != $_POST['email']
 				&& isset( $_POST['subject'] ) && '' != $_POST['subject']
 				&& isset( $_POST['message'] ) && '' != $_POST['message']
-				&& isset( $_POST['dr_random_value'] ) && (md5(strtoupper($_POST['dr_random_value']) )  == $_SESSION['dr_random_value'] )
+				&& ($captcha 
+				&& (md5(strtoupper($_POST['dr_random_value']) ) == $captcha ) )
 
 				) {
 					global $post;
@@ -1372,6 +1382,57 @@ class Directory_Core {
 		<?php
 	}
 
+	function imagettftext_cr(&$im, $size, $angle, $x, $y, $color, $fontfile, $text)
+	{
+		// retrieve boundingbox
+		$bbox = imagettfbbox($size, $angle, $fontfile, $text);
+		// calculate deviation
+		$dx = ($bbox[2]-$bbox[0])/2.0 - ($bbox[2]-$bbox[4])/2.0;         // deviation left-right
+		$dy = ($bbox[3]-$bbox[1])/2.0 + ($bbox[7]-$bbox[1])/2.0;        // deviation top-bottom
+		// new pivotpoint
+		$px = $x-$dx;
+		$py = $y-$dy;
+		return imagettftext($im, $size, $angle, $px, $y, $color, $fontfile, $text);
+	}
+
+	function on_captcha(){
+		
+		$alphanum = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+		$rand = substr( str_shuffle( $alphanum ), 0, 5 );
+
+		$image = imagecreate(120,36);
+		$black = imagecolorallocate($image,0,0,0);
+		$grey_shade = imagecolorallocate($image,128,128,128);
+		$white = imagecolorallocate($image,255,255,255);
+
+		$otherFont = 'fonts/StardosStencil-Regular.ttf';
+		$font = $this->plugin_dir . 'ui-front/fonts/StardosStencil-Bold.ttf';
+
+		//imagestring( $image, 5, 28, 4, $rand, $white );
+		//BG text for Name
+		$i =1;
+		while($i<10){
+			$this->imagettftext_cr($image,rand(2,20),rand(-50,50),rand(10,120),rand(0,40),$grey_shade,$font,$rand);
+			$i++;
+		}
+
+		$this->imagettftext_cr($image,14,0,60,26,$white,$font, $rand );
+	
+		//Use transient
+		set_transient( DR_CAPTCHA.$_SERVER['REMOTE_ADDR'], md5($rand), 600 );
+		
+		header( "Expires: Mon, 26 Jul 1997 05:00:00 GMT" );
+		header( "Last-Modified: ".gmdate( "D, d M Y H:i:s" )." GMT" );
+		header( "Cache-Control: no-store, no-cache, must-revalidate" );
+		header( "Cache-Control: post-check=0, pre-check=0", false );
+		header( "Pragma: no-cache" );
+		header( "Content-type: image/png");
+
+		imagepng($image);
+		imagedestroy( $image );
+		exit;
+	}
+
 
 }
 
@@ -1390,12 +1451,17 @@ function dr_flag_activation($plugin=''){
 //Decide whether to load Admin BP or Standard version
 add_action('plugins_loaded', 'dr_on_plugins_loaded');
 function dr_on_plugins_loaded(){
+
+	if( defined('BP_VERSION')){
+		global $bp, $blog_id;
+	}
+
 	if(is_admin()){ 	//Are we admin
 		include_once DR_PLUGIN_DIR . 'core/admin.php';
 		//include_once DR_PLUGIN_DIR . 'core/tutorial.php';
 		require_once DR_PLUGIN_DIR . 'core/contextual_help.php';
 	}
-	elseif(defined('BP_VERSION')){ //Are we BuddyPress
+	elseif( isset($bp) && $bp->root_blog_id == $blog_id ){ //Are we BuddyPress
 		include_once DR_PLUGIN_DIR . 'core/buddypress.php';
 	}
 	else {

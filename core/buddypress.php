@@ -592,7 +592,9 @@ class Directory_Core_Buddypress extends Directory_Core {
 }
 
 /* Initiate Class */
-global $Directory_Core;
-$Directory_Core = new Directory_Core_Buddypress();
+if ( ! is_admin() ) {
+	global $Directory_Core;
+	$Directory_Core = new Directory_Core_Buddypress();
+}
 
 endif;

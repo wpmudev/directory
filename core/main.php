@@ -61,7 +61,9 @@ class Directory_Core_Main extends Directory_Core {
 	* @return void|die() if "_wpnonce" is not verified
 	**/
 	function process_page_requests() {
-		global $post;
+		global $post, $wp_query;
+
+		//printf('<pre>%s</pre>',print_r($wp_query, true) ); exit;
 
 		$options = $this->get_options('payments');
 
@@ -139,7 +141,7 @@ class Directory_Core_Main extends Directory_Core {
 	function handle_page_requests() {
 		global $wp_query;
 
-		//printf('<pre>%s</pre>',print_r($wp_query, true) );
+		//printf('<pre>%s</pre>',print_r($wp_query, true) ); //exit;
 
 		$templates = array();
 		$taxonomy = (empty($wp_query->query_vars['taxonomy']) ) ? '' : $wp_query->query_vars['taxonomy'];
@@ -398,6 +400,8 @@ class Directory_Core_Main extends Directory_Core {
 function on_template_include($template = '') {
 	global $wp_query, $post;
 
+	//printf('<pre>%s</pre>',print_r($wp_query, true) ); exit;
+
 	$this->title = '';
 	$this->content = '';
 
@@ -543,7 +547,7 @@ function on_template_include($template = '') {
 }
 
 /* Initiate Class */
-if ( ! is_admin() && ! defined('BP_VERSION') ) {
+if ( ! is_admin() ) {
 	global $Directory_Core;
 	$Directory_Core = new Directory_Core_Main;
 }
