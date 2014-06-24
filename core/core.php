@@ -117,6 +117,9 @@ class Directory_Core {
 
 		add_action('wp_logout', array( &$this, 'on_wp_logout' ) );
 
+		add_action('wp_ajax_dr-captcha', array( &$this, 'on_captcha' ) );
+		add_action('wp_ajax_nopriv_dr-captcha', array( &$this, 'on_captcha' ) );
+
 		add_filter( 'map_meta_cap', array( &$this, 'map_meta_cap' ), 11, 4 );
 		add_filter( 'comment_form_defaults', array($this,'review_defaults'));
 		add_filter( 'user_contactmethods', array( &$this, 'contact_fields' ), 10, 2 );

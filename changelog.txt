@@ -4,6 +4,9 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
+= 2.2.5.5 Arnold Bailey =
+- Fixed problem with captcha on wp-engine hosts
+
 = 2.2.5.4 Arnold Bailey =
 - Isolated Network activate BuddyPress to the BP_ROOT_BLOG
 - Moved captcha image to a Transient instead of Session
