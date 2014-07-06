@@ -56,7 +56,7 @@ $output = false;
 				if ( $output ):
 				?>
 				<div class="editfield">
-					<label for="<?php echo $fid; ?>"><?php esc_html_e( $custom_field['field_title'] ); ?></label>
+					<label for="<?php echo $fid; ?>"><?php echo esc_html( $custom_field['field_title'] ); ?></label>
 					<?php echo do_shortcode('[ct_in id="' . $fid . '" ]'); ?>
 					<p class="description"><?php echo do_shortcode('[ct_in id="' . $fid . '" property="description"]'); ?></p>
 				</div>
@@ -95,7 +95,7 @@ $output = false;
 					?>
 					<tr>
 						<th>
-							<label for="<?php echo $fid; ?>"><?php esc_html_e( $custom_field['field_title'] ); ?></label>
+							<label for="<?php echo $fid; ?>"><?php echo esc_html( $custom_field['field_title'] ); ?></label>
 						</th>
 						<td>
 							<?php

@@ -106,8 +106,9 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		parent::__construct();
 
-		add_action( 'init', array( &$this, 'register_taxonomies' ), 1 );
-		add_action( 'init', array( &$this, 'register_post_types' ), 2 );
+		//Init early to make sure types are registers
+		add_action( 'after_setup_theme', array( &$this, 'register_taxonomies' ), 1 );
+		add_action( 'after_setup_theme', array( &$this, 'register_post_types' ), 2 );
 		add_action( 'init', array( &$this, 'flush_rewrite_rules' ), 99 ); //Give everyone else a chance to set rules, endpoints etc.
 
 		//Add custom terms and fields on media page
@@ -181,7 +182,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function register_post_types() {
 		global $wp_post_types;
-
 		$post_types = array();
 		if(is_multisite() ) {
 			if($this->display_network_content){
@@ -225,7 +225,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* @return void
 	*/
 	function register_taxonomies() {
-
 		$taxonomies = array();
 		if(is_multisite() ) {
 			if($this->display_network_content){
@@ -384,8 +383,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		if ( $this->flush_rewrite_rules || !empty( $_GET['frr'] ) ) {
 			flush_rewrite_rules($hard);
 			$this->flush_rewrite_rules = false;
-			$this->add_admin_capabilities();
 		}
+		$this->add_admin_capabilities();
 	}
 
 	/**
@@ -504,6 +503,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		'id' => '',
 		'property' => 'input',
 		'class' => '',
+		'required' => null,
 		), $atts ) );
 
 		// Take off the prefix for indexing the array;
@@ -512,10 +512,25 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		$custom_field = (isset($this->all_custom_fields[$cid])) ? $this->all_custom_fields[$cid] : null;
 
-		$this->active_inputs[$id] = $custom_field;
+		if($custom_field) {
+			$this->active_inputs[$id] = $custom_field;
+			if( !is_null($required) ) {
+				$this->active_inputs[$id]['field_required'] = ( strtolower($required) == 'true');
+			}
+		}
 
 		$property = strtolower($property);
 		$result = '';
+
+		if( !empty( $custom_field['field_options'] ) ) {
+			$field_options = $custom_field['field_options'];
+			if( $custom_field['field_sort_order'] == 'asc' ) {
+				asort($field_options);
+			}
+			elseif( $custom_field['field_sort_order'] == 'desc' ) {
+				arsort($field_options);
+			};
+		}
 
 		switch ($property){
 			case 'title': $result = $custom_field['field_title']; break;
@@ -526,7 +541,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					case 'checkbox': {
 						$field_values = get_post_meta( $post->ID, $id, true );
 
-						foreach ( $custom_field['field_options'] as $key => $field_option ) {
+
+						foreach ( $field_options as $key => $field_option ) {
 							if($field_values)
 							$result .= sprintf('<label><input type="checkbox" class="ct-field ct-checkbox %s" name="%s[]" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked( is_array($field_values) && array_search($field_option, $field_values) !== false, true, false ), $field_option );
 							else
@@ -539,7 +555,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						$multiselectbox_values = (is_array($multiselectbox_values)) ? $multiselectbox_values : (array)$multiselectbox_values;
 
 						$result = sprintf('<select class="ct-field ct-select-multiple %s" name="%s[]" id="%s" multiple="multiple">', $class, $id, $id ) . PHP_EOL;
-						foreach ( $custom_field['field_options'] as $key => $field_option ) {
+						foreach ( $field_options as $key => $field_option ) {
 							if($multiselectbox_values)
 							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected(in_array($field_option, $multiselectbox_values), true, false ), $field_option ) . PHP_EOL;
 							else
@@ -552,7 +568,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						$field_value = get_post_meta( $post->ID, $id, true );
 
 						$result = sprintf('<select class="ct-field ct-selectbox %s" name="%s" id="%s" >', $class, $id, $id) . PHP_EOL;
-						foreach ( $custom_field['field_options'] as $key => $field_option ) {
+						foreach ( $field_options as $key => $field_option ) {
 							if ($field_value)
 							$result .= sprintf('<option value="%s" %s >%s</option>', esc_attr( $field_option ), selected($field_value, $field_option, false), $field_option ) . PHP_EOL;
 							else
@@ -564,11 +580,11 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					case 'radio': {
 						$field_value = get_post_meta( $post->ID, $id, true );
 
-						foreach ( $custom_field['field_options'] as $key => $field_option ) {
+						foreach ( $field_options as $key => $field_option ) {
 							if($field_value)
 							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radio %s"  name="%s" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $field_option, false), $field_option);
 							else
-							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radion %s" name="%s" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked($field_value, $key, false), $field_option);
+							$result .=	sprintf('<label><input type="radio" class="ct-field ct-radion %s" name="%s" id="%s" value="%s" %s /> %s</label>', $class, $id, "{$id}_{$key}", esc_attr( $field_option ), checked($custom_field['field_default_option'], $key, false), $field_option);
 						}
 						break;
 					}

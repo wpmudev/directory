@@ -5,15 +5,15 @@ $options = $this->get_options('general');
 $default_email = __(
 'Hi TO_NAME, you have received a message from
 
-  Name: FROM_NAME
-  Email: FROM_EMAIL
-  Subject: FROM_SUBJECT
-  Message:
+Name: FROM_NAME
+Email: FROM_EMAIL
+Subject: FROM_SUBJECT
+Message:
 
-  FROM_MESSAGE
+FROM_MESSAGE
 
 
-  Listings link: POST_LINK
+Listings link: POST_LINK
 ', $this->text_domain);
 
 ?>
@@ -36,7 +36,7 @@ $default_email = __(
 						</th>
 						<td>
 							<select id="member_role" name="member_role" style="width:200px;">
-							<?php wp_dropdown_roles(@$options['member_role']); ?>
+								<?php wp_dropdown_roles(@$options['member_role']); ?>
 							</select>
 							<br /><span class="description"><?php _e('Select the role to which you want to assign a Directory member on signup.', $this->text_domain); ?></span>
 							<br /><span class="description"><?php _e('If you are running multiple plugins that have signups use the same role for both.', $this->text_domain); ?></span>
@@ -56,6 +56,7 @@ $default_email = __(
 							<label>Custom Roles</label><br />
 							<select id="delete_role" name="delete_role"  style="width:200px;">
 								<?php
+								global $wp_roles;
 								$system_roles = array('administrator', 'editor', 'author', 'contributor', 'subscriber');
 								$role_names = $wp_roles->role_names;
 								foreach ( (array) $role_names as $role => $name ):
@@ -155,42 +156,75 @@ $default_email = __(
 					<tr>
 						<th><label for="field_image_req"><?php _e( 'Image field:', $this->text_domain ); ?></label></th>
 						<td>
+							<input type="hidden" name="field_image_req" value="0" <?php checked( isset( $options['field_image_req'] ) && 1 == $options['field_image_req'] ); ?> />
+							<label>
 							<input type="checkbox" id="field_image_req" name="field_image_req" value="1" <?php checked( isset( $options['field_image_req'] ) && 1 == $options['field_image_req'] ); ?> />
 							<span class="description"><?php _e( 'not required', $this->text_domain ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>
 						<th><label for="media_manager"><?php _e( 'Media manager:', $this->text_domain ); ?></label></th>
 						<td>
+							<input type="hidden" name="media_manager" value="0" />
+							<label>
 							<input type="checkbox" id="media_manager" name="media_manager" value="1" <?php checked( isset( $options['media_manager'] ) && 1 == $options['media_manager'] ); ?> />
 							<span class="description"><?php _e( 'enable full media manager for feature image uploads', $this->text_domain ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>
 						<th>
-							<label for="count_cat"><?php _e( 'Count of category:', $this->text_domain ) ?></label>
+							<label for="count_cat"><?php esc_html_e( 'Count of categories:', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="count_cat" id="count_cat" value="<?php echo (empty( $options['count_cat'] ) ) ? '10' : $options['count_cat']; ?>" size="2" />
-							<span class="description"><?php _e( 'a number of categories that will be displayed in the list of categories.', $this->text_domain ) ?></span>
+							<span class="description"><?php esc_html_e( 'a number of categories that will be displayed in the list of categories.', $this->text_domain ) ?></span>
 						</td>
 					</tr>
+
+					<tr>
+						<th><label for="display_parent_count"><?php esc_html_e( 'Display count in parent categories:', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="hidden" name="display_parent_count" value="0" />
+							<label>
+							<input type="checkbox" id="display_parent_count" name="display_parent_count" value="1" <?php checked( isset( $options['display_parent_count'] ) && 1 == $options['display_parent_count'] ); ?> />
+							<span class="description"><?php esc_html_e( 'Display the count of listings for the top parent categories', $this->text_domain ); ?></span>
+							</label>
+						</td>
+					</tr>
+
 					<tr>
 						<th>
-							<label for="count_sub_cat"><?php _e( 'Count of sub-category:', $this->text_domain ) ?></label>
+							<label for="count_sub_cat"><?php esc_html_e( 'Count of sub-category:', $this->text_domain ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="count_sub_cat" id="count_sub_cat" value="<?php echo ( empty( $options['count_sub_cat'] ) ) ? '5' : $options['count_sub_cat']; ?>" size="2" />
-							<span class="description"><?php _e( 'a number of sub-category that will be displayed for each category in the list of categories.', $this->text_domain ) ?></span>
+							<span class="description"><?php esc_html_e( 'a number of sub-categories that will be displayed for each category in the list of categories.', $this->text_domain ) ?></span>
 						</td>
 					</tr>
+
+					<tr>
+						<th><label for="display_sub_count"><?php esc_html_e( 'Display count for sub categories:', $this->text_domain ); ?></label></th>
+						<td>
+							<input type="hidden" name="display_sub_count" value="0" />
+							<label>
+								<input type="checkbox" id="display_sub_count" name="display_sub_count" value="1" <?php checked( !isset( $options['display_sub_count'] ) || 1 == $options['display_sub_count'] ); ?> />
+								<span class="description"><?php esc_html_e( 'Display the count of listings for sub categories', $this->text_domain ); ?></span>
+							</label>
+						</td>
+					</tr>
+
 					<tr>
 						<th>
-							<?php _e( 'Empty sub-category:', $this->text_domain ) ?>
+							<?php esc_html_e( 'Empty sub-category:', $this->text_domain ) ?>
 						</th>
 						<td>
-							<input type="checkbox" name="hide_empty_sub_cat" id="hide_empty_sub_cat" value="1" <?php checked( empty( $options['hide_empty_sub_cat'] ) ? false : ! empty($options['hide_empty_sub_cat']) ); ?> />
-							<label for="hide_empty_sub_cat"><?php _e( 'Hide empty sub-category', $this->text_domain ) ?></label>
+							<input type="hidden" name="hide_empty_sub_cat" value="0" />
+							<label>
+								<input type="checkbox" name="hide_empty_sub_cat" id="hide_empty_sub_cat" value="1" <?php checked( empty( $options['hide_empty_sub_cat'] ) ? false : ! empty($options['hide_empty_sub_cat']) ); ?> />
+								<span class="description"><?php esc_html_e( 'Hide empty sub-category', $this->text_domain ) ?></span>
+							</label>
 						</td>
 					</tr>
 					<?php
@@ -217,18 +251,23 @@ $default_email = __(
 					<tr>
 						<th><label for="field_image_req"><?php _e( 'Pagination position:', $this->text_domain ); ?></label></th>
 						<td>
+							<input type="hidden" name="pagination_top" value="0" />
+							<label>
 							<input type="checkbox" id="pagination_top" name="pagination_top" value="1" <?php echo ( isset( $options['pagination_top'] ) && 1 == $options['pagination_top'] ) ? 'checked' : ''; ?> />
 							<span class="description"><?php _e( 'display at top of page.', $this->text_domain ); ?></span>
+							</label>
 							<br />
+							<input type="hidden" name="pagination_bottom" value="0" />
+							<label>
 							<input type="checkbox" id="pagination_bottom" name="pagination_bottom" value="1" <?php echo ( isset( $options['pagination_bottom'] ) && 1 == $options['pagination_bottom'] ) ? 'checked' : ''; ?> />
 							<span class="description"><?php _e( 'display at bottom of page.', $this->text_domain ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>
 						<th><label for="pagination_range"><?php _e( 'Pagination Range:', $this->text_domain ); ?></label></th>
 						<td>
 							<input type="text" id="pagination_range" name="pagination_range" size="4" value="<?php echo ( isset( $options['pagination_range'] ) && '' != $options['pagination_range'] ) ? $options['pagination_range'] : '4'; ?>" />
-							<br />
 							<span class="description"><?php _e( 'Number of page links to show at one time in pagination', $this->text_domain ); ?></span>
 						</td>
 					</tr>
@@ -244,66 +283,78 @@ $default_email = __(
 						<th><label for="disable_contact_form"><?php _e( 'Disable Contact Form:', $this->text_domain ); ?></label></th>
 						<td>
 							<input type="hidden" name="disable_contact_form" value="0" />
+							<label>
 							<input type="checkbox" id="disable_contact_form" name="disable_contact_form" value="1" <?php checked( isset( $options['disable_contact_form'] ) && 1 == $options['disable_contact_form'] ); ?> />
 							<span class="description"><?php _e( 'disable contact form', $this->text_domain ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>
 						<th><label for="cc_admin"><?php _e( 'CC the Administrator:', $this->text_domain ); ?></label></th>
 						<td>
 							<input type="hidden" name="cc_admin" value="0" />
+							<label>
 							<input type="checkbox" id="cc_admin" name="cc_admin" value="1" <?php checked( isset( $options['cc_admin'] ) && 1 == $options['cc_admin'] ); ?> />
 							<span class="description"><?php _e( 'cc the administrator', $this->text_domain ); ?></span>
+							</label>
 						</td>
 					</tr>
-						<th><label for="cc_sender"><?php _e( 'CC the Sender:', $this->text_domain ); ?></label></th>
-						<td>
-							<input type="hidden" name="cc_sender" value="0" />
-							<input type="checkbox" id="cc_sender" name="cc_sender" value="1" <?php checked( isset( $options['cc_sender'] ) && 1 == $options['cc_sender'] ); ?> />
-							<span class="description"><?php _e( 'cc the sender', $this->text_domain ); ?></span>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="email_subject"><?php _e( 'Email Subject:', $this->text_domain ); ?></label></th>
-						<td>
-							<input class="dr-full" type="text" id="email_subject" name="email_subject" size="116" value="<?php echo ( isset( $options['email_subject'] ) && '' != $options['email_subject'] ) ? $options['email_subject'] : 'SITE_NAME Contact Request: FROM_SUBJECT [ POST_TITLE ]'; ?>" />
-							<br />
-							<span class="description"><?php _e( 'Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', $this->text_domain ); ?></span>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="field_image_req"><?php _e( 'Email Content:', $this->text_domain ); ?></label></th>
-						<td>
-							<textarea class="dr-full" id="email_content" name="email_content" cols="120" rows="10" wrap="hard" ><?php
-								echo esc_textarea( empty($options['email_content']) ? $default_email : $options['email_content'] );
-							?></textarea>
-							<br />
-							<span class="description"><?php _e( 'Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', $this->text_domain ); ?></span>
-						</td>
-					</tr>
-				</table>
-			</div>
+					<th><label for="cc_sender"><?php _e( 'CC the Sender:', $this->text_domain ); ?></label></th>
+					<td>
+						<input type="hidden" name="cc_sender" value="0" />
+						<label>
+						<input type="checkbox" id="cc_sender" name="cc_sender" value="1" <?php checked( isset( $options['cc_sender'] ) && 1 == $options['cc_sender'] ); ?> />
+						<span class="description"><?php _e( 'cc the sender', $this->text_domain ); ?></span>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="email_subject"><?php _e( 'Email Subject:', $this->text_domain ); ?></label></th>
+					<td>
+						<input class="dr-full" type="text" id="email_subject" name="email_subject" size="116" value="<?php echo ( isset( $options['email_subject'] ) && '' != $options['email_subject'] ) ? $options['email_subject'] : 'SITE_NAME Contact Request: FROM_SUBJECT [ POST_TITLE ]'; ?>" />
+						<br />
+						<span class="description"><?php _e( 'Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', $this->text_domain ); ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="field_image_req"><?php _e( 'Email Content:', $this->text_domain ); ?></label></th>
+					<td>
+						<textarea class="dr-full" id="email_content" name="email_content" cols="120" rows="10" wrap="hard" ><?php
+							echo esc_textarea( empty($options['email_content']) ? $default_email : $options['email_content'] );
+						?></textarea>
+						<br />
+						<span class="description"><?php _e( 'Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_SUBJECT, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', $this->text_domain ); ?></span>
+					</td>
+				</tr>
+			</table>
 		</div>
+	</div>
 
-		<div class="postbox">
-			<h3 class='hndle'><span><?php _e( 'Getting started page', $this->text_domain ) ?></span></h3>
-			<div class="inside">
-				<label for="show_getting_started-yes"><?php _e( 'Show &quot;Getting started&quot; page even after all the steps are done:', $this->text_domain ) ?></label>
-				<input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? false : ! empty($options['show_getting_started'] ) ); ?>>
-				<label for="show_getting_started-yes"><?php _e( 'Yes', $this->text_domain ) ?></label>
-				<input type="radio" value="0" id="show_getting_started-no" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? true : empty($options['show_getting_started']) ); ?>>
-				<label for="show_getting_started-no"><?php _e( 'No', $this->text_domain ) ?></label>
-				<br />
-				<span class="description"><?php _e( 'By default, "Getting started" page will be hidden once you completed all the steps. Use this option to make it control that behavior.', $this->text_domain ) ?></span>
-			</div>
+	<div class="postbox">
+		<h3 class='hndle'><span><?php _e( 'Getting started page', $this->text_domain ) ?></span></h3>
+		<div class="inside">
+			<label for="show_getting_started-yes"><?php _e( 'Show &quot;Getting started&quot; page even after all the steps are done:', $this->text_domain ) ?></label>
+			
+			<label>
+				<input type="radio" value="1" id="show_getting_started-yes" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? false : ! empty($options['show_getting_started'] ) ); ?> />
+				<?php _e( 'Yes', $this->text_domain ) ?>&nbsp;&nbsp;&nbsp;&nbsp;
+			</label>
+			
+			<label>
+			<input type="radio" value="0" id="show_getting_started-no" name="show_getting_started" <?php checked( empty( $options['show_getting_started'] ) ? true : empty($options['show_getting_started']) ); ?>>
+			<?php _e( 'No ', $this->text_domain ) ?>
+			</label>
+			<br />
+			<span class="description"><?php _e( 'By default, "Getting started" page will be hidden once you completed all the steps. Use this option to make it control that behavior.', $this->text_domain ) ?></span>
 		</div>
+	</div>
 
-		<p class="submit">
-			<?php wp_nonce_field('verify'); ?>
-			<input type="hidden" name="key" value="general" />
-			<input type="submit" class="button-primary" name="save" value="Save Changes">
-		</p>
+	<p class="submit">
+		<?php wp_nonce_field('verify'); ?>
+		<input type="hidden" name="key" value="general" />
+		<input type="submit" class="button-primary" name="save" value="Save Changes">
+	</p>
 
-	</form>
+</form>
 
 </div>

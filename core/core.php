@@ -1009,6 +1009,7 @@ class Directory_Core {
 	function list_categories_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'style' => '', //list, grid
+		'lcats' => '', //
 		), $atts ) );
 
 		if($style == 'grid') $result = '<div class="dr_list_grid">';

@@ -29,10 +29,8 @@ class CustomPress_Core {
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
-
-		add_action('init', array($this, 'on_init'));
-
-		add_action('wp_enqueue_scripts', array($this, 'on_wp_enqueue_scripts'));
+		add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'));
+		add_action('admin_enqueue_scripts', array($this, 'on_enqueue_scripts'));
 
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
 		register_deactivation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_deactivate' ) );
@@ -52,9 +50,8 @@ class CustomPress_Core {
 	function on_plugins_loaded() {
 		load_plugin_textdomain( $this->text_domain, false, plugin_basename($this->plugin_dir . 'languages' ) );
 	}
-
-	function on_init(){
-
+	
+	function on_enqueue_scripts(){
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
 		$wplang = str_replace('_', '-', WPLANG);
@@ -74,18 +71,14 @@ class CustomPress_Core {
 		//wp_enqueue_script('dynamic-css');
 
 		wp_register_script('jquery-validate', $this->plugin_url . "ui-admin/js/jquery.validate.min.js", array('jquery'), '1.8.18');
+		
 		wp_register_script('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/jquery.combobox.js", array('jquery'), '1.8.18');
+		
 		wp_register_style('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/style.css", array(), '0.5');
 
 		$theme = $this->get_options('datepicker_theme');
-		$theme = (empty($theme) ) ? 'excite-bike' : $theme;
+		$theme = (empty($theme) ) ? 'flick' : $theme;
 		wp_register_style('jquery-ui-datepicker', $this->plugin_url . "datepicker/css/{$theme}/datepicker.css", array(), '0.5');
-	}
-
-	function on_wp_enqueue_scripts(){
-
-		//$this->enqueue_datepicker();
-
 	}
 
 	/**
@@ -340,7 +333,7 @@ class CustomPress_Core {
 	*/
 	function jquery_ui_css($theme = ''){
 		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : $theme;
-		$theme = (empty($theme)) ? 'excite-bike' : $theme;
+		$theme = (empty($theme)) ? 'flick' : $theme;
 		?>
 		<script>jQuery(document).ready( function(){jQuery("#jquery-ui-datepicker-css").prop("href", "<?php echo $this->plugin_url . "datepicker/css/{$theme}/datepicker.css"; ?>");});</script>
 		<?php

@@ -331,10 +331,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		$response = array_intersect( array_keys( $role_obj->capabilities ), $all_caps );
 		$response = array_flip( $response );
 
-		// response output
-		header( "Content-Type: application/json" );
-		echo json_encode( $response );
-		die();
+		wp_send_json( $response);
 	}
 
 	/**
@@ -429,6 +426,8 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'can_export'          => (bool) $params['can_export'],
 				'cf_columns'          => $params['cf_columns'],
 				);
+				
+				$args['capabilities'] = array('create_posts' => "create_{$args['capability_type']}s" );
 
 				// Remove empty labels so we can use the defaults
 				foreach( $args['labels'] as $key => $value ) {
@@ -754,7 +753,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 			'field_default_option' => ( isset( $params['field_default_option'] ) ) ? $params['field_default_option'] : NULL,
 			'field_description'    => (empty($params['field_description']) ) ? '' : $params['field_description'],
 			'object_type'          => $params['object_type'],
-			'hide_type'            => $params['hide_type'],
+			'hide_type'            => (empty($params['hide_type']) ) ? array() : $params['hide_type'] ,
 			'field_required'       => (2 == $params['field_required'] ) ? 1 : 0,
 			'field_id'             => $field_id,
 			);
@@ -810,7 +809,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				$prefix = '_ct_';
 
 				global $wpdb;
-				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key = '%s'", $prefix . $params['custom_field_id'] ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key = %s", $prefix . $params['custom_field_id'] ) );
 			}
 
 			//update custom fields columns for custom post type

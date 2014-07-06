@@ -47,7 +47,7 @@ class Directory_Core_Data {
 			'menu_position' => '',
 			'public' => true,
 			'query_var' => true,
-			'rewrite' => array( 'slug' => 'listing', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'listing', 'with_front' => false, 'pages' => true ),
 
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', /*'post-formats'*/ ),
 

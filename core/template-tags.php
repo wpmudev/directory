@@ -14,7 +14,12 @@
 * @access public
 * @return void
 */
-function the_dr_categories_home( $echo = true ){
+function the_dr_categories_home( $echo = true, $atts = null ){
+
+	extract( shortcode_atts( array(
+	'style' => '', //list, grid
+	'lcats' => '', //
+	), $atts ) );
 
 	//get plugin options
 	$options  = get_option( DR_OPTIONS_NAME );
@@ -36,7 +41,15 @@ function the_dr_categories_home( $echo = true ){
 	'pad_counts'   => 1
 	);
 
+	if( !empty($lcats) ){
+		$lcats = array_filter( explode(',', $lcats), 'is_numeric' );
+		asort($lcats);
+		$lcats = implode(',', $lcats);
+		$args['include'] = $lcats;
+	}
+
 	$categories = get_categories( $args );
+
 
 	$output = '<div id="dr_list_categories" class="listing_category" >' . "\n";
 	$output .= "<ul>\n";
@@ -44,7 +57,16 @@ function the_dr_categories_home( $echo = true ){
 	foreach( $categories as $category ){
 
 		$output .= "<li>\n";
-		$output .= '<h2><a href="' . get_term_link( $category ) . '" title="' . __( 'View all posts in ', DR_TEXT_DOMAIN ) . $category->name . '" >' . $category->name . "</a> </h2>\n";
+
+		if( isset( $options['general']['display_parent_count'] ) && $options['general']['display_parent_count'] ) $parent_count = sprintf(' (%d)', $category->count );
+		else $parent_count = '';
+
+		$output .= sprintf('<h2><a href="%s" title="%s %s" >%s%s</a></h2>',
+		get_term_link( $category ),
+		esc_html__( 'View all posts in ', DR_TEXT_DOMAIN ),
+		$category->name,
+		$category->name,
+		$parent_count );
 
 		$output .= '<div class="term-list">';
 
@@ -53,7 +75,7 @@ function the_dr_categories_home( $echo = true ){
 		'orderby'            => 'name',
 		'order'              => 'ASC',
 		'style'              => 'none',
-		'show_count'         => 1,
+		'show_count'         => ( !isset($options['general']['display_sub_count']) || $options['general']['display_sub_count'] == 1 ),
 		'hide_empty'         => $hide_empty_sub_cat,
 		'use_desc_for_title' => 1,
 		'child_of'           => $category->term_id,
@@ -62,7 +84,6 @@ function the_dr_categories_home( $echo = true ){
 		'feed_image'         => '',
 		'exclude'            => '',
 		'exclude_tree'       => '',
-		'include'            => '',
 		'hierarchical'       => true,
 		'title_li'           => '',
 		'show_option_none'   => '', //sprintf('<span class="dr-empty">%s</span>', __('No categories', DR_TEXT_DOMAIN ) ),
@@ -74,6 +95,11 @@ function the_dr_categories_home( $echo = true ){
 		'taxonomy'           => $category->taxonomy,
 		'walker'             => null
 		);
+
+		if( !empty($lcats) ) {
+			$args['include'] = $lcats;
+		}
+
 		$output .=   wp_list_categories($args);
 
 		$output .= "</div><!-- .term-list -->\n";

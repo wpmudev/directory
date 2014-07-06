@@ -27,21 +27,21 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 <div class="wrap">
 
-	<h2><?php _e('CustomPress Custom Types Export', $this->text_domain); ?></h2>
+	<h2><?php esc_html_e('CustomPress Custom Types Export', $this->text_domain); ?></h2>
 	<form action="#" method="post">
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php _e('Post Types Export', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Post Types Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php _e('Check the Post Types you wish to export.', $this->text_domain); ?>
+							<?php esc_html_e('Check the Post Types you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($post_types as $key => $post_type): ?>
-							<label class="ct-list"><input type="checkbox" name="pt[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['pt'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
+							<label class="ct-list"><input type="checkbox" name="pt[<?php echo esc_attr( $key );?>]" value="1" <?php checked(! empty($_POST['pt'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -56,7 +56,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<input type="submit" class="button" value="<?php _e('Create Post Type Export', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Create Post Type Export', $this->text_domain); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -65,16 +65,16 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php _e('Taxonomies Export', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Taxonomies Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php _e('Check the Taxonomies you wish to export.', $this->text_domain); ?>
+							<?php esc_html_e('Check the Taxonomies you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($taxonomies as $key => $taxonomy): ?>
-							<label class="ct-list"><input type="checkbox" name="tx[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['tx'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
+							<label class="ct-list"><input type="checkbox" name="tx[<?php echo esc_attr( $key );?>]" value="1" <?php checked(! empty($_POST['tx'][$key]) ); ?> />&nbsp;<?php echo $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -89,7 +89,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						<th>
 						</th>
 						<td>
-							<input type="submit" class="button" value="<?php _e('Create Taxonomies Export', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Create Taxonomies Export', $this->text_domain); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -98,16 +98,16 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php _e('Custom Fields Export', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Custom Fields Export', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php _e('Check the Custom Fields you wish to export.', $this->text_domain); ?>
+							<?php esc_html_e('Check the Custom Fields you wish to export.', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php foreach($custom_fields as $key => $custom_field): ?>
-							<label class="ct-list-cf"><input type="checkbox" name="cf[<?php esc_attr_e( $key );?>]" value="1" <?php checked(! empty($_POST['cf'][$key]) ); ?> />&nbsp;<?php echo $custom_field['field_title'] . ' : ' . $key?></label>
+							<label class="ct-list-cf"><input type="checkbox" name="cf[<?php echo esc_attr( $key );?>]" value="1" <?php checked(! empty($_POST['cf'][$key]) ); ?> />&nbsp;<?php echo $custom_field['field_title'] . ' : ' . $key?></label>
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -123,7 +123,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php wp_nonce_field('export'); ?>
-							<input type="submit" class="button" value="<?php _e('Create Custom Fields Export', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Create Custom Fields Export', $this->text_domain); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -136,20 +136,20 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 	<form action="#" method="post">
 		<div class="ct-table-wrap">
 			<div class="ct-arrow"><br /></div>
-			<h3 class="ct-toggle"><span><?php _e('Custom Types Import', $this->text_domain); ?></span></h3>
+			<h3 class="ct-toggle"><span><?php esc_html_e('Custom Types Import', $this->text_domain); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
 					<tr>
 						<th>
-							<?php _e('Paste your Export code here and press Import to add the custom type to CustomPress', $this->text_domain); ?>
+							<?php esc_html_e('Paste your Export code here and press Import to add the custom type to CustomPress', $this->text_domain); ?>
 						</th>
 						<td>
 							<?php wp_nonce_field('import'); ?>
 							<?php if( defined('CT_ALLOW_IMPORT') ): ?>
 							<textarea id="ct_import" name="ct_import" rows="6" cols="80" ><?php echo esc_textarea($import); ?></textarea>
 							<?php else: ?>
-							<span class="description"><?php _e("Import is currently disabled on this site. To enable add the line<br /><code>define('CT_ALLOW_IMPORT', true);</code><br />to the wp-config.php file.", $this->text_domain); ?></span>
-							<span class="description"><?php _e("Remove the line when it is no longer needed to prevent possible security problems.", $this->text_domain); ?></span>
+							<span class="description"><?php esc_html_e("Import is currently disabled on this site. To enable add the line<br /><code>define('CT_ALLOW_IMPORT', true);</code><br />to the wp-config.php file.", $this->text_domain); ?></span>
+							<span class="description"><?php esc_html_e("Remove the line when it is no longer needed to prevent possible security problems.", $this->text_domain); ?></span>
 							<?php endif; ?>
 						</td>
 					</tr>
@@ -158,7 +158,7 @@ $custom_fields = (empty($custom_fields))? array() : $custom_fields;
 						</th>
 						<td>
 							<?php if( defined('CT_ALLOW_IMPORT') ): ?>
-							<input type="submit" class="button" value="<?php _e('Import', $this->text_domain); ?>" />
+							<input type="submit" class="button" value="<?php esc_html_e('Import', $this->text_domain); ?>" />
 							<?php endif; ?>
 						</td>
 					</tr>

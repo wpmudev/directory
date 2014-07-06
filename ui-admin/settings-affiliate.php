@@ -7,10 +7,10 @@ $dr_labels_txt = array (
 
 $payment_settings   = $this->get_options( 'payments' );
 
-$affiliate_settings['payment_settings']['recurring_cost']   = $payment_settings['recurring_cost'];
-$affiliate_settings['payment_settings']['one_time_cost']   = $payment_settings['one_time_cost'];
-$affiliate_settings['dr_labels_txt']                        = $dr_labels_txt;
-$affiliate_settings['cost']                                 = $this->get_options( 'affiliate_settings' );
+$affiliate_settings['payment_settings']['recurring_cost'] = empty($payment_settings['recurring_cost']) ? 0 : $payment_settings['recurring_cost'];
+$affiliate_settings['payment_settings']['one_time_cost']  = empty($payment_settings['one_time_cost']) ? 0 : $payment_settings['one_time_cost'];
+$affiliate_settings['dr_labels_txt']                      = $dr_labels_txt;
+$affiliate_settings['cost']                               = $this->get_options( 'affiliate_settings' );
 ?>
 
 <div class="wrap">

@@ -7,11 +7,13 @@
 if( ! function_exists('flush_network_rewrite_rules') ):
 
 function flush_network_rewrite_rules($hard = true, $log = 'Unknown'){
+	
 	if(is_multisite() ){
 		update_site_option('ct_flush_rewrite_rules', uniqid( ($hard ? '1 ' : '0 '), true));
 	} else {
 		update_option('ct_flush_rewrite_rules', uniqid( ($hard ? '1 ' : '0 '), true));
 	}
+	flush_rewrite_rules( $hard );
 }
 
 endif;

@@ -39,26 +39,26 @@ array(
 	<form action="#" method="post" class="cp-main">
 
 		<?php if ( is_multisite() && is_super_admin() && is_network_admin() ): ?>
-		<h3><?php _e( 'General', $this->text_domain );  ?></h3>
+		<h3><?php esc_html_e( 'General', $this->text_domain );  ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="enable_subsite_content_types"><?php _e('Enable sub-site content types.', $this->text_domain) ?></label>
+					<label for="enable_subsite_content_types"><?php esc_html_e('Enable sub-site content types.', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" id="enable_subsite_content_types" name="enable_subsite_content_types" value="1" <?php checked( ! empty( $enable_subsite_content_types )); ?>  />
-					<span class="description"><?php _e('If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If you enable this option, sub-sites on your network will be able to define their own content types. If this option is not enabled ( default ) all sites on your network will be forced to use the network-wide content types defined by you, the Super Admin.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="checkbox" id="display_network_content_types" name="display_network_content_types" value="1" <?php checked( ! empty( $display_network_content_types )); ?>  />
-					<span class="description"><?php _e('If you enable this option, all subsites will use and display the content types defined at the network level. ', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If you enable this option, all subsites will use and display the content types defined at the network level. ', $this->text_domain); ?></span>
 					<br /><br />
 
 					<!--
 					<input type="radio" name="display_network_content_types" value="1" <?php checked(empty( $display_network_content_types ), false ); ?> />
-					<span class="description"><?php _e('Display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
 					<br />
 					<input type="radio" name="display_network_content_types" value="0" <?php checked( empty($display_network_content_types ), true ); ?> />
-					<span class="description"><?php _e('Do not display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Do not display the network-wide content types on sub-sites.', $this->text_domain); ?></span>
 					-->
 				</td>
 			</tr>
@@ -67,11 +67,11 @@ array(
 
 
 		<?php if ( is_admin() && !is_network_admin() ): ?>
-		<h3><?php _e( 'Post Types', $this->text_domain ); ?></h3>
+		<h3><?php esc_html_e( 'Post Types', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('On "Blog / Home" page, display these post types: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('On "Blog / Home" page, display these post types: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[home][]" value="post" <?php checked(is_array($cp_post_type['home']['post_type']) && in_array('post',$cp_post_type['home']['post_type'])); ?> />
@@ -100,11 +100,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php _e('Check the custom post types you want to display on the "Blog / Home" page.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Check the custom post types you want to display on the "Blog / Home" page.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[home][]" value="default" <?php checked(empty($cp_post_type['home']['post_type']) || (is_array($cp_post_type['home']['post_type']) && in_array('default', $cp_post_type['home']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php _e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -112,7 +112,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('On "Front" page, display these post types: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('On "Front" page, display these post types: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[front_page][]" value="post" <?php checked(is_array($cp_post_type['front_page']['post_type']) && in_array('post',$cp_post_type['front_page']['post_type'])); ?> />
@@ -141,11 +141,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php _e('Check the custom post types you want to display on the "Front" static page.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Check the custom post types you want to display on the "Front" static page.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[front_page][]" value="default" <?php checked(empty($cp_post_type['front_page']['post_type']) || (is_array($cp_post_type['front_page']['post_type']) && in_array('default', $cp_post_type['front_page']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php _e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -153,7 +153,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('On "Archive" pages, display these post types:  ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('On "Archive" pages, display these post types:  ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[archive][]" value="post" <?php checked(is_array($cp_post_type['archive']['post_type']) && in_array('post',$cp_post_type['archive']['post_type'])); ?> />
@@ -182,11 +182,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php _e('Check the custom post types you want to display on the "Archive" page.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Check the custom post types you want to display on the "Archive" page.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[archive][]" value="default" <?php checked(empty($cp_post_type['archive']['post_type']) || (is_array($cp_post_type['archive']['post_type']) && in_array('default', $cp_post_type['archive']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php _e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -194,7 +194,7 @@ array(
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('On "Search" pages, display these post types:  ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('On "Search" pages, display these post types:  ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<input type="checkbox" name="cp_post_type[search][]" value="post" <?php checked(is_array($cp_post_type['search']['post_type']) && in_array('post',$cp_post_type['search']['post_type'])); ?> />
@@ -223,11 +223,11 @@ array(
 					<?php endif; ?>
 					<?php endif; ?>
 
-					<span class="description"><?php _e('Check the custom post types you want to display on the "Search" page.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('Check the custom post types you want to display on the "Search" page.', $this->text_domain); ?></span>
 					<br /><br />
 					<input type="checkbox" name="cp_post_type[search][]" value="default" <?php checked(empty($cp_post_type['search']['post_type']) || (is_array($cp_post_type['search']['post_type']) && in_array('default', $cp_post_type['search']['post_type']))); ?> />
 					<span class="description"><strong>default</strong></span><br />
-					<span class="description"><?php _e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('If "default" is checked the list above will be disabled and only default post_types will display.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -235,7 +235,7 @@ array(
 		<?php endif; ?>
 
 		<?php if ( is_admin() && !is_network_admin() ): ?>
-		<h3><?php _e( 'Date Picker Settings', $this->text_domain );  ?></h3>
+		<h3><?php esc_html_e( 'Date Picker Settings', $this->text_domain );  ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
@@ -246,9 +246,9 @@ array(
 					$date_format = (is_array($date_format)) ? 'mm/dd/yy' : $date_format;
 
 					$datepicker_theme = $this->get_options('datepicker_theme');
-					$datepicker_theme = (is_array($datepicker_theme)) ? 'excite-bike' : $datepicker_theme;
+					$datepicker_theme = (is_array($datepicker_theme)) ? 'flick' : $datepicker_theme;
 
-//					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
+					//					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
 
 					$themes = glob($this->plugin_dir . 'datepicker/css/*', GLOB_ONLYDIR);
 					?>
@@ -261,27 +261,27 @@ array(
 						}
 						?>
 					</select><br />
-					<span class="description"><?php _e('Select Datepicker Theme.', $this->text_domain) ?></span>
+					<span class="description"><?php esc_html_e('Select Datepicker Theme.', $this->text_domain) ?></span>
 					<br /><br />
 					<div class="pickdate"></div>
 				</td>
 				<td style="vertical-align:top;">
-					<input type="text" id="date_format" name="date_format" size="38" value="<?php esc_attr_e( $date_format ); ?>" onchange="jQuery('.pickdate').datepicker( 'option', 'dateFormat', this.value );"/><br />
-					<span class="description"><?php _e('Select Date Format option or type your own', $this->text_domain) ?></span>
+					<input type="text" id="date_format" name="date_format" size="38" value="<?php echo esc_attr( $date_format ); ?>" onchange="jQuery('.pickdate').datepicker( 'option', 'dateFormat', this.value );"/><br />
+					<span class="description"><?php esc_html_e('Select Date Format option or type your own', $this->text_domain) ?></span>
 					<br /><br />
 					<input class="pickdate" id="datepicker" type="text" size="38" value="" /><br />
-					<span class="description"><?php _e('Date picker sample', $this->text_domain) ?></span>
+					<span class="description"><?php esc_html_e('Date picker sample', $this->text_domain) ?></span>
 				</td>
 			</tr>
 		</table>
 		<?php endif; ?>
 
 		<?php if ( ( is_super_admin() && is_network_admin() ) || !is_multisite() ): ?>
-		<h3><?php _e( 'Template Files', $this->text_domain ); ?></h3>
+		<h3><?php esc_html_e( 'Template Files', $this->text_domain ); ?></h3>
 		<table class="form-table">
 			<tr>
 				<th>
-					<label><?php _e('Create template file for: ', $this->text_domain) ?></label>
+					<label><?php esc_html_e('Create template file for: ', $this->text_domain) ?></label>
 				</th>
 				<td>
 					<?php if ( !empty( $post_types )): ?>
@@ -291,12 +291,12 @@ array(
 					<br />
 					<?php endforeach; ?>
 					<?php else: ?>
-					<span class="description"><strong><?php _e('No custom post types available', $this->text_domain); ?></strong></span>
+					<span class="description"><strong><?php esc_html_e('No custom post types available', $this->text_domain); ?></strong></span>
 					<?php endif; ?>
 					<br />
-					<span class="description"><?php _e('This will create "single-[post_type].php" file inside your active theme directory by copying your current single.php template. This file will be the custom template for your custom post type. You can then edit and customize it.', $this->text_domain); ?></span><br />
-					<span class="description"><?php _e('In some cases you may not want to do that. For example if you don\'t have a template for your custom post type the default "single.php" will be used.', $this->text_domain); ?></span><br />
-					<span class="description"><?php _e('Your active theme folder permissions have to be set to 777 for this option to work. After the file is created you can set your active theme directory permissions back to 755.', $this->text_domain); ?></span>
+					<span class="description"><?php esc_html_e('This will create "single-[post_type].php" file inside your active theme directory by copying your current single.php template. This file will be the custom template for your custom post type. You can then edit and customize it.', $this->text_domain); ?></span><br />
+					<span class="description"><?php esc_html_e('In some cases you may not want to do that. For example if you don\'t have a template for your custom post type the default "single.php" will be used.', $this->text_domain); ?></span><br />
+					<span class="description"><?php esc_html_e('Your active theme folder permissions have to be set to 777 for this option to work. After the file is created you can set your active theme directory permissions back to 755.', $this->text_domain); ?></span>
 				</td>
 			</tr>
 		</table>

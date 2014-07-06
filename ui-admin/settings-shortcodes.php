@@ -18,12 +18,13 @@
 				<br /><?php _e( 'text = <em>Text to display on a button</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'view = <em>Whether the button is visible when loggedin, loggedout, or always</em>', $this->text_domain ) ?>
 				<br /><?php _e( 'redirect = <em>On the Logout button, what page to go to after logout</em>', $this->text_domain ) ?>
+				<br /><?php _e( 'lcats = <em>A comma separated list of listing_category ids to display</em>', $this->text_domain ) ?>
 			</p>
 			<table class="form-table">
 				<tr>
 					<th scope="row"><?php _e( 'List of Categories:', $this->text_domain ) ?></th>
 					<td>
-						<code><strong>[dr_list_categories style="grid | list"]</strong></code>
+						<code><strong>[dr_list_categories style="grid | list" lcats="1,2,3"]</strong></code>
 						<br /><span class="description"><?php _e( 'Displays a list of categories.', $this->text_domain ) ?></span>
 					</td>
 				</tr>
