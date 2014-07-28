@@ -9,7 +9,7 @@ $redirect = (empty($_GET['redirect_to'])) ? home_url() : $_GET['redirect_to'];
 
 $options = $this->get_options('general');
 
-$signin_url = empty($options['signin_url']) ? $options['signin_url'] : home_url();
+$signin_url = ! empty($options['signin_url']) ? $options['signin_url'] : home_url();
 
 $options = $this->get_options('payments');
 
