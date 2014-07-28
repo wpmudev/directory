@@ -33,7 +33,7 @@ if(is_multisite() ){
 		<?php if($can_register): ?>
 
 		<?php if(isset($bp) ): ?>
-		<li><a href="<?php echo site_url('wp-login?action=register'); ?>"><?php _e('Register Account', $this->text_domain); ?></a></li>
+		<li><a href="<?php echo esc_url( site_url('wp-login.php?action=register', 'login_post') ); ?>"><?php _e('Register Account', $this->text_domain); ?></a></li>
 		<?php else: ?>
 		<li><a href="#tab2_login"><?php _e('New Account', $this->text_domain); ?></a></li>
 		<?php endif; ?>
@@ -101,7 +101,7 @@ if(is_multisite() ){
 
 				<?php else:	?>
 
-				<form method="post" id="register_frm" action="<?php echo wp_login_url() . '?action=register'; ?>" class="wp-user-form">
+				<form method="post" id="register_frm" action="<?php echo esc_url( site_url('wp-login.php?action=register', 'login_post') ); ?>" class="wp-user-form">
 					<div class="username">
 						<label for="user_login"><?php _e('Username', $this->text_domain); ?>: </label>
 						<input  class="required" type="text" name="user_login" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" id="user_login" tabindex="101" />
