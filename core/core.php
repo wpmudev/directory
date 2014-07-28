@@ -274,7 +274,7 @@ class Directory_Core {
 	function on_login_redirect($redirect = '', $request = '', $user = '') {
 
 		$options = $this->get_options('general');
-		$signin_url  = trim($options['signin_url']);
+		$signin_url  = ! empty( $options['signin_url'] ) ? trim($options['signin_url']) : '';
 		$redirect = empty( $signin_url )? $redirect : $signin_url;
 
 		return $redirect;
