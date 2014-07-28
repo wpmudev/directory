@@ -3,7 +3,7 @@
 Plugin Name: Directory
 Plugin URI: http://premium.wpmudev.org/project/wordpress-directory
 Description: Directory - Create full blown directory site.
-Version: 2.2.5.6
+Version: 2.2.5.7
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: dr_text_domain
@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define plugin version
-define( 'DR_VERSION', '2.2.5.6' );
+define( 'DR_VERSION', '2.2.5.7' );
 // define the plugin folder url
 define( 'DR_PLUGIN_URL', plugin_dir_url(__FILE__) );
 // define the plugin folder dir
