@@ -52,7 +52,7 @@ get_header(); ?>
 		* If you want to overload this in a child theme then include a file
 		* called loop-author.php and that will be used instead.
 		*/
-		if ( file_exists( get_template_directory() . "/loop-author.php" ) )
+		if ( file_exists( get_stylesheet_directory() . "/loop-author.php" ) )
 		get_template_part( 'loop', 'author' );
 		else
 		load_template( DR_PLUGIN_DIR . 'ui-front/general/loop-author.php' );

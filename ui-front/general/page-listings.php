@@ -34,7 +34,7 @@ remove_filter( 'the_content', array( &$this, 'listing_list_theme' ) );
 
 query_posts($query_args);
 
-if ( file_exists( get_template_directory() . "/loop-taxonomy.php" ) )
+if ( file_exists( get_stylesheet_directory() . "/loop-taxonomy.php" ) )
 get_template_part( 'loop', 'taxonomy' );
 else
 load_template( DR_PLUGIN_DIR . 'ui-front/general/loop-taxonomy.php' );
