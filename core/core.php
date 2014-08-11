@@ -783,18 +783,18 @@ class Directory_Core {
 		if (! empty( $post_id ) ) {
 
 			//Save custom tags
-			if(is_array($params['tag_input'])){
+			if(!empty($params['tag_input']) && is_array($params['tag_input'])){
 				foreach($params['tag_input'] as $key => $tags){
 					wp_set_post_terms($post_id, $params['tag_input'][$key], $key);
 				}
 			}
 			//Save categories
-			if(is_array($params['post_category'])){
+			if(!empty($params['post_category']) && is_array($params['post_category'])){
 				wp_set_post_terms($post_id, $params['post_category'], 'category');
 			}
 
 			//Save custom terms
-			if(is_array($params['tax_input'])){
+			if(!empty($params['tax_input']) && is_array($params['tax_input'])){
 				foreach($params['tax_input'] as $key => $term_ids){
 					if ( is_array( $params['tax_input'][$key] ) ) {
 						wp_set_post_terms($post_id, $params['tax_input'][$key], $key);
