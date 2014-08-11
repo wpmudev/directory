@@ -245,6 +245,7 @@ class DR_Transactions{
 
 			if($this->_transactions['order']['status'] == 'success') {
 
+				$user_id = get_current_user_id();
 				//for affiliate subscription
 				$affiliate_settings = $this->get_options( 'affiliate_settings' );
 				do_action( 'directory_set_paid_member', $affiliate_settings, $user_id, $this->_transactions['order']['billing_type'] );
