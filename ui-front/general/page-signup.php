@@ -739,7 +739,7 @@ $error       = get_query_var('checkout_error');
 			<input type="hidden" name="credits" value="<?php echo empty($_SESSION['credits']) ? 0 : $_SESSION['credits']; ?>" />
 
 
-			<strong><?php _e( 'Confirm Payment', $this-->text_domain ); ?></strong>
+			<strong><?php _e( 'Confirm Payment', $this->text_domain ); ?></strong>
 			<table>
 				<?php if( !empty($cc['cc_email']) ): ?>
 				<tr>
