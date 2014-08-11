@@ -4,10 +4,15 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 
-= 2.2.5.7 - @todo
+= 2.2.5.7 - 2014-08-11
 * Changed: using get_stylesheet_directory instead of get_template_directory in ui/general templates.
 * Fixed: Undefined index: signin_url in options array. Testing before accessing it.
 * Fixed: WPEngine issue. Registration and login form urls not the same as WP uses.
+* Fixed: undefined user_id. Using current user id.
+* Fixed: Undefined variable, testing array argument before accessing it.
+* Fixed: text domain variable access mismatch.
+* Fixed: including wpmudev dashboard twice.
+* Added: incsub partner code in paypal gateway
 
 = 2.2.5.6 - 2014-07-06 Arnold Bailey =
 - Added category filter to the [dr_list_categories] shortcode.
