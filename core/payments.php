@@ -198,6 +198,8 @@ class DR_Payments{
 
 		global $blog_id, $current_user, $Directory_Core;
 
+		$custom = '';
+		
 		// Only handle request if on the proper page
 		if ( ! (isset($Directory_Core) && is_page($Directory_Core->signup_page_id) ) ) return;
 
@@ -680,6 +682,8 @@ class DR_Payments{
 
 				$form .= '<input type="hidden" name="business" value="' . esc_attr($options['payment_types']['paypal']['business_email']) .'">';
 				$form .= '<input type="hidden" name="cmd" value="_xclick-subscriptions">';
+				// our Incsub BN code
+				$form .= '<input type="hidden" name="bn" value="incsub_SP">';
 				$form .= '<input type="hidden" name="item_name" value="' . esc_attr($options['payments']['recurring_name']) . '">';
 				$form .= '<input type="hidden" name="item_number" value="a" >';
 				$form .= '<input type="hidden" name="invoice" value="' . uniqid("LST-{$blog_id}-") . '">'; // 'LST' is the prefix for Gateway Relay

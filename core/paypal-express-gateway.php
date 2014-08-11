@@ -42,7 +42,7 @@ class Paypal_Express_Gateway {
 	/** @var string Proxy Port */
 	var $proxy_port = '808';
 	/** @var string The BN code used by PayPal to track the transactions from a given shopping cart. BN Code is only applicable for partners */
-	var $sbn_code = 'PP-ECWizard';
+	var $sbn_code = 'incsub_SP';
 	/** @var boolean Proxy Usage  */
 	var $use_proxy = false;
 	/** @var string Version  */
