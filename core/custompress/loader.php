@@ -65,4 +65,4 @@ $wpmudev_notices[] = array( 'id'=> 163,
 'toplevel_page_ct_content_types-network',
 'custompress_page_cp_main-network',
 'custompress_page_ct_export-network' ) );
-include_once 'ext/wpmudev-dash-notification.php';
+//include_once 'ext/wpmudev-dash-notification.php';
