@@ -107,8 +107,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		parent::__construct();
 
 		//Init early to make sure types are registers
-		add_action( 'after_setup_theme', array( &$this, 'register_taxonomies' ), 1 );
-		add_action( 'after_setup_theme', array( &$this, 'register_post_types' ), 2 );
+		add_action( 'init', array( &$this, 'register_taxonomies' ), 1 );
+		add_action( 'init', array( &$this, 'register_post_types' ), 2 );
 		add_action( 'init', array( &$this, 'flush_rewrite_rules' ), 99 ); //Give everyone else a chance to set rules, endpoints etc.
 
 		//Add custom terms and fields on media page
@@ -445,41 +445,38 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		// Take off the prefix for indexing the array;
 
 		$cid = preg_replace('/^(_ct|ct)_/', '', $id);
-
+		
 		$custom_field = (isset($this->all_custom_fields[$cid])) ? $this->all_custom_fields[$cid] : null;
 		$property = strtolower($property);
 
 		$result = '';
-
-		switch ($property){
-			case 'title': $result = $custom_field['field_title']; break;
-			case 'description': $result = $custom_field['field_description']; break;
-			case 'value':
-			default: {
-				switch ($custom_field['field_type']){
-					case 'checkbox':
-					case 'multiselectbox': {
-						if( $values = get_post_meta( $post->ID, $id, true ) ) {
-							foreach ( (array)$values as $value ) {
-								$result .= (empty($result)) ? $value : ', ' . $value;
+		if( ! empty( $custom_field ) ) {
+			switch ($property){
+				case 'title': $result = $custom_field['field_title']; break;
+				case 'description': $result = $custom_field['field_description']; break;
+				case 'value':
+				default: {
+					switch ($custom_field['field_type']){
+						case 'checkbox':
+						case 'multiselectbox': {
+							if( $values = get_post_meta( $post->ID, $id, true ) ) {
+								$result = implode( ', ', $values );
 							}
+							break;
 						}
-						break;
-					}
-					case 'selectbox':
-					case 'radio': {
-						if( $values = get_post_meta( $post->ID, $id, true ) ) {
-							foreach ( (array)$values as $value ) {
-								$result .= (empty($result)) ? $value : ', ' . $value;
+						case 'selectbox':
+						case 'radio': {
+							if( $values = get_post_meta( $post->ID, $id, true ) ) {
+								$result = implode( ', ', $values );
 							}
+							break;
 						}
-						break;
-					}
-					case 'datepicker': {
-						$result = strip_tags(get_post_meta( $post->ID, $id, true ) ); break;
-					}
-					default: {
-						$result = get_post_meta( $post->ID, $id, true ); break;
+						case 'datepicker': {
+							$result = strip_tags(get_post_meta( $post->ID, $id, true ) ); break;
+						}
+						default: {
+							$result = get_post_meta( $post->ID, $id, true ); break;
+						}
 					}
 				}
 			}

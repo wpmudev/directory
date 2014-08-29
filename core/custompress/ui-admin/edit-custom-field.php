@@ -9,8 +9,6 @@ $custom_field = $this->network_custom_fields[$_GET['ct_edit_custom_field']];
 } else {
 $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 }
-
-var_dump( $custom_field );
 ?>
 <div class="wrap">
 	<h3><?php esc_html_e('Edit Custom Field', $this->text_domain); ?></h3>

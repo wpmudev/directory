@@ -129,7 +129,7 @@ $post_types = get_post_types('','names');
 								<p>
 									<?php esc_html_e('Option', $this->text_domain); ?> <?php echo esc_html( $key ); ?>:
 									<input type="text" name="field_options[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( $field_option ); ?>" />
-									<input type="radio" value="<?php echo esc_attr( $key ); ?>" name="field_default_option" <?php checked( $_POST['field_default_option'] == $key ); ?> />
+									<input type="radio" value="<?php echo esc_attr( $key ); ?>" name="field_default_option" <?php checked( isset( $_POST['field_default_option'] ) && $_POST['field_default_option'] == $key ); ?> />
 									<?php esc_html_e('Default Value', $this->text_domain); ?>
 									<?php if ( $key != 1 ): ?>
 									<a href="#" class="ct-field-delete-option">[x]</a>

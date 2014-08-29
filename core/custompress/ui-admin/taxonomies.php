@@ -103,7 +103,7 @@ if(is_multisite()) {
 				<?php endforeach; ?>
 			</td>
 			<td class="ct-tf-icons-wrap">
-				<?php if ( $taxonomy['args']['public'] === null ): ?>
+				<?php if ( ! isset( $taxonomy['args']['public'] ) ): ?>
 				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/advanced.png' ); ?>" alt="<?php esc_attr_e('Advanced', $this->text_domain); ?>" title="<?php esc_attr_e('Advanced', $this->text_domain); ?>" />
 				<?php elseif ( $taxonomy['args']['public'] ): ?>
 				<img class="ct-tf-icons" src="<?php echo esc_attr( $this->plugin_url . 'ui-admin/images/true.png' ); ?>" alt="<?php esc_attr_e('True', $this->text_domain); ?>" title="<?php esc_attr_e('True', $this->text_domain); ?>" />

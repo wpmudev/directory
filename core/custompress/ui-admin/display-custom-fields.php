@@ -38,7 +38,7 @@ $output = false;
 				foreach ( $custom_fields as $key => $custom_field ) :
 				if( in_array($post->post_type, $custom_field['object_type'] ) ){
 					if(is_admin() ) {
-						if( !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
+						if( empty($custom_field['hide_type']) || !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
 							$output = true;
 						}
 					} else {
@@ -76,7 +76,7 @@ $output = false;
 					foreach ( $custom_fields as $key => $custom_field ) :
 					if( in_array($post->post_type, $custom_field['object_type'] ) ){
 						if(is_admin() ) {
-							if( !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
+							if( empty($custom_field['hide_type']) || !in_array($post->post_type, (array)$custom_field['hide_type'] )) {
 								$output = true;
 							}
 						} else {

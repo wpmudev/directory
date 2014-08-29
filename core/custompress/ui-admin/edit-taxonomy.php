@@ -6,7 +6,7 @@ $post_types = get_post_types('','names');
 if(is_network_admin()){
 	$taxonomy = $this->network_taxonomies[$_GET['ct_edit_taxonomy']]['args'];
 } else {
-	$taxonomy = $this->taxonomies[$_GET['ct_edit_post_type']]['args'];
+	$taxonomy = isset( $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'] ) ? $this->taxonomies[$_GET['ct_edit_taxonomy']]['args'] : array();
 }
 
 if( !isset( $taxonomy['rewrite']['ep_mask'] ) ) {
@@ -247,12 +247,12 @@ global $wp_post_types, $wp_taxonomies;
 						</label>
 						<br />
 						<label>
-							<input type="radio" name="public" value="0" <?php checked( isset( $taxonomy['public'])  && $taxonomy['public'] === false); ?> />
+							<input type="radio" name="public" value="0" <?php checked( isset( $taxonomy['public']) && $taxonomy['public'] === false); ?> />
 							<span class="description"><strong><?php esc_html_e('FALSE', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<label>
-							<input type="radio" name="public" value="advanced" <?php checked( $taxonomy['public'] !== true && $taxonomy['public'] !== false ); ?> />
+							<input type="radio" name="public" value="advanced" <?php checked( isset( $taxonomy['public']) && $taxonomy['public'] !== true && $taxonomy['public'] !== false ); ?> />
 							<span class="description"><strong><?php esc_html_e('ADVANCED', $this->text_domain); ?></strong></span>
 						</label>
 					</td>

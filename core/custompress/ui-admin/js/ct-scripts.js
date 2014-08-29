@@ -200,17 +200,20 @@ var content_types = {
 			// custom fields add options
 			$('.ct-field-add-option').click(function() {
 				$('.ct-field-additional-options').append(function() {
-
 					var count = parseInt($('input[name="track_number"]').val(), 10) + 1;
 					$('input[name="track_number"]').val(count);
 
-					return '<p>Option ' + count + ': ' +
+					input = '<p>Option ' + count + ': ' +
 					'<input type="text" name="field_options[' + count + ']"> ' +
 					'<input type="radio" value="' + count + '" name="field_default_option"> ' +
 					'Default Value ' +
 					'<a href="#" class="ct-field-delete-option">[x]</a>' +
 					'</p>';
+					return input;
 				});
+				
+				$(".ct-field-additional-options input[type='text']:last").focus();
+				return false;
 			});
 
 			// custom fields remove options

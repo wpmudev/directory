@@ -5,6 +5,12 @@ Author URI: http://premium.wpmudev.org
 
 == Changelog ==
 
+= 1.3.5.7 - 2014-07-23 Fabio Jun
+* Fixed: register_taxonomies and register_post_types was hooking the after_setup_theme instead of init.
+* Fixed: created default POST params to avoid "Undefined index" notices.
+* Fixed: testing if field exists before trying to access it.
+* Fixed: testing hide_type field before accessing it.
+* Fixed: handling not found custom field to avoid output of Array. 
 
 = 1.3.5.6 - 2014-07-06 Arnold Bailey
 * Added "required" attribute override to the [ct_in] shortcode.

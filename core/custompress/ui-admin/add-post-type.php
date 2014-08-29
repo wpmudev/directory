@@ -623,91 +623,91 @@
 					<td>
 						<input type="hidden" name="ep_mask[EP_NONE]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_NONE]" value="<?php echo EP_NONE; ?>" <?php checked( $_POST['ep_mask']['EP_NONE'] & EP_NONE, EP_NONE); ?> />
+							<input type="checkbox" name="ep_mask[EP_NONE]" value="<?php echo EP_NONE; ?>" <?php checked( isset( $_POST['ep_mask']['EP_NONE'] ) && $_POST['ep_mask']['EP_NONE'] & EP_NONE, EP_NONE); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_NONE: for default, nothing.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_PERMALINK]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_PERMALINK]" value="<?php echo EP_PERMALINK; ?>" <?php checked( $_POST['ep_mask']['EP_PERMALINK'] & EP_PERMALINK, EP_PERMALINK ); ?> />
+							<input type="checkbox" name="ep_mask[EP_PERMALINK]" value="<?php echo EP_PERMALINK; ?>" <?php checked( isset( $_POST['ep_mask']['EP_PERMALINK'] ) && $_POST['ep_mask']['EP_PERMALINK'] & EP_PERMALINK, EP_PERMALINK ); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_PERMALINK: for Permalink.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_ATTACHMENT]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_ATTACHMENT]" value="<?php echo EP_ATTACHMENT; ?>" <?php checked( $_POST['ep_mask']['EP_ATTACHMENT'] & EP_ATTACHMENT, EP_ATTACHMENT); ?> />
+							<input type="checkbox" name="ep_mask[EP_ATTACHMENT]" value="<?php echo EP_ATTACHMENT; ?>" <?php checked( isset( $_POST['ep_mask']['EP_ATTACHMENT'] ) && $_POST['ep_mask']['EP_ATTACHMENT'] & EP_ATTACHMENT, EP_ATTACHMENT); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_ATTACHMENT: for Attachment.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_DATE]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_DATE]" value="<?php echo EP_DATE; ?>" <?php checked( $_POST['ep_mask']['EP_DATE'] & EP_DATE, EP_DATE); ?> />
+							<input type="checkbox" name="ep_mask[EP_DATE]" value="<?php echo EP_DATE; ?>" <?php checked( isset( $_POST['ep_mask']['EP_DATE'] ) && $_POST['ep_mask']['EP_DATE'] & EP_DATE, EP_DATE); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_DATE: for Date.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_YEAR]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_YEAR]" value="<?php echo EP_YEAR; ?>" <?php checked( $_POST['ep_mask']['EP_YEAR'] & EP_YEAR, EP_YEAR); ?> />
+							<input type="checkbox" name="ep_mask[EP_YEAR]" value="<?php echo EP_YEAR; ?>" <?php checked( isset( $_POST['ep_mask']['EP_YEAR'] ) && $_POST['ep_mask']['EP_YEAR'] & EP_YEAR, EP_YEAR); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_YEAR: for Year.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_MONTH]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_MONTH]" value="<?php echo EP_MONTH; ?>" <?php checked( $_POST['ep_mask']['EP_MONTH'] & EP_MONTH, EP_MONTH); ?> />
+							<input type="checkbox" name="ep_mask[EP_MONTH]" value="<?php echo EP_MONTH; ?>" <?php checked( isset( $_POST['ep_mask']['EP_MONTH'] ) && $_POST['ep_mask']['EP_MONTH'] & EP_MONTH, EP_MONTH); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_MONTH: for Month.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_DAY]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_DAY]" value="<?php echo EP_DAY; ?>" <?php checked( $_POST['ep_mask']['EP_DAY'] & EP_DAY, EP_DAY); ?> />
+							<input type="checkbox" name="ep_mask[EP_DAY]" value="<?php echo EP_DAY; ?>" <?php checked( isset( $_POST['ep_mask']['EP_DAY'] ) && $_POST['ep_mask']['EP_DAY'] & EP_DAY, EP_DAY); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_DAY: for Day.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_ROOT]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_ROOT]" value="<?php echo EP_ROOT; ?>" <?php checked( $_POST['ep_mask']['EP_ROOT'] & EP_ROOT, EP_ROOT); ?> />
+							<input type="checkbox" name="ep_mask[EP_ROOT]" value="<?php echo EP_ROOT; ?>" <?php checked( isset( $_POST['ep_mask']['EP_ROOT'] ) && $_POST['ep_mask']['EP_ROOT'] & EP_ROOT, EP_ROOT); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_ROOT: for Root.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_COMMENTS]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_COMMENTS]" value="<?php echo EP_COMMENTS; ?>" <?php checked( $_POST['ep_mask']['EP_COMMENTS'] & EP_COMMENTS, EP_COMMENTS); ?> />
+							<input type="checkbox" name="ep_mask[EP_COMMENTS]" value="<?php echo EP_COMMENTS; ?>" <?php checked( isset( $_POST['ep_mask']['EP_COMMENTS'] ) && $_POST['ep_mask']['EP_COMMENTS'] & EP_COMMENTS, EP_COMMENTS); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_COMMENTS: for Comments.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_SEARCH]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_SEARCH]" value="<?php echo EP_SEARCH; ?>" <?php checked( $_POST['ep_mask']['EP_SEARCH'] & EP_SEARCH, EP_SEARCH); ?> />
+							<input type="checkbox" name="ep_mask[EP_SEARCH]" value="<?php echo EP_SEARCH; ?>" <?php checked( isset( $_POST['ep_mask']['EP_SEARCH'] ) && $_POST['ep_mask']['EP_SEARCH'] & EP_SEARCH, EP_SEARCH); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_SEARCH: for Search.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_CATEGORIES]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_CATEGORIES]" value="<?php echo EP_CATEGORIES; ?>" <?php checked( $_POST['ep_mask']['EP_CATEGORIES'] & EP_CATEGORIES, EP_CATEGORIES); ?> />
+							<input type="checkbox" name="ep_mask[EP_CATEGORIES]" value="<?php echo EP_CATEGORIES; ?>" <?php checked( isset( $_POST['ep_mask']['EP_CATEGORIES'] ) && $_POST['ep_mask']['EP_CATEGORIES'] & EP_CATEGORIES, EP_CATEGORIES); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_CATEGORIES: for Categories.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_TAGS]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EPEP_TAGS_DAY]" value="<?php echo EP_TAGS; ?>" <?php checked( $_POST['ep_mask']['EP_TAGS'] & EP_TAGS, EP_TAGS); ?> />
+							<input type="checkbox" name="ep_mask[EPEP_TAGS_DAY]" value="<?php echo EP_TAGS; ?>" <?php checked( isset( $_POST['ep_mask']['EP_TAGS'] ) && $_POST['ep_mask']['EP_TAGS'] & EP_TAGS, EP_TAGS); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_TAGS: for Tags.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_AUTHORS]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_AUTHORS]" value="<?php echo EP_AUTHORS; ?>" <?php checked( $_POST['ep_mask']['EP_AUTHORS'] & EP_AUTHORS, EP_AUTHORS); ?> />
+							<input type="checkbox" name="ep_mask[EP_AUTHORS]" value="<?php echo EP_AUTHORS; ?>" <?php checked( isset( $_POST['ep_mask']['EP_AUTHORS'] ) && $_POST['ep_mask']['EP_AUTHORS'] & EP_AUTHORS, EP_AUTHORS); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_AUTHORS: for Authors.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_PAGES]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_PAGES]" value="<?php echo EP_PAGES; ?>" <?php checked( $_POST['ep_mask']['EP_PAGES'] & EP_PAGES, EP_PAGES); ?> />
+							<input type="checkbox" name="ep_mask[EP_PAGES]" value="<?php echo EP_PAGES; ?>" <?php checked( isset( $_POST['ep_mask']['EP_PAGES'] ) && $_POST['ep_mask']['EP_PAGES'] & EP_PAGES, EP_PAGES); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_PAGES: for Pages.', $this->text_domain); ?></strong></span>
 						</label>
 						<br />
 						<input type="hidden" name="ep_mask[EP_ALL]" value="0" />
 						<label>
-							<input type="checkbox" name="ep_mask[EP_ALL]" value="<?php echo EP_ALL; ?>" <?php checked( $_POST['ep_mask']['EP_ALL'] & EP_ALL, EP_ALL); ?> />
+							<input type="checkbox" name="ep_mask[EP_ALL]" value="<?php echo EP_ALL; ?>" <?php checked( isset( $_POST['ep_mask']['EP_ALL'] ) && $_POST['ep_mask']['EP_ALL'] & EP_ALL, EP_ALL); ?> />
 							<span class="description"><strong><?php esc_html_e('EP_ALL: for everything.', $this->text_domain); ?></strong></span>
 						</label>
 					</td>

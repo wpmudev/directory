@@ -424,7 +424,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'rewrite'             => (bool) $params['rewrite'],
 				'query_var'           => (bool) $params['query_var'],
 				'can_export'          => (bool) $params['can_export'],
-				'cf_columns'          => $params['cf_columns'],
+				'cf_columns'          => isset( $params['cf_columns'] ) ? $params['cf_columns'] : '',
 				);
 				
 				$args['capabilities'] = array('create_posts' => "create_{$args['capability_type']}s" );
@@ -532,6 +532,34 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		//$params is the $_POST variable with slashes stripped
 		$params = array_map('stripslashes_deep',$_POST);
 
+		$defaults = array(
+				'labels' => array(
+						'name'                       => '',
+						'singular_name'              => '',
+						'add_new_item'               => '',
+						'new_item_name'              => '',
+						'edit_item'                  => '',
+						'update_item'                => '',
+						'search_items'               => '',
+						'popular_items'              => '',
+						'all_items'                  => '',
+						'parent_item'                => '',
+						'parent_item_colon'          => '',
+						'add_or_remove_items'        => '',
+						'separate_items_with_commas' => '',
+						'choose_from_most_used'      => '',
+				),
+				'public' 		=> null,
+				'show_ui' 		=> null,
+				'show_tagcloud' => null, 
+				'show_admin_column' => null,
+				'show_in_nav_menus' => false,
+				'hierarchical'		=> false,
+				'rewrite'			=> false,
+				'query_var'			=> false,
+		);
+		$params = apply_filters( 'handle_taxonomy_requests_params', wp_parse_args( $params, $defaults ) );
+		
 		// If valid add/edit taxonomy request is made
 		if (   isset( $params['submit'] )
 		&& isset( $params['_wpnonce'] )
@@ -635,10 +663,12 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 						break;
 					}
 					//No then check the builtins
-					$cap = $wp_post_types[$post_type]->capability_type;
-					if( !empty($cap) && $cap != 'post') {
-						$cap_type=$cap;
-						break;
+					if( ! empty( $wp_post_types[$post_type] ) ) {
+						$cap = $wp_post_types[$post_type]->capability_type;
+						if( !empty($cap) && $cap != 'post') {
+							$cap_type=$cap;
+							break;
+						}
 					}
 				}
 				$args['capabilities']['assign_terms'] = "edit_{$cap_type}s";
@@ -707,7 +737,27 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 
 		//$params is the $_POST variable with slashes stripped
 		$params = array_map('stripslashes_deep',$_POST);
-
+		
+		$defaults = array(
+				'field_title'          => '',
+				'field_wp_allow'       => 0,
+				'field_type'           => '',
+				'field_sort_order'     => 0,
+				'field_options'        => '',
+				'field_date_format'    => '',
+				'field_regex'          => '',
+				'field_regex_options'  => '',
+				'field_regex_message'  => '',
+				'field_message'        => '',
+				'field_default_option' => null,
+				'field_description'    => '',
+				'object_type'          => '',
+				'hide_type'            => '',
+				'field_required'       => 0,
+				'field_id'             => '',
+		);
+		$params = apply_filters( 'handle_custom_field_requests_params', wp_parse_args( $params, $defaults ) );
+		
 		// If valid add/edit custom field request is made
 		if ( isset( $params['submit'] )
 		&& isset( $params['_wpnonce'] )
