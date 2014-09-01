@@ -59,7 +59,7 @@ endif; ?>
 
 <div class="clear"></div>
 
-<?php if( !$options['disable_contact_form'] ): ?>
+<?php if( empty( $options['disable_contact_form'] ) ): ?>
 
 <form method="post" action="#" class="contact-user-btn action-form" id="action-form">
 	<input type="submit" name="contact_user" value="<?php _e('Contact User', $this->text_domain ); ?>" onclick="dr_listings.toggle_contact_form(); return false;" />

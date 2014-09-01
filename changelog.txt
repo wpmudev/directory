@@ -6,6 +6,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 = 2.2.5.8 - 2014-08-29
 * Changed: Merged CustomPress plugin 1.3.5.7
+* Fixed: Undefined index: disable_contact_form in single-listings template.
 
 = 2.2.5.7 - 2014-08-11
 * Changed: using get_stylesheet_directory instead of get_template_directory in ui/general templates.
