@@ -3,6 +3,8 @@ Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
+= 2.2.5.9 - 2014-09-02
+* Fix warning messages "implode(): Invalid arguments passed..."
 
 = 2.2.5.8 - 2014-08-29
 * Changed: Merged CustomPress plugin 1.3.5.7
