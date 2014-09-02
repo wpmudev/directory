@@ -459,14 +459,14 @@ class CustomPress_Content_Types extends CustomPress_Core {
 					switch ($custom_field['field_type']){
 						case 'checkbox':
 						case 'multiselectbox': {
-							if( $values = get_post_meta( $post->ID, $id, true ) ) {
+							if( $values = (array)get_post_meta( $post->ID, $id, true ) ) {
 								$result = implode( ', ', $values );
 							}
 							break;
 						}
 						case 'selectbox':
 						case 'radio': {
-							if( $values = get_post_meta( $post->ID, $id, true ) ) {
+							if( $values = (array)get_post_meta( $post->ID, $id, true ) ) {
 								$result = implode( ', ', $values );
 							}
 							break;
