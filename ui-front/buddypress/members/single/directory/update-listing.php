@@ -10,7 +10,7 @@
 global $post, $post_ID, $CustomPress_Core;
 $listing_data   = '';
 $selected_cats  = '';
-$error = $dr_error; // get_query_var('dr_error');
+$error = isset( $dr_error ) ? $dr_error : ''; // get_query_var('dr_error');
 
 $options = $this->get_options('general');
 
