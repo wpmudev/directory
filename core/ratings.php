@@ -145,8 +145,9 @@ class DR_Ratings {
 		global $post;
 
 		$post_id = 0;
-		if ( isset( $post->ID ) && 0 < $post->ID )
-		$post_id = $post->ID;
+		if ( isset( $post->ID ) && 0 < $post->ID ) {
+			$post_id = $post->ID;
+		}
 
 		$ajaxurl = admin_url( 'admin-ajax.php' ); ?>
 
@@ -175,8 +176,8 @@ class DR_Ratings {
 						// Select stars from "Average rating" control to match the returned average rating value
 						$(".avg").stars("select", Math.round(response.avg));
 						// Update other text controls...
-						$(".all_votes-<? echo $post->ID; ?>").text(response.votes);
-						$(".all_avg<? echo $post->ID; ?>").text(response.avg);						
+						$(".all_votes-<? echo $post_id; ?>").text(response.votes);
+						$(".all_avg<? echo $post_id; ?>").text(response.avg);						
 						// Display confirmation message to the user
 						$(".messages").text("<?php _e('Rating saved', DR_TEXT_DOMAIN); ?> (" + value + "). <?php _e('Thanks!', DR_TEXT_DOMAIN); ?>").stop().css("opacity", 1).fadeIn(30);
 						// Hide confirmation message and enable stars for "Rate this" control, after 2 sec...
