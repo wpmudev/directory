@@ -1400,6 +1400,7 @@ class Directory_Core {
 	}
 
 	function on_captcha(){
+		ob_get_clean();
 		
 		$alphanum = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
 		$rand = substr( str_shuffle( $alphanum ), 0, 5 );

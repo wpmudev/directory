@@ -3,6 +3,10 @@ Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
+
+= 2.2.6.1
+* Fix captcha conflict with other code outputs
+
 = 2.2.6 - 2014-09-23
 * Fix BuddyPress profile listings double redirection issue
 * Fix Undefined variable: dr_error in update-listing view
