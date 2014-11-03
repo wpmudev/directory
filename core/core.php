@@ -144,6 +144,22 @@ if (!class_exists('Directory_Core')):
             add_shortcode('dr_signup_btn', array(&$this, 'signup_btn_sc'));
             add_shortcode('dr_custom_fields', array(&$this, 'custom_fields_sc'));
 
+            //clean up listing after delete user
+            add_action('delete_user', array(&$this, 'clean_up_listing'));
+        }
+
+        function clean_up_listing($user_id)
+        {
+            //get all posts belong to this users
+            $query = new WP_Query(array(
+                'post_type' => 'directory_listing',
+                'author' => $user_id,
+                'nopaging' => true
+            ));
+
+            foreach ($query->get_posts() as $post) {
+                wp_transition_post_status('trash', $post->post_status, $post);
+            }
         }
 
         /**
