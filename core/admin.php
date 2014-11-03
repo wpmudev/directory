@@ -374,7 +374,8 @@ class Directory_Core_Admin extends Directory_Core {
 				}
 			} else {
 				if ( isset( $params['purchase'] ) ) {
-					$this->js_redirect( get_permalink($this->checkout_page_id) );
+                //var_dump($this->checkout_page_id);die;
+					$this->js_redirect( get_permalink($this->signup_page_id) );
 				}
 			}
 		}
