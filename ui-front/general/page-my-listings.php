@@ -27,7 +27,7 @@ if ( isset( $_GET['updated'] ) ) {
 }
 
 ?>
-<script type="text/javascript" src="<?php echo $this->plugin_url .'ui-front/js/ui-front.js'; ?>">
+<script type="text/javascript" src="<?php echo $Directory_Core->plugin_url .'ui-front/js/ui-front.js'; ?>">
 </script>
 
 <form method="post" id="action-form" class="action-form" action="#">
@@ -36,15 +36,15 @@ if ( isset( $_GET['updated'] ) ) {
 	<input type="hidden" name="post_id" />
 </form>
 
-<?php if ( $this->is_full_access() ): ?>
-<div class="av-credits"><?php _e( 'You have access to create new ads', $this->text_domain ); ?></div>
-<?php elseif($this->use_credits): ?>
-<div class="av-credits"><?php _e( 'Available Credits:', $this->text_domain ); ?> <?php echo $this->transactions->credits; ?></div>
+<?php if ( $Directory_Core->is_full_access() ): ?>
+<div class="av-credits"><?php _e( 'You have access to create new ads', $Directory_Core->text_domain ); ?></div>
+<?php elseif($Directory_Core->use_credits): ?>
+<div class="av-credits"><?php _e( 'Available Credits:', $Directory_Core->text_domain ); ?> <?php echo $Directory_Core->transactions->credits; ?></div>
 <?php endif; ?>
 
 <div>
-	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $this->text_domain ) .  '[/dr_add_listing_btn]'); ?>
-	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('My Credits', $this->text_domain) . '" view="loggedin"]'); ?>
+	<?php echo do_shortcode('[dr_add_listing_btn view="loggedin"]' . __( 'Create New Listing',  $Directory_Core->text_domain ) .  '[/dr_add_listing_btn]'); ?>
+	<?php echo do_shortcode('[dr_my_credits_btn text="'. __('My Credits', $Directory_Core->text_domain) . '" view="loggedin"]'); ?>
 </div>
 
 <?php if ( count( $custom_query->posts ) ) : ?>
