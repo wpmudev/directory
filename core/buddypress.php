@@ -561,6 +561,7 @@ if (!class_exists('Directory_Core_Buddypress')):
                 window.location = '<?php echo $url; ?>';	//]]>
             </script>
         <?php
+            exit;
         }
 
         /**
