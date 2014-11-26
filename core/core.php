@@ -426,7 +426,7 @@ if (!class_exists('Directory_Core')):
             if (!empty($directory_obj)) {
 
                 if (!is_string($slug = $directory_obj->has_archive)) {
-                    $slug = $listings;
+                    $slug = 'listings';
                 }
 
                 add_rewrite_rule("author/([^/]+)/{$slug}/page/?([2-9][0-9]*)",
