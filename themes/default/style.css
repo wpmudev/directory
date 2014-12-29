@@ -18,3 +18,51 @@ http://www.opensource.org/licenses/gpl-license.php
 /* basic styling for all elements */
 @import url( css/layout.css );
 
+/* fix for the category grid/list */
+
+.dr_list_grid h2 {
+ background-color: #eee;
+ padding: .2em 1em;
+ border-radius: .3em;
+}
+
+.dr_list_grid li {
+ float: left;
+ list-style: none outside none;
+ min-height: 11em;
+ padding: .5em;
+ width: 19%;
+ margin: 0 2% 2% 0;
+ border: medium solid #eee;
+ border-radius: .4em;
+}
+
+.dr_list {
+ overflow: hidden;
+}
+
+/*Categories list css*/
+.dr_list h2 {
+    background-color: #eee;
+    padding: .2em 1em;
+    border-radius: .3em;
+    text-shadow: 1px 1px #fff;
+}
+
+.dr_list ul {
+    min-width: 50%;
+}
+
+.dr_list li {
+    list-style: none outside none;
+    margin: .6em;
+}
+
+.dr_list div {
+    float: left;
+    margin: 0 1em;
+}
+
+.dr_list_grid {
+    overflow: hidden;
+}
