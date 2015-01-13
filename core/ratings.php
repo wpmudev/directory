@@ -32,7 +32,7 @@ class DR_Ratings
         add_action('sr_user_rating', array(&$this, 'render_user_rating'));
         add_action('sr_rate_this', array(&$this, 'render_rate_this'));
         add_action('wp_ajax_sr_save_vote', array(&$this, 'handle_ajax_requests'));
-        add_action('wp_ajax_nopriv_sr_save_vote', array(&$this, 'handle_ajax_requests'));
+        add_action('wp_ajax_nopriv_sr_save_vote', array(&$this, '/usr/share/nginx'));
     }
 
     /**
@@ -107,6 +107,22 @@ class DR_Ratings
         update_post_meta($post_id, '_sr_post_rating', $rating);
     }
 
+    function delete_rating($post_id)
+    {
+        if (!is_user_logged_in()) return; //Not logged in nowhere to store a vote.
+        $votes = get_post_meta($post_id, '_sr_post_votes', true);
+        $votes = $votes - 1;
+        update_post_meta($post_id, '_sr_post_votes', $votes);
+        $current_rating = get_post_meta($post_id, '_sr_post_rating', true);
+        $voted = get_user_meta(get_current_user_id(), '_sr_post_vote', true);
+        $score = isset($voted[$post_id]) ? $voted[$post_id] : 0;
+        $current_rating = $current_rating - $score;
+        update_post_meta($post_id, '_sr_post_rating', $current_rating);
+        unset($voted[$post_id]);
+        update_user_meta(get_current_user_id(), '_sr_post_vote', $voted);
+
+    }
+
     /**
      * Ajax callback which gets the post types associated with each page.
      *
@@ -114,10 +130,14 @@ class DR_Ratings
      **/
     function handle_ajax_requests()
     {
-        // verify user input!
-        $rating = $this->in_range($_POST['rate'], 1, 5);
-        // update statistic and save to file
-        $this->save_rating($_POST['post_id'], $rating);
+        if ($_POST['rate'] == 0) {
+            $this->delete_rating($_POST['post_id']);
+        } else {
+            // verify user input!
+            $rating = $this->in_range($_POST['rate'], 1, 5);
+            // update statistic and save to file
+            $this->save_rating($_POST['post_id'], $rating);
+        }
         $respons = $this->get_rating($_POST['post_id']);
         do_action('directory_after_rated', $_POST['post_id'], $rating);
         // return json object

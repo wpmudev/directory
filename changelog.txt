@@ -3,6 +3,10 @@ Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
+= 2.2.6.3
+* Fix dr_list_categories styling not work on Directory theme
+* Fix cancel rating become 1 star
+
 = 2.2.6.2
 * Add ready-for-copy template, which can be use for override plugin template
 
