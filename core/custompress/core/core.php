@@ -54,7 +54,7 @@ class CustomPress_Core {
 	function on_enqueue_scripts(){
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
-		$wplang = str_replace('_', '-', WPLANG);
+		$wplang = str_replace('_', '-', get_locale() );
 		$lang = ($wplang == '') ? '' : substr($wplang, 0, 2); // Non specific locale
 
 		// Specific locale exceptions

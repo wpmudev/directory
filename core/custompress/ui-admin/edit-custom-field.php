@@ -76,6 +76,7 @@ $custom_field = $this->custom_fields[$_GET['ct_edit_custom_field']];
 								<option value="selectbox" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'selectbox' ); ?>>Drop Down Select Box</option>
 								<option value="multiselectbox" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'multiselectbox' ); ?>>Multi Select Box</option>
 								<option value="datepicker" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'datepicker' ); ?>>Date Picker</option>
+								<option value="upload" <?php selected( isset( $custom_field['field_type'] ) && $custom_field['field_type'] == 'upload' ); ?>><?php esc_html_e('Upload', $this->text_domain); ?></option>
 							</select>
 							<br /><span class="description"><?php esc_html_e('Select type of the custom field.', $this->text_domain); ?></span>
 

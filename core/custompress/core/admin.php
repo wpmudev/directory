@@ -585,7 +585,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'parent_item_colon'          => $params['labels']['parent_item_colon'],
 				'add_or_remove_items'        => $params['labels']['add_or_remove_items'],
 				'separate_items_with_commas' => $params['labels']['separate_items_with_commas'],
-				'choose_from_most_used'      => $params['labels']['all_items']
+				'choose_from_most_used'      => $params['labels']['choose_from_most_used']
 				);
 
 				$args = array(

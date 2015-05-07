@@ -68,6 +68,7 @@ $post_types = get_post_types('','names');
 								<option value="selectbox" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'selectbox' ); ?>><?php esc_html_e('Drop Down Select Box', $this->text_domain); ?></option>
 								<option value="multiselectbox" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'multiselectbox' ); ?>><?php esc_html_e('Multi Select Box', $this->text_domain); ?></option>
 								<option value="datepicker" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'datepicker' ); ?>><?php esc_html_e('Date Picker', $this->text_domain); ?></option>
+								<option value="upload" <?php selected( isset( $_POST['field_type'] ) && $_POST['field_type'] == 'upload' ); ?>><?php esc_html_e('Upload', $this->text_domain); ?></option>
 							</select>
 							<br /><span class="description"><?php esc_html_e('Select type of the custom field.', $this->text_domain); ?></span>
 
