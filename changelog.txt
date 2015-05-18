@@ -3,6 +3,9 @@ Authors: Author: Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub
 Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
+=2.2.6.4
+* Update CustomPress to latest version
+
 = 2.2.6.3
 * Fix dr_list_categories styling not work on Directory theme
 * Fix cancel rating bug
