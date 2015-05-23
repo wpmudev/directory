@@ -60,6 +60,24 @@ $editor_settings =   array(
 $listing_content = (empty( $listing_data['post_content'] ) ) ? '' : $listing_data['post_content'];
 
 wp_enqueue_script('set-post-thumbnail');
+
+add_filter( 'tiny_mce_before_init', 'wpse24113_tiny_mce_before_init' ,10,2);
+function wpse24113_tiny_mce_before_init( $initArray,$editor_id )
+{
+    if($editor_id != 'listingcontent'){
+        return $initArray;
+    }
+    $initArray['setup'] = <<<JS
+[function(ed) {
+    ed.on("change", function (ed) {
+            jQuery('#listingcontent').html(ed.target.getContent());
+        })
+
+}][0]
+JS;
+    return $initArray;
+}
+
 ?>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/jquery.tagsinput.min.js'; ?>" ></script>
 <script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script>
