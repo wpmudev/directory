@@ -5,6 +5,7 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 == Changelog ==
 =2.2.6.5
 Fix bug listing content show validate error when content has been filled
+Fix bug author archive load all directories
 
 =2.2.6.4
 * Update CustomPress to latest version
