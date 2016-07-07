@@ -244,3 +244,8 @@ JS;
 		<?php //echo do_shortcode('[ct_validate]') ; ?>
 	</form>
 </div>
+<script type="text/javascript">
+	jQuery('input[name="update_classified"]').mousedown( function() {
+		tinyMCE.triggerSave();
+	});
+</script>
