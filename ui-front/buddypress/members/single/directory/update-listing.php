@@ -211,7 +211,7 @@ wp_enqueue_script('set-post-thumbnail');
 		</div>
 
 		<?php if ( isset( $CustomPress_Core ) ) : ?>
-		<?php echo do_shortcode('[custom_fields_input" style="editfield"]'); ?>
+		<?php echo do_shortcode('[custom_fields_input style="editfield"]'); ?>
 		<?php endif; ?>
 
 		<?php if ( !empty( $error ) ): ?>
