@@ -51,3 +51,6 @@ textarea.dr-full{
 }
 
 
+body.widgets-php .wrap h2{
+    border-bottom: none;
+}
