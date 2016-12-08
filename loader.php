@@ -55,6 +55,36 @@ define( 'DR_CAPTCHA', 'dr_captcha_' );
 //If another version of CustomPress not loaded, load ours.
 if(!class_exists('CustomPress_Core')) include_once 'core/custompress/loader.php';
 
+register_deactivation_hook( __FILE__, function() {
+        //Remove Directory custom post types
+        $ct_custom_post_types = get_site_option( 'ct_custom_post_types' );
+        unset($ct_custom_post_types['directory_listing']);
+        update_site_option( 'ct_custom_post_types', $ct_custom_post_types );
+        
+        $ct_custom_post_types = get_option( 'ct_custom_post_types' );
+        unset($ct_custom_post_types['directory_listing']);
+        update_option( 'ct_custom_post_types', $ct_custom_post_types );
+        
+        $ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
+        unset($ct_custom_taxonomies['listing_tag']);
+        update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
+        
+        $ct_custom_taxonomies = get_option('ct_custom_taxonomies');
+        unset($ct_custom_taxonomies['listing_tag']);
+        update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
+        
+        $ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
+        unset($ct_custom_taxonomies['listing_category']);
+        update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
+        
+        $ct_custom_taxonomies = get_option('ct_custom_taxonomies');
+        unset($ct_custom_taxonomies['listing_category']);
+        update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
+        
+        flush_rewrite_rules();
+
+} );
+
 include_once 'core/core.php';
 include_once 'core/functions.php';
 include_once 'core/template-tags.php';
