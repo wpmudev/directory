@@ -105,7 +105,7 @@ if (!class_exists('Directory_Core')):
                 'upload_files' => __('Upload files.', $this->text_domain),
             );
 
-            add_action('plugins_loaded', array(&$this, 'on_plugins_loaded'), 8);
+            add_action('plugins_loaded', array(&$this, 'on_plugins_loaded'), 12);
             add_action('after_setup_theme', array(&$this, 'thumbnail_support'));
             add_action('init', array(&$this, 'init'));
 
