@@ -4,8 +4,17 @@ Plugin Page: http://premium.wpmudev.org/project/wordpress-directory
 
 == Changelog ==
 =2.2.6.5
+WP 4.7 compatible
 Fix bug listing content show validate error when content has been filled
 Fix bug author archive load all directories
+Fix custom_fields_input shortcode typo in page template
+Fix wpeditor doesn't update text editor when saving
+Fix Listing pagination issue
+Fix Shortcode was not rendering content in update classified page
+Fix Comment was enabled in update directory page
+Fix Pingback issue in classified
+Fix Directory theme conflict with the theme in wp org repo
+Fix Style issue in widget page in admin
 
 =2.2.6.4
 * Update CustomPress to latest version
