@@ -90,16 +90,3 @@ include_once 'core/functions.php';
 include_once 'core/template-tags.php';
 include_once 'core/payments.php';
 include_once 'core/ratings.php';
-
-global $wpmudev_notices;
-$wpmudev_notices[] = array( 'id'=> 164,
-'name'=> 'Directory',
-'screens' => array(
-'directory_listing_page_dr-get_started',
-'edit-directory_listing',
-'directory_listing',
-'edit-listing_tag',
-'edit-listing_category',
-'directory_listing_page_directory_settings',
-) );
-include_once 'ext/wpmudev-dash-notification.php';
